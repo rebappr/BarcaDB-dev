@@ -1,0 +1,3420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="language" content="English">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="manifest" href="site.webmanifest">
+
+<meta name="theme-color" content="#004D98">
+
+<title>Compare FC Barcelona Players | Stats & Records | Barça Database</title>
+
+<meta name="robots"
+      content="index,follow">
+
+<meta name="author"
+      content="RE">
+
+<link rel="canonical"
+      href="https://barcadb.com/compare.html">
+
+<meta name="description"
+      content="Compare FC Barcelona players side by side. Analyze appearances, goals, assists, trophies, records and career statistics.">
+
+<meta property="og:title"
+      content="Compare FC Barcelona Players | Barça Database">
+
+<meta property="og:description"
+      content="Compare FC Barcelona players side by side with detailed statistics, records and career achievements.">
+
+<meta property="og:url"
+      content="https://barcadb.com/compare.html">
+
+<meta property="og:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta property="og:type"
+      content="website">
+
+<meta property="og:site_name"
+      content="Barça Database">
+
+<meta name="twitter:card"
+      content="summary_large_image">
+
+<meta name="twitter:title"
+      content="Compare FC Barcelona Players | Barça Database">
+
+<meta name="twitter:description"
+      content="Compare FC Barcelona players side by side with detailed statistics, records and career achievements.">
+
+<meta name="twitter:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta name="keywords"
+      content="compare Barcelona players, FC Barcelona player comparison, Messi vs Xavi, Barcelona statistics, Barca records, player stats comparison">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/theme.css">
+
+<style>
+
+.compare-page{
+    margin-top:8px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.compare-header-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:20px;
+}
+
+.compare-header-card h2{
+    margin:0 0 8px;
+}
+
+.compare-header-card p{
+    color:var(--muted);
+    margin:0;
+}
+
+.compare-selector{
+    display:grid;
+    grid-template-columns:
+        1fr auto 1fr;
+    gap:16px;
+    align-items:center;
+}
+
+.compare-search{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:18px;
+}
+
+.compare-search label{
+    display:block;
+    margin-bottom:10px;
+    color:var(--muted);
+    font-size:.9rem;
+
+}
+
+.compare-search input{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid var(--divider);
+    background:#ffffff;
+    color:var(--barca-blue);
+    font-size:16px;
+}
+
+.compare-vs{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--text);
+
+    min-width:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.compare-search input::placeholder{
+    color:#64748b;
+    opacity:1;
+}
+
+.compare-result-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-left:4px solid var(--barca-blue);
+    border-radius:16px;
+    padding:20px;
+}
+
+.compare-result-title{
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:8px;
+    text-align:center;
+}
+
+.compare-search{
+    position:relative;
+}
+
+.compare-search-item{
+    cursor:pointer;
+}
+
+.compare-search-item:hover{
+    background:var(--meta-bg);
+}
+
+#compareResultsA,
+#compareResultsB{
+    position:absolute;
+    left:18px;
+    right:18px;
+    top:88px;
+    z-index:500;
+}
+
+#compareResultsA .player-search-results,
+#compareResultsB .player-search-results{
+    background:var(--surface);
+    border:1px solid var(--card-border);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.compare-search-item{
+    display:block;
+    padding:12px 14px;
+    cursor:pointer;
+}
+
+.compare-search-item:hover{
+    background:var(--meta-bg);
+}
+
+.compare-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:20px;
+}
+
+.compare-input-wrap{
+    position:relative;
+}
+
+.clear-input{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    color:#64748b;
+    font-size:18px;
+    cursor:pointer;
+    padding:4px;
+    display:none;
+}
+
+.clear-input.show{
+    display:block;
+}
+
+.clear-input:hover{
+    color:var(--text);
+}
+
+.summary-table{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.summary-row{
+    display:grid;
+    grid-template-columns:
+        120px
+        1fr
+        120px;
+
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    background:var(--meta-bg);
+    border:1px solid var(--meta-border);
+    border-radius:10px;
+}
+
+.summary-row span:first-child{
+    text-align:left;
+    font-weight:700;
+}
+
+.summary-row span:last-child{
+    text-align:right;
+    font-weight:700;
+}
+
+.summary-center{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    align-items:stretch;
+    gap:6px;
+}
+
+.summary-label{
+    display:block;
+    width:100%;
+    text-align:center !important;
+    margin:0 auto;
+}
+
+.compare-bar{
+
+    width:100%;
+
+    display:flex;
+    height:8px;
+    border-radius:999px;
+    overflow:hidden;
+    background:var(--divider);
+
+}
+
+.bar-left{
+    background:var(--barca-red);
+}
+
+.bar-right{
+    background:var(--barca-blue);
+}
+
+.competition-block{
+
+    margin-bottom:24px;
+
+}
+
+.competition-title{
+
+    text-align:center;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    margin-bottom:12px;
+
+}
+
+.collapsible-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    user-select:none;
+
+}
+
+.collapsible-title:hover{
+
+    opacity:.9;
+
+}
+
+#performanceStatsContent{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.compare-filter-card{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+
+    padding:12px 16px;
+
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:12px;
+
+    margin-bottom:6px;
+}
+
+.compare-filter-card span{
+    color:var(--muted);
+	font-size:15px;
+}
+
+#matchLimit{
+    width:65px;
+    padding:10px 12px;
+    border-radius:10px;
+    border:1px solid var(--divider);
+    background:#ffffff;
+    color:var(--barca-blue);
+    font-size:16px;
+    text-align:center;
+}
+
+#matchLimit::placeholder{
+    color:#64748b;
+    opacity:1;
+}
+
+#matchLimit:focus{
+    outline:none;
+    border-color:var(--barca-blue);
+}
+
+@media(max-width:820px){
+
+	.compare-desktop{
+        display:none;
+    }
+
+    .summary-row{
+        grid-template-columns:
+            minmax(60px,85px)
+            1fr
+            minmax(60px,85px);
+    }
+
+    .summary-row span:first-child,
+    .summary-row span:last-child{
+
+        font-size:.95rem;
+
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .compare-selector{
+        grid-template-columns:1fr;
+    }
+
+    .compare-vs{
+        text-align:center;
+    }
+
+      
+	.left-panel,
+	.right-panel{
+		flex:none !important;
+		width:100% !important;
+		min-width:0;
+		max-width:100%;
+		margin:0;
+		}
+
+	.container{
+		padding:6px;
+		}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="header">
+    <div class="header-inner">
+
+		<a href="/">
+        	<img src="logos/barcadb-logo.png" class="header-logo" alt="Barça DB">
+		</a>
+
+        <div class="header-text">
+            <h1>Barça Database</h1>
+	    </div>
+
+<div class="desktop-search">
+
+    <input
+        type="text"
+        id="personSearch"
+        placeholder="Search..."
+        class="desktop-search-input">
+
+    <div id="personSearchResults"></div>
+
+</div>
+
+    <button id="menuToggle" class="menu-toggle">
+    	☰
+    </button>
+
+</div>
+</div>
+
+<nav class="main-menu">
+
+    <div class="mobile-menu-search">
+
+        <input
+            type="text"
+            id="mobilePersonSearch"
+            placeholder="Search..."
+            class="mobile-search-input">
+
+        <div id="mobileSearchResults"></div>
+
+    </div>
+
+    <a href="/">
+        <span>Home page</span>
+    </a>
+
+    <a href="statistics.html">
+        <span>Statistics</span>
+    </a>
+
+    <a href="season.html">
+        <span>Seasons</span>
+    </a>
+
+    <a href="insights.html">
+        <span>Insights</span>
+    </a>
+
+    <a href="compare.html" class="active">
+        <span>Compare</span>
+    </a>
+
+    <a href="el-clasico.html">
+        <span>El Clásico</span>
+    </a>
+
+</nav>
+
+
+<div class="compare-page">
+
+    <div class="compare-header-card">
+
+        <h2>
+            Compare Players
+        </h2>
+
+        <p>
+            Select two players and compare their Barcelona careers.
+        </p>
+
+    </div>
+
+    <div class="compare-selector">
+
+<div class="compare-search">
+
+    <label>
+        Player A
+    </label>
+
+    <div class="compare-input-wrap">
+
+        <input
+            type="text"
+            id="comparePlayerA"
+            placeholder="Search player...">
+
+        <button
+            type="button"
+            class="clear-input"
+            onclick="clearCompareInput('A')">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div id="compareResultsA"></div>
+
+</div>
+
+        <div class="compare-vs">
+            VS
+        </div>
+
+<div class="compare-search">
+
+    <label>
+        Player B
+    </label>
+
+    <div class="compare-input-wrap">
+
+        <input
+            type="text"
+            id="comparePlayerB"
+            placeholder="Search player...">
+
+        <button
+            type="button"
+            class="clear-input"
+            onclick="clearCompareInput('B')">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div id="compareResultsB"></div>
+
+</div>
+
+    </div>
+
+<div class="compare-filter-card">
+
+    <span>Compare first</span>
+
+    <input
+        type="number"
+        id="matchLimit"
+        min="1"
+        placeholder="">
+
+    <span>Barcelona matches<span class="compare-desktop"> (leave empty for full career)</span></span>
+
+</div>
+
+<div
+    class="compare-card"
+    id="basicInfoCard"
+    style="display:none;">
+
+    <div class="compare-result-title">
+        Basic Information
+    </div>
+
+    <div class="summary-table">
+
+		<div class="summary-row">
+		
+		    <span id="playerAComparedMatches">-</span>
+		
+		    <div class="summary-center">
+		        <span class="summary-label">
+		            Matches Compared
+		        </span>
+		    </div>
+		
+		    <span id="playerBComparedMatches">-</span>
+		
+		</div>
+
+        <div class="summary-row">
+
+            <span id="playerAPosition">-</span>
+
+            <div class="summary-center">
+                <span class="summary-label">
+                    Main Position
+                </span>
+            </div>
+
+            <span id="playerBPosition">-</span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span id="playerASeasons">-</span>
+
+            <div class="summary-center">
+                <span class="summary-label">
+                    Seasons
+                </span>
+            </div>
+
+            <span id="playerBSeasons">-</span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span id="playerADebut">-</span>
+
+            <div class="summary-center">
+                <span class="summary-label">
+                    Debut
+                </span>
+            </div>
+
+            <span id="playerBDebut">-</span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span id="playerALastMatch">-</span>
+
+            <div class="summary-center">
+                <span class="summary-label">
+                    Last Match
+                </span>
+            </div>
+
+            <span id="playerBLastMatch">-</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    class="compare-card"
+    id="performanceCard"
+    style="display:none;">
+
+<div
+    class="compare-result-title collapsible-title"
+    onclick="toggleSection('performance')">
+
+    <span>Performance Statistics</span>
+
+    <span
+        id="performanceArrow">
+
+        ▼
+
+    </span>
+
+</div>
+
+<div
+    id="performanceContent"
+    style="display:none;">
+
+<div class="summary-table">
+<div id="performanceStatsContent"></div>
+
+</div>
+</div>
+</div>
+
+<div
+    class="compare-card"
+    id="resultsCard"
+    style="display:none;">
+
+<div
+    class="compare-result-title collapsible-title"
+    onclick="toggleSection('results')">
+
+    <span>Match Results</span>
+
+    <span
+        id="resultsArrow">
+
+        ▼
+
+    </span>
+
+</div>
+
+<div
+    id="resultsContent"
+    style="display:none;">
+
+    <div class="summary-table">
+
+        <div class="summary-row">
+
+            <span id="playerAWins">-</span>
+
+            <div class="summary-center">
+
+                <span class="summary-label">
+                    Wins
+                </span>
+
+                <div class="compare-bar">
+                    <div id="winsBarA" class="bar-left"></div>
+                    <div id="winsBarB" class="bar-right"></div>
+                </div>
+
+            </div>
+
+            <span id="playerBWins">-</span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span id="playerADraws">-</span>
+
+            <div class="summary-center">
+
+                <span class="summary-label">
+                    Draws
+                </span>
+
+                <div class="compare-bar">
+                    <div id="drawsBarA" class="bar-left"></div>
+                    <div id="drawsBarB" class="bar-right"></div>
+                </div>
+
+            </div>
+
+            <span id="playerBDraws">-</span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span id="playerALosses">-</span>
+
+            <div class="summary-center">
+
+                <span class="summary-label">
+                    Losses
+                </span>
+
+                <div class="compare-bar">
+                    <div id="lossesBarA" class="bar-left"></div>
+                    <div id="lossesBarB" class="bar-right"></div>
+                </div>
+
+            </div>
+
+            <span id="playerBLosses">-</span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span id="playerAWinPct">-</span>
+
+            <div class="summary-center">
+
+                <span class="summary-label">
+                    Win %
+                </span>
+
+                <div class="compare-bar">
+                    <div id="winPctBarA" class="bar-left"></div>
+                    <div id="winPctBarB" class="bar-right"></div>
+                </div>
+
+            </div>
+
+            <span id="playerBWinPct">-</span>
+
+        </div>
+
+        <div class="summary-row">
+
+            <span id="playerAPPM">-</span>
+
+            <div class="summary-center">
+
+                <span class="summary-label">
+                    Points / Match
+                </span>
+
+                <div class="compare-bar">
+                    <div id="ppmBarA" class="bar-left"></div>
+                    <div id="ppmBarB" class="bar-right"></div>
+                </div>
+
+            </div>
+
+            <span id="playerBPPM">-</span>
+
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div
+    class="compare-card"
+    id="competitionCard"
+    style="display:none;">
+
+<div
+    class="compare-result-title collapsible-title"
+    onclick="toggleSection('competition')">
+
+    <span>Competition Record</span>
+
+    <span
+        id="competitionArrow">
+
+        ▼
+
+    </span>
+
+</div>
+
+<div
+    id="competitionContent"
+    style="display:none;">
+</div>
+
+</div>
+</div>
+
+<script>
+
+let allMatches = [];
+
+let playersData = [];
+
+Promise.all([
+    fetch("/data/data.json").then(r => r.json()),
+    fetch("/data/players.json").then(r => r.json())
+])
+.then(([matches, players]) => {
+
+    allMatches = matches;
+
+    playersData = players;
+
+    initPersonSearch();
+
+    initCompareSearch();
+
+})
+.catch(error => {
+    console.error(error);
+});
+
+let comparePlayers = [];
+
+let selectedPlayerA = null;
+let selectedPlayerB = null;
+
+function initPersonSearch(){
+
+    const searchItems = new Map();
+
+    allMatches.forEach(match => {
+
+        if(match.Manager){
+
+            searchItems.set(
+                `manager-${match.Manager}`,
+                {
+                    name: match.Manager,
+                    type: "Manager"
+                }
+            );
+
+        }
+
+        if(match["Opp. Manager"]){
+
+            searchItems.set(
+                `manager-${match["Opp. Manager"]}`,
+                {
+                    name: match["Opp. Manager"],
+                    type: "Manager"
+                }
+            );
+
+        }
+
+		if(match["Opp. Team"]){
+		
+		    searchItems.set(
+		        `opponent-${match["Opp. Team"]}`,
+		        {
+		            name: match["Opp. Team"],
+		            type: "Opponent"
+		        }
+		    );
+		
+		}
+
+        for(let i=1;i<=11;i++){
+
+            if(match[`Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Player name ${i}`]}`,
+                    {
+                        name: match[`Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. Player name ${i}`]}`,
+                    {
+                        name: match[`Opp. Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+        for(let i=1;i<=12;i++){
+
+            if(match[`Sub on ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Sub on ${i}`]}`,
+                    {
+                        name: match[`Sub on ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. Sub on ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. Sub on ${i}`]}`,
+                    {
+                        name: match[`Opp. Sub on ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+    });
+
+const barcaPlayers = new Set();
+
+allMatches.forEach(match => {
+
+    for(let i=1;i<=11;i++){
+
+        if(match["Player name " + i]){
+            barcaPlayers.add(
+                match["Player name " + i]
+            );
+        }
+
+    }
+
+    for(let i=1;i<=12;i++){
+
+        if(match["Sub on " + i]){
+            barcaPlayers.add(
+                match["Sub on " + i]
+            );
+        }
+
+    }
+
+});
+
+	comparePlayers =
+	    [...barcaPlayers]
+	    .sort((a,b) =>
+	        a.localeCompare(b)
+	    )
+	    .map(name => ({
+	        name
+	    }));
+
+    const itemList =
+        [...searchItems.values()]
+        .sort((a,b) => a.name.localeCompare(b.name));
+
+    function attachSearch(inputId, resultsId){
+
+    const input = document.getElementById(inputId);
+    const results = document.getElementById(resultsId);
+
+    if(!input || !results) return;
+
+    input.addEventListener("input", () => {
+
+        const value =
+            input.value
+            .trim()
+            .toLowerCase();
+
+        if(!value){
+            results.innerHTML = "";
+            return;
+        }
+
+		const filtered =
+		    itemList
+		    .filter(item =>
+		        item.name.toLowerCase().includes(value)
+		    )
+		    .sort((a,b)=>{
+		
+		        const aStarts =
+		            a.name.toLowerCase().startsWith(value);
+		
+		        const bStarts =
+		            b.name.toLowerCase().startsWith(value);
+		
+		        return Number(bStarts) - Number(aStarts);
+		
+		    })
+		    .slice(0,20);
+
+        results.innerHTML = `
+            <div class="player-search-results">
+                ${filtered.map(item => {
+
+                    let url = "";
+
+                    if(item.type === "Manager"){
+                        url = "manager.html?name=" + encodeURIComponent(item.name);
+                    }else if(item.type === "Opponent"){
+                        url = "opponent.html?name=" + encodeURIComponent(item.name);
+                    }else{
+                        url = "player.html?name=" + encodeURIComponent(item.name);
+                    }
+
+                    return `
+                  
+    <a 
+        class="player-search-item"
+        href="${url}">
+
+        ${item.name}
+
+        <span class="search-type ${item.type.toLowerCase()}">
+            (${item.type})
+        </span>
+
+    </a>
+                    `;
+                }).join("")}
+            </div>
+        `;
+    });
+
+    input.addEventListener("blur", () => {
+        setTimeout(() => {
+            results.innerHTML = "";
+        }, 200);
+    });
+
+}
+attachSearch(
+    "personSearch",
+    "personSearchResults"
+);
+
+attachSearch(
+    "mobilePersonSearch",
+    "mobileSearchResults"
+);
+
+}
+
+function initCompareSearch(){
+
+    attachCompareSearch(
+        "comparePlayerA",
+        "compareResultsA",
+        "A"
+    );
+
+    attachCompareSearch(
+        "comparePlayerB",
+        "compareResultsB",
+        "B"
+    );
+
+}
+
+function attachCompareSearch(
+    inputId,
+    resultsId,
+    side
+){
+
+    const input =
+        document.getElementById(inputId);
+
+    const results =
+        document.getElementById(resultsId);
+
+    if(!input || !results){
+        return;
+    }
+
+    input.addEventListener("input", () => {
+
+        const value =
+            input.value
+            .trim()
+            .toLowerCase();
+
+        if(!value){
+
+            results.innerHTML = "";
+
+            return;
+
+        }
+
+		const matches =
+		    comparePlayers
+		    .filter(player =>
+		        player.name
+		        .toLowerCase()
+		        .includes(value)
+		    )
+		    .sort((a,b) => {
+		
+		        const aStarts =
+		            a.name.toLowerCase().startsWith(value);
+		
+		        const bStarts =
+		            b.name.toLowerCase().startsWith(value);
+		
+		        return Number(bStarts) - Number(aStarts);
+		
+		    })
+		    .slice(0,15);
+
+        results.innerHTML = `
+
+        <div class="player-search-results">
+
+            ${matches.map(player => ` 
+
+                <div
+                    class="player-search-item compare-search-item"
+                    data-name="${player.name}"
+                    data-side="${side}">
+
+                    ${player.name}
+
+                </div>
+
+            ` ).join("")}
+
+        </div> `;
+
+    });
+
+    results.addEventListener("click", e => {
+
+        const item =
+            e.target.closest(
+                ".compare-search-item"
+            );
+
+        if(!item){
+            return;
+        }
+
+        const playerName =
+            item.dataset.name;
+
+        input.value =
+            playerName;
+
+        results.innerHTML = "";
+
+if(side === "A"){
+
+    selectedPlayerA =
+        playerName;
+
+    input
+        .parentElement
+        .querySelector(".clear-input")
+        .classList.add("show");
+
+}else{
+
+    selectedPlayerB =
+        playerName;
+
+    input
+        .parentElement
+        .querySelector(".clear-input")
+        .classList.add("show");
+
+}
+
+        updateCompareResult();
+
+    });
+
+    input.addEventListener("blur", () => {
+
+        setTimeout(() => {
+
+            results.innerHTML = "";
+
+        },200);
+
+    });
+
+}
+
+function playerPlayedMatch(
+    match,
+    playerName
+){
+
+    for(let i=1;i<=11;i++){
+
+        if(
+            match["Player name " + i]
+            === playerName
+        ){
+            return true;
+        }
+
+    }
+
+    for(let i=1;i<=12;i++){
+
+        if(
+            match["Sub on " + i]
+            === playerName
+        ){
+            return true;
+        }
+
+    }
+
+    return false;
+
+}
+
+function updateCompareResult(){
+
+    updateBasicInfo();
+
+    updatePerformanceStats();
+
+    updateMatchResults();
+
+    updateCompetitionStats();
+
+}
+
+function updateMatchResults(){
+
+    if(
+        !selectedPlayerA ||
+        !selectedPlayerB
+    ){
+        document.getElementById(
+            "resultsCard"
+        ).style.display = "none";
+
+        return;
+    }
+
+    const playerA =
+        getMatchResults(selectedPlayerA);
+
+    const playerB =
+        getMatchResults(selectedPlayerB);
+
+    document.getElementById(
+        "resultsCard"
+    ).style.display = "block";
+
+document.getElementById(
+    "resultsContent"
+).style.display = "none";
+
+document.getElementById(
+    "resultsArrow"
+).textContent = "▼";
+
+    document.getElementById(
+        "playerAWins"
+    ).textContent = playerA.wins;
+
+    document.getElementById(
+        "playerBWins"
+    ).textContent = playerB.wins;
+
+    document.getElementById(
+        "playerADraws"
+    ).textContent = playerA.draws;
+
+    document.getElementById(
+        "playerBDraws"
+    ).textContent = playerB.draws;
+
+    document.getElementById(
+        "playerALosses"
+    ).textContent = playerA.losses;
+
+    document.getElementById(
+        "playerBLosses"
+    ).textContent = playerB.losses;
+
+    document.getElementById(
+        "playerAWinPct"
+    ).textContent = playerA.winPct + "%";
+
+    document.getElementById(
+        "playerBWinPct"
+    ).textContent = playerB.winPct + "%";
+
+    document.getElementById(
+        "playerAPPM"
+    ).textContent = playerA.ppm;
+
+    document.getElementById(
+        "playerBPPM"
+    ).textContent = playerB.ppm;
+
+    setComparisonBar(
+        playerA.wins,
+        playerB.wins,
+        "winsBarA",
+        "winsBarB"
+    );
+
+    setComparisonBar(
+        playerA.draws,
+        playerB.draws,
+        "drawsBarA",
+        "drawsBarB"
+    );
+
+    setComparisonBar(
+        playerA.losses,
+        playerB.losses,
+        "lossesBarA",
+        "lossesBarB"
+    );
+
+    setComparisonBar(
+        Number(playerA.winPct),
+        Number(playerB.winPct),
+        "winPctBarA",
+        "winPctBarB"
+    );
+
+    setComparisonBar(
+        Number(playerA.ppm),
+        Number(playerB.ppm),
+        "ppmBarA",
+        "ppmBarB"
+    );
+
+highlightWinner(
+    "playerAWins",
+    "playerBWins",
+    playerA.wins,
+    playerB.wins
+);
+
+highlightWinner(
+    "playerADraws",
+    "playerBDraws",
+    playerA.draws,
+    playerB.draws
+);
+
+highlightLowerBetter(
+    "playerALosses",
+    "playerBLosses",
+    playerA.losses,
+    playerB.losses
+);
+
+highlightWinner(
+    "playerAWinPct",
+    "playerBWinPct",
+    Number(playerA.winPct),
+    Number(playerB.winPct)
+);
+
+highlightWinner(
+    "playerAPPM",
+    "playerBPPM",
+    Number(playerA.ppm),
+    Number(playerB.ppm)
+);
+
+
+}
+
+function formatDate(dateString){
+
+    const date = new Date(dateString);
+
+    if(isNaN(date)){
+        return dateString;
+    }
+
+    const day =
+        String(date.getDate())
+        .padStart(2,"0");
+
+    const month =
+        String(date.getMonth()+1)
+        .padStart(2,"0");
+
+    const year =
+        date.getFullYear();
+
+    return day + "." + month + "." + year;
+
+}
+
+function getMainPosition(playerName){
+
+    const player = playersData.find(p =>
+        p.Player === playerName
+    );
+
+    if(!player){
+        return "-";
+    }
+
+    return player.Position || "-";
+
+}
+
+function getPlayerInfo(playerName){
+
+    const matches = [];
+
+    allMatches.forEach(match => {
+
+        if(
+    playerPlayedMatch(
+        match,
+        playerName
+    )
+){
+    matches.push(match);
+}
+
+});
+
+if(matches.length === 0){
+    return null;
+}
+
+const seasons = new Set();
+
+matches.forEach(match => {
+
+    if(match.Season){
+        seasons.add(match.Season);
+    }
+
+});
+
+return {
+
+position:
+        getMainPosition(playerName),
+
+lastMatch:
+    formatDate(
+        matches[0].Date
+    ),
+
+debut:
+    formatDate(
+        matches[matches.length-1].Date
+    ),
+
+    seasons:
+        seasons.size
+
+};
+
+}
+
+function getAllCompetitions(){
+
+    return [
+
+        ...new Set(
+
+            allMatches
+                .map(match =>
+                    match.Competition
+                )
+                .filter(Boolean)
+
+        )
+
+    ].sort();
+
+}
+
+function getCompetitionRecord(
+
+    playerName,
+    competition
+
+){
+
+    let matches = 0;
+    let wins = 0;
+    let draws = 0;
+    let losses = 0;
+
+    let goals = 0;
+    let assists = 0;
+
+    const playerMatches =
+    getLimitedMatches(playerName);
+
+	playerMatches.forEach(match => {
+
+        if(
+            match.Competition !== competition
+        ){
+            return;
+        }
+
+        if(
+    !playerPlayedMatch(
+        match,
+        playerName
+    )
+){
+    return;
+}
+
+        matches++;
+      
+for(let i=1;i<=20;i++){
+
+    if(match["Goal Player " + i] === playerName){
+        goals++;
+    }
+
+    if(match["Assist Player " + i] === playerName){
+        assists++;
+    }
+
+}
+
+        const scored =
+            Number(match.Scored);
+
+        const conceded =
+            Number(match.Conceded);
+
+        if(scored > conceded){
+
+            wins++;
+
+        }
+        else if(scored < conceded){
+
+            losses++;
+
+        }
+        else{
+
+            draws++;
+
+        }
+
+    });
+
+    return {
+
+    matches,
+
+    wins,
+
+    draws,
+
+    losses,
+
+    goals,
+
+    assists,
+
+    contributions:
+        goals + assists,
+
+    goalsPerMatch:
+        matches
+        ? (goals / matches).toFixed(3)
+        : "0.000",
+
+    assistsPerMatch:
+        matches
+        ? (assists / matches).toFixed(3)
+        : "0.000",
+
+    winPct:
+        matches
+        ? ((wins / matches) * 100)
+            .toFixed(1)
+        : "0.0",
+
+    ppm:
+        matches
+        ? (((wins * 3) + draws)
+            / matches)
+            .toFixed(2)
+        : "0.00"
+
+};
+
+}
+
+function getGoalkeeperCompetitionRecord(
+
+    playerName,
+    competition
+
+){
+
+    let matches = 0;
+    let wins = 0;
+    let draws = 0;
+    let losses = 0;
+
+    let conceded = 0;
+    let cleanSheets = 0;
+
+    const playerMatches =
+    getLimitedMatches(playerName);
+
+	playerMatches.forEach(match => {
+
+        if(
+            match.Competition !== competition
+        ){
+            return;
+        }
+
+        if(
+            !playerPlayedMatch(
+                match,
+                playerName
+            )
+        ){
+            return;
+        }
+
+        matches++;
+
+        const goalsAgainst =
+            Number(match.Conceded);
+
+        conceded += goalsAgainst;
+
+        if(goalsAgainst === 0){
+            cleanSheets++;
+        }
+
+        const scored =
+            Number(match.Scored);
+
+        if(scored > goalsAgainst){
+
+            wins++;
+
+        }else if(scored < goalsAgainst){
+
+            losses++;
+
+        }else{
+
+            draws++;
+
+        }
+
+    });
+
+    return {
+
+        matches,
+
+        wins,
+
+        draws,
+
+        losses,
+
+        conceded,
+
+        cleanSheets,
+
+        concededPerMatch:
+            matches
+            ? (conceded / matches).toFixed(2)
+            : "0.00",
+
+        cleanSheetPct:
+            matches
+            ? ((cleanSheets / matches) * 100)
+                .toFixed(1)
+            : "0.0",
+
+        winPct:
+            matches
+            ? ((wins / matches) * 100)
+                .toFixed(1)
+            : "0.0",
+
+        ppm:
+            matches
+            ? (((wins * 3) + draws)
+                / matches)
+                .toFixed(2)
+            : "0.00"
+
+    };
+
+}
+
+function highlightLowerBetter(
+
+    leftId,
+    rightId,
+
+    leftValue,
+    rightValue
+
+){
+
+    const left =
+        document.getElementById(leftId);
+
+    const right =
+        document.getElementById(rightId);
+
+    left.style.color = "";
+    right.style.color = "";
+
+    if(leftValue < rightValue){
+
+        left.style.color =
+            "var(--stats-left)";
+
+    }
+    else if(rightValue < leftValue){
+
+        right.style.color =
+            "var(--stats-right)";
+
+    }
+
+}
+
+function competitionRow(
+
+    prefix,
+    stat,
+
+    left,
+    right,
+
+    suffix = ""
+
+){
+
+    return `
+
+<div class="summary-row">
+
+    <span
+        id="${prefix}${stat}Left">
+
+        ${left}${suffix}
+
+    </span>
+
+    <div class="summary-center">
+
+        <span class="summary-label">
+
+            ${stat === "WinPct"
+    ? "Win %"
+    : stat === "PPM"
+    ? "Points / Match"
+: stat === "GA"
+? "Goal Contributions"
+
+: stat === "GPM"
+? "Goals / Match"
+
+: stat === "APM"
+? "Assists / Match"
+
+: stat === "Conceded"
+? "Goals Conceded"
+
+: stat === "CleanSheets"
+? "Clean Sheets"
+
+: stat === "CPM"
+? "Goals Conceded / Match"
+
+: stat === "CSP"
+? "Clean Sheet %"
+    : stat}
+
+        </span>
+
+        <div class="compare-bar">
+
+            <div
+                id="${prefix}${stat}A"
+                class="bar-left">
+
+            </div>
+
+            <div
+                id="${prefix}${stat}B"
+                class="bar-right">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <span
+        id="${prefix}${stat}Right">
+
+        ${right}${suffix}
+
+    </span>
+
+</div>
+
+`;
+
+}
+
+function performanceRow(
+
+    id,
+    label
+
+){
+
+    return `
+
+<div class="summary-row">
+
+    <span id="${id}Left">-</span>
+
+    <div class="summary-center">
+
+        <span class="summary-label">
+
+            ${label}
+
+        </span>
+
+        <div class="compare-bar">
+
+            <div
+                id="${id}A"
+                class="bar-left">
+
+            </div>
+
+            <div
+                id="${id}B"
+                class="bar-right">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <span id="${id}Right">-</span>
+
+</div>
+
+`;
+
+}
+
+function updateCompetitionStats(){
+
+    if(
+        !selectedPlayerA ||
+        !selectedPlayerB
+    ){
+
+        document.getElementById(
+            "competitionCard"
+        ).style.display = "none";
+
+        return;
+
+    }
+
+const bothGoalkeepers =
+
+    isGoalkeeper(selectedPlayerA)
+    &&
+    isGoalkeeper(selectedPlayerB);
+
+    const container =
+        document.getElementById(
+            "competitionContent"
+        );
+
+    const competitions =
+        getAllCompetitions();
+
+    container.innerHTML = "";
+
+    competitions.forEach(comp => {
+
+const playerA =
+    bothGoalkeepers
+    ? getGoalkeeperCompetitionRecord(
+        selectedPlayerA,
+        comp
+    )
+    : getCompetitionRecord(
+        selectedPlayerA,
+        comp
+    );
+
+const playerB =
+    bothGoalkeepers
+    ? getGoalkeeperCompetitionRecord(
+        selectedPlayerB,
+        comp
+    )
+    : getCompetitionRecord(
+        selectedPlayerB,
+        comp
+    );
+
+        if(
+            playerA.matches === 0 &&
+            playerB.matches === 0
+        ){
+            return;
+        }
+
+        const safeId =
+            comp
+                .replace(/\s+/g,"")
+                .replace(/[^\w]/g,"");
+
+        container.innerHTML += `
+
+<div class="competition-block">
+
+    <div class="competition-title">
+        ${comp}
+    </div>
+
+    <div class="summary-table">
+
+${competitionRow(
+    safeId,
+    "Matches",
+    playerA.matches,
+    playerB.matches
+)}
+
+${bothGoalkeepers
+
+? `
+
+${competitionRow(
+    safeId,
+    "Conceded",
+    playerA.conceded,
+    playerB.conceded
+)}
+
+${competitionRow(
+    safeId,
+    "CleanSheets",
+    playerA.cleanSheets,
+    playerB.cleanSheets
+)}
+
+${competitionRow(
+    safeId,
+    "CPM",
+    playerA.concededPerMatch,
+    playerB.concededPerMatch
+)}
+
+${competitionRow(
+    safeId,
+    "CSP",
+    playerA.cleanSheetPct,
+    playerB.cleanSheetPct,
+    "%"
+)}
+
+`
+: `
+
+${competitionRow(
+    safeId,
+    "Goals",
+    playerA.goals,
+    playerB.goals
+)}
+
+${competitionRow(
+    safeId,
+    "Assists",
+    playerA.assists,
+    playerB.assists
+)}
+
+${competitionRow(
+    safeId,
+    "GA",
+    playerA.contributions,
+    playerB.contributions
+)}
+
+${competitionRow(
+    safeId,
+    "GPM",
+    playerA.goalsPerMatch,
+    playerB.goalsPerMatch
+)}
+
+${competitionRow(
+    safeId,
+    "APM",
+    playerA.assistsPerMatch,
+    playerB.assistsPerMatch
+)}
+`
+}
+
+        ${competitionRow(
+            safeId,
+            "Wins",
+            playerA.wins,
+            playerB.wins
+        )}
+
+        ${competitionRow(
+            safeId,
+            "Draws",
+            playerA.draws,
+            playerB.draws
+        )}
+
+        ${competitionRow(
+            safeId,
+            "Losses",
+            playerA.losses,
+            playerB.losses
+        )}
+
+        ${competitionRow(
+            safeId,
+            "WinPct",
+            playerA.winPct,
+            playerB.winPct,
+            "%"
+        )}
+
+        ${competitionRow(
+            safeId,
+            "PPM",
+            playerA.ppm,
+            playerB.ppm
+        )}
+
+    </div>
+
+</div>
+
+`;
+
+        setTimeout(() => {
+
+            setComparisonBar(
+
+                Number(playerA.matches),
+                Number(playerB.matches),
+
+                `${safeId}MatchesA`,
+                `${safeId}MatchesB`
+
+            );
+            
+if(bothGoalkeepers){
+
+    setComparisonBar(
+        Number(playerA.conceded),
+        Number(playerB.conceded),
+        `${safeId}ConcededA`,
+        `${safeId}ConcededB`
+    );
+
+    setComparisonBar(
+        Number(playerA.cleanSheets),
+        Number(playerB.cleanSheets),
+        `${safeId}CleanSheetsA`,
+        `${safeId}CleanSheetsB`
+    );
+
+    setComparisonBar(
+        Number(playerA.concededPerMatch),
+        Number(playerB.concededPerMatch),
+        `${safeId}CPMA`,
+        `${safeId}CPMB`
+    );
+
+    setComparisonBar(
+        Number(playerA.cleanSheetPct),
+        Number(playerB.cleanSheetPct),
+        `${safeId}CSPA`,
+        `${safeId}CSPB`
+    );
+
+}else{
+
+    setComparisonBar(
+        Number(playerA.goals),
+        Number(playerB.goals),
+        `${safeId}GoalsA`,
+        `${safeId}GoalsB`
+    );
+
+    setComparisonBar(
+        Number(playerA.assists),
+        Number(playerB.assists),
+        `${safeId}AssistsA`,
+        `${safeId}AssistsB`
+    );
+
+    setComparisonBar(
+        Number(playerA.contributions),
+        Number(playerB.contributions),
+        `${safeId}GAA`,
+        `${safeId}GAB`
+    );
+
+    setComparisonBar(
+        Number(playerA.goalsPerMatch),
+        Number(playerB.goalsPerMatch),
+        `${safeId}GPMA`,
+        `${safeId}GPMB`
+    );
+
+    setComparisonBar(
+        Number(playerA.assistsPerMatch),
+        Number(playerB.assistsPerMatch),
+        `${safeId}APMA`,
+        `${safeId}APMB`
+    );
+
+}
+
+            setComparisonBar(
+
+                Number(playerA.wins),
+                Number(playerB.wins),
+
+                `${safeId}WinsA`,
+                `${safeId}WinsB`
+
+            );
+
+            setComparisonBar(
+
+                Number(playerA.draws),
+                Number(playerB.draws),
+
+                `${safeId}DrawsA`,
+                `${safeId}DrawsB`
+
+            );
+
+            setComparisonBar(
+
+                Number(playerA.losses),
+                Number(playerB.losses),
+
+                `${safeId}LossesA`,
+                `${safeId}LossesB`
+
+            );
+
+            setComparisonBar(
+
+                Number(playerA.winPct),
+                Number(playerB.winPct),
+
+                `${safeId}WinPctA`,
+                `${safeId}WinPctB`
+
+            );
+
+            setComparisonBar(
+
+                Number(playerA.ppm),
+                Number(playerB.ppm),
+
+                `${safeId}PPMA`,
+                `${safeId}PPMB`
+
+            );
+
+            highlightWinner(
+
+                `${safeId}MatchesLeft`,
+                `${safeId}MatchesRight`,
+
+                playerA.matches,
+                playerB.matches
+
+            );
+            
+if(bothGoalkeepers){
+
+    highlightLowerBetter(
+        `${safeId}ConcededLeft`,
+        `${safeId}ConcededRight`,
+        playerA.conceded,
+        playerB.conceded
+    );
+
+    highlightWinner(
+        `${safeId}CleanSheetsLeft`,
+        `${safeId}CleanSheetsRight`,
+        playerA.cleanSheets,
+        playerB.cleanSheets
+    );
+
+    highlightLowerBetter(
+        `${safeId}CPMLeft`,
+        `${safeId}CPMRight`,
+        Number(playerA.concededPerMatch),
+        Number(playerB.concededPerMatch)
+    );
+
+    highlightWinner(
+        `${safeId}CSPLeft`,
+        `${safeId}CSPRight`,
+        Number(playerA.cleanSheetPct),
+        Number(playerB.cleanSheetPct)
+    );
+
+}else{
+
+    highlightWinner(
+        `${safeId}GoalsLeft`,
+        `${safeId}GoalsRight`,
+        playerA.goals,
+        playerB.goals
+    );
+
+    highlightWinner(
+        `${safeId}AssistsLeft`,
+        `${safeId}AssistsRight`,
+        playerA.assists,
+        playerB.assists
+    );
+
+    highlightWinner(
+        `${safeId}GALeft`,
+        `${safeId}GARight`,
+        playerA.contributions,
+        playerB.contributions
+    );
+
+    highlightWinner(
+        `${safeId}GPMLeft`,
+        `${safeId}GPMRight`,
+        Number(playerA.goalsPerMatch),
+        Number(playerB.goalsPerMatch)
+    );
+
+    highlightWinner(
+        `${safeId}APMLeft`,
+        `${safeId}APMRight`,
+        Number(playerA.assistsPerMatch),
+        Number(playerB.assistsPerMatch)
+    );
+
+}
+
+            highlightWinner(
+
+                `${safeId}WinsLeft`,
+                `${safeId}WinsRight`,
+
+                playerA.wins,
+                playerB.wins
+
+            );
+
+            highlightWinner(
+
+                `${safeId}DrawsLeft`,
+                `${safeId}DrawsRight`,
+
+                playerA.draws,
+                playerB.draws
+
+            );
+
+            highlightLowerBetter(
+
+                `${safeId}LossesLeft`,
+                `${safeId}LossesRight`,
+
+                playerA.losses,
+                playerB.losses
+
+            );
+
+            highlightWinner(
+
+                `${safeId}WinPctLeft`,
+                `${safeId}WinPctRight`,
+
+                Number(playerA.winPct),
+                Number(playerB.winPct)
+
+            );
+
+            highlightWinner(
+
+                `${safeId}PPMLeft`,
+                `${safeId}PPMRight`,
+
+                Number(playerA.ppm),
+                Number(playerB.ppm)
+
+            );
+
+        },0);
+
+});
+
+document.getElementById(
+    "competitionContent"
+).style.display = "none";
+
+document.getElementById(
+    "competitionArrow"
+).textContent = "▼";
+
+    document.getElementById(
+        "competitionCard"
+    ).style.display = "block";
+
+}
+
+function getMatchResults(playerName){
+
+    let matches = 0;
+    let wins = 0;
+    let draws = 0;
+    let losses = 0;
+
+    const matchesData =
+    getLimitedMatches(playerName);
+
+	matchesData.forEach(match => {
+
+        if(
+    !playerPlayedMatch(
+        match,
+        playerName
+    )
+){
+    return;
+}
+
+        matches++;
+
+        const goalsFor =
+            Number(match["Scored"]);
+
+        const goalsAgainst =
+            Number(match["Conceded"]);
+
+        if(goalsFor > goalsAgainst){
+
+            wins++;
+
+        }else if(goalsFor < goalsAgainst){
+
+            losses++;
+
+        }else{
+
+            draws++;
+
+        }
+
+    });
+
+    return {
+
+        wins,
+
+        draws,
+
+        losses,
+
+        winPct:
+            matches
+            ? ((wins / matches) * 100).toFixed(1)
+            : "0.0",
+
+        ppm:
+            matches
+            ? (((wins * 3) + draws) / matches).toFixed(2)
+            : "0.00"
+
+    };
+
+}
+
+function updateBasicInfo(){
+      
+	if(
+	    !selectedPlayerA ||
+	    !selectedPlayerB
+	){
+	
+	    document.getElementById(
+	        "basicInfoCard"
+	    ).style.display = "none";
+	
+	    return;
+	
+	}
+
+    const playerA =
+        getPlayerInfo(selectedPlayerA);
+
+    const playerB =
+        getPlayerInfo(selectedPlayerB);
+
+    if(!playerA || !playerB){
+        return;
+    }
+
+    document
+        .getElementById("basicInfoCard")
+        .style.display = "block";
+
+	document.getElementById(
+	    "playerAPosition"
+	).textContent = playerA.position;
+
+    document.getElementById(
+        "playerADebut"
+    ).textContent = playerA.debut;
+
+    document.getElementById(
+        "playerALastMatch"
+    ).textContent = playerA.lastMatch;
+
+document.getElementById(
+    "playerASeasons"
+).textContent = playerA.seasons;
+
+document.getElementById(
+    "playerBPosition"
+).textContent = playerB.position;
+
+    document.getElementById(
+        "playerBDebut"
+    ).textContent = playerB.debut;
+
+    document.getElementById(
+        "playerBLastMatch"
+    ).textContent = playerB.lastMatch;
+
+document.getElementById(
+    "playerBSeasons"
+).textContent = playerB.seasons;
+
+document.getElementById(
+    "playerAComparedMatches"
+).textContent =
+    getLimitedMatches(selectedPlayerA).length;
+
+document.getElementById(
+    "playerBComparedMatches"
+).textContent =
+    getLimitedMatches(selectedPlayerB).length;
+
+highlightWinner(
+    "playerASeasons",
+    "playerBSeasons",
+    Number(playerA.seasons),
+    Number(playerB.seasons)
+);
+
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const menuOverlay =
+        document.getElementById("menuOverlay");
+
+    const mainMenu =
+        document.querySelector(".main-menu");
+
+    const mobileInput =
+        document.getElementById("mobilePersonSearch");
+
+    const desktopInput =
+        document.getElementById("personSearch");
+
+    if(!menuToggle || !menuOverlay || !mainMenu){
+        return;
+    }
+
+    function closeMenu(){
+
+        mainMenu.classList.remove("open");
+        menuOverlay.classList.remove("show");
+
+        menuToggle.textContent = "☰";
+    }
+
+    function openMenu(){
+
+        mainMenu.classList.add("open");
+        menuOverlay.classList.add("show");
+
+        menuToggle.textContent = "✕";
+
+        if(mobileInput){
+
+            setTimeout(() => {
+                mobileInput.focus();
+            }, 250);
+
+        }
+
+    }
+
+    menuToggle.addEventListener("click", () => {
+
+        if(mainMenu.classList.contains("open")){
+            closeMenu();
+        }else{
+            openMenu();
+        }
+
+    });
+
+    menuOverlay.addEventListener(
+        "click",
+        closeMenu
+    );
+
+    window.addEventListener("resize", () => {
+
+        if(window.innerWidth > 820){
+            closeMenu();
+        }
+
+    });
+
+    if(mobileInput && desktopInput){
+
+        mobileInput.addEventListener("input", () => {
+
+            desktopInput.value =
+                mobileInput.value;
+
+            desktopInput.dispatchEvent(
+                new Event("input")
+            );
+
+            const mobileResults =
+                document.getElementById(
+                    "mobileSearchResults"
+                );
+
+            const desktopResults =
+                document.getElementById(
+                    "personSearchResults"
+                );
+
+            if(
+                mobileResults &&
+                desktopResults
+            ){
+                mobileResults.innerHTML =
+                    desktopResults.innerHTML;
+            }
+
+        });
+
+    }
+
+});
+
+function isGoalkeeper(playerName){
+
+    const player = playersData.find(
+        p => p.Player === playerName
+    );
+
+    if(!player){
+        return false;
+    }
+
+    return player.Position === "Goalkeeper";
+
+}
+
+function getPlayerMatches(playerName){
+
+    const matches = [];
+
+    allMatches.forEach(match => {
+
+        if(playerPlayedMatch(match, playerName)){
+            matches.push(match);
+        }
+
+    });
+
+    matches.sort((a,b) => {
+
+        const da = new Date(
+            a.Date.split(".").reverse().join("-")
+        );
+
+        const db = new Date(
+            b.Date.split(".").reverse().join("-")
+        );
+
+        return da - db;
+    });
+
+    return matches;
+}
+
+function getLimitedMatches(playerName){
+
+    const matches =
+        getPlayerMatches(playerName);
+
+    const limit =
+        parseInt(
+            document.getElementById("matchLimit").value
+        );
+
+    if(!limit || limit <= 0){
+        return matches;
+    }
+
+    return matches.slice(0, limit);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const input =
+        document.getElementById("matchLimit");
+
+    if(!input){
+        return;
+    }
+
+    input.addEventListener("input", () => {
+
+        if(
+            selectedPlayerA &&
+            selectedPlayerB
+        ){
+            updateCompareResult();
+        }
+
+    });
+
+});
+
+function getPerformanceStats(playerName){
+
+    let matches = 0;
+    let goals = 0;
+    let assists = 0;
+
+    const matchesData =
+    getLimitedMatches(playerName);
+
+		matchesData.forEach(match => {
+
+        if(
+    !playerPlayedMatch(
+        match,
+        playerName
+    )
+){
+    return;
+}
+
+        matches++;
+
+        for(let i=1;i<=20;i++){
+
+            if(match["Goal Player " + i] === playerName){
+                goals++;
+            }
+
+            if(match["Assist Player " + i] === playerName){
+                assists++;
+            }
+
+        }
+
+    });
+
+    return {
+
+        matches,
+
+        goals,
+
+        assists,
+
+        contributions:
+            goals + assists,
+
+        goalsPerMatch:
+            matches
+            ? (goals / matches).toFixed(3)
+            : "0.000",
+
+        assistsPerMatch:
+            matches
+            ? (assists / matches).toFixed(3)
+            : "0.000"
+
+    };
+
+}
+
+function setComparisonBar(
+
+    leftValue,
+    rightValue,
+
+    leftId,
+    rightId
+
+){
+
+    const total =
+        leftValue + rightValue;
+
+    let leftPct = 50;
+    let rightPct = 50;
+
+    if(total > 0){
+
+        leftPct =
+            (leftValue / total) * 100;
+
+        rightPct =
+            (rightValue / total) * 100;
+
+    }
+
+    document.getElementById(
+        leftId
+    ).style.width =
+        leftPct + "%";
+
+    document.getElementById(
+        rightId
+    ).style.width =
+        rightPct + "%";
+
+}
+
+function highlightWinner(
+
+    leftId,
+    rightId,
+
+    leftValue,
+    rightValue
+
+){
+
+    const left =
+        document.getElementById(leftId);
+
+    const right =
+        document.getElementById(rightId);
+
+    left.style.color = "";
+    right.style.color = "";
+
+    if(leftValue > rightValue){
+
+        left.style.color =
+            "var(--stats-left)";
+
+    }else if(rightValue > leftValue){
+
+        right.style.color =
+            "var(--stats-right)";
+
+    }
+
+}
+
+function updatePerformanceStats(){
+
+    if(
+        !selectedPlayerA ||
+        !selectedPlayerB
+    ){
+
+        document.getElementById(
+            "performanceCard"
+        ).style.display = "none";
+
+        return;
+
+    }
+
+    const bothGoalkeepers =
+        isGoalkeeper(selectedPlayerA) &&
+        isGoalkeeper(selectedPlayerB);
+
+    const playerA =
+        bothGoalkeepers
+        ? getGoalkeeperStats(selectedPlayerA)
+        : getPerformanceStats(selectedPlayerA);
+
+    const playerB =
+        bothGoalkeepers
+        ? getGoalkeeperStats(selectedPlayerB)
+        : getPerformanceStats(selectedPlayerB);
+
+    const container =
+        document.getElementById(
+            "performanceStatsContent"
+        );
+if(bothGoalkeepers){
+
+    container.innerHTML =
+
+        performanceRow(
+            "gkMatches",
+            "Matches"
+        ) +
+
+        performanceRow(
+            "gkConceded",
+            "Goals Conceded"
+        ) +
+
+        performanceRow(
+            "gkCleanSheets",
+            "Clean Sheets"
+        ) +
+
+        performanceRow(
+            "gkCPM",
+            "Goals Conceded / Match"
+        ) +
+
+        performanceRow(
+            "gkCSP",
+            "Clean Sheet %"
+        );
+
+}else{
+
+    container.innerHTML =
+
+        performanceRow(
+            "matches",
+            "Matches"
+        ) +
+
+        performanceRow(
+            "goals",
+            "Goals"
+        ) +
+
+        performanceRow(
+            "assists",
+            "Assists"
+        ) +
+
+        performanceRow(
+            "ga",
+            "Goal Contributions"
+        ) +
+
+        performanceRow(
+            "gpm",
+            "Goals / Match"
+        ) +
+
+        performanceRow(
+            "apm",
+            "Assists / Match"
+        );
+
+}
+document.getElementById(
+        "performanceCard"
+    ).style.display = "block";
+
+    document.getElementById(
+        "performanceContent"
+    ).style.display = "none";
+
+    document.getElementById(
+        "performanceArrow"
+    ).textContent = "▼";
+
+if(bothGoalkeepers){
+
+    document.getElementById(
+        "gkMatchesLeft"
+    ).textContent = playerA.matches;
+
+    document.getElementById(
+        "gkMatchesRight"
+    ).textContent = playerB.matches;
+
+    document.getElementById(
+        "gkConcededLeft"
+    ).textContent = playerA.conceded;
+
+    document.getElementById(
+        "gkConcededRight"
+    ).textContent = playerB.conceded;
+
+    document.getElementById(
+        "gkCleanSheetsLeft"
+    ).textContent = playerA.cleanSheets;
+
+    document.getElementById(
+        "gkCleanSheetsRight"
+    ).textContent = playerB.cleanSheets;
+
+    document.getElementById(
+        "gkCPMLeft"
+    ).textContent = playerA.concededPerMatch;
+
+    document.getElementById(
+        "gkCPMRight"
+    ).textContent = playerB.concededPerMatch;
+
+    document.getElementById(
+        "gkCSPLeft"
+    ).textContent =
+        playerA.cleanSheetPct + "%";
+
+    document.getElementById(
+        "gkCSPRight"
+    ).textContent =
+        playerB.cleanSheetPct + "%";
+
+    setComparisonBar(
+        playerA.matches,
+        playerB.matches,
+        "gkMatchesA",
+        "gkMatchesB"
+    );
+
+    setComparisonBar(
+        playerA.conceded,
+        playerB.conceded,
+        "gkConcededA",
+        "gkConcededB"
+    );
+
+    setComparisonBar(
+        playerA.cleanSheets,
+        playerB.cleanSheets,
+        "gkCleanSheetsA",
+        "gkCleanSheetsB"
+    );
+
+    setComparisonBar(
+        Number(playerA.concededPerMatch),
+        Number(playerB.concededPerMatch),
+        "gkCPMA",
+        "gkCPMB"
+    );
+
+    setComparisonBar(
+        Number(playerA.cleanSheetPct),
+        Number(playerB.cleanSheetPct),
+        "gkCSPA",
+        "gkCSPB"
+    );
+
+    highlightWinner(
+        "gkMatchesLeft",
+        "gkMatchesRight",
+        playerA.matches,
+        playerB.matches
+    );
+
+    highlightLowerBetter(
+        "gkConcededLeft",
+        "gkConcededRight",
+        playerA.conceded,
+        playerB.conceded
+    );
+
+    highlightWinner(
+        "gkCleanSheetsLeft",
+        "gkCleanSheetsRight",
+        playerA.cleanSheets,
+        playerB.cleanSheets
+    );
+
+    highlightLowerBetter(
+        "gkCPMLeft",
+        "gkCPMRight",
+        Number(playerA.concededPerMatch),
+        Number(playerB.concededPerMatch)
+    );
+
+    highlightWinner(
+        "gkCSPLeft",
+        "gkCSPRight",
+        Number(playerA.cleanSheetPct),
+        Number(playerB.cleanSheetPct)
+    );
+
+}else{
+
+    document.getElementById(
+        "matchesLeft"
+    ).textContent = playerA.matches;
+
+    document.getElementById(
+        "matchesRight"
+    ).textContent = playerB.matches;
+
+    document.getElementById(
+        "goalsLeft"
+    ).textContent = playerA.goals;
+
+    document.getElementById(
+        "goalsRight"
+    ).textContent = playerB.goals;
+
+    document.getElementById(
+        "assistsLeft"
+    ).textContent = playerA.assists;
+
+    document.getElementById(
+        "assistsRight"
+    ).textContent = playerB.assists;
+
+    document.getElementById(
+        "gaLeft"
+    ).textContent = playerA.contributions;
+
+    document.getElementById(
+        "gaRight"
+    ).textContent = playerB.contributions;
+
+    document.getElementById(
+        "gpmLeft"
+    ).textContent = playerA.goalsPerMatch;
+
+    document.getElementById(
+        "gpmRight"
+    ).textContent = playerB.goalsPerMatch;
+
+    document.getElementById(
+        "apmLeft"
+    ).textContent = playerA.assistsPerMatch;
+
+    document.getElementById(
+        "apmRight"
+    ).textContent = playerB.assistsPerMatch;
+
+    setComparisonBar(
+        playerA.matches,
+        playerB.matches,
+        "matchesA",
+        "matchesB"
+    );
+
+    setComparisonBar(
+        playerA.goals,
+        playerB.goals,
+        "goalsA",
+        "goalsB"
+    );
+
+    setComparisonBar(
+        playerA.assists,
+        playerB.assists,
+        "assistsA",
+        "assistsB"
+    );
+
+    setComparisonBar(
+        playerA.contributions,
+        playerB.contributions,
+        "gaA",
+        "gaB"
+    );
+
+    setComparisonBar(
+        Number(playerA.goalsPerMatch),
+        Number(playerB.goalsPerMatch),
+        "gpmA",
+        "gpmB"
+    );
+
+    setComparisonBar(
+        Number(playerA.assistsPerMatch),
+        Number(playerB.assistsPerMatch),
+        "apmA",
+        "apmB"
+    );
+
+    highlightWinner(
+        "matchesLeft",
+        "matchesRight",
+        playerA.matches,
+        playerB.matches
+    );
+
+    highlightWinner(
+        "goalsLeft",
+        "goalsRight",
+        playerA.goals,
+        playerB.goals
+    );
+
+    highlightWinner(
+        "assistsLeft",
+        "assistsRight",
+        playerA.assists,
+        playerB.assists
+    );
+
+    highlightWinner(
+        "gaLeft",
+        "gaRight",
+        playerA.contributions,
+        playerB.contributions
+    );
+
+    highlightWinner(
+        "gpmLeft",
+        "gpmRight",
+        Number(playerA.goalsPerMatch),
+        Number(playerB.goalsPerMatch)
+    );
+
+    highlightWinner(
+        "apmLeft",
+        "apmRight",
+        Number(playerA.assistsPerMatch),
+        Number(playerB.assistsPerMatch)
+    );
+}
+}
+
+function getGoalkeeperStats(playerName){
+
+    let matches = 0;
+    let conceded = 0;
+    let cleanSheets = 0;
+
+    const matchesData =
+    getLimitedMatches(playerName);
+
+	matchesData.forEach(match => {
+
+        if(
+            !playerPlayedMatch(
+                match,
+                playerName
+            )
+        ){
+            return;
+        }
+
+        matches++;
+
+        const goalsAgainst =
+            Number(match.Conceded);
+
+        conceded += goalsAgainst;
+
+        if(goalsAgainst === 0){
+            cleanSheets++;
+        }
+
+    });
+
+    return {
+
+        matches,
+
+        conceded,
+
+        cleanSheets,
+
+        concededPerMatch:
+            matches
+            ? (conceded / matches).toFixed(2)
+            : "0.00",
+
+        cleanSheetPct:
+            matches
+            ? ((cleanSheets / matches) * 100)
+                .toFixed(1)
+            : "0.0"
+
+    };
+
+}
+
+function toggleSection(section){
+
+    const content =
+        document.getElementById(
+            section + "Content"
+        );
+
+    const arrow =
+        document.getElementById(
+            section + "Arrow"
+        );
+
+    if(
+        content.style.display === "none"
+    ){
+
+        content.style.display = "block";
+
+        arrow.textContent = "▲";
+
+    }else{
+
+        content.style.display = "none";
+
+        arrow.textContent = "▼";
+
+    }
+
+}
+
+function clearCompareInput(side){
+
+    if(side === "A"){
+
+        document.getElementById(
+            "comparePlayerA"
+        ).value = "";
+
+        document.getElementById(
+            "compareResultsA"
+        ).innerHTML = "";
+
+        selectedPlayerA = null;
+
+        document
+            .querySelector("#comparePlayerA")
+            .parentElement
+            .querySelector(".clear-input")
+            .classList.remove("show");
+
+    }else{
+
+        document.getElementById(
+            "comparePlayerB"
+        ).value = "";
+
+        document.getElementById(
+            "compareResultsB"
+        ).innerHTML = "";
+
+        selectedPlayerB = null;
+
+        document
+            .querySelector("#comparePlayerB")
+            .parentElement
+            .querySelector(".clear-input")
+            .classList.remove("show");
+
+    }
+
+document.getElementById(
+    "basicInfoCard"
+).style.display = "none";
+
+document.getElementById(
+    "performanceCard"
+).style.display = "none";
+
+document.getElementById(
+    "resultsCard"
+).style.display = "none";
+
+document.getElementById(
+    "competitionCard"
+).style.display = "none";
+
+}
+
+</script>
+
+
+</body>
+</html>

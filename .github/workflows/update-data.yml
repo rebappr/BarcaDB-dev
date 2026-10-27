@@ -1,0 +1,51 @@
+name: Update JSON
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Sheets
+        run: |
+          curl -L "https://opensheet.elk.sh/1DjlD21Srkmw2As8zcya6S51K6ZbF_jasTvebHze4kVo/Database" -o data/data.json
+
+          curl -L "https://opensheet.elk.sh/1DjlD21Srkmw2As8zcya6S51K6ZbF_jasTvebHze4kVo/PlayersData" -o data/players.json
+
+          curl -L "https://opensheet.elk.sh/1DjlD21Srkmw2As8zcya6S51K6ZbF_jasTvebHze4kVo/ManagersData" -o data/managers.json
+
+          curl -L "https://opensheet.elk.sh/1DjlD21Srkmw2As8zcya6S51K6ZbF_jasTvebHze4kVo/InterestingStats" -o data/insights.json
+
+      - name: Validate JSON
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+          jq empty data/data.json
+          jq empty data/players.json
+          jq empty data/managers.json
+          jq empty data/insights.json
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/data.json data/players.json data/managers.json data/insights.json
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Update data"
+          git push origin main

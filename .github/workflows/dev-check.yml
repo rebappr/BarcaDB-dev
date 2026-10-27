@@ -1,0 +1,68 @@
+name: Dev Validation
+
+on:
+  push:
+    branches:
+      - dev
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Check important files exist
+        run: |
+          test -f index.html
+          test -f match.html
+          test -f player.html
+          test -f manager.html
+
+          test -f data/data.json
+          test -f data/players.json
+          test -f data/managers.json
+          test -f data/current-season.json
+          test -f data/tablelaliga.json
+
+      - name: Validate JSON files
+        run: |
+          find data -name "*.json" | while read file
+          do
+            echo "Checking $file"
+            jq empty "$file"
+          done
+
+      - name: Check JavaScript syntax
+        run: |
+          find . -name "*.js" | while read file
+          do
+            echo "Checking $file"
+            node --check "$file"
+          done
+
+      - name: Check current season data
+        run: |
+          jq length data/current-season.json
+
+      - name: Check La Liga table data
+        run: |
+          jq length data/tablelaliga.json
+
+      - name: Success
+        run: echo "All validation checks passed"

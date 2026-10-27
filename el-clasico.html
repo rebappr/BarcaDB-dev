@@ -1,0 +1,2909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="language" content="English">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="manifest" href="site.webmanifest">
+
+<meta name="theme-color" content="#004D98">
+
+<title>El Clásico | FC Barcelona vs Real Madrid Statistics & Records | Barça Database</title>
+
+<meta name="description"
+      content="Complete El Clásico statistics between FC Barcelona and Real Madrid. Explore head-to-head records, results, goals, players, managers, trophies and match history.">
+
+<link rel="canonical"
+      href="https://barcadb.com/el-clasico.html">
+
+<meta name="robots"
+      content="index,follow">
+
+<meta name="author"
+      content="RE">
+
+<meta property="og:title"
+      content="El Clásico | FC Barcelona vs Real Madrid Statistics & Records">
+
+<meta property="og:description"
+      content="Complete El Clásico statistics, records, results, players, managers and match history.">
+
+<meta property="og:url"
+      content="https://barcadb.com/el-clasico.html">
+
+<meta property="og:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta property="og:type"
+      content="website">
+
+<meta property="og:site_name"
+      content="Barça Database">
+
+<meta name="twitter:card"
+      content="summary_large_image">
+
+<meta name="twitter:title"
+      content="El Clásico | FC  vs Real Madrid Statistics & Records">
+
+<meta name="twitter:description"
+      content="Complete El Clásico statistics, records, results, players, managers and match history.">
+
+<meta name="twitter:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta name="keywords"
+      content="El Clasico, El Clásico,  vs Real Madrid, FC  Real Madrid, head to head, Clasico statistics, Clasico records, Messi Clasico, Real Madrid  matches">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/theme.css">
+
+<style>
+
+.home-page{
+    margin-top:8px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.dashboard-layout{
+    display:grid;
+    grid-template-columns:minmax(0,2fr) 1fr;
+    gap:16px;
+    align-items:start;
+}
+
+.dashboard-main,
+.dashboard-sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.hero-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:16px;
+    text-align:center;
+}
+
+.hero-card h2{
+    margin:0 0 12px;
+    font-size:2rem;
+}
+
+.hero-card p{
+    max-width:700px;
+    color:var(--muted);
+    line-height:1.3;
+}
+
+.hero-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+.hero-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #004D98,
+            #A50044
+        );
+
+    color:#fff;
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:700;
+    text-transform:uppercase;
+
+    transition:.2s;
+}
+
+.hero-btn:hover{
+    transform:translateY(-2px);
+}
+
+.hero-btn.primary{
+    background:var(--barca-blue);
+    color:white;
+}
+
+.hero-btn.secondary{
+    background:var(--meta-bg);
+    color:var(--text);
+    border:1px solid var(--meta-border);
+}
+
+.hero-btn:hover{
+    transform:translateY(-2px);
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+    gap:16px;
+}
+
+.stat-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:24px;
+    text-align:center;
+}
+
+.stat-number{
+    font-size:2rem;
+    font-weight:800;
+    color:var(--barca-blue);
+}
+
+.stat-label{
+    margin-top:6px;
+    color:var(--muted);
+}
+
+.navigation-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
+}
+
+.nav-tile{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+
+    padding:24px;
+
+    transition:.2s;
+}
+
+.nav-tile:hover{
+    transform:translateY(-3px);
+    border-color:var(--barca-blue);
+}
+
+.nav-tile h3{
+    margin-top:0;
+    margin-bottom:10px;
+}
+
+.nav-tile p{
+    color:var(--muted);
+    margin:0;
+}
+
+.features-list{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(250px,1fr));
+    gap:12px;
+}
+
+.feature-item{
+    background:var(--meta-bg);
+    border:1px solid var(--meta-border);
+    border-radius:12px;
+    padding:16px;
+}
+
+.feature-item strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+.header.sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+}
+
+.h2h-dashboard{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:16px;
+}
+
+.h2h-stat{
+    border-radius:20px;
+    padding:10px;
+    text-align:center;
+    border:1px solid var(--card-border);
+    background:var(--card-bg);
+}
+
+.h2h-stat.barca{
+    background:var(--result-win-bg);
+    border:1px solid var(--result-win);
+    color:var(--result-win);
+}
+
+.h2h-stat.draw{
+    background:var(--result-draw-bg);
+    border:1px solid var(--result-draw);
+    color:var(--result-draw);
+}
+
+.h2h-stat.madrid{
+    background:var(--result-loss-bg);
+    border:1px solid var(--result-loss);
+    color:var(--result-loss);
+}
+
+.h2h-stat.matches{
+    background:rgba(0,77,152,.10);
+    border:1px solid rgba(0,77,152,.25);
+    color:#004D98;
+}
+
+#barcaWins{
+    color:var(--result-win);
+}
+
+#draws{
+    color:var(--result-draw);
+}
+
+#madridWins{
+    color:var(--result-loss);
+}
+
+.h2h-value{
+    display:block;
+    font-size:2rem;
+    font-weight:800;
+    color:var(--number);
+}
+
+.h2h-label{
+    display:block;
+    margin-top:6px;
+    color:var(--muted);
+    font-size:13px;
+    text-transform:uppercase;
+}
+
+.h2h-progress{
+    display:flex;
+    height:18px;
+    overflow:hidden;
+    border-radius:999px;
+    margin-top:20px;
+}
+
+.barca-progress{
+    background:#004D98;
+}
+
+.draw-progress{
+    background:#818589;
+}
+
+.madrid-progress{
+    background:#A50044;
+}
+
+.goals-dashboard{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:20px;
+    align-items:center;
+    margin-top:16px;
+}
+
+.goal-team{
+    text-align:center;
+
+    background:rgba(0,77,152,.10);
+    border:1px solid rgba(0,77,152,.25);
+    color:#004D98;
+    border-radius:16px;
+
+    padding:20px;
+
+}
+
+.goal-value{
+    display:block;
+    font-size:2rem;
+    font-weight:800;
+    color:var(--number);
+}
+
+.goal-label{
+    margin-top:6px;
+    color:var(--muted);
+    text-transform:uppercase;
+    font-size:13px;
+}
+
+.goal-separator{
+    font-size:26px;
+    font-weight:800;
+    color:var(--muted);
+}
+
+.goals-progress{
+    display:flex;
+    height:18px;
+    overflow:hidden;
+    border-radius:999px;
+    margin-top:20px;
+}
+
+#clasicoMatches{
+    margin-top:0;
+}
+
+#matches .matches-header{
+    display:grid;
+
+    grid-template-columns:
+    90px
+    90px
+    1fr
+    90px;
+
+    gap:4px;
+
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+
+    padding:8px;
+    margin-bottom:6px;
+
+    background:var(--meta-bg);
+
+    opacity:.7;
+}
+
+#matches .matches-line{
+
+    display:grid;
+
+    grid-template-columns:
+    90px
+    90px
+    1fr
+    90px;
+
+    gap:4px;
+    align-items:center;
+
+    padding:8px;
+
+    border-bottom:1px solid var(--meta-border);
+
+    font-size:12px;
+
+    transition:.2s;
+}
+
+#matches .matches-line:hover{
+    background:var(--meta-bg);
+    cursor:pointer;
+}
+
+#matches .matches-line:last-child{
+    border-bottom:none;
+}
+
+#matches .matches-header div:last-child,
+#matches .matches-line div:last-child{
+    display:flex;
+    justify-content:center;
+}
+
+#matches .matches-view-switch{
+    display:flex;
+    gap:6px;
+    margin-bottom:10px;
+}
+
+#toggleClasicosBtn{
+
+    height:40px;
+
+    padding:0 18px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+
+    background:var(--card-bg);
+    color:var(--text);
+
+    border:1px solid var(--card-border);
+
+    white-space:nowrap;
+
+    transition:.2s;
+}
+
+#toggleClasicosBtn:hover{
+    background:#004D98;
+    color:#fff;
+}
+
+#matches .matches-view-switch{
+    margin-bottom:6px;
+    justify-content:flex-end;
+}
+
+#matches .matches-line div:last-child{
+    display:flex;
+    justify-content:center;
+}
+
+.badge{
+display:inline-block;
+padding:4px 8px;
+border-radius:999px;
+background:#dbeafe;
+color:#1e40af;
+font-weight:600;
+}
+
+.result-badge{
+display:inline-block;
+min-width:52px;
+text-align:center;
+border-radius:999px;
+padding:4px 10px;
+font-weight:700;
+}
+
+.result-win{
+background:var(--result-win-bg);
+border:1px solid var(--result-win);
+color:var(--result-win);
+}
+
+.result-draw{
+background:var(--result-draw-bg);
+border:1px solid var(--result-draw);
+color:var(--result-draw);
+}
+
+.result-loss{
+background:var(--result-loss-bg);
+border:1px solid var(--result-loss);
+color:var(--result-loss);
+}
+
+
+.result-empty{
+background:var(--card-bg);
+color:var(--muted);
+}
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+	gap:8px;
+	
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+
+    padding:12px;
+    border-radius:24px;
+
+    margin-bottom:0;
+}
+
+.filter-group{
+    flex:1;
+    min-width:100px;
+}
+
+.filter-group label{
+    display:block;
+
+    margin-bottom:4px;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.filters select{
+    width:100%;
+
+    height:38px;
+
+    padding:0 12px;
+
+    background:var(--meta-bg);
+    color:var(--text);
+
+    border:1px solid var(--meta-border);
+    border-radius:14px;
+
+    font-size:13px;
+}
+
+.filters select:focus{
+    outline:none;
+    border-color:#004D98;
+}
+
+.clasico-filters{
+    align-items:flex-end;
+}
+
+.clasico-filters .filter-group{
+    flex:1;
+}
+
+.h2h-switch{
+    display:flex;
+    gap:6px;
+    margin-bottom:12px;
+}
+
+.h2h-switch button{
+
+    height:38px;
+
+    padding:0 18px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+
+    background:var(--card-bg);
+    color:var(--text);
+
+    border:1px solid var(--card-border);
+
+    transition:.2s;
+}
+
+.h2h-switch button.active{
+    background:#004D98;
+    color:#fff;
+    border-color:#004D98;
+}
+
+.h2h-switch button:hover{
+    background:#004D98;
+    color:#fff;
+}
+
+.scorer-item{
+    margin-bottom:12px;
+}
+
+.scorer-item:last-child{
+    margin-bottom:0;
+}
+
+.scorer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:6px;
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.scorer-name a{
+    color:var(--text);
+    text-decoration:none;
+}
+
+.scorer-name a:hover{
+    color:#004D98;
+}
+
+.scorer-goals{
+    font-weight:700;
+}
+
+.scorer-bar{
+    height:10px;
+    border-radius:999px;
+    overflow:hidden;
+
+    background:var(--meta-bg);
+}
+
+.scorer-fill{
+    height:100%;
+    background:#004D98;
+    border-radius:999px;
+}
+
+.barca-scorer{
+    background:
+    linear-gradient(
+        90deg,
+        #004D98,
+        #0066cc
+    );
+}
+
+.madrid-scorer{
+    background:
+    linear-gradient(
+        90deg,
+        #A50044,
+        #d90429
+    );
+}
+
+.filter-note{
+
+    margin-top:0;
+
+    padding:12px 14px;
+
+    border-radius:14px;
+
+    background:rgba(0,77,152,.08);
+
+    border:1px solid rgba(0,77,152,.20);
+
+    color:var(--muted);
+
+    font-size:14px;
+    line-height:1.5;
+
+}
+
+@media (prefers-color-scheme: dark){
+
+    .h2h-stat.matches{
+        background:rgba(0,77,152,.20);
+        border:1px solid #004D98;
+        color:#ffffff;
+    }
+
+    .draw-progress{
+        background:#FDC52C;
+    }
+
+    .filter-note{
+
+        background:rgba(0,77,152,.15);
+        border-color:#004D98;
+
+    }
+
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+}
+
+.section-header h2{
+    margin:0;
+}
+
+.fixture-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    text-align:center;
+}
+
+.fixture-title{
+    text-align:center;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:12px;
+    padding:8px;
+    border-radius:12px;
+}
+
+.fixture-team{
+    flex:1;
+    text-align:center;
+    font-size:18px;
+    font-weight:800;
+    text-transform:uppercase;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.fixture-opponent{
+    font-weight:800 !important;
+}
+
+.fixture-center{
+    min-width:90px;
+}
+
+.fixture-score{
+    font-size:34px;
+    font-weight:800;
+    padding:8px 20px;
+    border-radius:16px;
+    color:white;
+    background:linear-gradient(
+        135deg,
+        #004D98,
+        #1e3a8a
+    );
+}
+
+.fixture-vs{
+    font-size:22px;
+    font-weight:800;
+    padding:8px 20px;
+    border-radius:16px;
+}
+
+.fixture-meta{
+    margin-top:10px;
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+}
+
+.fixture-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+}
+
+#upcomingClasicos{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.fixture-team-logo{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    flex-shrink:0;
+    display:block;
+    margin:0 auto 8px;
+}
+
+@media(max-width:820px){
+
+    .fixture-team-logo{
+        width:50px;
+        height:50px;
+        margin-bottom:6px;
+    }
+
+    .fixture-team{
+        font-size:14px;
+    }
+
+    .fixture-center{
+        min-width:80px;
+    }
+
+    .fixture-score{
+        font-size:24px;
+        padding:6px 14px;
+        border-radius:12px;
+    }
+
+    .fixture-vs{
+        font-size:16px;
+        padding:6px 14px;
+    }
+
+    .filters{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .filter-group{
+        width:100%;
+        min-width:100%;
+    }
+
+    .filters select{
+        width:100%;
+    }
+
+    .h2h-switch{
+        flex-wrap:wrap;
+    }
+
+    .h2h-switch button{
+        flex:1;
+    }
+
+    .clasico-filters{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    #toggleClasicosBtn{
+        width:130px;
+    }
+
+    #matches .matches-header,
+    #matches .matches-line{
+
+        grid-template-columns:
+        70px
+        75px
+        1fr
+        70px;
+
+        font-size:12px;
+    }
+      
+    .dashboard-layout{
+        grid-template-columns:1fr;
+    }
+
+    .goals-dashboard{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .goal-separator{
+        display:none;
+    }
+
+    .h2h-dashboard{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="header">
+    <div class="header-inner">
+	
+		<a href="/">
+        	<img src="logos/barcadb-logo.png" class="header-logo" alt="Barça DB">
+		</a>
+
+        <div class="header-text">
+            <h1>Barça Database</h1>
+	    </div>
+
+<div class="desktop-search">
+
+    <input
+        type="text"
+        id="personSearch"
+        placeholder="Search..."
+        class="desktop-search-input">
+
+    <div id="personSearchResults"></div>
+
+</div>
+
+    <button id="menuToggle" class="menu-toggle">
+    	☰
+    </button>
+
+</div>
+</div>
+
+<nav class="main-menu">
+
+    <div class="mobile-menu-search">
+
+        <input
+            type="text"
+            id="mobilePersonSearch"
+            placeholder="Search..."
+            class="mobile-search-input">
+
+        <div id="mobileSearchResults"></div>
+
+    </div>
+
+    <a href="/">
+        <span>Home page</span>
+    </a>
+      
+    <a href="statistics.html">
+        <span>Statistics</span>
+    </a>
+
+    <a href="season.html">
+        <span>Seasons</span>
+    </a>
+
+    <a href="insights.html">
+        <span>Insights</span>
+    </a>
+
+    <a href="compare.html">
+        <span>Compare</span>
+    </a>
+
+    <a href="el-clasico.html" class="active">
+        <span>El Clásico</span>
+    </a>
+
+</nav>
+
+<div class="home-page">
+
+<div class="dashboard-layout">
+
+<div class="dashboard-main">
+
+<div class="widget-title">
+    About the Rivalry
+</div>
+
+<section class="hero-card">
+
+<p>
+El Clásico is one of the most famous football rivalries in the world, featuring
+FC  and Real Madrid. Explore complete head-to-head statistics,
+match results, goals, appearances, manager records and historical data from
+every official El Clásico ever played.
+</p>
+
+</section>
+
+<div class="widget-title">
+    Last El Clásico
+</div>
+
+<div class="widget-card">
+    <div id="lastClasico">
+        Loading...
+    </div>
+</div>
+
+<div class="widget-title">
+	Upcoming El Clásicos
+</div>
+
+<div id="upcomingClasicos">
+    Loading...
+</div>
+
+<div class="widget-title">
+	Historic Data
+</div>
+
+<div class="filters">
+
+    <div class="filter-group">
+
+        <label>Competition</label>
+
+        <select id="globalCompetitionFilter"
+                onchange="updateGlobalFilters()">
+            <option value="All">
+                All Competitions
+            </option>
+        </select>
+
+    </div>
+
+    <div class="filter-group">
+
+        <label>Season</label>
+
+        <select id="globalSeasonFilter"
+                onchange="updateGlobalFilters()">
+            <option value="All">
+                All Seasons
+            </option>
+        </select>
+
+    </div>
+
+	<div class="filter-group">
+
+    <label>Venue</label>
+
+    <select id="globalVenueFilter"
+            onchange="updateGlobalFilters()">
+
+        <option value="All">
+            All Venues
+        </option>
+
+    </select>
+
+	</div>
+
+</div>
+
+<div class="filter-note">
+
+    📊 Filters apply to all El Clásico statistics
+    displayed on this page.
+
+</div>
+    
+<section id="head-to-head" class="widget-card">
+
+		<h2 id="h2hTitle">
+		    All-Time Head-to-Head
+		</h2>
+		
+		<div
+		    id="h2hSubtitle"
+		    style="
+		        display:none;
+		        margin-top:-8px;
+		        margin-bottom:12px;
+		        font-size:13px;
+		        color:var(--muted);
+		    ">
+		</div>
+
+            <div class="h2h-dashboard">
+
+                <div class="h2h-stat matches">
+                    <span class="h2h-value" id="totalMatches">0</span>
+                    <span class="h2h-label">Matches</span>
+                </div>
+
+                <div class="h2h-stat barca">
+                    <span class="h2h-value" id="barcaWins">0</span>
+                    <span class="h2h-label">Barça Wins</span>
+                </div>
+
+                <div class="h2h-stat draw">
+                    <span class="h2h-value" id="draws">0</span>
+                    <span class="h2h-label">Draws</span>
+                </div>
+
+                <div class="h2h-stat madrid">
+                    <span class="h2h-value" id="madridWins">0</span>
+                    <span class="h2h-label">Madrid Wins</span>
+                </div>
+
+            </div>
+
+            <div class="h2h-progress">
+
+                <div class="barca-progress"
+                     id="barcaProgress"></div>
+
+                <div class="draw-progress"
+                     id="drawProgress"></div>
+
+                <div class="madrid-progress"
+                     id="madridProgress"></div>
+
+            </div>
+            
+            <div class="goals-dashboard">
+
+                <div class="goal-team">
+
+                    <div class="goal-value"
+                         id="barcaGoals">
+                        0
+                    </div>
+
+                    <div class="goal-label">
+                         Barça Goals
+                    </div>
+
+                </div>
+
+                <div class="goal-separator">
+                    VS
+                </div>
+
+                <div class="goal-team">
+
+                    <div class="goal-value"
+                         id="madridGoals">
+                        0
+                    </div>
+
+                    <div class="goal-label">
+                        Madrid Goals
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="goals-progress">
+
+                <div id="barcaGoalsProgress"
+                     class="barca-progress">
+                </div>
+
+                <div id="madridGoalsProgress"
+                     class="madrid-progress">
+                </div>
+
+            </div>
+
+        </section>
+
+<section id="matches"
+         class="widget-card">
+
+	<div class="section-header">
+	
+	    <div>
+	
+	        <h2 id="matchesTitle">
+	            All-Time Match History
+	        </h2>
+	
+	        <div
+	            id="matchesSubtitle"
+	            style="
+	                display:none;
+	                margin-top:4px;
+	                font-size:13px;
+	                color:var(--muted);
+	            ">
+	        </div>
+	
+	    </div>
+	
+		<select
+		    id="matchesLimitFilter"
+		    onchange="renderClasicoMatches()"
+		    style="
+		        height:40px;
+		        padding:0 12px;
+		        border-radius:14px;
+		        border:1px solid var(--card-border);
+		        background:var(--card-bg);
+		        color:var(--text);
+		        font-size:12px;
+		        font-weight:700;
+		        text-transform:uppercase;
+		        cursor:pointer;
+		    ">
+		</select>
+	
+	</div>
+
+    <div class="matches-header">
+
+        <div>Season</div>
+        <div>Date</div>
+        <div>Venue</div>
+        <div>Result</div>
+
+    </div>
+
+    <div id="clasicoMatches"></div>
+
+</section>
+
+	</div>
+
+    <div class="dashboard-sidebar">
+
+        <section id="top-scorers"
+         class="widget-card">
+
+    <h2 id="topScorersTitle">
+	    All-Time Top Goalscorers
+	</h2>
+
+    <div id="topScorers"></div>
+
+</section>
+
+<section id="top-appearances"
+         class="widget-card">
+
+    <h2 id="topAppearancesTitle">
+	    All-Time Top Appearances
+	</h2>
+
+    <div id="topAppearances"></div>
+
+</section>
+
+<section id="top-managers"
+         class="widget-card">
+
+    <h2 id="topManagersTitle">
+	    All-Time Managers by Matches
+	</h2>
+
+    <div id="topManagers"></div>
+
+</section>
+
+<section id="top-manager-wins"
+         class="widget-card">
+
+	<h2 id="topManagerWinsTitle">
+	    All-Time Managers by Wins
+	</h2>
+
+    <div id="topManagerWins"></div>
+
+</section>
+
+    </div>
+
+</div>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"El Clásico",
+  "description":"Complete El Clásico statistics between FC  and Real Madrid.",
+  "url":"https://barcadb.com/el-clasico.html",
+  "about":[
+    {
+      "@type":"SportsTeam",
+      "name":"FC Barcelona"
+    },
+    {
+      "@type":"SportsTeam",
+      "name":"Real Madrid"
+    }
+  ]
+}
+</script>
+
+<script src="data/clubMap.js"></script>
+<script src="data/competitionMap.js"></script>
+<script>
+
+let allMatches = [];
+let currentMatches = [];
+
+let selectedCompetition = "All";
+let selectedSeason = "All";
+let selectedVenue = "All";
+
+Promise.all([
+    fetch("/data/data.json").then(r => r.json()),
+    fetch("/data/current-season.json").then(r => r.json())
+])
+.then(([data, currentData]) => {
+
+    allMatches = data;
+    currentMatches = currentData;
+
+    renderHome();
+
+});
+
+function getClubLogo(team){
+    return String(team || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        + ".png";
+}
+
+function parseDate(date){
+
+    const [day, month, year] =
+        date.split(".");
+
+    return new Date(
+        Number(year),
+        Number(month) - 1,
+        Number(day)
+    );
+
+}
+
+function normalizeName(name) {
+
+    return String(name || "")
+        .toLowerCase()
+        .replace(/fc /g, "")
+        .replace(/ cf/g, "")
+        .replace(/\./g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+}
+
+function getClasicos(){
+
+    return allMatches.filter(match => {
+
+        return (
+            match["Opp. Team"] === "Real Madrid" &&
+            match["Result"] !== "-:-"
+        );
+
+    });
+
+}
+
+function renderGoals(){
+
+    let clasicos = getFilteredClasicos();
+
+    let barcaGoals = 0;
+    let madridGoals = 0;
+
+clasicos.forEach(match => {
+
+    const gf =
+        Number(match["Scored"]) || 0;
+
+    const ga =
+        Number(match["Conceded"]) || 0;
+
+    barcaGoals += gf;
+    madridGoals += ga;
+
+});
+
+    document.getElementById("barcaGoals").textContent =
+        barcaGoals;
+
+    document.getElementById("madridGoals").textContent =
+        madridGoals;
+
+    const totalGoals =
+        barcaGoals + madridGoals;
+
+    const barcaPct =
+        totalGoals
+        ? (barcaGoals / totalGoals) * 100
+        : 50;
+
+    const madridPct =
+        totalGoals
+        ? (madridGoals / totalGoals) * 100
+        : 50;
+
+    document.getElementById(
+        "barcaGoalsProgress"
+    ).style.width = `${barcaPct}%`;
+
+    document.getElementById(
+        "madridGoalsProgress"
+    ).style.width = `${madridPct}%`;
+
+}
+
+function renderTopScorers(){
+
+    const scorers = {};
+    const scorerClubs = {};
+
+getFilteredClasicos().forEach(match => {
+
+for(let i = 1; i <= 12; i++){
+
+    const barcaPlayer =
+        match[`Goal Player ${i}`];
+
+    if(
+        barcaPlayer &&
+        !barcaPlayer.includes("(OG)")
+    ){
+        scorers[barcaPlayer] =
+            (scorers[barcaPlayer] || 0) + 1;
+
+        scorerClubs[barcaPlayer] = "barca";
+    }
+
+    const madridPlayer =
+        match[`Opp. Goal Player ${i}`];
+
+    if(
+        madridPlayer &&
+        !madridPlayer.includes("(OG)")
+    ){
+        scorers[madridPlayer] =
+            (scorers[madridPlayer] || 0) + 1;
+
+        scorerClubs[madridPlayer] = "madrid";
+    }
+
+}
+
+});
+
+    const sorted =
+        Object.entries(scorers)
+        .sort((a,b) => {
+			    if(b[1] !== a[1]){
+			        return b[1] - a[1];
+			    }
+			    return a[0].localeCompare(b[0]);
+			})
+        .slice(0,10);
+
+    const maxGoals =
+        sorted[0]?.[1] || 1;
+
+    let html = "";
+
+    sorted.forEach(([name, goals]) => {
+
+        const width =
+            (goals / maxGoals) * 100;
+
+        html += `
+
+            <div class="scorer-item">
+
+                <div class="scorer-row">
+
+                    <div class="scorer-name">
+                        <a class="player-link" href="player.html?name=${encodeURIComponent(name)}">
+                            ${name}
+                        </a>
+                    </div>
+
+                    <div class="scorer-goals">
+                        ${goals}
+                    </div>
+
+                </div>
+
+                <div class="scorer-bar">
+
+                    <div class="scorer-fill ${
+    scorerClubs[name] === "madrid"
+    ? "madrid-scorer"
+    : "barca-scorer"
+}"
+style="width:${width}%">
+</div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+    document.getElementById(
+        "topScorers"
+    ).innerHTML = html;
+
+}
+
+function renderTopAppearances(){
+
+    const appearances = {};
+    const playerClubs = {};
+
+    getFilteredClasicos().forEach(match => {
+
+        for(let i = 1; i <= 11; i++){
+
+            const player =
+                match[`Player name ${i}`];
+
+            if(player){
+
+                appearances[player] =
+                    (appearances[player] || 0) + 1;
+
+                playerClubs[player] = "barca";
+            }
+
+            const oppPlayer =
+                match[`Opp. Player name ${i}`];
+
+            if(oppPlayer){
+
+                appearances[oppPlayer] =
+                    (appearances[oppPlayer] || 0) + 1;
+
+                playerClubs[oppPlayer] = "madrid";
+            }
+
+        }
+
+    });
+
+    const sorted =
+        Object.entries(appearances)
+        .sort((a,b) => {
+			    if(b[1] !== a[1]){
+			        return b[1] - a[1];
+			    }
+			
+			    return a[0].localeCompare(b[0]);
+			
+			})
+        .slice(0,10);
+
+    const maxApps =
+        sorted[0]?.[1] || 1;
+
+    let html = "";
+
+    sorted.forEach(([name, apps]) => {
+
+        const width =
+            (apps / maxApps) * 100;
+
+        html += `
+
+            <div class="scorer-item">
+
+                <div class="scorer-row">
+
+                    <div class="scorer-name">
+                        <a class="player-link" href="player.html?name=${encodeURIComponent(name)}">
+                            ${name}
+                        </a>
+                    </div>
+
+                    <div class="scorer-goals">
+                        ${apps}
+                    </div>
+
+                </div>
+
+                <div class="scorer-bar">
+
+                    <div class="scorer-fill ${
+                        playerClubs[name] === "madrid"
+                        ? "madrid-scorer"
+                        : "barca-scorer"
+                    }"
+                    style="width:${width}%">
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+    document.getElementById(
+        "topAppearances"
+    ).innerHTML = html;
+
+}
+
+function renderTopManagers(){
+
+    const managers = {};
+
+    const managerClubs = {};
+
+getFilteredClasicos().forEach(match => {
+
+    const barcaManager =
+        match.Manager;
+
+    if(barcaManager){
+
+        managers[barcaManager] =
+            (managers[barcaManager] || 0) + 1;
+
+        managerClubs[barcaManager] =
+            "barca";
+    }
+
+    const madridManager =
+        match["Opp. Manager"];
+
+    if(madridManager){
+
+        managers[madridManager] =
+            (managers[madridManager] || 0) + 1;
+
+        managerClubs[madridManager] =
+            "madrid";
+    }
+
+});
+
+    const sorted =
+        Object.entries(managers)
+        .sort((a,b) => {
+			    if(b[1] !== a[1]){
+			        return b[1] - a[1];
+			    }
+			
+			    return a[0].localeCompare(b[0]);
+			
+			})
+        .slice(0,10);
+
+    const max =
+        sorted[0]?.[1] || 1;
+
+    let html = "";
+
+    sorted.forEach(([name, matches]) => {
+
+        const width =
+            (matches / max) * 100;
+
+        html += `
+
+            <div class="scorer-item">
+
+                <div class="scorer-row">
+
+                    <div class="scorer-name">
+                        <a class="player-link" href="manager.html?name=${encodeURIComponent(name)}">
+                            ${name}
+                        </a>
+                    </div>
+
+                    <div class="scorer-goals">
+                        ${matches}
+                    </div>
+
+                </div>
+
+                <div class="scorer-bar">
+
+<div
+    class="scorer-fill ${
+        managerClubs[name] === "madrid"
+        ? "madrid-scorer"
+        : "barca-scorer"
+    }"
+    style="width:${width}%">
+</div>
+
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+    document.getElementById(
+        "topManagers"
+    ).innerHTML = html;
+
+}
+
+function renderTopManagerWins(){
+
+    const wins = {};
+
+    const managerClubs = {};
+
+getFilteredClasicos().forEach(match => {
+
+    const barcaManager =
+        match.Manager;
+
+    const madridManager =
+        match["Opp. Manager"];
+
+    if(
+        match["Result type"] === "W" &&
+        barcaManager
+    ){
+
+        wins[barcaManager] =
+            (wins[barcaManager] || 0) + 1;
+
+        managerClubs[barcaManager] =
+            "barca";
+    }
+
+    if(
+        match["Result type"] === "L" &&
+        madridManager
+    ){
+
+        wins[madridManager] =
+            (wins[madridManager] || 0) + 1;
+
+        managerClubs[madridManager] =
+            "madrid";
+    }
+
+});
+
+    const sorted =
+        Object.entries(wins)
+        .sort((a,b) => {
+			    if(b[1] !== a[1]){
+			        return b[1] - a[1];
+			    }
+			
+			    return a[0].localeCompare(b[0]);
+			
+			})
+        .slice(0,10);
+
+    const max =
+        sorted[0]?.[1] || 1;
+
+    let html = "";
+
+    sorted.forEach(([name, winCount]) => {
+
+        const width =
+            (winCount / max) * 100;
+
+        html += `
+
+            <div class="scorer-item">
+
+                <div class="scorer-row">
+
+                    <div class="scorer-name">
+                        <a class="player-link" href="manager.html?name=${encodeURIComponent(name)}">
+                            ${name}
+                        </a>
+                    </div>
+
+                    <div class="scorer-goals">
+                        ${winCount}
+                    </div>
+
+                </div>
+
+                <div class="scorer-bar">
+
+<div
+    class="scorer-fill ${
+        managerClubs[name] === "madrid"
+        ? "madrid-scorer"
+        : "barca-scorer"
+    }"
+    style="width:${width}%">
+</div>
+
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+    document.getElementById(
+        "topManagerWins"
+    ).innerHTML = html;
+
+}
+
+function getFilteredClasicos(){
+
+    let clasicos = getClasicos();
+
+    if(selectedCompetition !== "All"){
+
+        clasicos = clasicos.filter(
+            match =>
+            match.Competition === selectedCompetition
+        );
+
+    }
+
+    if(selectedSeason !== "All"){
+
+        clasicos = clasicos.filter(
+            match =>
+            match.Season === selectedSeason
+        );
+
+    }
+
+    if(selectedVenue !== "All"){
+
+        clasicos = clasicos.filter(
+            match =>
+            match.Venue === selectedVenue
+        );
+
+    }
+
+    return clasicos;
+
+}
+
+function refreshDashboard(){
+
+    renderHeadToHead();
+    renderGoals();
+    renderTopScorers();
+    renderTopAppearances();
+    renderClasicoMatches();
+    renderTopManagers();
+    renderTopManagerWins();
+
+}
+
+function renderGlobalFilters(){
+
+    const allClasicos = getClasicos();
+
+    let competitionSource = allClasicos;
+	
+	if(selectedSeason !== "All"){
+	
+	    competitionSource =
+	        competitionSource.filter(
+	            match =>
+	            match.Season === selectedSeason
+	        );
+	
+	}
+	
+	if(selectedVenue !== "All"){
+	
+	    competitionSource =
+	        competitionSource.filter(
+	            match =>
+	            match.Venue === selectedVenue
+	        );
+	
+	}
+
+    const competitions =
+        [...new Set(
+            competitionSource.map(
+                match => match.Competition
+            )
+        )]
+        .sort();
+
+	let seasonSource = allClasicos;
+	
+	if(selectedCompetition !== "All"){
+	
+	    seasonSource =
+	        seasonSource.filter(
+	            match =>
+	            match.Competition === selectedCompetition
+	        );
+	
+	}
+	
+	if(selectedVenue !== "All"){
+	
+	    seasonSource =
+	        seasonSource.filter(
+	            match =>
+	            match.Venue === selectedVenue
+	        );
+	
+	}
+
+    const seasons =
+        [...new Set(
+            seasonSource.map(
+                match => match.Season
+            )
+        )]
+        .sort()
+        .reverse();
+      
+let venueSource = allClasicos;
+
+if(selectedCompetition !== "All"){
+
+    venueSource = venueSource.filter(
+        match =>
+        match.Competition === selectedCompetition
+    );
+
+}
+
+	if(selectedSeason !== "All"){
+	
+	    venueSource = venueSource.filter(
+	        match =>
+	        match.Season === selectedSeason
+	    );
+	
+	}
+
+	const venues =
+	    [...new Set(
+	        venueSource.map(
+	            match => match.Venue
+	        )
+	    )]
+	    .sort();
+
+	if(
+	    selectedCompetition !== "All" &&
+	    !competitions.includes(selectedCompetition)
+	){
+	    selectedCompetition = "All";
+	}
+	
+	if(
+	    selectedSeason !== "All" &&
+	    !seasons.includes(selectedSeason)
+	){
+	    selectedSeason = "All";
+	}
+	
+	if(
+	    selectedVenue !== "All" &&
+	    !venues.includes(selectedVenue)
+	){
+	    selectedVenue = "All";
+	}
+	
+    document.getElementById(
+        "globalCompetitionFilter"
+    ).innerHTML = `
+
+        <option value="All">
+            All Competitions
+        </option>
+
+        ${competitions.map(comp => `
+
+            <option
+                value="${comp}"
+                ${comp === selectedCompetition ? "selected" : ""}>
+                ${comp}
+            </option>
+
+        `).join("")}
+
+    `;
+
+    document.getElementById(
+        "globalSeasonFilter"
+    ).innerHTML = `
+
+        <option value="All">
+            All Seasons
+        </option>
+
+        ${seasons.map(season => `
+
+            <option
+                value="${season}"
+                ${season === selectedSeason ? "selected" : ""}>
+                ${season}
+            </option>
+
+        `).join("")}
+
+    `;
+
+document.getElementById(
+    "globalVenueFilter"
+).innerHTML = `
+
+    <option value="All">
+        All Venues
+    </option>
+
+    ${venues.map(venue => `
+
+        <option
+            value="${venue}"
+            ${venue === selectedVenue ? "selected" : ""}>
+            ${venue}
+        </option>
+
+    `).join("")}
+
+`;
+
+}
+
+function updateGlobalFilters(){
+
+    selectedCompetition =
+        document.getElementById(
+            "globalCompetitionFilter"
+        ).value;
+
+    selectedSeason =
+        document.getElementById(
+            "globalSeasonFilter"
+        ).value;
+
+selectedVenue =
+    document.getElementById(
+        "globalVenueFilter"
+    ).value;
+
+	renderGlobalFilters();
+	
+	updateH2HTitle();
+	updateMatchesTitle();
+	updateSidebarTitles();
+	
+	updateMatchesLimitFilter();
+	
+	refreshDashboard();
+
+}
+
+function renderLastClasico(){
+
+	const clasico = getClasicos()
+	    .sort((a,b) => parseDate(b.Date) - parseDate(a.Date))[0];
+
+    if(!clasico){
+
+        document.getElementById(
+            "lastClasico"
+        ).innerHTML = "No completed El Clásicos";
+
+        return;
+    }
+
+    const homeTeam =
+        clasico["Home/Away"] === "Home"
+            ? `
+			            <img
+			                src="logos/clubs/fc-barcelona.png"
+			                class="fixture-team-logo"
+			                alt="FC Barcelona">
+			            FC Barcelona
+              `
+            : `
+			            <img
+			                src="logos/clubs/real-madrid.png"
+			                class="fixture-team-logo"
+			                alt="Real Madrid">
+                		Real Madrid
+              `;
+
+    const awayTeam =
+        clasico["Home/Away"] === "Home"
+            ? `
+			            <img
+			                src="logos/clubs/real-madrid.png"
+			                class="fixture-team-logo"
+			                alt="Real Madrid">
+                		Real Madrid
+              `
+            : `
+			            <img
+			                src="logos/clubs/fc-barcelona.png"
+			                class="fixture-team-logo"
+			                alt="FC Barcelona">
+			            FC Barcelona
+              `;
+
+    document.getElementById(
+        "lastClasico"
+    ).innerHTML = `
+
+        <div class="fixture-link">
+
+            <div class="fixture-title">
+                LAST EL CLÁSICO
+            </div>
+
+            <div class="fixture-card">
+
+                <div class="fixture-team">
+                    ${homeTeam}
+                </div>
+
+			<div class="fixture-center">
+			    <a
+			        href="match.html?id=${clasico.ID}"
+			        class="fixture-score"
+			        style="display:inline-block;text-decoration:none;color:white;">
+			        ${clasico.Result}
+			    </a>
+			</div>
+
+                <div class="fixture-team">
+                    ${awayTeam}
+                </div>
+
+            </div>
+
+            <div class="fixture-meta">
+                ${clasico.Date} • ${clasico.Competition}
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+function renderUpcomingClasicos(){
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    const upcoming = currentMatches
+        .filter(match =>
+            match["Opp. Team"] === "Real Madrid" &&
+            parseDate(match.Date) >= today
+        )
+        .sort((a,b) =>
+            parseDate(a.Date) - parseDate(b.Date)
+        );
+
+    if(!upcoming.length){
+
+        document.getElementById(
+            "upcomingClasicos"
+        ).innerHTML = "No upcoming El Clásicos";
+
+        return;
+    }
+
+    let html = "";
+
+    upcoming.forEach(match => {
+
+		const dataMatch = allMatches.find(m =>
+		    m.Date === match.Date &&
+		    m.Competition === match.Competition &&
+		    m["Home/Away"] === match["Home/Away"] &&
+		    normalizeName(m["Opp. Team"]) === normalizeName(match["Opp. Team"])
+		);
+
+		const homeTeam =
+		    match["Home/Away"] === "Home"
+		        ? `
+		            <img
+		                src="logos/clubs/fc-barcelona.png"
+		                class="fixture-team-logo"
+		                alt="FC Barcelona">
+		            FC Barcelona
+		          `
+		        : `
+		            <img
+		                src="logos/clubs/real-madrid.png"
+		                class="fixture-team-logo"
+		                alt="Real Madrid">
+		            Real Madrid
+		          `;
+		
+		const awayTeam =
+		    match["Home/Away"] === "Home"
+		        ? `
+		            <img
+		                src="logos/clubs/real-madrid.png"
+		                class="fixture-team-logo"
+		                alt="Real Madrid">
+		            Real Madrid
+		          `
+		        : `
+		            <img
+		                src="logos/clubs/fc-barcelona.png"
+		                class="fixture-team-logo"
+		                alt="FC Barcelona">
+		            FC Barcelona
+		          `;
+
+        html += `
+
+        <div class="widget-card">
+
+            <div class="fixture-title">
+                UPCOMING EL CLÁSICO
+            </div>
+
+            <div class="fixture-card">
+
+                <div class="fixture-team">
+                    ${homeTeam}
+                </div>
+
+		<div class="fixture-center">
+		
+			${dataMatch ? `
+			
+			<a
+			    href="match.html?id=${dataMatch.ID}"
+			    class="fixture-vs"
+			    style="display:inline-block;text-decoration:none;color:inherit;">
+			
+			    VS
+			
+			</a>
+			
+			` : `
+			
+			<span class="fixture-vs">
+			    VS
+			</span>
+			
+			`}
+		
+		</div>
+
+                <div class="fixture-team">
+                    ${awayTeam}
+                </div>
+
+            </div>
+
+            <div class="fixture-meta">
+                ${match.Date} • ${match.Competition}
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById(
+        "upcomingClasicos"
+    ).innerHTML = html;
+
+}
+
+function renderClasicoMatches(){
+
+	const clasicos = [...getFilteredClasicos()]
+	    .sort((a,b) => Number(b.ID) - Number(a.ID));
+
+	const selectedLimit =
+	    document.getElementById(
+	        "matchesLimitFilter"
+	    )?.value || "10";
+	
+	const matches =
+	    selectedLimit === "all"
+	        ? clasicos
+	        : clasicos.slice(
+	            0,
+	            Number(selectedLimit)
+	        );
+
+    let html = "";
+
+    matches.forEach(match => {
+
+        let resultClass = "result-draw";
+
+        if(match["Result type"] === "W"){
+            resultClass = "result-win";
+        }
+
+        if(match["Result type"] === "L"){
+            resultClass = "result-loss";
+        }
+
+        html += `
+
+            <div class="matches-line"
+            onclick="location.href='match.html?id=${match.ID}'">
+
+    <div>
+        ${match.Season}
+    </div>
+
+    <div>
+        ${match.Date}
+    </div>
+
+    <div>
+        ${match.Venue}
+    </div>
+
+    <div>
+
+        <span class="result-badge ${resultClass}">
+            ${match.Result}
+        </span>
+
+    </div>
+
+</div>
+
+`;
+
+    });
+
+	const matchesContainer =
+	    document.getElementById("clasicoMatches");
+	
+	if(matchesContainer){
+	    matchesContainer.innerHTML = html;
+	}
+
+}
+
+function updateMatchesLimitFilter(){
+
+    const total =
+        getFilteredClasicos().length;
+
+    const select =
+        document.getElementById(
+            "matchesLimitFilter"
+        );
+
+    const currentValue =
+        select.value || "10";
+
+    const limits =
+        [10, 25, 50, 100, 200];
+
+    let html = `
+        <option value="all">
+            All Matches (${total})
+        </option>
+    `;
+
+    limits.forEach(limit => {
+
+        if(limit < total){
+
+            html += `
+                <option value="${limit}">
+                    Last ${limit}
+                </option>
+            `;
+
+        }
+
+    });
+	
+	select.innerHTML = html;
+	if(
+	    [...select.options]
+	    .some(o => o.value === currentValue)
+	){
+	    select.value = currentValue;
+	
+	}else{
+	    select.value =
+	        total > 10 ? "10" : "all";
+	}
+	select.dataset.initialized = "true";
+
+}
+
+function updateH2HTitle(){
+
+    const title =
+        document.getElementById("h2hTitle");
+
+    const subtitle =
+        document.getElementById("h2hSubtitle");
+
+    let mainTitle = "All-Time Head-to-Head";
+
+    if(selectedCompetition !== "All"){
+        mainTitle =
+            `${selectedCompetition} Head-to-Head`;
+    }
+
+	title.textContent = mainTitle;
+
+
+    const details = [];
+
+    if(selectedSeason !== "All"){
+        details.push(`Season: ${selectedSeason}`);
+    }
+
+    if(selectedVenue !== "All"){
+        details.push(`Venue: ${selectedVenue}`);
+    }
+
+    if(details.length){
+
+        subtitle.textContent =
+            details.join(" • ");
+
+        subtitle.style.display = "block";
+
+    }else{
+
+        subtitle.style.display = "none";
+
+    }
+
+}
+
+function updateMatchesTitle(){
+
+    const title =
+        document.getElementById("matchesTitle");
+
+    const subtitle =
+        document.getElementById("matchesSubtitle");
+
+    let mainTitle = "All-Time Match History";
+
+    if(selectedCompetition !== "All"){
+        mainTitle =
+            `${selectedCompetition} Match History`;
+    }
+
+	title.textContent = mainTitle;
+
+    const details = [];
+
+    if(selectedSeason !== "All"){
+        details.push(`Season: ${selectedSeason}`);
+    }
+
+    if(selectedVenue !== "All"){
+        details.push(`Venue: ${selectedVenue}`);
+    }
+
+    if(details.length){
+
+        subtitle.textContent =
+            details.join(" • ");
+
+        subtitle.style.display = "block";
+
+    }else{
+
+        subtitle.style.display = "none";
+
+    }
+
+}
+
+function updateSidebarTitles(){
+
+    const prefix =
+        selectedCompetition !== "All"
+        ? `${selectedCompetition} `
+        : "All-Time ";
+
+    document.getElementById(
+        "topScorersTitle"
+    ).textContent =
+        `${prefix}Top Goalscorers`;
+
+    document.getElementById(
+        "topAppearancesTitle"
+    ).textContent =
+        `${prefix}Top Appearances`;
+
+    document.getElementById(
+        "topManagersTitle"
+    ).textContent =
+        `${prefix}Managers by Matches`;
+
+    document.getElementById(
+        "topManagerWinsTitle"
+    ).textContent =
+        `${prefix}Managers by Wins`;
+
+}
+
+function renderHeadToHead(){
+
+    let clasicos = getFilteredClasicos();
+
+    const totalMatches = clasicos.length;
+
+    let barcaWins = 0;
+    let madridWins = 0;
+    let draws = 0;
+
+clasicos.forEach(match => {
+
+    const gf =
+        Number(match["Scored"]) || 0;
+
+    const ga =
+        Number(match["Conceded"]) || 0;
+
+    if(gf > ga){
+
+        barcaWins++;
+
+    }
+    else if(gf < ga){
+
+        madridWins++;
+
+    }
+    else{
+
+        draws++;
+
+    }
+
+});
+
+    document.getElementById("totalMatches").textContent =
+        totalMatches;
+
+    document.getElementById("barcaWins").textContent =
+        barcaWins;
+
+    document.getElementById("draws").textContent =
+        draws;
+
+    document.getElementById("madridWins").textContent =
+        madridWins;
+
+    const barcaPct =
+        totalMatches
+        ? (barcaWins / totalMatches) * 100
+        : 0;
+
+    const drawPct =
+        totalMatches
+        ? (draws / totalMatches) * 100
+        : 0;
+
+    const madridPct =
+        totalMatches
+        ? (madridWins / totalMatches) * 100
+        : 0;
+
+    document.getElementById("barcaProgress").style.width =
+        `${barcaPct}%`;
+
+    document.getElementById("drawProgress").style.width =
+        `${drawPct}%`;
+
+    document.getElementById("madridProgress").style.width =
+        `${madridPct}%`;
+
+}
+
+function renderHome(){
+
+    initPersonSearch();
+
+	renderGlobalFilters();
+	
+	updateH2HTitle();
+	updateMatchesTitle();
+	updateSidebarTitles();
+	
+	updateMatchesLimitFilter();
+	renderLastClasico();
+	renderUpcomingClasicos();
+	
+	refreshDashboard();
+
+}
+
+function initPersonSearch(){
+
+    const searchItems = new Map();
+
+    allMatches.forEach(match => {
+
+        // Barcelona manager
+        if(match.Manager){
+
+            searchItems.set(
+                `manager-${match.Manager}`,
+                {
+                    name: match.Manager,
+                    type: "Manager"
+                }
+            );
+
+        }
+
+        // Opponent manager
+        if(match["Opp. Manager"]){
+
+            searchItems.set(
+                `manager-${match["Opp. Manager"]}`,
+                {
+                    name: match["Opp. Manager"],
+                    type: "Manager"
+                }
+            );
+
+        }
+
+		// Opponent team
+		if(match["Opp. Team"]){
+		
+		    searchItems.set(
+		        `opponent-${match["Opp. Team"]}`,
+		        {
+		            name: match["Opp. Team"],
+		            type: "Opponent"
+		        }
+		    );
+		
+		}
+
+        // Starting XI
+        for(let i=1;i<=11;i++){
+
+            if(match[`Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Player name ${i}`]}`,
+                    {
+                        name: match[`Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. Player name ${i}`]}`,
+                    {
+                        name: match[`Opp. Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+        // Bench
+        for(let i=1;i<=12;i++){
+
+            if(match[`On the bench name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`On the bench name ${i}`]}`,
+                    {
+                        name: match[`On the bench name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. On the bench name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. On the bench name ${i}`]}`,
+                    {
+                        name: match[`Opp. On the bench name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+    });
+
+    const itemList =
+        [...searchItems.values()]
+        .sort((a,b) => a.name.localeCompare(b.name));
+
+    function attachSearch(inputId, resultsId){
+
+    const input = document.getElementById(inputId);
+    const results = document.getElementById(resultsId);
+
+    if(!input || !results) return;
+
+    input.addEventListener("input", () => {
+
+        const value =
+            input.value
+            .trim()
+            .toLowerCase();
+
+        if(!value){
+            results.innerHTML = "";
+            return;
+        }
+
+	const filtered =
+	    itemList
+	    .filter(item =>
+	        item.name.toLowerCase().includes(value)
+	    )
+	    .sort((a,b)=>{
+	
+	        const aStarts =
+	            a.name.toLowerCase().startsWith(value);
+	
+	        const bStarts =
+	            b.name.toLowerCase().startsWith(value);
+	
+	        return Number(bStarts) - Number(aStarts);
+	
+	    })
+	    .slice(0,20);
+
+        results.innerHTML = `
+            <div class="player-search-results">
+                ${filtered.map(item => {
+
+                    let url = "";
+
+                    if(item.type === "Manager"){
+                        url = "manager.html?name=" + encodeURIComponent(item.name);
+                    }else if(item.type === "Opponent"){
+                        url = "opponent.html?name=" + encodeURIComponent(item.name);
+                    }else{
+                        url = "player.html?name=" + encodeURIComponent(item.name);
+                    }
+
+                    return `
+                  
+    <a 
+        class="player-search-item"
+        href="${url}">
+
+        ${item.name}
+
+        <span class="search-type ${item.type.toLowerCase()}">
+            (${item.type})
+        </span>
+
+    </a>
+                    `;
+                }).join("")}
+            </div>
+        `;
+    });
+
+    input.addEventListener("blur", () => {
+        setTimeout(() => {
+            results.innerHTML = "";
+        }, 200);
+    });
+
+}
+attachSearch(
+    "personSearch",
+    "personSearchResults"
+);
+
+attachSearch(
+    "mobilePersonSearch",
+    "mobileSearchResults"
+);
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const menuOverlay =
+        document.getElementById("menuOverlay");
+
+    const mainMenu =
+        document.querySelector(".main-menu");
+
+    if(!menuToggle || !menuOverlay || !mainMenu){
+        return;
+    }
+
+    function closeMenu(){
+
+        mainMenu.classList.remove("open");
+        menuOverlay.classList.remove("show");
+
+        menuToggle.textContent = "☰";
+    }
+
+    function openMenu(){
+
+        mainMenu.classList.add("open");
+        menuOverlay.classList.add("show");
+
+        menuToggle.textContent = "✕";
+    }
+
+    menuToggle.addEventListener("click", () => {
+
+        if(mainMenu.classList.contains("open")){
+            closeMenu();
+        }else{
+            openMenu();
+        }
+
+    });
+
+    menuOverlay.addEventListener(
+        "click",
+        closeMenu
+    );
+
+    window.addEventListener("resize", () => {
+
+        if(window.innerWidth > 820){
+            closeMenu();
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="language" content="English">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="manifest" href="site.webmanifest">
+
+<meta name="theme-color" content="#004D98">
+
+<title>Barça Database | FC Barcelona Statistics, Records & El Clásico History</title>
+
+<meta name="description"
+      content="Explore FC Barcelona statistics, player records, managers, seasons, opponents and complete El Clásico history with head-to-head records, goalscorers and match statistics.">
+
+<link rel="canonical"
+      href="https://barcadb.com/">
+
+<meta property="og:title"
+      content="Barça Database">
+
+<meta property="og:url"
+      content="https://barcadb.com/">
+
+<meta name="twitter:title"
+      content="Barça Database">
+
+<meta name="twitter:description"
+      content="FC Barcelona statistics and records database.">
+
+<meta name="keywords"
+      content="FC Barcelona, Barcelona statistics, Barca database, El Clasico, El Clásico, Barcelona vs Real Madrid, Barcelona records, Barcelona players, FC Barcelona history, Clasico statistics">
+
+<meta name="robots"
+      content="index,follow">
+
+<meta name="author"
+      content="RE">
+
+<meta property="og:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta property="og:type"
+      content="website">
+
+<meta name="twitter:card"
+      content="summary_large_image">
+
+<meta name="twitter:title"
+      content="Barça Database">
+
+<meta name="twitter:description"
+      content="FC Barcelona statistics, records, player data and complete El Clásico history.">
+
+<meta name="twitter:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta property="og:description"
+      content="FC Barcelona statistics, records, seasons, players and complete El Clásico history between Barcelona and Real Madrid.">
+
+<meta property="og:site_name"
+      content="Barça Database">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/theme.css">
+
+<style>
+
+.home-page{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    align-items:start;
+    gap:8px;
+}
+
+.home-main{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.home-sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.home-discover{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.hero-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:16px;
+    text-align:center;
+}
+
+.hero-card p{
+    max-width:760px;
+    margin:0 auto 12px;
+    color:var(--muted);
+    line-height:1.3;
+}
+
+.hero-actions{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.hero-btn{
+    display:inline-block;
+    padding:12px 20px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.2s;
+}
+
+.hero-btn.primary{
+    background:var(--barca-blue);
+    color:white;
+}
+
+.hero-btn.secondary{
+    background:var(--meta-bg);
+    color:var(--text);
+    border:1px solid var(--meta-border);
+}
+
+.hero-btn:hover{
+    transform:translateY(-2px);
+}
+
+.home-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:20px;
+}
+
+.home-card h2{
+    margin-top:0;
+}
+
+.home-card p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.features-list{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(250px,1fr));
+    gap:12px;
+}
+
+.feature-item{
+    background:var(--meta-bg);
+    border:1px solid var(--meta-border);
+    border-radius:12px;
+    padding:16px;
+}
+
+.feature-item strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+.fixture-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    text-align:center;
+}
+
+.fixture-title{
+    text-align:center;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:12px;
+    padding:8px;
+    border-radius:12px;
+}
+
+.fixture-team{
+    flex:1;
+    text-align:center;
+    font-size:18px;
+    font-weight:800;
+    text-transform:uppercase;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.fixture-opponent{
+    font-weight:800 !important;
+}
+
+.fixture-center{
+    min-width:120px;
+}
+
+.fixture-score{
+    font-size:34px;
+    font-weight:800;
+    padding:8px 20px;
+    border-radius:16px;
+    color:white;
+    background:linear-gradient(
+        135deg,
+        #004D98,
+        #1e3a8a
+    );
+}
+
+.fixture-vs{
+    font-size:22px;
+    font-weight:800;
+    padding:8px 20px;
+    border-radius:16px;
+}
+
+.fixture-meta{
+    margin-top:10px;
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+}
+
+.fixture-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+}
+
+.form-list{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+}
+
+.form-win,
+.form-draw,
+.form-loss{
+    width:35px;
+    height:35px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-weight:700;
+}
+
+.form-win{
+    background:#22c55e;
+    color:white;
+}
+
+.form-draw{
+    background:#f59e0b;
+    color:white;
+}
+
+.form-loss{
+    background:#ef4444;
+    color:white;
+}
+
+.table-scroll{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+.debutants-table{
+    width:100%;
+    table-layout:fixed;
+}
+
+.stats-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.stats-table th,
+.stats-table td,
+.debutants-table th,
+.debutants-table td{
+    padding:8px 4px;
+    border-bottom:1px solid var(--meta-border);
+    font-size:13px;
+    text-align:center;
+}
+
+.stats-table th:first-child,
+.stats-table td:first-child,
+.debutants-table th:first-child,
+.debutants-table td:first-child{
+    text-align:left;
+}
+
+.debutants-table th:nth-child(2),
+.debutants-table td:nth-child(2){
+    text-align:right;
+}
+
+.home-card{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.featured-insight{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    overflow:hidden;
+    background:var(--card-bg);
+    margin-bottom:12px;
+}
+
+.featured-image{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    display:block;
+}
+
+.featured-body{
+    padding:16px;
+}
+
+.featured-tagline{
+    color:var(--link-color);
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.featured-title{
+    font-size:22px;
+    font-weight:800;
+    line-height:1.3;
+    margin-bottom:8px;
+}
+
+.featured-text{
+    color:var(--muted);
+    line-height:1.5;
+}
+
+.insight-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.insight-item{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    border:1px solid var(--meta-border);
+    border-radius:12px;
+    padding:12px;
+    background:var(--meta-bg);
+}
+
+.insight-tagline{
+    color:var(--link-color);
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:4px;
+}
+
+.secondary-insight-title{
+    font-weight:700;
+    line-height:1.4;
+}
+
+.secondary-insight-text{
+    margin-top:6px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+}
+
+.insight-date{
+    margin-top:6px;
+    font-size:12px;
+    color:var(--muted);
+}
+
+.insights-container{
+    display:flex;
+    flex-direction:column;
+}
+
+.fixture-team-logo{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 8px;
+}
+
+@media(max-width:820px){
+
+    .fixture-team-logo{
+        width:50px;
+        height:50px;
+        margin-bottom:6px;
+    }
+
+    .home-page{
+        display:flex;
+        flex-direction:column;
+    }
+
+    .home-main,
+    .home-sidebar,
+    .home-discover{
+        width:100%;
+    }
+
+    .widget-card,
+    .hero-card{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    .fixture-team{
+        font-size:14px;
+    }
+
+    .fixture-center{
+        min-width:80px;
+    }
+
+    .fixture-score{
+        font-size:24px;
+        padding:6px 14px;
+        border-radius:12px;
+    }
+
+    .fixture-vs{
+        font-size:16px;
+        padding:6px 14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="header">
+    <div class="header-inner">
+          
+		<a href="/">
+        	<img src="logos/barcadb-logo.png" class="header-logo" alt="Barça DB">
+		</a>
+
+        <div class="header-text">
+            <h1>Barça Database</h1>
+	    </div>
+
+<div class="desktop-search">
+
+    <input
+        type="text"
+        id="personSearch"
+        placeholder="Search..."
+        class="desktop-search-input">
+
+    <div id="personSearchResults"></div>
+
+</div>
+
+    <button id="menuToggle" class="menu-toggle">
+    	☰
+    </button>
+
+</div>
+</div>
+
+<nav class="main-menu">
+
+    <div class="mobile-menu-search">
+
+        <input
+            type="text"
+            id="mobilePersonSearch"
+            placeholder="Search..."
+            class="mobile-search-input">
+
+        <div id="mobileSearchResults"></div>
+
+    </div>
+
+    <a href="/" class="active">
+        <span>Home page</span>
+    </a>
+      
+    <a href="statistics.html">
+        <span>Statistics</span>
+    </a>
+
+    <a href="season.html">
+        <span>Seasons</span>
+    </a>
+
+    <a href="insights.html">
+        <span>Insights</span>
+    </a>
+
+    <a href="compare.html">
+        <span>Compare</span>
+    </a>
+
+    <a href="el-clasico.html">
+        <span>El Clásico</span>
+    </a>
+
+</nav>
+
+<div class="home-page">
+
+      <div class="home-main">
+
+<div class="widget-title">
+Matches
+</div>
+
+<div class="widget-card">
+<div id="lastMatch">
+Loading...
+</div>
+</div>
+
+<div class="widget-card">
+<div id="nextMatch">
+Loading...
+</div>
+</div>
+
+<section class="hero-card">
+<p>Track Barcelona's season through results, stats and records.</p>
+      
+        <div class="hero-actions">
+
+        <a href="season.html" class="hero-btn primary">
+            View Season Overview →
+        </a>
+
+      </div>
+
+</section>
+
+    <div class="widget-title">
+        Latest Insights
+    </div>
+
+    <div id="insights" class="insights-container"></div>
+
+	<section class="hero-card">
+	<p>Track Barcelona's insights, milestones and emerging trends.</p>
+	      
+	        <div class="hero-actions">
+	
+	        <a href="insights.html" class="hero-btn primary">
+	            View All Insights →
+	        </a>
+	
+	      </div>
+	
+	</section>
+
+<div class="home-discover">
+
+<div class="widget-title">
+Discover What's Inside
+</div>
+
+    <section class="hero-card">
+
+<p>
+    Explore FC Barcelona history through a comprehensive football database featuring
+    players, managers, opponents, seasons, records and match statistics. Discover
+    career records, player comparisons, competition data and complete El Clásico
+    history between Barcelona and Real Madrid.
+</p>
+
+        <div class="hero-actions">
+
+            <a
+                href="statistics.html"
+                class="hero-btn primary">
+
+                Browse Statistics
+
+            </a>
+
+            <a
+                href="season.html"
+                class="hero-btn secondary">
+
+                Seasons Overview
+
+            </a>
+
+            <a
+                href="compare.html"
+                class="hero-btn secondary">
+
+                Compare Players
+
+            </a>
+            
+            <a
+                href="el-clasico.html"
+                class="hero-btn secondary">
+
+                El Clásico Hub
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+    <section class="home-card">
+
+        <div class="features-list">
+
+            <div class="feature-item">
+                <strong>Players</strong>
+                Player appearances, goals, assists, positions, debuts and career records.
+            </div>
+            
+            <div class="feature-item">
+                <strong>Managers</strong>
+                Managerial records, wins, draws, losses and team performance statistics.
+            </div>
+            
+            <div class="feature-item">
+                <strong>Opponents</strong>
+                Historical head-to-head records against clubs from Spain and around the world.
+            </div>
+            
+            <div class="feature-item">
+                <strong>Competitions</strong>
+                Statistics from La Liga, Copa del Rey, UEFA Champions League and other tournaments.
+            </div>
+            
+            <div class="feature-item">
+                <strong>Player Comparison</strong>
+                Compare Barcelona players from different eras using detailed performance metrics.
+            </div>
+            
+            <div class="feature-item">
+                <strong>Club History</strong>
+                Explore the history of FC Barcelona through matches, seasons and historical records.
+            </div>
+            
+            <div class="feature-item">
+                <strong>El Clásico</strong>
+                Head-to-head records, match history, top goalscorers, appearances and managerial records against Real Madrid.
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</div>
+
+<aside class="home-sidebar">
+
+    <div class="widget-title">
+        Recent Form
+    </div>
+
+    <div class="widget-card">
+        <div id="recentForm">
+            Loading...
+        </div>
+    </div>
+
+    <div class="widget-title">
+        Season Debutants
+    </div>
+
+    <div class="widget-card">
+        <div id="seasonDebutants">
+            Loading...
+        </div>
+    </div>
+
+      <div class="widget-title">
+          Season Statistics
+      </div>
+      
+      <div class="widget-card">
+          <div id="seasonStatistics">
+              Loading...
+          </div>
+      </div>
+
+</aside>
+
+</div>
+
+</div>
+
+<script src="data/clubMap.js"></script>
+<script src="data/competitionMap.js"></script>
+<script>
+
+let allMatches = [];
+
+fetch("/data/data.json")
+    .then(r => r.json())
+    .then(matchesData => {
+
+        allMatches = matchesData;
+
+    function parseDate(date) {
+
+        const [day, month, year] = date.split(".");
+
+        return new Date(
+            Number(year),
+            Number(month) - 1,
+            Number(day)
+        );
+    }
+
+function getClubLogo(team){
+    return String(team || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        + ".png";
+}
+
+function renderHome(){
+
+    renderLastMatch();
+    renderNextMatch();
+
+    renderRecentForm();
+
+    renderSeasonDebutants();
+    renderSeasonStatistics();
+
+	renderInsights();
+
+    initPersonSearch();
+}
+
+    function renderLastMatch() {
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+      const played = allMatches
+          .filter(match =>
+              match.Result &&
+              match.Result !== "-:-" &&
+              parseDate(match.Date) <= today
+          )
+          .sort((a, b) =>
+              parseDate(b.Date) - parseDate(a.Date)
+          );
+      
+            const match = played[0];
+            
+            if (!match) {
+                document.getElementById("lastMatch").innerHTML =
+                    "No completed matches";
+                return;
+            }
+            
+			const homeTeam =
+			    match["Home/Away"] === "Home"
+			        ? `
+			            <img
+			                src="logos/clubs/fc-barcelona.png"
+			                class="fixture-team-logo"
+			                alt="FC Barcelona">
+			            FC Barcelona
+			          `
+	                : `
+			            <a class="opponent-link fixture-opponent"
+			               href="opponent.html?name=${encodeURIComponent(match["Opp. Team"])}">
+			
+			                <img
+			                    src="logos/clubs/${getClubLogo(match["Opp. Team"])}"
+			                    class="fixture-team-logo"
+			                    alt="${match["Opp. Team"]}"
+			                    onerror="this.src='logos/clubs/default.png'">
+			
+			                ${match["Opp. Team"]}
+			
+			            </a>
+				        `;
+	
+			const awayTeam =
+			    match["Home/Away"] === "Home"
+			        ? `
+			            <a class="opponent-link fixture-opponent"
+			               href="opponent.html?name=${encodeURIComponent(match["Opp. Team"])}">
+			
+			                <img
+			                    src="logos/clubs/${getClubLogo(match["Opp. Team"])}"
+			                    class="fixture-team-logo"
+			                    alt="${match["Opp. Team"]}"
+			                    onerror="this.src='logos/clubs/default.png'">
+			
+			                ${match["Opp. Team"]}
+			
+			            </a>
+				        `
+		                : `
+						    <img
+						        src="logos/clubs/fc-barcelona.png"
+						        class="fixture-team-logo"
+						        alt="FC Barcelona">
+						    FC Barcelona
+						`;
+
+        document.getElementById("lastMatch").innerHTML = `
+            <div class="fixture-link">
+
+                <div class="fixture-title">
+                    LAST MATCH
+                </div>
+
+                <div class="fixture-card">
+
+                    <div class="fixture-team">
+                        ${homeTeam}
+                    </div>
+
+					<div class="fixture-center">
+					
+					    <a
+					        href="match.html?id=${match.ID}"
+					        class="fixture-score"
+					        style="display:inline-block;text-decoration:none;color:white;">
+					
+					        ${match.Result}
+					
+					    </a>
+					
+					</div>
+
+                    <div class="fixture-team">
+                        ${awayTeam}
+                    </div>
+
+                </div>
+
+                <div class="fixture-meta">
+                    ${match.Date} • ${match.Competition}
+                </div>
+
+            </div>
+        `;
+    }
+
+    function renderNextMatch() {
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+		const next = allMatches
+		    .filter(match =>
+		        (!match.Result || match.Result === "-:-") &&
+		        parseDate(match.Date) >= today
+		    )
+		    .sort((a, b) =>
+		        parseDate(a.Date) - parseDate(b.Date)
+		    )[0];
+
+        if (!next) {
+
+            document.getElementById("nextMatch").innerHTML =
+                "No upcoming matches";
+
+            return;
+        }
+
+			const homeTeam =
+			    next["Home/Away"] === "Home"
+			        ? `
+			            <img
+			                src="logos/clubs/fc-barcelona.png"
+			                class="fixture-team-logo"
+			                alt="FC Barcelona">
+			            FC Barcelona
+			          `
+	                : `
+			            <a class="opponent-link fixture-opponent"
+			               href="opponent.html?name=${encodeURIComponent(next["Opp. Team"])}">
+			
+			                <img
+			                    src="logos/clubs/${getClubLogo(next["Opp. Team"])}"
+			                    class="fixture-team-logo"
+			                    alt="${next["Opp. Team"]}"
+			                    onerror="this.src='logos/clubs/default.png'">
+			
+			                ${next["Opp. Team"]}
+			
+			            </a>
+				        `;
+
+			const awayTeam =
+			    next["Home/Away"] === "Home"
+			        ? `
+			            <a class="opponent-link fixture-opponent"
+			               href="opponent.html?name=${encodeURIComponent(next["Opp. Team"])}">
+			
+			                <img
+			                    src="logos/clubs/${getClubLogo(next["Opp. Team"])}"
+			                    class="fixture-team-logo"
+			                    alt="${next["Opp. Team"]}"
+			                    onerror="this.src='logos/clubs/default.png'">
+			
+			                ${next["Opp. Team"]}
+			
+			            </a>
+				        `
+		                : `
+						    <img
+						        src="logos/clubs/fc-barcelona.png"
+						        class="fixture-team-logo"
+						        alt="FC Barcelona">
+						    FC Barcelona
+						`;
+
+        document.getElementById("nextMatch").innerHTML = `
+            <div class="fixture-link">
+
+                <div class="fixture-title">
+                    UPCOMING MATCH
+                </div>
+
+                <div class="fixture-card">
+
+                    <div class="fixture-team">
+                        ${homeTeam}
+                    </div>
+
+					<div class="fixture-center">
+					
+					    <a
+					        href="match.html?id=${next.ID}"
+					        class="fixture-vs"
+					        style="display:inline-block;text-decoration:none;color:inherit;">
+					
+					        VS
+					
+					    </a>
+					
+					</div>
+
+                    <div class="fixture-team">
+                        ${awayTeam}
+                    </div>
+
+                </div>
+
+                <div class="fixture-meta">
+                    ${next.Date} • ${next.Competition}
+                </div>
+
+            </div>
+        `;
+    }
+
+function renderRecentForm(){
+
+    const matches = allMatches
+        .filter(m => m["Result type"])
+        .sort((a,b) =>
+            parseDate(b.Date) - parseDate(a.Date)
+        )
+        .slice(0,8);
+
+    let html = "<div class='form-list'>";
+
+    matches.forEach(match => {
+
+        if(match["Result type"] === "W"){
+            html += `<div class="form-win">W</div>`;
+        }
+
+        if(match["Result type"] === "D"){
+            html += `<div class="form-draw">D</div>`;
+        }
+
+        if(match["Result type"] === "L"){
+            html += `<div class="form-loss">L</div>`;
+        }
+
+    });
+
+    html += "</div>";
+
+    document.getElementById("recentForm").innerHTML = html;
+}
+
+function renderSeasonDebutants(){
+
+    const latestSeason =
+        [...new Set(allMatches.map(x => x.Season))]
+        .sort()
+        .reverse()[0];
+
+    const firstAppearance = {};
+
+    allMatches.forEach(match => {
+
+        const players = [];
+
+        for(let i=1;i<=11;i++){
+            if(match[`Player name ${i}`]){
+                players.push(match[`Player name ${i}`]);
+            }
+        }
+
+      for(let i=1;i<=12;i++){
+          if(match[`Sub on ${i}`]){
+              players.push(match[`Sub on ${i}`]);
+          }
+      }
+
+        players.forEach(player => {
+
+            const date =
+                new Date(
+                    match.Date
+                    .split(".")
+                    .reverse()
+                    .join("-")
+                );
+
+            if(
+                !firstAppearance[player] ||
+                date < firstAppearance[player].date
+            ){
+
+                firstAppearance[player] = {
+                    season: match.Season,
+                    date,
+                    dateText: match.Date
+                };
+
+            }
+
+        });
+
+    });
+
+		const debutants =
+		    Object.entries(firstAppearance)
+		    .filter(([name,data]) =>
+		        data.season === latestSeason
+		    )
+		    .sort((a,b) => a[1].date - b[1].date)
+		    .slice(0,10);
+
+      let html = `
+          <table class="debutants-table">
+      
+              <thead>
+                  <tr>
+                      <th>Player</th>
+                      <th>Debut Date</th>
+                  </tr>
+              </thead>
+      
+              <tbody>
+      `;
+
+    debutants.forEach(([player,data]) => {
+
+        html += `
+            <tr>
+                <td>
+                    <a
+                        class="player-link"
+                        href="player.html?name=${encodeURIComponent(player)}">
+                        ${player}
+                    </a>
+                </td>
+
+                <td>${data.dateText}</td>
+            </tr>
+        `;
+    });
+
+      html += `
+              </tbody>
+          </table>
+      `;
+
+    document.getElementById(
+        "seasonDebutants"
+    ).innerHTML = html;
+}
+
+function renderSeasonStatistics() {
+
+    const latestSeason =
+        [...new Set(allMatches.map(x => x.Season))]
+        .sort()
+        .reverse()[0];
+
+    const matches =
+        allMatches.filter(
+            x => x.Season === latestSeason
+        );
+
+    const players = {};
+
+	function addPlayer(name) {
+	
+	    if (!name || !String(name).trim()) return false;
+	
+	    name = String(name).trim();
+	
+	    if (name.includes("(OG)")) return false;
+	
+	    if (!players[name]) {
+			players[name] = {
+			    goals: 0,
+			    assists: 0
+			};
+	
+	        return true;
+	    }
+	}
+
+    matches.forEach(match => {
+
+        for (let i = 1; i <= 11; i++) {
+
+            const player =
+                match[`Player name ${i}`];
+
+            if (
+                player &&
+                !String(player).includes("(OG)")
+            ) {
+
+                addPlayer(player);
+
+            }
+
+        }
+
+        for (let i = 1; i <= 12; i++) {
+
+            const player =
+                match[`On the bench name ${i}`];
+
+            if (
+                player &&
+                !String(player).includes("(OG)")
+            ) {
+
+                addPlayer(player);
+
+            }
+
+        }
+
+        for (let i = 1; i <= 12; i++) {
+
+            const player =
+                match[`Goal Player ${i}`];
+
+            if (
+                player &&
+                !String(player).includes("(OG)")
+            ) {
+
+                addPlayer(player);
+                players[player].goals++;
+
+            }
+
+        }
+
+        for (let i = 1; i <= 12; i++) {
+
+            const player =
+                match[`Assist Player ${i}`];
+
+            if (
+                player &&
+                !String(player).includes("(OG)")
+            ) {
+
+                addPlayer(player);
+                players[player].assists++;
+
+            }
+
+        }
+
+    });
+
+    const sortedPlayers =
+        Object.entries(players)
+        .sort((a, b) => b[1].goals - a[1].goals)
+        .slice(0, 10);
+
+    let html = `
+        <div class="table-scroll">
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>G</th>
+                    <th>A</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    sortedPlayers.forEach(([name, stats]) => {
+
+        html += `
+            <tr>
+                <td>
+                    <a class="player-link"
+                       href="player.html?name=${encodeURIComponent(name)}">
+                        ${name}
+                    </a>
+                </td>
+
+                <td>${stats.goals}</td>
+                <td>${stats.assists}</td>
+            </tr>
+        `;
+
+    });
+
+    html += `
+            </tbody>
+        </table>
+        </div>
+    `;
+
+    document.getElementById(
+        "seasonStatistics"
+    ).innerHTML = html;
+}
+
+function formatInsightDate(dateString){
+
+    const date = new Date(dateString);
+
+    return date.toLocaleDateString(
+        "en-GB",
+        {
+            day:"numeric",
+            month:"short",
+            year:"numeric"
+        }
+    );
+}
+
+async function renderInsights(){
+
+    const insights = await fetch("/data/insights.json")
+        .then(r => r.json());
+
+    const activeInsights = insights.filter(
+        item =>
+            String(item.Active).toUpperCase() === "TRUE"
+    );
+
+    const sortedInsights = activeInsights.sort(
+        (a,b) => new Date(b.Date) - new Date(a.Date)
+    );
+
+    const featured = sortedInsights.find(
+        item =>
+            String(item.Featured).toUpperCase() === "TRUE"
+    );
+
+    const secondary = sortedInsights
+        .filter(
+            item =>
+                String(item.Featured).toUpperCase() !== "TRUE"
+        )
+        .slice(0,1);
+
+    let html = "";
+
+    if(featured){
+
+        const wrapperStart = featured.Link
+            ? `<a href="${featured.Link}" class="featured-insight">`
+            : `<div class="featured-insight">`;
+
+        const wrapperEnd = featured.Link
+            ? `</a>`
+            : `</div>`;
+
+        html += `
+            ${wrapperStart}
+
+                <img
+                    src="${featured.Image}"
+                    alt="${featured.Title}"
+                    class="featured-image"
+                    loading="lazy">
+
+                <div class="featured-body">
+
+                    <div class="featured-tagline">
+                        ${featured.Tagline}
+                    </div>
+
+                    <div class="featured-title">
+                        ${featured.Title}
+                    </div>
+
+                    <div class="featured-text">
+                        ${featured.Text}
+                    </div>
+
+                    <div class="insight-date">
+                        ${formatInsightDate(featured.Date)}
+                    </div>
+
+                </div>
+
+            ${wrapperEnd}
+        `;
+    }
+
+    html += `<div class="insight-list">`;
+
+    secondary.forEach(item => {
+
+        const itemStart = item.Link
+            ? `<a href="${item.Link}" class="insight-item">`
+            : `<div class="insight-item">`;
+
+        const itemEnd = item.Link
+            ? `</a>`
+            : `</div>`;
+
+        html += `
+            ${itemStart}
+
+                <div class="insight-tagline">
+                    ${item.Tagline}
+                </div>
+
+                <div class="secondary-insight-title">
+                    ${item.Title}
+                </div>
+
+                <div class="secondary-insight-text">
+                    ${item.Text}
+                </div>
+
+                <div class="insight-date">
+                    ${formatInsightDate(item.Date)}
+                </div>
+
+            ${itemEnd}
+        `;
+    });
+
+    html += `</div>`;
+
+    document.getElementById("insights").innerHTML = html;
+}
+
+function initPersonSearch(){
+
+    const searchItems = new Map();
+
+    allMatches.forEach(match => {
+
+        if(match.Manager){
+
+            searchItems.set(
+                `manager-${match.Manager}`,
+                {
+                    name: match.Manager,
+                    type: "Manager"
+                }
+            );
+
+        }
+
+        if(match["Opp. Manager"]){
+
+            searchItems.set(
+                `manager-${match["Opp. Manager"]}`,
+                {
+                    name: match["Opp. Manager"],
+                    type: "Manager"
+                }
+            );
+
+        }
+
+        if(match["Opp. Team"]){
+
+            searchItems.set(
+                `opponent-${match["Opp. Team"]}`,
+                {
+                    name: match["Opp. Team"],
+                    type: "Opponent"
+                }
+            );
+
+        }
+
+        for(let i=1;i<=11;i++){
+
+            if(match[`Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Player name ${i}`]}`,
+                    {
+                        name: match[`Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. Player name ${i}`]}`,
+                    {
+                        name: match[`Opp. Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+        for(let i=1;i<=12;i++){
+
+            if(match[`On the bench name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`On the bench name ${i}`]}`,
+                    {
+                        name: match[`On the bench name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. On the bench name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. On the bench name ${i}`]}`,
+                    {
+                        name: match[`Opp. On the bench name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+    });
+
+    const itemList =
+        [...searchItems.values()]
+        .sort((a,b) => a.name.localeCompare(b.name));
+
+    function attachSearch(inputId, resultsId){
+
+        const input = document.getElementById(inputId);
+        const results = document.getElementById(resultsId);
+
+        if(!input || !results) return;
+
+        input.addEventListener("input", () => {
+
+            const value =
+                input.value
+                .trim()
+                .toLowerCase();
+
+            if(!value){
+                results.innerHTML = "";
+                return;
+            }
+
+            const filtered =
+                itemList
+                .filter(item =>
+                    item.name.toLowerCase().includes(value)
+                )
+                .sort((a,b)=>{
+
+                    const aStarts =
+                        a.name.toLowerCase().startsWith(value);
+
+                    const bStarts =
+                        b.name.toLowerCase().startsWith(value);
+
+                    return Number(bStarts) - Number(aStarts);
+
+                })
+                .slice(0,20);
+
+            results.innerHTML = `
+                <div class="player-search-results">
+                    ${filtered.map(item => {
+
+                        let url = "";
+
+                        if(item.type === "Manager"){
+                            url = "manager.html?name=" + encodeURIComponent(item.name);
+                        }else if(item.type === "Opponent"){
+                            url = "opponent.html?name=" + encodeURIComponent(item.name);
+                        }else{
+                            url = "player.html?name=" + encodeURIComponent(item.name);
+                        }
+
+                        return `
+                            <a
+                                class="player-search-item"
+                                href="${url}">
+                        
+                                ${item.name}
+                        
+                                <span class="search-type ${item.type.toLowerCase()}">
+                                    (${item.type})
+                                </span>
+                        
+                            </a>
+                        `;
+                    }).join("")}
+                </div>
+            `;
+        });
+
+        input.addEventListener("blur", () => {
+            setTimeout(() => {
+                results.innerHTML = "";
+            }, 200);
+        });
+
+    }
+
+    attachSearch(
+        "personSearch",
+        "personSearchResults"
+    );
+
+    attachSearch(
+        "mobilePersonSearch",
+        "mobileSearchResults"
+    );
+
+}
+
+renderHome();
+
+})
+.catch(error => {
+
+    console.error("Failed to load data:", error);
+
+    document.getElementById("lastMatch").innerHTML =
+        "Unable to load match data";
+
+    document.getElementById("nextMatch").innerHTML =
+        "Unable to load match data";
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const menuOverlay =
+        document.getElementById("menuOverlay");
+
+    const mainMenu =
+        document.querySelector(".main-menu");
+
+    if(!menuToggle || !menuOverlay || !mainMenu){
+        return;
+    }
+
+    function closeMenu(){
+
+        mainMenu.classList.remove("open");
+        menuOverlay.classList.remove("show");
+
+        menuToggle.textContent = "☰";
+    }
+
+    function openMenu(){
+
+        mainMenu.classList.add("open");
+        menuOverlay.classList.add("show");
+
+        menuToggle.textContent = "✕";
+    }
+
+    menuToggle.addEventListener("click", () => {
+
+        if(mainMenu.classList.contains("open")){
+            closeMenu();
+        }else{
+            openMenu();
+        }
+
+    });
+
+    menuOverlay.addEventListener(
+        "click",
+        closeMenu
+    );
+
+function reorderMobileHomepage() {
+
+    const homePage =
+        document.querySelector(".home-page");
+
+    const homeMain =
+        document.querySelector(".home-main");
+
+    const homeSidebar =
+        document.querySelector(".home-sidebar");
+
+    const discover =
+        document.querySelector(".home-discover");
+
+    if (!homePage || !homeMain || !homeSidebar || !discover) {
+        return;
+    }
+
+    if (window.innerWidth <= 820) {
+
+        homePage.appendChild(homeSidebar);
+        homePage.appendChild(discover);
+
+    } else {
+
+        homeMain.appendChild(discover);
+
+        homePage.appendChild(homeMain);
+        homePage.appendChild(homeSidebar);
+
+    }
+}
+
+reorderMobileHomepage();
+
+window.addEventListener("resize", () => {
+
+    reorderMobileHomepage();
+
+    if(window.innerWidth > 820){
+        closeMenu();
+    }
+
+});
+});
+
+</script>
+
+</body>
+</html>

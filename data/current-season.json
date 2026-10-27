@@ -1,0 +1,370 @@
+[
+  {
+    "ApiId": "564642",
+    "Date": "23.8.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Elche",
+    "Home/Away": "Away",
+    "Result": "0:5"
+  },
+  {
+    "ApiId": "564630",
+    "Date": "27.8.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Athletic Club",
+    "Home/Away": "Home",
+    "Result": "2:0"
+  },
+  {
+    "ApiId": "564650",
+    "Date": "31.8.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Rayo Vallecano",
+    "Home/Away": "Home",
+    "Result": "5:2"
+  },
+  {
+    "ApiId": "564659",
+    "Date": "6.9.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Valencia",
+    "Home/Away": "Away",
+    "Result": "0:5"
+  },
+  {
+    "ApiId": "575329",
+    "Date": "9.9.2026",
+    "Competition": "UEFA Champions League",
+    "Opp. Team": "Feyenoord Rotterdam",
+    "Home/Away": "Home",
+    "Result": "5:1"
+  },
+  {
+    "ApiId": "564675",
+    "Date": "13.9.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Levante",
+    "Home/Away": "Away",
+    "Result": "2:4"
+  },
+  {
+    "ApiId": "564687",
+    "Date": "16.9.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Racing Santander",
+    "Home/Away": "Home",
+    "Result": "7:2"
+  },
+  {
+    "ApiId": "564690",
+    "Date": "19.9.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Sevilla",
+    "Home/Away": "Away",
+    "Result": "1:3"
+  },
+  {
+    "ApiId": "564700",
+    "Date": "10.10.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Getafe",
+    "Home/Away": "Home",
+    "Result": "3:0"
+  },
+  {
+    "ApiId": "575344",
+    "Date": "13.10.2026",
+    "Competition": "UEFA Champions League",
+    "Opp. Team": "Galatasaray",
+    "Home/Away": "Away",
+    "Result": "1:4"
+  },
+  {
+    "ApiId": "564713",
+    "Date": "17.10.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Real Betis",
+    "Home/Away": "Away",
+    "Result": "2:5"
+  },
+  {
+    "ApiId": "575367",
+    "Date": "20.10.2026",
+    "Competition": "UEFA Champions League",
+    "Opp. Team": "PSG",
+    "Home/Away": "Away",
+    "Result": "4:2"
+  },
+  {
+    "ApiId": "564723",
+    "Date": "25.10.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Real Madrid",
+    "Home/Away": "Home",
+    "Result": "1:2"
+  },
+  {
+    "ApiId": "564732",
+    "Date": "31.10.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Deportivo Alavés",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "575380",
+    "Date": "3.11.2026",
+    "Competition": "UEFA Champions League",
+    "Opp. Team": "Aston Villa",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564746",
+    "Date": "8.11.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Atlético Madrid",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564749",
+    "Date": "22.11.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Villarreal",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "575404",
+    "Date": "25.11.2026",
+    "Competition": "UEFA Champions League",
+    "Opp. Team": "Sabah FK",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564766",
+    "Date": "29.11.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Deportivo La Coruña",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564773",
+    "Date": "6.12.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Celta Vigo",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "575415",
+    "Date": "8.12.2026",
+    "Competition": "UEFA Champions League",
+    "Opp. Team": "Manchester City",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564779",
+    "Date": "13.12.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Málaga",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564793",
+    "Date": "20.12.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Real Sociedad",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564805",
+    "Date": "3.1.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Espanyol",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564811",
+    "Date": "10.1.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Osasuna",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564819",
+    "Date": "17.1.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Elche",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "575288",
+    "Date": "20.1.2027",
+    "Competition": "UEFA Champions League",
+    "Opp. Team": "Sporting CP",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564832",
+    "Date": "24.1.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Deportivo Alavés",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "575289",
+    "Date": "27.1.2027",
+    "Competition": "UEFA Champions League",
+    "Opp. Team": "Como",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564844",
+    "Date": "31.1.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Valencia",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564857",
+    "Date": "7.2.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Atlético Madrid",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564861",
+    "Date": "14.2.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Villarreal",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564871",
+    "Date": "21.2.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Levante",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564884",
+    "Date": "28.2.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Athletic Club",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564888",
+    "Date": "7.3.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Real Betis",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564906",
+    "Date": "14.3.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Deportivo La Coruña",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564912",
+    "Date": "21.3.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Rayo Vallecano",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564919",
+    "Date": "4.4.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Sevilla",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564935",
+    "Date": "11.4.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Racing Santander",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564939",
+    "Date": "18.4.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Espanyol",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564950",
+    "Date": "21.4.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Celta Vigo",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564961",
+    "Date": "2.5.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Osasuna",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564975",
+    "Date": "9.5.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Real Madrid",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564980",
+    "Date": "16.5.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Real Sociedad",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "564989",
+    "Date": "23.5.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Málaga",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
+    "ApiId": "565006",
+    "Date": "30.5.2027",
+    "Competition": "Primera Division",
+    "Opp. Team": "Getafe",
+    "Home/Away": "Away",
+    "Result": "-:-"
+  }
+]

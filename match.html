@@ -1,0 +1,2825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="language" content="English">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="manifest" href="site.webmanifest">
+
+<meta name="theme-color" content="#004D98">
+
+<title>FC Barcelona Matches | Results, Fixtures & Statistics | Barça Database</title>
+
+<meta name="robots"
+      content="index,follow">
+
+<meta name="author"
+      content="RE">
+
+<meta name="description"
+      content="Browse all FC Barcelona matches. Explore results, opponents, competitions, scores, venues and match statistics throughout the club's history.">
+
+<link rel="canonical" href="https://barcadb.com/match.html">
+
+<meta property="og:title"
+      content="FC Barcelona Matches | Barça Database">
+
+<meta property="og:description"
+      content="Browse all FC Barcelona matches with results, opponents, competitions, scores and detailed statistics.">
+
+<meta property="og:url"
+      content="https://barcadb.com/match.html">
+
+<meta property="og:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta property="og:type"
+      content="website">
+
+<meta property="og:site_name"
+      content="Barça Database">
+
+<meta name="twitter:card"
+      content="summary_large_image">
+
+<meta name="twitter:title"
+      content="FC Barcelona Matches | Barça Database">
+
+<meta name="twitter:description"
+      content="Browse all FC Barcelona matches with results, opponents, competitions, scores and detailed statistics.">
+
+<meta name="twitter:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta name="keywords"
+      content="FC Barcelona matches, Barcelona results, Barca fixtures, Barcelona games, match statistics, Barcelona opponents, football results, FC Barcelona history">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/theme.css">
+
+<style>
+
+body{
+background:var(--bg-match);
+}
+
+.hero{
+background:
+linear-gradient(
+135deg,
+rgba(0,77,152,.95),
+rgba(165,0,68,.95)
+);
+
+color:white;
+border-radius:28px;
+padding:10px 18px;
+font-size: 14px;
+box-shadow:
+0 20px 50px rgba(0,0,0,.35);
+margin-bottom:8px;
+}
+
+.score{
+font-size:30px;
+font-weight:700;
+margin:4px 35px;
+text-align:center;
+}
+
+.teams{
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:center;
+margin-bottom: 6px;
+}
+
+.teams .team-name:first-of-type{
+text-align:left;
+}
+
+.teams .team-name:last-of-type{
+text-align:right;
+}
+
+.team-name{
+font-size:22px;
+font-weight:700;
+text-transform:uppercase;
+}
+
+.section-title,
+.widget-title{
+    margin:8px 0 6px;
+    padding:8px 14px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(0,77,152,.95),
+        rgba(165,0,68,.95)
+    );
+
+    color:white;
+
+    font-size:14px;
+    font-weight:700;
+    text-transform:uppercase;
+
+    border-radius:18px;
+}
+
+.match-section{
+display:none;
+}
+
+.match-section.active{
+display:block;
+animation:slideContent .3s ease;
+}
+
+.slide-right{
+animation:slideRight .25s ease;
+}
+
+.slide-left{
+animation:slideLeft .25s ease;
+}
+
+@keyframes slideRight{
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+@keyframes slideLeft{
+from{
+opacity:0;
+transform:translateX(-20px);
+}
+
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+.matches-table th{
+background:var(--meta-bg);
+color:var(--muted);
+text-align:left;
+}
+
+.matches-table td{
+border-bottom:1px solid var(--meta-border);
+}
+
+.matches-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.matches-table th:nth-child(1),
+.matches-table td:nth-child(1){
+width:90px;
+padding-left:15px;
+}
+
+.matches-table th:nth-child(2),
+.matches-table td:nth-child(2){
+width:auto;
+}
+
+.matches-table th:nth-child(3),
+.matches-table td:nth-child(3){
+width:100px;
+text-align:center;
+}
+
+.matches-table th:nth-child(4),
+.matches-table td:nth-child(4){
+width:90px;
+text-align:center;
+padding-right:15px;
+}
+
+th{
+background:var(--meta-bg);
+color:var(--muted);
+text-align:left;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+td{
+border-bottom:1px solid var(--meta-border);
+}
+
+tbody tr{
+transition:.25s;
+}
+
+.matches-table tbody tr:hover{
+background:var(--meta-bg);
+cursor:pointer;
+}
+
+.matches-table th{
+padding:10px 4px;
+font-size:12px;
+}
+
+.matches-table td{
+padding:6px 4px;
+font-size:12px;
+}
+
+.badge{
+display:inline-block;
+padding:4px 8px;
+border-radius:999px;
+background:#dbeafe;
+color:#1e40af;
+font-weight:600;
+}
+
+.result-badge{
+display:inline-block;
+min-width:52px;
+text-align:center;
+border-radius:999px;
+padding:4px 10px;
+font-weight:700;
+}
+
+.result-win{
+background:var(--result-win-bg);
+border:1px solid var(--result-win);
+color:var(--result-win);
+}
+
+.result-draw{
+background:var(--result-draw-bg);
+border:1px solid var(--result-draw);
+color:var(--result-draw);
+}
+
+.result-loss{
+background:var(--result-loss-bg);
+border:1px solid var(--result-loss);
+color:var(--result-loss);
+}
+
+
+.result-empty{
+background:var(--card-bg);
+color:var(--muted);
+}
+
+.card{
+background:var(--card-bg);
+backdrop-filter:blur(20px);
+
+border:1px solid var(--card-border);
+
+border-radius:24px;
+
+padding:8px 14px;
+
+transition:.3s;
+}
+
+.meta-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:6px;
+margin-bottom:6px;
+}
+
+.meta{
+background:var(--meta-bg);
+border:1px solid var(--meta-border);
+padding:8px;
+border-radius:16px;
+}
+
+.meta-label{
+font-size:11px;
+text-transform:uppercase;
+color:var(--muted);
+}
+
+.meta-value{
+margin-top:4px;
+font-weight:700;
+font-size:13px;
+}
+
+.timeline-title{
+margin:10px 0 5px;
+font-size:13px;
+font-weight:700;
+color:var(--muted);
+text-transform:uppercase;
+letter-spacing:.5px;
+}
+
+.lineups{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:6px;
+}
+
+.content-grid{
+display:block;
+}
+
+.left-column,
+.right-column{
+display:flex;
+flex-direction:column;
+gap:6px;
+position:static;
+}
+
+.team-card{
+padding:0;
+}
+
+.team-card h3{
+font-size:15px;
+margin-bottom:10px;
+}
+
+.team-card h4{
+font-size:13px;
+margin:10px 0 6px;
+}
+
+.team-header{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.team-header.home{
+justify-content:right;
+}
+
+.team-header.away{
+justify-content:left;
+}
+
+.player{
+display:flex;
+align-items:center;
+gap:10px;
+padding:4px 0;
+margin-right:15px;
+
+border-bottom:1px solid var(--meta-border);
+}
+
+.player-name{
+    flex:1;
+    font-size:12px;
+}
+
+.player-link{
+    font-size:12px;
+}
+
+.player-icons{
+margin-left:3px;
+}
+
+.sub-off{
+color:#dc2626;
+font-weight:700;
+}
+
+.number{
+width:32px;
+height:32px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:var(--number-bg);
+border:2px solid var(--number);
+color:var(--number);
+
+font-size:12px;
+font-weight:800;
+
+flex-shrink:0;
+}
+
+.timeline{
+position:relative;
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+top:0;
+bottom:0;
+left:24px;
+width:3px;
+background:var(--divider);
+}
+
+.timeline-item{
+display:flex;
+gap:8px;
+margin-bottom:8px;
+}
+
+.timeline-icon{
+width:30px;
+height:30px;
+border-radius:50%;
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,.1);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:2;
+}
+
+.timeline-content{
+flex:1;
+background:var(--surface);
+padding:6px;
+border-radius:12px;
+}
+
+.timeline-modern{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    margin-top:8px;
+}
+
+.timeline-row{
+    display:grid;
+    grid-template-columns:1fr 50px 1fr;
+    align-items:start;
+    gap:12px;
+}
+
+.timeline-home{
+    text-align:right;
+    justify-self:end;
+}
+
+.timeline-away{
+    text-align:left;
+    justify-self:start;
+}
+
+.timeline-minute{
+    width:36px;
+    height:36px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:auto;
+
+    border-radius:50%;
+
+	background:var(--meta-bg);
+	border:1px solid var(--meta-border);
+
+    color:var(--muted);
+
+    font-size:11px;
+    font-weight:700;
+}
+
+.timeline-event{
+font-size:12px;
+line-height:1.05;
+}
+
+.timeline-score{
+display:inline-flex;
+align-items:center;
+height:30px;
+padding:0;
+font-size:12.5px;
+font-weight:600;
+}
+
+.score-changed{
+    color:var(--link-color);
+    font-weight:600;
+}
+
+.assist-text,
+.sub-text{
+    font-size:11px;
+    color:var(--muted);
+    opacity:.8;
+    font-weight:400;
+}
+
+.sub-in{
+color:#16a34a;
+font-weight:700;
+}
+
+.sub-out{
+color:#dc2626;
+font-weight:700;
+}
+
+.timeline-break-row{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:12px;
+    margin:12px 0;
+}
+
+.timeline-break-line{
+    height:1px;
+    background:var(--card-border);
+}
+
+.timeline-break-label{
+    font-size:11px;
+    font-weight:700;
+    color:var(--muted);
+    text-transform:uppercase;
+    text-align:center;
+}
+
+.event-home{
+text-align:right;
+}
+
+.event-away{
+text-align:left;
+}
+
+.event-box::after{
+content:"";
+display:block;
+clear:both;
+}
+
+.event-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    width:16px;
+    height:16px;
+
+    font-size:14px;
+    line-height:1;
+
+    vertical-align:middle;
+    margin:0 2px;
+}
+
+img.event-icon{
+    width:16px;
+    height:16px;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.h2h-summary{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+margin-bottom:20px;
+}
+
+.h2h-stat{
+padding:10px 10px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+.h2h-circle{
+width:56px;
+height:56px;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:20px;
+font-weight:800;
+
+margin-bottom:10px;
+}
+
+.h2h-win{
+background:rgba(34,197,94,.12);
+border:3px solid #22c55e;
+color:#22c55e;
+}
+
+.h2h-draw{
+background:rgba(245,158,11,.12);
+border:3px solid #f59e0b;
+color:#f59e0b;
+}
+
+.h2h-loss{
+background:rgba(239,68,68,.12);
+border:3px solid #ef4444;
+color:#ef4444;
+}
+
+.h2h-label{
+font-size:10px;
+text-transform:uppercase;
+letter-spacing:1px;
+font-weight:700;
+color:var(--muted);
+}
+
+.h2h-last10{
+text-align:center;
+
+margin:0 0 14px;
+padding-bottom:12px;
+
+font-size:12px;
+font-weight:700;
+
+color:var(--text);
+
+text-transform:uppercase;
+
+border-bottom:1px solid var(--meta-border);
+}
+
+.content-sections{
+display:block;
+}
+
+.timeline .player-link{
+font-weight:600;
+}
+
+.match-tabs,
+.lineup-tabs{
+    display:none;
+}
+
+@media(min-width:821px){
+
+    .content-sections{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+        align-items:start;
+    }
+
+    .left-column,
+    .right-column{
+        display:flex;
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .match-section{
+        display:block !important;
+    }
+
+}
+
+.timeline-card{
+    margin-top:8px;
+}
+
+.team-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.team-logo{
+    width:56px;
+    height:56px;
+    object-fit:contain;
+}
+      
+@media(max-width:820px){
+
+.team-logo{
+    width:26px;
+    height:26px;
+}
+
+    .match-tabs{
+        display:flex;
+        gap:8px;
+    }
+
+	.container{
+		padding:6px;
+	}
+
+.section-title{
+display:none;
+}
+
+.match-tabs,
+.lineup-tabs{
+flex-wrap:wrap;
+display:flex;
+gap:10px;
+margin:10px 0;
+}
+
+.match-tabs{
+    margin:15px 10px 10px;
+}
+
+.match-tab,
+.lineup-tab{
+position:relative;
+flex:none;
+width:auto;
+height:auto;
+padding:6px 10px;
+
+
+background:transparent;
+border:none;
+border-radius:0;
+
+color:var(--tabs-text);
+font-size:13px;
+font-weight:700;
+}
+
+.match-tab:hover,
+.lineup-tab:hover{
+background:transparent;
+cursor:pointer;
+}
+
+.match-tab.active, 
+.lineup-tab.active{
+background:transparent;
+color:var(--tabs-active);
+}
+
+.match-tab.active::after,
+.lineup-tab.active::after
+{
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+content:"";
+display:block;
+height:2px;
+margin-top:4px;
+margin-bottom:0;
+background:var(--tabs-active);
+border-radius:999px;
+}
+
+.matches-table{
+table-layout:fixed;
+}
+
+.matches-table th,
+.matches-table td{
+font-size:11.5px;
+padding:6px 4px;
+}
+
+.matches-table th:nth-child(1),
+.matches-table td:nth-child(1){
+width:70px;
+padding-left:5px;
+}
+
+.matches-table th:nth-child(2),
+.matches-table td:nth-child(2){
+width:auto;
+}
+
+.matches-table th:nth-child(3),
+.matches-table td:nth-child(3){
+width:55px;
+}
+
+.matches-table th:nth-child(4),
+.matches-table td:nth-child(4){
+width:55px;
+padding-right:5px;
+}
+
+.timeline-event{
+font-size:12px;
+}
+
+.timeline-score{
+font-size:12px;
+}
+
+.content-grid{
+grid-template-columns:1fr;
+}
+
+.mobile-hidden,
+.team-card h3{
+display:none;
+}
+
+.match-header{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+flex-direction:row;
+text-align:center;
+}
+
+.teams{
+display:flex;
+align-items:center;
+justify-content:center;
+padding: 0;
+gap:12px;
+margin: 0 20px;
+}
+
+.team-name{
+text-align:center !important;
+font-size:12px;
+}
+
+.score{
+    font-size:13px;
+    font-weight:700;
+    min-width:45px;
+    text-align:center;
+    white-space:nowrap;
+    flex-shrink:0;
+    margin:0;
+}
+
+.lineups{
+display:block;
+}
+
+#lineup-barca,
+#lineup-opp{
+margin-bottom:15px;
+}
+
+.h2h-summary{
+gap:8px;
+}
+
+.h2h-stat{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.h2h-circle{
+width:56px;
+height:56px;
+font-size:20px;
+}
+
+.h2h-stat{
+padding:12px 6px;
+}
+
+.h2h-label{
+font-size:10px;
+}
+
+.sticky-shell{
+    position:sticky;
+    top:0;
+    z-index:9997;
+
+    background:var(--bg);
+
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
+	padding-top: 8px;
+}
+
+.sticky-content{
+    max-width:1500px;
+    margin:auto;
+    padding:0 10px;
+}
+
+.hero{
+	font-size:13px;
+    margin-bottom:2px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+      
+<div class="container">
+      
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="header">
+    <div class="header-inner">
+
+		<a href="/">
+        	<img src="logos/barcadb-logo.png" class="header-logo" alt="Barça DB">
+		</a>
+
+        <div class="header-text">
+            <h1>Barça Database</h1>
+	    </div>
+
+        <div class="desktop-search">
+
+            <input
+                type="text"
+                id="personSearch"
+                placeholder="Search..."
+                class="desktop-search-input">
+
+            <div id="personSearchResults"></div>
+
+        </div>
+
+        <button
+            id="menuToggle"
+            class="menu-toggle">
+            ☰
+        </button>
+
+    </div>
+</div>
+
+<nav class="main-menu">
+
+    <div class="mobile-menu-search">
+
+        <input
+            type="text"
+            id="mobilePersonSearch"
+            placeholder="Search..."
+            class="mobile-search-input">
+
+        <div id="mobileSearchResults"></div>
+
+    </div>
+
+    <a href="/">
+        <span>Home page</span>
+    </a>
+      
+    <a href="statistics.html">
+        <span>Statistics</span>
+    </a>
+
+    <a href="season.html">
+        <span>Seasons</span>
+    </a>
+
+    <a href="insights.html">
+        <span>Insights</span>
+    </a>
+
+    <a href="compare.html">
+        <span>Compare</span>
+    </a>
+
+    <a href="el-clasico.html">
+        <span>El Clásico</span>
+    </a>
+
+</nav>
+
+    <div id="app">
+        Loading...
+    </div>
+
+</div>
+
+<script src="data/clubMap.js"></script>
+<script src="data/competitionMap.js"></script>
+<script>
+
+function hasBench(match,prefix=""){
+
+    for(let i=1;i<=12;i++){
+
+        if(match[`${prefix}On the bench name ${i}`]){
+            return true;
+        }
+
+    }
+
+    return false;
+}
+
+function getClubLogo(team){
+    return String(team || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        + ".png";
+}
+
+console.log("SCRIPT STARTED");
+
+const params = new URLSearchParams(location.search);
+const matchId = params.get("id");
+
+console.log("ID:", matchId);
+
+if (!matchId) {
+    document.getElementById("app").innerHTML =
+        "<div class='card'>Missing ID in URL</div>";
+    throw new Error("Missing id parameter");
+}
+
+let allMatches = [];
+
+fetch("/data/data.json")
+.then(r => {
+
+if (!r.ok) {
+throw new Error(`HTTP ${r.status}`);
+}
+
+return r.json();
+})
+.then(data => {
+
+    allMatches = data;
+
+    initPersonSearch();
+
+    console.log("DATA LOADED");
+    console.log(data);
+
+    if (!Array.isArray(data)) {
+        throw new Error("/data/data.json is not an array");
+    }
+
+console.log("Looking for ID:", matchId);
+
+const match =
+data.find(
+row =>
+String(row.ID).trim() ===
+String(matchId).trim()
+);
+
+if (!match) {
+
+document.getElementById("app").innerHTML =
+"<div class='card'>Match not found</div>";
+
+return;
+}
+
+renderMatch(match, data);
+
+})
+
+.catch(error => {
+
+console.error(error);
+
+document.getElementById("app").innerHTML = `
+       <div class="card">
+           Error:<br>
+           ${error.message}
+       </div>
+   `;
+
+});
+
+function showMatchSection(section){
+
+if(window.innerWidth > 820){
+return;
+}
+
+const current =
+document.querySelector(".match-section.active");
+
+const next =
+document.getElementById(section);
+
+const isLineups =
+section === "squads-section";
+
+current?.classList.remove("active");
+
+next.classList.remove("slide-left","slide-right");
+next.classList.add(
+isLineups ? "slide-right" : "slide-left"
+);
+
+next.classList.add("active");
+
+document
+.querySelectorAll(".match-tab")
+.forEach(el => el.classList.remove("active"));
+
+document
+.querySelector(`[data-section="${section}"]`)
+.classList.add("active");
+}
+
+window.showMatchSection = showMatchSection;
+
+function escapeHtml(str){
+
+    if(str === null || str === undefined){
+        return "";
+    }
+
+    return String(str)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#39;");
+}
+
+function getPlayerIcons(match, playerName, prefix="") {
+
+    const events = [];
+
+    // Góly
+    for(let i=1; i<=12; i++){
+        if(
+            String(match[`${prefix}Goal Player ${i}`] || "").trim() ===
+            String(playerName).trim()
+        ){
+            events.push({
+                minute: match[`${prefix}Goal min ${i}`],
+                icon: "⚽"
+            });
+        }
+    }
+
+    // Asistencie
+    for(let i=1; i<=12; i++){
+        if(
+            String(match[`${prefix}Assist Player ${i}`] || "").trim() ===
+            String(playerName).trim()
+        ){
+            events.push({
+                minute: match[`${prefix}Goal min ${i}`],
+                icon: "🅰️"
+            });
+        }
+    }
+
+    // Žlté karty
+    for(let i=1; i<=12; i++){
+        if(
+            String(match[`${prefix}Yellow player ${i}`] || "").trim() ===
+            String(playerName).trim()
+        ){
+            events.push({
+                minute: match[`${prefix}Yellow min ${i}`],
+                icon: "🟨"
+            });
+        }
+    }
+
+    // Červené karty
+    for(let i=1; i<=5; i++){
+        if(
+            String(match[`${prefix}Red player ${i}`] || "").trim() ===
+            String(playerName).trim()
+        ){
+            events.push({
+                minute: match[`${prefix}Red min ${i}`],
+                icon: "🟥"
+            });
+        }
+    }
+
+    // Striedanie IN
+    for(let i=1; i<=6; i++){
+        if(
+            String(match[`${prefix}Sub on ${i}`] || "").trim() ===
+            String(playerName).trim()
+        ){
+            events.push({
+                minute: match[`${prefix}Sub min ${i}`],
+                icon: '<span style="color:#16a34a;font-weight:700;">⬆</span>'
+            });
+        }
+    }
+
+    // Striedanie OUT
+    for(let i=1; i<=6; i++){
+        if(
+            String(match[`${prefix}Sub off ${i}`] || "").trim() ===
+            String(playerName).trim()
+        ){
+            events.push({
+                minute: match[`${prefix}Sub min ${i}`],
+                icon: '<span style="color:#dc2626;font-weight:700;">⬇</span>'
+            });
+        }
+    }
+
+    events.sort((a,b) => {
+
+        const ma =
+            parseInt(String(a.minute).match(/\d+/)?.[0] || 0);
+
+        const mb =
+            parseInt(String(b.minute).match(/\d+/)?.[0] || 0);
+
+        return ma - mb;
+    });
+
+    return events.map(e => e.icon).join(" ");
+}
+
+function getPlayers(match,prefix=""){
+
+const captain = match[`${prefix}Captain`] || "";
+
+const subbedOff = [];
+
+for(let i=1;i<=6;i++){
+
+const player = match[`${prefix}Sub off ${i}`];
+
+if(player){
+subbedOff.push(String(player).trim());
+}
+}
+
+let html="";
+
+for(let i=1;i<=11;i++){
+
+const player =
+match[`${prefix}Player name ${i}`];
+
+const number =
+match[`${prefix}Player number ${i}`];
+
+if(player && String(player).trim()){
+
+html += `
+           <div class="player">
+				${number ? `
+				<div class="number">
+				    ${escapeHtml(number)}
+				</div>
+				` : ""}
+
+               <span class="player-name">
+               
+                   <a
+                      class="player-link"
+                      href="player.html?name=${encodeURIComponent(player)}">
+               
+                      ${escapeHtml(player)}
+               
+                   </a>
+               
+                   ${
+                       String(player).trim() === String(captain).trim()
+                           ? '<strong style="margin-left:2px;">(C)</strong>'
+                           : ''
+                   }
+               
+                   <span class="player-icons">
+                       ${getPlayerIcons(match, player, prefix)}
+                   </span>
+               
+               </span>
+           </div>
+           `;
+}
+}
+
+return html;
+}
+
+function getBench(match, prefix="") {
+
+    const subbedOn = [];
+
+    for(let i=1; i<=6; i++){
+
+        const player = match[`${prefix}Sub on ${i}`];
+
+        if(player){
+            subbedOn.push(String(player).trim());
+        }
+    }
+
+    let html = "";
+
+    for(let i=1; i<=12; i++){
+
+        const player =
+            match[`${prefix}On the bench name ${i}`];
+
+        const number =
+            match[`${prefix}On the bench number ${i}`];
+
+        if(player && String(player).trim()){
+
+            html += `
+            <div class="player">
+
+					${number ? `
+					<div class="number">
+					    ${escapeHtml(number)}
+					</div>
+					` : ""}
+
+                  <span class="player-name">
+                  
+                      <a
+                         class="player-link"
+                         href="player.html?name=${encodeURIComponent(player)}">
+                  
+                         ${escapeHtml(player)}
+                  
+                      </a>
+                  
+                      <span class="player-icons">
+                         ${getPlayerIcons(match, player, prefix)}
+                      </span>
+                  
+                  </span>
+
+            </div>
+            `;
+        }
+    }
+
+    return html;
+}
+
+function getTimeline(match){
+
+function playerLink(name){
+
+return `
+<a
+   class="player-link"
+   href="player.html?name=${encodeURIComponent(name)}">
+
+   ${escapeHtml(name)}
+
+</a>
+`;
+
+}
+
+const events = [];
+
+let homeScore = 0;
+let awayScore = 0;
+
+const homeMatch =
+String(match["Home/Away"] || "").trim() === "Home";
+
+function sortByMinute(arr){
+
+arr.sort((a,b) => {
+
+const aCheck = String(a.minute).trim() === "✔";
+const bCheck = String(b.minute).trim() === "✔";
+
+if (aCheck && !bCheck) return 1;
+if (!aCheck && bCheck) return -1;
+if (aCheck && bCheck) return 0;
+
+const ma =
+parseInt(String(a.minute).match(/\d+/)?.[0] || 0);
+
+const mb =
+parseInt(String(b.minute).match(/\d+/)?.[0] || 0);
+
+return ma - mb;
+
+});
+
+}
+
+// GOALS
+
+for(let i=1;i<=12;i++){
+
+if(match[`Goal Player ${i}`]){
+
+events.push({
+minute: match[`Goal min ${i}`],
+side: homeMatch ? "left":"right",
+player: match[`Goal Player ${i}`],
+assist: match[`Assist Player ${i}`] || "",
+penalty:
+match[`Penalty player ${i}`] &&
+String(match[`Penalty scored ${i}`] || "")
+.trim()
+.toLowerCase() !== "not in"
+});
+
+}
+
+if(match[`Opp. Goal Player ${i}`]){
+
+events.push({
+minute: match[`Opp. Goal min ${i}`],
+side: homeMatch ? "right":"left",
+player: match[`Opp. Goal Player ${i}`],
+assist: match[`Opp. Assist player ${i}`] || "",
+penalty:
+match[`Opp. Penalty player ${i}`] &&
+String(match[`Opp. Penalty scored ${i}`] || "")
+.trim()
+.toLowerCase() !== "not in"
+});
+
+}
+
+}
+
+// MISSED PENALTIES
+
+for(let i=1;i<=12;i++){
+
+if(
+match[`Penalty player ${i}`] &&
+String(match[`Penalty scored ${i}`] || "")
+.trim()
+.toLowerCase() === "not in"
+){
+
+events.push({
+minute: match[`Penalty min ${i}`],
+side: homeMatch ? "left":"right",
+player: match[`Penalty player ${i}`],
+missedPenalty: true
+});
+
+}
+
+if(
+match[`Opp. Penalty player ${i}`] &&
+String(match[`Opp. Penalty scored ${i}`] || "")
+.trim()
+.toLowerCase() === "not in"
+){
+
+events.push({
+minute: match[`Opp. Penalty min ${i}`],
+side: homeMatch ? "right":"left",
+player: match[`Opp. Penalty player ${i}`],
+missedPenalty: true
+});
+
+}
+
+}
+// SUBSTITUTIONS
+
+for(let i=1;i<=6;i++){
+
+if(match[`Sub on ${i}`]){
+
+events.push({
+minute: match[`Sub min ${i}`],
+side: homeMatch ? "left":"right",
+on: match[`Sub on ${i}`],
+off: match[`Sub off ${i}`]
+});
+
+}
+
+if(match[`Opp. Sub on ${i}`]){
+
+events.push({
+minute: match[`Opp. Sub min ${i}`],
+side: homeMatch ? "right":"left",
+on: match[`Opp. Sub on ${i}`],
+off: match[`Opp. Sub off ${i}`]
+});
+
+}
+
+}
+
+// YELLOW CARDS
+
+for(let i=1;i<=12;i++){
+
+if(match[`Yellow player ${i}`]){
+
+events.push({
+minute: match[`Yellow min ${i}`],
+side: homeMatch ? "left":"right",
+icon: "🟨",
+player: match[`Yellow player ${i}`]
+});
+
+}
+
+if(match[`Opp. Yellow player ${i}`]){
+
+events.push({
+minute: match[`Opp. Yellow min ${i}`],
+side: homeMatch ? "right":"left",
+icon: "🟨",
+player: match[`Opp. Yellow player ${i}`]
+});
+
+}
+
+}
+
+// RED CARDS
+
+for(let i=1;i<=5;i++){
+
+if(match[`Red player ${i}`]){
+
+events.push({
+minute: match[`Red min ${i}`],
+side: homeMatch ? "left":"right",
+icon: "🟥",
+player: match[`Red player ${i}`]
+});
+
+}
+
+if(match[`Opp. Red player ${i}`]){
+
+events.push({
+minute: match[`Opp. Red min ${i}`],
+side: homeMatch ? "right":"left",
+icon: "🟥",
+player: match[`Opp. Red player ${i}`]
+});
+
+}
+
+}
+
+sortByMinute(events);
+
+const halftimeIndex = events.findIndex(event => {
+
+    const minute =
+        parseInt(String(event.minute).match(/\d+/)?.[0] || 0);
+
+    return minute > 45;
+
+});
+
+if(halftimeIndex !== -1){
+
+    events.splice(halftimeIndex, 0, {
+        halftime: true
+    });
+
+}
+
+let currentHome = 0;
+let currentAway = 0;
+
+events.forEach(event => {
+
+if(event.assist !== undefined){
+
+    if(event.side === "left"){
+
+        currentHome++;
+
+		event.score = `(<span class="score-changed">${currentHome}</span>:${currentAway})`;
+
+    }else{
+
+        currentAway++;
+
+		event.score = `(${currentHome}:<span class="score-changed">${currentAway}</span>)`;
+
+    }
+}
+
+});
+
+function eventRow(side, minute, content){
+
+    const minuteLabel =
+    /^\d+(\+\d+)?$/.test(String(minute).trim())
+    ? `${minute}'`
+    : escapeHtml(minute);
+
+    return `
+        <div class="timeline-row">
+
+            <div class="timeline-home">
+                ${side === "left" ? content : ""}
+            </div>
+
+            <div class="timeline-minute">
+                ${minuteLabel}
+            </div>
+
+            <div class="timeline-away">
+                ${side === "right" ? content : ""}
+            </div>
+
+        </div>
+    `;
+}
+
+let timelineHtml = `
+<div class="card timeline-card">
+
+   <div class="timeline-modern">
+`;
+
+
+events.forEach(event => {
+
+if(event.halftime){
+
+    timelineHtml += `
+        <div class="timeline-break-row">
+            <div class="timeline-break-line"></div>
+
+            <div class="timeline-break-label">
+                HT
+            </div>
+
+            <div class="timeline-break-line"></div>
+        </div>
+    `;
+
+    return;
+}
+
+let content = "";
+
+if(event.assist !== undefined){
+
+if(event.side === "right"){
+
+content = `
+           <span class="event-icon">⚽</span>
+
+           <strong>${playerLink(event.player)}</strong>
+
+           <span class="timeline-score">
+               ${event.score}
+           </span>
+		   
+		   ${
+               event.assist
+                   ? `<span class="assist-text">Assist by ${playerLink(event.assist)}</span>`
+                   : ""
+           }
+
+       `;
+
+}else{
+
+content = `
+	   <strong>${playerLink(event.player)}</strong>
+	
+	   <span class="timeline-score">
+	       ${event.score}
+	   </span>
+	
+	   <span class="event-icon">⚽</span>
+	
+	   ${
+	      event.assist
+	      ? `<span class="assist-text">Assist by ${playerLink(event.assist)}</span>`
+	      : ""
+	   }
+	`;
+
+}
+
+}else if(event.on){
+
+if(event.side === "right"){
+
+content = `
+           <img src="icons/sub.png" class="event-icon" alt="Substitution">
+            <strong>${playerLink(event.on)}</strong>
+            <span class="sub-text">for</span>
+            ${playerLink(event.off)}
+       `;
+
+}else{
+
+content = `
+		<strong>${playerLink(event.on)}</strong>
+		<span class="sub-text">for</span>
+		${playerLink(event.off)}
+		<img src="icons/sub.png" class="event-icon" alt="Substitution">
+       `;
+
+}
+
+}else if(event.icon){
+
+if(event.side === "right"){
+
+content = `
+           <span class="event-icon">${event.icon}</span>
+           ${playerLink(event.player)}
+       `;
+
+}else{
+
+content = `
+           ${playerLink(event.player)}
+           <span class="event-icon">${event.icon}</span>
+       `;
+
+}
+}
+
+timelineHtml += eventRow(
+event.side,
+event.minute,
+content
+);
+
+});
+
+timelineHtml += `
+   </div>
+</div>
+`;
+
+return {
+timelineHtml
+};
+}
+function hasStartingXI(match,prefix=""){
+
+for(let i=1;i<=11;i++){
+
+if(match[`${prefix}Player name ${i}`]){
+return true;
+}
+
+}
+
+return false;
+
+}
+
+function hasBench(match,prefix=""){
+
+for(let i=1;i<=12;i++){
+
+if(match[`${prefix}On the bench name ${i}`]){
+return true;
+}
+
+}
+
+return false;
+
+}
+
+function hasSquads(match){
+
+return (
+hasStartingXI(match) ||
+hasStartingXI(match,"Opp. ") ||
+hasBench(match) ||
+hasBench(match,"Opp. ")
+);
+
+}
+
+function hasTimeline(match){
+
+for(let i=1;i<=12;i++){
+
+if(
+match[`Goal Player ${i}`] ||
+match[`Opp. Goal Player ${i}`] ||
+match[`Yellow player ${i}`] ||
+match[`Opp. Yellow player ${i}`] ||
+match[`Red player ${i}`] ||
+match[`Opp. Red player ${i}`] ||
+match[`Sub on ${i}`] ||
+match[`Opp. Sub on ${i}`]
+){
+return true;
+}
+
+}
+
+return false;
+}
+
+function showLineup(team){
+
+    const barca =
+    document.getElementById("lineup-barca");
+
+    const opp =
+    document.getElementById("lineup-opp");
+
+    const tabs =
+    document.querySelectorAll(".lineup-tab");
+
+    tabs.forEach(tab =>
+        tab.classList.remove("active")
+    );
+
+    if(team === "barca"){
+
+        if(barca){
+            barca.classList.remove("mobile-hidden");
+        }
+
+        if(opp){
+            opp.classList.add("mobile-hidden");
+        }
+
+        if(tabs[0]){
+            tabs[0].classList.add("active");
+        }
+
+        return;
+
+    }
+
+    if(!opp){
+        return;
+    }
+
+    opp.classList.remove("mobile-hidden");
+
+    if(barca){
+        barca.classList.add("mobile-hidden");
+    }
+
+    if(tabs[1]){
+        tabs[1].classList.add("active");
+    }
+
+}
+
+window.showLineup = showLineup;
+
+function isHomeMatch(match){
+return String(match["Home/Away"] || "").trim() === "Home";
+}
+
+function getH2H(match, allMatches){
+
+const opponent =
+String(match["Opp. Team"] || "").trim();
+
+const currentMatchDate =
+new Date(
+match.Date.split(".").reverse().join("-")
+);
+
+const allH2H = allMatches
+.filter(row => {
+
+const sameOpponent =
+String(row["Opp. Team"] || "").trim() === opponent;
+
+const playedMatch =
+String(row.Result || "").trim() !== "-:-";
+
+const matchDate =
+new Date(
+row.Date.split(".").reverse().join("-")
+);
+
+const olderMatch =
+matchDate < currentMatchDate;
+
+return (
+sameOpponent &&
+playedMatch &&
+olderMatch
+);
+
+});
+
+const wins =
+allH2H.filter(
+row => row["Result type"] === "W"
+).length;
+
+const draws =
+allH2H.filter(
+row => row["Result type"] === "D"
+).length;
+
+const losses =
+allH2H.filter(
+row => row["Result type"] === "L"
+).length;
+
+const h2hMatches = [...allH2H]
+.sort((a,b) =>
+new Date(b.Date.split(".").reverse().join("-")) -
+new Date(a.Date.split(".").reverse().join("-"))
+)
+.slice(0,10);
+
+let html = `
+<div class="card">
+
+   <div class="h2h-last10">
+       Overall Head-to-Head Record
+   </div>
+
+               <div class="h2h-summary">
+           
+                   <div class="h2h-stat">
+                       <div class="h2h-circle h2h-win">
+                           ${wins}
+                       </div>
+                       <div class="h2h-label">
+                           Wins
+                       </div>
+                   </div>
+           
+                   <div class="h2h-stat">
+                       <div class="h2h-circle h2h-draw">
+                           ${draws}
+                       </div>
+                       <div class="h2h-label">
+                           Draws
+                       </div>
+                   </div>
+           
+                   <div class="h2h-stat">
+                       <div class="h2h-circle h2h-loss">
+                           ${losses}
+                       </div>
+                       <div class="h2h-label">
+                           Losses
+                       </div>
+                   </div>
+           
+               </div>
+               
+               <div class="h2h-last10">
+                   Last 10 Matches
+               </div>
+   
+               <table class="matches-table">
+   
+                   <thead>
+                       <tr>
+                           <th>Date</th>
+                           <th>Competition</th>
+                           <th>Venue</th>
+                           <th>Result</th>
+                       </tr>
+                   </thead>
+   
+                   <tbody>
+       `;
+
+h2hMatches.forEach(row => {
+
+let resultClass = "result-empty";
+
+switch(row["Result type"]){
+
+case "W":
+resultClass = "result-win";
+break;
+
+case "D":
+resultClass = "result-draw";
+break;
+
+case "L":
+resultClass = "result-loss";
+break;
+}
+
+html += `
+           <tr onclick="location.href='match.html?id=${row.ID}'">
+
+               <td>
+                   ${row.Date || ""}
+               </td>
+
+               <td>
+                   ${row.Competition || ""}
+               </td>
+
+               <td>
+                   ${row["Home/Away"] || ""}
+               </td>
+
+               <td>
+                   <span class="result-badge ${resultClass}">
+                       ${row.Result || "-:-"}
+                   </span>
+               </td>
+
+           </tr>
+       `;
+});
+
+html += `
+               </tbody>
+
+           </table>
+
+       </div>
+   `;
+
+return html;
+}
+
+function renderMatch(match, allMatches){
+
+const scoreText =
+    match["Result"] &&
+    match["Result"].trim() &&
+    match["Result"] !== "-:-"
+        ? match["Result"]
+        : "VS";
+
+const showTimeline = hasTimeline(match);
+const showSquads = hasSquads(match);
+
+const homeMatch = isHomeMatch(match);
+
+const teamA = homeMatch
+? "FC Barcelona"
+: (match["Opp. Team"] || "");
+
+const teamB = homeMatch
+? (match["Opp. Team"] || "")
+: "FC Barcelona";
+
+const opponentName = match["Opp. Team"] || "";
+
+document.title =
+`FC Barcelona vs ${opponentName} | Barça Database`;
+
+document.querySelector('meta[name="description"]')
+?.setAttribute(
+    "content",
+    `Match details, lineups, goals and statistics for FC Barcelona vs ${opponentName}.`
+);
+
+const canonical = document.querySelector('link[rel="canonical"]');
+
+if (canonical) {
+    canonical.href = location.href;
+}
+
+const barcaTitle = homeMatch
+? "FC Barcelona"
+: (match["Opp. Team"] || "");
+
+const oppTitle = homeMatch
+? (match["Opp. Team"] || "")
+: "FC Barcelona";
+
+const barcaPlayers = homeMatch
+? getPlayers(match)
+: getPlayers(match,"Opp. ");
+
+const oppPlayers = homeMatch
+? getPlayers(match,"Opp. ")
+: getPlayers(match);
+
+const barcaBench = homeMatch
+? getBench(match)
+: getBench(match,"Opp. ");
+
+const oppBench = homeMatch
+? getBench(match,"Opp. ")
+: getBench(match);
+
+const hasBarcaBench = homeMatch
+? hasBench(match)
+: hasBench(match,"Opp. ");
+
+const hasOppBench = homeMatch
+? hasBench(match,"Opp. ")
+: hasBench(match);
+
+const barcaManager = homeMatch
+? (match["Manager"] || "-")
+: (match["Opp. Manager"] || "-");
+
+const oppManager = homeMatch
+? (match["Opp. Manager"] || "-")
+: (match["Manager"] || "-");
+
+const hasBarcaLineup =
+    hasStartingXI(match);
+
+const hasOpponentLineup =
+    hasStartingXI(match, "Opp. ");
+
+const timeline = getTimeline(match);
+
+const competition = String(match["Competition"] || "").trim();
+
+const matchday = String(match["Matchday"] || "").trim();
+
+const isNumericMatchday =
+/^\d+$/.test(matchday);
+
+const matchdayLabel =
+isNumericMatchday ? "Matchday" : "Stage";
+
+const heroMatchday =
+isNumericMatchday
+? `${matchday}. Matchday`
+: matchday;
+
+const infoHtml = `
+<div class="card">
+
+   <div class="meta-grid">
+
+       <div class="meta">
+           <div class="meta-label">Venue</div>
+           <div class="meta-value">
+               ${escapeHtml(match["Venue"] || "-")}
+           </div>
+       </div>
+
+       <div class="meta">
+           <div class="meta-label">Referee</div>
+           <div class="meta-value">
+               ${escapeHtml(match["Referee"] || "-")}
+           </div>
+       </div>
+
+   </div>
+
+</div>
+`;
+const squadsHtml = `
+<div class="card">
+
+	${hasBarcaLineup && hasOpponentLineup ? `
+	
+	<div class="lineup-tabs">
+	
+	    <button
+	        class="lineup-tab active"
+	        onclick="showLineup('barca')">
+	
+	        ${escapeHtml(barcaTitle)}
+	
+	    </button>
+	
+	    <button
+	        class="lineup-tab"
+	        onclick="showLineup('opp')">
+	
+	        ${escapeHtml(oppTitle)}
+	
+	    </button>
+	
+	</div>
+	
+	` : ""}
+
+   <div class="lineups">
+
+		${hasBarcaLineup ? `
+		
+		<div
+		    id="lineup-barca"
+		    class="team-card">
+		
+		    <h3>${escapeHtml(barcaTitle)}</h3>
+		
+		    ${barcaPlayers}
+		
+		    ${hasBarcaBench ? `
+		    <h4>Bench</h4>
+		    ${barcaBench}
+		    ` : ""}
+		
+		    <h4>Manager</h4>
+		
+		    <div class="player">
+		
+		        <a
+		            class="player-link"
+		            href="manager.html?name=${encodeURIComponent(barcaManager)}">
+		
+		            ${escapeHtml(barcaManager)}
+		
+		        </a>
+		
+		    </div>
+		
+		</div>
+		
+		` : ""}
+
+       ${hasOpponentLineup ? `
+
+		<div
+		    id="lineup-opp"
+		    class="team-card">
+		
+		    <h3>${escapeHtml(oppTitle)}</h3>
+		
+		    ${oppPlayers}
+		
+		    ${hasOppBench ? `
+		    <h4>Bench</h4>
+		    ${oppBench}
+		    ` : ""}
+		
+		    <h4>Manager</h4>
+		
+		    <div class="player">
+		
+		        <a
+		            class="player-link"
+		            href="manager.html?name=${encodeURIComponent(oppManager)}">
+		
+		            ${escapeHtml(oppManager)}
+		
+		        </a>
+		
+		    </div>
+		
+		</div>
+		
+		` : ""}
+
+   </div>
+
+</div>
+`;
+
+const h2hHtml =
+getH2H(match, allMatches);
+
+document.getElementById("app").innerHTML = `
+
+<div class="hero">
+   <div style="text-transform:uppercase;">
+       ${escapeHtml(match["Date"] || "")}
+       |
+       ${escapeHtml(match["Competition"] || "")}
+       ${heroMatchday ? `| ${heroMatchday}` : ""}
+   </div>
+</div>
+
+<div class="sticky-shell">
+<div class="sticky-content">
+<div class="card">
+
+   <div class="teams">
+		<div class="team-header home">
+		
+		    <div class="team-name">
+		        ${escapeHtml(teamA)}
+		    </div>
+		
+		<img
+		    src="logos/clubs/${getClubLogo(teamA)}"
+		    class="team-logo"
+		    alt="${escapeHtml(teamA)}"
+		    onerror="this.src='logos/clubs/default.png'">
+		
+		</div>
+		
+		<div class="score">
+		    ${escapeHtml(scoreText)}
+		</div>
+		
+		<div class="team-header away">
+		
+		<img
+		    src="logos/clubs/${getClubLogo(teamB)}"
+		    class="team-logo"
+		    alt="${escapeHtml(teamB)}"
+		    onerror="this.src='logos/clubs/default.png'">
+		
+		    <div class="team-name">
+		        ${escapeHtml(teamB)}
+		    </div>
+		
+		</div>
+   </div>
+   </div>
+
+
+   <div class="match-tabs">
+   
+       <button
+           class="match-tab active"
+           data-section="info-section"
+           onclick="showMatchSection('info-section')">
+           DETAILS
+       </button>
+   
+       ${showSquads ? `
+       <button
+           class="match-tab"
+           data-section="squads-section"
+           onclick="showMatchSection('squads-section')">
+           LINEUPS
+       </button>
+       ` : ""}
+       
+       <button
+           class="match-tab"
+           data-section="h2h-section"
+           onclick="showMatchSection('h2h-section')">
+           H2H
+       </button>
+   
+   </div>
+
+</div>
+</div>
+
+<div class="content-sections">
+
+   <div class="left-column">
+   
+       <div id="info-section"
+            class="match-section active">
+   
+           <div class="section-title">
+               Match Details
+           </div>
+   
+           ${infoHtml}
+           ${showTimeline ? timeline.timelineHtml : ""}
+   
+       </div>
+   
+       <div id="h2h-section"
+            class="match-section">
+   
+           <div class="section-title">
+               Head-to-Head
+           </div>
+   
+           ${h2hHtml}
+   
+       </div>
+   
+   </div>
+   
+    <div class="right-column">
+    
+        ${showSquads ? `
+        <div id="squads-section"
+             class="match-section">
+    
+            <div class="section-title">
+                Line-ups
+            </div>
+    
+            ${squadsHtml}
+    
+        </div>
+        ` : ""}
+    
+    </div>
+    
+    </div>
+    
+    `;
+
+if(window.innerWidth <= 820){
+
+    const barca =
+    document.getElementById("lineup-barca");
+
+    const opp =
+    document.getElementById("lineup-opp");
+
+    if(barca && opp){
+
+        // existujú oba line-upy
+        opp.classList.add("mobile-hidden");
+
+    }else if(barca){
+
+        // existuje iba jeden line-up
+        barca.classList.remove("mobile-hidden");
+
+    }else if(opp){
+
+        // existuje iba jeden line-up
+        opp.classList.remove("mobile-hidden");
+
+    }
+
+}
+
+}
+
+window.addEventListener("resize", () => {
+
+const barca =
+document.getElementById("lineup-barca");
+
+const opp =
+document.getElementById("lineup-opp");
+
+if (!barca || !opp) {
+return;
+}
+
+if (window.innerWidth > 820) {
+
+barca.classList.remove("mobile-hidden");
+opp.classList.remove("mobile-hidden");
+
+} else {
+
+if (
+!barca.classList.contains("mobile-hidden") &&
+!opp.classList.contains("mobile-hidden")
+) {
+opp.classList.add("mobile-hidden");
+}
+
+}
+
+});
+
+function initPersonSearch(){
+
+    const searchItems = new Map();
+
+    allMatches.forEach(match => {
+
+        // Barcelona manager
+        if(match.Manager){
+
+            searchItems.set(
+                `manager-${match.Manager}`,
+                {
+                    name: match.Manager,
+                    type: "Manager"
+                }
+            );
+
+        }
+
+        // Opponent manager
+        if(match["Opp. Manager"]){
+
+            searchItems.set(
+                `manager-${match["Opp. Manager"]}`,
+                {
+                    name: match["Opp. Manager"],
+                    type: "Manager"
+                }
+            );
+
+        }
+
+		// Opponent team
+		if(match["Opp. Team"]){
+		
+		    searchItems.set(
+		        `opponent-${match["Opp. Team"]}`,
+		        {
+		            name: match["Opp. Team"],
+		            type: "Opponent"
+		        }
+		    );
+		
+		}
+
+        // Starting XI
+        for(let i=1;i<=11;i++){
+
+            if(match[`Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Player name ${i}`]}`,
+                    {
+                        name: match[`Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. Player name ${i}`]}`,
+                    {
+                        name: match[`Opp. Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+        // Bench
+        for(let i=1;i<=12;i++){
+
+            if(match[`On the bench name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`On the bench name ${i}`]}`,
+                    {
+                        name: match[`On the bench name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. On the bench name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. On the bench name ${i}`]}`,
+                    {
+                        name: match[`Opp. On the bench name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+    });
+
+    const itemList =
+        [...searchItems.values()]
+        .sort((a,b) => a.name.localeCompare(b.name));
+
+    function attachSearch(inputId, resultsId){
+
+    const input = document.getElementById(inputId);
+    const results = document.getElementById(resultsId);
+
+    if(!input || !results) return;
+
+    input.addEventListener("input", () => {
+
+        const value =
+            input.value
+            .trim()
+            .toLowerCase();
+
+        if(!value){
+            results.innerHTML = "";
+            return;
+        }
+
+		const filtered =
+		    itemList
+		    .filter(item =>
+		        item.name.toLowerCase().includes(value)
+		    )
+		    .sort((a,b)=>{
+		
+		        const aStarts =
+		            a.name.toLowerCase().startsWith(value);
+		
+		        const bStarts =
+		            b.name.toLowerCase().startsWith(value);
+		
+		        return Number(bStarts) - Number(aStarts);
+		
+		    })
+		    .slice(0,20);
+
+        results.innerHTML = `
+            <div class="player-search-results">
+                ${filtered.map(item => {
+
+                    let url = "";
+
+                    if(item.type === "Manager"){
+                        url = "manager.html?name=" + encodeURIComponent(item.name);
+                    }else if(item.type === "Opponent"){
+                        url = "opponent.html?name=" + encodeURIComponent(item.name);
+                    }else{
+                        url = "player.html?name=" + encodeURIComponent(item.name);
+                    }
+
+                    return `
+                  
+    <a 
+        class="player-search-item"
+        href="${url}">
+
+        ${item.name}
+
+        <span class="search-type ${item.type.toLowerCase()}">
+            (${item.type})
+        </span>
+
+    </a>
+                    `;
+                }).join("")}
+            </div>
+        `;
+    });
+
+    input.addEventListener("blur", () => {
+        setTimeout(() => {
+            results.innerHTML = "";
+        }, 200);
+    });
+
+}
+attachSearch(
+    "personSearch",
+    "personSearchResults"
+);
+
+attachSearch(
+    "mobilePersonSearch",
+    "mobileSearchResults"
+);
+
+}
+
+function showMobileSection(section, button){
+
+if(window.innerWidth > 820) return;
+
+document.querySelectorAll(
+'.mobile-section-btn'
+).forEach(btn =>
+btn.classList.remove('active')
+);
+
+button.classList.add('active');
+
+document.getElementById(
+'mobileMatchesSection'
+).style.display = 'none';
+
+document.getElementById(
+'laligaWidget'
+).style.display = 'none';
+
+document.getElementById(
+'mobileDebutantsSection'
+).style.display = 'none';
+
+document.getElementById(
+'mobileStatisticsSection'
+).style.display = 'none';
+
+if(section === 'matches'){
+document.getElementById(
+'mobileMatchesSection'
+).style.display = 'block';
+}
+
+if(section === 'table'){
+
+    document.getElementById(
+        'laligaWidget'
+    ).style.display = 'block';
+
+    renderLaLigaTable();
+}
+
+if(section === 'debutants'){
+document.getElementById(
+'mobileDebutantsSection'
+).style.display = 'block';
+}
+
+if(section === 'statistics'){
+document.getElementById(
+'mobileStatisticsSection'
+).style.display = 'block';
+}
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuToggle = document.getElementById("menuToggle");
+    const menuOverlay = document.getElementById("menuOverlay");
+    const mainMenu = document.querySelector(".main-menu");
+
+    if(!menuToggle || !menuOverlay || !mainMenu){
+        return;
+    }
+
+    function closeMenu(){
+        mainMenu.classList.remove("open");
+        menuOverlay.classList.remove("show");
+        menuToggle.textContent = "☰";
+    }
+
+    function openMenu(){
+        mainMenu.classList.add("open");
+        menuOverlay.classList.add("show");
+        menuToggle.textContent = "✕";
+    }
+
+    menuToggle.addEventListener("click", () => {
+
+        if(mainMenu.classList.contains("open")){
+            closeMenu();
+        }else{
+            openMenu();
+        }
+
+    });
+
+    menuOverlay.addEventListener("click", closeMenu);
+
+    window.addEventListener("resize", () => {
+
+        if(window.innerWidth > 820){
+            closeMenu();
+        }
+
+    });
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    if(window.innerWidth <= 820){
+
+        document.getElementById("laligaWidget").style.display = "none";
+        document.getElementById("mobileDebutantsSection").style.display = "none";
+        document.getElementById("mobileStatisticsSection").style.display = "none";
+
+        document.getElementById("mobileMatchesSection").style.display = "block";
+    }
+
+});
+
+</script>
+</body>
+</html>
+
