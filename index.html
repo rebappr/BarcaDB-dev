@@ -655,49 +655,6 @@ Discover What's Inside
 
     </section>
 
-    <section class="home-card">
-
-        <div class="features-list">
-
-            <div class="feature-item">
-                <strong>Players</strong>
-                Player appearances, goals, assists, positions, debuts and career records.
-            </div>
-            
-            <div class="feature-item">
-                <strong>Managers</strong>
-                Managerial records, wins, draws, losses and team performance statistics.
-            </div>
-            
-            <div class="feature-item">
-                <strong>Opponents</strong>
-                Historical head-to-head records against clubs from Spain and around the world.
-            </div>
-            
-            <div class="feature-item">
-                <strong>Competitions</strong>
-                Statistics from La Liga, Copa del Rey, UEFA Champions League and other tournaments.
-            </div>
-            
-            <div class="feature-item">
-                <strong>Player Comparison</strong>
-                Compare Barcelona players from different eras using detailed performance metrics.
-            </div>
-            
-            <div class="feature-item">
-                <strong>Club History</strong>
-                Explore the history of FC Barcelona through matches, seasons and historical records.
-            </div>
-            
-            <div class="feature-item">
-                <strong>El Clásico</strong>
-                Head-to-head records, match history, top goalscorers, appearances and managerial records against Real Madrid.
-            </div>
-
-        </div>
-
-    </section>
-
 </div>
 
 </div>
@@ -1327,7 +1284,7 @@ async function renderInsights(){
             item =>
                 String(item.Featured).toUpperCase() !== "TRUE"
         )
-        .slice(0,1);
+        .slice(0,3);
 
     let html = "";
 
