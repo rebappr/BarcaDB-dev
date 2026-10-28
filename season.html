@@ -1334,7 +1334,7 @@ renderLaLigaTable();
 
 function renderLaLigaTable() {
 
-fetch("/data/tablelaliga.json")
+fetch("data/tablelaliga.json")
 .then(response => response.json())
 .then(data => {
 
@@ -2243,9 +2243,9 @@ if(matchesView === "all" || matchesView === "upcoming"){
 }
 
 Promise.all([
-fetch("/data/data.json").then(r => r.json()),
-fetch("/data/current-season.json").then(r => r.json()),
-fetch("/data/players.json").then(r => r.json())
+fetch("data/data.json").then(r => r.json()),
+fetch("data/current-season.json").then(r => r.json()),
+fetch("data/players.json").then(r => r.json())
 ])
 .then(([matchesData,currentData,playersData]) => {
 
