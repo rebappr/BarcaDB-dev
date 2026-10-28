@@ -420,29 +420,6 @@ grid-template-columns:1fr;
 
 <div class="left-column">
       
-<section class="home-card">
-
-    <div class="widget-title">
-      Latest Insights
-    </div>
-
-    <div id="insights" class="insights-container"></div>
-
-</section>
-
-	<section class="hero-card">
-	<p>Track Barcelona's insights, milestones and emerging trends.</p>
-	      
-	        <div class="hero-actions">
-	
-	        <a href="insights.html" class="hero-btn primary">
-	            View All Insights →
-	        </a>
-	
-	      </div>
-	
-	</section>
-
 <div class="widget-title">
     Barcelona Managers (100+ Matches)
 </div>
@@ -521,7 +498,6 @@ initPersonSearch();
 renderTopScorers();
 renderTopAssists();
 
-renderInsights();
 }
 
 function sortFlick(column){
@@ -1015,133 +991,6 @@ html+="</table>";
 document.getElementById(
 "topAssists"
 ).innerHTML=html;
-}
-
-function formatInsightDate(dateString){
-
-    const date = new Date(dateString);
-
-    return date.toLocaleDateString(
-        "en-GB",
-        {
-            day:"numeric",
-            month:"short",
-            year:"numeric"
-        }
-    );
-}
-
-async function renderInsights(){
-
-    const insights = await fetch("data/insights.json")
-        .then(r => r.json());
-
-	const activeInsights = insights.filter(
-	    item =>
-	        String(item.Active).toUpperCase() === "TRUE"
-	);
-	
-	const sortedInsights = activeInsights.sort(
-	    (a,b) => new Date(b.Date) - new Date(a.Date)
-	);
-	
-	const featured = sortedInsights.find(
-	    item =>
-	        String(item.Featured).toUpperCase() === "TRUE"
-	);
-	
-	const secondary = sortedInsights
-	    .filter(
-	        item =>
-	            String(item.Featured).toUpperCase() !== "TRUE"
-	    )
-	    .slice(0,3);
-
-    let html = "";
-
-    if(featured){
-
-	const wrapperStart = featured.Link
-	    ? `<a href="${featured.Link}" class="featured-insight">`
-	    : `<div class="featured-insight">`;
-	
-	const wrapperEnd = featured.Link
-	    ? `</a>`
-	    : `</div>`;
-
-		html += `
-		    ${wrapperStart}
-		
-				<img
-				    src="${featured.Image}"
-				    alt="${featured.Title}"
-				    class="featured-image"
-				    loading="lazy">
-		
-		        <div class="featured-body">
-		
-		            <div class="featured-tagline">
-		                ${featured.Tagline}
-		            </div>
-		
-		            <div class="featured-title">
-		                ${featured.Title}
-		            </div>
-		
-		            <div class="featured-text">
-		                ${featured.Text}
-		            </div>
-		
-		            <div class="insight-date">
-		                ${formatInsightDate(featured.Date)}
-		            </div>
-		
-		        </div>
-		
-		    ${wrapperEnd}
-		`;
-    }
-
-    html += `<div class="insight-list">`;
-
-    secondary.forEach(item => {
-
-		const itemStart = item.Link
-		    ? `<a href="${item.Link}" class="insight-item">`
-		    : `<div class="insight-item">`;
-		
-		const itemEnd = item.Link
-		    ? `</a>`
-		    : `</div>`;
-		
-				html += `
-		    ${itemStart}
-		
-		        <div class="insight-tagline">
-		            ${item.Tagline}
-		        </div>
-		
-		        <div class="secondary-insight-title">
-		            ${item.Title}
-		        </div>
-		
-		        <div class="secondary-insight-text">
-		            ${item.Text}
-		        </div>
-		
-		        <div class="insight-date">
-		            ${formatInsightDate(item.Date)}
-		        </div>
-		
-		    ${itemEnd}
-		`;
-	});
-
-    html += `</div>`;
-
-    document.getElementById(
-        "insights"
-    ).innerHTML = html;
 }
 
 function initPersonSearch(){
