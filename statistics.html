@@ -500,7 +500,7 @@ let flickSortDirection = "desc";
 let managerTableSortColumn = "winPct";
 let managerTableSortDirection = "desc";
 
-fetch("/data/data.json")
+fetch("data/data.json")
     .then(r => r.json())
     .then(matchesData => {
 
@@ -1033,7 +1033,7 @@ function formatInsightDate(dateString){
 
 async function renderInsights(){
 
-    const insights = await fetch("/data/insights.json")
+    const insights = await fetch("data/insights.json")
         .then(r => r.json());
 
 	const activeInsights = insights.filter(
