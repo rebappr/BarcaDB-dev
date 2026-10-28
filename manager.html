@@ -962,8 +962,8 @@ function sortManagerPlayers(column){
 window.sortManagerPlayers = sortManagerPlayers;
 
 Promise.all([
-    fetch("/data/data.json").then(r=>r.json()),
-    fetch("/data/managers.json").then(r=>r.json())
+    fetch("data/data.json").then(r=>r.json()),
+    fetch("data/managers.json").then(r=>r.json())
 ])
 .then(([data, managers])=>{
 
