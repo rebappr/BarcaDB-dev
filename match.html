@@ -1080,7 +1080,7 @@ if (!matchId) {
 
 let allMatches = [];
 
-fetch("/data/data.json")
+fetch("data/data.json")
 .then(r => {
 
 if (!r.ok) {
@@ -1099,7 +1099,7 @@ return r.json();
     console.log(data);
 
     if (!Array.isArray(data)) {
-        throw new Error("/data/data.json is not an array");
+        throw new Error("data/data.json is not an array");
     }
 
 console.log("Looking for ID:", matchId);
