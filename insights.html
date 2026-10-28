@@ -485,7 +485,7 @@ const INSIGHTS_PER_PAGE = 20;
 let currentPage = 1;
 let allInsights = [];
 
-fetch("/data/data.json")
+fetch("data/data.json")
     .then(r => r.json())
     .then(matchesData => {
 
@@ -531,7 +531,7 @@ async function renderInsights(){
 
 	if(allInsights.length === 0){
 	
-	    allInsights = await fetch("/data/insights.json")
+	    allInsights = await fetch("data/insights.json")
 	        .then(r => r.json());
 	
 	}
