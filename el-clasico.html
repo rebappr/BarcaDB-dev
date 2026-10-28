@@ -1338,8 +1338,8 @@ let selectedSeason = "All";
 let selectedVenue = "All";
 
 Promise.all([
-    fetch("/data/data.json").then(r => r.json()),
-    fetch("/data/current-season.json").then(r => r.json())
+    fetch("data/data.json").then(r => r.json()),
+    fetch("data/current-season.json").then(r => r.json())
 ])
 .then(([data, currentData]) => {
 
