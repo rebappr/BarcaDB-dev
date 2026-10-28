@@ -886,8 +886,8 @@ let allMatches = [];
 let playersData = [];
 
 Promise.all([
-    fetch("/data/data.json").then(r => r.json()),
-    fetch("/data/players.json").then(r => r.json())
+    fetch("data/data.json").then(r => r.json()),
+    fetch("data/players.json").then(r => r.json())
 ])
 .then(([matches, players]) => {
 
