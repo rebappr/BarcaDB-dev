@@ -482,38 +482,43 @@
     top:0;
     left:0;
 
-    width:240px;
+    width:320px;
+    max-width:90vw;
+
     height:100vh;
 
     background:var(--card-bg);
-    border-right:1px solid var(--card-border);
 
-    z-index:2000;
+    z-index:3000;
 
     transform:translateX(-100%);
     transition:.25s ease;
 
-    padding:20px;
-
     overflow-y:auto;
+
+    border-right:1px solid var(--card-border);
 }
 
 .sidebar.open{
     transform:translateX(0);
 }
 
+.sidebar-top{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+
+    padding:12px;
+}
+
 .sidebar-overlay{
     position:fixed;
     inset:0;
-
     background:rgba(0,0,0,.35);
-
     opacity:0;
     visibility:hidden;
-
-    transition:.25s;
-
-    z-index:1999;
+    transition:.2s;
+    z-index:2999;
 }
 
 .sidebar-overlay.show{
@@ -524,14 +529,14 @@
 .sidebar-nav{
     display:flex;
     flex-direction:column;
-    gap:6px;
 }
 
 .sidebar-nav a{
-    padding:10px 14px;
-    border-radius:12px;
     text-decoration:none;
     color:var(--text);
+    padding:14px 18px;
+    border-bottom:
+    1px solid var(--meta-border);
     font-weight:600;
 }
 
@@ -549,6 +554,19 @@
     font-weight:800;
     margin-bottom:20px;
     padding-bottom:16px;
+    border-bottom:1px solid var(--card-border);
+}
+
+.sidebar-close{
+    background:none;
+    border:none;
+    color:var(--text);
+    font-size:22px;
+    cursor:pointer;
+}
+
+.sidebar-search{
+    padding:12px;
     border-bottom:1px solid var(--card-border);
 }
 
@@ -609,20 +627,55 @@
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-<aside id="sidebar" class="sidebar open">
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-    <div class="sidebar-logo">
-        Barça Database
+<aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-top">
+
+        <button id="sidebarClose" class="sidebar-close">
+            ✕
+        </button>
+
+    </div>
+
+    <div class="sidebar-search">
+
+        <input
+            type="text"
+            id="sidebarPersonSearch"
+            placeholder="Search..."
+            class="mobile-search-input">
+
+        <div id="sidebarSearchResults"></div>
+
     </div>
 
     <div class="sidebar-nav">
 
-        <a href="./" class="active">Home page</a>
-        <a href="statistics.html">Statistics</a>
-        <a href="season.html">Seasons</a>
-        <a href="insights.html">Insights</a>
-        <a href="compare.html">Compare</a>
-        <a href="el-clasico.html">El Clásico</a>
+        <a href="./" class="active">
+            Home page
+        </a>
+
+        <a href="statistics.html">
+            Statistics
+        </a>
+
+        <a href="season.html">
+            Seasons
+        </a>
+
+        <a href="insights.html">
+            Insights
+        </a>
+
+        <a href="compare.html">
+            Compare
+        </a>
+
+        <a href="el-clasico.html">
+            El Clásico
+        </a>
 
     </div>
 
@@ -1742,15 +1795,10 @@ function initPersonSearch(){
 
     }
 
-    attachSearch(
-        "personSearch",
-        "personSearchResults"
-    );
-
-    attachSearch(
-        "mobilePersonSearch",
-        "mobileSearchResults"
-    );
+	attachSearch(
+	    "sidebarPersonSearch",
+	    "sidebarSearchResults"
+	);
 
 }
 
@@ -1774,53 +1822,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuToggle =
         document.getElementById("menuToggle");
 
-    const menuOverlay =
-        document.getElementById("menuOverlay");
+    const sidebar =
+        document.getElementById("sidebar");
 
-    const mainMenu =
-        document.querySelector(".main-menu");
-	
-	const sidebar =
-    	document.getElementById("sidebar");
+    const sidebarOverlay =
+        document.getElementById("sidebarOverlay");
 
-	const sidebarOverlay =
-	    document.getElementById("sidebarOverlay");
+    const sidebarClose =
+        document.getElementById("sidebarClose");
 
     if(!menuToggle || !menuOverlay || !mainMenu){
         return;
     }
 
-    function closeMenu(){
-
-        mainMenu.classList.remove("open");
-        menuOverlay.classList.remove("show");
-
-        menuToggle.textContent = "☰";
-    }
-
-    function openMenu(){
-
-        mainMenu.classList.add("open");
-        menuOverlay.classList.add("show");
-
-        menuToggle.textContent = "✕";
-    }
-
 	menuToggle.addEventListener("click", () => {
 	
-	    if(window.innerWidth > 820){
+	    sidebar.classList.add("open");
+	    sidebarOverlay.classList.add("show");
 	
-	        sidebar.classList.toggle("open");
-	        sidebarOverlay.classList.toggle("show");
+	});
+
+	sidebarClose?.addEventListener("click", () => {
 	
-	        return;
-	    }
-	
-	    if(mainMenu.classList.contains("open")){
-	        closeMenu();
-	    }else{
-	        openMenu();
-	    }
+	    sidebar.classList.remove("open");
+	    sidebarOverlay.classList.remove("show");
 	
 	});
 
@@ -1838,12 +1863,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	window.addEventListener("resize", () => {
 	
-	    if(window.innerWidth > 820){
-	        closeMenu();
-	    }
-	
 	    sidebar.classList.remove("open");
 	    sidebarOverlay.classList.remove("show");
+	
+	});
+
+	document
+	.querySelectorAll(".sidebar-nav a")
+	.forEach(link => {
+	
+	    link.addEventListener("click", () => {
+	
+	        sidebar.classList.remove("open");
+	        sidebarOverlay.classList.remove("show");
+	
+	    });
 	
 	});
 	
