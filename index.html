@@ -541,10 +541,6 @@
     visibility:visible;
 }
 
-.sidebar-top{
-    padding:16px;
-}
-
 .sidebar-logo{
     display:none;
 }
@@ -581,16 +577,6 @@
     margin-bottom:20px;
     padding-bottom:16px;
     border-bottom:1px solid var(--card-border);
-}
-
-.sidebar-close{
-    width:40px;
-    height:40px;
-    border:none;
-    border-radius:10px;
-    background:var(--meta-bg);
-    font-size:22px;
-    cursor:pointer;
 }
 
 .sidebar-search{
@@ -679,16 +665,6 @@
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
 <<aside id="sidebar" class="sidebar">
-
-    <div class="sidebar-top">
-
-        <button
-            id="sidebarClose"
-            class="sidebar-close">
-            ✕
-        </button>
-
-    </div>
 
     <div class="sidebar-search">
 
@@ -1878,54 +1854,52 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebarOverlay =
         document.getElementById("sidebarOverlay");
 
-    const sidebarClose =
-        document.getElementById("sidebarClose");
+    if(!menuToggle || !sidebar || !sidebarOverlay){
+        return;
+    }
 
-	if(!menuToggle || !sidebar || !sidebarOverlay){
-	    return;
-	}
-
-	menuToggle.addEventListener("click", () => {
+	function toggleSidebar(){
 	
 	    sidebar.classList.toggle("open");
 	    sidebarOverlay.classList.toggle("show");
 	
-	});
+		menuToggle.textContent = "☰";
+	}
 
-	sidebarClose?.addEventListener("click", () => {
-	
-	    sidebar.classList.remove("open");
-	    sidebarOverlay.classList.remove("show");
-	
-	});
+    function closeSidebar(){
 
-	sidebarOverlay?.addEventListener("click", () => {
-	
-	    sidebar.classList.remove("open");
-	    sidebarOverlay.classList.remove("show");
-	
-	});
+        sidebar.classList.remove("open");
+        sidebarOverlay.classList.remove("show");
 
-	window.addEventListener("resize", () => {
-	
-	    sidebar.classList.remove("open");
-	    sidebarOverlay.classList.remove("show");
-	
-	});
+    }
 
-	document
-	.querySelectorAll(".sidebar-nav a")
-	.forEach(link => {
-	
-	    link.addEventListener("click", () => {
-	
-	        sidebar.classList.remove("open");
-	        sidebarOverlay.classList.remove("show");
-	
-	    });
-	
-	});
-	
+    menuToggle.addEventListener(
+        "click",
+        toggleSidebar
+    );
+
+    sidebarOverlay.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+    window.addEventListener("resize", () => {
+
+        closeSidebar();
+
+    });
+
+    document
+        .querySelectorAll(".sidebar-nav a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                closeSidebar
+            );
+
+        });
+
 });
 
 </script>
