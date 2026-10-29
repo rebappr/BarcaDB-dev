@@ -594,13 +594,26 @@
 }
 
 .sidebar-search{
-    padding:0 16px 16px;
+    position:relative;
+    padding:12px;
     border-bottom:1px solid var(--meta-border);
 }
 
 .sidebar-search input{
     width:100%;
+    height:44px;
+    padding:0 14px;
+    border-radius:14px;
+    border:1px solid var(--meta-border);
+    background:var(--meta-bg);
+    color:var(--text);
+    font-size:14px;
     box-sizing:border-box;
+}
+
+.sidebar-search input:focus{
+    outline:none;
+    border-color:#004D98;
 }
 
 .header-inner{
