@@ -1051,61 +1051,67 @@ function renderSeasonStatistics(){
 
     }
 
-    matches.forEach(match => {
-
-        for(let i=1;i<=11;i++){
-
-            const player = match[`Player name ${i}`];
-
-            if(player){
-
-                addPlayer(player);
-                players[player].matchesPlayed++;
-
-            }
-
-        }
-
-        for(let i=1;i<=12;i++){
-
-            const player = match[`Sub on ${i}`];
-
-            if(player){
-
-                addPlayer(player);
-                players[player].matchesPlayed++;
-
-            }
-
-        }
-
-        for(let i=1;i<=12;i++){
-
-            const player = match[`Goal Player ${i}`];
-
-            if(player){
-
-                addPlayer(player);
-                players[player].goals++;
-
-            }
-
-        }
-
-        for(let i=1;i<=12;i++){
-
-            const player = match[`Assist Player ${i}`];
-
-            if(player){
-
-                addPlayer(player);
-                players[player].assists++;
-
-            }
-
-        }
-
-    });
+	matches.forEach(match => {
+	
+	    const appeared = new Set();
+	
+	    for(let i=1;i<=11;i++){
+	
+	        const player = match[`Player name ${i}`];
+	
+	        if(player){
+	
+	            addPlayer(player);
+	            appeared.add(player);
+	
+	        }
+	
+	    }
+	
+	    for(let i=1;i<=12;i++){
+	
+	        const player = match[`Sub on ${i}`];
+	
+	        if(player){
+	
+	            addPlayer(player);
+	            appeared.add(player);
+	
+	        }
+	
+	    }
+	
+	    appeared.forEach(player => {
+	        players[player].matchesPlayed++;
+	    });
+	
+	    for(let i=1;i<=12;i++){
+	
+	        const player = match[`Goal Player ${i}`];
+	
+	        if(player){
+	
+	            addPlayer(player);
+	            players[player].goals++;
+	
+	        }
+	
+	    }
+	
+	    for(let i=1;i<=12;i++){
+	
+	        const player = match[`Assist Player ${i}`];
+	
+	        if(player){
+	
+	            addPlayer(player);
+	            players[player].assists++;
+	
+	        }
+	
+	    }
+	
+	});
 
     const sortedPlayers =
         Object.entries(players)
