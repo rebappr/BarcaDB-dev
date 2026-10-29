@@ -580,13 +580,16 @@
     .sidebar{
         width:0;
         min-width:0;
+
         border:none;
         overflow:hidden;
     }
 
-    .sidebar.open-mobile{
+    .sidebar.mobile-open{
         width:260px;
         min-width:260px;
+
+        border-right:1px solid var(--card-border);
     }
 
     .fixture-team-logo{
@@ -1832,6 +1835,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    if(!menuToggle || !sidebar){
+        return;
+    }
+
     function toggleSidebar(){
 
         if(window.innerWidth <= 820){
@@ -1840,13 +1855,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 "mobile-open"
             );
 
-        }else{
-
-            sidebar.classList.toggle(
-                "collapsed"
-            );
-
+            return;
         }
+
+        sidebar.classList.toggle(
+            "collapsed"
+        );
 
     }
 
