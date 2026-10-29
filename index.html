@@ -570,12 +570,22 @@
     border-bottom:1px solid var(--card-border);
 }
 
-@media(max-width:820px){
+.sidebar-search input{
+    width:100%;
+    box-sizing:border-box;
+}
 
-    .sidebar,
-    .sidebar-overlay{
-        display:none;
-    }
+.header-inner{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.header-text{
+    flex:1;
+}
+
+@media(max-width:820px){
 
     .fixture-team-logo{
         width:50px;
@@ -624,8 +634,6 @@
 </head>
 
 <body>
-
-<div id="sidebarOverlay" class="sidebar-overlay"></div>
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
@@ -1831,9 +1839,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebarClose =
         document.getElementById("sidebarClose");
 
-    if(!menuToggle || !menuOverlay || !mainMenu){
-        return;
-    }
+	if(!menuToggle || !sidebar || !sidebarOverlay){
+	    return;
+	}
 
 	menuToggle.addEventListener("click", () => {
 	
@@ -1856,11 +1864,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	});
 
-    menuOverlay.addEventListener(
-        "click",
-        closeMenu
-    );
-
 	window.addEventListener("resize", () => {
 	
 	    sidebar.classList.remove("open");
@@ -1881,17 +1884,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	});
 	
-	document
-	.querySelectorAll(".sidebar-nav a")
-	.forEach(link => {
-	
-	    link.addEventListener("click", () => {
-	
-	        sidebar.classList.remove("open");
-	        sidebarOverlay.classList.remove("show");
-    });
-
-});
 });
 
 </script>
