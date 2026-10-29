@@ -503,25 +503,6 @@
     transform:translateX(0);
 }
 
-.sidebar{
-    position:fixed;
-    top:0;
-    right:0;
-
-    width:320px;
-    max-width:90vw;
-    height:100vh;
-
-    background:var(--card-bg);
-
-    overflow-y:auto;
-
-    z-index:10000;
-
-    transform:translateX(100%);
-    transition:.25s ease;
-}
-
 .sidebar.open{
     transform:translateX(0);
 }
@@ -1862,15 +1843,20 @@ document.addEventListener("DOMContentLoaded", () => {
 	    sidebar.classList.toggle("open");
 	    sidebarOverlay.classList.toggle("show");
 	
-		menuToggle.textContent = "☰";
+	    menuToggle.textContent =
+	        sidebar.classList.contains("open")
+	            ? "✕"
+	            : "☰";
 	}
 
-    function closeSidebar(){
-
-        sidebar.classList.remove("open");
-        sidebarOverlay.classList.remove("show");
-
-    }
+	function closeSidebar(){
+	
+	    sidebar.classList.remove("open");
+	    sidebarOverlay.classList.remove("show");
+	
+	    menuToggle.textContent = "☰";
+	
+	}
 
     menuToggle.addEventListener(
         "click",
