@@ -86,24 +86,6 @@
     gap:12px;
 }
 
-.home-main{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.home-sidebar{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.home-discover{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
 .hero-card{
     background:var(--card-bg);
     border:1px solid var(--card-border);
@@ -442,11 +424,9 @@
         flex-direction:column;
     }
 
-    .home-main,
-    .home-sidebar,
-    .home-discover{
-        width:100%;
-    }
+	.home-column{
+	    width:100%;
+	}
 
     .widget-card,
     .hero-card{
@@ -604,7 +584,6 @@
 		
 		      </div>
 		</section>
-	</div>
 
 </div>
 
@@ -1574,41 +1553,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "click",
         closeMenu
     );
-
-function reorderMobileHomepage() {
-
-    const homePage =
-        document.querySelector(".home-page");
-
-    const homeMain =
-        document.querySelector(".home-main");
-
-    const homeSidebar =
-        document.querySelector(".home-sidebar");
-
-    const discover =
-        document.querySelector(".home-discover");
-
-    if (!homePage || !homeMain || !homeSidebar || !discover) {
-        return;
-    }
-
-    if (window.innerWidth <= 820) {
-
-        homePage.appendChild(homeSidebar);
-        homePage.appendChild(discover);
-
-    } else {
-
-        homeMain.appendChild(discover);
-
-        homePage.appendChild(homeMain);
-        homePage.appendChild(homeSidebar);
-
-    }
-}
-
-reorderMobileHomepage();
 
 window.addEventListener("resize", () => {
 
