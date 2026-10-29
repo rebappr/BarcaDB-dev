@@ -482,7 +482,7 @@
     top:0;
     left:0;
 
-    width:320px;
+    width:260px;
     max-width:90vw;
 
     height:100vh;
@@ -505,10 +505,10 @@
 
 .sidebar-top{
     display:flex;
-    justify-content:flex-end;
+    justify-content:space-between;
     align-items:center;
-
-    padding:12px;
+    padding:12px 16px;
+    border-bottom:1px solid var(--card-border);
 }
 
 .sidebar-overlay{
@@ -639,13 +639,17 @@
 
 <aside id="sidebar" class="sidebar">
 
-    <div class="sidebar-top">
-
-        <button id="sidebarClose" class="sidebar-close">
-            ✕
-        </button>
-
-    </div>
+	<div class="sidebar-top">
+	
+	    <div class="sidebar-logo">
+	        Barça Database
+	    </div>
+	
+	    <button id="sidebarClose" class="sidebar-close">
+	        ✕
+	    </button>
+	
+	</div>
 
     <div class="sidebar-search">
 
@@ -1845,8 +1849,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	menuToggle.addEventListener("click", () => {
 	
-	    sidebar.classList.add("open");
-	    sidebarOverlay.classList.add("show");
+	    sidebar.classList.toggle("open");
+	    sidebarOverlay.classList.toggle("show");
 	
 	});
 
