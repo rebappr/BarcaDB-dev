@@ -2041,6 +2041,12 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleSidebar
     );
 
+	sidebarClose?.addEventListener(
+	    "click",
+	    closeSidebar
+	);
+
+
 	document.addEventListener("click", (e) => {
 	
 	    if(window.innerWidth > 820){
