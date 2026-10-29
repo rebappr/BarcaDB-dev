@@ -578,24 +578,28 @@
 @media(max-width:820px){
 
     .sidebar{
-        width:0;
-        min-width:0;
+        position:fixed;
+        top:0;
+        left:0;
 
-        border:none;
-        overflow:hidden;
-    }
+        height:100vh;
 
-    .sidebar.mobile-open{
         width:260px;
         min-width:260px;
 
+        background:var(--card-bg);
+
         border-right:1px solid var(--card-border);
+
+        transform:translateX(-100%);
+
+        transition:.25s ease;
+
+        z-index:9999;
     }
 
-    .fixture-team-logo{
-        width:50px;
-        height:50px;
-        margin-bottom:6px;
+    .sidebar.mobile-open{
+        transform:translateX(0);
     }
 
     .home-page{
@@ -603,9 +607,9 @@
         flex-direction:column;
     }
 
-	.home-column{
-	    width:100%;
-	}
+    .home-column{
+        width:100%;
+    }
 
     .widget-card,
     .hero-card{
@@ -613,8 +617,10 @@
         box-sizing:border-box;
     }
 
-    .fixture-team{
-        font-size:14px;
+    .fixture-team-logo{
+        width:50px;
+        height:50px;
+        margin-bottom:6px;
     }
 
     .fixture-center{
