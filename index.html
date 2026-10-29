@@ -539,6 +539,12 @@
 
       <div class="home-column matches-column">
 
+		<div class="widget-card">
+		    <div id="seasonStatistics">
+		        Loading...
+		    </div>
+		</div>
+
 	    <div class="widget-title">
 	        Recent Form
 	    </div>
@@ -608,16 +614,6 @@
             Loading...
         </div>
     </div>
-
-      <div class="widget-title">
-          Season Statistics
-      </div>
-      
-      <div class="widget-card">
-          <div id="seasonStatistics">
-              Loading...
-          </div>
-      </div>
 
 </div>
 </div>
@@ -1023,7 +1019,7 @@ function renderSeasonDebutants(){
     ).innerHTML = html;
 }
 
-function renderSeasonStatistics() {
+function renderSeasonStatistics(){
 
     const latestSeason =
         [...new Set(allMatches.map(x => x.Season))]
@@ -1037,67 +1033,57 @@ function renderSeasonStatistics() {
 
     const players = {};
 
-	function addPlayer(name) {
-	
-	    if (!name || !String(name).trim()) return false;
-	
-	    name = String(name).trim();
-	
-	    if (name.includes("(OG)")) return false;
-	
-	    if (!players[name]) {
-			players[name] = {
-			    goals: 0,
-			    assists: 0
-			};
-	
-	        return true;
-	    }
-	}
+    function addPlayer(name){
+
+        if(!name || String(name).includes("(OG)")){
+            return;
+        }
+
+        if(!players[name]){
+
+            players[name] = {
+                matchesPlayed: 0,
+                goals: 0,
+                assists: 0
+            };
+
+        }
+
+    }
 
     matches.forEach(match => {
 
-        for (let i = 1; i <= 11; i++) {
+        for(let i=1;i<=11;i++){
 
-            const player =
-                match[`Player name ${i}`];
+            const player = match[`Player name ${i}`];
 
-            if (
-                player &&
-                !String(player).includes("(OG)")
-            ) {
+            if(player){
 
                 addPlayer(player);
+                players[player].matchesPlayed++;
 
             }
 
         }
 
-        for (let i = 1; i <= 12; i++) {
+        for(let i=1;i<=12;i++){
 
-            const player =
-                match[`On the bench name ${i}`];
+            const player = match[`Sub on ${i}`];
 
-            if (
-                player &&
-                !String(player).includes("(OG)")
-            ) {
+            if(player){
 
                 addPlayer(player);
+                players[player].matchesPlayed++;
 
             }
 
         }
 
-        for (let i = 1; i <= 12; i++) {
+        for(let i=1;i<=12;i++){
 
-            const player =
-                match[`Goal Player ${i}`];
+            const player = match[`Goal Player ${i}`];
 
-            if (
-                player &&
-                !String(player).includes("(OG)")
-            ) {
+            if(player){
 
                 addPlayer(player);
                 players[player].goals++;
@@ -1106,15 +1092,11 @@ function renderSeasonStatistics() {
 
         }
 
-        for (let i = 1; i <= 12; i++) {
+        for(let i=1;i<=12;i++){
 
-            const player =
-                match[`Assist Player ${i}`];
+            const player = match[`Assist Player ${i}`];
 
-            if (
-                player &&
-                !String(player).includes("(OG)")
-            ) {
+            if(player){
 
                 addPlayer(player);
                 players[player].assists++;
@@ -1127,35 +1109,43 @@ function renderSeasonStatistics() {
 
     const sortedPlayers =
         Object.entries(players)
-        .sort((a, b) => b[1].goals - a[1].goals)
-        .slice(0, 10);
+        .sort(
+            (a,b) =>
+                (b[1].goals + b[1].assists) -
+                (a[1].goals + a[1].assists)
+        )
+        .slice(0,10);
 
     let html = `
-        <div class="table-scroll">
         <table class="stats-table">
             <thead>
                 <tr>
                     <th>Player</th>
+                    <th>MP</th>
                     <th>G</th>
                     <th>A</th>
+                    <th>G+A</th>
                 </tr>
             </thead>
             <tbody>
     `;
 
-    sortedPlayers.forEach(([name, stats]) => {
+    sortedPlayers.forEach(([name,stats]) => {
 
         html += `
             <tr>
                 <td>
-                    <a class="player-link"
-                       href="player.html?name=${encodeURIComponent(name)}">
+                    <a
+                        class="player-link"
+                        href="player.html?name=${encodeURIComponent(name)}">
                         ${name}
                     </a>
                 </td>
 
+                <td>${stats.matchesPlayed}</td>
                 <td>${stats.goals}</td>
                 <td>${stats.assists}</td>
+                <td>${stats.goals + stats.assists}</td>
             </tr>
         `;
 
@@ -1164,7 +1154,6 @@ function renderSeasonStatistics() {
     html += `
             </tbody>
         </table>
-        </div>
     `;
 
     document.getElementById(
