@@ -478,25 +478,12 @@
 }
 
 .sidebar{
-    position:fixed;
-    top:0;
-    left:0;
-
     width:260px;
-    max-width:90vw;
-
-    height:100vh;
-
+    flex-shrink:0;
     background:var(--card-bg);
-
-    z-index:3000;
-
-    transform:translateX(0);
-    transition:.25s ease;
-
-    overflow-y:auto;
-
     border-right:1px solid var(--card-border);
+    overflow-y:auto;
+    transition:.25s ease;
 }
 
 .layout{
@@ -511,7 +498,8 @@
 
 .sidebar.collapsed{
     width:0;
-    border-right:none;
+    min-width:0;
+    border:none;
     overflow:hidden;
 }
 
