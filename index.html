@@ -425,8 +425,62 @@
     text-decoration:underline;
 }
 
+.summary-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+}
+
+.summary-box{
+    border-radius:20px;
+    padding:10px;
+    text-align:center;
+    border:1px solid var(--card-border);
+    background:var(--card-bg);
+}
+
+.summary-box b{
+    display:block;
+    font-size:22px;
+    margin-bottom:4px;
+}
+
+.summary-box.wins{
+    background:var(--result-win-bg);
+    border:1px solid var(--result-win);
+    color:var(--result-win);
+}
+
+.summary-box.draws{
+    background:var(--result-draw-bg);
+    border:1px solid var(--result-draw);
+    color:var(--result-draw);
+}
+
+.summary-box.losses{
+    background:var(--result-loss-bg);
+    border:1px solid var(--result-loss);
+    color:var(--result-loss);
+}
+
+.summary-box.matches,
+.summary-box.goals{
+    background:rgba(0,77,152,.10);
+    border:1px solid rgba(0,77,152,.25);
+    color:#004D98;
+}
+
+.summary-box.matches b,
+.summary-box.goals b{
+    color:#004D98;
+}
 
 @media(max-width:820px){
+
+    .summary-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
 
     .fixture-team-logo{
         width:50px;
@@ -594,6 +648,16 @@
 	        </div>
 	    </div>
 
+		<div class="widget-title" id="seasonOverviewTitle">
+		    Season Overview
+		</div>
+		
+		<div class="widget-card">
+		    <div id="seasonOverview">
+		        Loading...
+		    </div>
+		</div>
+
 		<div class="widget-title">
 		Matches
 		</div>
@@ -675,6 +739,7 @@ function renderHome(){
     renderNextMatch();
 
     renderRecentForm();
+	renderSeasonOverview();
 
     renderSeasonDebutants();
     renderSeasonStatistics();
@@ -935,6 +1000,101 @@ function renderRecentForm(){
     html += "</div>";
 
     document.getElementById("recentForm").innerHTML = html;
+}
+
+function renderSeasonOverview(){
+
+    const seasons =
+        [...new Set(allMatches.map(x => x.Season))]
+        .sort();
+
+    let latestSeason =
+        seasons[seasons.length - 1];
+
+    const seasonMatches =
+        allMatches.filter(
+            x =>
+                x.Season === latestSeason &&
+                x.Result &&
+                x.Result !== "-:-"
+        );
+
+    if(seasonMatches.length === 0){
+        latestSeason = seasons[seasons.length - 2];
+    }
+
+    const matches =
+        allMatches.filter(
+            x =>
+                x.Season === latestSeason &&
+                x.Result &&
+                x.Result !== "-:-"
+        );
+
+    const wins =
+        matches.filter(
+            x => x["Result type"] === "W"
+        ).length;
+
+    const draws =
+        matches.filter(
+            x => x["Result type"] === "D"
+        ).length;
+
+    const losses =
+        matches.filter(
+            x => x["Result type"] === "L"
+        ).length;
+
+    const goalsFor =
+        matches.reduce(
+            (s,m) => s + Number(m.Scored || 0),
+            0
+        );
+
+    const goalsAgainst =
+        matches.reduce(
+            (s,m) => s + Number(m.Conceded || 0),
+            0
+        );
+
+    document.getElementById(
+        "seasonOverviewTitle"
+    ).textContent =
+        `${latestSeason} Overview`;
+
+    document.getElementById(
+        "seasonOverview"
+    ).innerHTML = `
+        <div class="summary-grid">
+
+            <div class="summary-box matches">
+                <b>${matches.length}</b>
+                MP
+            </div>
+
+            <div class="summary-box wins">
+                <b>${wins}</b>
+                W
+            </div>
+
+            <div class="summary-box draws">
+                <b>${draws}</b>
+                D
+            </div>
+
+            <div class="summary-box losses">
+                <b>${losses}</b>
+                L
+            </div>
+
+            <div class="summary-box goals">
+                <b>${goalsFor}:${goalsAgainst}</b>
+                G
+            </div>
+
+        </div>
+    `;
 }
 
 function renderSeasonDebutants(){
