@@ -477,7 +477,87 @@
     color:#004D98;
 }
 
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:240px;
+    height:100vh;
+
+    background:var(--card-bg);
+    border-right:1px solid var(--card-border);
+
+    z-index:2000;
+
+    transform:translateX(-100%);
+    transition:.25s ease;
+
+    padding:20px;
+
+    overflow-y:auto;
+}
+
+.sidebar.open{
+    transform:translateX(0);
+}
+
+.sidebar-overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.25s;
+
+    z-index:1999;
+}
+
+.sidebar-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.sidebar-nav{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.sidebar-nav a{
+    padding:10px 14px;
+    border-radius:12px;
+    text-decoration:none;
+    color:var(--text);
+    font-weight:600;
+}
+
+.sidebar-nav a:hover{
+    background:var(--meta-bg);
+}
+
+.sidebar-nav a.active{
+    background:rgba(0,77,152,.10);
+    color:#004D98;
+}
+
+.sidebar-logo{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:20px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--card-border);
+}
+
 @media(max-width:820px){
+
+    .sidebar,
+    .sidebar-overlay{
+        display:none;
+    }
 
     .fixture-team-logo{
         width:50px;
@@ -528,6 +608,27 @@
 <body>
 
 <div class="container">
+
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-logo">
+        Barça Database
+    </div>
+
+    <div class="sidebar-nav">
+
+        <a href="./">Home page</a>
+        <a href="statistics.html">Statistics</a>
+        <a href="season.html">Seasons</a>
+        <a href="insights.html">Insights</a>
+        <a href="compare.html">Compare</a>
+        <a href="el-clasico.html">El Clásico</a>
+
+    </div>
+
+</aside>
 
 <div class="menu-overlay" id="menuOverlay"></div>
 
@@ -1728,6 +1829,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const mainMenu =
         document.querySelector(".main-menu");
+	
+	const sidebar =
+    	document.getElementById("sidebar");
+
+	const sidebarOverlay =
+	    document.getElementById("sidebarOverlay");
 
     if(!menuToggle || !menuOverlay || !mainMenu){
         return;
@@ -1749,25 +1856,40 @@ document.addEventListener("DOMContentLoaded", () => {
         menuToggle.textContent = "✕";
     }
 
-    menuToggle.addEventListener("click", () => {
+	menuToggle.addEventListener("click", () => {
+	
+	    if(window.innerWidth > 820){
+	
+	        sidebar.classList.toggle("open");
+	        sidebarOverlay.classList.toggle("show");
+	
+	        return;
+	    }
+	
+	    if(mainMenu.classList.contains("open")){
+	        closeMenu();
+	    }else{
+	        openMenu();
+	    }
+	
+	});
 
-        if(mainMenu.classList.contains("open")){
-            closeMenu();
-        }else{
-            openMenu();
-        }
-
-    });
+	sidebarOverlay?.addEventListener("click", () => {
+	
+	    sidebar.classList.remove("open");
+	    sidebarOverlay.classList.remove("show");
+	
+	});
 
     menuOverlay.addEventListener(
         "click",
         closeMenu
     );
 
-window.addEventListener("resize", () => {
+	window.addEventListener("resize", () => {
 
-    if(window.innerWidth > 820){
-        closeMenu();
+	    if(window.innerWidth > 820){
+	        closeMenu();
     }
 
 });
