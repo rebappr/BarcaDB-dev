@@ -1136,36 +1136,41 @@ function renderSeasonStatistics(){
 
     let html = `
         <table class="stats-table">
-            <thead>
-                <tr>
-                    <th>Player</th>
-                    <th>MP</th>
-                    <th>G</th>
-                    <th>A</th>
-                    <th>G+A</th>
-                </tr>
-            </thead>
+			<thead>
+			    <tr>
+			        <th>#</th>
+			        <th>Player</th>
+			        <th>MP</th>
+			        <th>G</th>
+			        <th>A</th>
+			        <th>G+A</th>
+			    </tr>
+			</thead>
             <tbody>
     `;
 
-    sortedPlayers.forEach(([name,stats]) => {
+    sortedPlayers.forEach(([name,stats], index) => {
 
-        html += `
-            <tr>
-                <td>
-                    <a
-                        class="player-link"
-                        href="player.html?name=${encodeURIComponent(name)}">
-                        ${name}
-                    </a>
-                </td>
-
-                <td>${stats.matchesPlayed}</td>
-                <td>${stats.goals}</td>
-                <td>${stats.assists}</td>
-                <td>${stats.goals + stats.assists}</td>
-            </tr>
-        `;
+		html += `
+		    <tr>
+		
+		        <td>${index + 1}</td>
+		
+		        <td>
+		            <a
+		                class="player-link"
+		                href="player.html?name=${encodeURIComponent(name)}">
+		                ${name}
+		            </a>
+		        </td>
+		
+		        <td>${stats.matchesPlayed}</td>
+		        <td>${stats.goals}</td>
+		        <td>${stats.assists}</td>
+		        <td>${stats.goals + stats.assists}</td>
+		
+		    </tr>
+		`;
 
     });
 
