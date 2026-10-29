@@ -75,9 +75,15 @@
 
 .home-page{
     display:grid;
-    grid-template-columns:2fr 1fr;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:12px;
     align-items:start;
-    gap:8px;
+}
+
+.home-column{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
 }
 
 .home-main{
@@ -551,115 +557,59 @@
 
 <div class="home-page">
 
-      <div class="home-main">
+      <div class="home-column matches-column">
 
-<div class="widget-title">
-Matches
-</div>
+		<div class="widget-title">
+		Matches
+		</div>
+		
+		<div class="widget-card">
+		<div id="lastMatch">
+		Loading...
+		</div>
+		</div>
+		
+		<div class="widget-card">
+		<div id="nextMatch">
+		Loading...
+		</div>
+		</div>
 
-<div class="widget-card">
-<div id="lastMatch">
-Loading...
-</div>
-</div>
+		<section class="hero-card">
+			<p>Track Barcelona's season through results, stats and records.</p>
+		        <div class="hero-actions">
+		        <a href="season.html" class="hero-btn primary">
+		            View Season Overview →
+		        </a>
+		      </div>
+		</section>
+	</div>
 
-<div class="widget-card">
-<div id="nextMatch">
-Loading...
-</div>
-</div>
+	<div class="home-column insights-column">
 
-<section class="hero-card">
-<p>Track Barcelona's season through results, stats and records.</p>
-      
-        <div class="hero-actions">
-
-        <a href="season.html" class="hero-btn primary">
-            View Season Overview →
-        </a>
-
-      </div>
-
-</section>
-
-    <div class="widget-title">
-        Latest Insights
-    </div>
-
-    <div id="insights" class="insights-container"></div>
-
-	<section class="hero-card">
-	<p>Track Barcelona's insights, milestones and emerging trends.</p>
-	      
-	        <div class="hero-actions">
+	    <div class="widget-title">
+	        Latest Insights
+	    </div>
 	
-	        <a href="insights.html" class="hero-btn primary">
-	            View All Insights →
-	        </a>
+	    <div id="insights" class="insights-container"></div>
 	
-	      </div>
-	
-	</section>
-
-<div class="home-discover">
-
-<div class="widget-title">
-Discover What's Inside
-</div>
-
-    <section class="hero-card">
-
-<p>
-    Explore FC Barcelona history through a comprehensive football database featuring
-    players, managers, opponents, seasons, records and match statistics. Discover
-    career records, player comparisons, competition data and complete El Clásico
-    history between Barcelona and Real Madrid.
-</p>
-
-        <div class="hero-actions">
-
-            <a
-                href="statistics.html"
-                class="hero-btn primary">
-
-                Browse Statistics
-
-            </a>
-
-            <a
-                href="season.html"
-                class="hero-btn secondary">
-
-                Seasons Overview
-
-            </a>
-
-            <a
-                href="compare.html"
-                class="hero-btn secondary">
-
-                Compare Players
-
-            </a>
-            
-            <a
-                href="el-clasico.html"
-                class="hero-btn secondary">
-
-                El Clásico Hub
-
-            </a>
-
-
-        </div>
-
-    </section>
+		<section class="hero-card">
+		<p>Track Barcelona's insights, milestones and emerging trends.</p>
+		      
+		        <div class="hero-actions">
+		
+		        <a href="insights.html" class="hero-btn primary">
+		            View All Insights →
+		        </a>
+		
+		      </div>
+		</section>
+	</div>
 
 </div>
-
 </div>
 
-<aside class="home-sidebar">
+<div class="home-column stats-column">
 
     <div class="widget-title">
         Recent Form
@@ -691,7 +641,7 @@ Discover What's Inside
           </div>
       </div>
 
-</aside>
+</div>
 
 </div>
 
