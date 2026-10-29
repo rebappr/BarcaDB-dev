@@ -539,9 +539,9 @@
 
       <div class="home-column matches-column">
 
-	    <div class="widget-title">
-	        Season Leaders
-	    </div>
+		<div class="widget-title" id="leadersTitle">
+		    Season Leaders
+		</div>
 
 		<div class="widget-card">
 		    <div id="seasonStatistics">
@@ -1025,10 +1025,33 @@ function renderSeasonDebutants(){
 
 function renderSeasonStatistics(){
 
-    const latestSeason =
-        [...new Set(allMatches.map(x => x.Season))]
-        .sort()
-        .reverse()[0];
+	const latestSeason =
+	    [...new Set(allMatches.map(x => x.Season))]
+	    .sort()
+	    .reverse()[0];
+	
+	document.getElementById("leadersTitle").textContent =
+	    `${latestSeason} Leaders`;
+
+	const seasons =
+	    [...new Set(allMatches.map(x => x.Season))]
+	    .sort();
+	
+	let latestSeason = seasons[seasons.length - 1];
+	
+	const seasonMatches =
+	    allMatches.filter(
+	        x =>
+	            x.Season === latestSeason &&
+	            x.Result &&
+	            x.Result !== "-:-"
+	    );
+	
+	if(seasonMatches.length === 0){
+	
+	    latestSeason =
+	        seasons[seasons.length - 2];
+	}
 
     const matches =
         allMatches.filter(
