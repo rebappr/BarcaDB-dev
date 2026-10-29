@@ -607,11 +607,9 @@
 
 <body>
 
-<div class="container">
-
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-<aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar open">
 
     <div class="sidebar-logo">
         Barça Database
@@ -619,7 +617,7 @@
 
     <div class="sidebar-nav">
 
-        <a href="./">Home page</a>
+        <a href="./" class="active">Home page</a>
         <a href="statistics.html">Statistics</a>
         <a href="season.html">Seasons</a>
         <a href="insights.html">Insights</a>
@@ -629,6 +627,8 @@
     </div>
 
 </aside>
+
+<div class="container">
 
 <div class="menu-overlay" id="menuOverlay"></div>
 
@@ -1887,10 +1887,25 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 	window.addEventListener("resize", () => {
-
+	
 	    if(window.innerWidth > 820){
 	        closeMenu();
-    }
+	    }
+	
+	    sidebar.classList.remove("open");
+	    sidebarOverlay.classList.remove("show");
+	
+	});
+	
+	document
+	.querySelectorAll(".sidebar-nav a")
+	.forEach(link => {
+	
+	    link.addEventListener("click", () => {
+	
+	        sidebar.classList.remove("open");
+	        sidebarOverlay.classList.remove("show");
+    });
 
 });
 });
