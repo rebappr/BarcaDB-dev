@@ -1037,23 +1037,26 @@ function renderSeasonStatistics(){
 
     const players = {};
 
-    function addPlayer(name){
-
-        if(!name || String(name).includes("(OG)")){
-            return;
-        }
-
-        if(!players[name]){
-
-            players[name] = {
-                matchesPlayed: 0,
-                goals: 0,
-                assists: 0
-            };
-
-        }
-
-    }
+	function addPlayer(name){
+	
+	    if(!name) return null;
+	
+	    name = String(name).trim();
+	
+	    if(name.includes("(OG)")) return null;
+	
+	    if(!players[name]){
+	
+	        players[name] = {
+	            matchesPlayed: 0,
+	            goals: 0,
+	            assists: 0
+	        };
+	
+	    }
+	
+	    return name;
+	}
 
 	matches.forEach(match => {
 	
@@ -1091,27 +1094,25 @@ function renderSeasonStatistics(){
 	
 	    for(let i=1;i<=12;i++){
 	
-	        const player = match[`Goal Player ${i}`];
-	
-	        if(player){
-	
-	            addPlayer(player);
-	            players[player].goals++;
-	
-	        }
+		const player = addPlayer(
+		    match[`Goal Player ${i}`]
+		);
+		
+		if(player){
+		    players[player].goals++;
+		}
 	
 	    }
 	
 	    for(let i=1;i<=12;i++){
 	
-	        const player = match[`Assist Player ${i}`];
-	
-	        if(player){
-	
-	            addPlayer(player);
-	            players[player].assists++;
-	
-	        }
+		const player = addPlayer(
+		    match[`Assist Player ${i}`]
+		);
+		
+		if(player){
+		    players[player].assists++;
+		}
 	
 	    }
 	
