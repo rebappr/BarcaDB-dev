@@ -587,9 +587,9 @@
 
 	<div class="home-column stats-column">
 	
-	    <div class="widget-title">
-	        Season Debutants
-	    </div>
+		<div class="widget-title" id="debutantsTitle">
+		    Season Debutants
+		</div>
 	
 	    <div class="widget-card">
 	        <div id="seasonDebutants">
@@ -926,10 +926,30 @@ function renderRecentForm(){
 
 function renderSeasonDebutants(){
 
-    const latestSeason =
+    const seasons =
         [...new Set(allMatches.map(x => x.Season))]
-        .sort()
-        .reverse()[0];
+        .sort();
+
+    let latestSeason =
+        seasons[seasons.length - 1];
+
+    const seasonMatches =
+        allMatches.filter(
+            x =>
+                x.Season === latestSeason &&
+                x.Result &&
+                x.Result !== "-:-"
+        );
+
+    if(seasonMatches.length === 0){
+
+        latestSeason =
+            seasons[seasons.length - 2];
+
+    }
+
+	document.getElementById("debutantsTitle").textContent =
+	    `${latestSeason} Debutants`;
 
     const firstAppearance = {};
 
@@ -1025,33 +1045,30 @@ function renderSeasonDebutants(){
 
 function renderSeasonStatistics(){
 
-	const latestSeason =
-	    [...new Set(allMatches.map(x => x.Season))]
-	    .sort()
-	    .reverse()[0];
-	
-	document.getElementById("leadersTitle").textContent =
-	    `${latestSeason} Leaders`;
+    const seasons =
+        [...new Set(allMatches.map(x => x.Season))]
+        .sort();
 
-	const seasons =
-	    [...new Set(allMatches.map(x => x.Season))]
-	    .sort();
-	
-	let latestSeason = seasons[seasons.length - 1];
-	
-	const seasonMatches =
-	    allMatches.filter(
-	        x =>
-	            x.Season === latestSeason &&
-	            x.Result &&
-	            x.Result !== "-:-"
-	    );
-	
-	if(seasonMatches.length === 0){
-	
-	    latestSeason =
-	        seasons[seasons.length - 2];
-	}
+    let latestSeason =
+        seasons[seasons.length - 1];
+
+    const seasonMatches =
+        allMatches.filter(
+            x =>
+                x.Season === latestSeason &&
+                x.Result &&
+                x.Result !== "-:-"
+        );
+
+    if(seasonMatches.length === 0){
+
+        latestSeason =
+            seasons[seasons.length - 2];
+
+    }
+
+    document.getElementById("leadersTitle").textContent =
+        `${latestSeason} Leaders`;
 
     const matches =
         allMatches.filter(
