@@ -299,25 +299,19 @@
     text-align:center;
 }
 
-.debutants-table th:first-child,
-.debutants-table td:first-child{
-    text-align:left;
-}
-
 .stats-table th:nth-child(2),
-.stats-table td:nth-child(2){
+.stats-table td:nth-child(2),
+.debutants-table th:nth-child(2),
+.debutants-table td:nth-child(2){
     text-align:left;
 }
 
 .stats-table th:first-child,
-.stats-table td:first-child{
+.stats-table td:first-child,
+.debutants-table th:first-child,
+.debutants-table td:first-child{
     text-align:center;
     width:30px;
-}
-
-.debutants-table th:nth-child(2),
-.debutants-table td:nth-child(2){
-    text-align:right;
 }
 
 .home-card{
@@ -1001,31 +995,30 @@ function renderSeasonDebutants(){
 
       let html = `
           <table class="debutants-table">
-      
-              <thead>
-                  <tr>
-                      <th>Player</th>
-                      <th>Debut Date</th>
-                  </tr>
-              </thead>
-      
+				<thead>
+				    <tr>
+				        <th>#</th>
+				        <th>Player</th>
+				        <th>Debut Date</th>
+				    </tr>
+				</thead>
               <tbody>
       `;
 
-    debutants.forEach(([player,data]) => {
+    debutants.forEach(([player,data], index) => {
 
         html += `
-            <tr>
-                <td>
-                    <a
-                        class="player-link"
-                        href="player.html?name=${encodeURIComponent(player)}">
-                        ${player}
-                    </a>
-                </td>
-
-                <td>${data.dateText}</td>
-            </tr>
+			<tr>
+			    <td>${index + 1}</td>
+			    <td>
+			        <a
+			            class="player-link"
+			            href="player.html?name=${encodeURIComponent(player)}">
+			            ${player}
+			        </a>
+			    </td>
+			    <td>${data.dateText}</td>
+			</tr>
         `;
     });
 
