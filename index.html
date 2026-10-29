@@ -1896,6 +1896,29 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleSidebar
     );
 
+	document.addEventListener("click", (e) => {
+	
+	    if(window.innerWidth > 820){
+	        return;
+	    }
+	
+	    if(
+	        !sidebar.contains(e.target) &&
+	        !menuToggle.contains(e.target)
+	    ){
+	
+	        sidebar.classList.remove(
+	            "mobile-open"
+	        );
+	
+	        overlay.classList.remove(
+	            "show"
+	        );
+	
+	    }
+	
+	});
+
     overlay?.addEventListener(
         "click",
         () => {
