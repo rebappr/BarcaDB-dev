@@ -1041,56 +1041,102 @@ function initPersonSearch(){
     });
 
 }
-attachSearch(
-    "personSearch",
-    "personSearchResults"
-);
+
 
 attachSearch(
-    "mobilePersonSearch",
-    "mobileSearchResults"
+    "sidebarPersonSearch",
+    "sidebarSearchResults"
 );
-
-}
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const menuToggle = document.getElementById("menuToggle");
-    const menuOverlay = document.getElementById("menuOverlay");
-    const mainMenu = document.querySelector(".main-menu");
+    const menuToggle =
+        document.getElementById("menuToggle");
 
-    if(!menuToggle || !menuOverlay || !mainMenu){
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const sidebarClose =
+        document.getElementById("sidebarClose");
+
+    const overlay =
+        document.getElementById("sidebarOverlay");
+
+    if(!menuToggle || !sidebar){
         return;
     }
 
-    function closeMenu(){
-        mainMenu.classList.remove("open");
-        menuOverlay.classList.remove("show");
-        menuToggle.textContent = "☰";
-    }
+    function toggleSidebar(){
 
-    function openMenu(){
-        mainMenu.classList.add("open");
-        menuOverlay.classList.add("show");
-        menuToggle.textContent = "✕";
-    }
+        if(window.innerWidth <= 820){
 
-    menuToggle.addEventListener("click", () => {
+            sidebar.classList.toggle(
+                "mobile-open"
+            );
 
-        if(mainMenu.classList.contains("open")){
-            closeMenu();
-        }else{
-            openMenu();
+            overlay?.classList.toggle(
+                "show"
+            );
+
+            return;
         }
 
-    });
+        sidebar.classList.toggle(
+            "collapsed"
+        );
 
-    menuOverlay.addEventListener("click", closeMenu);
+    }
 
-    window.addEventListener("resize", () => {
+    function closeSidebar(){
+
+        if(window.innerWidth <= 820){
+
+            sidebar.classList.remove(
+                "mobile-open"
+            );
+
+            overlay?.classList.remove(
+                "show"
+            );
+
+            return;
+        }
+
+        sidebar.classList.add(
+            "collapsed"
+        );
+
+    }
+
+    menuToggle.addEventListener(
+        "click",
+        toggleSidebar
+    );
+
+    sidebarClose?.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+    document.addEventListener("click", (e) => {
 
         if(window.innerWidth > 820){
-            closeMenu();
+            return;
+        }
+
+        if(
+            !sidebar.contains(e.target) &&
+            !menuToggle.contains(e.target)
+        ){
+
+            sidebar.classList.remove(
+                "mobile-open"
+            );
+
+            overlay?.classList.remove(
+                "show"
+            );
+
         }
 
     });
