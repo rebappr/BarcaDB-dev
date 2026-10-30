@@ -1818,15 +1818,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(savedTheme){
 
-        document.documentElement.setAttribute(
-            "data-theme",
-            savedTheme
-        );
-
-        themeToggle.textContent =
-            savedTheme === "dark"
-            ? "☀️"
-            : "🌙";
+		document.documentElement.setAttribute(
+		    "data-theme",
+		    savedTheme
+		);
+		
+		themeToggle.textContent =
+		    savedTheme === "dark"
+		    ? "☀️"
+		    : "🌙";
     }
 
     themeToggle?.addEventListener(
@@ -1920,21 +1920,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	    "click",
 	    closeSidebar
 	);
-
-    overlay?.addEventListener(
-        "click",
-        () => {
-
-            sidebar.classList.remove(
-                "open"
-            );
-
-            overlay.classList.remove(
-                "show"
-            );
-
-        }
-    );
 
 });
 
