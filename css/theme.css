@@ -1,8 +1,9 @@
 /* =========================
-   DARK THEME (DEFAULT)
+   DARK THEME
    ========================= */
 
-:root{
+:root,
+[data-theme="dark"]{
 
     --barca-blue:#004D98;
     --barca-red:#A50044;
@@ -34,47 +35,46 @@
     --result-draw-bg:rgba(250,204,21,.15);
     --result-loss-bg:rgba(239,68,68,.15);
 
-    --select-bg: #a3a3a3;
-    --select-text: #ffffff;
-   
-    --tabs-text: #a7a7a8;
-    --tabs-active: #ffffff;
+    --select-bg:#a3a3a3;
+    --select-text:#ffffff;
+
+    --tabs-text:#a7a7a8;
+    --tabs-active:#ffffff;
 
     --number:#ffffff;
     --number-bg:rgba(255,255,255,.08);
 
     --link-color:#60A5FA;
-
 }
+
 
 /* =========================
    LIGHT THEME
    ========================= */
 
-@media (prefers-color-scheme: light){
+[data-theme="light"]{
 
-    :root{
-        
+    --barca-blue:#004D98;
+    --barca-red:#A50044;
 
-        --stats-right:#004D98;
-        --stats-left:#A50044;
-    
-        --bg:#f8fafc;
-        --bg-match:#ffffff;
-        --text:#0f172a;
-        --search-bg:#ffffff;
+    --stats-left:#A50044;
+    --stats-right:#004D98;
 
-        --card-bg:#f1f5f9;
-        --card-border:rgba(0,77,152,.25);
+    --bg:#f8fafc;
+    --bg-match:#ffffff;
+    --text:#0f172a;
+    --search-bg:#ffffff;
 
-        --meta-bg:#dfe5eb;
-        --meta-border:#e2e8f0;
-        --border-dark:#1e293b;
+    --card-bg:#f1f5f9;
+    --card-border:rgba(0,77,152,.25);
 
-        --muted:#64748b;
+    --meta-bg:#dfe5eb;
+    --meta-border:#e2e8f0;
 
-        --divider:#cbd5e1;
-        --surface:#f8fafc;
+    --muted:#64748b;
+
+    --divider:#cbd5e1;
+    --surface:#f8fafc;
 
     --result-win:#15803d;
     --result-draw:#334155;
@@ -84,15 +84,14 @@
     --result-draw-bg:#f1f5f9;
     --result-loss-bg:#fee2e2;
 
-    --select-bg: #ffffff;
-    --select-text: #0f172a;
-   
-    --tabs-text: #9ca3af;
-    --tabs-active: #192236;
+    --select-bg:#ffffff;
+    --select-text:#0f172a;
+
+    --tabs-text:#9ca3af;
+    --tabs-active:#192236;
 
     --number:#004D98;
     --number-bg:rgba(0,77,152,.12);
 
     --link-color:#004D98;
-
 }
