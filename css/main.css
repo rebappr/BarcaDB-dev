@@ -24,9 +24,6 @@ padding:8px;
 
 .header{
     background:var(--card-bg);
-
-    backdrop-filter:blur(20px);
-
     border:1px solid var(--card-border);
 
     padding:4px 10px 6px;
