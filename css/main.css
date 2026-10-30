@@ -23,6 +23,12 @@ padding:8px;
 }
 
 .header{
+	background:
+    linear-gradient(
+        135deg,
+        rgba(0,77,152,.95),
+        rgba(165,0,68,.95)
+    );
     padding:4px 10px 6px;
     margin-bottom:12px;
     border-radius:12px;
@@ -58,12 +64,6 @@ padding:8px;
     flex-direction:column;
     justify-content:center;
     min-width:0;
-	color:
-    linear-gradient(
-        135deg,
-        rgba(0,77,152,.95),
-        rgba(165,0,68,.95)
-    );
 }
 
 .header h1{
