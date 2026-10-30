@@ -199,6 +199,10 @@ text-decoration:underline;
 
 }
 
+.theme-toggle svg{
+    display:block;
+}
+
 .theme-toggle{
     position:absolute;
 
