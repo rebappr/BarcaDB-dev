@@ -199,6 +199,28 @@ text-decoration:underline;
     display:flex;
     align-items:center;
     justify-content:center;
+
+    width:48px;
+    height:48px;
+
+    border:none;
+    border-radius:14px;
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    font-size:30px;
+    font-weight:700;
+    line-height:1;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.menu-toggle:hover{
+    background:rgba(255,255,255,.25);
 }
 
 #personSearchResults{
@@ -329,21 +351,7 @@ text-decoration:underline;
 }
 
 .menu-toggle{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:48px;
-    height:48px;
     margin-left:auto;
-    padding-bottom:2px;
-    border:none;
-    border-radius:14px;
-    background:rgba(255,255,255,.15);
-    color:white;
-    font-size:30px;
-    font-weight:700;
-    line-height:1;
-    cursor:pointer;
 }
 
 .header-text{
