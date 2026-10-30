@@ -23,18 +23,18 @@ padding:8px;
 }
 
 .header{
-	background:
-    linear-gradient(
-        135deg,
-        rgba(0,77,152,.95),
-        rgba(165,0,68,.95)
-    );
+    background:var(--card-bg);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--card-border);
+
     padding:4px 10px 6px;
     margin-bottom:12px;
-    border-radius:12px;
-    color:#fff;
 
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    border-radius:12px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
 }
 
 .layout{
@@ -48,6 +48,17 @@ padding:8px;
 }
 
 .header-inner{
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.header-center{
+    position:absolute;
+
+    left:50%;
+    transform:translateX(-50%);
+
     display:flex;
     align-items:center;
     gap:12px;
@@ -69,9 +80,17 @@ padding:8px;
 .header h1{
     margin:0;
     font-size:22px;
-    font-weight:700;
+    font-weight:800;
+    background:linear-gradient(
+        90deg,
+        var(--barca-blue),
+        var(--barca-red)
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+
     line-height:1.1;
-    color:#fff;
 }
 
 .hero-subtitle{
@@ -214,9 +233,9 @@ text-decoration:underline;
     border:none;
     border-radius:12px;
 
-    background:rgba(255,255,255,.15);
+    background:rgba(0,77,152,.10);
 
-    color:white;
+    color:var(--barca-blue);
 
     font-size:22px;
     font-weight:500;
@@ -229,7 +248,7 @@ text-decoration:underline;
 }
 
 .menu-toggle:hover{
-    background:rgba(255,255,255,.25);
+    background:rgba(0,77,152,.18);
 }
 
 #personSearchResults{
