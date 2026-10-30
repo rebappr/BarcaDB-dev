@@ -52,6 +52,8 @@ padding:8px;
 
     display:flex;
     align-items:center;
+
+    min-height:88px;
 }
 
 .header-center{
