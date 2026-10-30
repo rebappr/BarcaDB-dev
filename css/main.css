@@ -94,10 +94,11 @@ padding:8px;
 
     background:linear-gradient(
         90deg,
-        #ffffff 0%,
-        #fafafa 40%,
-        #f7dc6f 75%,
-        #d4af37 100%
+        #fff9c4 0%,
+        #ffe082 25%,
+        #fbc02d 50%,
+        #d4af37 75%,
+        #996515 100%
     );
 
     -webkit-background-clip:text;
@@ -105,6 +106,7 @@ padding:8px;
 
     -webkit-text-fill-color:transparent;
     color:transparent;
+
 }
 
 @media (prefers-color-scheme: dark){
@@ -113,10 +115,11 @@ padding:8px;
 
         background:linear-gradient(
             90deg,
-            #ffffff 0%,
-            #fafafa 40%,
-            #f7dc6f 75%,
-            #d4af37 100%
+            #fff9c4 0%,
+            #ffe082 25%,
+            #fbc02d 50%,
+            #d4af37 75%,
+            #996515 100%
         );
 
         -webkit-background-clip:text;
@@ -124,9 +127,10 @@ padding:8px;
 
         -webkit-text-fill-color:transparent;
         color:transparent;
-    }
-}
 
+    }
+
+}
 [data-theme="light"] .header-text h1{
 
     background:none;
