@@ -334,7 +334,7 @@ text-decoration:underline;
 
 .sidebar-nav a.active{
     background:rgba(0,77,152,.10);
-    color:#004D98;
+    color:var(--nav-active);
 }
 
 .sidebar-search{
