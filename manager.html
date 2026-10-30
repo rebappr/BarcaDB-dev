@@ -1069,6 +1069,14 @@ Promise.all([
 
     initPersonSearch();
 
+})
+.catch(error => {
+
+    console.error(
+        "Failed to load data:",
+        error
+    );
+
 });
 
 function statValue(value){
