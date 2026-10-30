@@ -144,7 +144,11 @@ padding:8px;
 [data-theme="light"] .header-text h1{
 
     background:none;
-    color:var(--text);
+    background:linear-gradient(
+        90deg,
+        var(--barca-blue),
+        var(--barca-red)
+    );
 
     -webkit-text-fill-color:initial;
 }
