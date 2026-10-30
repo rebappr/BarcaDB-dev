@@ -38,6 +38,16 @@ padding:8px;
     min-width:0;
 }
 
+[data-theme="dark"] .header{
+    background:#162033;
+}
+
+@media (prefers-color-scheme: dark){
+    :root:not([data-theme]) .header{
+        background:#162033;
+    }
+}
+
 .header-inner{
     position:relative;
 
