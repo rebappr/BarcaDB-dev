@@ -285,6 +285,17 @@ text-decoration:underline;
 
 }
 
+[data-theme="dark"] .menu-toggle{
+    background:rgba(255,255,255,.12);
+    color:#ffffff;
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:0 2px 10px rgba(0,0,0,.20);
+}
+
+[data-theme="dark"] .menu-toggle:hover{
+    background:rgba(255,255,255,.20);
+}
+
 .theme-toggle svg{
     display:block;
 }
@@ -335,6 +346,16 @@ text-decoration:underline;
         background:rgba(255,255,255,.20);
     }
 
+}
+
+[data-theme="dark"] .theme-toggle{
+    background:rgba(255,255,255,.12);
+    color:#ffffff;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+[data-theme="dark"] .theme-toggle:hover{
+    background:rgba(255,255,255,.20);
 }
 
 .player-search-results{
