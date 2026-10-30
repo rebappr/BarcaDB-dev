@@ -44,8 +44,7 @@
     --number-bg:rgba(255,255,255,.08);
 
     --link-color:#60A5FA;
-
-    /* NOVÉ */
+    --nav-active:#F4C542;
 
     --header-bg:#162033;
 
@@ -110,6 +109,7 @@
     --number-bg:rgba(0,77,152,.12);
 
     --link-color:#004D98;
+    --nav-active:#004D98;
 
     --header-bg:#f1f5f9;
 
