@@ -182,7 +182,7 @@ grid-template-columns:1fr;
 
 <div class="layout">
 
-	<aside id="sidebar" class="sidebar collapsed">
+	<aside id="sidebar" class="sidebar">
 
 		<div class="sidebar-brand">
 		
@@ -1118,30 +1118,38 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        sidebar.classList.toggle(
-            "collapsed"
-        );
+			sidebar.classList.toggle(
+			    "open"
+			);
+			
+			overlay.classList.toggle(
+			    "show"
+			);
 
     }
 
-	function closeSidebar(){
-	
-	    if(window.innerWidth <= 820){
-	
-	        sidebar.classList.remove(
-	            "mobile-open"
-	        );
-	
-	        overlay?.classList.remove(
-	            "show"
-	        );
-	
-	        return;
-	    }
-	
-	    sidebar.classList.add(
-	        "collapsed"
-	    );
+    function closeSidebar(){
+
+        if(window.innerWidth <= 820){
+
+            sidebar.classList.remove(
+                "mobile-open"
+            );
+
+            overlay?.classList.remove(
+                "show"
+            );
+
+            return;
+        }
+
+			sidebar.classList.remove(
+			    "open"
+			);
+			
+			overlay.classList.remove(
+			    "show"
+			);
 	
 	}
 
