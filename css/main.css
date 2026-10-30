@@ -37,13 +37,7 @@ padding:8px;
     box-shadow:0 20px 50px rgba(0,0,0,.15);
 }
 
-.layout{
-    display:flex;
-    min-height:100vh;
-}
-
 .page-content{
-    flex:1;
     min-width:0;
 }
 
@@ -254,20 +248,28 @@ text-decoration:underline;
 }
 
 .sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+
+    height:100vh;
     width:260px;
-    flex-shrink:0;
+
     background:var(--bg);
+
     border-right:1px solid var(--card-border);
-	border-radius:0 12px 12px 0;
+    border-radius:0 12px 12px 0;
+
     overflow-y:auto;
+
+    transform:translateX(-100%);
     transition:.25s ease;
+
+    z-index:9999;
 }
 
-.sidebar.collapsed{
-    width:0;
-    min-width:0;
-    border:none;
-    overflow:hidden;
+.sidebar.open{
+    transform:translateX(0);
 }
 
 .sidebar-nav{
@@ -321,7 +323,22 @@ text-decoration:underline;
 }
 
 .sidebar-overlay{
-    display:none;
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.2s ease;
+
+    z-index:9998;
+}
+
+.sidebar-overlay.show{
+    opacity:1;
+    visibility:visible;
 }
 
 .sidebar-brand{
