@@ -1793,6 +1793,14 @@ renderHome();
 
 document.addEventListener("DOMContentLoaded", () => {
 
+	const savedTheme =
+	    localStorage.getItem("theme") || "dark";
+	
+	document.documentElement.setAttribute(
+	    "data-theme",
+	    savedTheme
+	);
+
     const menuToggle =
         document.getElementById("menuToggle");
 
