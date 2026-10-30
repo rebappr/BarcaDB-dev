@@ -385,7 +385,7 @@ text-decoration:underline;
     border:1px solid var(--meta-border);
     background:var(--meta-bg);
     color:var(--text);
-    font-size:14px;
+    font-size:16px;
     box-sizing:border-box;
 }
 
