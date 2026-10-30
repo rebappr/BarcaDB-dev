@@ -437,80 +437,134 @@ font-size:16px;
 
 <body>
 
+<div id="sidebarOverlay"
+     class="sidebar-overlay"></div>
+
+<div class="layout">
+
+	<aside id="sidebar" class="sidebar">
+
+		<div class="sidebar-brand">
+		
+		    <a href="./" class="sidebar-brand-link">
+		
+		        <img
+		            src="logos/barcadb-logo.png"
+		            alt="Barça Database"
+		            class="sidebar-brand-logo">
+		
+		        <span class="sidebar-brand-text">
+		            Barça Database
+		        </span>
+		
+		    </a>
+		
+		    <button
+		        id="sidebarClose"
+		        class="sidebar-close"
+		        aria-label="Collapse sidebar">
+		
+		        <svg
+		            width="18"
+		            height="18"
+		            viewBox="0 0 24 24"
+		            fill="none">
+		
+		            <rect
+		                x="3"
+		                y="4"
+		                width="18"
+		                height="16"
+		                rx="2"
+		                stroke="currentColor"
+		                stroke-width="2"/>
+		
+		            <path
+		                d="M13 8L9 12L13 16"
+		                stroke="currentColor"
+		                stroke-width="2"
+		                stroke-linecap="round"
+		                stroke-linejoin="round"/>
+		
+		            <line
+		                x1="17"
+		                y1="7"
+		                x2="17"
+		                y2="17"
+		                stroke="currentColor"
+		                stroke-width="2"/>
+		
+		        </svg>
+		
+		    </button>
+		
+		</div>
+	
+	    <div class="sidebar-search">
+	
+	        <input
+	            type="text"
+	            id="sidebarPersonSearch"
+	            placeholder="Search...">
+	
+	        <div id="sidebarSearchResults"></div>
+	
+	    </div>
+	
+	    <div class="sidebar-nav">
+	
+	        <a href="./" class="active">Home page</a>
+	
+	        <a href="statistics.html">
+	            Statistics
+	        </a>
+	
+	        <a href="season.html">
+	            Seasons
+	        </a>
+	
+	        <a href="insights.html">
+	            Insights
+	        </a>
+	
+	        <a href="compare.html">
+	            Compare
+	        </a>
+	
+	        <a href="el-clasico.html">
+	            El Clásico
+	        </a>
+	
+	    </div>
+	
+	</aside>
+
+<div class="page-content">
+
 <div class="container">
 
 <div class="menu-overlay" id="menuOverlay"></div>
 
 <div class="header">
-    <div class="header-inner">
-		
-		<a href="./">
-        	<img src="logos/barcadb-logo.png" class="header-logo" alt="Barça DB">
-		</a>
-
-        <div class="header-text">
-            <h1>Barça Database</h1>
+	<div class="header-inner">
+	
+	    <button id="menuToggle" class="menu-toggle">
+	        ☰
+	    </button>
+	
+	    <a href="./">
+	        <img src="logos/barcadb-logo.png"
+	             class="header-logo"
+	             alt="Barça DB">
+	    </a>
+	
+	    <div class="header-text">
+	        <h1>Barça Database</h1>
 	    </div>
-
-<div class="desktop-search">
-
-    <input
-        type="text"
-        id="personSearch"
-        placeholder="Search..."
-        class="desktop-search-input">
-
-    <div id="personSearchResults"></div>
-
+	
+	</div>
 </div>
-
-    <button id="menuToggle" class="menu-toggle">
-    	☰
-    </button>
-
-</div>
-</div>
-
-<nav class="main-menu">
-
-    <div class="mobile-menu-search">
-
-        <input
-            type="text"
-            id="mobilePersonSearch"
-            placeholder="Search..."
-            class="mobile-search-input">
-
-        <div id="mobileSearchResults"></div>
-
-    </div>
-
-    <a href="./">
-        <span>Home page</span>
-    </a>
-      
-    <a href="statistics.html">
-        <span>Statistics</span>
-    </a>
-
-    <a href="season.html">
-        <span>Seasons</span>
-    </a>
-
-    <a href="insights.html">
-        <span>Insights</span>
-    </a>
-
-    <a href="compare.html">
-        <span>Compare</span>
-    </a>
-
-    <a href="el-clasico.html">
-        <span>El Clásico</span>
-    </a>
-
-</nav>
-
+	
 <div id="opponentHeader"></div>
 
 <div class="content-layout">
