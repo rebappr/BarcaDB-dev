@@ -932,6 +932,10 @@
 </div>
 </div>
 
+</div>
+</div>
+</div>
+
 <script>
 
 let allMatches = [];
@@ -1178,14 +1182,10 @@ allMatches.forEach(match => {
     });
 
 }
-attachSearch(
-    "personSearch",
-    "personSearchResults"
-);
 
 attachSearch(
-    "mobilePersonSearch",
-    "mobileSearchResults"
+    "sidebarPersonSearch",
+    "sidebarSearchResults"
 );
 
 }
@@ -2645,111 +2645,6 @@ highlightWinner(
 
 }
 
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const menuToggle =
-        document.getElementById("menuToggle");
-
-    const menuOverlay =
-        document.getElementById("menuOverlay");
-
-    const mainMenu =
-        document.querySelector(".main-menu");
-
-    const mobileInput =
-        document.getElementById("mobilePersonSearch");
-
-    const desktopInput =
-        document.getElementById("personSearch");
-
-    if(!menuToggle || !menuOverlay || !mainMenu){
-        return;
-    }
-
-    function closeMenu(){
-
-        mainMenu.classList.remove("open");
-        menuOverlay.classList.remove("show");
-
-        menuToggle.textContent = "☰";
-    }
-
-    function openMenu(){
-
-        mainMenu.classList.add("open");
-        menuOverlay.classList.add("show");
-
-        menuToggle.textContent = "✕";
-
-        if(mobileInput){
-
-            setTimeout(() => {
-                mobileInput.focus();
-            }, 250);
-
-        }
-
-    }
-
-    menuToggle.addEventListener("click", () => {
-
-        if(mainMenu.classList.contains("open")){
-            closeMenu();
-        }else{
-            openMenu();
-        }
-
-    });
-
-    menuOverlay.addEventListener(
-        "click",
-        closeMenu
-    );
-
-    window.addEventListener("resize", () => {
-
-        if(window.innerWidth > 820){
-            closeMenu();
-        }
-
-    });
-
-    if(mobileInput && desktopInput){
-
-        mobileInput.addEventListener("input", () => {
-
-            desktopInput.value =
-                mobileInput.value;
-
-            desktopInput.dispatchEvent(
-                new Event("input")
-            );
-
-            const mobileResults =
-                document.getElementById(
-                    "mobileSearchResults"
-                );
-
-            const desktopResults =
-                document.getElementById(
-                    "personSearchResults"
-                );
-
-            if(
-                mobileResults &&
-                desktopResults
-            ){
-                mobileResults.innerHTML =
-                    desktopResults.innerHTML;
-            }
-
-        });
-
-    }
-
-});
-
 function isGoalkeeper(playerName){
 
     const player = playersData.find(
@@ -3465,6 +3360,101 @@ document.getElementById(
 ).style.display = "none";
 
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const sidebarClose =
+        document.getElementById("sidebarClose");
+
+    const overlay =
+        document.getElementById("sidebarOverlay");
+
+    if(!menuToggle || !sidebar){
+        return;
+    }
+
+    function toggleSidebar(){
+
+        if(window.innerWidth <= 820){
+
+            sidebar.classList.toggle(
+                "mobile-open"
+            );
+
+            overlay?.classList.toggle(
+                "show"
+            );
+
+            return;
+        }
+
+        sidebar.classList.toggle(
+            "collapsed"
+        );
+
+    }
+
+    function closeSidebar(){
+
+        if(window.innerWidth <= 820){
+
+            sidebar.classList.remove(
+                "mobile-open"
+            );
+
+            overlay?.classList.remove(
+                "show"
+            );
+
+            return;
+        }
+
+        sidebar.classList.add(
+            "collapsed"
+        );
+
+    }
+
+    menuToggle.addEventListener(
+        "click",
+        toggleSidebar
+    );
+
+    sidebarClose?.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+    document.addEventListener("click", (e) => {
+
+        if(window.innerWidth > 820){
+            return;
+        }
+
+        if(
+            !sidebar.contains(e.target) &&
+            !menuToggle.contains(e.target)
+        ){
+
+            sidebar.classList.remove(
+                "mobile-open"
+            );
+
+            overlay?.classList.remove(
+                "show"
+            );
+
+        }
+
+    });
+
+});
 
 </script>
 
