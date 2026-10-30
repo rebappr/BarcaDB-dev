@@ -1793,7 +1793,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if(window.innerWidth <= 820){
 
             sidebar.classList.toggle(
-                "mobile-open"
+                "open"
             );
 
             overlay.classList.toggle(
@@ -1818,7 +1818,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	    if(window.innerWidth <= 820){
 	
 	        sidebar.classList.remove(
-	            "mobile-open"
+	            "open"
 	        );
 	
 	        overlay?.classList.remove(
@@ -1851,17 +1851,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	document.addEventListener("click", (e) => {
 	
-	    if(window.innerWidth > 820){
-	        return;
-	    }
-	
 	    if(
 	        !sidebar.contains(e.target) &&
 	        !menuToggle.contains(e.target)
 	    ){
 	
 	        sidebar.classList.remove(
-	            "mobile-open"
+	            "open"
 	        );
 	
 	        overlay.classList.remove(
@@ -1877,7 +1873,7 @@ document.addEventListener("DOMContentLoaded", () => {
         () => {
 
             sidebar.classList.remove(
-                "mobile-open"
+                "open"
             );
 
             overlay.classList.remove(
