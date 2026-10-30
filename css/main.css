@@ -141,16 +141,39 @@ padding:8px;
     }
 
 }
+
 [data-theme="light"] .header-text h1{
 
-    background:none;
     background:linear-gradient(
         90deg,
         var(--barca-blue),
         var(--barca-red)
     );
 
-    -webkit-text-fill-color:initial;
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+}
+
+@media (prefers-color-scheme: light){
+
+    :root:not([data-theme]) .header-text h1{
+
+        background:linear-gradient(
+            90deg,
+            var(--barca-blue),
+            var(--barca-red)
+        );
+
+        -webkit-background-clip:text;
+        background-clip:text;
+
+        -webkit-text-fill-color:transparent;
+        color:transparent;
+    }
+
 }
 
 .hero-subtitle{
