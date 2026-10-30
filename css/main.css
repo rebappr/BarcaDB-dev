@@ -158,6 +158,8 @@ text-decoration:underline;
     width:38px;
     height:38px;
 
+    padding:0;
+
     border:none;
     border-radius:12px;
 
@@ -167,8 +169,10 @@ text-decoration:underline;
 
     font-size:22px;
     font-weight:500;
-    line-height:1;
-	margin-left:8px;
+
+    line-height:0;
+
+    margin-left:8px;
 
     cursor:pointer;
 
