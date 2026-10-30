@@ -23,7 +23,7 @@ padding:8px;
 }
 
 .header{
-    background:var(--card-bg);
+    background:var(--header-bg);
     border:1px solid var(--card-border);
 
     padding:4px 10px 6px;
@@ -36,16 +36,6 @@ padding:8px;
 
 .page-content{
     min-width:0;
-}
-
-[data-theme="dark"] .header{
-    background:#162033;
-}
-
-@media (prefers-color-scheme: dark){
-    :root:not([data-theme]) .header{
-        background:#162033;
-    }
 }
 
 .header-inner{
@@ -88,92 +78,15 @@ padding:8px;
     margin:0;
     font-size:22px;
     font-weight:800;
-    background:linear-gradient(
-        90deg,
-        var(--barca-blue),
-        var(--barca-red)
-    );
+    background:var(--header-title-gradient);
+
     -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
     background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+    color:transparent;
 
     line-height:1.1;
-}
-
-[data-theme="dark"] .header-text h1{
-
-    background:linear-gradient(
-        90deg,
-        #fff9c4 0%,
-        #ffe082 25%,
-        #fbc02d 50%,
-        #d4af37 75%,
-        #996515 100%
-    );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-    color:transparent;
-
-}
-
-@media (prefers-color-scheme: dark){
-
-    :root:not([data-theme]) .header-text h1{
-
-        background:linear-gradient(
-            90deg,
-            #fff9c4 0%,
-            #ffe082 25%,
-            #fbc02d 50%,
-            #d4af37 75%,
-            #996515 100%
-        );
-
-        -webkit-background-clip:text;
-        background-clip:text;
-
-        -webkit-text-fill-color:transparent;
-        color:transparent;
-
-    }
-
-}
-
-[data-theme="light"] .header-text h1{
-
-    background:linear-gradient(
-        90deg,
-        var(--barca-blue),
-        var(--barca-red)
-    );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-    color:transparent;
-}
-
-@media (prefers-color-scheme: light){
-
-    :root:not([data-theme]) .header-text h1{
-
-        background:linear-gradient(
-            90deg,
-            var(--barca-blue),
-            var(--barca-red)
-        );
-
-        -webkit-background-clip:text;
-        background-clip:text;
-
-        -webkit-text-fill-color:transparent;
-        color:transparent;
-    }
-
 }
 
 .hero-subtitle{
@@ -246,9 +159,10 @@ text-decoration:underline;
     border:none;
     border-radius:12px;
 
-    background:rgba(0,77,152,.10);
-
-    color:var(--link-color);
+    background:var(--toggle-bg);
+    color:var(--toggle-color);
+    border:var(--toggle-border);
+    box-shadow:var(--toggle-shadow);
 
     font-size:22px;
     font-weight:500;
@@ -263,37 +177,7 @@ text-decoration:underline;
 }
 
 .menu-toggle:hover{
-    background:rgba(0,77,152,.18);
-}
-
-@media (prefers-color-scheme: dark){
-
-    .menu-toggle{
-        background:rgba(255,255,255,.12);
-
-        color:#ffffff;
-
-        border:1px solid rgba(255,255,255,.10);
-
-        box-shadow:
-            0 2px 10px rgba(0,0,0,.20);
-    }
-
-    .menu-toggle:hover{
-        background:rgba(255,255,255,.20);
-    }
-
-}
-
-[data-theme="dark"] .menu-toggle{
-    background:rgba(255,255,255,.12);
-    color:#ffffff;
-    border:1px solid rgba(255,255,255,.10);
-    box-shadow:0 2px 10px rgba(0,0,0,.20);
-}
-
-[data-theme="dark"] .menu-toggle:hover{
-    background:rgba(255,255,255,.20);
+    background:var(--toggle-bg-hover);
 }
 
 .theme-toggle svg{
@@ -317,9 +201,10 @@ text-decoration:underline;
     border:none;
     border-radius:12px;
 
-    background:rgba(0,77,152,.10);
-
-    color:var(--link-color);
+    background:var(--toggle-bg);
+    color:var(--toggle-color);
+    border:var(--toggle-border);
+    box-shadow:var(--toggle-shadow);
 
     font-size:18px;
 
@@ -329,33 +214,7 @@ text-decoration:underline;
 }
 
 .theme-toggle:hover{
-    background:rgba(0,77,152,.18);
-}
-
-@media (prefers-color-scheme: dark){
-
-    .theme-toggle{
-        background:rgba(255,255,255,.12);
-
-        color:#ffffff;
-
-        border:1px solid rgba(255,255,255,.08);
-    }
-
-    .theme-toggle:hover{
-        background:rgba(255,255,255,.20);
-    }
-
-}
-
-[data-theme="dark"] .theme-toggle{
-    background:rgba(255,255,255,.12);
-    color:#ffffff;
-    border:1px solid rgba(255,255,255,.08);
-}
-
-[data-theme="dark"] .theme-toggle:hover{
-    background:rgba(255,255,255,.20);
+    background:var(--toggle-bg-hover);
 }
 
 .player-search-results{
