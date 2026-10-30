@@ -49,6 +49,7 @@ padding:8px;
 
 .header-inner{
     position:relative;
+
     display:flex;
     align-items:center;
 }
@@ -61,7 +62,11 @@ padding:8px;
 
     display:flex;
     align-items:center;
+
     gap:12px;
+
+    top:50%;
+    transform:translate(-50%,-50%);
 }
 
 .header-logo{
