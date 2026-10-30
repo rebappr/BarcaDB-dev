@@ -1811,12 +1811,14 @@ renderHome();
 document.addEventListener("DOMContentLoaded", () => {
 
 	const savedTheme =
-	    localStorage.getItem("theme") || "dark";
+	    localStorage.getItem("theme");
 	
-	document.documentElement.setAttribute(
-	    "data-theme",
-	    savedTheme
-	);
+	if(savedTheme){
+	    document.documentElement.setAttribute(
+	        "data-theme",
+	        savedTheme
+	    );
+	}
 
     const menuToggle =
         document.getElementById("menuToggle");
