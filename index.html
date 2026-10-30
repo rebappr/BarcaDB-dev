@@ -1836,15 +1836,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	const themeIcon =
     	document.getElementById("themeIcon");
 
-    if(savedTheme){
-
-		document.documentElement.setAttribute(
+    	document.documentElement.setAttribute(
 		    "data-theme",
 		    savedTheme
 		);
 		
 		themeIcon.innerHTML =
-		    savedTheme === "dark"
+		    next === "dark"
 		    ? `
 		    <circle
 		        cx="12"
@@ -1872,7 +1870,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		        stroke-linecap="round"
 		        stroke-linejoin="round"/>
 		    `;
-    }
 
     themeToggle?.addEventListener(
         "click",
