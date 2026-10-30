@@ -90,6 +90,51 @@ padding:8px;
     line-height:1.1;
 }
 
+[data-theme="dark"] .header-text h1{
+
+    background:linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #fafafa 40%,
+        #f7dc6f 75%,
+        #d4af37 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+}
+
+@media (prefers-color-scheme: dark){
+
+    :root:not([data-theme]) .header-text h1{
+
+        background:linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #fafafa 40%,
+            #f7dc6f 75%,
+            #d4af37 100%
+        );
+
+        -webkit-background-clip:text;
+        background-clip:text;
+
+        -webkit-text-fill-color:transparent;
+        color:transparent;
+    }
+}
+
+[data-theme="light"] .header-text h1{
+
+    background:none;
+    color:var(--text);
+
+    -webkit-text-fill-color:initial;
+}
+
 .hero-subtitle{
     margin-top:2px;
     font-size:13px;
