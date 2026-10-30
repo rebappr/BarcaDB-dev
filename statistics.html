@@ -1072,15 +1072,10 @@ function initPersonSearch(){
     });
 
 }
-attachSearch(
-    "personSearch",
-    "personSearchResults"
-);
-
-attachSearch(
-    "sidebarPersonSearch",
-    "sidebarSearchResults"
-);
+	attachSearch(
+	    "sidebarPersonSearch",
+	    "sidebarSearchResults"
+	);
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -1089,9 +1084,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sidebar =
         document.getElementById("sidebar");
-
-    const sidebarClose =
-        document.getElementById("sidebarClose");
+	const sidebarClose =
+	    document.getElementById("sidebarClose");
 
     const overlay =
         document.getElementById("sidebarOverlay");
@@ -1108,7 +1102,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "mobile-open"
             );
 
-            overlay?.classList.toggle(
+            overlay.classList.toggle(
                 "show"
             );
 
@@ -1121,63 +1115,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    function closeSidebar(){
-
-        if(window.innerWidth <= 820){
-
-            sidebar.classList.remove(
-                "mobile-open"
-            );
-
-            overlay?.classList.remove(
-                "show"
-            );
-
-            return;
-        }
-
-        sidebar.classList.add(
-            "collapsed"
-        );
-
-    }
+	function closeSidebar(){
+	
+	    if(window.innerWidth <= 820){
+	
+	        sidebar.classList.remove(
+	            "mobile-open"
+	        );
+	
+	        overlay?.classList.remove(
+	            "show"
+	        );
+	
+	        return;
+	    }
+	
+	    sidebar.classList.add(
+	        "collapsed"
+	    );
+	
+	}
 
     menuToggle.addEventListener(
         "click",
         toggleSidebar
     );
 
-    sidebarClose?.addEventListener(
+	sidebarClose?.addEventListener(
+	    "click",
+	    closeSidebar
+	);
+
+
+	document.addEventListener("click", (e) => {
+	
+	    if(window.innerWidth > 820){
+	        return;
+	    }
+	
+	    if(
+	        !sidebar.contains(e.target) &&
+	        !menuToggle.contains(e.target)
+	    ){
+	
+	        sidebar.classList.remove(
+	            "mobile-open"
+	        );
+	
+	        overlay.classList.remove(
+	            "show"
+	        );
+	
+	    }
+	
+	});
+
+    overlay?.addEventListener(
         "click",
-        closeSidebar
-    );
-
-    document.addEventListener("click", (e) => {
-
-        if(window.innerWidth > 820){
-            return;
-        }
-
-        if(
-            !sidebar.contains(e.target) &&
-            !menuToggle.contains(e.target)
-        ){
+        () => {
 
             sidebar.classList.remove(
                 "mobile-open"
             );
 
-            overlay?.classList.remove(
+            overlay.classList.remove(
                 "show"
             );
 
         }
-
-    });
+    );
 
 });
 
 </script>
+
 </body>
 </html>
-
