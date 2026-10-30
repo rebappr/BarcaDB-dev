@@ -1813,41 +1813,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-	function closeSidebar(){
+	function toggleSidebar(){
 	
-	    if(window.innerWidth <= 820){
+	    sidebar.classList.toggle(
+	        "open"
+	    );
 	
-	        sidebar.classList.remove(
-	            "open"
-	        );
-	
-	        overlay?.classList.remove(
-	            "show"
-	        );
-	
-	        return;
-	    }
-	
-		sidebar.classList.remove(
-		    "open"
-		);
-		
-		overlay.classList.remove(
-		    "show"
-		);
+	    overlay.classList.toggle(
+	        "show"
+	    );
 	
 	}
-
-    menuToggle.addEventListener(
-        "click",
-        toggleSidebar
-    );
-
+	
+	function closeSidebar(){
+	
+	    sidebar.classList.remove(
+	        "open"
+	    );
+	
+	    overlay.classList.remove(
+	        "show"
+	    );
+	
+	}
+	
+	menuToggle.addEventListener(
+	    "click",
+	    (e) => {
+	
+	        e.stopPropagation();
+	
+	        toggleSidebar();
+	
+	    }
+	);
+	
 	sidebarClose?.addEventListener(
 	    "click",
 	    closeSidebar
 	);
-
+	
+	document.addEventListener("click", (e) => {
+	
+	    if(
+	        !sidebar.contains(e.target) &&
+	        !menuToggle.contains(e.target)
+	    ){
+	        closeSidebar();
+	    }
+	
+	});
+	
+	overlay?.addEventListener(
+	    "click",
+	    closeSidebar
+	);
 
 	document.addEventListener("click", (e) => {
 	
