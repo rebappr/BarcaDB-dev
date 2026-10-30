@@ -331,6 +331,7 @@ text-decoration:underline;
     flex-shrink:0;
     background:var(--bg);
     border-right:1px solid var(--card-border);
+	border-radius:0 12px 12px 0;
     overflow-y:auto;
     transition:.25s ease;
 }
@@ -489,6 +490,7 @@ text-decoration:underline;
         background:var(--bg);
 		backdrop-filter:none;
         border-right:1px solid var(--card-border);
+		border-radius:0 12px 12px 0;
         transform:translateX(-100%);
         transition:.25s ease;
         z-index:9999;
