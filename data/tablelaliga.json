@@ -19706,6 +19706,18 @@
   {
     "season": "2026/27",
     "position": "1",
+    "club": "FC Barcelona",
+    "matches": "11",
+    "wins": "10",
+    "draws": "0",
+    "losses": "1",
+    "goals": "44:11",
+    "difference": "33",
+    "points": "30"
+  },
+  {
+    "season": "2026/27",
+    "position": "2",
     "club": "Atlético Madrid",
     "matches": "11",
     "wins": "9",
@@ -19714,18 +19726,6 @@
     "goals": "22:8",
     "difference": "14",
     "points": "28"
-  },
-  {
-    "season": "2026/27",
-    "position": "2",
-    "club": "FC Barcelona",
-    "matches": "10",
-    "wins": "9",
-    "draws": "0",
-    "losses": "1",
-    "goals": "40:11",
-    "difference": "29",
-    "points": "27"
   },
   {
     "season": "2026/27",
@@ -19778,18 +19778,6 @@
   {
     "season": "2026/27",
     "position": "7",
-    "club": "Deportivo Alavés",
-    "matches": "10",
-    "wins": "3",
-    "draws": "3",
-    "losses": "4",
-    "goals": "14:11",
-    "difference": "3",
-    "points": "12"
-  },
-  {
-    "season": "2026/27",
-    "position": "8",
     "club": "Athletic Club",
     "matches": "9",
     "wins": "3",
@@ -19801,7 +19789,7 @@
   },
   {
     "season": "2026/27",
-    "position": "9",
+    "position": "8",
     "club": "Villarreal",
     "matches": "11",
     "wins": "3",
@@ -19813,7 +19801,7 @@
   },
   {
     "season": "2026/27",
-    "position": "10",
+    "position": "9",
     "club": "Celta Vigo",
     "matches": "11",
     "wins": "2",
@@ -19821,6 +19809,18 @@
     "losses": "3",
     "goals": "10:10",
     "difference": "0",
+    "points": "12"
+  },
+  {
+    "season": "2026/27",
+    "position": "10",
+    "club": "Deportivo Alavés",
+    "matches": "11",
+    "wins": "3",
+    "draws": "3",
+    "losses": "5",
+    "goals": "14:15",
+    "difference": "-1",
     "points": "12"
   },
   {
