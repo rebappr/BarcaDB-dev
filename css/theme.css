@@ -63,6 +63,9 @@
     --toggle-color:#ffffff;
     --toggle-border:1px solid rgba(255,255,255,.10);
     --toggle-shadow:0 2px 10px rgba(0,0,0,.20);
+   
+    --matches-grid-bg:rgba(255,255,255,.20);
+    --matches-grid-border:#ffffff;
 }
 
 
@@ -125,4 +128,7 @@
     --toggle-color:#004D98;
     --toggle-border:none;
     --toggle-shadow:none;
+
+    --matches-grid-bg:rgba(0,77,152,.10);
+    --matches-grid-border:rgba(0,77,152,.25);
 }
