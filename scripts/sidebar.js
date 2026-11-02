@@ -1,3 +1,5 @@
+document.documentElement.classList.add("sidebar-preload");
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const menuToggle = document.getElementById("menuToggle");
@@ -26,7 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay?.classList.add("show");
         }
 
-        if (save) saveState(true);
+        if (save) {
+            saveState(true);
+        }
     }
 
     function closeSidebar(save = true) {
@@ -38,7 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay?.classList.remove("show");
         }
 
-        if (save) saveState(false);
+        if (save) {
+            saveState(false);
+        }
     }
 
     function toggleSidebar() {
@@ -49,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Predvolené načítanie stavu
     const savedState =
         localStorage.getItem(STORAGE_KEY);
 
@@ -96,4 +101,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
+
+    requestAnimationFrame(() => {
+        document.documentElement.classList.remove(
+            "sidebar-preload"
+        );
+    });
 });
