@@ -1681,6 +1681,8 @@ function renderClasicoRecords(){
 			    </div>
 			
 			    <div class="record-row">
+
+					<div class="record-name">
 					${topManagerWins.map(([name]) => `
 					<a
 					    href="manager.html?name=${encodeURIComponent(name)}"
@@ -1688,7 +1690,7 @@ function renderClasicoRecords(){
 					    ${name}
 					</a>
 					`).join(" • ")}
-			    </div>
+			    	</div>
 			
 			        <div class="record-value">
 			            ${maxManagerWins || 0}
