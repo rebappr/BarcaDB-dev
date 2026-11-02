@@ -723,6 +723,15 @@ color:var(--muted);
     text-decoration:underline;
 }
 
+.record-meta{
+    margin-top:4px;
+
+    font-size:12px;
+    color:var(--muted);
+
+    line-height:1.4;
+}
+
 @media(max-width:820px){
     .clasico-layout{
         grid-template-columns:1fr;
@@ -1415,13 +1424,15 @@ function renderClasicoRecords(){
 			        margin > biggestBarcaWin.margin
 			    ){
 			
-			        biggestBarcaWin = {
-			
-			            result: match.Result,
-			            margin,
-			            id: match.ID
-			
-			        };
+				biggestBarcaWin = {
+				
+				    result: match.Result,
+				    margin,
+				    id: match.ID,
+				    date: match.Date,
+				    competition: match.Competition
+				
+				};
 			
 			    }
 			
@@ -1434,13 +1445,15 @@ function renderClasicoRecords(){
 			        margin > biggestMadridWin.margin
 			    ){
 			
-			        biggestMadridWin = {
-			
-			            result: match.Result,
-			            margin,
-			            id: match.ID
-			
-			        };
+				biggestMadridWin = {
+				
+				    result: match.Result,
+				    margin,
+				    id: match.ID,
+				    date: match.Date,
+				    competition: match.Competition
+				
+				};
 			
 			    }
 			
@@ -1700,15 +1713,25 @@ function renderClasicoRecords(){
 			                href="match.html?id=${biggestBarcaWin?.id || ""}"
 			                class="player-link">
 			
-			                Match
+			                ${biggestBarcaWin?.result || "-"}
 			
 			            </a>
+			
+			            <div class="record-meta">
+			
+			                ${biggestBarcaWin?.date || ""}
+			
+			                •
+			
+			                ${biggestBarcaWin?.competition || ""}
+			
+			            </div>
 			
 			        </div>
 			
 			        <div class="record-value">
 			
-			            ${biggestBarcaWin?.result || "-"}
+			            +${biggestBarcaWin?.margin || 0}
 			
 			        </div>
 			
@@ -1731,23 +1754,31 @@ function renderClasicoRecords(){
 			                href="match.html?id=${biggestMadridWin?.id || ""}"
 			                class="player-link">
 			
-			                Match
+			                ${biggestMadridWin?.result || "-"}
 			
 			            </a>
+			
+			            <div class="record-meta">
+			
+			                ${biggestMadridWin?.date || ""}
+			
+			                •
+			
+			                ${biggestMadridWin?.competition || ""}
+			
+			            </div>
 			
 			        </div>
 			
 			        <div class="record-value">
 			
-			            ${biggestMadridWin?.result || "-"}
+			            +${biggestMadridWin?.margin || 0}
 			
 			        </div>
 			
 			    </div>
 			
 			</div>
-
-        </div>
 
     `;
 
