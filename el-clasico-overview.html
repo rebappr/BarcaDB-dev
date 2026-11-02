@@ -844,6 +844,55 @@ color:var(--muted);
     color:var(--select-text);
 }
 
+.records-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.record-item{
+    background:var(--meta-bg);
+    border:1px solid var(--meta-border);
+    border-radius:14px;
+    padding:12px;
+}
+
+.record-label{
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:4px;
+}
+
+.record-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.record-name{
+    font-weight:700;
+    color:var(--text);
+}
+
+.record-value{
+    min-width:42px;
+
+    text-align:center;
+
+    padding:4px 10px;
+
+    border-radius:999px;
+
+    background:rgba(0,77,152,.15);
+    border:1px solid rgba(0,77,152,.30);
+
+    color:#60A5FA;
+    font-weight:800;
+}
+
 @media(max-width:820px){
     .clasico-layout{
         grid-template-columns:1fr;
@@ -1295,51 +1344,15 @@ every official El Clásico ever played.
 
     <div class="clasico-column">
 
-        <section id="top-scorers"
-         class="widget-card">
-
-    <h2 id="topScorersTitle">
-	    All-Time Top Goalscorers
-	</h2>
-
-    <div id="topScorers"></div>
-
-</section>
-
-<section id="top-appearances"
-         class="widget-card">
-
-    <h2 id="topAppearancesTitle">
-	    All-Time Top Appearances
-	</h2>
-
-    <div id="topAppearances"></div>
-
-</section>
-
-<section id="top-managers"
-         class="widget-card">
-
-    <h2 id="topManagersTitle">
-	    All-Time Managers by Matches
-	</h2>
-
-    <div id="topManagers"></div>
-
-</section>
-
-<section id="top-manager-wins"
-         class="widget-card">
-
-	<h2 id="topManagerWinsTitle">
-	    All-Time Managers by Wins
-	</h2>
-
-    <div id="topManagerWins"></div>
-
-</section>
-
-    </div>
+		<section class="widget-card">
+		
+		    <h2>El Clásico Records</h2>
+		
+		    <div id="clasicoRecords"></div>
+		
+		</section>
+ 
+	</div>
 
 </div>
 
@@ -1497,115 +1510,105 @@ clasicos.forEach(match => {
 
 }
 
-function renderTopScorers(){
+function renderClasicoRecords(){
 
-    const scorers = {};
-    const scorerClubs = {};
-
-getFilteredClasicos().forEach(match => {
-
-for(let i = 1; i <= 12; i++){
-
-    const barcaPlayer =
-        match[`Goal Player ${i}`];
-
-    if(
-        barcaPlayer &&
-        !barcaPlayer.includes("(OG)")
-    ){
-        scorers[barcaPlayer] =
-            (scorers[barcaPlayer] || 0) + 1;
-
-        scorerClubs[barcaPlayer] = "barca";
-    }
-
-    const madridPlayer =
-        match[`Opp. Goal Player ${i}`];
-
-    if(
-        madridPlayer &&
-        !madridPlayer.includes("(OG)")
-    ){
-        scorers[madridPlayer] =
-            (scorers[madridPlayer] || 0) + 1;
-
-        scorerClubs[madridPlayer] = "madrid";
-    }
-
-}
-
-});
-
-    const sorted =
-        Object.entries(scorers)
-        .sort((a,b) => {
-			    if(b[1] !== a[1]){
-			        return b[1] - a[1];
-			    }
-			    return a[0].localeCompare(b[0]);
-			})
-        .slice(0,10);
-
-    const maxGoals =
-        sorted[0]?.[1] || 1;
-
-    let html = "";
-
-    sorted.forEach(([name, goals]) => {
-
-        const width =
-            (goals / maxGoals) * 100;
-
-        html += `
-
-            <div class="scorer-item">
-
-                <div class="scorer-row">
-
-                    <div class="scorer-name">
-                        <a class="player-link" href="player.html?name=${encodeURIComponent(name)}">
-                            ${name}
-                        </a>
-                    </div>
-
-                    <div class="scorer-goals">
-                        ${goals}
-                    </div>
-
-                </div>
-
-                <div class="scorer-bar">
-
-                    <div class="scorer-fill ${
-    scorerClubs[name] === "madrid"
-    ? "madrid-scorer"
-    : "barca-scorer"
-}"
-style="width:${width}%">
-</div>
-
-                </div>
-
-            </div>
-
-        `;
-
-    });
-
-    document.getElementById(
-        "topScorers"
-    ).innerHTML = html;
-
-}
-
-function renderTopAppearances(){
+    const clasicos = getClasicos();
 
     const appearances = {};
-    const playerClubs = {};
+    const goals = {};
+    const wins = {};
 
-    getFilteredClasicos().forEach(match => {
+    let mostGoalsMatchPlayer = "";
+    let mostGoalsMatchCount = 0;
 
-        for(let i = 1; i <= 11; i++){
+    clasicos.forEach(match => {
+
+        let winningPlayers = [];
+
+        if(match["Result type"] === "W"){
+
+            for(let i=1;i<=11;i++){
+
+                const player =
+                    match[`Player name ${i}`];
+
+                if(player){
+                    winningPlayers.push(player);
+                }
+            }
+
+        }
+
+        if(match["Result type"] === "L"){
+
+            for(let i=1;i<=11;i++){
+
+                const player =
+                    match[`Opp. Player name ${i}`];
+
+                if(player){
+                    winningPlayers.push(player);
+                }
+            }
+
+        }
+
+        winningPlayers.forEach(player => {
+
+            wins[player] =
+                (wins[player] || 0) + 1;
+
+        });
+
+        const matchGoals = {};
+
+        for(let i=1;i<=12;i++){
+
+            const scorer =
+                match[`Goal Player ${i}`];
+
+            if(
+                scorer &&
+                !scorer.includes("(OG)")
+            ){
+
+                goals[scorer] =
+                    (goals[scorer] || 0) + 1;
+
+                matchGoals[scorer] =
+                    (matchGoals[scorer] || 0) + 1;
+            }
+
+            const oppScorer =
+                match[`Opp. Goal Player ${i}`];
+
+            if(
+                oppScorer &&
+                !oppScorer.includes("(OG)")
+            ){
+
+                goals[oppScorer] =
+                    (goals[oppScorer] || 0) + 1;
+
+                matchGoals[oppScorer] =
+                    (matchGoals[oppScorer] || 0) + 1;
+            }
+
+        }
+
+        Object.entries(matchGoals)
+        .forEach(([player,count]) => {
+
+            if(count > mostGoalsMatchCount){
+
+                mostGoalsMatchCount = count;
+                mostGoalsMatchPlayer = player;
+
+            }
+
+        });
+
+        for(let i=1;i<=11;i++){
 
             const player =
                 match[`Player name ${i}`];
@@ -1615,7 +1618,6 @@ function renderTopAppearances(){
                 appearances[player] =
                     (appearances[player] || 0) + 1;
 
-                playerClubs[player] = "barca";
             }
 
             const oppPlayer =
@@ -1626,280 +1628,113 @@ function renderTopAppearances(){
                 appearances[oppPlayer] =
                     (appearances[oppPlayer] || 0) + 1;
 
-                playerClubs[oppPlayer] = "madrid";
             }
 
         }
 
     });
 
-    const sorted =
+    const mostAppearances =
         Object.entries(appearances)
-        .sort((a,b) => {
-			    if(b[1] !== a[1]){
-			        return b[1] - a[1];
-			    }
-			
-			    return a[0].localeCompare(b[0]);
-			
-			})
-        .slice(0,10);
+        .sort((a,b) => b[1]-a[1])[0];
 
-    const maxApps =
-        sorted[0]?.[1] || 1;
+    const topScorer =
+        Object.entries(goals)
+        .sort((a,b) => b[1]-a[1])[0];
 
-    let html = "";
-
-    sorted.forEach(([name, apps]) => {
-
-        const width =
-            (apps / maxApps) * 100;
-
-        html += `
-
-            <div class="scorer-item">
-
-                <div class="scorer-row">
-
-                    <div class="scorer-name">
-                        <a class="player-link" href="player.html?name=${encodeURIComponent(name)}">
-                            ${name}
-                        </a>
-                    </div>
-
-                    <div class="scorer-goals">
-                        ${apps}
-                    </div>
-
-                </div>
-
-                <div class="scorer-bar">
-
-                    <div class="scorer-fill ${
-                        playerClubs[name] === "madrid"
-                        ? "madrid-scorer"
-                        : "barca-scorer"
-                    }"
-                    style="width:${width}%">
-                    </div>
-
-                </div>
-
-            </div>
-
-        `;
-
-    });
-
-    document.getElementById(
-        "topAppearances"
-    ).innerHTML = html;
-
-}
-
-function renderTopManagers(){
-
-    const managers = {};
-
-    const managerClubs = {};
-
-getFilteredClasicos().forEach(match => {
-
-    const barcaManager =
-        match.Manager;
-
-    if(barcaManager){
-
-        managers[barcaManager] =
-            (managers[barcaManager] || 0) + 1;
-
-        managerClubs[barcaManager] =
-            "barca";
-    }
-
-    const madridManager =
-        match["Opp. Manager"];
-
-    if(madridManager){
-
-        managers[madridManager] =
-            (managers[madridManager] || 0) + 1;
-
-        managerClubs[madridManager] =
-            "madrid";
-    }
-
-});
-
-    const sorted =
-        Object.entries(managers)
-        .sort((a,b) => {
-			    if(b[1] !== a[1]){
-			        return b[1] - a[1];
-			    }
-			
-			    return a[0].localeCompare(b[0]);
-			
-			})
-        .slice(0,10);
-
-    const max =
-        sorted[0]?.[1] || 1;
-
-    let html = "";
-
-    sorted.forEach(([name, matches]) => {
-
-        const width =
-            (matches / max) * 100;
-
-        html += `
-
-            <div class="scorer-item">
-
-                <div class="scorer-row">
-
-                    <div class="scorer-name">
-                        <a class="player-link" href="manager.html?name=${encodeURIComponent(name)}">
-                            ${name}
-                        </a>
-                    </div>
-
-                    <div class="scorer-goals">
-                        ${matches}
-                    </div>
-
-                </div>
-
-                <div class="scorer-bar">
-
-<div
-    class="scorer-fill ${
-        managerClubs[name] === "madrid"
-        ? "madrid-scorer"
-        : "barca-scorer"
-    }"
-    style="width:${width}%">
-</div>
-
-
-                </div>
-
-            </div>
-
-        `;
-
-    });
-
-    document.getElementById(
-        "topManagers"
-    ).innerHTML = html;
-
-}
-
-function renderTopManagerWins(){
-
-    const wins = {};
-
-    const managerClubs = {};
-
-getFilteredClasicos().forEach(match => {
-
-    const barcaManager =
-        match.Manager;
-
-    const madridManager =
-        match["Opp. Manager"];
-
-    if(
-        match["Result type"] === "W" &&
-        barcaManager
-    ){
-
-        wins[barcaManager] =
-            (wins[barcaManager] || 0) + 1;
-
-        managerClubs[barcaManager] =
-            "barca";
-    }
-
-    if(
-        match["Result type"] === "L" &&
-        madridManager
-    ){
-
-        wins[madridManager] =
-            (wins[madridManager] || 0) + 1;
-
-        managerClubs[madridManager] =
-            "madrid";
-    }
-
-});
-
-    const sorted =
+    const mostWins =
         Object.entries(wins)
-        .sort((a,b) => {
-			    if(b[1] !== a[1]){
-			        return b[1] - a[1];
-			    }
-			
-			    return a[0].localeCompare(b[0]);
-			
-			})
-        .slice(0,10);
+        .sort((a,b) => b[1]-a[1])[0];
 
-    const max =
-        sorted[0]?.[1] || 1;
+    document.getElementById(
+        "clasicoRecords"
+    ).innerHTML = `
 
-    let html = "";
+        <div class="records-list">
 
-    sorted.forEach(([name, winCount]) => {
+            <div class="record-item">
 
-        const width =
-            (winCount / max) * 100;
-
-        html += `
-
-            <div class="scorer-item">
-
-                <div class="scorer-row">
-
-                    <div class="scorer-name">
-                        <a class="player-link" href="manager.html?name=${encodeURIComponent(name)}">
-                            ${name}
-                        </a>
-                    </div>
-
-                    <div class="scorer-goals">
-                        ${winCount}
-                    </div>
-
+                <div class="record-label">
+                    Most Appearances
                 </div>
 
-                <div class="scorer-bar">
+                <div class="record-row">
 
-<div
-    class="scorer-fill ${
-        managerClubs[name] === "madrid"
-        ? "madrid-scorer"
-        : "barca-scorer"
-    }"
-    style="width:${width}%">
-</div>
+                    <div class="record-name">
+                        ${mostAppearances?.[0] || "-"}
+                    </div>
 
+                    <div class="record-value">
+                        ${mostAppearances?.[1] || 0}
+                    </div>
 
                 </div>
 
             </div>
 
-        `;
+            <div class="record-item">
 
-    });
+                <div class="record-label">
+                    Top Goalscorer
+                </div>
 
-    document.getElementById(
-        "topManagerWins"
-    ).innerHTML = html;
+                <div class="record-row">
+
+                    <div class="record-name">
+                        ${topScorer?.[0] || "-"}
+                    </div>
+
+                    <div class="record-value">
+                        ${topScorer?.[1] || 0}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="record-item">
+
+                <div class="record-label">
+                    Most Wins
+                </div>
+
+                <div class="record-row">
+
+                    <div class="record-name">
+                        ${mostWins?.[0] || "-"}
+                    </div>
+
+                    <div class="record-value">
+                        ${mostWins?.[1] || 0}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="record-item">
+
+                <div class="record-label">
+                    Most Goals in One Match
+                </div>
+
+                <div class="record-row">
+
+                    <div class="record-name">
+                        ${mostGoalsMatchPlayer || "-" }
+                    </div>
+
+                    <div class="record-value">
+                        ${mostGoalsMatchCount}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
 
 }
 
@@ -2695,6 +2530,8 @@ function renderHome(){
 	updateMatchesLimitFilter();
 	renderLastClasico();
 	renderUpcomingClasicos();
+
+	renderClasicoRecords();
 	
 	refreshDashboard();
 
