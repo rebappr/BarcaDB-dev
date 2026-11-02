@@ -851,8 +851,9 @@ color:var(--muted);
     position:relative;
 }
 
-.filter-group::after{
-    content:"▼";
+.filter-group::after,
+.matches-filter-wrap::after{
+    content:"▾"
 
     position:absolute;
     right:14px;
@@ -862,6 +863,11 @@ color:var(--muted);
 
     font-size:12px;
     pointer-events:none;
+}
+
+.matches-filter-wrap{
+    position:relative;
+    display:inline-block;
 }
 
 @media(max-width:820px){
