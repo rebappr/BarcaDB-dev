@@ -61,13 +61,21 @@ padding:8px;
     gap:12px;
 }
 
+.header-link{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:inherit;
+}
+
 .header-logo{
     width:72px;
     height:72px;
     flex-shrink:0;
 }
 
-.header-text a{
+.header-text{
     display:flex;
     flex-direction:column;
     justify-content:center;
