@@ -86,218 +86,6 @@ transform:translateY(0) scale(1);
     gap:8px;
 }
 
-.right-panel{
-    display:flex;
-    flex-direction:column;
-    flex:.9;
-    min-width:0;
-    gap:8px;
-}
-
-.section-title{
-margin:0 0 6px;
-padding:10px 14px;
-backdrop-filter:blur(20px);
-border-radius:24px;
-background:var(--card-bg);
-border:1px solid var(--card-border);
-color:var(--text);
-font-size:18px;
-}
-
-.competition-title{
-margin:8px 0 6px;
-padding:8px 14px;
-
-background:#004D98;
-color:white;
-
-font-size:14px;
-font-weight:700;
-text-transform:uppercase;
-
-border-radius:18px;
-}
-
-.competition-cell{
-display:flex;
-align-items:center;
-gap:6px;
-}
-
-.competition-cell img{
-width:20px;
-height:20px;
-object-fit:contain;
-flex-shrink:0;
-}
-
-.season-selector{
-margin-top:8px;   /* bolo 12px */
-max-width:200px;  /* môže byť aj širší */
-}
-
-.season-selector select{
-height:35px;      /* hrubší */
-background:rgba(255,255,255,.15);
-color:white;
-border:1px solid rgba(255,255,255,.25);
-border-radius:24px;
-padding:0 18px;
-backdrop-filter:blur(12px);
-font-size:14px;
-font-weight:600;
-}
-
-.season-selector select option{
-background:#0f2d6b;
-color:white;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-th{
-padding:8px 6px;
-font-size:12px;
-font-weight:800;
-
-border-bottom:1px solid var(--meta-border);
-
-text-align:center;
-position:static;
-}
-
-td{
-padding:8px 6px;
-border-bottom:1px solid var(--meta-border);
-font-size:12px;
-}
-
-.laliga-table td,
-
-.laliga-table th{
-font-weight:700;
-letter-spacing:.2px;
-}
-
-.laliga-table td:nth-child(2){
-font-weight:600;
-}
-
-.laliga-table th:first-child,
-.laliga-table td:first-child{
-text-align:left;
-}
-
-.result-badge{
-display:inline-block;
-min-width:52px;
-text-align:center;
-border-radius:999px;
-padding:4px 10px;
-font-weight:700;
-}
-
-.result-win{
-background:var(--result-win-bg);
-border:1px solid var(--result-win);
-color:var(--result-win);
-}
-
-.result-draw{
-background:var(--result-draw-bg);
-border:1px solid var(--result-draw);
-color:var(--result-draw);
-}
-
-.result-loss{
-background:var(--result-loss-bg);
-border:1px solid var(--result-loss);
-color:var(--result-loss);
-}
-
-
-.result-empty{
-background:var(--card-bg);
-color:var(--muted);
-}
-
-.empty{
-padding:40px;
-text-align:center;
-}
-
-.stats-selected{
-color:white;
-background:
-linear-gradient(
-135deg,
-#004D98,
-#1e3a8a
-);
-}
-
-.matches-header{
-display:grid;
-grid-template-columns:
-80px
-1.3fr
-1fr
-70px
-90px;
-
-gap:4px;
-
-font-size:12px;
-font-weight:700;
-text-transform:uppercase;
-
-padding:8px;
-margin-bottom:6px;
-background:var(--meta-bg);
-
-opacity:.7;
-}
-
-.matches-line{
-display:grid;
-grid-template-columns:
-80px
-1.3fr
-1fr
-70px
-90px;
-
-gap:4px;
-align-items:center;
-font-size:12px;
-}
-
-.matches-line{
-padding:8px;
-border-bottom:1px solid var(--meta-border);
-font-size:12px;
-transition:.2s;
-}
-
-.matches-line:hover{
-background:var(--meta-bg);
-cursor:pointer;
-}
-
-.matches-line:last-child{
-border-bottom:none;
-}
-
-.matches-header div:last-child,
-.matches-line div:last-child{
-display:flex;
-justify-content:center;
-}
-
 .matches-view-switch{
 display:flex;
 gap:6px;
@@ -347,16 +135,6 @@ display:none;
     transition:.2s;
 }
 
-
-#mobileMatchesSection,
-#laligaWidget,
-#mobileDebutantsSection,
-#mobileStatisticsSection{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
 @media (prefers-color-scheme: dark){
 
     .filter-note{
@@ -365,19 +143,6 @@ display:none;
 
     }
 
-}
-
-.opponent-cell{
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
-
-.opponent-cell img{
-    width:20px;
-    height:20px;
-    object-fit:contain;
-    flex-shrink:0;
 }
 
 .matches-view-switch{
@@ -607,72 +372,13 @@ display:none;
         height:18px;
     }
 
-    .opponent-cell img{
-        width:16px;
-        height:16px;
-    }
-
     .filters{
         flex-direction:column;
-    }
-
-    .filter-group{
-        width:100%;
     }
 
 .left-panel{
     order:1;
 	margin:0;
-}
-
-.right-panel{
-    order:2;
-	margin:0;
-}
-
-#laligaWidget,
-#mobileDebutantsSection,
-#mobileStatisticsSection{
-margin-top:0 !important;
-}
-
-.mobile-sections{
-    display:flex;
-    gap:6px;
-}
-
-.mobile-section-btn{
-    flex:1;
-    min-width:90px;
-
-    height:auto;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:8px 12px;
-
-    background:var(--card-bg);
-    color:var(--text);
-
-    border:1px solid var(--card-border);
-    border-radius:14px;
-
-    font-size:12px;
-    font-weight:600;
-    text-transform:uppercase;
-
-    cursor:pointer;
-}
-
-.mobile-section-btn.active{
-    background:#004D98;
-    color:white;
-}
-
-.mobile-hidden-section{
-display:none;
 }
 
 .content-layout{
@@ -681,54 +387,15 @@ flex-direction:column;
 gap:10px;
 }
 
-.left-panel,
-.right-panel{
+.left-panel{
 flex:none !important;
 width:100% !important;
 min-width:0;
 max-width:100%;
 }
 
-.right-panel{
-position:static !important;
-top:auto;
-}
-
 .container{
 padding:6px;
-}
-
-input[list],
-select,
-.toggle-btn{
-width:100%;
-}
-
-.result-badge{
-min-width:44px;
-padding:3px 8px;
-}
-
-.matches-header div:nth-child(2){
-color:transparent;
-}
-
-.matches-header div:nth-child(4),
-.matches-line div:nth-child(4){
-display:none;
-}
-
-.matches-header,
-.matches-line{
-grid-template-columns:
-75px
-30px
-1fr
-90px;
-}
-
-.competition-cell span{
-display:none;
 }
 
 }
