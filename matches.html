@@ -1174,11 +1174,57 @@ if(
 
 }
 
-fetch("data/current-season.json")
-.then(r => r.json())
-.then(data => {
+Promise.all([
+    fetch("data/data.json").then(r => r.json()),
+    fetch("data/current-season.json").then(r => r.json())
+])
+.then(([historyData, currentData]) => {
 
-    allMatches = data;
+    const latestSeason =
+        [...new Set(
+            historyData.map(m => m.Season)
+        )]
+        .sort()
+        .reverse()[0];
+
+    allMatches =
+        historyData.filter(
+            m => m.Season === latestSeason
+        );
+
+    function normalizeName(name){
+
+        return String(name || "")
+            .toLowerCase()
+            .replace(/\./g,"")
+            .replace(/\bfc\b/g,"")
+            .replace(/\bcf\b/g,"")
+            .replace(/\s+/g," ")
+            .trim();
+
+    }
+
+    currentData.forEach(currentMatch => {
+
+        const match =
+            allMatches.find(m =>
+
+                m.Date === currentMatch.Date &&
+                m.Competition === currentMatch.Competition &&
+                m["Home/Away"] === currentMatch["Home/Away"] &&
+                normalizeName(m["Opp. Team"]) ===
+                normalizeName(currentMatch["Opp. Team"])
+
+            );
+
+        if(match){
+
+            match.Result =
+                currentMatch.Result;
+
+        }
+
+    });
 
     allMatches.forEach(match => {
 
@@ -1210,9 +1256,7 @@ fetch("data/current-season.json")
     });
 
     renderMatchesFilters();
-
     renderMatches();
-
     initPersonSearch();
 
 })
