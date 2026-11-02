@@ -66,6 +66,7 @@
    
     --matches-grid-bg:rgba(255,255,255,.20);
     --matches-grid-border:#ffffff;
+    --section:#D1D5DB;
 }
 
 
@@ -131,4 +132,5 @@
 
     --matches-grid-bg:rgba(0,77,152,.10);
     --matches-grid-border:rgba(0,77,152,.25);
+    --section:#4B5563;
 }
