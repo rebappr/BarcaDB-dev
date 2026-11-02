@@ -743,17 +743,44 @@ display:none;
 
     </div>
 
-    <div class="filter-section">
-
-        <div class="filter-label">
-            Venue
-        </div>
-
-        <div class="matches-view-switch venue-switch">
-            ...
-        </div>
-
-    </div>
+	<div class="filter-divider"></div>
+	
+	<div class="filter-section">
+	
+	    <div class="filter-label">
+	        Venue
+	    </div>
+	
+	    <div class="matches-view-switch venue-switch">
+	
+	        <button
+	            class="active"
+	            data-venue="All"
+	            onclick="setVenueFilter('All')">
+	
+	            All
+	
+	        </button>
+	
+	        <button
+	            data-venue="Home"
+	            onclick="setVenueFilter('Home')">
+	
+	            Home
+	
+	        </button>
+	
+	        <button
+	            data-venue="Away"
+	            onclick="setVenueFilter('Away')">
+	
+	            Away
+	
+	        </button>
+	
+	    </div>
+	
+	</div>
 
     <div class="filter-divider"></div>
 
