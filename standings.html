@@ -646,9 +646,21 @@ function renderStandings(){
 
     fetch(file)
     .then(response => response.json())
-    .then(data => {
+		.then(data => {
+	
+	    const latestSeason =
+	        [...new Set(
+	            data.map(row => row.season)
+	        )]
+	        .sort()
+	        .reverse()[0];
+	
+	    data = data.filter(
+	        row => row.season === latestSeason
+	    );
+	
+	    let html = "";
 
-        let html = "";
 
         if(tableView === "short"){
 
