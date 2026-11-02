@@ -318,19 +318,23 @@ display:none;
 .standings-controls{
     display:flex;
     justify-content:space-between;
-    gap:8px;
-    margin-bottom:12px;
+    align-items:flex-start;
+    gap:16px;
     flex-wrap:wrap;
-}
-
-.standings-controls .matches-view-switch{
-    margin-bottom:0;
 }
 
 .standings-controls > div{
     display:flex;
     flex-direction:column;
     gap:6px;
+}
+
+.filter-label{
+    margin-left:4px;
+}
+
+.standings-controls .matches-view-switch{
+    margin-bottom:0;
 }
 
 @media(max-width:820px){
