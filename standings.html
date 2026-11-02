@@ -739,7 +739,11 @@ function renderStandings(){
 
 			if(selectedCompetition === "UEFA Champions League"){
 			
-			    if(position <= 8){
+			    if(position === 1){
+			
+			        posBadgeClass = "leader";
+			
+			    }else if(position <= 8){
 			
 			        posBadgeClass = "top8";
 			
@@ -758,7 +762,7 @@ function renderStandings(){
 			    }
 			
 			}
-
+			
             if(
                 row.club === "FC Barcelona" ||
                 row.team === "FC Barcelona"
