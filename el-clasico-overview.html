@@ -708,6 +708,16 @@ color:var(--muted);
     color:#004D98;
 }
 
+.record-name a{
+    color:inherit;
+    text-decoration:none;
+    transition:.2s;
+}
+
+.record-name a:hover{
+    color:#004D98;
+}
+
 .leaders-footer{
     text-align:center;
 }
@@ -1280,6 +1290,12 @@ function renderClasicoRecords(){
     let mostGoalsMatchPlayer = "";
     let mostGoalsMatchCount = 0;
 
+	const managerMatches = {};
+	const managerWins = {};
+	
+	let biggestBarcaWin = null;
+	let biggestMadridWin = null;
+
     clasicos.forEach(match => {
 
         let winningPlayers = [];
@@ -1313,11 +1329,45 @@ function renderClasicoRecords(){
         }
 
         winningPlayers.forEach(player => {
-
-            wins[player] =
-                (wins[player] || 0) + 1;
-
-        });
+		
+		            wins[player] =
+		                (wins[player] || 0) + 1;
+		
+		        });
+		
+				if(match.Manager){
+		
+		    managerMatches[match.Manager] =
+		        (managerMatches[match.Manager] || 0) + 1;
+		
+		}
+		
+		if(match["Opp. Manager"]){
+		
+		    managerMatches[match["Opp. Manager"]] =
+		        (managerMatches[match["Opp. Manager"]] || 0) + 1;
+		
+		}
+		
+		if(
+		    match["Result type"] === "W" &&
+		    match.Manager
+		){
+		
+		    managerWins[match.Manager] =
+		        (managerWins[match.Manager] || 0) + 1;
+		
+		}
+		
+		if(
+		    match["Result type"] === "L" &&
+		    match["Opp. Manager"]
+		){
+		
+		    managerWins[match["Opp. Manager"]] =
+		        (managerWins[match["Opp. Manager"]] || 0) + 1;
+		
+		}
 
         const matchGoals = {};
 
@@ -1357,6 +1407,53 @@ function renderClasicoRecords(){
 
         Object.entries(matchGoals)
         .forEach(([player,count]) => {
+
+			const gf =
+			    Number(match["Scored"]) || 0;
+			
+			const ga =
+			    Number(match["Conceded"]) || 0;
+			
+			const margin =
+			    Math.abs(gf - ga);
+			
+			if(gf > ga){
+			
+			    if(
+			        !biggestBarcaWin ||
+			        margin > biggestBarcaWin.margin
+			    ){
+			
+			        biggestBarcaWin = {
+			
+			            result: match.Result,
+			            margin,
+			            id: match.ID
+			
+			        };
+			
+			    }
+			
+			}
+			
+			if(ga > gf){
+			
+			    if(
+			        !biggestMadridWin ||
+			        margin > biggestMadridWin.margin
+			    ){
+			
+			        biggestMadridWin = {
+			
+			            result: match.Result,
+			            margin,
+			            id: match.ID
+			
+			        };
+			
+			    }
+			
+			}
 
             if(count > mostGoalsMatchCount){
 
@@ -1404,6 +1501,14 @@ function renderClasicoRecords(){
     const mostWins =
         Object.entries(wins)
         .sort((a,b) => b[1]-a[1])[0];
+
+	const topManagerMatches =
+	    Object.entries(managerMatches)
+	    .sort((a,b) => b[1]-a[1])[0];
+	
+	const topManagerWins =
+	    Object.entries(managerWins)
+	    .sort((a,b) => b[1]-a[1])[0];
 
     document.getElementById(
         "clasicoRecords"
@@ -1506,6 +1611,129 @@ function renderClasicoRecords(){
                 </div>
 
             </div>
+
+			<div class="record-item">
+			
+			    <div class="record-label">
+			        Most Matches as Manager
+			    </div>
+			
+			    <div class="record-row">
+			
+			        <div class="record-name">
+			
+			            <a
+			                href="manager.html?name=${encodeURIComponent(topManagerMatches?.[0] || "")}"
+			                class="player-link">
+			
+			                ${topManagerMatches?.[0] || "-"}
+			
+			            </a>
+			
+			        </div>
+			
+			        <div class="record-value">
+			
+			            ${topManagerMatches?.[1] || 0}
+			
+			        </div>
+			
+			    </div>
+			
+			</div>
+			
+			
+			<div class="record-item">
+			
+			    <div class="record-label">
+			        Most Manager Wins
+			    </div>
+			
+			    <div class="record-row">
+			
+			        <div class="record-name">
+			
+			            <a
+			                href="manager.html?name=${encodeURIComponent(topManagerWins?.[0] || "")}"
+			                class="player-link">
+			
+			                ${topManagerWins?.[0] || "-"}
+			
+			            </a>
+			
+			        </div>
+			
+			        <div class="record-value">
+			
+			            ${topManagerWins?.[1] || 0}
+			
+			        </div>
+			
+			    </div>
+			
+			</div>
+			
+			
+			<div class="record-item">
+			
+			    <div class="record-label">
+			        Biggest Barça Win
+			    </div>
+			
+			    <div class="record-row">
+			
+			        <div class="record-name">
+			
+			            <a
+			                href="match.html?id=${biggestBarcaWin?.id || ""}"
+			                class="player-link">
+			
+			                Match
+			
+			            </a>
+			
+			        </div>
+			
+			        <div class="record-value">
+			
+			            ${biggestBarcaWin?.result || "-"}
+			
+			        </div>
+			
+			    </div>
+			
+			</div>
+			
+			
+			<div class="record-item">
+			
+			    <div class="record-label">
+			        Biggest Madrid Win
+			    </div>
+			
+			    <div class="record-row">
+			
+			        <div class="record-name">
+			
+			            <a
+			                href="match.html?id=${biggestMadridWin?.id || ""}"
+			                class="player-link">
+			
+			                Match
+			
+			            </a>
+			
+			        </div>
+			
+			        <div class="record-value">
+			
+			            ${biggestMadridWin?.result || "-"}
+			
+			        </div>
+			
+			    </div>
+			
+			</div>
 
         </div>
 
