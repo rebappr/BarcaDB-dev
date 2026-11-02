@@ -1481,25 +1481,50 @@ function renderClasicoRecords(){
 
     });
 
-    const mostAppearances =
-        Object.entries(appearances)
-        .sort((a,b) => b[1]-a[1])[0];
-
-    const topScorer =
-        Object.entries(goals)
-        .sort((a,b) => b[1]-a[1])[0];
-
-    const mostWins =
-        Object.entries(wins)
-        .sort((a,b) => b[1]-a[1])[0];
-
+	const maxAppearances =
+	    Math.max(...Object.values(appearances));
+	
+	const mostAppearances =
+	    Object.entries(appearances)
+	    .filter(([_, value]) =>
+	        value === maxAppearances
+	    );
+	
+	const maxGoals =
+	    Math.max(...Object.values(goals));
+	
+	const topScorers =
+	    Object.entries(goals)
+	    .filter(([_, value]) =>
+	        value === maxGoals
+	    );
+	
+	const maxWins =
+	    Math.max(...Object.values(wins));
+	
+	const mostWins =
+	    Object.entries(wins)
+	    .filter(([_, value]) =>
+	        value === maxWins
+	    );
+	
+	const maxManagerMatches =
+	    Math.max(...Object.values(managerMatches));
+	
 	const topManagerMatches =
 	    Object.entries(managerMatches)
-	    .sort((a,b) => b[1]-a[1])[0];
+	    .filter(([_, value]) =>
+	        value === maxManagerMatches
+	    );
+	
+	const maxManagerWins =
+	    Math.max(...Object.values(managerWins));
 	
 	const topManagerWins =
 	    Object.entries(managerWins)
-	    .sort((a,b) => b[1]-a[1])[0];
+	    .filter(([_, value]) =>
+	        value === maxManagerWins
+	    );
 
     document.getElementById(
         "clasicoRecords"
@@ -1516,15 +1541,17 @@ function renderClasicoRecords(){
                 <div class="record-row">
 
 					<div class="record-name">
-					    <a
-					        href="player.html?name=${encodeURIComponent(mostAppearances?.[0] || "")}"
-					        class="player-link">
-					        ${mostAppearances?.[0] || "-"}
-					    </a>
+						${mostAppearances.map(([name]) => `
+						<a
+						    href="player.html?name=${encodeURIComponent(name)}"
+						    class="player-link">
+						    ${name}
+						</a>
+						`).join(" • ")}
 					</div>
 
                     <div class="record-value">
-                        ${mostAppearances?.[1] || 0}
+                        ${maxAppearances || 0}
                     </div>
 
                 </div>
@@ -1540,15 +1567,17 @@ function renderClasicoRecords(){
                 <div class="record-row">
 
 					<div class="record-name">
-					    <a
-					        href="player.html?name=${encodeURIComponent(topScorer?.[0] || "")}"
-					        class="player-link">
-					        ${topScorer?.[0] || "-"}
-					    </a>
+						${topScorers.map(([name]) => `
+						<a
+						    href="player.html?name=${encodeURIComponent(name)}"
+						    class="player-link">
+						    ${name}
+						</a>
+						`).join(" • ")}
 					</div>
 
                     <div class="record-value">
-                        ${topScorer?.[1] || 0}
+                        ${maxGoals || 0}
                     </div>
 
                 </div>
@@ -1564,15 +1593,17 @@ function renderClasicoRecords(){
                 <div class="record-row">
 
 					<div class="record-name">
-					    <a
-					        href="player.html?name=${encodeURIComponent(mostWins?.[0] || "")}"
-					        class="player-link">
-					        ${mostWins?.[0] || "-"}
-					    </a>
+						${mostWins.map(([name]) => `
+						<a
+						    href="player.html?name=${encodeURIComponent(name)}"
+						    class="player-link">
+						    ${name}
+						</a>
+						`).join(" • ")}
 					</div>
 
                     <div class="record-value">
-                        ${mostWins?.[1] || 0}
+                        ${maxWins || 0}
                     </div>
 
                 </div>
@@ -1612,21 +1643,17 @@ function renderClasicoRecords(){
 			    <div class="record-row">
 			
 			        <div class="record-name">
-			
-			            <a
-			                href="manager.html?name=${encodeURIComponent(topManagerMatches?.[0] || "")}"
-			                class="player-link">
-			
-			                ${topManagerMatches?.[0] || "-"}
-			
-			            </a>
-			
+						${topManagerMatches.map(([name]) => `
+						<a
+						    href="manager.html?name=${encodeURIComponent(name)}"
+						    class="player-link">
+						    ${name}
+						</a>
+						`).join(" • ")}
 			        </div>
 			
 			        <div class="record-value">
-			
-			            ${topManagerMatches?.[1] || 0}
-			
+			            ${maxManagerMatches || 0}
 			        </div>
 			
 			    </div>
@@ -1641,23 +1668,17 @@ function renderClasicoRecords(){
 			    </div>
 			
 			    <div class="record-row">
-			
-			        <div class="record-name">
-			
-			            <a
-			                href="manager.html?name=${encodeURIComponent(topManagerWins?.[0] || "")}"
-			                class="player-link">
-			
-			                ${topManagerWins?.[0] || "-"}
-			
-			            </a>
-			
-			        </div>
+					${topManagerWins.map(([name]) => `
+					<a
+					    href="manager.html?name=${encodeURIComponent(name)}"
+					    class="player-link">
+					    ${name}
+					</a>
+					`).join(" • ")}
+			    </div>
 			
 			        <div class="record-value">
-			
-			            ${topManagerWins?.[1] || 0}
-			
+			            ${maxManagerWins || 0}
 			        </div>
 			
 			    </div>
