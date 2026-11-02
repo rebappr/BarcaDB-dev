@@ -327,6 +327,12 @@ display:none;
     margin-bottom:0;
 }
 
+.standings-controls > div{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
 @media(max-width:820px){
 
     .table-header-full,
@@ -556,11 +562,13 @@ padding:6px;
 
 <div class="widget-card">
 
-    <div class="standings-controls">
+<div class="standings-controls">
 
-		<div class="filter-label">
-	        Competition
-	    </div>
+    <div>
+
+        <div class="filter-label">
+            Competition
+        </div>
 
         <div class="matches-view-switch">
 
@@ -568,19 +576,23 @@ padding:6px;
                 class="active"
                 data-competition="La Liga"
                 onclick="setCompetition('La Liga')">
-
                 La Liga
-
             </button>
 
             <button
                 data-competition="UEFA Champions League"
                 onclick="setCompetition('UEFA Champions League')">
-
                 UCL
-
             </button>
 
+        </div>
+
+    </div>
+
+    <div>
+
+        <div class="filter-label">
+            View
         </div>
 
         <div class="matches-view-switch">
@@ -588,23 +600,21 @@ padding:6px;
             <button
                 data-view="full"
                 onclick="setTableView('full')">
-
                 Full
-
             </button>
 
             <button
                 class="active"
                 data-view="short"
                 onclick="setTableView('short')">
-
                 Short
-
             </button>
 
         </div>
 
     </div>
+
+</div>
 
     <div id="standingsContainer"></div>
 
