@@ -319,13 +319,13 @@ text-decoration:underline;
     display:flex;
     align-items:center;
     min-height:30px;
-    padding:0 16px;
+    padding:5px 16px;
     color:var(--text);
     text-decoration:none;
     border-bottom:
     1px solid var(--meta-border);
     font-weight:600;
-	font-size:13px;
+	font-size:14px;
 }
 
 .sidebar-nav a:hover{
