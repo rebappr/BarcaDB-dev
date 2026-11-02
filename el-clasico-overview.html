@@ -1410,7 +1410,7 @@ function getClasicos(){
 
 function renderGoals(){
 
-    let clasicos = getFilteredClasicos();
+    let clasicos = getClasicos();
 
     let barcaGoals = 0;
     let madridGoals = 0;
@@ -1607,9 +1607,13 @@ function renderClasicoRecords(){
 
                 <div class="record-row">
 
-                    <div class="record-name">
-                        ${mostAppearances?.[0] || "-"}
-                    </div>
+					<div class="record-name">
+					    <a
+					        href="player.html?name=${encodeURIComponent(mostAppearances?.[0] || "")}"
+					        class="player-link">
+					        ${mostAppearances?.[0] || "-"}
+					    </a>
+					</div>
 
                     <div class="record-value">
                         ${mostAppearances?.[1] || 0}
@@ -1627,9 +1631,13 @@ function renderClasicoRecords(){
 
                 <div class="record-row">
 
-                    <div class="record-name">
-                        ${topScorer?.[0] || "-"}
-                    </div>
+					<div class="record-name">
+					    <a
+					        href="player.html?name=${encodeURIComponent(topScorer?.[0] || "")}"
+					        class="player-link">
+					        ${topScorer?.[0] || "-"}
+					    </a>
+					</div>
 
                     <div class="record-value">
                         ${topScorer?.[1] || 0}
@@ -1647,9 +1655,13 @@ function renderClasicoRecords(){
 
                 <div class="record-row">
 
-                    <div class="record-name">
-                        ${mostWins?.[0] || "-"}
-                    </div>
+					<div class="record-name">
+					    <a
+					        href="player.html?name=${encodeURIComponent(mostWins?.[0] || "")}"
+					        class="player-link">
+					        ${mostWins?.[0] || "-"}
+					    </a>
+					</div>
 
                     <div class="record-value">
                         ${mostWins?.[1] || 0}
@@ -1667,9 +1679,13 @@ function renderClasicoRecords(){
 
                 <div class="record-row">
 
-                    <div class="record-name">
-                        ${mostGoalsMatchPlayer || "-" }
-                    </div>
+					<div class="record-name">
+					    <a
+					        href="player.html?name=${encodeURIComponent(mostGoalsMatchPlayer || "")}"
+					        class="player-link">
+					        ${mostGoalsMatchPlayer || "-"}
+					    </a>
+					</div>
 
                     <div class="record-value">
                         ${mostGoalsMatchCount}
@@ -1682,41 +1698,6 @@ function renderClasicoRecords(){
         </div>
 
     `;
-
-}
-
-function getFilteredClasicos(){
-
-    let clasicos = getClasicos();
-
-    if(selectedCompetition !== "All"){
-
-        clasicos = clasicos.filter(
-            match =>
-            match.Competition === selectedCompetition
-        );
-
-    }
-
-    if(selectedSeason !== "All"){
-
-        clasicos = clasicos.filter(
-            match =>
-            match.Season === selectedSeason
-        );
-
-    }
-
-    if(selectedVenue !== "All"){
-
-        clasicos = clasicos.filter(
-            match =>
-            match.Venue === selectedVenue
-        );
-
-    }
-
-    return clasicos;
 
 }
 
@@ -1950,7 +1931,7 @@ function renderUpcomingClasicos(){
 
 function renderClasicoMatches(){
 
-	const clasicos = [...getFilteredClasicos()]
+	const clasicos = [...getClasicos()]
 	    .sort((a,b) => Number(b.ID) - Number(a.ID));
 
 	const selectedLimit =
@@ -2020,174 +2001,9 @@ function renderClasicoMatches(){
 
 }
 
-function updateMatchesLimitFilter(){
-
-    const total =
-        getFilteredClasicos().length;
-
-    const select =
-        document.getElementById(
-            "matchesLimitFilter"
-        );
-
-    const currentValue =
-        select.value || "10";
-
-    const limits =
-        [10, 25, 50, 100, 200];
-
-    let html = `
-        <option value="all">
-            All Matches (${total})
-        </option>
-    `;
-
-    limits.forEach(limit => {
-
-        if(limit < total){
-
-            html += `
-                <option value="${limit}">
-                    Last ${limit}
-                </option>
-            `;
-
-        }
-
-    });
-	
-	select.innerHTML = html;
-	if(
-	    [...select.options]
-	    .some(o => o.value === currentValue)
-	){
-	    select.value = currentValue;
-	
-	}else{
-	    select.value =
-	        total > 10 ? "10" : "all";
-	}
-	select.dataset.initialized = "true";
-
-}
-
-function updateH2HTitle(){
-
-    const title =
-        document.getElementById("h2hTitle");
-
-    const subtitle =
-        document.getElementById("h2hSubtitle");
-
-    let mainTitle = "All-Time Head-to-Head";
-
-    if(selectedCompetition !== "All"){
-        mainTitle =
-            `${selectedCompetition} Head-to-Head`;
-    }
-
-	title.textContent = mainTitle;
-
-
-    const details = [];
-
-    if(selectedSeason !== "All"){
-        details.push(`Season: ${selectedSeason}`);
-    }
-
-    if(selectedVenue !== "All"){
-        details.push(`Venue: ${selectedVenue}`);
-    }
-
-    if(details.length){
-
-        subtitle.textContent =
-            details.join(" • ");
-
-        subtitle.style.display = "block";
-
-    }else{
-
-        subtitle.style.display = "none";
-
-    }
-
-}
-
-function updateMatchesTitle(){
-
-    const title =
-        document.getElementById("matchesTitle");
-
-    const subtitle =
-        document.getElementById("matchesSubtitle");
-
-    let mainTitle = "All-Time Match History";
-
-    if(selectedCompetition !== "All"){
-        mainTitle =
-            `${selectedCompetition} Match History`;
-    }
-
-	title.textContent = mainTitle;
-
-    const details = [];
-
-    if(selectedSeason !== "All"){
-        details.push(`Season: ${selectedSeason}`);
-    }
-
-    if(selectedVenue !== "All"){
-        details.push(`Venue: ${selectedVenue}`);
-    }
-
-    if(details.length){
-
-        subtitle.textContent =
-            details.join(" • ");
-
-        subtitle.style.display = "block";
-
-    }else{
-
-        subtitle.style.display = "none";
-
-    }
-
-}
-
-function updateSidebarTitles(){
-
-    const prefix =
-        selectedCompetition !== "All"
-        ? `${selectedCompetition} `
-        : "All-Time ";
-
-    document.getElementById(
-        "topScorersTitle"
-    ).textContent =
-        `${prefix}Top Goalscorers`;
-
-    document.getElementById(
-        "topAppearancesTitle"
-    ).textContent =
-        `${prefix}Top Appearances`;
-
-    document.getElementById(
-        "topManagersTitle"
-    ).textContent =
-        `${prefix}Managers by Matches`;
-
-    document.getElementById(
-        "topManagerWinsTitle"
-    ).textContent =
-        `${prefix}Managers by Wins`;
-
-}
-
 function renderHeadToHead(){
 
-    let clasicos = getFilteredClasicos();
+    let clasicos = getClasicos();
 
     const totalMatches = clasicos.length;
 
@@ -2263,19 +2079,13 @@ function renderHome(){
 
     initPersonSearch();
 
-	renderGlobalFilters();
-	
-	updateH2HTitle();
-	updateMatchesTitle();
-	updateSidebarTitles();
-	
-	updateMatchesLimitFilter();
-	renderLastClasico();
-	renderUpcomingClasicos();
+    renderLastClasico();
+    renderUpcomingClasicos();
 
-	renderClasicoRecords();
-	
-	refreshDashboard();
+    renderHeadToHead();
+    renderGoals();
+
+    renderClasicoRecords();
 
 }
 
