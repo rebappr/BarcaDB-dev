@@ -1,48 +1,69 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const menuToggle =
-        document.getElementById("menuToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("sidebar");
+    const sidebarClose = document.getElementById("sidebarClose");
+    const overlay = document.getElementById("sidebarOverlay");
 
-    const sidebar =
-        document.getElementById("sidebar");
+    if (!sidebar) return;
 
-    const sidebarClose =
-        document.getElementById("sidebarClose");
+    const STORAGE_KEY = "sidebarState";
+    const desktop = window.innerWidth >= 1024;
 
-    const overlay =
-        document.getElementById("sidebarOverlay");
-
-    if (!menuToggle || !sidebar) {
-        return;
+    function saveState(isOpen) {
+        localStorage.setItem(
+            STORAGE_KEY,
+            isOpen ? "open" : "closed"
+        );
     }
 
-    function openSidebar() {
-
+    function openSidebar(save = true) {
         sidebar.classList.add("open");
-        overlay?.classList.add("show");
 
+        if (desktop) {
+            document.body.classList.add("sidebar-open");
+        } else {
+            overlay?.classList.add("show");
+        }
+
+        if (save) saveState(true);
     }
 
-    function closeSidebar() {
-
+    function closeSidebar(save = true) {
         sidebar.classList.remove("open");
-        overlay?.classList.remove("show");
 
+        if (desktop) {
+            document.body.classList.remove("sidebar-open");
+        } else {
+            overlay?.classList.remove("show");
+        }
+
+        if (save) saveState(false);
     }
 
     function toggleSidebar() {
-
-        sidebar.classList.toggle("open");
-        overlay?.classList.toggle("show");
-
+        if (sidebar.classList.contains("open")) {
+            closeSidebar();
+        } else {
+            openSidebar();
+        }
     }
 
-    menuToggle.addEventListener("click", (e) => {
+    // Predvolené načítanie stavu
+    const savedState =
+        localStorage.getItem(STORAGE_KEY);
 
+    if (desktop) {
+        if (savedState === "closed") {
+            closeSidebar(false);
+        } else {
+            openSidebar(false);
+        }
+    }
+
+    menuToggle?.addEventListener("click", e => {
         e.stopPropagation();
-
         toggleSidebar();
-
     });
 
     sidebarClose?.addEventListener(
@@ -55,28 +76,24 @@ document.addEventListener("DOMContentLoaded", () => {
         closeSidebar
     );
 
-    document.addEventListener("click", (e) => {
-
+    document.addEventListener("click", e => {
         if (
+            !desktop &&
             sidebar.classList.contains("open") &&
             !sidebar.contains(e.target) &&
-            !menuToggle.contains(e.target)
+            !menuToggle?.contains(e.target)
         ) {
             closeSidebar();
         }
-
     });
 
     document
         .querySelectorAll(".sidebar-nav a")
         .forEach(link => {
-
             link.addEventListener("click", () => {
-
-                closeSidebar();
-
+                if (!desktop) {
+                    closeSidebar();
+                }
             });
-
         });
-
 });
