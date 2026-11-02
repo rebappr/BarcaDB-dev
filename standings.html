@@ -486,8 +486,8 @@ padding:6px;
 		        Current Season
 		    </div>
 			
-		    <a href="matches.html" class="active">Matches</a>
-		    <a href="standings.html">Standings</a>
+		    <a href="matches.html">Matches</a>
+		    <a href="standings.html" class="active">Standings</a>
 		    <a href="squad.html">Squad</a>
 
 		    <div class="sidebar-section">
@@ -652,24 +652,6 @@ let tableView =
     window.innerWidth <= 820
         ? "short"
         : "full";
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    document
-        .querySelector(
-            `[data-competition="${selectedCompetition}"]`
-        )
-        ?.classList.add("active");
-
-    document
-        .querySelector(
-            `[data-view="${tableView}"]`
-        )
-        ?.classList.add("active");
-
-    renderStandings();
-
-});
 
 function buildShortTable(){
 
