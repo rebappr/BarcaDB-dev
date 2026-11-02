@@ -633,80 +633,218 @@ let tableView =
         ? "short"
         : "full";
 
-function buildShortTable(){
+function renderStandings(){
 
-    return `
+    const file =
+        selectedCompetition === "UEFA Champions League"
+        ? "data/tableucl.json"
+        : "data/tablelaliga.json";
 
-    <div class="table-header">
+    fetch(file)
+    .then(response => response.json())
+    .then(data => {
 
-        <div>#</div>
-        <div>Club</div>
-        <div>P</div>
-        <div>GD</div>
-        <div>Pts</div>
+        let html = "";
 
-    </div>
+        if(tableView === "short"){
 
-    <div class="table-line barca-row">
+            html += `
+                <div class="table-header">
+                    <div>#</div>
+                    <div>Club</div>
+                    <div>P</div>
+                    <div>GD</div>
+                    <div>Pts</div>
+                </div>
+            `;
 
-        <div>1</div>
+        }else{
 
-        <div class="table-club">
-            <img src="logos/clubs/fc-barcelona.png">
-            <span>Barcelona</span>
-        </div>
+            html += `
+                <div class="table-header-full">
+                    <div>#</div>
+                    <div>Club</div>
+                    <div>P</div>
+                    <div>W</div>
+                    <div>D</div>
+                    <div>L</div>
+                    <div>GF:GA</div>
+                    <div>GD</div>
+                    <div>Pts</div>
+                </div>
+            `;
 
-        <div>12</div>
-        <div>+22</div>
-        <div>31</div>
+        }
 
-    </div>
+        data.forEach(row => {
 
-    `;
+            const position =
+                Number(
+                    row.position ||
+                    row.Position
+                );
+
+            let rowClass = "";
+            let posBadgeClass = "";
+
+            if(position === 1){
+
+                posBadgeClass = "leader";
+
+            }else if(position >= 18){
+
+                posBadgeClass = "relegation";
+
+            }
+
+            if(
+                row.club === "FC Barcelona" ||
+                row.team === "FC Barcelona"
+            ){
+
+                rowClass = "barca-row";
+
+            }
+
+            const club =
+                row.club || row.team;
+
+            const matches =
+                row.matches || row.played;
+
+            const wins =
+                row.wins || 0;
+
+            const draws =
+                row.draws || 0;
+
+            const losses =
+                row.losses || 0;
+
+            const goals =
+                row.goals ||
+                row.goalDifferenceText ||
+                row.gfga ||
+                "";
+
+            const difference =
+                row.difference ??
+                row.goalDifference ??
+                0;
+
+            const points =
+                row.points;
+
+            if(tableView === "short"){
+
+                html += `
+                <div class="table-line ${rowClass}">
+
+                    <div>
+                        <div class="position-circle ${posBadgeClass}">
+                            ${position}
+                        </div>
+                    </div>
+
+                    <div class="table-club">
+
+                        <img
+                            src="logos/clubs/${getClubLogo(club)}"
+                            alt="${club}"
+                            onerror="this.src='logos/clubs/default.png'">
+
+                        ${
+                            club !== "FC Barcelona"
+                            ? `
+                            <a
+                                href="opponent.html?name=${encodeURIComponent(club)}"
+                                class="opponent-link">
+                                ${club}
+                            </a>
+                            `
+                            : club
+                        }
+
+                    </div>
+
+                    <div class="table-played">
+                        ${matches}
+                    </div>
+
+                    <div class="table-goaldiff">
+                        ${Number(difference) > 0 ? "+" : ""}
+                        ${difference}
+                    </div>
+
+                    <div class="table-points">
+                        ${points}
+                    </div>
+
+                </div>
+                `;
+
+            }else{
+
+                html += `
+                <div class="table-line-full ${rowClass}">
+
+                    <div>
+                        <div class="position-circle ${posBadgeClass}">
+                            ${position}
+                        </div>
+                    </div>
+
+                    <div class="table-club">
+
+                        <img
+                            src="logos/clubs/${getClubLogo(club)}"
+                            alt="${club}"
+                            onerror="this.src='logos/clubs/default.png'">
+
+                        ${
+                            club !== "FC Barcelona"
+                            ? `
+                            <a
+                                href="opponent.html?name=${encodeURIComponent(club)}"
+                                class="opponent-link">
+                                ${club}
+                            </a>
+                            `
+                            : club
+                        }
+
+                    </div>
+
+                    <div>${matches}</div>
+                    <div>${wins}</div>
+                    <div>${draws}</div>
+                    <div>${losses}</div>
+                    <div>${goals}</div>
+
+                    <div>
+                        ${Number(difference) > 0 ? "+" : ""}
+                        ${difference}
+                    </div>
+
+                    <div>${points}</div>
+
+                </div>
+                `;
+
+            }
+
+        });
+
+        document.getElementById(
+            "standingsContainer"
+        ).innerHTML =
+            `<div class="table-scroll">${html}</div>`;
+
+    })
+    .catch(console.error);
 
 }
-
-function buildFullTable(){
-
-    return `
-
-    <div class="table-header-full">
-
-        <div>#</div>
-        <div>Club</div>
-        <div>P</div>
-        <div>W</div>
-        <div>D</div>
-        <div>L</div>
-        <div>GF:GA</div>
-        <div>GD</div>
-        <div>Pts</div>
-
-    </div>
-
-    <div class="table-line-full barca-row">
-
-        <div>1</div>
-
-        <div class="table-club">
-            <img src="logos/clubs/fc-barcelona.png">
-            <span>Barcelona</span>
-        </div>
-
-        <div>12</div>
-        <div>10</div>
-        <div>1</div>
-        <div>1</div>
-        <div>34:12</div>
-        <div>+22</div>
-        <div>31</div>
-
-    </div>
-
-    `;
-
-}
-
+	
 function setCompetition(competition){
 
     selectedCompetition = competition;
