@@ -1405,69 +1405,68 @@ function renderClasicoRecords(){
 
         }
 
-        Object.entries(matchGoals)
-        .forEach(([player,count]) => {
-
-			const gf =
-			    Number(match["Scored"]) || 0;
-			
-			const ga =
-			    Number(match["Conceded"]) || 0;
-			
-			const margin =
-			    Math.abs(gf - ga);
-			
-			if(gf > ga){
-			
-			    if(
-			        !biggestBarcaWin ||
-			        margin > biggestBarcaWin.margin
-			    ){
-			
-				biggestBarcaWin = {
-				
-				    result: match.Result,
-				    margin,
-				    id: match.ID,
-				    date: match.Date,
-				    competition: match.Competition
-				
-				};
-			
-			    }
-			
-			}
-			
-			if(ga > gf){
-			
-			    if(
-			        !biggestMadridWin ||
-			        margin > biggestMadridWin.margin
-			    ){
-			
-				biggestMadridWin = {
-				
-				    result: match.Result,
-				    margin,
-				    id: match.ID,
-				    date: match.Date,
-				    competition: match.Competition
-				
-				};
-			
-			    }
-			
-			}
-
-            if(count > mostGoalsMatchCount){
-
-                mostGoalsMatchCount = count;
-                mostGoalsMatchPlayer = player;
-
-            }
-
-        });
-
+		const gf =
+		    Number(match["Scored"]) || 0;
+		
+		const ga =
+		    Number(match["Conceded"]) || 0;
+		
+		const margin =
+		    Math.abs(gf - ga);
+		
+		if(gf > ga){
+		
+		    if(
+		        !biggestBarcaWin ||
+		        margin > biggestBarcaWin.margin
+		    ){
+		
+		        biggestBarcaWin = {
+		
+		            result: match.Result,
+		            margin,
+		            id: match.ID,
+		            date: match.Date,
+		            competition: match.Competition
+		
+		        };
+		
+		    }
+		
+		}
+		
+		if(ga > gf){
+		
+		    if(
+		        !biggestMadridWin ||
+		        margin > biggestMadridWin.margin
+		    ){
+		
+		        biggestMadridWin = {
+		
+		            result: match.Result,
+		            margin,
+		            id: match.ID,
+		            date: match.Date,
+		            competition: match.Competition
+		
+		        };
+		
+		    }
+		
+		}
+		
+		Object.entries(matchGoals)
+		.forEach(([player,count]) => {
+		
+		    if(count > mostGoalsMatchCount){
+		
+		        mostGoalsMatchCount = count;
+		        mostGoalsMatchPlayer = player;
+		
+		    }
+		
+		});
         for(let i=1;i<=11;i++){
 
             const player =
