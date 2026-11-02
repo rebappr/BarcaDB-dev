@@ -387,8 +387,15 @@ display:none;
 }
 
 .filters{
+    display:flex;
     flex-direction:column;
-    align-items:flex-start;
+    gap:14px;
+
+    padding:16px;
+
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:24px;
 }
 
 .filter-section{
@@ -398,9 +405,17 @@ display:none;
 }
 
 .filter-label{
-    font-size:13px;
+    font-size:12px;
     font-weight:700;
-    color:var(--text);
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    color:var(--muted);
+}
+
+.filter-divider{
+    height:1px;
+    background:var(--meta-border);
+    margin:2px 0;
 }
 
 @media(max-width:820px){
@@ -714,88 +729,68 @@ display:none;
             Current Season Matches
         </div>
 
-	<div class="filters season-filters">
-	
-	    <div class="filter-section">
-	
-	        <div class="filter-label">
-	            Competition
-	        </div>
-	
-	        <div id="competitionSwitch"
-	             class="matches-view-switch">
-	        </div>
-	
-	    </div>
-	</div>
-	
-	    <div class="filter-section">
-	
-	        <div class="filter-label">
-	            Venue
-	        </div>
-	
-	        <div class="matches-view-switch venue-switch">
-			
-			    <button
-			        class="active"
-			        data-venue="All"
-			        onclick="setVenueFilter('All')">
-			
-			        All
-			
-			    </button>
-			
-			    <button
-			        data-venue="Home"
-			        onclick="setVenueFilter('Home')">
-			
-			        Home
-			
-			    </button>
-			
-			    <button
-			        data-venue="Away"
-			        onclick="setVenueFilter('Away')">
-			
-			        Away
-			
-			    </button>
-			
-			</div>
+<div class="filters season-filters">
+
+    <div class="filter-section">
+
+        <div class="filter-label">
+            Competition
+        </div>
+
+        <div id="competitionSwitch"
+             class="matches-view-switch">
+        </div>
+
+    </div>
+
+    <div class="filter-section">
+
+        <div class="filter-label">
+            Venue
+        </div>
+
+        <div class="matches-view-switch venue-switch">
+            ...
+        </div>
+
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <div class="filter-section">
+
+        <div class="filter-label">
+            Match Status
+        </div>
+
+        <div class="matches-view-switch">
+
+            <button
+                class="active"
+                data-view="all"
+                onclick="setMatchesView('all')">
+                All
+            </button>
+
+            <button
+                data-view="upcoming"
+                onclick="setMatchesView('upcoming')">
+                Upcoming
+            </button>
+
+            <button
+                data-view="completed"
+                onclick="setMatchesView('completed')">
+                Completed
+            </button>
 
         </div>
 
+    </div>
+
+</div>
+
         <div class="widget-card">
-
-            <div class="matches-view-switch">
-
-                <button
-                    class="active"
-                    data-view="all"
-                    onclick="setMatchesView('all')">
-
-                    All
-
-                </button>
-
-                <button
-                    data-view="upcoming"
-                    onclick="setMatchesView('upcoming')">
-
-                    Upcoming
-
-                </button>
-
-                <button
-                    data-view="completed"
-                    onclick="setMatchesView('completed')">
-
-                    Completed
-
-                </button>
-
-            </div>
 
             <div class="matches-header">
 
