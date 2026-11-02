@@ -154,59 +154,6 @@ background:#0f2d6b;
 color:white;
 }
 
-.summary-grid{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:8px;
-}
-
-.summary-box{
-border-radius:20px;
-padding:10px;
-text-align:center;
-border:1px solid var(--card-border);
-background:var(--card-bg);
-}
-
-.summary-box b{
-display:block;
-font-size:22px;
-margin-bottom:4px;
-}
-
-/* Wins */
-.summary-box.wins{
-background:var(--result-win-bg);
-border:1px solid var(--result-win);
-color:var(--result-win);
-}
-
-/* Draws */
-.summary-box.draws{
-background:var(--result-draw-bg);
-border:1px solid var(--result-draw);
-color:var(--result-draw);
-}
-
-/* Losses */
-.summary-box.losses{
-background:var(--result-loss-bg);
-border:1px solid var(--result-loss);
-color:var(--result-loss);
-}
-
-.summary-box.matches,
-.summary-box.goals{
-    background:var(--matches-grid-bg);
-    border:1px solid var(--matches-grid-border);
-    color:var(--number);
-}
-
-.summary-box.matches b,
-.summary-box.goals b{
-    color:var(--number);
-}
-
 table{
 width:100%;
 border-collapse:collapse;
@@ -230,44 +177,19 @@ font-size:12px;
 }
 
 .laliga-table td,
-.stats-table td,
-.debutants-table td{
-font-weight:500;
-letter-spacing:.1px;
-}
 
-.laliga-table th,
-.stats-table th,
-.debutants-table th{
+.laliga-table th{
 font-weight:700;
 letter-spacing:.2px;
 }
 
-.laliga-table td:nth-child(2),
-.stats-table td:first-child,
-.debutants-table td:first-child{
+.laliga-table td:nth-child(2){
 font-weight:600;
 }
 
-.stats-table th:first-child,
-.stats-table td:first-child,
-.debutants-table th:first-child,
-.debutants-table td:first-child,
 .laliga-table th:first-child,
 .laliga-table td:first-child{
 text-align:left;
-}
-
-.stats-table th{
-cursor:pointer;
-user-select:none;
-}
-
-.stats-table th:not(:first-child),
-.stats-table td:not(:first-child){
-width:50px;
-text-align:center;
-font-size:12px;
 }
 
 .result-badge{
@@ -316,28 +238,6 @@ linear-gradient(
 #004D98,
 #1e3a8a
 );
-}
-
-.debutants-table{
-width:100%;
-table-layout:fixed;
-}
-
-.debutants-table th:first-child,
-.debutants-table td:first-child{
-width:auto;
-}
-
-.debutants-table th:nth-child(2),
-.debutants-table td:nth-child(2){
-width:100px;
-text-align:center;
-}
-
-.debutants-table th:nth-child(3),
-.debutants-table td:nth-child(3){
-width:120px;
-text-align:center;
 }
 
 .matches-header{
@@ -427,29 +327,6 @@ color:white;
 display:none;
 }
 
-.table-header{
-    display:grid;
-    grid-template-columns:
-    36px
-    1fr
-    36px
-    48px
-    48px;
-
-    gap:6px;
-
-    padding:8px;
-    margin-bottom:0;
-
-    background:var(--meta-bg);
-
-    font-size:12px;
-    font-weight:700;
-    text-transform:uppercase;
-
-    opacity:.7;
-}
-
 .table-line{
     display:grid;
     grid-template-columns:
@@ -470,154 +347,6 @@ display:none;
     transition:.2s;
 }
 
-.table-line > div:nth-child(1),
-.table-header > div:nth-child(1),
-.table-line > div:nth-child(2),
-.table-header > div:nth-child(2){
-    justify-self:start;
-}
-
-.table-line > div,
-.table-header > div{
-    justify-self:center;
-}
-
-
-.table-header-full,
-.table-line-full{
-    display:grid;
-
-    grid-template-columns:
-    36px
-    1fr
-    30px
-    30px
-    30px
-    30px
-    60px
-    45px
-    30px;
-
-    gap:6px;
-    align-items:center;
-    padding:8px;
-    border-bottom:1px solid var(--meta-border);
-	font-size:12px;
-}
-
-.table-line-full .table-played,
-.table-line-full .table-goaldiff,
-.table-line-full .table-points{
-    text-align:center;
-}
-
-.table-header-full > div,
-.table-line-full > div{
-    justify-self:center;
-}
-
-.table-header > div:not(:nth-child(1)):not(:nth-child(2)),
-.table-line > div:not(:nth-child(1)):not(:nth-child(2)){
-    text-align:center;
-}
-
-.table-header-full > div:nth-child(1),
-.table-line-full > div:nth-child(1){
-    justify-self:start;
-}
-
-.table-header-full > div:nth-child(2),
-.table-line-full > div:nth-child(2){
-    justify-self:start;
-}
-
-.table-line:last-child{
-    border-bottom:none;
-}
-
-.table-club{
-    display:flex;
-    align-items:center;
-    font-weight:600;
-    gap:8px;
-    min-width:0;
-}
-
-.table-club img{
-    width:22px;
-    height:22px;
-    object-fit:contain;
-    flex-shrink:0;
-}
-
-.table-points{
-    text-align:center;
-}
-
-.table-goaldiff{
-    text-align:center;
-}
-
-.table-played{
-    text-align:center;
-}
-
-.barca-row{
-    background:rgba(0,77,152,.08);
-    border-left:4px solid #FDC52C;
-}
-
-.barca-row .table-club{
-    font-weight:800;
-	color:#A50044;
-}
-
-.table-club span{
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
-
-.position-circle{
-width:28px;
-height:28px;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-margin:0;
-
-border-radius:50%;
-
-font-size:11px;
-
-background:var(--meta-bg);
-border:1px solid var(--meta-border);
-}
-
-.position-circle.relegation{
-background:#ef4444;
-color:white;
-border:none;
-}
-
-.position-circle.leader{
-background: #00008b;
-color:white;
-border:none;
-}
-
-.table-scroll{
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-}
-
-.mobile-hidden-section{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
 
 #mobileMatchesSection,
 #laligaWidget,
@@ -832,49 +561,6 @@ min-width:44px;
 padding:3px 8px;
 }
 
-.table-header-full,
-.table-line-full{
-    grid-template-columns:
-    30px
-    1fr
-    25px
-    25px
-    25px
-    25px
-    40px
-    25px;
-}
-
-.table-header-full > div:nth-child(8),
-.table-line-full > div:nth-child(8){
-    display:none;
-}
-
-.stats-table th:nth-child(2),
-.stats-table td:nth-child(2),
-.stats-table th:nth-child(3),
-.stats-table td:nth-child(3),
-.stats-table th:nth-child(4),
-.stats-table td:nth-child(4),
-.stats-table th:nth-child(5),
-.stats-table td:nth-child(5),
-.stats-table th:nth-child(6),
-.stats-table td:nth-child(6),
-.stats-table th:nth-child(7),
-.stats-table td:nth-child(7),
-.stats-table th:nth-child(8),
-.stats-table td:nth-child(8){
-    width:32px;
-}
-
-.summary-box{
-font-size:13px;
-}
-
-.summary-box b{
-font-size:18px;
-}
-
 .matches-header div:nth-child(2){
 color:transparent;
 }
@@ -980,9 +666,15 @@ display:none;
 		<div class="sidebar-nav">
 		
 		    <a href="./">Home</a>
+
+		    <div class="sidebar-section">
+		        Current Season
+		    </div>
+			
+		    <a href="matches.html" class="active">Matches</a>
 		
 		    <a href="statistics.html">Statistics</a>
-		    <a href="season.html" class="active">Seasons</a>
+		    <a href="season.html">Seasons</a>
 		    <a href="insights.html">Insights</a>
 		    <a href="compare.html">Compare</a>
 		
@@ -1057,7 +749,6 @@ display:none;
 	</div>
 </div>
 
-<div class="content-layout">
 <div class="content-layout">
 
     <div class="left-panel">
@@ -1163,6 +854,7 @@ display:none;
 
 </div>
 </div>
+</div>
 
 <script src="data/clubMap.js"></script>
 <script src="data/competitionMap.js"></script>
@@ -1200,7 +892,7 @@ const competitionLogos = {
 "European Cup": "ec.png"
 };
 
-function renderSeason(){
+function renderMatches(){
 
     let seasonMatches =
         [...allMatches];
@@ -1234,7 +926,7 @@ function renderSeason(){
 
 }
 
-function renderSeasonFilters(){
+function renderMatchesFilters(){
 
 	const seasonMatches =
 	    [...allMatches];
@@ -1265,7 +957,7 @@ function renderSeasonFilters(){
 
 }
 
-function updateSeasonFilters(){
+function updateFilters(){
 
     selectedCompetition =
         document.getElementById(
@@ -1277,9 +969,9 @@ function updateSeasonFilters(){
             "venueFilter"
         ).value;
 
-    renderSeasonFilters();
+    renderMatchesFilters();
 
-    renderSeason();
+    renderMatches();
 
 }
 
@@ -1295,7 +987,7 @@ function setMatchesView(view){
         .querySelector(`[data-view="${view}"]`)
         ?.classList.add('active');
 
-    renderSeason();
+    renderMatches();
 }
 
 function buildMatchRow(match){
@@ -1422,7 +1114,20 @@ x => x.Result === "-:-"
 
 }
 
-if(matchesView === "all" || matchesView === "upcoming"){
+if(matchesView === "completed"){
+
+matches = matches.filter(
+x => x.Result &&
+x.Result !== "-:-"
+);
+
+}
+
+if(
+    matchesView === "all" ||
+    matchesView === "upcoming" ||
+    matchesView === "completed"
+){
 
     const grouped = {};
 
@@ -1474,9 +1179,38 @@ fetch("data/current-season.json")
 
     allMatches = data;
 
-    renderSeasonFilters();
+    allMatches.forEach(match => {
 
-    renderSeason();
+        if(
+            !match.Result ||
+            match.Result === "-:-" ||
+            !match.Result.includes(":")
+        ){
+            return;
+        }
+
+        const [homeGoals, awayGoals] =
+            match.Result.split(":").map(Number);
+
+        if(match["Home/Away"] === "Home"){
+
+            match["Result type"] =
+                homeGoals > awayGoals ? "W" :
+                homeGoals < awayGoals ? "L" : "D";
+
+        }else{
+
+            match["Result type"] =
+                awayGoals > homeGoals ? "W" :
+                awayGoals < homeGoals ? "L" : "D";
+
+        }
+
+    });
+
+    renderMatchesFilters();
+
+    renderMatches();
 
     initPersonSearch();
 
@@ -1484,80 +1218,6 @@ fetch("data/current-season.json")
 .catch(error =>
     console.error(error)
 );
-.then(([matchesData,currentData,playersData]) => {
-
-function normalizeName(name){
-
-    return String(name || "")
-        .toLowerCase()
-        .replace(/\./g, "")
-        .replace(/\bfc\b/g, "")
-        .replace(/\bcf\b/g, "")
-        .replace(/\s+/g, " ")
-        .trim();
-
-}
-
-currentData.forEach(currentMatch => {
-
-const match = matchesData.find(m =>
-
-m.Date === currentMatch.Date &&
-m.Competition === currentMatch.Competition &&
-m["Home/Away"] === currentMatch["Home/Away"] &&
-normalizeName(m["Opp. Team"]) ===
-normalizeName(currentMatch["Opp. Team"])
-
-);
-
-if(match){
-
-match.Result = currentMatch.Result;
-
-if(
-match.Result &&
-match.Result !== "-:-" &&
-match.Result.includes(":")
-){
-
-const [homeGoals,awayGoals] =
-match.Result.split(":").map(Number);
-
-if(match["Home/Away"] === "Home"){
-
-match["Result type"] =
-homeGoals > awayGoals ? "W" :
-homeGoals < awayGoals ? "L" : "D";
-
-}else{
-
-match["Result type"] =
-awayGoals > homeGoals ? "W" :
-awayGoals < homeGoals ? "L" : "D";
-
-}
-
-}
-
-}
-
-});
-
-allMatches = matchesData;
-
-playersData.forEach(player => {
-playerBirthDates[player.Player.trim()] =
-player["Date of Birth"];
-});
-
-renderSeasonDropdown();
-renderSeasonFilters();
-updatePageTitles();
-renderSeason();
-initPersonSearch();
-
-})
-.catch(error => console.error(error));
 
 function initPersonSearch(){
 
