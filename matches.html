@@ -452,6 +452,12 @@ display:none;
     flex-shrink:0;
 }
 
+.matches-view-switch{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+
 @media(max-width:820px){
 
     .table-club img{
@@ -765,49 +771,47 @@ display:none;
 
         <div class="filters season-filters">
 
-            <div class="filter-group">
+			<div>
+			
+			    <label style="display:block;margin-bottom:6px;font-weight:700;">
+			        Competition
+			    </label>
+			
+			    <div id="competitionSwitch"
+			         class="matches-view-switch">
+			    </div>
+			
+			</div>
 
-                <label>Competition</label>
 
-                <select id="competitionFilter"
-                        onchange="updateFilters()">
-
-                    <option value="All">
-                        All Competitions
-                    </option>
-
-                </select>
-
-            </div>
-
-            <div class="filter-group">
-
-                <label>Venue</label>
-
-                <select id="venueFilter"
-                        onchange="updateFilters()">
-
-                    <option value="All">
-                        All Venues
-                    </option>
-
-                    <option value="Home">
-                        Home
-                    </option>
-
-                    <option value="Away">
-                        Away
-                    </option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-        <div class="filter-note">
-
-            📅 Fixtures and results from the current season.
+			<div class="matches-view-switch venue-switch">
+			
+			    <button
+			        class="active"
+			        data-venue="All"
+			        onclick="setVenueFilter('All')">
+			
+			        All Venues
+			
+			    </button>
+			
+			    <button
+			        data-venue="Home"
+			        onclick="setVenueFilter('Home')">
+			
+			        Home
+			
+			    </button>
+			
+			    <button
+			        data-venue="Away"
+			        onclick="setVenueFilter('Away')">
+			
+			        Away
+			
+			    </button>
+			
+			</div>
 
         </div>
 
@@ -934,48 +938,113 @@ function renderMatches(){
 
 function renderMatchesFilters(){
 
-	const seasonMatches =
-	    [...allMatches];
-
     const competitions =
         [...new Set(
-            seasonMatches.map(
+            allMatches.map(
                 m => m.Competition
             )
         )]
         .sort();
 
-    document.getElementById(
-        "competitionFilter"
-    ).innerHTML = `
-        <option value="All">
-            All Competitions
-        </option>
+    const switcher =
+        document.getElementById(
+            "competitionSwitch"
+        );
+
+    switcher.innerHTML = `
+
+        <button
+            data-competition="All"
+            class="${
+                selectedCompetition === "All"
+                ? "active"
+                : ""
+            }"
+            onclick="setCompetitionFilter('All')">
+
+            All
+
+        </button>
 
         ${competitions.map(comp => `
-            <option
-                value="${comp}"
-                ${comp === selectedCompetition ? "selected" : ""}>
-                ${comp}
-            </option>
+
+            <button
+                data-competition="${comp}"
+                class="${
+                    selectedCompetition === comp
+                    ? "active"
+                    : ""
+                }"
+                onclick="setCompetitionFilter('${comp}')">
+
+                ${
+                    comp
+                        .replace("UEFA Champions League","UCL")
+                        .replace("Copa del Rey","Copa")
+                        .replace("Supercopa de España","Supercopa")
+                }
+
+            </button>
+
         `).join("")}
+
     `;
 
 }
 
-function updateFilters(){
+function setCompetitionFilter(competition){
 
-    selectedCompetition =
-        document.getElementById(
-            "competitionFilter"
-        ).value;
+    selectedCompetition = competition;
 
-    selectedVenue =
-        document.getElementById(
-            "venueFilter"
-        ).value;
+    document
+        .querySelectorAll("[data-competition]")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
 
-    renderMatchesFilters();
+    document
+        .querySelector(
+            `[data-competition="${competition}"]`
+        )
+        ?.classList.add("active");
+
+    renderMatches();
+
+}
+
+function setCompetitionFilter(competition){
+
+    selectedCompetition = competition;
+
+    document
+        .querySelectorAll("[data-competition]")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+    document
+        .querySelector(
+            `[data-competition="${competition}"]`
+        )
+        ?.classList.add("active");
+
+    renderMatches();
+
+}
+
+function setVenueFilter(venue){
+
+    selectedVenue = venue;
+
+    document
+        .querySelectorAll("[data-venue]")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+    document
+        .querySelector(`[data-venue="${venue}"]`)
+        ?.classList.add("active");
 
     renderMatches();
 
