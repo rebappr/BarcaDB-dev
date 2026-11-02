@@ -67,7 +67,7 @@ padding:8px;
     flex-shrink:0;
 }
 
-.header-text{
+.header-text a{
     display:flex;
     flex-direction:column;
     justify-content:center;
