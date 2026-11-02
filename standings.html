@@ -687,15 +687,18 @@ function renderStandings(){
             let rowClass = "";
             let posBadgeClass = "";
 
-            if(position === 1){
-
-                posBadgeClass = "leader";
-
-            }else if(position >= 18){
-
-                posBadgeClass = "relegation";
-
-            }
+			if(position === 1){
+			
+			    posBadgeClass = "leader";
+			
+			}else if(
+			    selectedCompetition === "La Liga" &&
+			    position >= 18
+			){
+			
+			    posBadgeClass = "relegation";
+			
+			}
 
             if(
                 row.club === "FC Barcelona" ||
@@ -882,24 +885,6 @@ function setTableView(view){
         ?.classList.add("active");
 
     renderStandings();
-
-}
-
-function renderStandings(){
-
-    if(tableView === "full"){
-
-        document.getElementById(
-            "standingsContainer"
-        ).innerHTML = buildFullTable();
-
-    }else{
-
-        document.getElementById(
-            "standingsContainer"
-        ).innerHTML = buildShortTable();
-
-    }
 
 }
 
