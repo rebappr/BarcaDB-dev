@@ -14,28 +14,24 @@
 
 <meta name="theme-color" content="#004D98">
 
-<title>FC Barcelona Seasons | History, Results & Statistics | Barça Database</title>
-
-<meta name="robots"
-      content="index,follow">
-
-<meta name="author"
-      content="RE">
+<title>
+FC Barcelona 2026/27 Matches | Fixtures, Results & Schedule | Barça Database
+</title>
 
 <meta name="description"
-      content="Browse all FC Barcelona seasons. Explore statistics, results, competitions, managers, squads and records from every season in club history.">
+      content="Follow FC Barcelona's current season with all fixtures, results, competitions, opponents and match statistics.">
 
 <link rel="canonical"
-      href="https://barcadb.com/season.html">
+      href="https://barcadb.com/matches.html">
 
 <meta property="og:title"
-      content="FC Barcelona Seasons | Barça Database">
+      content="FC Barcelona Current Season Matches | Barça Database">
 
 <meta property="og:description"
-      content="Browse all FC Barcelona seasons with detailed statistics, results, squads, managers and records.">
+      content="Fixtures, results and schedule for FC Barcelona's current season.">
 
 <meta property="og:url"
-      content="https://barcadb.com/season.html">
+      content="https://barcadb.com/matches.html">
 
 <meta property="og:image"
       content="https://barcadb.com/logos/barcadb-logo.png">
@@ -50,16 +46,16 @@
       content="summary_large_image">
 
 <meta name="twitter:title"
-      content="FC Barcelona Seasons | Barça Database">
+      content="FC Barcelona Current Season Matches | Barça Database">
 
 <meta name="twitter:description"
-      content="Browse all FC Barcelona seasons with detailed statistics, results, squads, managers and records.">
+      content="Fixtures, results and schedule for FC Barcelona's current season.">
 
 <meta name="twitter:image"
       content="https://barcadb.com/logos/barcadb-logo.png">
 
 <meta name="keywords"
-      content="FC Barcelona seasons, Barcelona season history, Barca seasons, Barcelona results, Barcelona squad history, Barcelona managers, Barcelona records">
+      content="FC Barcelona fixtures, FC Barcelona results, Barcelona current season, Barcelona schedule, Barça matches">
 
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/main.css">
@@ -1062,186 +1058,109 @@ display:none;
 </div>
 
 <div class="content-layout">
-<div class="left-panel">
+<div class="content-layout">
 
-	<div class="widget-title">
-    Filters
-	</div>
+    <div class="left-panel">
 
-	<div class="filters season-filters">
-	
-	    <div class="filter-group">
-	        <label>Season</label>
-	        <select id="seasonSelect"
-	                onchange="updateSeasonFilters()">
-	        </select>
-	    </div>
-	
-	    <div class="filter-group">
-	        <label>Competition</label>
-	        <select id="competitionFilter"
-	                onchange="updateSeasonFilters()">
-	            <option value="All">
-	                All Competitions
-	            </option>
-	        </select>
-	    </div>
-	
-	    <div class="filter-group">
-	        <label>Venue</label>
-	        <select id="venueFilter"
-	                onchange="updateSeasonFilters()">
-	            <option value="All">
-	                All Venues
-	            </option>
-	            <option value="Home">
-	                Home
-	            </option>
-	            <option value="Away">
-	                Away
-	            </option>
-	        </select>
-	    </div>
-	
-	</div>
+        <div class="widget-title">
+            Current Season Matches
+        </div>
 
-	<div class="filter-note">
-    📊 Filters for competition and venue apply only to the season overview and matches.
-	</div>
+        <div class="filters season-filters">
 
-<div class="widget-title" id="overviewTitle">
-Overview
-</div>
+            <div class="filter-group">
 
-<div id="seasonOverview"></div>
+                <label>Competition</label>
 
-<div class="mobile-sections">
+                <select id="competitionFilter"
+                        onchange="updateFilters()">
 
-<button class="mobile-section-btn active"
-onclick="showMobileSection('matches', this)">
-Matches
-</button>
+                    <option value="All">
+                        All Competitions
+                    </option>
 
-<button class="mobile-section-btn"
-onclick="showMobileSection('table', this)">
-Table
-</button>
+                </select>
 
-<button class="mobile-section-btn"
-onclick="showMobileSection('debutants', this)">
-Debutants
-</button>
+            </div>
 
-<button class="mobile-section-btn"
-onclick="showMobileSection('statistics', this)">
-Statistics
-</button>
+            <div class="filter-group">
 
-</div>
+                <label>Venue</label>
 
-<div id="mobileMatchesSection" class="mobile-hidden-section">
+                <select id="venueFilter"
+                        onchange="updateFilters()">
 
-<div class="widget-title" id="matchesTitle">
-Matches
-</div>
+                    <option value="All">
+                        All Venues
+                    </option>
 
-<div class="widget-card">
+                    <option value="Home">
+                        Home
+                    </option>
 
-<div class="matches-list">
+                    <option value="Away">
+                        Away
+                    </option>
 
-<div class="matches-view-switch">
+                </select>
 
-<button class="active"
-data-view="all"
-onclick="setMatchesView('all')">
-All
-</button>
+            </div>
 
-<button data-view="upcoming"
-onclick="setMatchesView('upcoming')">
-Upcoming
-</button>
+        </div>
 
-</div>
+        <div class="filter-note">
 
-<div class="matches-header">
+            📅 Fixtures and results from the current season.
 
-<div>Date</div>
-<div>Competition</div>
-<div>Opponent</div>
-<div>Venue</div>
-<div>Result</div>
-</div>
+        </div>
 
-<div id="seasonMatches"></div>
-</div>
+        <div class="widget-card">
 
-</div>
-</div>
+            <div class="matches-view-switch">
 
-</div>
+                <button
+                    class="active"
+                    data-view="all"
+                    onclick="setMatchesView('all')">
 
-<div class="right-panel">
+                    All
 
-<div id="laligaWidget" class="mobile-hidden-section">
+                </button>
 
-<div class="widget-title" id="tableTitle">
-La Liga Table
-</div>
+                <button
+                    data-view="upcoming"
+                    onclick="setMatchesView('upcoming')">
 
-<div class="widget-card">
+                    Upcoming
 
-    <div class="matches-view-switch">
-        <button class="active"
-                data-table-view="short"
-                onclick="setTableView('short')">
-            Short
-        </button>
+                </button>
 
-        <button
-                data-table-view="full"
-                onclick="setTableView('full')">
-            Full
-        </button>
+                <button
+                    data-view="completed"
+                    onclick="setMatchesView('completed')">
+
+                    Completed
+
+                </button>
+
+            </div>
+
+            <div class="matches-header">
+
+                <div>Date</div>
+                <div>Competition</div>
+                <div>Opponent</div>
+                <div>Venue</div>
+                <div>Result</div>
+
+            </div>
+
+            <div id="seasonMatches"></div>
+
+        </div>
+
     </div>
 
-    <div id="laligaTable">
-        Loading...
-    </div>
-
-</div>
-
-</div>
-
-<div id="mobileDebutantsSection" class="mobile-hidden-section">
-<div class="widget-title" id="debutantsTitle">
-Season Debutants
-</div>
-
-<div class="widget-card">
-<div id="seasonSummary">
-Loading...
-</div>
-</div>
-</div>
-
-<div id="mobileStatisticsSection" class="mobile-hidden-section">
-<div class="widget-title" id="statisticsTitle">
-Statistics
-</div>
-
-<div class="widget-card">
-<div id="statistics">
-Loading...
-</div>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
 </div>
 </div>
 
@@ -1259,17 +1178,7 @@ function getClubLogo(team){
 }
 
 let allMatches = [];
-let playerBirthDates = {};
-let tableView = "short";
 let matchesView = "all";
-
-let season =
-new URLSearchParams(
-location.search
-).get("season");
-
-let statsSortColumn = "goalContributions";
-let statsSortDirection = "desc";
 
 let selectedCompetition = "All";
 let selectedVenue = "All";
@@ -1293,731 +1202,42 @@ const competitionLogos = {
 
 function renderSeason(){
 
-let seasonMatches =
-allMatches.filter(
-    x => x.Season === season
-);
-
-if(selectedCompetition !== "All"){
-
-    seasonMatches =
-        seasonMatches.filter(
-            x => x.Competition === selectedCompetition
-        );
-
-}
-
-if(selectedVenue !== "All"){
-
-    seasonMatches =
-        seasonMatches.filter(
-            x => x["Home/Away"] === selectedVenue
-        );
-
-}
-
-document.getElementById("seasonMatches").innerHTML =
-buildCurrentSeasonMatches(seasonMatches);
-
-if(!seasonMatches.length){
-
-document.getElementById(
-"seasonMatches"
-).innerHTML =
-"<div class='empty'>Season not found</div>";
-
-return;
-}
-
-const playedMatches = seasonMatches.filter(
-x => x.Result &&
-x.Result !== "-:-"
-);
-
-const wins =
-playedMatches.filter(
-x => x["Result type"] === "W"
-).length;
-
-const draws =
-playedMatches.filter(
-x => x["Result type"] === "D"
-).length;
-
-const losses =
-playedMatches.filter(
-x => x["Result type"] === "L"
-).length;
-
-const goalsFor = playedMatches.reduce(
-    (sum, match) => sum + Number(match.Scored || 0),
-    0
-);
-
-const goalsAgainst = playedMatches.reduce(
-    (sum, match) => sum + Number(match.Conceded || 0),
-    0
-);
-
-document.getElementById(
-"seasonOverview"
-).innerHTML = `
-
-<div class="summary-grid">
-
-   <div class="summary-box matches">
-       <b>${playedMatches.length}</b>
-       Matches
-   </div>
-
-   <div class="summary-box wins">
-       <b>${wins}</b>
-       Wins
-   </div>
-
-   <div class="summary-box draws">
-       <b>${draws}</b>
-       Draws
-   </div>
-
-   <div class="summary-box losses">
-       <b>${losses}</b>
-       Losses
-   </div>
-
-   <div class="summary-box goals">
-       <b>${goalsFor}:${goalsAgainst}</b>
-       Goals
-   </div>
-
-</div>
-
-`;
-
-const latestSeason =
-[...new Set(allMatches.map(x => x.Season))]
-.sort()
-.reverse()[0];
-
-const switcher =
-document.querySelector(".matches-view-switch");
-
-if(season === latestSeason){
-
-    switcher.style.display = "flex";
-
-}else{
-
-    switcher.style.display = "none";
-    matchesView = "all";
-
-}
-
-renderSeasonSummary(
-    seasonMatches
-);
-
-renderStatistics(
-    seasonMatches
-);
-
-renderLaLigaTable();
-}
-
-function renderLaLigaTable() {
-
-fetch("data/tablelaliga.json")
-.then(response => response.json())
-.then(data => {
-
-    const seasonRows = data.filter(
-        row => row.season === season
-    );
-
-    const widget = document.getElementById("laligaWidget");
-
-    if(!seasonRows.length){
-
-        widget.style.display = "none";
-        return;
-    }
-
-    if(window.innerWidth > 820){
-    widget.style.display = "flex";
-}
-
-	let html = "";
-	
-	if(tableView === "short"){
-	
-	    html += `
-	        <div class="table-header">
-	            <div>#</div>
-	            <div>Club</div>
-	            <div>M</div>
-	            <div>Diff</div>
-	            <div>Pts</div>
-	        </div>
-	    `;
-	
-	} else {
-	
-	    html += `
-	        <div class="table-header table-header-full">
-	            <div>#</div>
-	            <div>Club</div>
-	            <div>M</div>
-	            <div>W</div>
-	            <div>D</div>
-	            <div>L</div>
-	            <div>Gls</div>
-	            <div>Diff</div>
-	            <div>Pts</div>
-	        </div>
-	    `;
-	
-	}
-
-		seasonRows.forEach(row => {
-		
-		    const position = Number(row.position);
-		
-		    let rowClass = "";
-		    let posBadgeClass = "";
-		
-		    if(position === 1){
-		        posBadgeClass = "leader";
-		    } else if(position >= 18){
-		        posBadgeClass = "relegation";
-		    }
-		
-		    if(row.club === "FC Barcelona"){
-		        rowClass = "barca-row";
-		    }
-		
-		    if(tableView === "short"){
-		
-		        html += `
-		        <div class="table-line ${rowClass}">
-		            <div>
-		                <div class="position-circle ${posBadgeClass}">
-		                    ${row.position}
-		                </div>
-		            </div>
-		
-					<div class="table-club">
-					
-					    <img
-					        src="logos/clubs/${getClubLogo(row.club)}"
-					        alt="${row.club}"
-					        onerror="this.src='logos/clubs/default.png'">
-					
-					    ${
-					    row.club !== "FC Barcelona"
-					    ? `<a href="opponent.html?name=${encodeURIComponent(row.club)}"
-					          class="opponent-link"
-					          onclick="event.stopPropagation();">
-					          ${row.club}
-					       </a>`
-					    : row.club
-					    }
-					
-					</div>
-		
-		            <div class="table-played">${row.matches}</div>
-		
-		            <div class="table-goaldiff">
-		                ${Number(row.difference) > 0 ? "+" : ""}
-		                ${row.difference}
-		            </div>
-		
-		            <div class="table-points">
-		                ${row.points}
-		            </div>
-		        </div>`;
-		    }
-		
-		    else{
-		
-		        html += `
-		        <div class="table-line-full ${rowClass}">
-		
-		            <div>
-		                <div class="position-circle ${posBadgeClass}">
-		                    ${row.position}
-		                </div>
-		            </div>
-		
-					<div class="table-club">
-					
-					    <img
-					        src="logos/clubs/${getClubLogo(row.club)}"
-					        alt="${row.club}"
-					        onerror="this.src='logos/clubs/default.png'">
-					
-					    ${
-					    row.club !== "FC Barcelona"
-					    ? `<a href="opponent.html?name=${encodeURIComponent(row.club)}"
-					          class="opponent-link"
-					          onclick="event.stopPropagation();">
-					          ${row.club}
-					       </a>`
-					    : row.club
-					    }
-					
-					</div>
-		
-					<div class="table-played">${row.matches}</div>
-					<div>${row.wins}</div>
-					<div>${row.draws}</div>
-					<div>${row.losses}</div>
-					<div>${row.goals}</div>
-					
-					<div class="table-goaldiff">
-					    ${Number(row.difference) > 0 ? "+" : ""}
-					    ${row.difference}
-					</div>
-					
-					<div class="table-points">${row.points}</div>
-		
-		        </div>`;
-		    }
-		});
-	
-    document.getElementById("laligaTable").innerHTML =
-    `<div class="table-scroll">${html}</div>`;
-
-})
-.catch(error => {
-
-    console.error(error);
-
-    document.getElementById("laligaWidget").style.display = "none";
-
-});
-}
-
-function renderSeasonSummary(matches) {
-
-let html = `
-  <table class="debutants-table">
-      <thead>
-          <tr>
-              <th>Player</th>
-              <th>Debut Date</th>
-              <th>Age at Debut</th>
-          </tr>
-      </thead>
-      <tbody>
-`;
-
-const selectedSeason = season;
-
-const firstAppearance = {};
-
-// prejde celú históriu
-allMatches.forEach(match => {
-
-const matchDate =
-new Date(
-match.Date.split(".").reverse().join("-")
-);
-
-const playersInMatch = [];
-
-for(let i = 1; i <= 11; i++){
-
-const player =
-match[`Player name ${i}`];
-
-if(player){
-playersInMatch.push(player);
-}
-
-}
-
-for(let i = 1; i <= 12; i++){
-
-const player =
-match[`Sub on ${i}`];
-
-if(player){
-playersInMatch.push(player);
-}
-
-}
-
-playersInMatch.forEach(player => {
-
-if(
-!firstAppearance[player] ||
-matchDate < firstAppearance[player].date
-){
-
-firstAppearance[player] = {
-season: match.Season,
-date: matchDate,
-dateText: match.Date,
-birthDate:
-playerBirthDates[player.trim()] || ""
-};
-
-}
-
-});
-
-});
-
-const debutants = Object.entries(firstAppearance)
-.filter(
-([name, data]) =>
-data.season === selectedSeason
-)
-.sort(
-(a, b) => a[1].date - b[1].date
-);
-
-debutants.forEach(([player,data]) => {
-
-let ageText = "-";
-
-if(data.birthDate){
-
-const birth =
-new Date(
-data.birthDate
-.split(".")
-.reverse()
-.join("-")
-);
-
-const debut =
-data.date;
-
-const diffDays =
-Math.floor(
-(debut - birth) /
-(1000 * 60 * 60 * 24)
-);
-
-const years =
-Math.floor(diffDays / 365.25);
-
-const days =
-Math.floor(
-diffDays -
-years * 365.25
-);
-
-ageText =
-`${years}y ${days}d`;
-}
-
-html += `
-      <tr>
-          <td><a class="player-link" href="player.html?name=${encodeURIComponent(player)}">${player}</a></td>
-          <td>${data.dateText}</td>
-          <td>${ageText}</td>
-      </tr>
-  `;
-
-});
-
-html += `
-      </tbody>
-  </table>
-`;
-
-document.getElementById("seasonSummary").innerHTML = html;
-}
-
-function sortStats(column){
-
-if(statsSortColumn === column){
-
-statsSortDirection =
-statsSortDirection === "asc"
-? "desc"
-: "asc";
-
-}else{
-
-statsSortColumn = column;
-statsSortDirection = "desc";
-
-}
-
-renderSeason();
-
-}
-
-function renderStatistics(matches) {
-
-const players = {};
-
-function addPlayer(name) {
-
-if (!name || !String(name).trim()) return false;
-
-name = String(name).trim();
-
-if (name.includes("(OG)")) return false;
-
-if (!players[name]) {
-players[name] = {
-    matchesPlayed: 0,
-    xi: 0,
-    goals: 0,
-    assists: 0,
-    goalContributions: 0,
-    yellow: 0,
-    red: 0
-};
-}
-
-return true;
-}
-
-matches.forEach(match => {
-
-// základná 11
-for (let i = 1; i <= 11; i++) {
-
-const player =
-match[`Player name ${i}`];
-
-if (
-player &&
-!String(player).includes("(OG)")
-) {
-
-addPlayer(player);
-
-players[player].matchesPlayed++;
-players[player].xi++;
-
-}
-
-}
-
-for (let i = 1; i <= 12; i++) {
-
-    const player =
-    match[`Sub on ${i}`];
-
-    if (
-    player &&
-    !String(player).includes("(OG)")
-    ) {
-
-        addPlayer(player);
-
-        players[player].matchesPlayed++;
+    let seasonMatches =
+        [...allMatches];
+
+    if(selectedCompetition !== "All"){
+
+        seasonMatches =
+            seasonMatches.filter(
+                match =>
+                match.Competition === selectedCompetition
+            );
 
     }
 
-}
+    if(selectedVenue !== "All"){
 
-// góly
-for (let i = 1; i <= 12; i++) {
+        seasonMatches =
+            seasonMatches.filter(
+                match =>
+                match["Home/Away"] === selectedVenue
+            );
 
-const player =
-match[`Goal Player ${i}`];
+    }
 
-if (
-player &&
-!String(player).includes("(OG)")
-) {
-addPlayer(player);
-players[player].goals++;
-}
-
-}
-
-// asistencie
-for (let i = 1; i <= 12; i++) {
-
-const player =
-match[`Assist Player ${i}`];
-
-if (
-player &&
-!String(player).includes("(OG)")
-) {
-addPlayer(player);
-players[player].assists++;
-}
-
-}
-
-// žlté
-for (let i = 1; i <= 12; i++) {
-
-const player =
-match[`Yellow player ${i}`];
-
-if (
-player &&
-!String(player).includes("(OG)")
-) {
-addPlayer(player);
-players[player].yellow++;
-}
-
-}
-
-// červené
-for (let i = 1; i <= 5; i++) {
-
-const player =
-match[`Red player ${i}`];
-
-if (
-player &&
-!String(player).includes("(OG)")
-) {
-addPlayer(player);
-players[player].red++;
-}
-
-}
-
-});
-
-const sortedPlayers = Object.entries(players);
-
-sortedPlayers.sort((a,b) => {
-
-const valueA =
-statsSortColumn === "name"
-? a[0]
-: statsSortColumn === "goalContributions"
-? a[1].goals + a[1].assists
-: a[1][statsSortColumn];
-
-const valueB =
-statsSortColumn === "name"
-? b[0]
-: statsSortColumn === "goalContributions"
-? b[1].goals + b[1].assists
-: b[1][statsSortColumn];
-
-if (typeof valueA === "string") {
-
-return statsSortDirection === "asc"
-? valueA.localeCompare(valueB)
-: valueB.localeCompare(valueA);
-
-}
-
-return statsSortDirection === "asc"
-? valueA - valueB
-: valueB - valueA;
-
-});
-
-let html = `
-  <div class="table-scroll">
-  <table class="stats-table">
-      <thead>
-          <tr>
-              <th class="${statsSortColumn==='name'?'stats-selected':''}" onclick="sortStats('name')">Player</th>
-              <th class="${statsSortColumn==='matchesPlayed'?'stats-selected':''}" onclick="sortStats('matchesPlayed')">MP</th>
-              <th class="${statsSortColumn==='xi'?'stats-selected':''}" onclick="sortStats('xi')">XI</th>
-              <th class="${statsSortColumn==='goals'?'stats-selected':''}" onclick="sortStats('goals')">G</th>
-              <th class="${statsSortColumn==='assists'?'stats-selected':''}" onclick="sortStats('assists')">A</th>
-			  <th class="${statsSortColumn==='goalContributions'?'stats-selected':''}" onclick="sortStats('goalContributions')">G+A</th>
-              <th class="${statsSortColumn==='yellow'?'stats-selected':''}" onclick="sortStats('yellow')">Y</th>
-              <th class="${statsSortColumn==='red'?'stats-selected':''}" onclick="sortStats('red')">R</th>
-          </tr>
-      </thead>
-      <tbody>
-`; 
-
-sortedPlayers.forEach(([name, stats]) => {
-
-html += `
-<tr>
-  <td class="${statsSortColumn==='name'?'stats-selected':''}">
-     <a class="player-link" href="player.html?name=${encodeURIComponent(name)}">
-        ${name}
-     </a>
-  </td>
-  <td class="${statsSortColumn==='matchesPlayed'?'stats-selected':''}">
-      ${stats.matchesPlayed}
-  </td>
-  <td class="${statsSortColumn==='xi'?'stats-selected':''}">
-      ${stats.xi}
-  </td>
-  <td class="${statsSortColumn==='goals'?'stats-selected':''}">
-      ${stats.goals}
-  </td>
-  <td class="${statsSortColumn==='assists'?'stats-selected':''}">
-      ${stats.assists}
-  </td>
-  <td class="${statsSortColumn==='goalContributions'?'stats-selected':''}">
-    ${stats.goals + stats.assists}
-</td>
-  <td class="${statsSortColumn==='yellow'?'stats-selected':''}">
-      ${stats.yellow}
-  </td>
-  <td class="${statsSortColumn==='red'?'stats-selected':''}">
-      ${stats.red}
-  </td>
-</tr>
-`;
-
-});
-
-html += `
-      </tbody>
-  </table>
-  </div>
-`;
-
-document.getElementById("statistics").innerHTML = html;
-
-}
-
-function renderSeasonDropdown(){
-
-const seasons = [
-...new Set(
-allMatches.map(x => x.Season)
-)
-].sort().reverse();
-
-const select =
-document.getElementById("seasonSelect");
-
-select.innerHTML = seasons.map(s => `
-       <option value="${s}"
-           ${s === season ? "selected" : ""}>
-           ${s}
-       </option>
-   `).join("");
-
-select.addEventListener("change", e => {
-
-    season = e.target.value;
-
-    selectedCompetition = "All";
-    selectedVenue = "All";
-
-    renderSeasonFilters();
-    updatePageTitles();
-    renderSeason();
-
-});
+    document.getElementById(
+        "seasonMatches"
+    ).innerHTML =
+        buildCurrentSeasonMatches(
+            seasonMatches
+        );
 
 }
 
 function renderSeasonFilters(){
 
-    const seasonMatches =
-        allMatches.filter(
-            m => m.Season === season
-        );
+	const seasonMatches =
+	    [...allMatches];
 
     const competitions =
         [...new Set(
@@ -2047,11 +1267,6 @@ function renderSeasonFilters(){
 
 function updateSeasonFilters(){
 
-    season =
-        document.getElementById(
-            "seasonSelect"
-        ).value;
-
     selectedCompetition =
         document.getElementById(
             "competitionFilter"
@@ -2062,75 +1277,9 @@ function updateSeasonFilters(){
             "venueFilter"
         ).value;
 
-    history.replaceState(
-        {},
-        "",
-        `season.html?season=${encodeURIComponent(season)}`
-    );
-
     renderSeasonFilters();
-    updatePageTitles();
+
     renderSeason();
-
-}
-
-function updatePageTitles(){
-
-    let matchesSuffix = season;
-
-    if(selectedCompetition !== "All"){
-        matchesSuffix += ` • ${selectedCompetition}`;
-    }
-
-    if(selectedVenue !== "All"){
-        matchesSuffix += ` • ${selectedVenue}`;
-    }
-
-    document.getElementById(
-        "overviewTitle"
-    ).textContent =
-        `${matchesSuffix} Overview`;
-
-    document.getElementById(
-        "matchesTitle"
-    ).textContent =
-        `${matchesSuffix} Matches`;
-
-    const debutantsTitle =
-        document.getElementById(
-            "debutantsTitle"
-        );
-
-    if(debutantsTitle){
-
-        debutantsTitle.textContent =
-            `${season} Debutants`;
-
-    }
-
-    const statisticsTitle =
-        document.getElementById(
-            "statisticsTitle"
-        );
-
-    if(statisticsTitle){
-
-        statisticsTitle.textContent =
-            `${season} Statistics`;
-
-    }
-
-    const tableTitle =
-        document.getElementById(
-            "tableTitle"
-        );
-
-    if(tableTitle){
-
-        tableTitle.textContent =
-            `${season} La Liga Table`;
-
-    }
 
 }
 
@@ -2147,21 +1296,6 @@ function setMatchesView(view){
         ?.classList.add('active');
 
     renderSeason();
-}
-
-function setTableView(view){
-
-    tableView = view;
-
-    document
-        .querySelectorAll("[data-table-view]")
-        .forEach(btn => btn.classList.remove("active"));
-
-    document
-        .querySelector(`[data-table-view="${view}"]`)
-        ?.classList.add("active");
-
-    renderLaLigaTable();
 }
 
 function buildMatchRow(match){
@@ -2334,11 +1468,22 @@ if(matchesView === "all" || matchesView === "upcoming"){
 
 }
 
-Promise.all([
-fetch("data/data.json").then(r => r.json()),
-fetch("data/current-season.json").then(r => r.json()),
-fetch("data/players.json").then(r => r.json())
-])
+fetch("data/current-season.json")
+.then(r => r.json())
+.then(data => {
+
+    allMatches = data;
+
+    renderSeasonFilters();
+
+    renderSeason();
+
+    initPersonSearch();
+
+})
+.catch(error =>
+    console.error(error)
+);
 .then(([matchesData,currentData,playersData]) => {
 
 function normalizeName(name){
@@ -2399,12 +1544,6 @@ awayGoals < homeGoals ? "L" : "D";
 });
 
 allMatches = matchesData;
-
-if(!season){
-season = [...new Set(matchesData.map(x => x.Season))]
-.sort()
-.reverse()[0];
-}
 
 playersData.forEach(player => {
 playerBirthDates[player.Player.trim()] =
@@ -2609,63 +1748,6 @@ attachSearch(
     "sidebarPersonSearch",
     "sidebarSearchResults"
 );
-
-}
-
-function showMobileSection(section, button){
-
-if(window.innerWidth > 820) return;
-
-document.querySelectorAll(
-'.mobile-section-btn'
-).forEach(btn =>
-btn.classList.remove('active')
-);
-
-button.classList.add('active');
-
-document.getElementById(
-'mobileMatchesSection'
-).style.display = 'none';
-
-document.getElementById(
-'laligaWidget'
-).style.display = 'none';
-
-document.getElementById(
-'mobileDebutantsSection'
-).style.display = 'none';
-
-document.getElementById(
-'mobileStatisticsSection'
-).style.display = 'none';
-
-if(section === 'matches'){
-document.getElementById(
-'mobileMatchesSection'
-).style.display = 'flex';
-}
-
-if(section === 'table'){
-
-    document.getElementById(
-        'laligaWidget'
-    ).style.display = 'flex';
-
-    renderLaLigaTable();
-}
-
-if(section === 'debutants'){
-document.getElementById(
-'mobileDebutantsSection'
-).style.display = 'flex';
-}
-
-if(section === 'statistics'){
-document.getElementById(
-'mobileStatisticsSection'
-).style.display = 'flex';
-}
 
 }
 
