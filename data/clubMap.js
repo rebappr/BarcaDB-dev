@@ -104,7 +104,7 @@ const clubNameMap = {
   "AZ": "Alkmaar",
   "PSV": "PSV Eindhoven",
   "FC Utrecht": "Utrecht",
-  "Feyenoord": "Feyenoord",
+  "Feyenoord Rotterdam": "Feyenoord",
   "NEC": "Nijmegen",
 
   // Portugalsko
