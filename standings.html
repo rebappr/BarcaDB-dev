@@ -597,18 +597,17 @@ padding:6px;
 
         <div class="matches-view-switch">
 
-            <button
-                class="active"
-                data-competition="La Liga"
-                onclick="setCompetition('La Liga')">
-                La Liga
-            </button>
-
-            <button
-                data-competition="UEFA Champions League"
-                onclick="setCompetition('UEFA Champions League')">
-                UCL
-            </button>
+			<button
+			    data-competition="La Liga"
+			    onclick="setCompetition('La Liga')">
+			    La Liga
+			</button>
+			
+			<button
+			    data-competition="UEFA Champions League"
+			    onclick="setCompetition('UEFA Champions League')">
+			    UCL
+			</button>
 
         </div>
 
@@ -622,18 +621,17 @@ padding:6px;
 
         <div class="matches-view-switch">
 
-            <button
-                data-view="full"
-                onclick="setTableView('full')">
-                Full
-            </button>
-
-            <button
-                class="active"
-                data-view="short"
-                onclick="setTableView('short')">
-                Short
-            </button>
+			<button
+			    data-view="full"
+			    onclick="setTableView('full')">
+			    Full
+			</button>
+			
+			<button
+			    data-view="short"
+			    onclick="setTableView('short')">
+			    Short
+			</button>
 
         </div>
 
@@ -667,10 +665,11 @@ function getClubLogo(team){
 
 let selectedCompetition = "La Liga";
 
-let tableView =
-    window.innerWidth <= 820
-        ? "short"
-        : "full";
+let tableView = "full";
+
+if(window.innerWidth <= 820){
+    tableView = "short";
+}
 
 function renderStandings(){
 
