@@ -352,6 +352,12 @@ display:none;
     justify-self:start;
 }
 
+.position-circle.top8{
+    background:#16a34a;
+    color:white;
+    border:none;
+}
+
 @media(max-width:820px){
 
     .table-header-full,
@@ -732,16 +738,25 @@ function renderStandings(){
             let rowClass = "";
             let posBadgeClass = "";
 
-			if(position === 1){
+			if(selectedCompetition === "UEFA Champions League"){
 			
-			    posBadgeClass = "leader";
+			    if(position <= 8){
 			
-			}else if(
-			    selectedCompetition === "La Liga" &&
-			    position >= 18
-			){
+			        posBadgeClass = "top8";
 			
-			    posBadgeClass = "relegation";
+			    }
+			
+			}else{
+			
+			    if(position === 1){
+			
+			        posBadgeClass = "leader";
+			
+			    }else if(position >= 18){
+			
+			        posBadgeClass = "relegation";
+			
+			    }
 			
 			}
 
