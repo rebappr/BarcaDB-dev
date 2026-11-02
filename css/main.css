@@ -462,7 +462,7 @@ text-decoration:underline;
     font-weight:800;
     text-transform:uppercase;
     letter-spacing:.08em;
-    color:var(--link-color);
+    color:var(--section-color);
     opacity:.8;
     border-bottom:1px solid var(--meta-border);
 }
