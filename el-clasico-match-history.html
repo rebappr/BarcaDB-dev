@@ -842,6 +842,12 @@ color:var(--muted);
     padding-right:40px;
 }
 
+#matchesLimitFilter{
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
 #matchesLimitFilter option{
     background:var(--select-bg);
     color:var(--select-text);
@@ -1304,22 +1310,26 @@ color:var(--muted);
 	
 	    </div>
 	
-		<select
-		    id="matchesLimitFilter"
-		    onchange="renderClasicoMatches()"
-		    style="
-		        height:40px;
-		        padding:0 12px;
-		        border-radius:14px;
-		        border:1px solid var(--card-border);
-		        background:var(--card-bg);
-		        color:var(--text);
-		        font-size:12px;
-		        font-weight:700;
-		        text-transform:uppercase;
-		        cursor:pointer;
-		    ">
-		</select>
+		<div class="matches-filter-wrap">
+		
+		    <select
+		        id="matchesLimitFilter"
+		        onchange="renderClasicoMatches()"
+		        style="
+		            height:40px;
+		            padding:0 40px 0 12px;
+		            border-radius:14px;
+		            border:1px solid var(--card-border);
+		            background:var(--card-bg);
+		            color:var(--text);
+		            font-size:12px;
+		            font-weight:700;
+		            text-transform:uppercase;
+		            cursor:pointer;
+		        ">
+		    </select>
+		
+		</div>
 	
 	</div>
 
