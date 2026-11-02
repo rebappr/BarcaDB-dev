@@ -647,6 +647,22 @@ border:none;
 .filter-group{
     flex:1;
     min-width:120px;
+    position:relative;
+}
+
+.filter-group::after{
+    content:"▾";
+
+    position:absolute;
+
+    right:14px;
+    bottom:10px;
+
+    color:#9CA3AF;
+
+    font-size:12px;
+
+    pointer-events:none;
 }
 
 .filter-group label{
@@ -661,7 +677,7 @@ border:none;
     width:100%;
     height:38px;
 
-    padding:0 12px;
+    padding:0 40px 0 12px;
 
     background:var(--meta-bg);
     color:var(--text);
@@ -670,6 +686,10 @@ border:none;
     border-radius:14px;
 
     font-size:13px;
+
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
 }
 
 .filter-note{
