@@ -732,6 +732,20 @@ color:var(--muted);
     line-height:1.4;
 }
 
+.record-person{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.record-person-logo{
+    width:18px;
+    height:18px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
 @media(max-width:820px){
     .clasico-layout{
         grid-template-columns:1fr;
@@ -1279,6 +1293,60 @@ clasicos.forEach(match => {
 
 }
 
+function getRecordClub(name){
+
+    const clasicos = getClasicos();
+
+    let barca = 0;
+    let madrid = 0;
+
+    clasicos.forEach(match => {
+
+        for(let i=1;i<=11;i++){
+
+            if(match[`Player name ${i}`] === name){
+                barca++;
+            }
+
+            if(match[`Opp. Player name ${i}`] === name){
+                madrid++;
+            }
+
+        }
+
+    });
+
+    return barca >= madrid
+        ? "fc-barcelona"
+        : "real-madrid";
+
+}
+
+function getManagerClub(name){
+
+    const clasicos = getClasicos();
+
+    let barca = 0;
+    let madrid = 0;
+
+    clasicos.forEach(match => {
+
+        if(match.Manager === name){
+            barca++;
+        }
+
+        if(match["Opp. Manager"] === name){
+            madrid++;
+        }
+
+    });
+
+    return barca >= madrid
+        ? "fc-barcelona"
+        : "real-madrid";
+
+}
+
 function renderClasicoRecords(){
 
     const clasicos = getClasicos();
@@ -1554,11 +1622,24 @@ function renderClasicoRecords(){
 
 					<div class="record-name">
 						${mostAppearances.map(([name]) => `
-						<a
-						    href="player.html?name=${encodeURIComponent(name)}"
-						    class="player-link">
-						    ${name}
-						</a>
+						
+						<span class="record-person">
+						
+						    <img
+						        src="logos/clubs/${getRecordClub(name)}.png"
+						        class="record-person-logo"
+						        alt="">
+						
+						    <a
+						        href="player.html?name=${encodeURIComponent(name)}"
+						        class="player-link">
+						
+						        ${name}
+						
+						    </a>
+						
+						</span>
+						
 						`).join(" • ")}
 					</div>
 
@@ -1580,11 +1661,24 @@ function renderClasicoRecords(){
 
 					<div class="record-name">
 						${topScorers.map(([name]) => `
-						<a
-						    href="player.html?name=${encodeURIComponent(name)}"
-						    class="player-link">
-						    ${name}
-						</a>
+						
+						<span class="record-person">
+						
+						    <img
+						        src="logos/clubs/${getRecordClub(name)}.png"
+						        class="record-person-logo"
+						        alt="">
+						
+						    <a
+						        href="player.html?name=${encodeURIComponent(name)}"
+						        class="player-link">
+						
+						        ${name}
+						
+						    </a>
+						
+						</span>
+						
 						`).join(" • ")}
 					</div>
 
@@ -1606,11 +1700,24 @@ function renderClasicoRecords(){
 
 					<div class="record-name">
 						${mostWins.map(([name]) => `
-						<a
-						    href="player.html?name=${encodeURIComponent(name)}"
-						    class="player-link">
-						    ${name}
-						</a>
+						
+						<span class="record-person">
+						
+						    <img
+						        src="logos/clubs/${getRecordClub(name)}.png"
+						        class="record-person-logo"
+						        alt="">
+						
+						    <a
+						        href="player.html?name=${encodeURIComponent(name)}"
+						        class="player-link">
+						
+						        ${name}
+						
+						    </a>
+						
+						</span>
+						
 						`).join(" • ")}
 					</div>
 
@@ -1631,11 +1738,22 @@ function renderClasicoRecords(){
                 <div class="record-row">
 
 					<div class="record-name">
-					    <a
-					        href="player.html?name=${encodeURIComponent(mostGoalsMatchPlayer || "")}"
-					        class="player-link">
-					        ${mostGoalsMatchPlayer || "-"}
-					    </a>
+						<span class="record-person">
+						
+						    <img
+						        src="logos/clubs/${getRecordClub(mostGoalsMatchPlayer)}.png"
+						        class="record-person-logo"
+						        alt="">
+						
+						    <a
+						        href="player.html?name=${encodeURIComponent(mostGoalsMatchPlayer || "")}"
+						        class="player-link">
+						
+						        ${mostGoalsMatchPlayer || "-"}
+						
+						    </a>
+						
+						</span>
 					</div>
 
                     <div class="record-value">
@@ -1656,11 +1774,24 @@ function renderClasicoRecords(){
 			
 			        <div class="record-name">
 						${topManagerMatches.map(([name]) => `
-						<a
-						    href="manager.html?name=${encodeURIComponent(name)}"
-						    class="player-link">
-						    ${name}
-						</a>
+						
+						<span class="record-person">
+						
+						    <img
+						        src="logos/clubs/${getManagerClub(name)}.png"
+						        class="record-person-logo"
+						        alt="">
+						
+						    <a
+						        href="manager.html?name=${encodeURIComponent(name)}"
+						        class="player-link">
+						
+						        ${name}
+						
+						    </a>
+						
+						</span>
+						
 						`).join(" • ")}
 			        </div>
 			
@@ -1682,13 +1813,26 @@ function renderClasicoRecords(){
 			    <div class="record-row">
 
 					<div class="record-name">
-					${topManagerWins.map(([name]) => `
-					<a
-					    href="manager.html?name=${encodeURIComponent(name)}"
-					    class="player-link">
-					    ${name}
-					</a>
-					`).join(" • ")}
+						${topManagerWins.map(([name]) => `
+						
+						<span class="record-person">
+						
+						    <img
+						        src="logos/clubs/${getManagerClub(name)}.png"
+						        class="record-person-logo"
+						        alt="">
+						
+						    <a
+						        href="manager.html?name=${encodeURIComponent(name)}"
+						        class="player-link">
+						
+						        ${name}
+						
+						    </a>
+						
+						</span>
+						
+						`).join(" • ")}
 			    	</div>
 			
 			        <div class="record-value">
