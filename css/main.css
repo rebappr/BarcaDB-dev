@@ -327,7 +327,7 @@ text-decoration:underline;
     display:flex;
     align-items:center;
     min-height:30px;
-    padding:8px 16px;
+    padding:8px 16px 8px 24px;
     color:var(--text);
     text-decoration:none;
     border-bottom:
