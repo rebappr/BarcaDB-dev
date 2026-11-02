@@ -642,114 +642,100 @@ function getClubLogo(team){
         + ".png";
 }
 
-let allMatches = [];
-let matchesView = "all";
+let selectedCompetition = "La Liga";
 
-let selectedCompetition = "All";
-let selectedVenue = "All";
+let tableView =
+    window.innerWidth <= 820
+        ? "short"
+        : "full";
 
-const competitionLogos = {
-"Copa del Rey": "copa.png",
-"Copa de la Liga": "copa-liga.png",
-"Copa de la Coronación": "copa.png",
-"FIFA Club World Cup": "fifa.png",
-"Qualification for La Liga": "laliga.png",
-"La Liga": "laliga.png",
-"Supercopa de España": "supercopa.png",
-"UEFA Champions League": "ucl.png",
-"Cup Winners' Cup": "cwc.png",
-"UEFA Europa League": "europa.png",
-"UEFA Super Cup": "uefa-supercup.png",
-"UEFA Cup": "uefa-cup.png",
-"Inter-Cities Fairs Cup": "inter-cup.png",
-"European Cup": "ec.png"
-};
+document.addEventListener("DOMContentLoaded", () => {
 
-function renderMatches(){
+    document
+        .querySelector(
+            `[data-competition="${selectedCompetition}"]`
+        )
+        ?.classList.add("active");
 
-    let seasonMatches =
-        [...allMatches];
+    document
+        .querySelector(
+            `[data-view="${tableView}"]`
+        )
+        ?.classList.add("active");
 
-    if(selectedCompetition !== "All"){
+    renderStandings();
 
-        seasonMatches =
-            seasonMatches.filter(
-                match =>
-                match.Competition === selectedCompetition
-            );
+});
 
-    }
+function buildShortTable(){
 
-    if(selectedVenue !== "All"){
+    return `
 
-        seasonMatches =
-            seasonMatches.filter(
-                match =>
-                match["Home/Away"] === selectedVenue
-            );
+    <div class="table-header">
 
-    }
+        <div>#</div>
+        <div>Club</div>
+        <div>P</div>
+        <div>GD</div>
+        <div>Pts</div>
 
-    document.getElementById(
-        "seasonMatches"
-    ).innerHTML =
-        buildCurrentSeasonMatches(
-            seasonMatches
-        );
+    </div>
+
+    <div class="table-line barca-row">
+
+        <div>1</div>
+
+        <div class="table-club">
+            <img src="logos/clubs/fc-barcelona.png">
+            <span>Barcelona</span>
+        </div>
+
+        <div>12</div>
+        <div>+22</div>
+        <div>31</div>
+
+    </div>
+
+    `;
 
 }
 
-function renderMatchesFilters(){
+function buildFullTable(){
 
-    const competitions =
-        [...new Set(
-            allMatches.map(
-                m => m.Competition
-            )
-        )]
-        .sort();
+    return `
 
-    const switcher =
-        document.getElementById(
-            "competitionSwitch"
-        );
+    <div class="table-header-full">
 
-    switcher.innerHTML = `
+        <div>#</div>
+        <div>Club</div>
+        <div>P</div>
+        <div>W</div>
+        <div>D</div>
+        <div>L</div>
+        <div>GF:GA</div>
+        <div>GD</div>
+        <div>Pts</div>
 
-        <button
-            data-competition="All"
-            class="${
-                selectedCompetition === "All"
-                ? "active"
-                : ""
-            }"
-            onclick="setCompetitionFilter('All')">
+    </div>
 
-            All
+    <div class="table-line-full barca-row">
 
-        </button>
+        <div>1</div>
 
-        ${competitions.map(comp => `
+        <div class="table-club">
+            <img src="logos/clubs/fc-barcelona.png">
+            <span>Barcelona</span>
+        </div>
 
-            <button
-                data-competition="${comp}"
-                class="${
-                    selectedCompetition === comp
-                    ? "active"
-                    : ""
-                }"
-                onclick="setCompetitionFilter('${comp}')">
+        <div>12</div>
+        <div>10</div>
+        <div>1</div>
+        <div>1</div>
+        <div>34:12</div>
+        <div>+22</div>
+        <div>31</div>
 
-                ${
-                    comp
-                        .replace("UEFA Champions League","UCL")
-                        .replace("Copa del Rey","Copa")
-                        .replace("Supercopa de España","Supercopa")
-                }
-
-            </button>
-
-        `).join("")}
+    </div>
 
     `;
 
@@ -801,19 +787,13 @@ function renderStandings(){
 
         document.getElementById(
             "standingsContainer"
-        ).innerHTML =
-            buildFullTable(
-                selectedCompetition
-            );
+        ).innerHTML = buildFullTable();
 
     }else{
 
         document.getElementById(
             "standingsContainer"
-        ).innerHTML =
-            buildShortTable(
-                selectedCompetition
-            );
+        ).innerHTML = buildShortTable();
 
     }
 
