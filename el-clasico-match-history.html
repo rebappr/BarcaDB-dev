@@ -815,7 +815,7 @@ color:var(--muted);
 
 .clasico-layout{
     display:grid;
-    grid-template-columns:1fr 1.2fr 1fr;
+    grid-template-columns:2fr 1fr;
     gap:12px;
     align-items:start;
 }
@@ -1094,43 +1094,6 @@ color:var(--muted);
 <div class="home-page">
 
 <div class="clasico-layout">
-
-<div class="clasico-column">
-
-<div class="widget-title">
-    About the Rivalry
-</div>
-
-<section class="hero-card">
-
-<p>
-El Clásico is one of the most famous football rivalries in the world, featuring
-FC Barcelona and Real Madrid CF. Explore complete head-to-head statistics,
-match results, goals, appearances, manager records and historical data from
-every official El Clásico ever played.
-</p>
-
-</section>
-
-<div class="widget-title">
-    Last El Clásico
-</div>
-
-<div class="widget-card">
-    <div id="lastClasico">
-        Loading...
-    </div>
-</div>
-
-<div class="widget-title">
-	Upcoming El Clásicos
-</div>
-
-<div id="upcomingClasicos">
-    Loading...
-</div>
-
-</div>
 
 <div class="clasico-column">
 
@@ -2211,222 +2174,6 @@ selectedVenue =
 
 }
 
-function renderLastClasico(){
-
-	const clasico = getClasicos()
-	    .sort((a,b) => parseDate(b.Date) - parseDate(a.Date))[0];
-
-    if(!clasico){
-
-        document.getElementById(
-            "lastClasico"
-        ).innerHTML = "No completed El Clásicos";
-
-        return;
-    }
-
-    const homeTeam =
-        clasico["Home/Away"] === "Home"
-            ? `
-			            <img
-			                src="logos/clubs/fc-barcelona.png"
-			                class="fixture-team-logo"
-			                alt="FC Barcelona">
-			            FC Barcelona
-              `
-            : `
-			            <img
-			                src="logos/clubs/real-madrid.png"
-			                class="fixture-team-logo"
-			                alt="Real Madrid">
-                		Real Madrid
-              `;
-
-    const awayTeam =
-        clasico["Home/Away"] === "Home"
-            ? `
-			            <img
-			                src="logos/clubs/real-madrid.png"
-			                class="fixture-team-logo"
-			                alt="Real Madrid">
-                		Real Madrid
-              `
-            : `
-			            <img
-			                src="logos/clubs/fc-barcelona.png"
-			                class="fixture-team-logo"
-			                alt="FC Barcelona">
-			            FC Barcelona
-              `;
-
-    document.getElementById(
-        "lastClasico"
-    ).innerHTML = `
-
-        <div class="fixture-link">
-
-            <div class="fixture-title">
-                LAST EL CLÁSICO
-            </div>
-
-            <div class="fixture-card">
-
-                <div class="fixture-team">
-                    ${homeTeam}
-                </div>
-
-			<div class="fixture-center">
-			    <a
-			        href="match.html?id=${clasico.ID}"
-			        class="fixture-score"
-			        style="display:inline-block;text-decoration:none;color:white;">
-			        ${clasico.Result}
-			    </a>
-			</div>
-
-                <div class="fixture-team">
-                    ${awayTeam}
-                </div>
-
-            </div>
-
-            <div class="fixture-meta">
-                ${clasico.Date} • ${clasico.Competition}
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-function renderUpcomingClasicos(){
-
-    const today = new Date();
-    today.setHours(0,0,0,0);
-
-    const upcoming = currentMatches
-        .filter(match =>
-            match["Opp. Team"] === "Real Madrid" &&
-            parseDate(match.Date) >= today
-        )
-        .sort((a,b) =>
-            parseDate(a.Date) - parseDate(b.Date)
-        );
-
-    if(!upcoming.length){
-
-        document.getElementById(
-            "upcomingClasicos"
-        ).innerHTML = "No upcoming El Clásicos";
-
-        return;
-    }
-
-    let html = "";
-
-    upcoming.forEach(match => {
-
-		const dataMatch = allMatches.find(m =>
-		    m.Date === match.Date &&
-		    m.Competition === match.Competition &&
-		    m["Home/Away"] === match["Home/Away"] &&
-		    normalizeName(m["Opp. Team"]) === normalizeName(match["Opp. Team"])
-		);
-
-		const homeTeam =
-		    match["Home/Away"] === "Home"
-		        ? `
-		            <img
-		                src="logos/clubs/fc-barcelona.png"
-		                class="fixture-team-logo"
-		                alt="FC Barcelona">
-		            FC Barcelona
-		          `
-		        : `
-		            <img
-		                src="logos/clubs/real-madrid.png"
-		                class="fixture-team-logo"
-		                alt="Real Madrid">
-		            Real Madrid
-		          `;
-		
-		const awayTeam =
-		    match["Home/Away"] === "Home"
-		        ? `
-		            <img
-		                src="logos/clubs/real-madrid.png"
-		                class="fixture-team-logo"
-		                alt="Real Madrid">
-		            Real Madrid
-		          `
-		        : `
-		            <img
-		                src="logos/clubs/fc-barcelona.png"
-		                class="fixture-team-logo"
-		                alt="FC Barcelona">
-		            FC Barcelona
-		          `;
-
-        html += `
-
-        <div class="widget-card">
-
-            <div class="fixture-title">
-                UPCOMING EL CLÁSICO
-            </div>
-
-            <div class="fixture-card">
-
-                <div class="fixture-team">
-                    ${homeTeam}
-                </div>
-
-		<div class="fixture-center">
-		
-			${dataMatch ? `
-			
-			<a
-			    href="match.html?id=${dataMatch.ID}"
-			    class="fixture-vs"
-			    style="display:inline-block;text-decoration:none;color:inherit;">
-			
-			    VS
-			
-			</a>
-			
-			` : `
-			
-			<span class="fixture-vs">
-			    VS
-			</span>
-			
-			`}
-		
-		</div>
-
-                <div class="fixture-team">
-                    ${awayTeam}
-                </div>
-
-            </div>
-
-            <div class="fixture-meta">
-                ${match.Date} • ${match.Competition}
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-    document.getElementById(
-        "upcomingClasicos"
-    ).innerHTML = html;
-
-}
-
 function renderClasicoMatches(){
 
 	const clasicos = [...getFilteredClasicos()]
@@ -2749,9 +2496,6 @@ function renderHome(){
 	updateSidebarTitles();
 	
 	updateMatchesLimitFilter();
-	renderLastClasico();
-	renderUpcomingClasicos();
-	
 	refreshDashboard();
 
 }
