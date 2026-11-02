@@ -67,6 +67,19 @@
 
 <style>
 
+.compare-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    align-items:start;
+}
+
+.compare-column{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
 .compare-page{
     margin-top:8px;
     display:flex;
@@ -391,6 +404,15 @@
 
 @media(max-width:820px){
 
+    .compare-layout{
+        display:flex;
+        flex-direction:column;
+    }
+
+    .compare-column{
+        width:100%;
+    }
+
 	.compare-desktop{
         display:none;
     }
@@ -603,6 +625,10 @@
 </div>
 
 <div class="compare-page">
+
+    <div class="compare-layout">
+
+        <div class="compare-column">
 
 	<div class="widget-title" id="leadersTitle">
 		Compare Players
@@ -970,6 +996,16 @@
 </div>
 
 </div>
+</div>
+
+</div>
+</div>
+</div>
+
+        <div class="compare-column">
+            <!-- zatiaľ prázdny pravý stĺpec -->
+        </div>
+
 </div>
 </div>
 
