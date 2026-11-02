@@ -456,6 +456,8 @@ text-decoration:underline;
     letter-spacing:.2px;
 }
 
+@media (min-width:821px){
+
     #sidebar{
         left:0;
         transform:translateX(-100%);
@@ -466,26 +468,18 @@ text-decoration:underline;
         transform:translateX(0);
     }
 
-    body{
-        transition:padding-left .3s ease;
-    }
-
-    body.sidebar-open{
-        padding-left:280px; /* šírka sidebaru */
-    }
-
-    .main-content{
+    .page-content{
         transition:margin-left .3s ease;
     }
 
-    body.sidebar-open .main-content{
-        margin-left:280px;
+    body.sidebar-open .page-content{
+        margin-left:260px;
     }
 
-.sidebar-preload #sidebar,
-.sidebar-preload .main-content,
-.sidebar-preload body {
-    transition: none !important;
+    .sidebar-preload #sidebar,
+    .sidebar-preload .page-content{
+        transition:none !important;
+    }
 }
 
 @media(max-width:820px){
