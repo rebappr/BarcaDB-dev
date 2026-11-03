@@ -660,6 +660,113 @@ function getPositionGroup(position){
     return position;
 }
 
+function buildPlayerStats(matches){
+
+    playerStats = {};
+
+    matches.forEach(match => {
+
+        // Preskoč zápasy bez zostavy
+        if(!match["Player name 1"]) return;
+
+        const conceded =
+            Number(match.Conceded || 0);
+
+        // Základná zostava
+        for(let i = 1; i <= 11; i++){
+
+            const player =
+                match[`Player name ${i}`];
+
+            if(!player) continue;
+
+            if(!playerStats[player]){
+
+                playerStats[player] = {
+                    apps:0,
+                    goals:0,
+                    assists:0,
+                    conceded:0,
+                    cleanSheets:0
+                };
+
+            }
+
+            playerStats[player].apps++;
+
+            // Brankár = prvý hráč zostavy
+            if(i === 1){
+
+                playerStats[player].conceded +=
+                    conceded;
+
+                if(conceded === 0){
+                    playerStats[player].cleanSheets++;
+                }
+
+            }
+
+        }
+
+        // Góly
+        for(let i = 1; i <= 12; i++){
+
+            const scorer =
+                match[`Goal Player ${i}`];
+
+            if(
+                scorer &&
+                !scorer.includes("(OG)")
+            ){
+
+                if(!playerStats[scorer]){
+
+                    playerStats[scorer] = {
+                        apps:0,
+                        goals:0,
+                        assists:0,
+                        conceded:0,
+                        cleanSheets:0
+                    };
+
+                }
+
+                playerStats[scorer].goals++;
+
+            }
+
+        }
+
+        // Asistencie
+        for(let i = 1; i <= 12; i++){
+
+            const assist =
+                match[`Assist Player ${i}`];
+
+            if(assist){
+
+                if(!playerStats[assist]){
+
+                    playerStats[assist] = {
+                        apps:0,
+                        goals:0,
+                        assists:0,
+                        conceded:0,
+                        cleanSheets:0
+                    };
+
+                }
+
+                playerStats[assist].assists++;
+
+            }
+
+        }
+
+    });
+
+}
+
 function renderSquad(players){
 
 const positionOrder = {
@@ -761,6 +868,17 @@ const positionOrder = {
 	                        : null;
 	
 	                const initials = player.Name
+						const stats =
+						    playerStats[player.Name] || {
+						        apps:0,
+						        goals:0,
+						        assists:0,
+						        conceded:0,
+						        cleanSheets:0
+						    };
+						
+						const isGoalkeeper =
+						    player.Position === "Goalkeeper";
 	                    .split(" ")
 	                    .slice(0, 2)
 	                    .map(part => part.charAt(0))
@@ -814,6 +932,62 @@ const positionOrder = {
 	                                    <div class="player-birth">
 	                                        Born: ${player["Birth Date"] || "-"}
 	                                    </div>
+
+										<div class="player-stats">
+										
+										    <div class="player-stat">
+										
+										        <div class="player-stat-value">
+										            ${stats.apps}
+										        </div>
+										
+										        <div class="player-stat-label">
+										            Apps
+										        </div>
+										
+										    </div>
+										
+										    <div class="player-stat">
+										
+										        <div class="player-stat-value">
+										            ${
+										                isGoalkeeper
+										                ? stats.conceded
+										                : stats.goals
+										            }
+										        </div>
+										
+										        <div class="player-stat-label">
+										            ${
+										                isGoalkeeper
+										                ? "Conceded"
+										                : "Goals"
+										            }
+										        </div>
+										
+										    </div>
+										
+										    <div class="player-stat">
+										
+										        <div class="player-stat-value">
+										            ${
+										                isGoalkeeper
+										                ? stats.cleanSheets
+										                : stats.assists
+										            }
+										        </div>
+										
+										        <div class="player-stat-label">
+										            ${
+										                isGoalkeeper
+										                ? "Clean Sheets"
+										                : "Assists"
+										            }
+										        </div>
+										
+										    </div>
+										
+										</div>
 	
 	                                </div>
 	
@@ -862,16 +1036,20 @@ document.querySelectorAll(".position-btn")
 
 let squadData = [];
 
-fetch("data/playersCS.json")
-    .then(res => res.json())
-    .then(data => {
+Promise.all([
+    fetch("data/playersCS.json").then(r => r.json()),
+    fetch("data/data.json").then(r => r.json())
+])
+.then(([players, matches]) => {
 
-        squadData = data;
+    squadData = players;
 
-        renderSquad(squadData);
+    buildPlayerStats(matches);
 
-    })
-    .catch(err => console.error(err));
+    renderSquad(squadData);
+
+})
+.catch(err => console.error(err));
 
 document.addEventListener("DOMContentLoaded", () => {
 
