@@ -213,7 +213,7 @@ const clubNameMap = {
   "Sabah FK": "Sabah",
   "Racing Club de Lens": "Lens",
   "FK Bodø/Glimt": "Bodø/Glimt",
-  "PAE AEK": "AEK",
+  "PAE AEK": "AEK Athens",
   "RB Leipzig": "Leipzig",
   "Viking FK": "Viking",
   "Lille OSC": "Lille"
