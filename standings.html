@@ -789,11 +789,16 @@ function renderStandings(){
 
             }
 
-            const club =
-                row.club || row.team;
-
-            const matches =
-                row.matches || row.played;
+			const originalClub =
+			    row.club || row.team;
+			
+			const club =
+			    window.getClubName
+			        ? window.getClubName(originalClub)
+			        : originalClub;
+			
+			const matches =
+			    row.matches || row.played;
 
             const wins =
                 row.wins || 0;
