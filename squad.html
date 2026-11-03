@@ -234,12 +234,6 @@ display:none;
     color:var(--muted);
 }
 
-.squad-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-    gap:16px;
-}
-
 .player-card{
     background:var(--card-bg);
     border:1px solid var(--card-border);
@@ -867,20 +861,24 @@ const positionOrder = {
 	                        ? player.Photo
 	                        : null;
 	
-	                const initials = player.Name
-						const stats =
-						    playerStats[player.Name] || {
-						        apps:0,
-						        goals:0,
-						        assists:0,
-						        conceded:0,
-						        cleanSheets:0
-						    };
-						
-						const isGoalkeeper =
-						    player.Position === "Goalkeeper";
-	                    .split(" ")
-	                    .slice(0, 2)
+					const initials = player.Name
+					    .split(" ")
+					    .slice(0, 2)
+					    .map(part => part.charAt(0))
+					    .join("")
+					    .toUpperCase();
+					
+					const stats =
+					    playerStats[player.Name] || {
+					        apps:0,
+					        goals:0,
+					        assists:0,
+					        conceded:0,
+					        cleanSheets:0
+					    };
+					
+					const isGoalkeeper =
+					    player.Position === "Goalkeeper";
 	                    .map(part => part.charAt(0))
 	                    .join("")
 	                    .toUpperCase();
@@ -1035,6 +1033,7 @@ document.querySelectorAll(".position-btn")
 });
 
 let squadData = [];
+let playerStats = {};
 
 Promise.all([
     fetch("data/playersCS.json").then(r => r.json()),
@@ -1118,6 +1117,29 @@ function initPersonSearch(){
                 );
 
             }
+
+		for(let i = 1; i <= 6; i++){
+		
+		    const player =
+		        match[`Sub on ${i}`];
+		
+		    if(!player) continue;
+		
+		    if(!playerStats[player]){
+		
+		        playerStats[player] = {
+		            apps:0,
+		            goals:0,
+		            assists:0,
+		            conceded:0,
+		            cleanSheets:0
+		        };
+		
+		    }
+		
+		    playerStats[player].apps++;
+		
+		}
 
             if(match[`Opp. Player name ${i}`]){
 
