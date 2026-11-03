@@ -435,9 +435,28 @@ display:none;
     display:grid;
     grid-template-columns:repeat(auto-fill,260px);
     gap:16px;
+    justify-content:center;
 }
 
 @media (max-width:820px){
+
+    .content-layout{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .left-panel{
+        flex:none !important;
+        width:100% !important;
+        min-width:0;
+        max-width:100%;
+        margin:0;
+    }
+
+    .container{
+        padding:6px;
+    }
 
     .player-photo,
     .player-initials{
@@ -446,6 +465,12 @@ display:none;
         font-size:1rem;
     }
 
+
+	.squad-section,
+	.squad-group{
+	    width:100%;
+	}
+	
     .squad-group-grid{
         grid-template-columns:1fr;
     }
