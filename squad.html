@@ -1015,6 +1015,11 @@ const positionOrder = {
 					    .map(part => part.charAt(0))
 					    .join("")
 					    .toUpperCase();
+
+					const flag =
+					    window.getCountryFlag
+					        ? window.getCountryFlag(player.Nationality)
+					        : "🌍";
 					
 					const stats =
 					    playerStats[player.Name] || {
@@ -1037,8 +1042,12 @@ const positionOrder = {
 	                        <article class="player-card">
 
 							    <div class="player-number">
-						        #${player.Number || "-"}
-						    </div>
+							        #${player.Number || "-"}
+							    </div>
+
+								<div class="player-country">
+									${flag}
+								</div>
 	
 	                            <div class="player-top">
 	
@@ -1066,10 +1075,6 @@ const positionOrder = {
 
 										<div class="player-position">
 										    ${player.Position}
-										</div>
-										
-										<div class="player-country">
-										    ${player.Nationality || "-"}
 										</div>
 	
 										<div class="player-stats">
