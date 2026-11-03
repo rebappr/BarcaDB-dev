@@ -666,48 +666,62 @@ function buildPlayerStats(matches){
         const conceded =
             Number(match.Conceded || 0);
 
-        for(let i = 1; i <= 11; i++){
-
-            const player =
-                match[`Player name ${i}`];
-
-            if(!player) continue;
-
-            if(!playerStats[player]){
-
-                playerStats[player] = {
-                    apps:0,
-                    goals:0,
-                    assists:0,
-                    conceded:0,
-                    cleanSheets:0
-                };
-
-            }
-
-		for(let i = 1; i <= 6; i++){
-		
-		    const player =
-		        match[`Sub on ${i}`];
-		
-		    if(!player) continue;
-		
-		    if(!playerStats[player]){
-		
-		        playerStats[player] = {
-		            apps:0,
-		            goals:0,
-		            assists:0,
-		            conceded:0,
-		            cleanSheets:0
-		        };
-		
-		    }
-		
-		    playerStats[player].apps++;
-		
-		}
-
+			for(let i = 1; i <= 11; i++){
+			
+			    const player =
+			        match[`Player name ${i}`];
+			
+			    if(!player) continue;
+			
+			    if(!playerStats[player]){
+			
+			        playerStats[player] = {
+			            apps:0,
+			            goals:0,
+			            assists:0,
+			            conceded:0,
+			            cleanSheets:0
+			        };
+			
+			    }
+			
+			    playerStats[player].apps++;
+			
+			    if(i === 1){
+			
+			        playerStats[player].conceded +=
+			            conceded;
+			
+			        if(conceded === 0){
+			            playerStats[player].cleanSheets++;
+			        }
+			
+			    }
+			
+			}
+			
+			for(let i = 1; i <= 6; i++){
+			
+			    const player =
+			        match[`Sub on ${i}`];
+			
+			    if(!player) continue;
+			
+			    if(!playerStats[player]){
+			
+			        playerStats[player] = {
+			            apps:0,
+			            goals:0,
+			            assists:0,
+			            conceded:0,
+			            cleanSheets:0
+			        };
+			
+			    }
+			
+			    playerStats[player].apps++;
+			
+			}
             playerStats[player].apps++;
 
             // Brankár = prvý hráč zostavy
