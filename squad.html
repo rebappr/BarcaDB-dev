@@ -696,6 +696,7 @@ display:none;
 
 let currentPosition = "all";
 let currentSearch = "";
+let currentSeason = "";
 
 function getPositionGroup(position){
 
@@ -730,9 +731,18 @@ function buildPlayerStats(matches){
 
     playerStats = {};
 
-    matches.forEach(match => {
+    currentSeason =
+        matches[0]?.Season ||
+        matches[0]?.["Season"];
 
-        // Preskoč zápasy bez zostavy
+    const seasonMatches =
+        matches.filter(match =>
+            (match.Season || match["Season"]) ===
+            currentSeason
+        );
+
+    seasonMatches.forEach(match => {
+
         if(!match["Player name 1"]) return;
 
         const conceded =
@@ -1126,6 +1136,9 @@ Promise.all([
     squadData = players;
 
     buildPlayerStats(matches);
+
+    document.querySelector(".widget-title").textContent =
+        `FC Barcelona ${currentSeason} Squad`;
 
     renderSquad(squadData);
 
