@@ -378,7 +378,27 @@ display:none;
     gap:16px;
 }
 
+.player-info{
+    flex:1;
+    min-width:0;
+}
+
+.player-name{
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.squad-group-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:16px;
+}
+
 @media (max-width:820px){
+
+    .squad-group-grid{
+        grid-template-columns:1fr;
+    }
 
     .squad-controls{
         flex-direction:column;
@@ -722,21 +742,6 @@ function buildPlayerStats(matches){
 			    playerStats[player].apps++;
 			
 			}
-            playerStats[player].apps++;
-
-            // Brankár = prvý hráč zostavy
-            if(i === 1){
-
-                playerStats[player].conceded +=
-                    conceded;
-
-                if(conceded === 0){
-                    playerStats[player].cleanSheets++;
-                }
-
-            }
-
-        }
 
         // Góly
         for(let i = 1; i <= 12; i++){
