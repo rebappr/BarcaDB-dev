@@ -636,6 +636,23 @@ function getPositionGroup(position){
 
 function renderSquad(players){
 
+const positionOrder = {
+    "Goalkeeper": 1,
+
+    "Left Back": 2,
+    "Centre Back": 2,
+    "Right Back": 2,
+
+    "Defensive Midfield": 3,
+    "Central Midfield": 3,
+    "Attacking Midfield": 3,
+
+    "Left Wing": 4,
+    "Right Wing": 4,
+    "Centre Forward": 4,
+    "Second Striker": 4
+};
+
 	const filtered = players
 	    .filter(player => {
 	
@@ -650,10 +667,21 @@ function renderSquad(players){
 	
 	        return searchMatch && positionMatch;
 	    })
-	    .sort((a, b) =>
-	        Number(a.Number || 999) -
-	        Number(b.Number || 999)
-	    );
+	    .sort((a, b) => {
+	
+	        const posA =
+	            positionOrder[a.Position] || 99;
+	
+	        const posB =
+	            positionOrder[b.Position] || 99;
+	
+	        if(posA !== posB){
+	            return posA - posB;
+	        }
+	
+	        return Number(a.Number || 999) -
+	               Number(b.Number || 999);
+	    });
 
     document.getElementById("visiblePlayers").textContent =
         filtered.length;
