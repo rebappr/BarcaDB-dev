@@ -288,15 +288,14 @@ display:none;
     position:absolute;
     top:12px;
     right:12px;
+}
 
-    font-size:1.2rem;
-    line-height:1;
-
-    font-family:
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Noto Color Emoji",
-        sans-serif !important;
+.player-flag img{
+    width:20px;
+    height:14px;
+    object-fit:cover;
+    border-radius:2px;
+    display:block;
 }
 
 .player-header{
@@ -1021,10 +1020,10 @@ const positionOrder = {
 					    .join("")
 					    .toUpperCase();
 
-					const flag =
-					    window.getCountryFlag
-					        ? window.getCountryFlag(player.Nationality)
-					        : "🌍";
+					const countryCode =
+					    window.getCountryCode
+					        ? window.getCountryCode(player.Nationality)
+					        : "default";
 					
 					const stats =
 					    playerStats[player.Name] || {
