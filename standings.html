@@ -339,8 +339,8 @@ display:none;
 
 .standings-toolbar{
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     gap:16px;
 }
 
@@ -606,45 +606,37 @@ padding:6px;
 		
 <div class="widget-card">
 
-    <div class="filter-section">
+    <div class="standings-toolbar">
 
-        <div class="filter-label">
-            Competition
+        <div class="matches-view-switch">
+
+            <button
+                data-competition="La Liga"
+                onclick="setCompetition('La Liga')">
+                La Liga
+            </button>
+
+            <button
+                data-competition="UEFA Champions League"
+                onclick="setCompetition('UEFA Champions League')">
+                UCL
+            </button>
+
         </div>
 
-        <div class="standings-toolbar">
+        <div class="matches-view-switch">
 
-            <div class="matches-view-switch">
+            <button
+                data-view="full"
+                onclick="setTableView('full')">
+                Full
+            </button>
 
-                <button
-                    data-competition="La Liga"
-                    onclick="setCompetition('La Liga')">
-                    La Liga
-                </button>
-
-                <button
-                    data-competition="UEFA Champions League"
-                    onclick="setCompetition('UEFA Champions League')">
-                    UCL
-                </button>
-
-            </div>
-
-            <div class="view-links">
-
-                <a href="#"
-                   data-view="full"
-                   onclick="setTableView('full'); return false;">
-                    Full
-                </a>
-
-                <a href="#"
-                   data-view="short"
-                   onclick="setTableView('short'); return false;">
-                    Short
-                </a>
-
-            </div>
+            <button
+                data-view="short"
+                onclick="setTableView('short')">
+                Short
+            </button>
 
         </div>
 
