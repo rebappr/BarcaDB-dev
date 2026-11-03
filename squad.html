@@ -834,7 +834,7 @@ document.getElementById("squadGrid").innerHTML =
             </article>
         `;
     }).join("");
-
+}
 
 document.getElementById("playerSearch")
 .addEventListener("input", e => {
@@ -1075,24 +1075,6 @@ function initPersonSearch(){
     });
 
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    document
-        .querySelector(
-            `[data-competition="${selectedCompetition}"]`
-        )
-        ?.classList.add("active");
-
-    document
-        .querySelector(
-            `[data-view="${tableView}"]`
-        )
-        ?.classList.add("active");
-
-    renderStandings();
-
-});
 
 </script>
 <script src="scripts/sidebar.js"></script>
