@@ -70,12 +70,14 @@ const clubNameMap = {
   "CD Castellón": "Castellón",
   "Racing Club Ferrol": "Racing Ferrol",
   "Real Racing Club de Santander": "Racing Santander",
+  "Real Santander": "Racing Santander",
   "Deportivo Alavés": "Deportivo Alavés",
   "RC Deportivo La Coruña": "Deportivo La Coruña",
   "Sporting de Gijón": "Sporting Gijón",
   "Hércules CF": "Hércules",
   "Arenas Club de Getxo": "Arenas Club",
   "Athletic Fútbol Club de Palma": "Athletic de Palma",
+  "Mérida CP": "Mérida",
 
   // Taliansko
   "AC Milan": "Milan",
