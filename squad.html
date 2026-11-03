@@ -283,7 +283,7 @@ display:none;
     flex-direction:column;
     align-items:center;
 
-    gap:12px;
+    gap:8px;
 }
 
 .player-info{
@@ -374,12 +374,6 @@ display:none;
     padding-bottom:8px;
 }
 
-.squad-group-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-    gap:16px;
-}
-
 .player-info{
     width:100%;
 }
@@ -390,19 +384,38 @@ display:none;
     text-align:center;
 }
 
-.player-position{
-    margin-top:4px;
+.player-info{
+    width:100%;
+    text-align:center;
+}
 
-    font-size:.8rem;
-    letter-spacing:2px;
+.player-position{
+    margin-top:6px;
+
+    font-size:.75rem;
+    font-weight:700;
+
+    letter-spacing:1.5px;
     text-transform:uppercase;
 
+    color:#004D98;
+
+    text-align:center;
+}
+
+.player-country{
+    margin-top:4px;
+
+    font-size:.85rem;
+
     color:var(--muted);
+
+    text-align:center;
 }
 
 .squad-group-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    grid-template-columns:repeat(auto-fill,240px);
     gap:16px;
 }
 
@@ -977,18 +990,10 @@ const positionOrder = {
 										<div class="player-position">
 										    ${player.Position}
 										</div>
-	
-	                                    <div class="player-meta">
-	
-	                                        <span class="meta-badge">
-	                                            ${player.Position || "-"}
-	                                        </span>
-	
-	                                        <span class="meta-badge">
-	                                            ${player.Nationality || "-"}
-	                                        </span>
-	
-	                                    </div>
+										
+										<div class="player-country">
+										    ${player.Nationality || "-"}
+										</div>
 	
 										<div class="player-stats">
 										
