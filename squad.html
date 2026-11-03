@@ -300,16 +300,34 @@ display:none;
     overflow-wrap:anywhere;
 }
 
-.player-photo,
-.player-initials{
+.player-photo{
     width:96px;
     height:96px;
 
     border-radius:50%;
 
-    flex-shrink:0;
+    object-fit:cover;
 
     border:3px solid rgba(0,77,152,.25);
+}
+
+.player-initials{
+    width:96px;
+    height:96px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#004D98;
+    color:#fff;
+
+    font-size:1.6rem;
+    font-weight:700;
+
+    border:none;
 }
 
 .player-meta{
