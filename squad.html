@@ -244,6 +244,7 @@ display:none;
     display:flex;
     flex-direction:column;
     align-items:center;
+	position:relative;
 
     text-align:center;
 
@@ -264,6 +265,23 @@ display:none;
     box-shadow:0 8px 24px rgba(0,0,0,.12);
 }
 
+}
+
+.player-number{
+    position:absolute;
+    top:12px;
+    left:12px;
+
+    padding:4px 10px;
+
+    border-radius:999px;
+
+    background:rgba(0,77,152,.15);
+
+    color:#004D98;
+
+    font-size:.85rem;
+    font-weight:700;
 }
 
 .player-header{
@@ -1016,6 +1034,10 @@ const positionOrder = {
 	                        class="player-card-link">
 	
 	                        <article class="player-card">
+
+							    <div class="player-number">
+						        #${player.Number || "-"}
+						    </div>
 	
 	                            <div class="player-top">
 	
@@ -1037,9 +1059,9 @@ const positionOrder = {
 	
 	                                <div class="player-info">
 	
-	                                    <div class="player-name">
-	                                        #${player.Number || "-"} ${player.Name}
-	                                    </div>
+										<div class="player-name">
+										    ${player.Name}
+										</div>
 
 										<div class="player-position">
 										    ${player.Position}
