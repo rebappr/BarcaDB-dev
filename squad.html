@@ -1051,7 +1051,11 @@ const positionOrder = {
 							    </div>
 
 								<div class="player-flag">
-									${flag}
+								    <img
+								        src="logos/countries/${countryCode}.png"
+								        alt="${player.Nationality}"
+								        loading="lazy"
+								        onerror="this.src='logos/countries/default.png'">
 								</div>
 	
 	                            <div class="player-top">
