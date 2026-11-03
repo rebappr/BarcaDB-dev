@@ -1018,7 +1018,8 @@ const positionOrder = {
 	            ${players.map(player => {
 	
 					const playerPhoto =
-					    player.Photo || "";
+					    player.Photo &&
+					    player.Photo.trim() !== "";
 	
 					const initials = player.Name
 					    .split(" ")
