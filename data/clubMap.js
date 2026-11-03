@@ -207,7 +207,16 @@ const clubNameMap = {
   "Club América": "América",
   "Atlante FC": "Atlante",
   "Club Atlético Tetuán": "Atlético Tetuán",
-  "Åtvidabergs FF": "Åtvidabergs"
+  "Åtvidabergs FF": "Åtvidabergs",
+  "FK Shakhtar Donetsk": "Shakhtar",
+  "LASK Linz": "Linz",
+  "Sabah FK": "Sabah",
+  "Racing Club de Lens": "Lens",
+  "FK Bodø/Glimt": "Bodø/Glimt",
+  "PAE AEK": "AEK",
+  "RB Leipzig": "Leipzig",
+  "Viking FK": "Viking",
+  "Lille OSC": "Lille"
   
 };
 
