@@ -1017,11 +1017,8 @@ const positionOrder = {
 	
 	            ${players.map(player => {
 	
-	                const playerPhoto =
-	                    player.Photo &&
-	                    player.Photo.trim() !== ""
-	                        ? player.Photo
-	                        : null;
+					const playerPhoto =
+					    player.Photo || "";
 	
 					const initials = player.Name
 					    .split(" ")
@@ -1071,8 +1068,8 @@ const positionOrder = {
 	                                ${
 	                                playerPhoto
 	                                ? `
-	                                <img
-									    src="${getPlayerPhoto(player.Name)}"
+									<img
+									    src="logos/players/${player.Photo || 'default.webp'}"
 									    alt="${player.Name}"
 									    class="player-photo"
 									    loading="lazy"
