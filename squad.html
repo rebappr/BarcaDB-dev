@@ -263,8 +263,23 @@ display:none;
 
 .player-top{
     display:flex;
+    align-items:flex-start;
     gap:14px;
     padding:16px;
+}
+
+.player-info{
+    flex:1;
+    min-width:0;
+}
+
+.player-name{
+    font-size:1rem;
+    font-weight:700;
+    margin-bottom:6px;
+
+    white-space:normal;
+    overflow-wrap:anywhere;
 }
 
 .player-photo{
@@ -273,16 +288,6 @@ display:none;
     border-radius:50%;
     object-fit:cover;
     background:#eee;
-}
-
-.player-info{
-    flex:1;
-}
-
-.player-name{
-    font-size:1rem;
-    font-weight:700;
-    margin-bottom:6px;
 }
 
 .player-meta{
@@ -395,6 +400,13 @@ display:none;
 }
 
 @media (max-width:820px){
+
+    .player-photo,
+    .player-initials{
+        width:56px;
+        height:56px;
+        font-size:1rem;
+    }
 
     .squad-group-grid{
         grid-template-columns:1fr;
