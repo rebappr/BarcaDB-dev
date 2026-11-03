@@ -666,7 +666,13 @@ padding:6px;
 <script>
 
 function getClubLogo(team){
-    return String(team || "")
+
+    const displayName =
+        window.getClubName
+        ? window.getClubName(team)
+        : team;
+
+    return String(displayName || "")
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
