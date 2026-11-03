@@ -636,19 +636,24 @@ function getPositionGroup(position){
 
 function renderSquad(players){
 
-    const filtered = players.filter(player => {
-
-		const searchMatch =
-		    (player.Name || "")
-		    .toLowerCase()
-		    .includes(currentSearch.toLowerCase());
-
-		const positionMatch =
-		    currentPosition === "all" ||
-		    getPositionGroup(player.Position) === currentPosition;
-
-        return searchMatch && positionMatch;
-    });
+	const filtered = players
+	    .filter(player => {
+	
+	        const searchMatch =
+	            (player.Name || "")
+	            .toLowerCase()
+	            .includes(currentSearch.toLowerCase());
+	
+	        const positionMatch =
+	            currentPosition === "all" ||
+	            getPositionGroup(player.Position) === currentPosition;
+	
+	        return searchMatch && positionMatch;
+	    })
+	    .sort((a, b) =>
+	        Number(a.Number || 999) -
+	        Number(b.Number || 999)
+	    );
 
     document.getElementById("visiblePlayers").textContent =
         filtered.length;
