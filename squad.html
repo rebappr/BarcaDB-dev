@@ -1072,10 +1072,11 @@ const positionOrder = {
 	                                playerPhoto
 	                                ? `
 	                                <img
-	                                    src="${playerPhoto}"
-	                                    alt="${player.Name}"
-	                                    class="player-photo"
-	                                    loading="lazy">
+									    src="${getPlayerPhoto(player.Name)}"
+									    alt="${player.Name}"
+									    class="player-photo"
+									    loading="lazy"
+									    onerror="this.src='logos/players/default.png'">
 	                                `
 	                                : `
 	                                <div class="player-initials">
