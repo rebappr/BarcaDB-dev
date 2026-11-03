@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Missing Club Logos</title>
+<style>
+body{
+    font-family:Arial,sans-serif;
+    padding:20px;
+}
+.missing{
+    color:#dc2626;
+    margin:4px 0;
+}
+.ok{
+    color:#16a34a;
+    margin:4px 0;
+}
+</style>
+</head>
+<body>
+
+<h1>Missing Club Logos</h1>
+
+<div id="results">Loading...</div>
+
+<script src="data/clubMap.js"></script>
+
+<script>
+
+function getClubLogo(team){
+
+    const displayName =
+        window.getClubName
+            ? window.getClubName(team)
+            : team;
+
+    return String(displayName || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        + ".png";
+}
+
+Promise.all([
+    fetch("data/tablelaliga.json").then(r => r.json()),
+    fetch("data/tableucl.json").then(r => r.json())
+])
+.then(([laliga,ucl]) => {
+
+    const clubs = new Set();
+
+    [...laliga,...ucl].forEach(row => {
+
+        const club =
+            row.club ||
+            row.team;
+
+        if(club){
+            clubs.add(club);
+        }
+
+    });
+
+    const results =
+        document.getElementById("results");
+
+    results.innerHTML = "";
+
+    let missingCount = 0;
+
+    [...clubs]
+    .sort()
+    .forEach(club => {
+
+        const logo =
+            "logos/clubs/" +
+            getClubLogo(club);
+
+        const img = new Image();
+
+        img.onload = () => {
+
+            const div =
+                document.createElement("div");
+
+            div.className = "ok";
+
+            div.textContent =
+                "✓ " +
+                club;
+
+            results.appendChild(div);
+
+        };
+
+        img.onerror = () => {
+
+            missingCount++;
+
+            const div =
+                document.createElement("div");
+
+            div.className = "missing";
+
+            div.innerHTML = `
+                ✗ ${club}
+                <br>
+                Expected file:
+                <strong>${getClubLogo(club)}</strong>
+            `;
+
+            results.appendChild(div);
+
+        };
+
+        img.src = logo;
+
+    });
+
+})
+.catch(console.error);
+
+</script>
+
+</body>
+</html>
