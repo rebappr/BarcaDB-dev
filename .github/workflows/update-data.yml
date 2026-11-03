@@ -13,7 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create data directory
+        run: mkdir -p data
 
       - name: Download Sheets
         run: |
@@ -29,9 +33,6 @@ jobs:
 
       - name: Validate JSON
         run: |
-          sudo apt-get update
-          sudo apt-get install -y jq
-
           jq empty data/data.json
           jq empty data/players.json
           jq empty data/managers.json
@@ -43,7 +44,12 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/data.json data/players.json data/managers.json data/insights.json data/playersCS.json
+          git add \
+            data/data.json \
+            data/players.json \
+            data/managers.json \
+            data/insights.json \
+            data/playersCS.json
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
