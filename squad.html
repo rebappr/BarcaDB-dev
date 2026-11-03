@@ -1027,11 +1027,6 @@ const positionOrder = {
 					    .join("")
 					    .toUpperCase();
 
-					const countryCode =
-					    window.getCountryCode
-					        ? window.getCountryCode(player.Nationality)
-					        : "default";
-					
 					const stats =
 					    playerStats[player.Name] || {
 					        apps:0,
@@ -1069,7 +1064,7 @@ const positionOrder = {
 	                                playerPhoto
 	                                ? `
 									<img
-									    src="logos/players/${player.Photo || 'default.webp'}"
+									    src="logos/players/${player.Photo || 'default.png'}"
 									    alt="${player.Name}"
 									    class="player-photo"
 									    loading="lazy"
