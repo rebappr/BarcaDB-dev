@@ -4,7 +4,7 @@ window.countryFlags = {
     "Brazil":"🇧🇷",
     "Croatia":"🇭🇷",
     "Denmark":"🇩🇰",
-    "England":"🏴",
+    "England":"",
     "France":"🇫🇷",
     "Germany":"🇩🇪",
     "Italy":"🇮🇹",
