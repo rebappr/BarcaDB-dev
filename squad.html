@@ -444,7 +444,10 @@ display:none;
     border:1px solid var(--card-border);
     border-radius:14px;
     overflow:hidden;
-    transition:.2s;
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
 }
 
 .player-card-link{
@@ -453,9 +456,14 @@ display:none;
     display:block;
 }
 
+@media (hover:hover){
+
 .player-card:hover{
-    transform:translateY(-2px);
+    transform:translateY(-3px);
     border-color:#004d98;
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+
 }
 
 .player-top{
@@ -928,6 +936,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initPersonSearch(){
+
+    if(typeof allMatches === "undefined"){
+        return;
+    }
 
     const searchItems = new Map();
 
