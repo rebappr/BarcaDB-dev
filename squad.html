@@ -945,6 +945,11 @@ const positionOrder = {
 	const filtered = players
 	    .filter(player => {
 	
+	        const stats =
+	            playerStats[player.Name] || {
+	                apps: 0
+	            };
+	
 	        const searchMatch =
 	            (player.Name || "")
 	            .toLowerCase()
@@ -954,7 +959,12 @@ const positionOrder = {
 	            currentPosition === "all" ||
 	            getPositionGroup(player.Position) === currentPosition;
 	
-	        return searchMatch && positionMatch;
+	        const playedMatch =
+	            stats.apps > 0;
+	
+	        return searchMatch &&
+	               positionMatch &&
+	               playedMatch;
 	    })
 	    .sort((a, b) => {
 	
