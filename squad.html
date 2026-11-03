@@ -284,6 +284,15 @@ display:none;
     font-weight:700;
 }
 
+.player-flag{
+    position:absolute;
+    top:12px;
+    right:12px;
+
+    font-size:1.2rem;
+    line-height:1;
+}
+
 .player-header{
     width:100%;
 
@@ -433,16 +442,6 @@ display:none;
 
     letter-spacing:1.5px;
     text-transform:uppercase;
-
-    color:var(--muted);
-
-    text-align:center;
-}
-
-.player-country{
-    margin-top:4px;
-
-    font-size:.85rem;
 
     color:var(--muted);
 
@@ -1045,7 +1044,7 @@ const positionOrder = {
 							        #${player.Number || "-"}
 							    </div>
 
-								<div class="player-country">
+								<div class="player-flag">
 									${flag}
 								</div>
 	
