@@ -740,6 +740,7 @@ display:none;
 </div>
 </div>
 
+<script src="data/playerMap.js"></script>
 <script src="data/countryMap.js"></script>
 <script>
 
@@ -1028,8 +1029,9 @@ const positionOrder = {
 	            ${players.map(player => {
 	
 					const playerPhoto =
-					    player.Photo &&
-					    player.Photo.trim() !== "";
+					    window.getPlayerPhoto
+					        ? window.getPlayerPhoto(player.Name)
+					        : "default.webp";
 	
 					const initials = player.Name
 					    .split(" ")
@@ -1070,21 +1072,12 @@ const positionOrder = {
 								</div>
 	
 	                            <div class="player-top">
-	
-	                                ${
-	                                playerPhoto
-	                                ? `
 									<img
-									    src="logos/players/${player.Photo || 'default.webp'}"
+									    src="logos/players/${playerPhoto}"
 									    alt="${player.Name}"
 									    class="player-photo"
 									    loading="lazy"
 									    onerror="this.src='logos/players/default.webp'">
-	                                `
-	                                : `
-	                                <div class="player-initials">
-	                                    ${initials}
-	                                </div>
 	                                `
 	                                }
 	
