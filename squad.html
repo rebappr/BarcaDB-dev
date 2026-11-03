@@ -715,11 +715,11 @@ display:none;
             >
 
             <div class="position-filters">
-                <button class="position-btn active" data-position="all">All</button>
-                <button class="position-btn" data-position="GK">GK</button>
-                <button class="position-btn" data-position="DF">DF</button>
-                <button class="position-btn" data-position="MF">MF</button>
-                <button class="position-btn" data-position="FW">FW</button>
+				<button class="position-btn active" data-position="all">All</button>
+				<button class="position-btn" data-position="Goalkeeper">GK</button>
+				<button class="position-btn" data-position="Defender">DF</button>
+				<button class="position-btn" data-position="Midfielder">MF</button>
+				<button class="position-btn" data-position="Forward">FW</button>
             </div>
         </div>
 
@@ -739,17 +739,47 @@ display:none;
 let currentPosition = "all";
 let currentSearch = "";
 
+function getPositionGroup(position){
+
+    const defenders = [
+        "Centre Back",
+        "Left Back",
+        "Right Back"
+    ];
+
+    const midfielders = [
+        "Defensive Midfield",
+        "Central Midfield",
+        "Attacking Midfield"
+    ];
+
+    const forwards = [
+        "Centre Forward",
+        "Left Wing",
+        "Right Wing",
+        "Second Striker"
+    ];
+
+    if(position === "Goalkeeper") return "Goalkeeper";
+    if(defenders.includes(position)) return "Defender";
+    if(midfielders.includes(position)) return "Midfielder";
+    if(forwards.includes(position)) return "Forward";
+
+    return position;
+}
+
 function renderSquad(players){
 
     const filtered = players.filter(player => {
 
-        const searchMatch =
-            player.name.toLowerCase()
-            .includes(currentSearch.toLowerCase());
+		const searchMatch =
+		    (player.Player || "")
+		    .toLowerCase()
+		    .includes(currentSearch.toLowerCase());
 
-        const positionMatch =
-            currentPosition === "all" ||
-            player.position === currentPosition;
+		const positionMatch =
+		    currentPosition === "all" ||
+		    getPositionGroup(player.Position) === currentPosition;
 
         return searchMatch && positionMatch;
     });
@@ -784,15 +814,15 @@ document.getElementById("squadGrid").innerHTML =
 
                         <div class="player-meta">
                             <span class="meta-badge">
-                                #${player.number || "-"}
+                                ${player["Date of Birth"] || "-"}
                             </span>
 
                             <span class="meta-badge">
-                                ${player.position || "-"}
+                                ${player.Position || "-"}
                             </span>
 
                             <span class="meta-badge">
-                                ${player.nationality || "-"}
+                                ${player["Nationality 1"] || "-"}
                             </span>
                         </div>
 
@@ -800,36 +830,18 @@ document.getElementById("squadGrid").innerHTML =
 
                 </div>
 
-                <div class="player-stats">
-
-                    <div class="player-stat">
-                        <div class="player-stat-value">
-                            ${player.appearances || 0}
-                        </div>
-                        <div class="player-stat-label">
-                            Apps
-                        </div>
-                    </div>
-
-                    <div class="player-stat">
-                        <div class="player-stat-value">
-                            ${player.goals || 0}
-                        </div>
-                        <div class="player-stat-label">
-                            Goals
-                        </div>
-                    </div>
-
-                    <div class="player-stat">
-                        <div class="player-stat-value">
-                            ${player.assists || 0}
-                        </div>
-                        <div class="player-stat-label">
-                            Assists
-                        </div>
-                    </div>
-
-                </div>
+				<div class="player-stats">
+				
+				    <div class="player-stat">
+				        <div class="player-stat-value">
+				            ${player["Date of Birth"] || "-"}
+				        </div>
+				        <div class="player-stat-label">
+				            Born
+				        </div>
+				    </div>
+				
+				</div>
 
             </article>
         `;
