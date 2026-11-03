@@ -363,11 +363,6 @@ text-decoration:underline;
     box-sizing:border-box;
 }
 
-.sidebar-search input:focus{
-    outline:none;
-    border-color:#004D98;
-}
-
 .sidebar-overlay{
     position:fixed;
     inset:0;
