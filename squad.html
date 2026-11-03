@@ -743,6 +743,16 @@ display:none;
 <script src="data/countryMap.js"></script>
 <script>
 
+function getCountryLogo(country){
+
+    const code =
+        window.getCountryCode
+        ? window.getCountryCode(country)
+        : "default";
+
+    return `logos/countries/${code}.png`;
+}
+
 let currentPosition = "all";
 let currentSearch = "";
 let currentSeason = "";
@@ -1050,11 +1060,10 @@ const positionOrder = {
 							    </div>
 
 								<div class="player-flag">
-								    <img
-								        src="logos/countries/${countryCode}.png"
-								        alt="${player.Nationality}"
-								        loading="lazy"
-								        onerror="this.src='logos/countries/default.png'">
+									<img
+									    src="${getCountryLogo(player.Nationality)}"
+									    alt="${player.Nationality}"
+									    onerror="this.src='logos/countries/default.png'">
 								</div>
 	
 	                            <div class="player-top">
