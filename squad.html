@@ -332,6 +332,32 @@ display:none;
     color:var(--muted);
 }
 
+.player-photo{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+.player-initials{
+    width:72px;
+    height:72px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#004D98;
+    color:#fff;
+
+    font-size:1.3rem;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
 @media (max-width:820px){
 
     .squad-controls{
@@ -628,15 +654,22 @@ function renderSquad(players){
         filtered.length;
 
 document.getElementById("squadGrid").innerHTML =
-    filtered.map(player => {
-
-        const playerPhoto =
-		    player.Photo &&
-		    player.Photo.trim() !== ""
-		        ? player.Photo
-		        : "logos/players/default.png";
+			filtered.map(player => {
 			
-			return `
+			    const playerPhoto =
+			        player.Photo &&
+			        player.Photo.trim() !== ""
+			            ? player.Photo
+			            : null;
+			
+			    const initials = player.Name
+			        .split(" ")
+			        .slice(0, 2)
+			        .map(part => part.charAt(0))
+			        .join("")
+			        .toUpperCase();
+			
+			    return `
 			    <a
 				    href="player.html?name=${encodeURIComponent(player.Name)}"
 				    class="player-card-link">
@@ -645,13 +678,22 @@ document.getElementById("squadGrid").innerHTML =
 			
 			        <div class="player-top">
 			
-			            <img
-			                src="${playerPhoto}"
-			                alt="${player.Name}"
-			                class="player-photo"
-			                loading="lazy"
-			                onerror="this.src='logos/players/default.png'"
-			            >
+						${
+						player.Photo && player.Photo.trim() !== ""
+						? `
+						<img
+						    src="${player.Photo}"
+						    alt="${player.Name}"
+						    class="player-photo"
+						    loading="lazy"
+						>
+						`
+						: `
+						<div class="player-initials">
+						    ${initials}
+						</div>
+						`
+						}
 			
 			            <div class="player-info">
 			
