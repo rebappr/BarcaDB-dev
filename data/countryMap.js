@@ -1,15 +1,27 @@
-const countryFlags = {
-    "Spain":"🇪🇸",
-    "Poland":"🇵🇱",
-    "France":"🇫🇷",
-    "Brazil":"🇧🇷",
+window.countryFlags = {
     "Argentina":"🇦🇷",
-    "Netherlands":"🇳🇱",
-    "Germany":"🇩🇪",
-    "Portugal":"🇵🇹",
+    "Belgium":"🇧🇪",
+    "Brazil":"🇧🇷",
+    "Croatia":"🇭🇷",
+    "Denmark":"🇩🇰",
     "England":"🏴",
-    "Uruguay":"🇺🇾",
+    "France":"🇫🇷",
+    "Germany":"🇩🇪",
+    "Italy":"🇮🇹",
     "Morocco":"🇲🇦",
+    "Netherlands":"🇳🇱",
+    "Norway":"🇳🇴",
+    "Poland":"🇵🇱",
+    "Portugal":"🇵🇹",
+    "Spain":"🇪🇸",
     "Sweden":"🇸🇪",
-    "Denmark":"🇩🇰"
+    "Switzerland":"🇨🇭",
+    "Turkey":"🇹🇷",
+    "Uruguay":"🇺🇾",
+    "United States":"🇺🇸",
+    "Wales":"🏴"
+};
+
+window.getCountryFlag = function(country){
+    return window.countryFlags[country] || "🌍";
 };
