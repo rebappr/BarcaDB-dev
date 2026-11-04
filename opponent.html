@@ -846,28 +846,36 @@ function renderTopAgainstOpponent(){
 
     });
 
-    const top = Object.entries(stats)
+const limit =
+    matches.length < 20
+        ? 5
+        : 10;
 
-    .map(([name,s]) => ({
-        name,
-        appearances:s.appearances,
-        goals:s.goals,
-        assists:s.assists,
-        total:s.goals + s.assists
-    }))
+document.getElementById("topOpponentTitle").textContent =
+    `Top ${limit} Against ${getOfficialClubName(team)}`;
 
-    .sort((a,b) => {
+const top = Object.entries(stats)
 
-        const valueA = a[opponentSortColumn];
-        const valueB = b[opponentSortColumn];
+.map(([name,s]) => ({
+    name,
+    appearances:s.appearances,
+    goals:s.goals,
+    assists:s.assists,
+    total:s.goals + s.assists
+}))
 
-        return opponentSortDirection === "asc"
-            ? valueA - valueB
-            : valueB - valueA;
+.sort((a,b) => {
 
-    })
+    const valueA = a[opponentSortColumn];
+    const valueB = b[opponentSortColumn];
 
-    .slice(0,5);
+    return opponentSortDirection === "asc"
+        ? valueA - valueB
+        : valueB - valueA;
+
+})
+
+.slice(0, limit);
 
     let html = `
     <table class="flick-table">
