@@ -823,6 +823,17 @@
 	</div>
 
 	<div class="home-column">
+		
+		<div class="widget-title">
+		    Top Managers
+		</div>
+		
+		<div class="widget-card">
+		    <div id="topManagers">
+		        Loading...
+		    </div>
+		</div>
+		
 	</div>
 
 </div>
@@ -895,6 +906,7 @@ function renderHome(){
 
     renderTopBrazilians();
 	renderUnderFlick();
+	renderTopManagers();
 
     renderInsights();
 
@@ -1121,6 +1133,128 @@ function renderHome(){
             </div>
         `;
     }
+
+function renderTopManagers(){
+
+    const managers = {};
+
+    allMatches.forEach(match => {
+
+        const manager = match.Manager;
+
+        if(!manager) return;
+
+        if(
+            !match.Result ||
+            match.Result === "-:-"
+        ) return;
+
+        if(!managers[manager]){
+
+            managers[manager] = {
+
+                matches: 0,
+                wins: 0,
+                goalsFor: 0,
+                goalsAgainst: 0
+
+            };
+
+        }
+
+        managers[manager].matches++;
+
+        managers[manager].goalsFor +=
+            Number(match.Scored || 0);
+
+        managers[manager].goalsAgainst +=
+            Number(match.Conceded || 0);
+
+        if(match["Result type"] === "W"){
+            managers[manager].wins++;
+        }
+
+    });
+
+	const top = Object.entries(managers)
+	
+	    .map(([name, stats]) => ({
+	
+	        name,
+	
+	        matches: stats.matches,
+	
+	        gf: stats.goalsFor,
+	
+	        ga: stats.goalsAgainst,
+	
+	        winPct:
+	            stats.matches
+	            ? ((stats.wins / stats.matches) * 100)
+	            : 0
+	
+	    }))
+	
+	    .filter(manager => manager.matches >= 100)
+
+        .sort((a,b) => b.winPct - a.winPct)
+
+        .slice(0,10);
+
+    let html = `
+        <table class="stats-table">
+
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Manager</th>
+                    <th>M</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>W%</th>
+                </tr>
+            </thead>
+
+            <tbody>
+    `;
+
+    top.forEach((m,index) => {
+
+        html += `
+            <tr>
+
+                <td>${index + 1}</td>
+
+                <td>
+                    <a
+                        class="player-link"
+                        href="manager.html?name=${encodeURIComponent(m.name)}">
+                        ${m.name}
+                    </a>
+                </td>
+
+                <td>${m.matches}</td>
+
+                <td>${m.gf}</td>
+
+                <td>${m.ga}</td>
+
+                <td>${m.winPct.toFixed(2)}%</td>
+
+            </tr>
+        `;
+
+    });
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+    document.getElementById(
+        "topManagers"
+    ).innerHTML = html;
+}
 
 function renderTopBrazilians(){
 
