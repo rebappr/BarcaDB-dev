@@ -328,7 +328,52 @@ flex-shrink:0;
     gap:8px;
 }
 
+.flick-table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+.flick-table th,
+.flick-table td{
+    padding:8px 4px;
+    border-bottom:1px solid var(--meta-border);
+    font-size:13px;
+}
+
+.flick-table th:first-child,
+.flick-table td:first-child{
+    text-align:left;
+}
+
+.flick-table th:not(:first-child),
+.flick-table td:not(:first-child){
+    width:60px;
+    text-align:center;
+}
+
+.flick-selected,
+.flick-column-selected{
+    color:white;
+    background:
+        linear-gradient(
+        135deg,
+        #004D98,
+        #1e3a8a
+        );
+}
+
+.flick-table th:not(:first-child){
+    cursor:pointer;
+    user-select:none;
+}
+
 @media(max-width:820px){
+
+.flick-table th:not(:first-child),
+.flick-table td:not(:first-child){
+    width:40px;
+}
 
     .opponent-logo{
         width:60px;
@@ -601,6 +646,16 @@ font-size:16px;
 	        Statistics
 	    </div>
 
+		<div class="widget-title">
+		    Top 10 Against Opponent
+		</div>
+		
+		<div class="widget-card">
+		    <div id="topAgainstOpponent">
+		        Loading...
+		    </div>
+		</div>
+
     </div>
 
 </div>
@@ -652,16 +707,20 @@ if (canonical) {
 }
 
 let allMatches = [];
+let opponentSortColumn = "total";
+let opponentSortDirection = "desc";
 
 fetch("data/data.json")
 .then(r => r.json())
 .then(data => {
 
-    allMatches = data;
-
-    renderOpponent(opponentName, data);
-
-    initPersonSearch();
+	allMatches = data;
+	
+	renderOpponent(opponentName, data);
+	
+	renderTopAgainstOpponent();
+	
+	initPersonSearch();
 
 })
 .catch(error => {
@@ -674,6 +733,227 @@ function statValue(value){
     return value === 0 ? "-" : value;
 }
 
+function sortOpponent(column){
+
+    if(opponentSortColumn === column){
+
+        opponentSortDirection =
+            opponentSortDirection === "asc"
+            ? "desc"
+            : "asc";
+
+    }else{
+
+        opponentSortColumn = column;
+        opponentSortDirection = "desc";
+
+    }
+
+    renderTopAgainstOpponent();
+}
+
+window.sortOpponent = sortOpponent;
+
+function renderTopAgainstOpponent(){
+
+    const stats = {};
+
+    const opponentMatches = allMatches.filter(
+        m => m["Opp. Team"] === opponentName
+    );
+
+    function addPlayer(name){
+
+        if(!name) return;
+
+        name = String(name).trim();
+
+        if(name.includes("(OG)")) return;
+
+        if(!stats[name]){
+
+            stats[name] = {
+                appearances:0,
+                goals:0,
+                assists:0
+            };
+
+        }
+    }
+
+    opponentMatches.forEach(match => {
+
+        // základná zostava
+        for(let i=1;i<=11;i++){
+
+            const player = match[`Player name ${i}`];
+
+            if(player){
+
+                addPlayer(player);
+                stats[player].appearances++;
+
+            }
+
+        }
+
+        // striedajúci
+        for(let i=1;i<=12;i++){
+
+            const player =
+            match[`Substitution IN Player ${i}`];
+
+            if(player){
+
+                addPlayer(player);
+                stats[player].appearances++;
+
+            }
+
+        }
+
+        // góly
+        for(let i=1;i<=12;i++){
+
+            const player =
+            match[`Goal Player ${i}`];
+
+            if(player && !player.includes("(OG)")){
+
+                addPlayer(player);
+                stats[player].goals++;
+
+            }
+
+        }
+
+        // asistencie
+        for(let i=1;i<=12;i++){
+
+            const player =
+            match[`Assist Player ${i}`];
+
+            if(player){
+
+                addPlayer(player);
+                stats[player].assists++;
+
+            }
+
+        }
+
+    });
+
+    const top = Object.entries(stats)
+
+    .map(([name,s]) => ({
+        name,
+        appearances:s.appearances,
+        goals:s.goals,
+        assists:s.assists,
+        total:s.goals + s.assists
+    }))
+
+    .sort((a,b) => {
+
+        const valueA = a[opponentSortColumn];
+        const valueB = b[opponentSortColumn];
+
+        return opponentSortDirection === "asc"
+            ? valueA - valueB
+            : valueB - valueA;
+
+    })
+
+    .slice(0,10);
+
+    let html = `
+    <table class="flick-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Player</th>
+
+                <th
+                    class="${opponentSortColumn==='appearances' ? 'flick-selected' : ''}"
+                    onclick="sortOpponent('appearances')">
+                    M
+                </th>
+
+                <th
+                    class="${opponentSortColumn==='goals' ? 'flick-selected' : ''}"
+                    onclick="sortOpponent('goals')">
+                    G
+                </th>
+
+                <th
+                    class="${opponentSortColumn==='assists' ? 'flick-selected' : ''}"
+                    onclick="sortOpponent('assists')">
+                    A
+                </th>
+
+                <th
+                    class="${opponentSortColumn==='total' ? 'flick-selected' : ''}"
+                    onclick="sortOpponent('total')">
+                    G+A
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+    `;
+
+    top.forEach(player => {
+
+        html += `
+        <tr>
+
+            <td>
+
+                <a
+                    class="player-link"
+                    href="player.html?name=${encodeURIComponent(player.name)}">
+
+                    ${player.name}
+
+                </a>
+
+            </td>
+
+            <td class="${opponentSortColumn==='appearances' ? 'flick-column-selected' : ''}">
+                ${player.appearances}
+            </td>
+
+            <td class="${opponentSortColumn==='goals' ? 'flick-column-selected' : ''}">
+                ${player.goals}
+            </td>
+
+            <td class="${opponentSortColumn==='assists' ? 'flick-column-selected' : ''}">
+                ${player.assists}
+            </td>
+
+            <td class="${opponentSortColumn==='total' ? 'flick-column-selected' : ''}">
+                ${player.total}
+            </td>
+
+        </tr>
+        `;
+
+    });
+
+    html += `
+        </tbody>
+    </table>
+    `;
+
+    document.getElementById(
+        "topAgainstOpponent"
+    ).innerHTML = html;
+}
 function getClubLogo(team){
     return team
         .toLowerCase()
