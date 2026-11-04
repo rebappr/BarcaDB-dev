@@ -618,7 +618,7 @@ const params =
 new URLSearchParams(location.search);
 
 const opponentName =
-params.get("name");
+params.get("name") || "Unknown opponent";
 
 const competitionLogos = {
     "Copa del Rey": "copa.png",
