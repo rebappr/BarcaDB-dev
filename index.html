@@ -825,7 +825,17 @@ Promise.all([
 
 })
 
-.catch(error => console.error(error));
+.catch(error => {
+
+    console.error("Failed to load data:", error);
+
+    document.getElementById("lastMatch").innerHTML =
+        "Unable to load match data";
+
+    document.getElementById("nextMatch").innerHTML =
+        "Unable to load match data";
+
+});
 
     function parseDate(date) {
 
@@ -1992,19 +2002,6 @@ function initPersonSearch(){
 	);
 
 }
-
-})
-.catch(error => {
-
-    console.error("Failed to load data:", error);
-
-    document.getElementById("lastMatch").innerHTML =
-        "Unable to load match data";
-
-    document.getElementById("nextMatch").innerHTML =
-        "Unable to load match data";
-
-});
 
 </script>
 <script src="scripts/sidebar.js"></script>
