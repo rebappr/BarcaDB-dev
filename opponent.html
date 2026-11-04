@@ -642,7 +642,9 @@ font-size:16px;
 
     <div class="right-panel">
 		
-		<div class="widget-title">
+		<div
+		    class="widget-title"
+		    id="topOpponentTitle">
 		    Top 10 Against Opponent
 		</div>
 		
@@ -1024,6 +1026,9 @@ const goalsAgainst = matches.reduce(
 	</div>
 	
 	`;
+
+	document.getElementById("topOpponentTitle").textContent =
+    `Top 10 Against ${opponentName}`;
 
     document.getElementById("opponentProfile").innerHTML = `
 
