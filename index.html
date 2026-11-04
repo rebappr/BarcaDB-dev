@@ -853,12 +853,14 @@ function renderHome(){
     renderNextMatch();
 
     renderRecentForm();
-	renderSeasonOverview();
+    renderSeasonOverview();
 
     renderSeasonDebutants();
     renderSeasonStatistics();
 
-	renderInsights();
+    renderTopBrazilians();
+
+    renderInsights();
 
     initPersonSearch();
 }
@@ -1086,11 +1088,11 @@ function renderHome(){
 
 function renderTopBrazilians(){
 
-    if(!window.playersData) return;
+    if(!allPlayers.lenght) return;
 
     const brazilianPlayers = new Set(
 
-        window.playersData
+        allPlayers
 
         .filter(player =>
 
