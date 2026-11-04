@@ -847,12 +847,12 @@ function renderTopAgainstOpponent(){
     });
 
 const limit =
-    matches.length < 20
+    opponentMatches.length < 20
         ? 5
         : 10;
 
 document.getElementById("topOpponentTitle").textContent =
-    `Top ${limit} Against ${getOfficialClubName(team)}`;
+    `Top ${limit} Against ${getOfficialClubName(opponentName)}`;
 
 const top = Object.entries(stats)
 
@@ -1038,9 +1038,6 @@ const goalsAgainst = matches.reduce(
 	</div>
 	
 	`;
-
-	document.getElementById("topOpponentTitle").textContent =
-    `Top 10 Against ${opponentName}`;
 
     document.getElementById("opponentProfile").innerHTML = `
 
