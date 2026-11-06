@@ -545,21 +545,6 @@ display:none;
 <div class="content-layout">
 <div class="left-panel">
 
-<div class="player-profile-card">
-
-    <label for="playerSelect">
-        Select Player
-    </label>
-
-    <select id="playerSelect" class="player-select">
-    </select>
-
-</div>
-
-<div class="widget-title" id="pageTitle">
-    Player Profile
-</div>
-
 <div class="player-profile-card" id="playerProfile">
   
 </div>
@@ -637,49 +622,77 @@ function renderPlayer(player){
 	document.title =
 	    `${player.Name} | Barça Database`;
 
-	document.getElementById("playerProfile").innerHTML = `
-	
-	<div class="player-header-card">
-	
-	    <div class="player-header-left">
-	
-	        <img
-	            src="logos/players/${photo}"
-	            alt="${player.Name}"
-	            class="player-profile-photo"
-	            onerror="this.src='logos/players/default.webp'">
-	
-	        <div class="player-header-info">
-	
-	            <h2>
-	
-	                ${player.Name}
-	
-	                <img
-	                    src="${getCountryLogo(player.Nationality)}"
-	                    alt="${player.Nationality}"
-	                    class="player-flag-large"
-	                    onerror="this.src='logos/countries/default.png'">
-	
-	            </h2>
-	
-	            <div class="player-header-meta">
-	
-	                <span>NO #${player.Number}</span>
-	
-	                <span>AGE ${age}</span>
-	
-	                <span>${player.Position}</span>
-	
-	            </div>
-	
-	        </div>
-	
-	    </div>
-	
-	</div>
-	
-	`;
+document.getElementById("playerProfile").innerHTML = `
+
+<div class="player-header-card">
+
+    <div class="player-header-left">
+
+        <img
+            src="logos/players/${photo}"
+            alt="${player.Name}"
+            class="player-profile-photo"
+            onerror="this.src='logos/players/default.webp'">
+
+        <div class="player-header-info">
+
+            <h2>
+
+                ${player.Name}
+
+                <img
+                    src="${getCountryLogo(player.Nationality)}"
+                    alt="${player.Nationality}"
+                    class="player-flag-large"
+                    onerror="this.src='logos/countries/default.png'">
+
+            </h2>
+
+            <div class="player-header-meta">
+
+                <span>NO</span>
+
+                <strong>#${player.Number}</strong>
+
+                <span>AGE</span>
+
+                <strong>${age}</strong>
+
+                <span>${player.Position}</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="player-header-right">
+
+        <select
+            id="playerSelect"
+            class="player-select">
+
+            ${allPlayers
+                .sort((a,b)=>
+                    Number(a.Number) -
+                    Number(b.Number)
+                )
+                .map(p => `
+                    <option
+                        value="${p.Name}"
+                        ${p.Name === player.Name ? "selected" : ""}>
+                        #${p.Number} ${p.Name}
+                    </option>
+                `)
+                .join("")}
+
+        </select>
+
+    </div>
+
+</div>
+
+`;
 }
 
 function populatePlayerSelect(players){
