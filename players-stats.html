@@ -531,20 +531,82 @@ function calculateAge(dateString){
     return age;
 }
 
-fetch("/data/playersCS.json")
-.then(r => r.json())
-.then(players => {
+function renderPlayer(player){
 
-    const player =
-        players.find(
-            p => p.Name === playerName
-        );
+    const photo =
+        window.getPlayerPhoto
+            ? window.getPlayerPhoto(player.Name)
+            : "default.webp";
+
+    const age =
+        calculateAge(player["Date of Birth"]);
+
+    document.getElementById("pageTitle").textContent =
+        player.Name;
+
+    document.getElementById("playerProfile").innerHTML = `
+
+        <div class="player-profile-header">
+
+            <img
+                src="logos/players/${photo}"
+                alt="${player.Name}"
+                class="player-profile-photo"
+                onerror="this.src='logos/players/default.webp'">
+
+            <div class="player-profile-info">
+
+                <h2>
+
+                    ${player.Name}
+
+                    <img
+                        src="${getCountryLogo(player.Nationality)}"
+                        alt="${player.Nationality}"
+                        onerror="this.src='logos/countries/default.png'">
+
+                </h2>
+
+                <div class="player-profile-meta">
+
+                    <div class="player-shirt">
+                        #${player.Number || "-"}
+                    </div>
+
+                    <div>
+                        ${player["Date of Birth"]}
+                        (${age})
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+let allMatches = [];
+
+Promise.all([
+    fetch("/data/playersCS.json").then(r => r.json()),
+    fetch("/data/data.json").then(r => r.json())
+])
+.then(([players, matches]) => {
+
+    allMatches = matches;
+
+    initPersonSearch();
+
+    const player = players.find(
+        p => p.Name === playerName
+    );
 
     if(!player){
 
         document.getElementById("playerProfile")
-        .innerHTML =
-            "<p>Player not found.</p>";
+            .innerHTML = "<p>Player not found.</p>";
 
         return;
     }
