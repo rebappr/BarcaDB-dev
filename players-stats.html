@@ -14,7 +14,9 @@
 
 <meta name="theme-color" content="#004D98">
 
-<title>FC Barcelona 2026/27 Squad | First Team Players, Positions & Numbers | Barça Database</title>
+<title>
+Player Statistics | Barça Database
+</title>
 
 <meta name="robots" content="noindex, nofollow">
 
@@ -608,9 +610,10 @@ function populatePlayerSelect(players){
 
     select.innerHTML =
         players
-        .sort((a,b)=>
-            a.Name.localeCompare(b.Name)
-        )
+		.sort((a,b)=>
+		    Number(a.Number) -
+		    Number(b.Number)
+		)
         .map(player => `
             <option value="${player.Name}">
                 ${player.Name}
