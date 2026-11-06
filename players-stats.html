@@ -720,34 +720,14 @@ document.getElementById("playerProfile").innerHTML = `
 </div>
 
 `;
-}
+document
+.getElementById("playerSelect")
+?.addEventListener("change", e => {
 
-function populatePlayerSelect(players){
+    window.location.href =
+        `players-stats.html?name=${encodeURIComponent(e.target.value)}`;
 
-    const select =
-        document.getElementById("playerSelect");
-
-    select.innerHTML =
-        players
-		.sort((a,b)=>
-		    Number(a.Number) -
-		    Number(b.Number)
-		)
-        .map(player => `
-            <option value="${player.Name}">
-                ${player.Name}
-            </option>
-        `)
-        .join("");
-
-    select.value = playerName;
-
-    select.addEventListener("change", () => {
-
-        window.location.href =
-            `players-stats.html?name=${encodeURIComponent(select.value)}`;
-
-    });
+});
 }
 
 let allMatches = [];
@@ -764,8 +744,6 @@ Promise.all([
 	allPlayers = players;
 
     initPersonSearch();
-
-    populatePlayerSelect(players);
 
     const player = players.find(
         p => p.Name === playerName
