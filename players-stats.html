@@ -545,7 +545,7 @@ function renderPlayer(player){
             : "default.webp";
 
     const age =
-        calculateAge(player["Date of Birth"]);
+        calculateAge(player["Birth Date"]);
 
     document.getElementById("pageTitle").textContent =
         player.Name;
@@ -580,7 +580,7 @@ function renderPlayer(player){
                     </div>
 
                     <div>
-                        ${player["Date of Birth"]}
+                        ${player["Birth Date"]}
                         (${age})
                     </div>
 
