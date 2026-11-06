@@ -759,15 +759,6 @@ Promise.all([
 
     renderPlayer(player);
 
-	document
-		.getElementById("playerSelect")
-		.addEventListener("change", e => {
-		
-		    window.location.href =
-		        `players-stats.html?name=${encodeURIComponent(e.target.value)}`;
-		
-		});
-
 })
 .catch(console.error);
 
