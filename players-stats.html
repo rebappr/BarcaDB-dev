@@ -559,8 +559,8 @@ function renderPlayer(player){
 let allMatches = [];
 
 Promise.all([
-    fetch("/data/playersCS.json").then(r => r.json()),
-    fetch("/data/data.json").then(r => r.json())
+    fetch("data/playersCS.json").then(r => r.json()),
+    fetch("data/data.json").then(r => r.json())
 ])
 .then(([players, matches]) => {
 
