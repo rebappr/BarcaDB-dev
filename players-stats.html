@@ -491,7 +491,8 @@ const urlParams =
     new URLSearchParams(window.location.search);
 
 const playerName =
-    urlParams.get("name");
+    urlParams.get("name") ||
+    "Lamine Yamal";
 
 function getCountryLogo(country){
 
@@ -597,21 +598,18 @@ function populatePlayerSelect(players){
             a.Name.localeCompare(b.Name)
         )
         .map(player => `
-
-            <option
-                value="${player.Name}">
+            <option value="${player.Name}">
                 ${player.Name}
             </option>
-
         `)
         .join("");
 
-    select.value = playerName || "Lamine Yamal";
+    select.value = playerName;
 
     select.addEventListener("change", () => {
 
         window.location.href =
-            `player.html?name=${encodeURIComponent(select.value)}`;
+            `players-stats.html?name=${encodeURIComponent(select.value)}`;
 
     });
 }
