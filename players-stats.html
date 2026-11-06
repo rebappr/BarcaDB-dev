@@ -470,9 +470,6 @@ display:none;
 
 </div>
 
-<div class="player-profile-card" id="playerProfile">
-</div>
-	
 <div class="widget-title" id="pageTitle">
     Player Profile
 </div>
@@ -613,6 +610,37 @@ function populatePlayerSelect(players){
 
     });
 }
+
+let allMatches = [];
+
+Promise.all([
+    fetch("data/playersCS.json").then(r => r.json()),
+    fetch("data/data.json").then(r => r.json())
+])
+.then(([players, matches]) => {
+
+    allMatches = matches;
+
+    initPersonSearch();
+
+    populatePlayerSelect(players);
+
+    const player = players.find(
+        p => p.Name === playerName
+    );
+
+    if(!player){
+
+        document.getElementById("playerProfile")
+            .innerHTML = "<p>Player not found.</p>";
+
+        return;
+    }
+
+    renderPlayer(player);
+
+})
+.catch(console.error);
 
 .then(([players, matches]) => {
 
