@@ -622,19 +622,11 @@ Promise.all([
 })
 .catch(console.error);
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    if(typeof initPersonSearch === "function"){
-        initPersonSearch();
-    }
-
-});
-
 function initPersonSearch(){
 
-    if(typeof allMatches === "undefined"){
-        return;
-    }
+	if(!allMatches.length){
+	    return;
+	}
 
     const searchItems = new Map();
 
