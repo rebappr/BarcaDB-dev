@@ -539,8 +539,11 @@ function renderPlayer(player){
     const age =
         calculateAge(player["Birth Date"]);
 
-    document.getElementById("pageTitle").textContent =
-        player.Name;
+	document.getElementById("pageTitle").textContent =
+	    player.Name;
+	
+	document.title =
+	    `${player.Name} | Barça Database`;
 
     document.getElementById("playerProfile").innerHTML = `
 
@@ -627,34 +630,6 @@ Promise.all([
 
     const player = players.find(
         p => p.Name === playerName
-    );
-
-    if(!player){
-
-        document.getElementById("playerProfile")
-            .innerHTML = "<p>Player not found.</p>";
-
-        return;
-    }
-
-    renderPlayer(player);
-
-})
-.catch(console.error);
-
-.then(([players, matches]) => {
-
-    allMatches = matches;
-
-    initPersonSearch();
-
-    populatePlayerSelect(players);
-
-    const selectedName =
-        playerName || "Lamine Yamal";
-
-    const player = players.find(
-        p => p.Name === selectedName
     );
 
     if(!player){
