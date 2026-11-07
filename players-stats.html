@@ -734,25 +734,29 @@ document.getElementById("playerProfile").innerHTML = `
 
     <div class="player-header-right">
 
-        <select
-            id="playerSelect"
-            class="player-select">
-
-            ${allPlayers
-                .sort((a,b)=>
-                    Number(a.Number) -
-                    Number(b.Number)
-                )
-                .map(p => `
-                    <option
-                        value="${p.Name}"
-                        ${p.Name === player.Name ? "selected" : ""}>
-                        #${p.Number} ${p.Name}
-                    </option>
-                `)
-                .join("")}
-
-        </select>
+		<select
+		    id="playerSelect"
+		    class="player-select">
+		
+		    <option
+		        value=""
+		        selected>
+		        SWITCH PLAYER
+		    </option>
+		
+		    ${allPlayers
+		        .sort((a,b)=>
+		            Number(a.Number) -
+		            Number(b.Number)
+		        )
+		        .map(p => `
+		            <option value="${p.Name}">
+		                #${p.Number} ${p.Name}
+		            </option>
+		        `)
+		        .join("")}
+		
+		</select>
 
     </div>
 
@@ -760,6 +764,10 @@ document.getElementById("playerProfile").innerHTML = `
 document
 .getElementById("playerSelect")
 ?.addEventListener("change", e => {
+
+    if(!e.target.value){
+        return;
+    }
 
     window.location.href =
         `players-stats.html?name=${encodeURIComponent(e.target.value)}`;
