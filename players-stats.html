@@ -311,6 +311,62 @@ display:none;
     border-color:#004D98;
 }
 
+.player-header-right{
+    position:relative;
+    width:280px;
+    margin-left:auto;
+}
+
+.player-select{
+
+    width:100%;
+    height:38px;
+
+    padding:0 40px 0 12px;
+
+    background:var(--select-bg);
+    color:var(--select-text);
+
+    border:1px solid var(--meta-border);
+    border-radius:14px;
+
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
+.player-select:focus{
+    outline:none;
+    border-color:#004D98;
+}
+
+.player-select option{
+    background:var(--select-bg);
+    color:var(--select-text);
+}
+
+.player-header-right::after{
+
+    content:"▾";
+
+    position:absolute;
+
+    right:14px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:var(--select-arrow);
+
+    font-size:12px;
+
+    pointer-events:none;
+}
+
 
 @media(max-width:820px){
 
