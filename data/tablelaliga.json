@@ -19718,6 +19718,18 @@
   {
     "season": "2026/27",
     "position": "2",
+    "club": "Real Madrid",
+    "matches": "12",
+    "wins": "10",
+    "draws": "0",
+    "losses": "2",
+    "goals": "30:10",
+    "difference": "20",
+    "points": "30"
+  },
+  {
+    "season": "2026/27",
+    "position": "3",
     "club": "Atlético Madrid",
     "matches": "11",
     "wins": "9",
@@ -19726,18 +19738,6 @@
     "goals": "22:8",
     "difference": "14",
     "points": "28"
-  },
-  {
-    "season": "2026/27",
-    "position": "3",
-    "club": "Real Madrid",
-    "matches": "11",
-    "wins": "9",
-    "draws": "0",
-    "losses": "2",
-    "goals": "28:10",
-    "difference": "18",
-    "points": "27"
   },
   {
     "season": "2026/27",
@@ -19779,29 +19779,41 @@
     "season": "2026/27",
     "position": "7",
     "club": "Athletic Club",
-    "matches": "10",
+    "matches": "11",
     "wins": "4",
-    "draws": "3",
+    "draws": "4",
     "losses": "3",
-    "goals": "14:10",
+    "goals": "15:11",
     "difference": "4",
-    "points": "15"
+    "points": "16"
   },
   {
     "season": "2026/27",
     "position": "8",
     "club": "Deportivo La Coruña",
-    "matches": "11",
+    "matches": "12",
     "wins": "3",
-    "draws": "5",
+    "draws": "6",
     "losses": "3",
     "goals": "15:14",
     "difference": "1",
-    "points": "14"
+    "points": "15"
   },
   {
     "season": "2026/27",
     "position": "9",
+    "club": "Racing Santander",
+    "matches": "12",
+    "wins": "4",
+    "draws": "2",
+    "losses": "6",
+    "goals": "17:30",
+    "difference": "-13",
+    "points": "14"
+  },
+  {
+    "season": "2026/27",
+    "position": "10",
     "club": "Deportivo Alavés",
     "matches": "12",
     "wins": "3",
@@ -19813,7 +19825,7 @@
   },
   {
     "season": "2026/27",
-    "position": "10",
+    "position": "11",
     "club": "Villarreal",
     "matches": "11",
     "wins": "3",
@@ -19825,7 +19837,7 @@
   },
   {
     "season": "2026/27",
-    "position": "11",
+    "position": "12",
     "club": "Celta Vigo",
     "matches": "11",
     "wins": "2",
@@ -19837,7 +19849,19 @@
   },
   {
     "season": "2026/27",
-    "position": "12",
+    "position": "13",
+    "club": "Espanyol",
+    "matches": "12",
+    "wins": "3",
+    "draws": "3",
+    "losses": "6",
+    "goals": "13:14",
+    "difference": "-1",
+    "points": "12"
+  },
+  {
+    "season": "2026/27",
+    "position": "14",
     "club": "Rayo Vallecano",
     "matches": "10",
     "wins": "3",
@@ -19849,7 +19873,7 @@
   },
   {
     "season": "2026/27",
-    "position": "13",
+    "position": "15",
     "club": "Getafe",
     "matches": "11",
     "wins": "3",
@@ -19861,39 +19885,15 @@
   },
   {
     "season": "2026/27",
-    "position": "14",
-    "club": "Espanyol",
-    "matches": "11",
-    "wins": "3",
-    "draws": "2",
-    "losses": "6",
-    "goals": "13:14",
-    "difference": "-1",
-    "points": "11"
-  },
-  {
-    "season": "2026/27",
-    "position": "15",
-    "club": "Osasuna",
-    "matches": "11",
-    "wins": "3",
-    "draws": "2",
-    "losses": "6",
-    "goals": "11:22",
-    "difference": "-11",
-    "points": "11"
-  },
-  {
-    "season": "2026/27",
     "position": "16",
-    "club": "Racing Santander",
-    "matches": "11",
+    "club": "Osasuna",
+    "matches": "12",
     "wins": "3",
-    "draws": "2",
+    "draws": "3",
     "losses": "6",
-    "goals": "15:29",
-    "difference": "-14",
-    "points": "11"
+    "goals": "12:23",
+    "difference": "-11",
+    "points": "12"
   },
   {
     "season": "2026/27",
@@ -19923,24 +19923,24 @@
     "season": "2026/27",
     "position": "19",
     "club": "Valencia",
-    "matches": "11",
+    "matches": "12",
     "wins": "2",
     "draws": "3",
-    "losses": "6",
-    "goals": "8:17",
-    "difference": "-9",
+    "losses": "7",
+    "goals": "8:19",
+    "difference": "-11",
     "points": "9"
   },
   {
     "season": "2026/27",
     "position": "20",
     "club": "Málaga",
-    "matches": "11",
+    "matches": "12",
     "wins": "0",
     "draws": "5",
-    "losses": "6",
-    "goals": "8:21",
-    "difference": "-13",
+    "losses": "7",
+    "goals": "9:23",
+    "difference": "-14",
     "points": "5"
   }
 ]
