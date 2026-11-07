@@ -366,6 +366,10 @@ display:none;
 
 @media(max-width:820px){
 
+	.player-position{
+    	display:none;
+	}
+
 	.player-header-info h2{
     	font-size:16px;
 	}
@@ -685,15 +689,15 @@ document.getElementById("playerProfile").innerHTML = `
 
             <div class="player-header-meta">
 
-                <span>NO</span>
+                <span>No.</span>
 
                 <strong>#${player.Number}</strong>
 
-                <span>AGE</span>
+                <span>Age</span>
 
                 <strong>${age}</strong>
 
-                <span>${player.Position}</span>
+                <span class="player-position">${player.Position}</span>
 
             </div>
 
