@@ -595,11 +595,11 @@ display:none;
     display:grid;
     grid-template-columns:
     30px
-    75px
-    60px
-    1fr
+    85px
     70px
-    50px;
+    1fr
+    80px
+    70px;
     gap:8px;
     font-size:12px;
 }
@@ -630,8 +630,8 @@ display:none;
 }
 
 .competition-logo{
-    width:18px;
-    height:18px;
+    width:20px;
+    height:20px;
     object-fit:contain;
 }
 
@@ -642,8 +642,8 @@ display:none;
 }
 
 .opponent-logo{
-    width:18px;
-    height:18px;
+    width:20px;
+    height:20px;
     object-fit:contain;
 }
 
@@ -653,6 +653,33 @@ display:none;
 
 .player-bench{
     border-left:4px solid #f59e0b;
+}
+
+.result-badge{
+    display:inline-block;
+    min-width:60px;
+    text-align:center;
+    border-radius:999px;
+    padding:4px 10px;
+    font-weight:700;
+}
+
+.result-win{
+    background:var(--result-win-bg);
+    border:1px solid var(--result-win);
+    color:var(--result-win);
+}
+
+.result-draw{
+    background:var(--result-draw-bg);
+    border:1px solid var(--result-draw);
+    color:var(--result-draw);
+}
+
+.result-loss{
+    background:var(--result-loss-bg);
+    border:1px solid var(--result-loss);
+    color:var(--result-loss);
 }
 
 @media(max-width:820px){
@@ -1033,6 +1060,15 @@ display:none;
 <script src="data/countryMap.js"></script>
 <script>
 
+function getClubLogo(team){
+    return String(team || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        + ".png";
+}
+
 const urlParams =
     new URLSearchParams(window.location.search);
 
@@ -1056,6 +1092,22 @@ const competitionLogos = {
     "Inter-Cities Fairs Cup": "inter-cup.png",
     "European Cup": "ec.png"
 };
+
+function getCompetitionShortName(comp){
+
+    const names = {
+
+        "UEFA Champions League":"UCL",
+        "Copa del Rey":"Copa",
+        "Supercopa de España":"Supercopa",
+        "FIFA Club World Cup":"CWC",
+        "La Liga":"La Liga"
+
+    };
+
+    return names[comp] || comp;
+
+}
 
 function getCountryLogo(country){
 
@@ -1192,12 +1244,7 @@ function populateCompetitionFilter(playerName){
 		        <button
 		            class="competition-btn"
 		            data-comp="${comp}">
-		            ${
-		                comp
-		                    .replace("UEFA Champions League","UCL")
-		                    .replace("Copa del Rey","Copa")
-		                    .replace("Supercopa de España","Supercopa")
-		            }
+		            ${getCompetitionShortName(comp)}
 		        </button>
 		
 		    `)
@@ -2010,9 +2057,9 @@ function renderPlayerMatches(){
 
     });
 
-    document.getElementById(
-        "matchesSection"
-    ).innerHTML = `
+	document.getElementById(
+	    "matchesSection"
+	).innerHTML = `
 
         <div class="matches-list">
 
@@ -2095,21 +2142,9 @@ function renderPlayerMatches(){
 
                     <div>
 
-                        ${
-                            match.Competition
-                                .replace(
-                                    "UEFA Champions League",
-                                    "UCL"
-                                )
-                                .replace(
-                                    "Copa del Rey",
-                                    "Copa"
-                                )
-                                .replace(
-                                    "Supercopa de España",
-                                    "Supercopa"
-                                )
-                        }
+                        ${getCompetitionShortName(
+						    match.Competition
+						)}
 
                     </div>
 
@@ -2246,13 +2281,19 @@ Promise.all([
     }
 
 	renderPlayer(player);
+	
 	populateSeasonFilter(
 	    player.Name
 	);
+	
 	populateCompetitionFilter(
 	    player.Name
 	);
+	
 	initFilters();
+	
+	initSections();
+	
 	renderActiveSection();
 
 })
