@@ -2018,16 +2018,63 @@ function renderPlayerMatches(){
 
         }
 
-        if(!appeared){
-            return;
-        }
-
-        matches.push({
-            ...match,
-            started
-        });
-
-    });
+		if(!appeared){
+		    return;
+		}
+		
+		let goals = 0;
+		let assists = 0;
+		let penaltyGoals = 0;
+		let missedPenalties = 0;
+		let yellow = 0;
+		let red = 0;
+		
+		for(let i = 1; i <= 12; i++){
+		
+		    if(match[`Goal Player ${i}`] === playerName){
+		        goals++;
+		    }
+		
+		    if(match[`Assist Player ${i}`] === playerName){
+		        assists++;
+		    }
+		
+		    if(match[`Yellow player ${i}`] === playerName){
+		        yellow++;
+		    }
+		
+		    if(match[`Red player ${i}`] === playerName){
+		        red++;
+		    }
+		
+		    if(match[`Penalty player ${i}`] === playerName){
+		
+		        if(match[`Penalty scored ${i}`] === "in"){
+		            penaltyGoals++;
+		        }
+		
+		        if(match[`Penalty scored ${i}`] === "not in"){
+		            missedPenalties++;
+		        }
+		
+		    }
+		
+		}
+		
+		matches.push({
+		
+		    ...match,
+		
+		    started,
+		
+		    goals,
+		    assists,
+		    penaltyGoals,
+		    missedPenalties,
+		    yellow,
+		    red
+		
+		});
 
     matches.sort((a,b)=>{
 
@@ -2131,6 +2178,18 @@ function renderPlayerMatches(){
                         </span>
 
                     </div>
+
+					<div>${match.goals || "-"}</div>
+
+					<div>${match.assists || "-"}</div>
+					
+					<div>${match.penaltyGoals || "-"}</div>
+					
+					<div>${match.missedPenalties || "-"}</div>
+					
+					<div>${match.yellow || "-"}</div>
+					
+					<div>${match.red || "-"}</div>
 
                     <div>
 
