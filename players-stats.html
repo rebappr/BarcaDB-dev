@@ -1050,18 +1050,23 @@ function populateCompetitionFilter(playerName){
             All
         </button>
 
-        ${[...competitions]
-            .sort()
-            .map(comp => `
-
-                <button
-                    class="competition-btn"
-                    data-comp="${comp}">
-                    ${comp}
-                </button>
-
-            `)
-            .join("")}
+		${[...competitions]
+		    .sort()
+		    .map(comp => `
+		
+		        <button
+		            class="competition-btn"
+		            data-comp="${comp}">
+		            ${
+		                comp
+		                    .replace("UEFA Champions League","UCL")
+		                    .replace("Copa del Rey","Copa")
+		                    .replace("Supercopa de España","Supercopa")
+		            }
+		        </button>
+		
+		    `)
+		    .join("")}
     `;
 
     attachCompetitionEvents();
