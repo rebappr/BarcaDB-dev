@@ -932,6 +932,28 @@ function getCountryLogo(country){
     return `logos/countries/${code}.png`;
 }
 
+function parseMinute(value){
+
+    if(!value){
+        return 0;
+    }
+
+    value = String(value);
+
+    if(value.includes("+")){
+
+        const [base, added] =
+            value.split("+");
+
+        return Number(base) +
+               Number(added);
+
+    }
+
+    return Number(value);
+
+}
+
 function calculateAge(dateString){
 
     if(!dateString) return "";
@@ -1144,9 +1166,7 @@ function updatePlayerStats(){
                     ){
 
                         subOffMinute =
-                            parseInt(
-                                match[`Sub min ${s}`]
-                            );
+						parseMinute(match[`Sub min ${s}`]);
 
                         break;
 
@@ -1302,9 +1322,10 @@ function updatePlayerStats(){
             matchRating +=
                 matchAssists * 1.0;
 
-            if(cleanSheet){
-                matchRating += 0.75;
-            }
+			if(cleanSheet){
+			    stats.cleanSheets++;
+			    matchRating += 0.75;
+			}
 
             if(match["Result type"] === "W"){
                 matchRating += 0.30;
@@ -1410,6 +1431,10 @@ function renderSummary(stats){
 
     const position =
         currentPlayer?.Position || "";
+
+	const isGK =
+	    position.includes("GK") ||
+	    position.includes("Goalkeeper");
 
     // BRANKÁR
     if(isGK){
