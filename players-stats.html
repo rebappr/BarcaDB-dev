@@ -1769,6 +1769,20 @@ function populateSeasonFilter(playerName){
             .join("")}
 
     `;
+	const latestSeason =
+	    [...seasons]
+	        .sort()
+	        .reverse()[0];
+	
+	if(latestSeason){
+	
+	    seasonFilter.value =
+	        latestSeason;
+	
+	    selectedSeason =
+	        latestSeason;
+	
+	}
 }
 
 Promise.all([
