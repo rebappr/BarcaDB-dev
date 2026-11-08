@@ -600,7 +600,6 @@ display:none;
     35px
     35px
     35px
-    70px;
 
     gap:8px;
     font-size:12px;
@@ -2126,8 +2125,6 @@ function renderPlayerMatches(){
 			    <div>YC</div>
 			    <div>RC</div>
 			
-			    <div>Comp.</div>
-			
 			</div>
 
             ${matches.map(match => `
@@ -2207,14 +2204,6 @@ function renderPlayerMatches(){
 					<div>${match.yellow || "-"}</div>
 					
 					<div>${match.red || "-"}</div>
-
-                    <div>
-
-                        ${getCompetitionShortName(
-						    match.Competition
-						)}
-
-                    </div>
 
                 </div>
 
