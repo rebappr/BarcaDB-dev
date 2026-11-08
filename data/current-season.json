@@ -152,6 +152,14 @@
     "Result": "-:-"
   },
   {
+    "ApiId": "564857",
+    "Date": "2.12.2026",
+    "Competition": "Primera Division",
+    "Opp. Team": "Atlético Madrid",
+    "Home/Away": "Home",
+    "Result": "-:-"
+  },
+  {
     "ApiId": "564773",
     "Date": "6.12.2026",
     "Competition": "Primera Division",
@@ -236,14 +244,6 @@
     "Date": "31.1.2027",
     "Competition": "Primera Division",
     "Opp. Team": "Valencia",
-    "Home/Away": "Home",
-    "Result": "-:-"
-  },
-  {
-    "ApiId": "564857",
-    "Date": "7.2.2027",
-    "Competition": "Primera Division",
-    "Opp. Team": "Atlético Madrid",
     "Home/Away": "Home",
     "Result": "-:-"
   },
