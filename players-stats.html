@@ -1595,17 +1595,48 @@ document.getElementById("playerProfile").innerHTML = `
 		        Switch
 		    </option>
 		
-		    ${allPlayers
-		        .sort((a,b)=>
-		            Number(a.Number) -
-		            Number(b.Number)
-		        )
-		        .map(p => `
-		            <option value="${p.Name}">
-		                #${p.Number} ${p.Name}
-		            </option>
-		        `)
-		        .join("")}
+			${allPlayers
+			    .filter(player => {
+			
+			        return allMatches.some(match => {
+			
+			            // základ
+			            for(let i = 1; i <= 11; i++){
+			
+			                if(
+			                    match[`Player name ${i}`] === player.Name
+			                ){
+			                    return true;
+			                }
+			
+			            }
+			
+			            // striedanie
+			            for(let i = 1; i <= 6; i++){
+			
+			                if(
+			                    match[`Sub on ${i}`] === player.Name
+			                ){
+			                    return true;
+			                }
+			
+			            }
+			
+			            return false;
+			
+			        });
+			
+			    })
+			    .sort((a,b)=>
+			        Number(a.Number) -
+			        Number(b.Number)
+			    )
+			    .map(p => `
+			        <option value="${p.Name}">
+			            #${p.Number} ${p.Name}
+			        </option>
+			    `)
+			    .join("")}
 		
 		</select>
 
