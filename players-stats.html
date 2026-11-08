@@ -1068,15 +1068,140 @@ function attachCompetitionEvents(){
 
 function updatePlayerStats(){
 
-    const stats = {
+	const stats = {
+	
+	    matches: 0,
+	    starts: 0,
+	    minutes: 0,
+	    goals: 0,
+	    assists: 0,
+	    yellow: 0,
+	    red: 0
+	
+	};
 
-        matches: 0,
-        minutes: 0,
-        rating: "0.00",
-        goals: 0,
-        assists: 0
+    allMatches.forEach(match => {
 
-    };
+        if(
+            selectedSeason !== "all" &&
+            match.Season !== selectedSeason
+        ){
+            return;
+        }
+
+        if(
+            selectedCompetition !== "all" &&
+            match.Competition !== selectedCompetition
+        ){
+            return;
+        }
+
+		let played = false;
+		let starter = false;
+		let minutes = 0;
+		
+		for(let i = 1; i <= 11; i++){
+		
+		    if(match[`Player name ${i}`] === playerName){
+		
+		        played = true;
+		        starter = true;
+		
+		        let subOffMinute = null;
+		
+		        for(let s = 1; s <= 6; s++){
+		
+		            if(
+		                match[`Sub off ${s}`] === playerName
+		            ){
+		
+		                subOffMinute =
+		                    parseInt(
+		                        match[`Sub min ${s}`]
+		                    );
+		
+		                break;
+		
+		            }
+		
+		        }
+		
+		        minutes +=
+		            subOffMinute || 90;
+		
+		        break;
+		
+		    }
+		
+		}
+		
+		if(!starter){
+		
+		    for(let s = 1; s <= 6; s++){
+		
+		        if(
+		            match[`Sub on ${s}`] === playerName
+		        ){
+		
+		            played = true;
+		
+		            const minute =
+		                parseInt(
+		                    match[`Sub min ${s}`]
+		                ) || 0;
+		
+		            minutes +=
+		                (90 - minute);
+		
+		            break;
+		
+		        }
+		
+		    }
+		
+		}
+
+        if(!played){
+            return;
+        }
+
+		stats.matches++;
+		
+		stats.minutes += minutes;
+		
+		if(starter){
+		    stats.starts++;
+		}
+
+        for(let i = 1; i <= 12; i++){
+
+            if(
+                match[`Goal Player ${i}`] === playerName
+            ){
+                stats.goals++;
+            }
+
+            if(
+                match[`Assist Player ${i}`] === playerName
+            ){
+                stats.assists++;
+            }
+
+            if(
+                match[`Yellow player ${i}`] === playerName
+            ){
+                stats.yellow++;
+            }
+
+            if(
+                match[`Red player ${i}`] === playerName
+            ){
+                stats.red++;
+            }
+
+        }
+
+    });
 
     renderSummary(stats);
 
