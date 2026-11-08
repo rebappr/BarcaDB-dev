@@ -583,7 +583,106 @@ display:none;
     color:white;
 }
 
+.matches-list{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.matches-header,
+.player-match{
+    display:grid;
+    grid-template-columns:
+    30px
+    75px
+    60px
+    1fr
+    70px
+    50px;
+    gap:8px;
+    font-size:12px;
+}
+
+.matches-header{
+    font-weight:700;
+    text-transform:uppercase;
+    padding:12px;
+    opacity:.7;
+}
+
+.player-match{
+    align-items:center;
+    padding:10px 12px;
+    border-top:1px solid var(--meta-border);
+    transition:.2s;
+}
+
+.player-match:hover{
+    background:var(--meta-bg);
+    cursor:pointer;
+}
+
+.competition-cell{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.competition-logo{
+    width:18px;
+    height:18px;
+    object-fit:contain;
+}
+
+.opponent-cell{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.opponent-logo{
+    width:18px;
+    height:18px;
+    object-fit:contain;
+}
+
+.player-started{
+    border-left:4px solid #22c55e;
+}
+
+.player-bench{
+    border-left:4px solid #f59e0b;
+}
+
 @media(max-width:820px){
+
+    .matches-header{
+        grid-template-columns:
+        30px
+        75px
+        1fr
+        70px;
+    }
+
+    .player-match{
+        grid-template-columns:
+        30px
+        75px
+        1fr
+        70px;
+    }
+
+    .matches-header div:nth-child(3),
+    .player-match div:nth-child(3),
+    .matches-header div:nth-child(6),
+    .player-match div:nth-child(6){
+        display:none;
+    }
+
+    .competition-cell span{
+        display:none;
+    }
 
 .player-filters-card{
 
