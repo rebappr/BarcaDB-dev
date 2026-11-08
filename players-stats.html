@@ -179,7 +179,13 @@ display:none;
 }
 
 .filter-section.competition{
+
     flex:1;
+
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
 }
 
 .filter-label{
@@ -412,6 +418,8 @@ display:none;
 }
 
 .filter-heading{
+
+    width:100%;
 
     font-size:12px;
     font-weight:700;
@@ -899,8 +907,6 @@ display:none;
             Competition
         </div>
 
-        <div class="competition-filter">
-
             <button
                 class="competition-btn active"
                 data-comp="all">
@@ -930,8 +936,6 @@ display:none;
                 data-comp="Supercopa">
                 Supercopa
             </button>
-
-        </div>
 
     </div>
 
