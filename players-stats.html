@@ -587,13 +587,21 @@ display:none;
 .matches-header,
 .player-match{
     display:grid;
+
     grid-template-columns:
     30px
-    85px
-    70px
+    80px
+    60px
     1fr
     80px
+    35px
+    35px
+    35px
+    35px
+    35px
+    35px
     70px;
+
     gap:8px;
     font-size:12px;
 }
@@ -2075,6 +2083,7 @@ function renderPlayerMatches(){
 		    red
 		
 		});
+		});
 
     matches.sort((a,b)=>{
 
@@ -2102,16 +2111,24 @@ function renderPlayerMatches(){
 
         <div class="matches-list">
 
-            <div class="matches-header">
-
-                <div></div>
-                <div>Date</div>
-                <div>Venue</div>
-                <div>Opponent</div>
-                <div>Result</div>
-                <div>Comp.</div>
-
-            </div>
+			<div class="matches-header">
+			
+			    <div></div>
+			    <div>Date</div>
+			    <div>Venue</div>
+			    <div>Opponent</div>
+			    <div>Result</div>
+			
+			    <div>G</div>
+			    <div>A</div>
+			    <div>PG</div>
+			    <div>MP</div>
+			    <div>YC</div>
+			    <div>RC</div>
+			
+			    <div>Comp.</div>
+			
+			</div>
 
             ${matches.map(match => `
 
