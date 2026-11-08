@@ -584,6 +584,12 @@ display:none;
     pointer-events:none;
 }
 
+#competitionContainer{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
 @media(max-width:820px){
 
     .season-select-wrap{
@@ -877,43 +883,15 @@ display:none;
 	
 	</div>
 
-    <div class="filter-section competition">
-
-        <div class="filter-heading">
-            Competition
-        </div>
-
-            <button
-                class="competition-btn active"
-                data-comp="all">
-                All
-            </button>
-
-            <button
-                class="competition-btn"
-                data-comp="La Liga">
-                La Liga
-            </button>
-
-            <button
-                class="competition-btn"
-                data-comp="Champions League">
-                UCL
-            </button>
-
-            <button
-                class="competition-btn"
-                data-comp="Copa del Rey">
-                CDR
-            </button>
-
-            <button
-                class="competition-btn"
-                data-comp="Supercopa">
-                Supercopa
-            </button>
-
-    </div>
+	<div class="filter-section competition">
+	
+	    <div class="filter-heading">
+	        Competition
+	    </div>
+	
+	    <div id="competitionContainer"></div>
+	
+	</div>
 
 </div>
 
@@ -979,6 +957,113 @@ function calculateAge(dateString){
     }
 
     return age;
+}
+
+function populateCompetitionFilter(playerName){
+
+    const competitions = new Set();
+
+    allMatches.forEach(match => {
+
+        let played = false;
+
+        for(let i = 1; i <= 11; i++){
+
+            if(match[`Player name ${i}`] === playerName){
+
+                played = true;
+                break;
+
+            }
+
+        }
+
+        if(!played){
+
+            for(let i = 1; i <= 12; i++){
+
+                if(
+                    match[`On the bench name ${i}`] === playerName
+                ){
+
+                    played = true;
+                    break;
+
+                }
+
+            }
+
+        }
+
+        if(
+            played &&
+            (
+                selectedSeason === "all" ||
+                match.Season === selectedSeason
+            )
+        ){
+
+            competitions.add(
+                match.Competition
+            );
+
+        }
+
+    });
+
+    document.getElementById(
+        "competitionContainer"
+    ).innerHTML = `
+
+        <button
+            class="competition-btn active"
+            data-comp="all">
+            All
+        </button>
+
+        ${[...competitions]
+            .sort()
+            .map(comp => `
+
+                <button
+                    class="competition-btn"
+                    data-comp="${comp}">
+                    ${comp}
+                </button>
+
+            `)
+            .join("")}
+    `;
+
+    attachCompetitionEvents();
+
+}
+
+function attachCompetitionEvents(){
+
+    document
+    .querySelectorAll(".competition-btn")
+    .forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+            document
+            .querySelectorAll(".competition-btn")
+            .forEach(b =>
+                b.classList.remove("active")
+            );
+
+            btn.classList.add("active");
+
+            selectedCompetition =
+                btn.dataset.comp;
+
+            updatePlayerStats();
+
+        });
+
+    });
+
 }
 
 function updatePlayerStats(){
@@ -1189,15 +1274,21 @@ let selectedSeason = "all";
 
 function initFilters(){
 
-    document
-    .getElementById("seasonFilter")
-    ?.addEventListener("change", e => {
-
-        selectedSeason = e.target.value;
-
-        updatePlayerStats();
-
-    });
+	document
+	.getElementById("seasonFilter")
+	?.addEventListener("change", e => {
+	
+	    selectedSeason = e.target.value;
+	
+	    selectedCompetition = "all";
+	
+	    populateCompetitionFilter(
+	        playerName
+	    );
+	
+	    updatePlayerStats();
+	
+	});
 
 }
 
@@ -1292,6 +1383,9 @@ Promise.all([
 
 	renderPlayer(player);
 	populateSeasonFilter(
+	    player.Name
+	);
+	populateCompetitionFilter(
 	    player.Name
 	);
 	initFilters();
