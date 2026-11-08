@@ -915,9 +915,19 @@ display:none;
 
 </div>
 
+<div id="statsSection">
+
+    <div
+        id="playerSummary"
+        class="player-summary">
+    </div>
+
+</div>
+
 <div
-    id="playerSummary"
-    class="player-summary">
+    id="matchesSection"
+    style="display:none;">
+
 </div>
 
 
@@ -1105,7 +1115,7 @@ function attachCompetitionEvents(){
             selectedCompetition =
                 btn.dataset.comp;
 
-            updatePlayerStats();
+            renderActiveSection();
 
         });
 
@@ -1725,7 +1735,7 @@ document
         selectedCompetition =
             btn.dataset.comp;
 
-        updatePlayerStats();
+        renderActiveSection();
 
     });
 
@@ -1737,6 +1747,91 @@ let allPlayers = [];
 
 let selectedCompetition = "all";
 let selectedSeason = "all";
+let activeSection = "stats";
+
+function initSections(){
+
+    document
+    .querySelectorAll(
+        ".player-section-btn"
+    )
+    .forEach(btn => {
+
+        btn.addEventListener(
+            "click",
+            () => {
+
+                document
+                .querySelectorAll(
+                    ".player-section-btn"
+                )
+                .forEach(b =>
+                    b.classList.remove("active")
+                );
+
+                btn.classList.add("active");
+
+                activeSection =
+                    btn.dataset.section;
+
+                document
+                .getElementById(
+                    "statsSection"
+                )
+                .style.display =
+                    activeSection === "stats"
+                    ? "block"
+                    : "none";
+
+                document
+                .getElementById(
+                    "matchesSection"
+                )
+                .style.display =
+                    activeSection === "matches"
+                    ? "block"
+                    : "none";
+
+                renderActiveSection();
+
+            }
+        );
+
+    });
+
+}
+
+function renderActiveSection(){
+
+    if(activeSection === "stats"){
+
+        renderActiveSection();
+
+    }
+
+    if(activeSection === "matches"){
+
+        renderPlayerMatches();
+
+    }
+
+}
+
+function renderPlayerMatches(){
+
+    document.getElementById(
+        "matchesSection"
+    ).innerHTML = `
+
+        <div class="widget-card">
+
+            Matches section
+            coming soon
+
+        </div>
+
+    `;
+}
 
 function initFilters(){
 
@@ -1752,7 +1847,7 @@ function initFilters(){
 	        playerName
 	    );
 	
-	    updatePlayerStats();
+	    renderActiveSection();
 	
 	});
 
@@ -1869,7 +1964,7 @@ Promise.all([
 	    player.Name
 	);
 	initFilters();
-	updatePlayerStats();
+	renderActiveSection();
 
 })
 .catch(console.error);
