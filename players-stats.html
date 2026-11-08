@@ -554,6 +554,39 @@ display:none;
     color:white;
 }
 
+.player-sections{
+    display:flex;
+    gap:6px;
+    padding:6px;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:18px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.player-sections::-webkit-scrollbar{
+    display:none;
+}
+
+.player-section-btn{
+    padding:8px 14px;
+    border:none;
+    border-radius:14px;
+    background:transparent;
+    color:var(--text);
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:.2s;
+}
+
+.player-section-btn.active{
+    background:#004D98;
+    color:white;
+}
+
 @media(max-width:820px){
 
 .player-filters-card{
@@ -827,6 +860,26 @@ display:none;
 <div class="left-panel">
 
 <div class="player-header-card" id="playerProfile"></div>
+
+<div class="player-sections">
+
+    <button
+        class="player-section-btn active"
+        data-section="stats">
+
+        Stats
+
+    </button>
+
+    <button
+        class="player-section-btn"
+        data-section="matches">
+
+        Matches
+
+    </button>
+
+</div>
 
 <div class="player-filters-card">
 
