@@ -1040,6 +1040,23 @@ const playerName =
     urlParams.get("name") ||
     "Lamine Yamal";
 
+const competitionLogos = {
+    "Copa del Rey": "copa.png",
+    "Copa de la Liga": "copa-liga.png",
+    "Copa de la Coronación": "copa.png",
+    "FIFA Club World Cup": "fifa.png",
+    "Qualification for La Liga": "laliga.png",
+    "La Liga": "laliga.png",
+    "Supercopa de España": "supercopa.png",
+    "UEFA Champions League": "ucl.png",
+    "Cup Winners' Cup": "cwc.png",
+    "UEFA Europa League": "europa.png",
+    "UEFA Super Cup": "uefa-supercup.png",
+    "UEFA Cup": "uefa-cup.png",
+    "Inter-Cities Fairs Cup": "inter-cup.png",
+    "European Cup": "ec.png"
+};
+
 function getCountryLogo(country){
 
     const code =
@@ -1914,14 +1931,191 @@ function renderActiveSection(){
 
 function renderPlayerMatches(){
 
+    const matches = [];
+
+    allMatches.forEach(match => {
+
+        if(
+            selectedSeason !== "all" &&
+            match.Season !== selectedSeason
+        ){
+            return;
+        }
+
+        if(
+            selectedCompetition !== "all" &&
+            match.Competition !== selectedCompetition
+        ){
+            return;
+        }
+
+        let started = false;
+        let appeared = false;
+
+        for(let i = 1; i <= 11; i++){
+
+            if(
+                match[`Player name ${i}`] === playerName
+            ){
+                started = true;
+                appeared = true;
+                break;
+            }
+
+        }
+
+        if(!appeared){
+
+            for(let i = 1; i <= 6; i++){
+
+                if(
+                    match[`Sub on ${i}`] === playerName
+                ){
+                    appeared = true;
+                    break;
+                }
+
+            }
+
+        }
+
+        if(!appeared){
+            return;
+        }
+
+        matches.push({
+            ...match,
+            started
+        });
+
+    });
+
+    matches.sort((a,b)=>{
+
+        const da =
+            new Date(
+                a.Date.split(".")
+                .reverse()
+                .join("-")
+            );
+
+        const db =
+            new Date(
+                b.Date.split(".")
+                .reverse()
+                .join("-")
+            );
+
+        return db - da;
+
+    });
+
     document.getElementById(
         "matchesSection"
     ).innerHTML = `
 
-        <div class="widget-card">
+        <div class="matches-list">
 
-            Matches section
-            coming soon
+            <div class="matches-header">
+
+                <div></div>
+                <div>Date</div>
+                <div>Venue</div>
+                <div>Opponent</div>
+                <div>Result</div>
+                <div>Comp.</div>
+
+            </div>
+
+            ${matches.map(match => `
+
+                <div
+                    class="player-match ${
+                        match.started
+                        ? "player-started"
+                        : "player-bench"
+                    }"
+                    onclick="
+                        location.href=
+                        'match.html?id=${match.ID}'
+                    ">
+
+                    <div class="competition-cell">
+
+                        ${
+                            competitionLogos[
+                                match.Competition
+                            ]
+                            ? `
+                            <img
+                                src="logos/${competitionLogos[match.Competition]}"
+                                class="competition-logo">
+                            `
+                            : ""
+                        }
+
+                    </div>
+
+                    <div>
+                        ${match.Date}
+                    </div>
+
+                    <div>
+                        ${match["Home/Away"]}
+                    </div>
+
+                    <div class="opponent-cell">
+
+                        <img
+                            src="logos/clubs/${getClubLogo(match["Opp. Team"])}"
+                            class="opponent-logo"
+                            onerror="
+                                this.src='logos/clubs/default.png'
+                            ">
+
+                        ${match["Opp. Team"]}
+
+                    </div>
+
+                    <div>
+
+                        <span class="result-badge ${
+                            match["Result type"] === "W"
+                            ? "result-win"
+                            : match["Result type"] === "D"
+                            ? "result-draw"
+                            : "result-loss"
+                        }">
+
+                            ${match.Result}
+
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        ${
+                            match.Competition
+                                .replace(
+                                    "UEFA Champions League",
+                                    "UCL"
+                                )
+                                .replace(
+                                    "Copa del Rey",
+                                    "Copa"
+                                )
+                                .replace(
+                                    "Supercopa de España",
+                                    "Supercopa"
+                                )
+                        }
+
+                    </div>
+
+                </div>
+
+            `).join("")}
 
         </div>
 
