@@ -787,11 +787,57 @@ display:none;
 
 <div class="player-header-card" id="playerProfile"></div>
 
-<div class="player-stats-header">
+<div class="player-filters-card">
 
-    <div class="season-filter">
+    <div class="filter-section">
 
-        <label>Season</label>
+        <div class="filter-heading">
+            Competition
+        </div>
+
+        <div class="competition-filter">
+
+            <button
+                class="competition-btn active"
+                data-comp="all">
+                All
+            </button>
+
+            <button
+                class="competition-btn"
+                data-comp="La Liga">
+                La Liga
+            </button>
+
+            <button
+                class="competition-btn"
+                data-comp="Champions League">
+                UCL
+            </button>
+
+            <button
+                class="competition-btn"
+                data-comp="Copa del Rey">
+                CDR
+            </button>
+
+            <button
+                class="competition-btn"
+                data-comp="Supercopa">
+                Supercopa
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <div class="filter-section">
+
+        <div class="filter-heading">
+            Season
+        </div>
 
         <select id="seasonFilter">
 
@@ -800,44 +846,6 @@ display:none;
             </option>
 
         </select>
-
-    </div>
-
-    <div class="competition-filter">
-
-        <span class="filter-title">
-            Competition
-        </span>
-
-        <button
-            class="competition-btn active"
-            data-comp="all">
-            All
-        </button>
-
-        <button
-            class="competition-btn"
-            data-comp="La Liga">
-            La Liga
-        </button>
-
-        <button
-            class="competition-btn"
-            data-comp="Champions League">
-            UCL
-        </button>
-
-        <button
-            class="competition-btn"
-            data-comp="Copa del Rey">
-            CDR
-        </button>
-
-        <button
-            class="competition-btn"
-            data-comp="Supercopa">
-            Supercopa
-        </button>
 
     </div>
 
