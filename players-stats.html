@@ -1080,8 +1080,12 @@ function updatePlayerStats(){
             p => p.Name === playerName
         );
 
-    const position =
-        currentPlayer?.Position || "";
+	const position =
+	    currentPlayer?.Position || "";
+	
+	const isGK =
+	    position.includes("GK") ||
+	    position.includes("Goalkeeper");
 
 	const stats = {
 	
@@ -1258,7 +1262,7 @@ function updatePlayerStats(){
             Number(match.Conceded) === 0;
 
         // GK
-		if(position.includes("GK")){
+		if(isGK){
 		
 		    stats.goalsConceded +=
 		        Number(match.Conceded);
@@ -1408,7 +1412,7 @@ function renderSummary(stats){
         currentPlayer?.Position || "";
 
     // BRANKÁR
-    if(position.includes("GK")){
+    if(isGK){
 
         document.getElementById(
             "playerSummary"
