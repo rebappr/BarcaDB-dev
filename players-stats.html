@@ -1075,6 +1075,14 @@ function attachCompetitionEvents(){
 
 function updatePlayerStats(){
 
+    const currentPlayer =
+        allPlayers.find(
+            p => p.Name === playerName
+        );
+
+    const position =
+        currentPlayer?.Position || "";
+
     const stats = {
 
         matches: 0,
@@ -1225,15 +1233,130 @@ function updatePlayerStats(){
 
         let matchRating = 6;
 
-        matchRating += matchGoals * 1.0;
-        matchRating += matchAssists * 0.75;
+        // bonus za odohrané minúty
+        if(minutes >= 90){
 
-        if(match["Result type"] === "W"){
+            matchRating += 0.30;
+
+        }
+        else if(minutes >= 60){
+
+            matchRating += 0.15;
+
+        }
+        else if(minutes >= 30){
+
+            matchRating += 0.05;
+
+        }
+
+        const cleanSheet =
+            Number(match.Conceded) === 0;
+
+        // GK
+        if(position.includes("GK")){
+
+            if(cleanSheet){
+                matchRating += 1.00;
+            }
+
+            if(match["Result type"] === "W"){
+                matchRating += 0.30;
+            }
+
+        }
+
+        // DEF
+        else if(
+
+            position.includes("CB") ||
+            position.includes("LB") ||
+            position.includes("RB") ||
+            position.includes("DF")
+
+        ){
+
+            matchRating +=
+                matchGoals * 0.8;
+
+            matchRating +=
+                matchAssists * 1.0;
+
+            if(cleanSheet){
+                matchRating += 0.75;
+            }
+
+            if(match["Result type"] === "W"){
+                matchRating += 0.30;
+            }
+
+        }
+
+        // MID
+        else if(
+
+            position.includes("DM") ||
+            position.includes("CM") ||
+            position.includes("AM") ||
+            position.includes("MF")
+
+        ){
+
+            matchRating +=
+                matchGoals * 1.0;
+
+            matchRating +=
+                matchAssists * 1.0;
+
+            if(cleanSheet){
+                matchRating += 0.20;
+            }
+
+            if(match["Result type"] === "W"){
+                matchRating += 0.25;
+            }
+
+        }
+
+        // ATT
+        else{
+
+            matchRating +=
+                matchGoals * 1.25;
+
+            matchRating +=
+                matchAssists * 0.80;
+
+            if(match["Result type"] === "W"){
+                matchRating += 0.20;
+            }
+
+        }
+
+        // bonus za viacgólový zápas
+        if(matchGoals >= 2){
             matchRating += 0.25;
         }
 
-        matchRating -= matchYellow * 0.20;
-        matchRating -= matchRed * 1.00;
+        if(matchGoals >= 3){
+            matchRating += 0.50;
+        }
+
+        // karty
+        matchRating -=
+            matchYellow * 0.20;
+
+        matchRating -=
+            matchRed * 1.00;
+
+        // clamp 0-10
+        matchRating = Math.max(
+            0,
+            Math.min(
+                10,
+                matchRating
+            )
+        );
 
         stats.ratingTotal += matchRating;
 
