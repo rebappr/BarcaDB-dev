@@ -148,17 +148,23 @@ async function saveJson(
 
 async function run() {
 
-    console.log(
-        "Downloading FBref page..."
-    );
+    console.log("START");
 
     const $ =
         await loadPage();
 
+    console.log("PAGE LOADED");
+
+    console.log(
+        "shooting table exists:",
+        $("#stats_shooting").length
+    );
+
     for (const table of TABLES) {
 
         console.log(
-            `Processing ${table.name}...`
+            "Processing:",
+            table.name
         );
 
         const data =
@@ -168,21 +174,24 @@ async function run() {
                 table.columns
             );
 
+        console.log(
+            "Rows:",
+            data.length
+        );
+
         await saveJson(
             table.name,
             data
         );
 
         console.log(
-            `Saved ${table.name}.json (${data.length} players)`
+            "Saved:",
+            table.name
         );
     }
 
-    console.log(
-        "Import finished."
-    );
+    console.log("DONE");
 }
-
 run()
     .catch(error => {
 
