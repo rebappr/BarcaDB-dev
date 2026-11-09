@@ -1,48 +1,47 @@
 import axios from "axios";
 import fs from "fs/promises";
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
+
+const FBREF_URL =
+    "https://fbref.com/en/squads/206d90db/Barcelona-Stats";
 
 const TABLES = [
+
     {
         name: "shooting",
-        url: "FBREF_SHOOTING_URL",
+        tableId: "stats_shooting",
+
         columns: {
-            Player: "player",
-            Sh: "shots",
-            SoT: "shotsOnTarget",
-            "SoT%": "shotAccuracy",
-            xG: "xG",
-            npxG: "nonPenaltyXG"
-        }
-    },
-    {
-        name: "passing",
-        url: "FBREF_PASSING_URL",
-        columns: {
-            Player: "player",
-            Cmp: "completed",
-            Att: "attempted",
-            "Cmp%": "accuracy",
-            KP: "keyPasses",
-            PrgP: "progressivePasses",
-            xA: "expectedAssists"
+            player: "player",
+
+            shots: "Sh",
+            shots_on_target: "SoT"
         }
     }
+
 ];
 
-async function loadTable(url){
+async function loadPage() {
 
     const response =
-        await axios.get(url,{
-            headers:{
-                "User-Agent":
-                    "Mozilla/5.0"
+        await axios.get(
+            FBREF_URL,
+            {
+                headers: {
+
+                    "User-Agent":
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+
+                    "Accept-Language":
+                        "en-US,en;q=0.9"
+                }
             }
-        });
+        );
 
     let html =
         response.data;
 
+    // FBref ukrýva tabuľky do HTML komentárov
     html =
         html.replace(
             /<!--|-->/g,
@@ -52,64 +51,96 @@ async function loadTable(url){
     return cheerio.load(html);
 }
 
-function parseTable($, columns){
+function parseTable(
+    $,
+    tableId,
+    columns
+) {
 
     const rows = [];
 
-    $("tbody tr").each((_, row)=>{
+    const table =
+        $(`table#${tableId}`);
 
-        const record = {};
+    if (!table.length) {
 
-        Object.entries(columns)
-        .forEach(([fbref,jsonKey])=>{
+        console.warn(
+            `Table not found: ${tableId}`
+        );
 
-            const td =
-                $(row)
-                .find(`[data-stat="${fbref}"]`);
+        return rows;
+    }
 
-            record[jsonKey] =
-                td.text().trim();
+    table
+        .find("tbody tr")
+        .each((_, row) => {
 
+            const record = {};
+
+            Object.entries(columns)
+                .forEach(([fbrefStat, jsonKey]) => {
+
+                    const value =
+                        $(row)
+                        .find(
+                            `[data-stat="${fbrefStat}"]`
+                        )
+                        .text()
+                        .trim();
+
+                    record[jsonKey] = value;
+                });
+
+            if (record.player) {
+                rows.push(record);
+            }
         });
-
-        if(record.player){
-            rows.push(record);
-        }
-
-    });
 
     return rows;
 }
 
-async function saveJson(name,data){
+async function saveJson(
+    fileName,
+    data
+) {
 
     await fs.mkdir(
         "./data/fbref",
-        {recursive:true}
+        {
+            recursive: true
+        }
     );
 
     await fs.writeFile(
-        `./data/fbref/${name}.json`,
+        `./data/fbref/${fileName}.json`,
         JSON.stringify(
             data,
             null,
             2
-        )
+        ),
+        "utf8"
     );
 }
 
-async function run(){
+async function run() {
 
-    for(const table of TABLES){
+    console.log(
+        "Downloading FBref page..."
+    );
 
-        const $ =
-            await loadTable(
-                table.url
-            );
+    const $ =
+        await loadPage();
+
+    for (const table of TABLES) {
+
+        console.log(
+            `Processing ${table.name}...`
+        );
 
         const data =
             parseTable(
                 $,
+                table.tableId,
                 table.columns
             );
 
@@ -119,10 +150,21 @@ async function run(){
         );
 
         console.log(
-            `Imported ${table.name}`
+            `Saved ${table.name}.json (${data.length} players)`
         );
     }
 
+    console.log(
+        "Import finished."
+    );
 }
 
-run().catch(console.error);
+run()
+    .catch(error => {
+
+        console.error(
+            "Import failed:"
+        );
+
+        console.error(error);
+    });
