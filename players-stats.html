@@ -754,6 +754,11 @@ display:none;
     font-weight:600;
 }
 
+.mobile-stats-values .summary-rating{
+    color:#00bcd4;
+    font-weight:800;
+}
+
 .matches-header div:nth-child(3),
 .player-match div:nth-child(3),
 .matches-header div:nth-child(6),
@@ -2902,7 +2907,8 @@ function renderPlayerMatches(){
 					<div class="mobile-match-stats">
 
 					    <div class="mobile-stats-header">
-					
+						
+							<span>RT</span>
 					        <span>G</span>
 					        <span>A</span>
 					        <span>PG</span>
@@ -2912,15 +2918,19 @@ function renderPlayerMatches(){
 					
 					    </div>
 					
-					    <div class="mobile-stats-values">
-					
-					        <span>${match.goals || "-"}</span>
-					        <span>${match.assists || "-"}</span>
-					        <span>${match.penaltyGoals || "-"}</span>
-					        <span>${match.yellow || "-"}</span>
-					        <span>${match.red || "-"}</span>
-					
-					    </div>
+						<div class="mobile-stats-values">
+						
+						    <span class="summary-rating">
+						        ${match.rating}
+						    </span>
+						
+						    <span>${match.goals || "-"}</span>
+						    <span>${match.assists || "-"}</span>
+						    <span>${match.penaltyGoals || "-"}</span>
+						    <span>${match.yellow || "-"}</span>
+						    <span>${match.red || "-"}</span>
+						
+						</div>
 					
 					</div>
 
