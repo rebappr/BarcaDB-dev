@@ -812,8 +812,8 @@ display:none;
 .mobile-stats-header,
 .mobile-stats-values{
     display:grid;
-    grid-template-columns:repeat(6,1fr);
-
+    grid-auto-flow:column;
+    grid-auto-columns:1fr;
     text-align:center;
 }
 
@@ -2852,6 +2852,14 @@ function renderPlayerMatches(){
 		    yellow,
 		    red,
 		
+		    cleanSheet:
+		        Number(match.Conceded) === 0
+		            ? 1
+		            : 0,
+		
+		    goalsConceded:
+		        Number(match.Conceded) || 0,
+		
 		    rating:
 		        matchRating.toFixed(2)
 		
@@ -2878,6 +2886,18 @@ function renderPlayerMatches(){
 
     });
 
+	const currentPlayer =
+	    allPlayers.find(
+	        p => p.Name === playerName
+	    );
+	
+	const position =
+	    currentPlayer?.Position || "";
+	
+	const isGK =
+	    position.includes("GK") ||
+	    position.includes("Goalkeeper");
+
 	document.getElementById(
 	    "matchesSection"
 	).innerHTML = `
@@ -2891,12 +2911,25 @@ function renderPlayerMatches(){
 			    <div>Venue</div>
 			    <div>Opponent</div>
 			    <div>Result</div>
-				<div>RT</div>
-			    <div>G</div>
-			    <div>A</div>
-			    <div>PG</div>
-			    <div>YC</div>
-			    <div>RC</div>
+			
+			    ${
+			        isGK
+			        ? `
+			            <div>RT</div>
+			            <div>CS</div>
+			            <div>GC</div>
+			            <div>YC</div>
+			            <div>RC</div>
+			        `
+			        : `
+			            <div>RT</div>
+			            <div>G</div>
+			            <div>A</div>
+			            <div>PG</div>
+			            <div>YC</div>
+			            <div>RC</div>
+			        `
+			    }
 			
 			</div>
 
@@ -2966,46 +2999,108 @@ function renderPlayerMatches(){
 
                     </div>
 
-					<div>
-					    <span class="match-rating">
-					        ${match.rating}
-					    </span>
-					</div>
-
-					<div>${match.goals || "-"}</div>
-
-					<div>${match.assists || "-"}</div>
+					${
+					    isGK
+					    ? `
 					
-					<div>${match.penaltyGoals || "-"}</div>
+					        <div>
+					            <span class="match-rating">
+					                ${match.rating}
+					            </span>
+					        </div>
 					
-					<div>${match.yellow || "-"}</div>
+					        <div>${match.cleanSheet}</div>
 					
-					<div>${match.red || "-"}</div>
+					        <div>${match.goalsConceded}</div>
+					
+					        <div>${match.yellow || "-"}</div>
+					
+					        <div>${match.red || "-"}</div>
+					
+					    `
+					    : `
+					
+					        <div>
+					            <span class="match-rating">
+					                ${match.rating}
+					            </span>
+					        </div>
+					
+					        <div>${match.goals || "-"}</div>
+					
+					        <div>${match.assists || "-"}</div>
+					
+					        <div>${match.penaltyGoals || "-"}</div>
+					
+					        <div>${match.yellow || "-"}</div>
+					
+					        <div>${match.red || "-"}</div>
+					
+					    `
+					}
 
 					<div class="mobile-match-stats">
 
-					    <div class="mobile-stats-header">
+						<div class="mobile-stats-header">
 						
-							<span>RT</span>
-					        <span>G</span>
-					        <span>A</span>
-					        <span>PG</span>
-					        <span>YC</span>
-					        <span>RC</span>
-					
-					    </div>
+						    ${
+						        isGK
+						        ? `
+						            <span>RT</span>
+						            <span>CS</span>
+						            <span>GC</span>
+						            <span>YC</span>
+						            <span>RC</span>
+						        `
+						        : `
+						            <span>RT</span>
+						            <span>G</span>
+						            <span>A</span>
+						            <span>PG</span>
+						            <span>YC</span>
+						            <span>RC</span>
+						        `
+						    }
+						
+						</div>
 					
 						<div class="mobile-stats-values">
 						
-						    <span class="match-rating">
-							    ${match.rating}
-							</span>
+						    ${
+						        isGK
+						        ? `
 						
-						    <span>${match.goals || "-"}</span>
-						    <span>${match.assists || "-"}</span>
-						    <span>${match.penaltyGoals || "-"}</span>
-						    <span>${match.yellow || "-"}</span>
-						    <span>${match.red || "-"}</span>
+						            <span class="match-rating">
+						                ${match.rating}
+						            </span>
+						
+						            <span>${match.cleanSheet}</span>
+						
+						            <span>${match.goalsConceded}</span>
+						
+						            <span>${match.yellow || "-"}</span>
+						
+						            <span>${match.red || "-"}</span>
+						
+						        `
+						        : `
+						
+						            <span class="match-rating">
+						                ${match.rating}
+						            </span>
+						
+						            <span>${match.goals || "-"}</span>
+						
+						            <span>${match.assists || "-"}</span>
+						
+						            <span>${match.penaltyGoals || "-"}</span>
+						
+						            <span>${match.yellow || "-"}</span>
+						
+						            <span>${match.red || "-"}</span>
+						
+						        `
+						    }
 						
 						</div>
 					
