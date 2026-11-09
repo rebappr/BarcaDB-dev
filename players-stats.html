@@ -645,6 +645,23 @@ display:none;
     text-align:center;
 }
 
+.matches-list.gk .matches-header,
+.matches-list.gk .player-match{
+
+    grid-template-columns:
+    30px
+    80px
+    60px
+    1fr
+    80px
+    50px
+    50px
+    50px
+    35px
+    35px;
+
+}
+
 .opponent-cell{
     display:flex;
     align-items:center;
@@ -2019,12 +2036,16 @@ function getCareerOverview(){
         stats.matches++;
 		stats.minutes += minutes;
 
-		if(Number(match.Conceded) === 0){
-		    stats.cleanSheets++;
-		}
+		if(isGK){
 		
-		stats.goalsConceded +=
-		    Number(match.Conceded) || 0;
+		    if(Number(match.Conceded) === 0){
+		        stats.cleanSheets++;
+		    }
+		
+		    stats.goalsConceded +=
+		        Number(match.Conceded) || 0;
+		
+		}
 
 		let matchGoals = 0;
 		let matchAssists = 0;
@@ -2909,7 +2930,7 @@ function renderPlayerMatches(){
 	    "matchesSection"
 	).innerHTML = `
 
-        <div class="matches-list">
+        <div class="matches-list ${isGK ? 'gk' : ''}">
 
 			<div class="matches-header">
 			
