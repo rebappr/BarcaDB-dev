@@ -41,6 +41,8 @@ const competitionMap = {
   "Fairs Cup": "Inter-Cities Fairs Cup"
 };
 
-function getCompetitionName(name) {
+export function getCompetitionName(name) {
   return competitionMap[name] || name;
 }
+
+export default competitionMap;
