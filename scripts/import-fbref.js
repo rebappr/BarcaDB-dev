@@ -7,17 +7,31 @@ const FBREF_URL =
 
 const TABLES = [
 
-    {
-        name: "shooting",
-        tableId: "stats_shooting",
-
-        columns: {
+        {
             player: "player",
-
-            shots: "Sh",
-            shots_on_target: "SoT"
+        
+            games_90s: "nineties",
+        
+            goals: "goals",
+        
+            shots: "shots",
+        
+            shots_on_target: "shotsOnTarget",
+        
+            shots_on_target_pct: "shotAccuracy",
+        
+            shots_per90: "shotsPer90",
+        
+            shots_on_target_per90: "shotsOnTargetPer90",
+        
+            goals_per_shot: "goalsPerShot",
+        
+            goals_per_shot_on_target: "goalsPerShotOnTarget",
+        
+            pens_made: "penaltyGoals",
+        
+            pens_att: "penaltyAttempts"
         }
-    }
 
 ];
 
