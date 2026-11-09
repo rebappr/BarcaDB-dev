@@ -1840,11 +1840,13 @@ function renderSummary(stats){
 
 function getCareerOverview(){
 
-	const stats = {
-	
+const stats = {
+
 	    seasons:new Set(),
 	
 	    matches:0,
+	    minutes:0,
+	
 	    goals:0,
 	    assists:0,
 	
@@ -1855,27 +1857,59 @@ function getCareerOverview(){
 	    red:0,
 	
 	    cleanSheets:0,
-	    goalsConceded:0
+	    goalsConceded:0,
+	
+	    ratingTotal:0,
+	    rating:"0.00"
 	
 	};
 
     allMatches.forEach(match => {
 
         let played = false;
+		let starter = false;
+		let minutes = 0;
 
         for(let i=1;i<=11;i++){
 
-            if(match[`Player name ${i}`] === playerName){
-                played = true;
-            }
+			if(match[`Player name ${i}`] === playerName){
+			
+			    played = true;
+			    starter = true;
+			
+			    let subOffMinute = null;
+			
+			    for(let s = 1; s <= 6; s++){
+			
+			        if(match[`Sub off ${s}`] === playerName){
+			
+			            subOffMinute =
+			                parseMinute(
+			                    match[`Sub min ${s}`]
+			                );
+			
+			            break;
+			        }
+			    }
+			
+			    minutes +=
+			        subOffMinute || 90;
+			}
 
         }
 
         for(let i=1;i<=6;i++){
 
-            if(match[`Sub on ${i}`] === playerName){
-                played = true;
-            }
+			if(match[`Sub on ${i}`] === playerName){
+			
+			    played = true;
+			
+			    const minute =
+			        parseInt(match[`Sub min ${i}`]) || 0;
+			
+			    minutes +=
+			        (90 - minute);
+			}
 
         }
 
@@ -1886,6 +1920,7 @@ function getCareerOverview(){
         stats.seasons.add(match.Season);
 
         stats.matches++;
+		stats.minutes += minutes;
 
 		if(Number(match.Conceded) === 0){
 		    stats.cleanSheets++;
@@ -1894,22 +1929,31 @@ function getCareerOverview(){
 		stats.goalsConceded +=
 		    Number(match.Conceded) || 0;
 
+		let matchGoals = 0;
+		let matchAssists = 0;
+		let matchYellow = 0;
+		let matchRed = 0;
+
         for(let i=1;i<=12;i++){
 
             if(match[`Goal Player ${i}`] === playerName){
-                stats.goals++;
+                matchGoals++;
+				stats.goals++;
             }
 
             if(match[`Assist Player ${i}`] === playerName){
-                stats.assists++;
+                matchAssists++;
+				stats.assists++;
             }
 
             if(match[`Yellow player ${i}`] === playerName){
-                stats.yellow++;
+                matchYellow++;
+				stats.yellow++;
             }
 
             if(match[`Red player ${i}`] === playerName){
-                stats.red++;
+                matchRed++;
+				stats.red++;
             }
 
             if(match[`Penalty player ${i}`] === playerName){
@@ -1925,14 +1969,171 @@ function getCareerOverview(){
             }
 
         }
-
+				let matchRating = 6.5;
+		
+		if(minutes >= 90){
+		
+		    matchRating += 0.30;
+		
+		}
+		else if(minutes >= 60){
+		
+		    matchRating += 0.15;
+		
+		}
+		else if(minutes >= 30){
+		
+		    matchRating += 0.05;
+		
+		}
+		
+		const cleanSheet =
+		    Number(match.Conceded) === 0;
+		
+		if(isGK){
+		
+		    if(cleanSheet){
+		
+		        matchRating += 1.00;
+		
+		    }
+		
+		    matchRating -=
+		        Number(match.Conceded) * 0.15;
+		
+		    if(match["Result type"] === "W"){
+		
+		        matchRating += 0.30;
+		
+		    }
+		
+		}
+		else if(
+		
+		    position.includes("CB") ||
+		    position.includes("LB") ||
+		    position.includes("RB") ||
+		    position.includes("DF")
+		
+		){
+		
+		    matchRating +=
+		        matchGoals * 0.8;
+		
+		    matchRating +=
+		        matchAssists * 1.0;
+		
+		    if(cleanSheet){
+		
+		        matchRating += 0.75;
+		
+		    }
+		
+		    if(match["Result type"] === "W"){
+		
+		        matchRating += 0.30;
+		
+		    }
+		
+		}
+		else if(
+		
+		    position.includes("DM") ||
+		    position.includes("CM") ||
+		    position.includes("AM") ||
+		    position.includes("MF")
+		
+		){
+		
+		    matchRating +=
+		        matchGoals * 1.0;
+		
+		    matchRating +=
+		        matchAssists * 1.0;
+		
+		    if(cleanSheet){
+		
+		        matchRating += 0.20;
+		
+		    }
+		
+		    if(match["Result type"] === "W"){
+		
+		        matchRating += 0.25;
+		
+		    }
+		
+		}
+		else{
+		
+		    matchRating +=
+		        matchGoals * 1.25;
+		
+		    matchRating +=
+		        matchAssists * 0.80;
+		
+		    if(match["Result type"] === "W"){
+		
+		        matchRating += 0.20;
+		
+		    }
+		
+		}
+		
+		if(matchGoals >= 2){
+		
+		    matchRating += 0.25;
+		
+		}
+		
+		if(matchGoals >= 3){
+		
+		    matchRating += 0.50;
+		
+		}
+		
+		matchRating -=
+		    matchYellow * 0.20;
+		
+		matchRating -=
+		    matchRed * 1.00;
+		
+		matchRating = Math.max(
+		    0,
+		    Math.min(
+		        10,
+		        matchRating
+		    )
+		);
+		
+		stats.ratingTotal += matchRating;
     });
+
+	stats.rating = stats.matches
+	    ? (
+	        stats.ratingTotal /
+	        stats.matches
+	      ).toFixed(2)
+	    : "0.00";
+
 
     return stats;
 
 }
 
 function renderCareerOverview(){
+
+	const currentPlayer =
+	    allPlayers.find(
+	        p => p.Name === playerName
+	    );
+	
+	const position =
+	    currentPlayer?.Position || "";
+	
+	const isGK =
+	    position.includes("GK") ||
+	    position.includes("Goalkeeper");
 
     const stats =
         getCareerOverview();
@@ -1974,6 +2175,24 @@ function renderCareerOverview(){
                         Matches
                     </div>
                 </div>
+
+				<div class="summary-stat">
+				    <div class="summary-value">
+				        ${stats.minutes.toLocaleString("en-US")}
+				    </div>
+				    <div class="summary-label">
+				        Minutes
+				    </div>
+				</div>
+				
+				<div class="summary-stat">
+				    <div class="summary-value summary-rating">
+				        ${stats.rating}
+				    </div>
+				    <div class="summary-label">
+				        Rating
+				    </div>
+				</div>
 
                 <div class="summary-stat">
                     <div class="summary-value">
@@ -2041,6 +2260,24 @@ function renderCareerOverview(){
                     Matches
                 </div>
             </div>
+
+			<div class="summary-stat">
+			    <div class="summary-value">
+			        ${stats.minutes.toLocaleString("en-US")}
+			    </div>
+			    <div class="summary-label">
+			        Minutes
+			    </div>
+			</div>
+			
+			<div class="summary-stat">
+			    <div class="summary-value summary-rating">
+			        ${stats.rating}
+			    </div>
+			    <div class="summary-label">
+			        Rating
+			    </div>
+			</div>
 
             <div class="summary-stat">
                 <div class="summary-value">
