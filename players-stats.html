@@ -1858,7 +1858,6 @@ function getCareerOverview(){
 	    assists:0,
 	
 	    penaltyGoals:0,
-	    missedPenalties:0,
 	
 	    yellow:0,
 	    red:0,
@@ -1967,10 +1966,6 @@ function getCareerOverview(){
 
                 if(match[`Penalty scored ${i}`] === "in"){
                     stats.penaltyGoals++;
-                }
-
-                if(match[`Penalty scored ${i}`] === "not in"){
-                    stats.missedPenalties++;
                 }
 
             }
@@ -2312,15 +2307,6 @@ function renderCareerOverview(){
 
             <div class="summary-stat">
                 <div class="summary-value">
-                    ${stats.missedPenalties}
-                </div>
-                <div class="summary-label">
-                    Missed Pens
-                </div>
-            </div>
-
-            <div class="summary-stat">
-                <div class="summary-value">
                     ${stats.yellow}
                 </div>
                 <div class="summary-label">
@@ -2644,7 +2630,6 @@ function renderPlayerMatches(){
 		let goals = 0;
 		let assists = 0;
 		let penaltyGoals = 0;
-		let missedPenalties = 0;
 		let yellow = 0;
 		let red = 0;
 		
@@ -2672,10 +2657,6 @@ function renderPlayerMatches(){
 		            penaltyGoals++;
 		        }
 		
-		        if(match[`Penalty scored ${i}`] === "not in"){
-		            missedPenalties++;
-		        }
-		
 		    }
 		
 		}
@@ -2689,7 +2670,6 @@ function renderPlayerMatches(){
 		    goals,
 		    assists,
 		    penaltyGoals,
-		    missedPenalties,
 		    yellow,
 		    red
 		
@@ -2811,8 +2791,6 @@ function renderPlayerMatches(){
 					
 					<div>${match.penaltyGoals || "-"}</div>
 					
-					<div>${match.missedPenalties || "-"}</div>
-					
 					<div>${match.yellow || "-"}</div>
 					
 					<div>${match.red || "-"}</div>
@@ -2835,7 +2813,6 @@ function renderPlayerMatches(){
 					        <span>${match.goals || "-"}</span>
 					        <span>${match.assists || "-"}</span>
 					        <span>${match.penaltyGoals || "-"}</span>
-					        <span>${match.missedPenalties || "-"}</span>
 					        <span>${match.yellow || "-"}</span>
 					        <span>${match.red || "-"}</span>
 					
