@@ -485,7 +485,45 @@ display:none;
 
 .summary-rating{
 
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #00bcd4
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    font-size:2.6rem;
+    font-weight:800;
+}
+
+.match-rating{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:48px;
+
+    padding:4px 8px;
+
+    border-radius:999px;
+
+    font-size:12px;
+    font-weight:800;
+
+    background:
+        rgba(0,188,212,.12);
+
     color:#00bcd4;
+
+    border:
+        1px solid rgba(0,188,212,.3);
 }
 
 .summary-label{
@@ -2892,7 +2930,11 @@ function renderPlayerMatches(){
 
                     </div>
 
-					<div class="summary-rating">${match.rating}</div>
+					<div>
+					    <span class="match-rating">
+					        ${match.rating}
+					    </span>
+					</div>
 
 					<div>${match.goals || "-"}</div>
 
@@ -2920,9 +2962,9 @@ function renderPlayerMatches(){
 					
 						<div class="mobile-stats-values">
 						
-						    <span class="summary-rating">
-						        ${match.rating}
-						    </span>
+						    <span class="match-rating">
+							    ${match.rating}
+							</span>
 						
 						    <span>${match.goals || "-"}</span>
 						    <span>${match.assists || "-"}</span>
