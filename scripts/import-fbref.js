@@ -8,35 +8,39 @@ const FBREF_URL =
 const TABLES = [
     {
         name: "shooting",
-
         tableId: "stats_shooting",
-
+    
         columns: {
-
-            player: "player",
-
-            games_90s: "nineties",
-
-            goals: "goals",
-
-            shots: "shots",
-
-            shots_on_target: "shotsOnTarget",
-
-            shots_on_target_pct: "shotAccuracy",
-
-            shots_per90: "shotsPer90",
-
-            shots_on_target_per90: "shotsOnTargetPer90",
-
-            goals_per_shot: "goalsPerShot",
-
-            goals_per_shot_on_target:
-                "goalsPerShotOnTarget",
-
-            pens_made: "penaltyGoals",
-
-            pens_att: "penaltyAttempts"
+    
+            Player: "player",
+    
+            Nation: "nation",
+    
+            Pos: "position",
+    
+            Age: "age",
+    
+            "90s": "nineties",
+    
+            Gls: "goals",
+    
+            Sh: "shots",
+    
+            SoT: "shotsOnTarget",
+    
+            "SoT%": "shotAccuracy",
+    
+            "Sh/90": "shotsPer90",
+    
+            "SoT/90": "shotsOnTargetPer90",
+    
+            "G/Sh": "goalsPerShot",
+    
+            "G/SoT": "goalsPerShotOnTarget",
+    
+            PK: "penaltyGoals",
+    
+            PKatt: "penaltyAttempts"
         }
     }
 ];
