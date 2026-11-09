@@ -1304,6 +1304,20 @@ function parseMinute(value){
 
 }
 
+function isGoalkeeper(position){
+
+    const pos =
+        String(position || "")
+        .toUpperCase()
+        .trim();
+
+    return (
+        pos === "GK" ||
+        pos.includes("GOALKEEPER")
+    );
+
+}
+
 function calculateAge(dateString){
 
     if(!dateString) return "";
@@ -1456,8 +1470,7 @@ function updatePlayerStats(){
 	    currentPlayer?.Position || "";
 	
 	const isGK =
-	    position.includes("GK") ||
-	    position.includes("Goalkeeper");
+	    isGoalkeeper(position);
 
 	const stats = {
 	
@@ -1783,8 +1796,7 @@ function renderSummary(stats){
         currentPlayer?.Position || "";
 
 	const isGK =
-	    position.includes("GK") ||
-	    position.includes("Goalkeeper");
+	    isGoalkeeper(position);
 
     // BRANKÁR
     if(isGK){
@@ -1924,9 +1936,8 @@ function getCareerOverview(){
     const position =
         currentPlayer?.Position || "";
 
-    const isGK =
-        position.includes("GK") ||
-        position.includes("Goalkeeper");
+	const isGK =
+	    isGoalkeeper(position);
 
     const stats = {
 
@@ -2217,9 +2228,8 @@ function renderCareerOverview(){
     const position =
         currentPlayer?.Position || "";
 
-    const isGK =
-        position.includes("GK") ||
-        position.includes("Goalkeeper");
+	const isGK =
+	    isGoalkeeper(position);
 
     if(isGK){
 
@@ -2753,8 +2763,7 @@ function renderPlayerMatches(){
 		    currentPlayer?.Position || "";
 		
 		const isGK =
-		    position.includes("GK") ||
-		    position.includes("Goalkeeper");
+		    isGoalkeeper(position);
 		
 		let minutes = 90;
 		
@@ -2895,8 +2904,7 @@ function renderPlayerMatches(){
 	    currentPlayer?.Position || "";
 	
 	const isGK =
-	    position.includes("GK") ||
-	    position.includes("Goalkeeper");
+	    isGoalkeeper(position);
 
 	document.getElementById(
 	    "matchesSection"
