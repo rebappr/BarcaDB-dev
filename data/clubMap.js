@@ -219,20 +219,21 @@ const clubNameMap = {
   "RB Leipzig": "Leipzig",
   "Viking FK": "Viking",
   "Lille OSC": "Lille"
-  
 };
 
 const officialClubNameMap = Object.fromEntries(
-  Object.entries(clubNameMap)
-    .map(([official, display]) => [display, official])
+  Object.entries(clubNameMap).map(([official, display]) => [
+    display,
+    official
+  ])
 );
 
 if (typeof window !== "undefined") {
-  window.getClubName = function(name) {
+  window.getClubName = function (name) {
     return clubNameMap[name] || name;
   };
 
-  window.getOfficialClubName = function(name) {
+  window.getOfficialClubName = function (name) {
     return officialClubNameMap[name] || name;
   };
 
@@ -240,6 +241,4 @@ if (typeof window !== "undefined") {
   window.OFFICIAL_CLUB_MAP = officialClubNameMap;
 }
 
-if (typeof module !== "undefined") {
-  module.exports = clubNameMap;
-}
+export default clubNameMap;
