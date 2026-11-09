@@ -2292,6 +2292,13 @@ function initSections(){
                 activeSection =
                     btn.dataset.section;
 
+				document.querySelector(
+				    ".player-filters-card"
+				).style.display =
+				    activeSection === "career"
+				    ? "none"
+				    : "flex";
+
                 document
                 .getElementById(
                     "statsSection"
