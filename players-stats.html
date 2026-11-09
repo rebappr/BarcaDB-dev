@@ -595,7 +595,8 @@ display:none;
     60px
     1fr
     80px
-    35px
+    50px
+	35px
     35px
     35px
     35px
@@ -2660,6 +2661,103 @@ function renderPlayerMatches(){
 		    }
 		
 		}
+
+		let matchRating = 6.5;
+		
+		const currentPlayer =
+		    allPlayers.find(
+		        p => p.Name === playerName
+		    );
+		
+		const position =
+		    currentPlayer?.Position || "";
+		
+		const isGK =
+		    position.includes("GK") ||
+		    position.includes("Goalkeeper");
+		
+		let minutes = 90;
+		
+		const cleanSheet =
+		    Number(match.Conceded) === 0;
+		
+		if(isGK){
+		
+		    if(cleanSheet){
+		        matchRating += 1.0;
+		    }
+		
+		    matchRating -=
+		        Number(match.Conceded) * 0.15;
+		
+		    if(match["Result type"] === "W"){
+		        matchRating += 0.30;
+		    }
+		
+		}
+		else if(
+		
+		    position.includes("CB") ||
+		    position.includes("LB") ||
+		    position.includes("RB") ||
+		    position.includes("DF")
+		
+		){
+		
+		    matchRating += goals * 0.8;
+		    matchRating += assists * 1.0;
+		
+		    if(cleanSheet){
+		        matchRating += 0.75;
+		    }
+		
+		    if(match["Result type"] === "W"){
+		        matchRating += 0.30;
+		    }
+		
+		}
+		else if(
+		
+		    position.includes("DM") ||
+		    position.includes("CM") ||
+		    position.includes("AM") ||
+		    position.includes("MF")
+		
+		){
+		
+		    matchRating += goals * 1.0;
+		    matchRating += assists * 1.0;
+		
+		    if(cleanSheet){
+		        matchRating += 0.20;
+		    }
+		
+		    if(match["Result type"] === "W"){
+		        matchRating += 0.25;
+		    }
+		
+		}
+		else{
+		
+		    matchRating += goals * 1.25;
+		    matchRating += assists * 0.80;
+		
+		    if(match["Result type"] === "W"){
+		        matchRating += 0.20;
+		    }
+		
+		}
+		
+		matchRating -= yellow * 0.20;
+		matchRating -= red * 1.0;
+		
+		matchRating = Math.max(
+		    0,
+		    Math.min(
+		        10,
+		        matchRating
+		    )
+		);
 		
 		matches.push({
 		
@@ -2670,8 +2768,12 @@ function renderPlayerMatches(){
 		    goals,
 		    assists,
 		    penaltyGoals,
+		
 		    yellow,
-		    red
+		    red,
+		
+		    rating:
+		        matchRating.toFixed(2)
 		
 		});
 		});
@@ -2709,7 +2811,7 @@ function renderPlayerMatches(){
 			    <div>Venue</div>
 			    <div>Opponent</div>
 			    <div>Result</div>
-			
+				<div>RT</div>
 			    <div>G</div>
 			    <div>A</div>
 			    <div>PG</div>
@@ -2784,6 +2886,8 @@ function renderPlayerMatches(){
                         </span>
 
                     </div>
+
+					<div class="summary-rating">${match.rating}</div>
 
 					<div>${match.goals || "-"}</div>
 
