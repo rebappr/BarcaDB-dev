@@ -1713,6 +1713,15 @@ function renderSummary(stats){
         ).innerHTML = `
 
             <div class="summary-stat">
+                <div class="summary-value summary-rating">
+                    ${stats.rating}
+                </div>
+                <div class="summary-label">
+                    Rating
+                </div>
+            </div>
+
+            <div class="summary-stat">
                 <div class="summary-value">
                     ${stats.matches}
                 </div>
@@ -1727,15 +1736,6 @@ function renderSummary(stats){
                 </div>
                 <div class="summary-label">
                     Minutes
-                </div>
-            </div>
-
-            <div class="summary-stat">
-                <div class="summary-value summary-rating">
-                    ${stats.rating}
-                </div>
-                <div class="summary-label">
-                    Rating
                 </div>
             </div>
 
@@ -1777,6 +1777,15 @@ function renderSummary(stats){
     ).innerHTML = `
 
         <div class="summary-stat">
+            <div class="summary-value summary-rating">
+                ${stats.rating}
+            </div>
+            <div class="summary-label">
+                Rating
+            </div>
+        </div>
+
+        <div class="summary-stat">
             <div class="summary-value">
                 ${stats.matches}
             </div>
@@ -1791,15 +1800,6 @@ function renderSummary(stats){
             </div>
             <div class="summary-label">
                 Minutes
-            </div>
-        </div>
-
-        <div class="summary-stat">
-            <div class="summary-value summary-rating">
-                ${stats.rating}
-            </div>
-            <div class="summary-label">
-                Rating
             </div>
         </div>
 
