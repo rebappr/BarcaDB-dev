@@ -166,4 +166,248 @@ for (
         ratings.push({
 
             matchId:
-                match.matchId
+                match.matchId,
+
+            season:
+                match.season || "Unknown",
+
+            rating:
+                matchRating
+
+        });
+
+        const season =
+            match.season || "Unknown";
+
+        if (!seasonStats[season]) {
+
+            seasonStats[season] = {
+
+                ratings: [],
+                matches: 0,
+                minutes: 0,
+                goals: 0,
+                assists: 0
+
+            };
+
+        }
+
+        seasonStats[season].ratings.push(
+            matchRating
+        );
+
+        seasonStats[season].matches++;
+
+        seasonStats[season].minutes +=
+            num(match.Min);
+
+        seasonStats[season].goals +=
+            num(match.Gls);
+
+        seasonStats[season].assists +=
+            num(match.Ast);
+
+        totalMinutes +=
+            num(match.Min);
+
+        goals +=
+            num(match.Gls);
+
+        assists +=
+            num(match.Ast);
+
+        yellowCards +=
+            num(match.CrdY);
+
+        redCards +=
+            num(match.CrdR);
+
+        if ("GA" in match) {
+
+            if (
+                num(match.GA) === 0
+            ) {
+
+                cleanSheets++;
+
+            }
+
+            if (
+                match["Save%"] !== "" &&
+                match["Save%"] !== undefined
+            ) {
+
+                saveSum +=
+                    parseFloat(
+                        match["Save%"]
+                    ) || 0;
+
+                saveMatches++;
+
+            }
+
+        }
+
+    }
+
+    for (const rating of ratings) {
+
+        if (
+            !bestMatch ||
+            rating.rating >
+                bestMatch.rating
+        ) {
+
+            bestMatch = rating;
+
+        }
+
+        if (
+            !worstMatch ||
+            rating.rating <
+                worstMatch.rating
+        ) {
+
+            worstMatch = rating;
+
+        }
+
+    }
+
+    const overallRating =
+        ratings.length
+            ? ratings.reduce(
+                (sum, item) =>
+                    sum + item.rating,
+                0
+            ) / ratings.length
+            : 0;
+
+    const lastFiveRatings =
+        ratings.slice(-5);
+
+    const formRating =
+        lastFiveRatings.length
+            ? lastFiveRatings.reduce(
+                (sum, item) =>
+                    sum + item.rating,
+                0
+            ) /
+            lastFiveRatings.length
+            : 0;
+
+    const seasons = {};
+
+    for (
+        const [season, data]
+        of Object.entries(
+            seasonStats
+        )
+    ) {
+
+        const seasonRating =
+            data.ratings.reduce(
+                (sum, rating) =>
+                    sum + rating,
+                0
+            ) /
+            data.ratings.length;
+
+        seasons[season] = {
+
+            rating:
+                Number(
+                    seasonRating.toFixed(2)
+                ),
+
+            matches:
+                data.matches,
+
+            minutes:
+                data.minutes,
+
+            goals:
+                data.goals,
+
+            assists:
+                data.assists
+
+        };
+
+    }
+
+    output[playerName] = {
+
+        overall:
+            Number(
+                overallRating.toFixed(2)
+            ),
+
+        form:
+            Number(
+                formRating.toFixed(2)
+            ),
+
+        matches:
+            ratings.length,
+
+        minutes:
+            totalMinutes,
+
+        goals,
+
+        assists,
+
+        yellowCards,
+
+        redCards,
+
+        cleanSheets,
+
+        savePct:
+            saveMatches
+                ? Number(
+                    (
+                        saveSum /
+                        saveMatches
+                    ).toFixed(1)
+                )
+                : null,
+
+        seasons,
+
+        bestMatch,
+
+        worstMatch,
+
+        history:
+            ratings
+
+    };
+
+}
+
+fs.writeFileSync(
+
+    OUTPUT_FILE,
+
+    JSON.stringify(
+        output,
+        null,
+        2
+    ),
+
+    "utf8"
+
+);
+
+console.log(
+    `Generated ${OUTPUT_FILE}`
+);
+
+console.log(
+    `Players: ${
+        Object.keys(output).length
+    }`
+);
