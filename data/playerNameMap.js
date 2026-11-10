@@ -1,4 +1,4 @@
-window.playerMap = {
+const playerMap = {
 
     // Goalkeepers
     "Joan García": "Joan Garcia",
@@ -40,12 +40,28 @@ window.playerMap = {
     "Joan GarcĂ­a": "Joan Garcia",
     "Gerard MartĂ­n": "Gerard Martin",
     "Brian FariĂ±as Perez": "Brian Farinas",
-    "Pau CubarsĂ": "Pau Cubarsi",
+    "Pau CubarsĂ­": "Pau Cubarsi",
     "Dominik LivakoviÄ‡": "Dominik Livakovic"
-};
-
-window.normalizePlayerName = function(name){
-
-    return window.playerMap[name] || name;
 
 };
+
+function normalizePlayerName(name){
+
+    return playerMap[name] || name;
+
+}
+
+// Browser
+if (typeof window !== "undefined") {
+
+    window.playerMap = playerMap;
+    window.normalizePlayerName = normalizePlayerName;
+
+}
+
+// Node.js
+if (typeof module !== "undefined" && module.exports) {
+
+    module.exports = playerMap;
+
+}
