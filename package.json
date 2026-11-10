@@ -1,7 +1,0 @@
-{
-  "name": "barcadb",
-  "type": "module",
-  "dependencies": {
-    "csv-parse": "^5.6.0"
-  }
-}
