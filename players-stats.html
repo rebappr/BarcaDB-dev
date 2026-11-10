@@ -1886,6 +1886,20 @@ const playerMatches =
 
 playerMatches.forEach(item => {
 
+    if(
+        selectedSeason !== "all" &&
+        item.match.Season !== selectedSeason
+    ){
+        return;
+    }
+
+    if(
+        selectedCompetition !== "all" &&
+        item.match.Competition !== selectedCompetition
+    ){
+        return;
+    }
+
     stats.matches++;
 
     if(item.starter){
@@ -1917,7 +1931,8 @@ playerMatches.forEach(item => {
 
     }
 
-});	
+});
+
     renderSummary(stats);
 
 }
