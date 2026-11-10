@@ -1,0 +1,1550 @@
+{
+  "Raphinha": {
+    "overall": 8.15,
+    "form": 7.49,
+    "matches": 13,
+    "minutes": 937,
+    "goals": 16,
+    "assists": 3,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4457,
+      "rating": 10
+    },
+    "worstMatch": {
+      "matchId": 4467,
+      "rating": 6.03
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 10
+      },
+      {
+        "matchId": 4458,
+        "rating": 7.23
+      },
+      {
+        "matchId": 4459,
+        "rating": 9.77
+      },
+      {
+        "matchId": 4460,
+        "rating": 7.95
+      },
+      {
+        "matchId": 4461,
+        "rating": 9.04
+      },
+      {
+        "matchId": 4462,
+        "rating": 8.45
+      },
+      {
+        "matchId": 4464,
+        "rating": 10
+      },
+      {
+        "matchId": 4467,
+        "rating": 6.03
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.2
+      },
+      {
+        "matchId": 4469,
+        "rating": 7.92
+      },
+      {
+        "matchId": 4470,
+        "rating": 8.5
+      },
+      {
+        "matchId": 4471,
+        "rating": 8.58
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.24
+      }
+    ]
+  },
+  "Joao Cancelo": {
+    "overall": 6.62,
+    "form": 6.5,
+    "matches": 12,
+    "minutes": 702,
+    "goals": 1,
+    "assists": 3,
+    "yellowCards": 2,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4466,
+      "rating": 8.08
+    },
+    "worstMatch": {
+      "matchId": 4457,
+      "rating": 6
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6
+      },
+      {
+        "matchId": 4458,
+        "rating": 6.01
+      },
+      {
+        "matchId": 4459,
+        "rating": 6.01
+      },
+      {
+        "matchId": 4461,
+        "rating": 7.92
+      },
+      {
+        "matchId": 4462,
+        "rating": 6
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.88
+      },
+      {
+        "matchId": 4466,
+        "rating": 8.08
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.05
+      },
+      {
+        "matchId": 4469,
+        "rating": 6.92
+      },
+      {
+        "matchId": 4470,
+        "rating": 6.42
+      },
+      {
+        "matchId": 4471,
+        "rating": 7.11
+      },
+      {
+        "matchId": 4472,
+        "rating": 6
+      }
+    ]
+  },
+  "Karim Adeyemi": {
+    "overall": 6.34,
+    "form": 6.07,
+    "matches": 14,
+    "minutes": 463,
+    "goals": 4,
+    "assists": 1,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4461,
+      "rating": 7.47
+    },
+    "worstMatch": {
+      "matchId": 4469,
+      "rating": 5.98
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 7.35
+      },
+      {
+        "matchId": 4458,
+        "rating": 6.03
+      },
+      {
+        "matchId": 4459,
+        "rating": 6.2
+      },
+      {
+        "matchId": 4460,
+        "rating": 6.03
+      },
+      {
+        "matchId": 4461,
+        "rating": 7.47
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.59
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.06
+      },
+      {
+        "matchId": 4465,
+        "rating": 6.01
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.75
+      },
+      {
+        "matchId": 4467,
+        "rating": 6.03
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.03
+      },
+      {
+        "matchId": 4469,
+        "rating": 5.98
+      },
+      {
+        "matchId": 4470,
+        "rating": 6.3
+      },
+      {
+        "matchId": 4472,
+        "rating": 6
+      }
+    ]
+  },
+  "Dani Olmo": {
+    "overall": 6.31,
+    "form": 6.38,
+    "matches": 11,
+    "minutes": 428,
+    "goals": 1,
+    "assists": 3,
+    "yellowCards": 2,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4466,
+      "rating": 6.93
+    },
+    "worstMatch": {
+      "matchId": 4462,
+      "rating": 6.01
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.03
+      },
+      {
+        "matchId": 4458,
+        "rating": 6.12
+      },
+      {
+        "matchId": 4459,
+        "rating": 6.11
+      },
+      {
+        "matchId": 4460,
+        "rating": 6.41
+      },
+      {
+        "matchId": 4461,
+        "rating": 6.83
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.01
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.08
+      },
+      {
+        "matchId": 4465,
+        "rating": 6.15
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.93
+      },
+      {
+        "matchId": 4467,
+        "rating": 6.69
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.06
+      }
+    ]
+  },
+  "Fermin López": {
+    "overall": 7.49,
+    "form": 7.97,
+    "matches": 15,
+    "minutes": 1007,
+    "goals": 8,
+    "assists": 7,
+    "yellowCards": 3,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4470,
+      "rating": 10
+    },
+    "worstMatch": {
+      "matchId": 4464,
+      "rating": 5.94
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 9.75
+      },
+      {
+        "matchId": 4458,
+        "rating": 8.6
+      },
+      {
+        "matchId": 4459,
+        "rating": 6.09
+      },
+      {
+        "matchId": 4460,
+        "rating": 9.38
+      },
+      {
+        "matchId": 4461,
+        "rating": 6.09
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.43
+      },
+      {
+        "matchId": 4464,
+        "rating": 5.94
+      },
+      {
+        "matchId": 4465,
+        "rating": 5.94
+      },
+      {
+        "matchId": 4466,
+        "rating": 7.57
+      },
+      {
+        "matchId": 4467,
+        "rating": 6.67
+      },
+      {
+        "matchId": 4468,
+        "rating": 7.07
+      },
+      {
+        "matchId": 4469,
+        "rating": 6.04
+      },
+      {
+        "matchId": 4470,
+        "rating": 10
+      },
+      {
+        "matchId": 4471,
+        "rating": 7.46
+      },
+      {
+        "matchId": 4472,
+        "rating": 9.3
+      }
+    ]
+  },
+  "Lamine Yamal": {
+    "overall": 8.43,
+    "form": 8.31,
+    "matches": 15,
+    "minutes": 1261,
+    "goals": 12,
+    "assists": 10,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4459,
+      "rating": 10
+    },
+    "worstMatch": {
+      "matchId": 4457,
+      "rating": 6.17
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.17
+      },
+      {
+        "matchId": 4458,
+        "rating": 7.04
+      },
+      {
+        "matchId": 4459,
+        "rating": 10
+      },
+      {
+        "matchId": 4460,
+        "rating": 10
+      },
+      {
+        "matchId": 4461,
+        "rating": 10
+      },
+      {
+        "matchId": 4462,
+        "rating": 8.54
+      },
+      {
+        "matchId": 4464,
+        "rating": 8.59
+      },
+      {
+        "matchId": 4465,
+        "rating": 7.51
+      },
+      {
+        "matchId": 4466,
+        "rating": 8.64
+      },
+      {
+        "matchId": 4467,
+        "rating": 8.38
+      },
+      {
+        "matchId": 4468,
+        "rating": 8.58
+      },
+      {
+        "matchId": 4469,
+        "rating": 6.38
+      },
+      {
+        "matchId": 4470,
+        "rating": 10
+      },
+      {
+        "matchId": 4471,
+        "rating": 8.73
+      },
+      {
+        "matchId": 4472,
+        "rating": 7.84
+      }
+    ]
+  },
+  "Anthony Gordon": {
+    "overall": 6.66,
+    "form": 6.54,
+    "matches": 15,
+    "minutes": 944,
+    "goals": 3,
+    "assists": 4,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4465,
+      "rating": 7.86
+    },
+    "worstMatch": {
+      "matchId": 4461,
+      "rating": 6.02
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.68
+      },
+      {
+        "matchId": 4458,
+        "rating": 6.11
+      },
+      {
+        "matchId": 4459,
+        "rating": 7.48
+      },
+      {
+        "matchId": 4460,
+        "rating": 7.04
+      },
+      {
+        "matchId": 4461,
+        "rating": 6.02
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.02
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.09
+      },
+      {
+        "matchId": 4465,
+        "rating": 7.86
+      },
+      {
+        "matchId": 4466,
+        "rating": 7.72
+      },
+      {
+        "matchId": 4467,
+        "rating": 6.21
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.05
+      },
+      {
+        "matchId": 4469,
+        "rating": 7.02
+      },
+      {
+        "matchId": 4470,
+        "rating": 6.34
+      },
+      {
+        "matchId": 4471,
+        "rating": 6.76
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.53
+      }
+    ]
+  },
+  "Gavi": {
+    "overall": 6.06,
+    "form": 6.03,
+    "matches": 8,
+    "minutes": 202,
+    "goals": 0,
+    "assists": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4465,
+      "rating": 6.25
+    },
+    "worstMatch": {
+      "matchId": 4471,
+      "rating": 5.99
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.07
+      },
+      {
+        "matchId": 4461,
+        "rating": 6
+      },
+      {
+        "matchId": 4465,
+        "rating": 6.25
+      },
+      {
+        "matchId": 4466,
+        "rating": 6
+      },
+      {
+        "matchId": 4467,
+        "rating": 6.03
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.09
+      },
+      {
+        "matchId": 4471,
+        "rating": 5.99
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.03
+      }
+    ]
+  },
+  "Pedri": {
+    "overall": 6.52,
+    "form": 6.41,
+    "matches": 15,
+    "minutes": 1043,
+    "goals": 1,
+    "assists": 3,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4460,
+      "rating": 7.91
+    },
+    "worstMatch": {
+      "matchId": 4470,
+      "rating": 5.93
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.08
+      },
+      {
+        "matchId": 4458,
+        "rating": 7.32
+      },
+      {
+        "matchId": 4459,
+        "rating": 6.32
+      },
+      {
+        "matchId": 4460,
+        "rating": 7.91
+      },
+      {
+        "matchId": 4461,
+        "rating": 6.79
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.06
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.58
+      },
+      {
+        "matchId": 4465,
+        "rating": 6.07
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.24
+      },
+      {
+        "matchId": 4467,
+        "rating": 6.3
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.36
+      },
+      {
+        "matchId": 4469,
+        "rating": 7.25
+      },
+      {
+        "matchId": 4470,
+        "rating": 5.93
+      },
+      {
+        "matchId": 4471,
+        "rating": 6.12
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.4
+      }
+    ]
+  },
+  "Marc Bernal": {
+    "overall": 6.2,
+    "form": 6.1,
+    "matches": 13,
+    "minutes": 551,
+    "goals": 0,
+    "assists": 2,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4459,
+      "rating": 7.26
+    },
+    "worstMatch": {
+      "matchId": 4460,
+      "rating": 6
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.35
+      },
+      {
+        "matchId": 4458,
+        "rating": 6.14
+      },
+      {
+        "matchId": 4459,
+        "rating": 7.26
+      },
+      {
+        "matchId": 4460,
+        "rating": 6
+      },
+      {
+        "matchId": 4461,
+        "rating": 6
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.28
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.01
+      },
+      {
+        "matchId": 4465,
+        "rating": 6
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.05
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.03
+      },
+      {
+        "matchId": 4470,
+        "rating": 6.13
+      },
+      {
+        "matchId": 4471,
+        "rating": 6.05
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.24
+      }
+    ]
+  },
+  "Jules Kounde": {
+    "overall": 6.48,
+    "form": 6.79,
+    "matches": 8,
+    "minutes": 462,
+    "goals": 1,
+    "assists": 1,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4465,
+      "rating": 8.37
+    },
+    "worstMatch": {
+      "matchId": 4459,
+      "rating": 5.87
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.01
+      },
+      {
+        "matchId": 4458,
+        "rating": 6
+      },
+      {
+        "matchId": 4459,
+        "rating": 5.87
+      },
+      {
+        "matchId": 4460,
+        "rating": 6.24
+      },
+      {
+        "matchId": 4461,
+        "rating": 6.2
+      },
+      {
+        "matchId": 4465,
+        "rating": 8.37
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.04
+      },
+      {
+        "matchId": 4467,
+        "rating": 7.1
+      }
+    ]
+  },
+  "Xavi Espart": {
+    "overall": 6.91,
+    "form": 6.81,
+    "matches": 9,
+    "minutes": 721,
+    "goals": 2,
+    "assists": 2,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4462,
+      "rating": 7.67
+    },
+    "worstMatch": {
+      "matchId": 4469,
+      "rating": 6.05
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 7.55
+      },
+      {
+        "matchId": 4458,
+        "rating": 6.41
+      },
+      {
+        "matchId": 4459,
+        "rating": 7.46
+      },
+      {
+        "matchId": 4460,
+        "rating": 6.7
+      },
+      {
+        "matchId": 4462,
+        "rating": 7.67
+      },
+      {
+        "matchId": 4465,
+        "rating": 6.43
+      },
+      {
+        "matchId": 4467,
+        "rating": 6.3
+      },
+      {
+        "matchId": 4468,
+        "rating": 7.62
+      },
+      {
+        "matchId": 4469,
+        "rating": 6.05
+      }
+    ]
+  },
+  "Gerard Martin": {
+    "overall": 6.23,
+    "form": 6.28,
+    "matches": 13,
+    "minutes": 941,
+    "goals": 0,
+    "assists": 0,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4472,
+      "rating": 6.48
+    },
+    "worstMatch": {
+      "matchId": 4462,
+      "rating": 5.97
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.35
+      },
+      {
+        "matchId": 4458,
+        "rating": 6.3
+      },
+      {
+        "matchId": 4460,
+        "rating": 6.25
+      },
+      {
+        "matchId": 4462,
+        "rating": 5.97
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.05
+      },
+      {
+        "matchId": 4465,
+        "rating": 6.35
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.3
+      },
+      {
+        "matchId": 4467,
+        "rating": 6
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.25
+      },
+      {
+        "matchId": 4469,
+        "rating": 6.25
+      },
+      {
+        "matchId": 4470,
+        "rating": 6
+      },
+      {
+        "matchId": 4471,
+        "rating": 6.4
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.48
+      }
+    ]
+  },
+  "Andreas Christensen": {
+    "overall": 6.24,
+    "form": 6.2,
+    "matches": 7,
+    "minutes": 433,
+    "goals": 0,
+    "assists": 1,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4464,
+      "rating": 6.81
+    },
+    "worstMatch": {
+      "matchId": 4460,
+      "rating": 6
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.15
+      },
+      {
+        "matchId": 4459,
+        "rating": 6.5
+      },
+      {
+        "matchId": 4460,
+        "rating": 6
+      },
+      {
+        "matchId": 4461,
+        "rating": 6
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.15
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.81
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.05
+      }
+    ]
+  },
+  "Eric Garcia": {
+    "overall": 6.43,
+    "form": 6.42,
+    "matches": 9,
+    "minutes": 601,
+    "goals": 1,
+    "assists": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4467,
+      "rating": 6.9
+    },
+    "worstMatch": {
+      "matchId": 4460,
+      "rating": 6
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 6.58
+      },
+      {
+        "matchId": 4458,
+        "rating": 6.61
+      },
+      {
+        "matchId": 4460,
+        "rating": 6
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.6
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.3
+      },
+      {
+        "matchId": 4465,
+        "rating": 6.5
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.36
+      },
+      {
+        "matchId": 4467,
+        "rating": 6.9
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.03
+      }
+    ]
+  },
+  "Joan Garcia": {
+    "overall": 6.19,
+    "form": 6.39,
+    "matches": 15,
+    "minutes": 1305,
+    "goals": 0,
+    "assists": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 5,
+    "savePct": 69.8,
+    "bestMatch": {
+      "matchId": 4457,
+      "rating": 7.9
+    },
+    "worstMatch": {
+      "matchId": 4463,
+      "rating": 4.05
+    },
+    "history": [
+      {
+        "matchId": 4457,
+        "rating": 7.9
+      },
+      {
+        "matchId": 4458,
+        "rating": 6
+      },
+      {
+        "matchId": 4459,
+        "rating": 5.3
+      },
+      {
+        "matchId": 4460,
+        "rating": 7.9
+      },
+      {
+        "matchId": 4461,
+        "rating": 4.8
+      },
+      {
+        "matchId": 4462,
+        "rating": 5.88
+      },
+      {
+        "matchId": 4463,
+        "rating": 4.05
+      },
+      {
+        "matchId": 4465,
+        "rating": 7.7
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.03
+      },
+      {
+        "matchId": 4467,
+        "rating": 5.3
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.47
+      },
+      {
+        "matchId": 4469,
+        "rating": 5.3
+      },
+      {
+        "matchId": 4470,
+        "rating": 5.83
+      },
+      {
+        "matchId": 4471,
+        "rating": 7.9
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.45
+      }
+    ]
+  },
+  "Rodri": {
+    "overall": 6.48,
+    "form": 6.74,
+    "matches": 13,
+    "minutes": 884,
+    "goals": 1,
+    "assists": 1,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4467,
+      "rating": 7.95
+    },
+    "worstMatch": {
+      "matchId": 4458,
+      "rating": 6
+    },
+    "history": [
+      {
+        "matchId": 4458,
+        "rating": 6
+      },
+      {
+        "matchId": 4459,
+        "rating": 6
+      },
+      {
+        "matchId": 4460,
+        "rating": 6.02
+      },
+      {
+        "matchId": 4461,
+        "rating": 6.23
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.7
+      },
+      {
+        "matchId": 4464,
+        "rating": 7.05
+      },
+      {
+        "matchId": 4465,
+        "rating": 6.43
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.15
+      },
+      {
+        "matchId": 4467,
+        "rating": 7.95
+      },
+      {
+        "matchId": 4468,
+        "rating": 6.1
+      },
+      {
+        "matchId": 4469,
+        "rating": 6.35
+      },
+      {
+        "matchId": 4470,
+        "rating": 7.2
+      },
+      {
+        "matchId": 4471,
+        "rating": 6.08
+      }
+    ]
+  },
+  "Pau Cubarsi": {
+    "overall": 6.43,
+    "form": 6.23,
+    "matches": 13,
+    "minutes": 1141,
+    "goals": 0,
+    "assists": 2,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4467,
+      "rating": 8.4
+    },
+    "worstMatch": {
+      "matchId": 4460,
+      "rating": 5.97
+    },
+    "history": [
+      {
+        "matchId": 4458,
+        "rating": 6.32
+      },
+      {
+        "matchId": 4459,
+        "rating": 6.3
+      },
+      {
+        "matchId": 4460,
+        "rating": 5.97
+      },
+      {
+        "matchId": 4461,
+        "rating": 6.4
+      },
+      {
+        "matchId": 4462,
+        "rating": 6.55
+      },
+      {
+        "matchId": 4464,
+        "rating": 6.2
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.3
+      },
+      {
+        "matchId": 4467,
+        "rating": 8.4
+      },
+      {
+        "matchId": 4468,
+        "rating": 6
+      },
+      {
+        "matchId": 4469,
+        "rating": 6.3
+      },
+      {
+        "matchId": 4470,
+        "rating": 6.35
+      },
+      {
+        "matchId": 4471,
+        "rating": 6.2
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.3
+      }
+    ]
+  },
+  "16 Players": {
+    "overall": 10,
+    "form": 10,
+    "matches": 2,
+    "minutes": 1980,
+    "goals": 7,
+    "assists": 6,
+    "yellowCards": 3,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4458,
+      "rating": 10
+    },
+    "worstMatch": {
+      "matchId": 4458,
+      "rating": 10
+    },
+    "history": [
+      {
+        "matchId": 4458,
+        "rating": 10
+      },
+      {
+        "matchId": 4467,
+        "rating": 10
+      }
+    ]
+  },
+  "Hamza Abdelkarim": {
+    "overall": 6,
+    "form": 6,
+    "matches": 2,
+    "minutes": 14,
+    "goals": 0,
+    "assists": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4459,
+      "rating": 6
+    },
+    "worstMatch": {
+      "matchId": 4459,
+      "rating": 6
+    },
+    "history": [
+      {
+        "matchId": 4459,
+        "rating": 6
+      },
+      {
+        "matchId": 4465,
+        "rating": 6
+      }
+    ]
+  },
+  "Gabriel Jesus": {
+    "overall": 6.53,
+    "form": 6.49,
+    "matches": 9,
+    "minutes": 269,
+    "goals": 3,
+    "assists": 1,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4465,
+      "rating": 8.12
+    },
+    "worstMatch": {
+      "matchId": 4464,
+      "rating": 6
+    },
+    "history": [
+      {
+        "matchId": 4460,
+        "rating": 6.01
+      },
+      {
+        "matchId": 4461,
+        "rating": 6.18
+      },
+      {
+        "matchId": 4464,
+        "rating": 6
+      },
+      {
+        "matchId": 4465,
+        "rating": 8.12
+      },
+      {
+        "matchId": 4466,
+        "rating": 6.25
+      },
+      {
+        "matchId": 4467,
+        "rating": 7.75
+      },
+      {
+        "matchId": 4469,
+        "rating": 6
+      },
+      {
+        "matchId": 4470,
+        "rating": 6.37
+      },
+      {
+        "matchId": 4471,
+        "rating": 6.07
+      }
+    ]
+  },
+  "Dominik Livakovic": {
+    "overall": 5.83,
+    "form": 5.83,
+    "matches": 1,
+    "minutes": 90,
+    "goals": 0,
+    "assists": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": 66.7,
+    "bestMatch": {
+      "matchId": 4464,
+      "rating": 5.83
+    },
+    "worstMatch": {
+      "matchId": 4464,
+      "rating": 5.83
+    },
+    "history": [
+      {
+        "matchId": 4464,
+        "rating": 5.83
+      }
+    ]
+  },
+  "Alejandro Balde": {
+    "overall": 6.02,
+    "form": 6.02,
+    "matches": 4,
+    "minutes": 116,
+    "goals": 0,
+    "assists": 0,
+    "yellowCards": 1,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4470,
+      "rating": 6.07
+    },
+    "worstMatch": {
+      "matchId": 4469,
+      "rating": 5.95
+    },
+    "history": [
+      {
+        "matchId": 4468,
+        "rating": 6.06
+      },
+      {
+        "matchId": 4469,
+        "rating": 5.95
+      },
+      {
+        "matchId": 4470,
+        "rating": 6.07
+      },
+      {
+        "matchId": 4471,
+        "rating": 6
+      }
+    ]
+  },
+  "Frenkie de Jong": {
+    "overall": 6.04,
+    "form": 6.04,
+    "matches": 4,
+    "minutes": 164,
+    "goals": 0,
+    "assists": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4472,
+      "rating": 6.1
+    },
+    "worstMatch": {
+      "matchId": 4469,
+      "rating": 5.99
+    },
+    "history": [
+      {
+        "matchId": 4469,
+        "rating": 5.99
+      },
+      {
+        "matchId": 4470,
+        "rating": 6.09
+      },
+      {
+        "matchId": 4471,
+        "rating": 6
+      },
+      {
+        "matchId": 4472,
+        "rating": 6.1
+      }
+    ]
+  },
+  "Brian Farinas": {
+    "overall": 6.13,
+    "form": 6.13,
+    "matches": 3,
+    "minutes": 216,
+    "goals": 0,
+    "assists": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": null,
+    "bestMatch": {
+      "matchId": 4470,
+      "rating": 6.33
+    },
+    "worstMatch": {
+      "matchId": 4472,
+      "rating": 5.97
+    },
+    "history": [
+      {
+        "matchId": 4470,
+        "rating": 6.33
+      },
+      {
+        "matchId": 4471,
+        "rating": 6.09
+      },
+      {
+        "matchId": 4472,
+        "rating": 5.97
+      }
+    ]
+  },
+  "Wojciech Szczesny": {
+    "overall": 4.05,
+    "form": 4.05,
+    "matches": 1,
+    "minutes": 45,
+    "goals": 0,
+    "assists": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "cleanSheets": 0,
+    "savePct": 0,
+    "bestMatch": {
+      "matchId": 4463,
+      "rating": 4.05
+    },
+    "worstMatch": {
+      "matchId": 4463,
+      "rating": 4.05
+    },
+    "history": [
+      {
+        "matchId": 4463,
+        "rating": 4.05
+      }
+    ]
+  }
+}
