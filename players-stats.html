@@ -2426,7 +2426,13 @@ function renderCareerOverview(){
 
 	const stats =
 	    getPlayerAggregateStats(
-	        playerName
+	        playerName,
+	        {
+	            competition:
+	                selectedCompetition === "all"
+	                ? null
+	                : selectedCompetition
+	        }
 	    );
 
     const currentPlayer =
@@ -2924,11 +2930,23 @@ function initSections(){
                 activeSection =
                     btn.dataset.section;
 
-				const filtersCard =
-				    document.querySelector(".player-filters-card");
+				const seasonSection =
+				    document.querySelector(".filter-section.season");
 				
-				filtersCard.hidden =
-				    activeSection === "career";
+				const ratingCard =
+				    document.getElementById("ratingCard");
+				
+				if(activeSection === "career"){
+				
+				    seasonSection.style.display = "none";
+				    ratingCard.style.display = "none";
+				
+				}else{
+				
+				    seasonSection.style.display = "";
+				    ratingCard.style.display = "";
+				
+				}
 
                 document
                 .getElementById(
