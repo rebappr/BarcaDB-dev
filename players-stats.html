@@ -2078,11 +2078,81 @@ function renderSummary(stats){
 	    ${
 	        !isGK
 	        ? `
-	            <div class="stats-widget">
-	                <div class="stats-widget-title">
-	                    Attacking
-	                </div>
-	            </div>
+				<div class="stats-widget">
+				
+				    <div class="stats-widget-title">
+				        Attacking
+				    </div>
+				
+				    <div class="widget-stats-list">
+				
+				        <div class="widget-stat">
+				            <div class="widget-stat-label">
+				                Goals
+				            </div>
+				            <div class="widget-stat-value">
+				                ${stats.goals}
+				            </div>
+				        </div>
+				
+				        <div class="widget-stat">
+				            <div class="widget-stat-label">
+				                Assists
+				            </div>
+				            <div class="widget-stat-value">
+				                ${stats.assists}
+				            </div>
+				        </div>
+				
+				        <div class="widget-stat">
+				            <div class="widget-stat-label">
+				                G+A
+				            </div>
+				            <div class="widget-stat-value">
+				                ${stats.goals + stats.assists}
+				            </div>
+				        </div>
+				
+				        <div class="widget-stat">
+				            <div class="widget-stat-label">
+				                G/90
+				            </div>
+				            <div class="widget-stat-value">
+				                ${
+				                    stats.minutes
+				                    ? ((stats.goals * 90) / stats.minutes).toFixed(2)
+				                    : "0.00"
+				                }
+				            </div>
+				        </div>
+				
+				        <div class="widget-stat">
+				            <div class="widget-stat-label">
+				                A/90
+				            </div>
+				            <div class="widget-stat-value">
+				                ${
+				                    stats.minutes
+				                    ? ((stats.assists * 90) / stats.minutes).toFixed(2)
+				                    : "0.00"
+				                }
+				            </div>
+				        </div>
+				
+				        <div class="widget-stat">
+				            <div class="widget-stat-label">
+				                G+A/90
+				            </div>
+				            <div class="widget-stat-value">
+				                ${
+				                    stats.minutes
+				                    ? (((stats.goals + stats.assists) * 90) / stats.minutes).toFixed(2)
+				                    : "0.00"
+				                }
+				            </div>
+				        </div>
+				    </div>
+				</div>
 	        `
 	        : ""
 	    }
