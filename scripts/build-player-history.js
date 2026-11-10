@@ -2,14 +2,14 @@ const fs = require("fs");
 const path = require("path");
 
 const MATCHES_DIR = "./data/matches";
+const GK_DIR = "./data/matches/gk";
+
 const OUTPUT_FILE = "./data/players-history.json";
 
-const playerMap = require("./../data/playerNameMap");
+const playerMap =
+    require("./../data/playerNameMap");
 
-/*
- * CSV parser s podporou úvodzoviek
- */
-function parseCSV(csv) {
+function parseCSV(csv){
 
     const rows = [];
 
@@ -17,9 +17,10 @@ function parseCSV(csv) {
         .split(/\r?\n/)
         .filter(line => line.trim());
 
-    const headers = parseCSVLine(lines[0]);
+    const headers =
+        parseCSVLine(lines[0]);
 
-    for (let i = 1; i < lines.length; i++) {
+    for(let i = 1; i < lines.length; i++){
 
         const values =
             parseCSVLine(lines[i]);
@@ -41,7 +42,7 @@ function parseCSV(csv) {
 
 }
 
-function parseCSVLine(line) {
+function parseCSVLine(line){
 
     const result = [];
 
@@ -49,17 +50,16 @@ function parseCSVLine(line) {
 
     let insideQuotes = false;
 
-    for (const char of line) {
+    for(const char of line){
 
-        if (char === '"') {
+        if(char === '"'){
 
             insideQuotes = !insideQuotes;
-
             continue;
 
         }
 
-        if (char === "," && !insideQuotes) {
+        if(char === "," && !insideQuotes){
 
             result.push(current);
 
@@ -81,98 +81,110 @@ function parseCSVLine(line) {
 
 const players = {};
 
-if (!fs.existsSync(MATCHES_DIR)) {
+function processCSVDirectory(directory){
 
-    console.error(
-        `Directory not found: ${MATCHES_DIR}`
-    );
+    if(!fs.existsSync(directory)){
+        return;
+    }
 
-    process.exit(1);
+    const files =
+        fs.readdirSync(directory)
+            .filter(file =>
+                file.endsWith(".csv")
+            );
+
+    for(const file of files){
+
+        const matchId =
+            Number(
+                file.replace(".csv", "")
+            );
+
+        console.log(
+            `Processing ${directory}/${file}`
+        );
+
+        const csvContent =
+            fs.readFileSync(
+                path.join(directory, file),
+                "utf8"
+            );
+
+        const rows =
+            parseCSV(csvContent);
+
+        rows.forEach(row => {
+
+            const originalName =
+                row.Player?.trim();
+
+            if(!originalName){
+                return;
+            }
+
+            const playerName =
+                playerMap[originalName] ||
+                originalName;
+
+            if(!players[playerName]){
+                players[playerName] = [];
+            }
+
+            let matchRecord =
+                players[playerName].find(
+                    m => m.matchId === matchId
+                );
+
+            if(!matchRecord){
+
+                matchRecord = {
+                    matchId
+                };
+
+                players[playerName].push(
+                    matchRecord
+                );
+
+            }
+
+            Object.entries(row)
+                .forEach(([key, value]) => {
+
+                    if(key === "Player"){
+                        return;
+                    }
+
+                    matchRecord[key] = value;
+
+                });
+
+        });
+
+    }
 
 }
 
-const standardFiles =
-    fs.readdirSync(MATCHES_DIR)
-        .filter(file =>
-            file.endsWith(".csv")
-        );
+/*
+ * Hráči v poli
+ */
+processCSVDirectory(
+    MATCHES_DIR
+);
 
-for (const file of files) {
-
-    const matchId =
-        Number(
-            file.replace(".csv", "")
-        );
-
-    console.log(
-        `Processing ${file}`
-    );
-
-    const csvContent =
-        fs.readFileSync(
-            path.join(MATCHES_DIR, file),
-            "utf8"
-        );
-
-    const rows =
-        parseCSV(csvContent);
-
-    rows.forEach(row => {
-
-        const originalName =
-            row.Player?.trim();
-
-        if (!originalName) {
-            return;
-        }
-
-        const playerName =
-            playerMap[originalName] ||
-            originalName;
-
-        if (!players[playerName]) {
-
-            players[playerName] = [];
-
-        }
-
-        const matchRecord = {
-
-            matchId
-
-        };
-
-        /*
-         * prenes všetky stĺpce
-         * okrem Player
-         */
-        Object.entries(row)
-            .forEach(([key, value]) => {
-
-                if (key === "Player") {
-                    return;
-                }
-
-                matchRecord[key] =
-                    value;
-
-            });
-
-        players[playerName]
-            .push(matchRecord);
-
-    });
-
-}
+/*
+ * Brankári
+ */
+processCSVDirectory(
+    GK_DIR
+);
 
 Object.keys(players)
     .forEach(player => {
 
-        players[player]
-            .sort(
-                (a, b) =>
-                    a.matchId - b.matchId
-            );
+        players[player].sort(
+            (a, b) =>
+                a.matchId - b.matchId
+        );
 
     });
 
