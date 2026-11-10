@@ -1757,7 +1757,9 @@ function updatePlayerStats(){
                 }
 
                 minutes +=
-                    subOffMinute || 90;
+				    subOffMinute !== null
+				        ? subOffMinute
+				        : 90;
 
                 break;
 
@@ -2389,7 +2391,7 @@ function getCareerOverview(){
 			
 				const minute =
 				    parseMinute(
-				        match[`Sub min ${s}`]
+				        match[`Sub min ${i}`]
 				    );
 				
 				minutes +=
@@ -3191,11 +3193,17 @@ function renderPlayerMatches(){
 					    isGK
 					    ? `
 					
-					        <div>
-					            <span class="match-rating">
-					                ${match.rating ? match.rating.toFixed(2) : "-"}
-					            </span>
-					        </div>
+							<div>
+							    ${
+							        match.rating
+							        ? `
+							            <span class="match-rating">
+							                ${match.rating.toFixed(2)}
+							            </span>
+							        `
+							        : "-"
+							    }
+							</div>
 					
 					        <div>${match.cleanSheet}</div>
 					
@@ -3208,11 +3216,17 @@ function renderPlayerMatches(){
 					    `
 					    : `
 					
-					        <div>
-					            <span class="match-rating">
-					                ${match.rating ? match.rating.toFixed(2) : "-"}
-					            </span>
-					        </div>
+							<div>
+							    ${
+							        match.rating
+							        ? `
+							            <span class="match-rating">
+							                ${match.rating.toFixed(2)}
+							            </span>
+							        `
+							        : "-"
+							    }
+							</div>
 					
 					        <div>${match.goals || "-"}</div>
 					
