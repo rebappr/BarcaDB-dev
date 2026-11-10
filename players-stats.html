@@ -1695,6 +1695,9 @@ function updatePlayerStats(){
 	
 	    cleanSheets: 0,
 	    goalsConceded: 0,
+
+		penaltyGoals: 0,
+		penaltyMissed: 0,
 	
 	    ratingTotal: 0,
 	    rating: "0.00"
@@ -1812,6 +1815,21 @@ function updatePlayerStats(){
                 stats.assists++;
 
             }
+
+			if(match[`Penalty player ${i}`] === playerName){
+			
+			    if(match[`Penalty scored ${i}`] === "in"){
+			
+			        stats.penaltyGoals++;
+			
+			    }
+			    else if(match[`Penalty scored ${i}`] === "not in"){
+			
+			        stats.penaltyMissed++;
+			
+			    }
+			
+			}
 
             if(
                 match[`Yellow player ${i}`] === playerName
@@ -2160,11 +2178,49 @@ function renderSummary(stats){
 	    ${
 	        !isGK
 	        ? `
-	            <div class="stats-widget">
-	                <div class="stats-widget-title">
-	                    Penalties
-	                </div>
-	            </div>
+				<div class="stats-widget">
+				
+				    <div class="stats-widget-title">
+				        Penalties
+				    </div>
+				
+				    <div class="widget-stats-list">
+				
+				        <div class="widget-stat">
+				            <div class="widget-stat-label">
+				                Penalty Goals
+				            </div>
+				            <div class="widget-stat-value">
+				                ${stats.penaltyGoals}
+				            </div>
+				        </div>
+				
+				        <div class="widget-stat">
+				            <div class="widget-stat-label">
+				                Missed Penalties
+				            </div>
+				            <div class="widget-stat-value">
+				                ${stats.penaltyMissed}
+				            </div>
+				        </div>
+				
+				        <div class="widget-stat">
+				            <div class="widget-stat-label">
+				                Conversion %
+				            </div>
+				            <div class="widget-stat-value">
+				                ${
+				                    (stats.penaltyGoals + stats.penaltyMissed)
+				                    ? (
+				                        stats.penaltyGoals * 100 /
+				                        (stats.penaltyGoals + stats.penaltyMissed)
+				                    ).toFixed(0)
+				                    : 0
+				                }%
+				            </div>
+				        </div>
+				    </div>
+				</div>
 	        `
 	        : ""
 	    }
