@@ -1675,6 +1675,178 @@ function attachCompetitionEvents(){
 
 }
 
+function getPlayerMatches(playerName){
+
+    const currentPlayer =
+        allPlayers.find(
+            p => p.Name === playerName
+        );
+
+    const isGK =
+        isGoalkeeper(
+            currentPlayer?.Position
+        );
+
+    const matches = [];
+
+    allMatches.forEach(match => {
+
+        let played = false;
+        let starter = false;
+        let minutes = 0;
+
+        for(let i = 1; i <= 11; i++){
+
+            if(
+                match[`Player name ${i}`] === playerName
+            ){
+
+                played = true;
+                starter = true;
+
+                let subOffMinute = null;
+
+                for(let s = 1; s <= 6; s++){
+
+                    if(
+                        match[`Sub off ${s}`] === playerName
+                    ){
+
+                        subOffMinute =
+                            parseMinute(
+                                match[`Sub min ${s}`]
+                            );
+
+                        break;
+
+                    }
+
+                }
+
+                minutes =
+                    subOffMinute !== null
+                        ? subOffMinute
+                        : 90;
+
+                break;
+
+            }
+
+        }
+
+        if(!starter){
+
+            for(let i = 1; i <= 6; i++){
+
+                if(
+                    match[`Sub on ${i}`] === playerName
+                ){
+
+                    played = true;
+
+                    const minute =
+                        parseMinute(
+                            match[`Sub min ${i}`]
+                        );
+
+                    minutes =
+                        90 - minute;
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+        if(!played){
+            return;
+        }
+
+        let goals = 0;
+        let assists = 0;
+        let yellow = 0;
+        let red = 0;
+        let penaltyGoals = 0;
+        let penaltyMissed = 0;
+
+        for(let i = 1; i <= 12; i++){
+
+            if(
+                match[`Goal Player ${i}`] === playerName
+            ){
+                goals++;
+            }
+
+            if(
+                match[`Assist Player ${i}`] === playerName
+            ){
+                assists++;
+            }
+
+            if(
+                match[`Yellow player ${i}`] === playerName
+            ){
+                yellow++;
+            }
+
+            if(
+                match[`Red player ${i}`] === playerName
+            ){
+                red++;
+            }
+
+            if(
+                match[`Penalty player ${i}`] === playerName
+            ){
+
+                if(
+                    match[`Penalty scored ${i}`] === "in"
+                ){
+                    penaltyGoals++;
+                }
+
+                if(
+                    match[`Penalty scored ${i}`] === "not in"
+                ){
+                    penaltyMissed++;
+                }
+
+            }
+
+        }
+
+        matches.push({
+
+            match,
+            played,
+            starter,
+            minutes,
+
+            goals,
+            assists,
+
+            yellow,
+            red,
+
+            penaltyGoals,
+            penaltyMissed,
+
+            cleanSheet:
+                Number(match.Conceded) === 0,
+
+            goalsConceded:
+                Number(match.Conceded) || 0
+
+        });
+
+    });
+
+    return matches;
+
+}
+
 function updatePlayerStats(){
 
     const currentPlayer =
@@ -1709,165 +1881,43 @@ function updatePlayerStats(){
 	
 	};
 
-    allMatches.forEach(match => {
+const playerMatches =
+    getPlayerMatches(playerName);
 
-        if(
-            selectedSeason !== "all" &&
-            match.Season !== selectedSeason
-        ){
-            return;
+playerMatches.forEach(item => {
+
+    stats.matches++;
+
+    if(item.starter){
+        stats.starts++;
+    }
+
+    stats.minutes += item.minutes;
+
+    stats.goals += item.goals;
+    stats.assists += item.assists;
+
+    stats.yellow += item.yellow;
+    stats.red += item.red;
+
+    stats.penaltyGoals +=
+        item.penaltyGoals;
+
+    stats.penaltyMissed +=
+        item.penaltyMissed;
+
+    if(isGK){
+
+        stats.goalsConceded +=
+            item.goalsConceded;
+
+        if(item.cleanSheet){
+            stats.cleanSheets++;
         }
 
-        if(
-            selectedCompetition !== "all" &&
-            match.Competition !== selectedCompetition
-        ){
-            return;
-        }
+    }
 
-        let played = false;
-        let starter = false;
-        let minutes = 0;
-
-        // základná zostava
-        for(let i = 1; i <= 11; i++){
-
-            if(
-                match[`Player name ${i}`] === playerName
-            ){
-
-                played = true;
-                starter = true;
-
-                let subOffMinute = null;
-
-                for(let s = 1; s <= 6; s++){
-
-                    if(
-                        match[`Sub off ${s}`] === playerName
-                    ){
-
-                        subOffMinute =
-						parseMinute(match[`Sub min ${s}`]);
-
-                        break;
-
-                    }
-
-                }
-
-                minutes +=
-				    subOffMinute !== null
-				        ? subOffMinute
-				        : 90;
-
-                break;
-
-            }
-
-        }
-
-        // náhradník
-        if(!starter){
-
-            for(let s = 1; s <= 6; s++){
-
-                if(
-                    match[`Sub on ${s}`] === playerName
-                ){
-
-                    played = true;
-
-                    const minute =
-                        parseInt(
-                            match[`Sub min ${s}`]
-                        ) || 0;
-
-                    minutes +=
-                        (90 - minute);
-
-                    break;
-
-                }
-
-            }
-
-        }
-
-		if(!played){
-		    return;
-		}
-		
-		stats.matches++;
-		
-		if(starter){
-		    stats.starts++;
-		}
-		
-		stats.minutes += minutes;
-		
-		let matchGoals = 0;
-		let matchAssists = 0;
-		let matchYellow = 0;
-		let matchRed = 0;
-
-        for(let i = 1; i <= 12; i++){
-
-            if(
-                match[`Goal Player ${i}`] === playerName
-            ){
-
-                matchGoals++;
-                stats.goals++;
-
-            }
-
-            if(
-                match[`Assist Player ${i}`] === playerName
-            ){
-
-                matchAssists++;
-                stats.assists++;
-
-            }
-
-			if(match[`Penalty player ${i}`] === playerName){
-			
-			    if(match[`Penalty scored ${i}`] === "in"){
-			
-			        stats.penaltyGoals++;
-			
-			    }
-			    else if(match[`Penalty scored ${i}`] === "not in"){
-			
-			        stats.penaltyMissed++;
-			
-			    }
-			
-			}
-
-            if(
-                match[`Yellow player ${i}`] === playerName
-            ){
-
-                matchYellow++;
-                stats.yellow++;
-
-            }
-
-            if(
-                match[`Red player ${i}`] === playerName
-            ){
-
-                matchRed++;
-                stats.red++;
-
-            }
-
-        }
-
-	});
-	
+});	
     renderSummary(stats);
 
 }
