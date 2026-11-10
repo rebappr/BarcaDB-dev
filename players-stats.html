@@ -3019,11 +3019,14 @@ function renderPlayerMatches(){
 		const matchHistory =
 		    ratingData?.history || [];
 		
-		const matchRating =
+		const matchRatingData =
 		    matchHistory.find(
 		        item =>
 		            item.matchId == match.ID
-		    )?.rating || 0;
+		    );
+		
+		const matchRating =
+		    matchRatingData?.rating;
 
 		matches.push({
 		
@@ -3046,9 +3049,8 @@ function renderPlayerMatches(){
 		    goalsConceded:
 		        Number(match.Conceded) || 0,
 		
-		    rating:
-			    Number(matchRating)
-			        .toFixed(2)
+			rating:
+			    matchRating
 		
 		});
 		});
@@ -3191,7 +3193,7 @@ function renderPlayerMatches(){
 					
 					        <div>
 					            <span class="match-rating">
-					                ${match.rating}
+					                ${match.rating ? match.rating.toFixed(2) : "-"}
 					            </span>
 					        </div>
 					
@@ -3208,7 +3210,7 @@ function renderPlayerMatches(){
 					
 					        <div>
 					            <span class="match-rating">
-					                ${match.rating}
+					                ${match.rating ? match.rating.toFixed(2) : "-"}
 					            </span>
 					        </div>
 					
@@ -3257,7 +3259,7 @@ function renderPlayerMatches(){
 						        ? `
 						
 						            <span class="match-rating">
-						                ${match.rating}
+						                ${match.rating ? match.rating.toFixed(2) : "-"}
 						            </span>
 						
 						            <span>${match.cleanSheet}</span>
@@ -3272,7 +3274,7 @@ function renderPlayerMatches(){
 						        : `
 						
 						            <span class="match-rating">
-						                ${match.rating}
+						                ${match.rating ? match.rating.toFixed(2) : "-"}
 						            </span>
 						
 						            <span>${match.goals || "-"}</span>
