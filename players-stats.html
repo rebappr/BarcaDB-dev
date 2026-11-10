@@ -1856,165 +1856,6 @@ function updatePlayerStats(){
 
         }
 
-        let matchRating = 6.5;
-
-        // bonus za odohrané minúty
-        if(minutes >= 90){
-
-            matchRating += 0.30;
-
-        }
-        else if(minutes >= 60){
-
-            matchRating += 0.15;
-
-        }
-        else if(minutes >= 30){
-
-            matchRating += 0.05;
-
-        }
-
-        const cleanSheet =
-            Number(match.Conceded) === 0;
-
-        // GK
-		if(isGK){
-		
-		    stats.goalsConceded +=
-		        Number(match.Conceded);
-		
-		    if(cleanSheet){
-		
-		        stats.cleanSheets++;
-		
-		        matchRating += 1.00;
-		
-		    }
-		
-		    matchRating -=
-		        Number(match.Conceded) * 0.15;
-		
-		    if(match["Result type"] === "W"){
-		
-		        matchRating += 0.30;
-		
-		    }
-		
-		}
-
-        // DEF
-        else if(
-
-            position.includes("CB") ||
-            position.includes("LB") ||
-            position.includes("RB") ||
-            position.includes("DF")
-
-        ){
-
-            matchRating +=
-                matchGoals * 0.8;
-
-            matchRating +=
-                matchAssists * 1.0;
-
-			if(cleanSheet){
-			    stats.cleanSheets++;
-			    matchRating += 0.75;
-			}
-
-            if(match["Result type"] === "W"){
-                matchRating += 0.30;
-            }
-
-        }
-
-        // MID
-        else if(
-
-            position.includes("DM") ||
-            position.includes("CM") ||
-            position.includes("AM") ||
-            position.includes("MF")
-
-        ){
-
-            matchRating +=
-                matchGoals * 1.0;
-
-            matchRating +=
-                matchAssists * 1.0;
-
-            if(cleanSheet){
-                matchRating += 0.20;
-            }
-
-            if(match["Result type"] === "W"){
-                matchRating += 0.25;
-            }
-
-        }
-
-        // ATT
-        else{
-
-            matchRating +=
-                matchGoals * 1.25;
-
-            matchRating +=
-                matchAssists * 0.80;
-
-            if(match["Result type"] === "W"){
-                matchRating += 0.20;
-            }
-
-        }
-
-        // bonus za viacgólový zápas
-        if(matchGoals >= 2){
-            matchRating += 0.25;
-        }
-
-        if(matchGoals >= 3){
-            matchRating += 0.50;
-        }
-
-        // karty
-        matchRating -=
-            matchYellow * 0.20;
-
-        matchRating -=
-            matchRed * 1.00;
-
-        // clamp 0-10
-        matchRating = Math.max(
-            0,
-            Math.min(
-                10,
-                matchRating
-            )
-        );
-
-        stats.ratingTotal += matchRating;
-
-        stats.matches++;
-
-        stats.minutes += minutes;
-
-        if(starter){
-            stats.starts++;
-        }
-
-    });
-
-    stats.rating = stats.matches
-        ? (
-            stats.ratingTotal /
-            stats.matches
-        ).toFixed(2)
-        : "0.00";
-
     renderSummary(stats);
 
 }
@@ -2026,9 +1867,14 @@ function renderSummary(stats){
 	
 	if(ratingCard){
 	
-	    ratingCard.querySelector(
-	        ".rating-filter-value"
-	    ).textContent = stats.rating;
+	const ratingData =
+	    allRatings[playerName];
+	
+	ratingCard.querySelector(
+	    ".rating-filter-value"
+	).textContent =
+	    ratingData?.overall?.toFixed(2)
+	    || "0.00";
 	
 	}
 
@@ -2472,10 +2318,6 @@ function getCareerOverview(){
 	
 	    cleanSheets:0,
 	    goalsConceded:0,
-	
-	    ratingTotal:0,
-	    rating:"0.00"
-	
 	};
 
     allMatches.forEach(match => {
@@ -2583,144 +2425,6 @@ function getCareerOverview(){
             }
 
         }
-				let matchRating = 6.5;
-		
-		if(minutes >= 90){
-		
-		    matchRating += 0.30;
-		
-		}
-		else if(minutes >= 60){
-		
-		    matchRating += 0.15;
-		
-		}
-		else if(minutes >= 30){
-		
-		    matchRating += 0.05;
-		
-		}
-		
-		const cleanSheet =
-		    Number(match.Conceded) === 0;
-		
-		if(isGK){
-		
-		    if(cleanSheet){
-		
-		        matchRating += 1.00;
-		
-		    }
-		
-		    matchRating -=
-		        Number(match.Conceded) * 0.15;
-		
-		    if(match["Result type"] === "W"){
-		
-		        matchRating += 0.30;
-		
-		    }
-		
-		}
-		else if(
-		
-		    position.includes("CB") ||
-		    position.includes("LB") ||
-		    position.includes("RB") ||
-		    position.includes("DF")
-		
-		){
-		
-		    matchRating +=
-		        matchGoals * 0.8;
-		
-		    matchRating +=
-		        matchAssists * 1.0;
-		
-		    if(cleanSheet){
-		
-		        matchRating += 0.75;
-		
-		    }
-		
-		    if(match["Result type"] === "W"){
-		
-		        matchRating += 0.30;
-		
-		    }
-		
-		}
-		else if(
-		
-		    position.includes("DM") ||
-		    position.includes("CM") ||
-		    position.includes("AM") ||
-		    position.includes("MF")
-		
-		){
-		
-		    matchRating +=
-		        matchGoals * 1.0;
-		
-		    matchRating +=
-		        matchAssists * 1.0;
-		
-		    if(cleanSheet){
-		
-		        matchRating += 0.20;
-		
-		    }
-		
-		    if(match["Result type"] === "W"){
-		
-		        matchRating += 0.25;
-		
-		    }
-		
-		}
-		else{
-		
-		    matchRating +=
-		        matchGoals * 1.25;
-		
-		    matchRating +=
-		        matchAssists * 0.80;
-		
-		    if(match["Result type"] === "W"){
-		
-		        matchRating += 0.20;
-		
-		    }
-		
-		}
-		
-		if(matchGoals >= 2){
-		
-		    matchRating += 0.25;
-		
-		}
-		
-		if(matchGoals >= 3){
-		
-		    matchRating += 0.50;
-		
-		}
-		
-		matchRating -=
-		    matchYellow * 0.20;
-		
-		matchRating -=
-		    matchRed * 1.00;
-		
-		matchRating = Math.max(
-		    0,
-		    Math.min(
-		        10,
-		        matchRating
-		    )
-		);
-		
-		stats.ratingTotal += matchRating;
     });
 
 	stats.rating = stats.matches
@@ -2761,7 +2465,10 @@ function renderCareerOverview(){
 				
 				<div class="summary-stat">
 				    <div class="summary-value summary-rating">
-				        ${stats.rating}
+				        ${
+						    allRatings[playerName]?.overall
+						    ?.toFixed(2) || "0.00"
+						}
 				    </div>
 				    <div class="summary-label">
 				        Rating
@@ -2845,9 +2552,12 @@ function renderCareerOverview(){
         <div class="career-summary">
 			
 			<div class="summary-stat">
-			    <div class="summary-value summary-rating">
-			        ${stats.rating}
-			    </div>
+				<div class="summary-value summary-rating">
+				    ${
+				        allRatings[playerName]?.overall
+				        ?.toFixed(2) || "0.00"
+				    }
+				</div>
 			    <div class="summary-label">
 			        Rating
 			    </div>
@@ -3091,6 +2801,7 @@ document
 
 let allMatches = [];
 let allPlayers = [];
+let allRatings = {};
 
 let selectedCompetition = "all";
 let selectedSeason = "all";
@@ -3272,102 +2983,18 @@ function renderPlayerMatches(){
 		
 		}
 
-		let matchRating = 6.5;
+		const ratingData =
+		    allRatings[playerName];
 		
-		const currentPlayer =
-		    allPlayers.find(
-		        p => p.Name === playerName
-		    );
+		const matchHistory =
+		    ratingData?.history || [];
 		
-		const position =
-		    currentPlayer?.Position || "";
-		
-		const isGK =
-		    isGoalkeeper(position);
-		
-		let minutes = 90;
-		
-		const cleanSheet =
-		    Number(match.Conceded) === 0;
-		
-		if(isGK){
-		
-		    if(cleanSheet){
-		        matchRating += 1.0;
-		    }
-		
-		    matchRating -=
-		        Number(match.Conceded) * 0.15;
-		
-		    if(match["Result type"] === "W"){
-		        matchRating += 0.30;
-		    }
-		
-		}
-		else if(
-		
-		    position.includes("CB") ||
-		    position.includes("LB") ||
-		    position.includes("RB") ||
-		    position.includes("DF")
-		
-		){
-		
-		    matchRating += goals * 0.8;
-		    matchRating += assists * 1.0;
-		
-		    if(cleanSheet){
-		        matchRating += 0.75;
-		    }
-		
-		    if(match["Result type"] === "W"){
-		        matchRating += 0.30;
-		    }
-		
-		}
-		else if(
-		
-		    position.includes("DM") ||
-		    position.includes("CM") ||
-		    position.includes("AM") ||
-		    position.includes("MF")
-		
-		){
-		
-		    matchRating += goals * 1.0;
-		    matchRating += assists * 1.0;
-		
-		    if(cleanSheet){
-		        matchRating += 0.20;
-		    }
-		
-		    if(match["Result type"] === "W"){
-		        matchRating += 0.25;
-		    }
-		
-		}
-		else{
-		
-		    matchRating += goals * 1.25;
-		    matchRating += assists * 0.80;
-		
-		    if(match["Result type"] === "W"){
-		        matchRating += 0.20;
-		    }
-		
-		}
-		
-		matchRating -= yellow * 0.20;
-		matchRating -= red * 1.0;
-		
-		matchRating = Math.max(
-		    0,
-		    Math.min(
-		        10,
-		        matchRating
-		    )
-		);
-		
+		const matchRating =
+		    matchHistory.find(
+		        item =>
+		            item.matchId == match.ID
+		    )?.rating || 0;
+
 		matches.push({
 		
 		    ...match,
@@ -3390,7 +3017,8 @@ function renderPlayerMatches(){
 		        Number(match.Conceded) || 0,
 		
 		    rating:
-		        matchRating.toFixed(2)
+			    Number(matchRating)
+			        .toFixed(2)
 		
 		});
 		});
@@ -3741,12 +3369,14 @@ function populateSeasonFilter(playerName){
 
 Promise.all([
     fetch("data/playersCS.json").then(r => r.json()),
-    fetch("data/data.json").then(r => r.json())
+    fetch("data/data.json").then(r => r.json()),
+    fetch("data/player-ratings.json").then(r => r.json())
 ])
-.then(([players, matches]) => {
+.then(([players, matches, ratings]) => {
 
     allMatches = matches;
-	allPlayers = players;
+    allPlayers = players;
+    allRatings = ratings;
 
     initPersonSearch();
 
