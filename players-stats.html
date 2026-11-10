@@ -1950,96 +1950,66 @@ function updatePlayerStats(){
 function renderSummary(stats){
 
 	const ratingCard =
-	    document.getElementById("ratingCard");
-	
+    document.getElementById("ratingCard");
+
 	if (ratingCard) {
 	
 	    const ratingData =
 	        allRatings[playerName];
 	
-	    const ratingData =
-		    allRatings[playerName];
-		
-		const filteredRatings =
-		    (ratingData?.history || []).filter(item => {
-		
-		        const match =
-		            allMatches.find(m => m.ID == item.matchId);
-		
-		        if(!match){
-		            return false;
-		        }
-		
-		        if(
-		            selectedSeason !== "all" &&
-		            match.Season !== selectedSeason
-		        ){
-		            return false;
-		        }
-		
-		        if(
-		            selectedCompetition !== "all" &&
-		            match.Competition !== selectedCompetition
-		        ){
-		            return false;
-		        }
-		
-		        return true;
-		
-		    });
-		
-		const filteredRatings =
-		    (ratingData?.history || []).filter(item => {
-		
-		        const match =
-		            allMatches.find(
-		                m => m.ID == item.matchId
-		            );
-		
-		        if(!match){
-		            return false;
-		        }
-		
-		        if(
-		            selectedSeason !== "all" &&
-		            match.Season !== selectedSeason
-		        ){
-		            return false;
-		        }
-		
-		        if(
-		            selectedCompetition !== "all" &&
-		            match.Competition !== selectedCompetition
-		        ){
-		            return false;
-		        }
-		
-		        return true;
-		
-		    });
-
-		const averageRating =
-		    filteredRatings.length
-		        ? filteredRatings.reduce(
-		            (sum, item) => sum + item.rating,
-		            0
-		          ) / filteredRatings.length
-		        : null;
-		
-		if(!averageRating){
-		
-		    ratingCard.style.display = "none";
-		
-		}else{
-		
-		    ratingCard.style.display = "flex";
-		
-		    ratingCard.querySelector(
-		        ".rating-filter-value"
-		    ).textContent =
-		        averageRating.toFixed(2);
-		
-		}	
+	    const filteredRatings =
+	        (ratingData?.history || []).filter(item => {
+	
+	            const match =
+	                allMatches.find(
+	                    m => m.ID == item.matchId
+	                );
+	
+	            if(!match){
+	                return false;
+	            }
+	
+	            if(
+	                selectedSeason !== "all" &&
+	                match.Season !== selectedSeason
+	            ){
+	                return false;
+	            }
+	
+	            if(
+	                selectedCompetition !== "all" &&
+	                match.Competition !== selectedCompetition
+	            ){
+	                return false;
+	            }
+	
+	            return true;
+	
+	        });
+	
+	    const averageRating =
+	        filteredRatings.length
+	            ? filteredRatings.reduce(
+	                (sum, item) => sum + item.rating,
+	                0
+	              ) / filteredRatings.length
+	            : null;
+	
+	    if(averageRating === null){
+	
+	        ratingCard.style.display = "none";
+	
+	    }else{
+	
+	        ratingCard.style.display = "flex";
+	
+	        ratingCard.querySelector(
+	            ".rating-filter-value"
+	        ).textContent =
+	            averageRating.toFixed(2);
+	
+	    }
+	
 	}
 
     const currentPlayer =
