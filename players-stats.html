@@ -827,19 +827,6 @@ display:none;
 
 @media(max-width:820px){
 
-    .rating-filter-card{
-
-        width:100%;
-        min-width:100%;
-    }
-
-    .filter-section.competition{
-        width:100%;
-        display:flex;
-        flex-wrap:wrap;
-        overflow:visible;
-    }
-
     #competitionContainer{
         width:100%;
         display:flex;
@@ -930,16 +917,31 @@ display:none;
         display:none;
     }
 
-.player-filters-card{
+    .player-filters-card{
 
-    flex-direction:column;
-    gap:14px;
-}
+        flex-direction:row;
+        flex-wrap:wrap;
+        align-items:flex-start;
+    }
 
-.filter-section.season{
-    width:100%;
-    min-width:100%;
-}
+    .filter-section.season{
+        flex:1;
+        min-width:0;
+    }
+
+    .rating-filter-card{
+
+        width:auto;
+        min-width:80px;
+
+        margin-left:0;
+    }
+
+    .filter-section.competition{
+
+        width:100%;
+        flex-basis:100%;
+    }
 
 #seasonFilter{
     width:100%;
