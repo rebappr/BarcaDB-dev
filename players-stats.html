@@ -2495,18 +2495,6 @@ function renderCareerOverview(){
 
             <div class="career-summary">
 				
-				<div class="summary-stat">
-				    <div class="summary-value summary-rating">
-				        ${
-						    allRatings[playerName]?.overall
-						    ?.toFixed(2) || "0.00"
-						}
-				    </div>
-				    <div class="summary-label">
-				        Rating
-				    </div>
-				</div>
-
                 <div class="summary-stat">
                     <div class="summary-value">
                         ${stats.seasons.size}
@@ -2583,18 +2571,6 @@ function renderCareerOverview(){
 
         <div class="career-summary">
 			
-			<div class="summary-stat">
-				<div class="summary-value summary-rating">
-				    ${
-				        allRatings[playerName]?.overall
-				        ?.toFixed(2) || "0.00"
-				    }
-				</div>
-			    <div class="summary-label">
-			        Rating
-			    </div>
-			</div>
-
             <div class="summary-stat">
                 <div class="summary-value">
                     ${stats.seasons.size}
