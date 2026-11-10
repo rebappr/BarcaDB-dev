@@ -27,7 +27,7 @@ allMatches.forEach(match => {
 
 });
 
-function parseCSV(csv){
+function parseCSV(csv) {
 
     const rows = [];
 
@@ -38,19 +38,21 @@ function parseCSV(csv){
     const headers =
         parseCSVLine(lines[0]);
 
-    for(let i = 1; i < lines.length; i++){
+    for (let i = 1; i < lines.length; i++) {
 
         const values =
             parseCSVLine(lines[i]);
 
         const row = {};
 
-        headers.forEach((header, index) => {
+        headers.forEach(
+            (header, index) => {
 
-            row[header] =
-                values[index] ?? "";
+                row[header] =
+                    values[index] ?? "";
 
-        });
+            }
+        );
 
         rows.push(row);
 
@@ -60,16 +62,16 @@ function parseCSV(csv){
 
 }
 
-function parseCSVLine(line){
+function parseCSVLine(line) {
 
     const result = [];
 
     let current = "";
     let insideQuotes = false;
 
-    for(const char of line){
+    for (const char of line) {
 
-        if(char === '"'){
+        if (char === '"') {
 
             insideQuotes =
                 !insideQuotes;
@@ -78,10 +80,10 @@ function parseCSVLine(line){
 
         }
 
-        if(
+        if (
             char === "," &&
             !insideQuotes
-        ){
+        ) {
 
             result.push(current);
 
@@ -103,9 +105,9 @@ function parseCSVLine(line){
 
 const players = {};
 
-function processCSVDirectory(directory){
+function processCSVDirectory(directory) {
 
-    if(!fs.existsSync(directory)){
+    if (!fs.existsSync(directory)) {
         return;
     }
 
@@ -115,7 +117,7 @@ function processCSVDirectory(directory){
                 file.endsWith(".csv")
             );
 
-    for(const file of files){
+    for (const file of files) {
 
         const matchId =
             Number(
@@ -128,7 +130,10 @@ function processCSVDirectory(directory){
 
         const csvContent =
             fs.readFileSync(
-                path.join(directory, file),
+                path.join(
+                    directory,
+                    file
+                ),
                 "utf8"
             );
 
@@ -140,7 +145,7 @@ function processCSVDirectory(directory){
             const originalName =
                 row.Player?.trim();
 
-            if(!originalName){
+            if (!originalName) {
                 return;
             }
 
@@ -148,7 +153,7 @@ function processCSVDirectory(directory){
                 playerMap[originalName] ||
                 originalName;
 
-            if(!players[playerName]){
+            if (!players[playerName]) {
 
                 players[playerName] = [];
 
@@ -156,10 +161,11 @@ function processCSVDirectory(directory){
 
             let matchRecord =
                 players[playerName].find(
-                    m => m.matchId === matchId
+                    m =>
+                        m.matchId === matchId
                 );
 
-            if(!matchRecord){
+            if (!matchRecord) {
 
                 matchRecord = {
 
@@ -175,28 +181,22 @@ function processCSVDirectory(directory){
                     .push(matchRecord);
 
             }
-            else if(
-                !matchRecord.season
-            ){
-
-                matchRecord.season =
-                    seasonMap[matchId] ||
-                    "Unknown";
-
-            }
 
             Object.entries(row)
                 .forEach(
                     ([key, value]) => {
 
-                    if(key === "Player"){
-                        return;
+                        if (
+                            key === "Player"
+                        ) {
+                            return;
+                        }
+
+                        matchRecord[key] =
+                            value;
+
                     }
-
-                    matchRecord[key] =
-                        value;
-
-                });
+                );
 
         });
 
@@ -204,16 +204,10 @@ function processCSVDirectory(directory){
 
 }
 
-/*
- * Hráči v poli
- */
 processCSVDirectory(
     MATCHES_DIR
 );
 
-/*
- * Brankári
- */
 processCSVDirectory(
     GK_DIR
 );
@@ -223,7 +217,8 @@ Object.keys(players)
 
         players[player].sort(
             (a, b) =>
-                a.matchId - b.matchId
+                a.matchId -
+                b.matchId
         );
 
     });
