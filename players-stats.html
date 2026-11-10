@@ -3098,21 +3098,26 @@ function renderPlayerInfo(){
         return;
     }
 
-		const playerMatches =
-	    getPlayerMatches(playerName)
-	    .sort((a,b) => {
+	const playerInfo =
+	    allPlayersInfo.find(
+	        p => p.Name === playerName
+	    );
+
+	const playerMatches =
+    getPlayerMatches(playerName)
+    .sort((a,b) => {
 	
-	        const da = new Date(
-	            a.match.Date.split(".").reverse().join("-")
-	        );
+        const da = new Date(
+            a.match.Date.split(".").reverse().join("-")
+        );
 	
-	        const db = new Date(
-	            b.match.Date.split(".").reverse().join("-")
-	        );
+        const db = new Date(
+            b.match.Date.split(".").reverse().join("-")
+        );
 	
-	        return da - db;
+        return da - db;
 	
-	    });
+    });
 	
 	const debutMatch =
 	    playerMatches[0]?.match;
@@ -3135,7 +3140,7 @@ function renderPlayerInfo(){
 				<div class="info-item">
 				    <span>Full Name</span>
 				    <strong>
-				        ${player["Full Name"] || player.Name}
+				        ${playerInfo?.["Full Name"] || player.Name}
 				    </strong>
 				</div>
 
@@ -3683,13 +3688,10 @@ Promise.all([
 		const player = playersCS.find(
 		    p => p.Name === playerName
 		);
+	allPlayersInfo = playersInfo;
     allRatings = ratings;
 
     initPersonSearch();
-
-    const player = players.find(
-        p => p.Name === playerName
-    );
 
     if(!player){
 
