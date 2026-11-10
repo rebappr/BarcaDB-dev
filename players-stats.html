@@ -1856,6 +1856,8 @@ function updatePlayerStats(){
 
         }
 
+	});
+	
     renderSummary(stats);
 
 }
@@ -1865,16 +1867,31 @@ function renderSummary(stats){
 	const ratingCard =
 	    document.getElementById("ratingCard");
 	
-	if(ratingCard){
+	if (ratingCard) {
 	
-	const ratingData =
-	    allRatings[playerName];
+	    const ratingData =
+	        allRatings[playerName];
 	
-	ratingCard.querySelector(
-	    ".rating-filter-value"
-	).textContent =
-	    ratingData?.overall?.toFixed(2)
-	    || "0.00";
+	    const seasonRating =
+	        ratingData?.seasons?.[selectedSeason];
+	
+	    if (!seasonRating) {
+	
+	        ratingCard.style.display =
+	            "none";
+	
+	    } else {
+	
+	        ratingCard.style.display =
+	            "flex";
+	
+	        ratingCard.querySelector(
+	            ".rating-filter-value"
+	        ).textContent =
+	            seasonRating.rating
+	                .toFixed(2);
+	
+	    }
 	
 	}
 
