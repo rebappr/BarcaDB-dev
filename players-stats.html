@@ -2440,41 +2440,42 @@ function renderCareerOverview(){
 	const isGK =
 	    isGoalkeeper(position);
 
-    if(isGK){
+document.getElementById(
+    "careerSection"
+).innerHTML = `
 
-        document.getElementById(
-            "careerSection"
-        ).innerHTML = `
+    <div class="career-summary">
 
-            <div class="career-summary">
-				
-                <div class="summary-stat">
-                    <div class="summary-value">
-                        ${stats.seasons.size}
-                    </div>
-                    <div class="summary-label">
-                        Seasons
-                    </div>
-                </div>
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.seasons.size}
+            </div>
+            <div class="summary-label">
+                Seasons
+            </div>
+        </div>
 
-                <div class="summary-stat">
-                    <div class="summary-value">
-                        ${stats.matches}
-                    </div>
-                    <div class="summary-label">
-                        Matches
-                    </div>
-                </div>
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.matches}
+            </div>
+            <div class="summary-label">
+                Matches
+            </div>
+        </div>
 
-				<div class="summary-stat">
-				    <div class="summary-value">
-				        ${stats.minutes.toLocaleString("en-US")}
-				    </div>
-				    <div class="summary-label">
-				        Minutes
-				    </div>
-				</div>
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.minutes.toLocaleString("en-US")}
+            </div>
+            <div class="summary-label">
+                Minutes
+            </div>
+        </div>
 
+        ${
+            isGK
+            ? `
                 <div class="summary-stat">
                     <div class="summary-value">
                         ${stats.cleanSheets}
@@ -2492,122 +2493,274 @@ function renderCareerOverview(){
                         Goals Conc.
                     </div>
                 </div>
+            `
+            : `
+                <div class="summary-stat">
+                    <div class="summary-value">
+                        ${stats.goals}
+                    </div>
+                    <div class="summary-label">
+                        Goals
+                    </div>
+                </div>
 
                 <div class="summary-stat">
                     <div class="summary-value">
-                        ${stats.yellow}
+                        ${stats.assists}
                     </div>
                     <div class="summary-label">
-                        Yellow
+                        Assists
                     </div>
                 </div>
 
                 <div class="summary-stat">
                     <div class="summary-value">
-                        ${stats.red}
+                        ${stats.goals + stats.assists}
                     </div>
                     <div class="summary-label">
-                        Red
+                        G+A
+                    </div>
+                </div>
+            `
+        }
+
+    </div>
+
+    <div class="season-widgets">
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Performance
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Matches
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.matches}
                     </div>
                 </div>
 
-            </div>
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Starts
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.starts}
+                    </div>
+                </div>
 
-        `;
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Total Minutes
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.minutes.toLocaleString("en-US")}
+                    </div>
+                </div>
 
-        return;
-    }
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Minutes per Match
+                    </div>
+                    <div class="widget-stat-value">
+                        ${
+                            stats.matches
+                            ? Math.round(stats.minutes / stats.matches)
+                            : 0
+                        }
+                    </div>
+                </div>
 
-    document.getElementById(
-        "careerSection"
-    ).innerHTML = `
-
-        <div class="career-summary">
-			
-            <div class="summary-stat">
-                <div class="summary-value">
-                    ${stats.seasons.size}
-                </div>
-                <div class="summary-label">
-                    Seasons
-                </div>
-            </div>
-
-            <div class="summary-stat">
-                <div class="summary-value">
-                    ${stats.matches}
-                </div>
-                <div class="summary-label">
-                    Matches
-                </div>
-            </div>
-
-			<div class="summary-stat">
-			    <div class="summary-value">
-			        ${stats.minutes.toLocaleString("en-US")}
-			    </div>
-			    <div class="summary-label">
-			        Minutes
-			    </div>
-			</div>
-
-            <div class="summary-stat">
-                <div class="summary-value">
-                    ${stats.goals}
-                </div>
-                <div class="summary-label">
-                    Goals
-                </div>
-            </div>
-
-            <div class="summary-stat">
-                <div class="summary-value">
-                    ${stats.assists}
-                </div>
-                <div class="summary-label">
-                    Assists
-                </div>
-            </div>
-
-            <div class="summary-stat">
-                <div class="summary-value">
-                    ${stats.goals + stats.assists}
-                </div>
-                <div class="summary-label">
-                    G+A
-                </div>
-            </div>
-
-            <div class="summary-stat">
-                <div class="summary-value">
-                    ${stats.penaltyGoals}
-                </div>
-                <div class="summary-label">
-                    Penalty Goals
-                </div>
-            </div>
-
-            <div class="summary-stat">
-                <div class="summary-value">
-                    ${stats.yellow}
-                </div>
-                <div class="summary-label">
-                    Yellow
-                </div>
-            </div>
-
-            <div class="summary-stat">
-                <div class="summary-value">
-                    ${stats.red}
-                </div>
-                <div class="summary-label">
-                    Red
-                </div>
             </div>
 
         </div>
 
-    `;
+        ${
+            !isGK
+            ? `
+                <div class="stats-widget">
+
+                    <div class="stats-widget-title">
+                        Attacking
+                    </div>
+
+                    <div class="widget-stats-list">
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Goals</div>
+                            <div class="widget-stat-value">${stats.goals}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Assists</div>
+                            <div class="widget-stat-value">${stats.assists}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">G+A</div>
+                            <div class="widget-stat-value">${stats.goals + stats.assists}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">G/90</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.minutes
+                                    ? ((stats.goals * 90) / stats.minutes).toFixed(2)
+                                    : "0.00"
+                                }
+                            </div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">A/90</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.minutes
+                                    ? ((stats.assists * 90) / stats.minutes).toFixed(2)
+                                    : "0.00"
+                                }
+                            </div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">G+A/90</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.minutes
+                                    ? (((stats.goals + stats.assists) * 90) / stats.minutes).toFixed(2)
+                                    : "0.00"
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="stats-widget">
+
+                    <div class="stats-widget-title">
+                        Penalties
+                    </div>
+
+                    <div class="widget-stats-list">
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Penalty Goals</div>
+                            <div class="widget-stat-value">${stats.penaltyGoals}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Missed Penalties</div>
+                            <div class="widget-stat-value">${stats.penaltyMissed}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Conversion %</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    (stats.penaltyGoals + stats.penaltyMissed)
+                                    ? (
+                                        stats.penaltyGoals * 100 /
+                                        (stats.penaltyGoals + stats.penaltyMissed)
+                                    ).toFixed(0)
+                                    : 0
+                                }%
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            `
+            : `
+                <div class="stats-widget">
+
+                    <div class="stats-widget-title">
+                        Goalkeeping
+                    </div>
+
+                    <div class="widget-stats-list">
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Clean Sheets</div>
+                            <div class="widget-stat-value">${stats.cleanSheets}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Goals Conceded</div>
+                            <div class="widget-stat-value">${stats.goalsConceded}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Goals Conceded/90</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.minutes
+                                    ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
+                                    : "0.00"
+                                }
+                            </div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Clean Sheet %</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.matches
+                                    ? ((stats.cleanSheets * 100) / stats.matches).toFixed(0)
+                                    : 0
+                                }%
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            `
+        }
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Discipline
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        <span class="card-indicator card-yellow"></span>
+                        Yellow Cards
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.yellow}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        <span class="card-indicator card-red"></span>
+                        Red Cards
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.red}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+`;
 }
 function renderPlayer(player){
 
