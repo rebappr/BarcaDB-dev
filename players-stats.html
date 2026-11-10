@@ -1941,6 +1941,28 @@ function getPlayerAggregateStats(
 
     };
 
+	const playerMatches =
+	    getPlayerMatches(playerName)
+	    .sort((a,b) => {
+	
+	        const da = new Date(
+	            a.match.Date.split(".").reverse().join("-")
+	        );
+	
+	        const db = new Date(
+	            b.match.Date.split(".").reverse().join("-")
+	        );
+	
+	        return da - db;
+	
+	    });
+	
+	const debutMatch =
+	    playerMatches[0]?.match;
+	
+	const lastMatch =
+	    playerMatches[playerMatches.length - 1]?.match;
+
     const playerMatches =
         getPlayerMatches(playerName);
 
@@ -3109,10 +3131,12 @@ function renderPlayerInfo(){
 
             <div class="info-grid">
 
-                <div class="info-item">
-                    <span>Name</span>
-                    <strong>${player.Name}</strong>
-                </div>
+				<div class="info-item">
+				    <span>Full Name</span>
+				    <strong>
+				        ${player["Full Name"] || player.Name}
+				    </strong>
+				</div>
 
                 <div class="info-item">
                     <span>Position</span>
@@ -3128,6 +3152,28 @@ function renderPlayerInfo(){
                     <span>Number</span>
                     <strong>#${player.Number || "-"}</strong>
                 </div>
+
+				<div class="info-item">
+				    <span>Debut</span>
+				    <strong>
+				        ${
+				            debutMatch
+				            ? `${debutMatch.Date} vs ${debutMatch["Opp. Team"]}`
+				            : "-"
+				        }
+				    </strong>
+				</div>
+				
+				<div class="info-item">
+				    <span>Last Match</span>
+				    <strong>
+				        ${
+				            lastMatch
+				            ? `${lastMatch.Date} vs ${lastMatch["Opp. Team"]}`
+				            : "-"
+				        }
+				    </strong>
+				</div>
 
             </div>
 
