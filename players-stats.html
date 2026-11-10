@@ -1272,13 +1272,7 @@ display:none;
 	
 	    <div class="season-select-wrap">
 	
-	        <select id="seasonFilter">
-	
-	            <option value="all">
-	                All Seasons
-	            </option>
-	
-	        </select>
+	        <select id="seasonFilter"></select>
 	
 	    </div>
 	
@@ -3308,13 +3302,9 @@ function populateSeasonFilter(playerName){
             "seasonFilter"
         );
 
-    seasonFilter.innerHTML = `
+    seasonFilter.innerHTML =
 
-        <option value="all">
-            All Seasons
-        </option>
-
-        ${[...seasons]
+        [...seasons]
             .sort()
             .reverse()
             .map(season => `
@@ -3322,23 +3312,23 @@ function populateSeasonFilter(playerName){
                     ${season}
                 </option>
             `)
-            .join("")}
+            .join("");
 
-    `;
-	const latestSeason =
-	    [...seasons]
-	        .sort()
-	        .reverse()[0];
-	
-	if(latestSeason){
-	
-	    seasonFilter.value =
-	        latestSeason;
-	
-	    selectedSeason =
-	        latestSeason;
-	
-	}
+    const latestSeason =
+        [...seasons]
+            .sort()
+            .reverse()[0];
+
+    if(latestSeason){
+
+        seasonFilter.value =
+            latestSeason;
+
+        selectedSeason =
+            latestSeason;
+
+    }
+
 }
 
 Promise.all([
