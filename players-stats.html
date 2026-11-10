@@ -1792,14 +1792,22 @@ function updatePlayerStats(){
 
         }
 
-        if(!played){
-            return;
-        }
-
-        let matchGoals = 0;
-        let matchAssists = 0;
-        let matchYellow = 0;
-        let matchRed = 0;
+		if(!played){
+		    return;
+		}
+		
+		stats.matches++;
+		
+		if(starter){
+		    stats.starts++;
+		}
+		
+		stats.minutes += minutes;
+		
+		let matchGoals = 0;
+		let matchAssists = 0;
+		let matchYellow = 0;
+		let matchRed = 0;
 
         for(let i = 1; i <= 12; i++){
 
@@ -2366,7 +2374,9 @@ function getCareerOverview(){
 			    }
 			
 			    minutes +=
-			        subOffMinute || 90;
+				    subOffMinute !== null
+				        ? subOffMinute
+				        : 90;
 			}
 
         }
@@ -2377,11 +2387,14 @@ function getCareerOverview(){
 			
 			    played = true;
 			
-			    const minute =
-			        parseInt(match[`Sub min ${i}`]) || 0;
-			
-			    minutes +=
-			        (90 - minute);
+				const minute =
+				    parseMinute(
+				        match[`Sub min ${s}`]
+				    );
+				
+				minutes +=
+				    (90 - minute);
+				
 			}
 
         }
