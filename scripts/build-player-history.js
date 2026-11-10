@@ -91,10 +91,10 @@ if (!fs.existsSync(MATCHES_DIR)) {
 
 }
 
-const files =
+const standardFiles =
     fs.readdirSync(MATCHES_DIR)
         .filter(file =>
-            file.toLowerCase().endsWith(".csv")
+            file.endsWith(".csv")
         );
 
 for (const file of files) {
