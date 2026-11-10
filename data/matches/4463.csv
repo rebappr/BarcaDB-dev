@@ -1,3 +1,4 @@
+Player,#,Nation,Pos,Age,Min,Gls,Ast,PK,PKatt,Sh,SoT,CrdY,CrdR,Fls,Fld,Off,Crs,TklW,Int,OG,PKwon,PKcon,-9999
 Karim Adeyemi,14,de GER,FW,24-241,90,0,1,0,0,8,1,1,0,2,4,0,2,0,0,0,,,501055d8
 Raphinha,11,br BRA,FW,29-276,68,3,0,2,2,6,4,0,0,0,1,0,2,0,0,0,,,3423f250
 Gabriel Jesus,9,br BRA,FWMF,29-166,22,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,,,b66315ae
@@ -14,3 +15,4 @@ Andreas Christensen,15,dk DEN,CB,30-159,90,0,0,0,0,2,0,0,0,2,1,0,0,0,1,0,,,1cb49
 Eric García,24,es ESP,RB,25-250,90,0,0,0,0,0,0,0,0,1,0,0,1,0,1,0,,,2bed3eab
 Joan García,1,es ESP,GK,25-135,45,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,87b498b0
 Wojciech Szczęsny,13,pl POL,GK,36-151,45,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,,01b8a2b2
+16 Players,,,,,990,6,4,2,3,30,9,3,0,10,12,3,25,2,9,0,,,-9999
