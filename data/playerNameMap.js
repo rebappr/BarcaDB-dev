@@ -34,7 +34,7 @@ const playerMap = {
     "Hamza Abdelkarim": "Hamza Abdelkarim",
 
     // FBref encoding fixes
-    "Fermin LĂłpez": "Fermin Lopez",
+    "FermĂ­n LĂłpez": "Fermin Lopez",
     "JoĂŁo Cancelo": "Joao Cancelo",
     "Eric GarcĂ­a": "Eric Garcia",
     "Joan GarcĂ­a": "Joan Garcia",
