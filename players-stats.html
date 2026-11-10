@@ -1941,28 +1941,6 @@ function getPlayerAggregateStats(
 
     };
 
-	const playerMatches =
-	    getPlayerMatches(playerName)
-	    .sort((a,b) => {
-	
-	        const da = new Date(
-	            a.match.Date.split(".").reverse().join("-")
-	        );
-	
-	        const db = new Date(
-	            b.match.Date.split(".").reverse().join("-")
-	        );
-	
-	        return da - db;
-	
-	    });
-	
-	const debutMatch =
-	    playerMatches[0]?.match;
-	
-	const lastMatch =
-	    playerMatches[playerMatches.length - 1]?.match;
-
     const playerMatches =
         getPlayerMatches(playerName);
 
@@ -3118,6 +3096,28 @@ function renderPlayerInfo(){
     if(!player){
         return;
     }
+
+		const playerMatches =
+	    getPlayerMatches(playerName)
+	    .sort((a,b) => {
+	
+	        const da = new Date(
+	            a.match.Date.split(".").reverse().join("-")
+	        );
+	
+	        const db = new Date(
+	            b.match.Date.split(".").reverse().join("-")
+	        );
+	
+	        return da - db;
+	
+	    });
+	
+	const debutMatch =
+	    playerMatches[0]?.match;
+	
+	const lastMatch =
+	    playerMatches[playerMatches.length - 1]?.match;
 
     document.getElementById(
         "playerInfoContent"
