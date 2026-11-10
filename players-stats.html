@@ -2973,6 +2973,7 @@ document
 let allMatches = [];
 let allPlayers = [];
 let allRatings = {};
+let allPlayersInfo = [];
 
 let selectedCompetition = "all";
 let selectedSeason = "all";
@@ -3677,9 +3678,11 @@ Promise.all([
     fetch("data/player-ratings.json").then(r => r.json())
 ])
 .then(([playersCS, playersInfo, matches, ratings]) => {
-
     allMatches = matches;
-    allPlayers = players;
+    allPlayers = playersCS;
+		const player = playersCS.find(
+		    p => p.Name === playerName
+		);
     allRatings = ratings;
 
     initPersonSearch();
