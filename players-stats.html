@@ -3672,10 +3672,11 @@ function populateSeasonFilter(playerName){
 
 Promise.all([
     fetch("data/playersCS.json").then(r => r.json()),
+    fetch("data/players.json").then(r => r.json()),
     fetch("data/data.json").then(r => r.json()),
     fetch("data/player-ratings.json").then(r => r.json())
 ])
-.then(([players, matches, ratings]) => {
+.then(([playersCS, playersInfo, matches, ratings]) => {
 
     allMatches = matches;
     allPlayers = players;
