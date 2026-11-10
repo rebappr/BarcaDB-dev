@@ -120,13 +120,12 @@ if (!fs.existsSync(INPUT_FILE)) {
 
 }
 
-const history =
-    JSON.parse(
-        fs.readFileSync(
-            INPUT_FILE,
-            "utf8"
-        )
-    );
+const history = JSON.parse(
+    fs.readFileSync(
+        INPUT_FILE,
+        "utf8"
+    )
+);
 
 const output = {};
 
@@ -167,85 +166,4 @@ for (
         ratings.push({
 
             matchId:
-                match.matchId,
-
-            season:
-                match.season,
-
-            rating:
-                matchRating
-
-        });
-
-        const season =
-            match.season || "Unknown";
-
-        if (!seasonStats[season]) {
-
-            seasonStats[season] = {
-
-                ratings: [],
-
-                matches: 0,
-
-                minutes: 0,
-
-                goals: 0,
-
-                assists: 0
-
-            };
-
-        }
-
-        seasonStats[season]
-            .ratings
-            .push(matchRating);
-
-        seasonStats[season]
-            .matches++;
-
-        seasonStats[season]
-            .minutes +=
-            num(match.Min);
-
-        seasonStats[season]
-            .goals +=
-            num(match.Gls);
-
-        seasonStats[season]
-            .assists +=
-            num(match.Ast);
-
-        totalMinutes +=
-            num(match.Min);
-
-        goals +=
-            num(match.Gls);
-
-        assists +=
-            num(match.Ast);
-
-        yellowCards +=
-            num(match.CrdY);
-
-        redCards +=
-            num(match.CrdR);
-
-        if ("GA" in match) {
-
-            if (
-                num(match.GA) === 0
-            ) {
-
-                cleanSheets++;
-
-            }
-
-            if (
-                match["Save%"] !== "" &&
-                match["Save%"] !== undefined
-            ) {
-
-                saveSum +=
-            
+                match.matchId
