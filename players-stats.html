@@ -1695,6 +1695,9 @@ function updatePlayerStats(){
 	
 	    cleanSheets: 0,
 	    goalsConceded: 0,
+		
+		stats.cleanSheets++;
+		stats.goalsConceded += Number(match.Conceded);
 
 		penaltyGoals: 0,
 		penaltyMissed: 0,
@@ -2258,11 +2261,61 @@ function renderSummary(stats){
 	    ${
 	        isGK
 	        ? `
-	            <div class="stats-widget stats-widget-goalkeeping">
-	                <div class="stats-widget-title">
-	                    Goalkeeping
-	                </div>
-	            </div>
+			<div class="stats-widget stats-widget-goalkeeping">
+			
+			    <div class="stats-widget-title">
+			        Goalkeeping
+			    </div>
+			
+			    <div class="widget-stats-list">
+			
+			        <div class="widget-stat">
+			            <div class="widget-stat-label">
+			                Clean Sheets
+			            </div>
+			            <div class="widget-stat-value">
+			                ${stats.cleanSheets}
+			            </div>
+			        </div>
+			
+			        <div class="widget-stat">
+			            <div class="widget-stat-label">
+			                Goals Conceded
+			            </div>
+			            <div class="widget-stat-value">
+			                ${stats.goalsConceded}
+			            </div>
+			        </div>
+			
+			        <div class="widget-stat">
+			            <div class="widget-stat-label">
+			                Goals Conceded/90
+			            </div>
+			            <div class="widget-stat-value">
+			                ${
+			                    stats.minutes
+			                    ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
+			                    : "0.00"
+			                }
+			            </div>
+			        </div>
+			
+			        <div class="widget-stat">
+			            <div class="widget-stat-label">
+			                Clean Sheet %
+			            </div>
+			            <div class="widget-stat-value">
+			                ${
+			                    stats.matches
+			                    ? ((stats.cleanSheets * 100) / stats.matches).toFixed(0)
+			                    : "0"
+			                }%
+			            </div>
+			        </div>
+			
+			    </div>
+			
+			</div>
 	        `
 	        : ""
 	    }
