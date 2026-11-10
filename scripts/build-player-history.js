@@ -9,6 +9,24 @@ const OUTPUT_FILE = "./data/players-history.json";
 const playerMap =
     require("./../data/playerNameMap");
 
+const allMatches =
+    JSON.parse(
+        fs.readFileSync(
+            "./data/data.json",
+            "utf8"
+        )
+    );
+
+const seasonMap = {};
+
+allMatches.forEach(match => {
+
+    seasonMap[
+        Number(match.ID)
+    ] = match.Season;
+
+});
+
 function parseCSV(csv){
 
     const rows = [];
@@ -47,19 +65,23 @@ function parseCSVLine(line){
     const result = [];
 
     let current = "";
-
     let insideQuotes = false;
 
     for(const char of line){
 
         if(char === '"'){
 
-            insideQuotes = !insideQuotes;
+            insideQuotes =
+                !insideQuotes;
+
             continue;
 
         }
 
-        if(char === "," && !insideQuotes){
+        if(
+            char === "," &&
+            !insideQuotes
+        ){
 
             result.push(current);
 
@@ -127,7 +149,9 @@ function processCSVDirectory(directory){
                 originalName;
 
             if(!players[playerName]){
+
                 players[playerName] = [];
+
             }
 
             let matchRecord =
@@ -138,23 +162,39 @@ function processCSVDirectory(directory){
             if(!matchRecord){
 
                 matchRecord = {
-                    matchId
+
+                    matchId,
+
+                    season:
+                        seasonMap[matchId] ||
+                        "Unknown"
+
                 };
 
-                players[playerName].push(
-                    matchRecord
-                );
+                players[playerName]
+                    .push(matchRecord);
+
+            }
+            else if(
+                !matchRecord.season
+            ){
+
+                matchRecord.season =
+                    seasonMap[matchId] ||
+                    "Unknown";
 
             }
 
             Object.entries(row)
-                .forEach(([key, value]) => {
+                .forEach(
+                    ([key, value]) => {
 
                     if(key === "Player"){
                         return;
                     }
 
-                    matchRecord[key] = value;
+                    matchRecord[key] =
+                        value;
 
                 });
 
@@ -189,13 +229,17 @@ Object.keys(players)
     });
 
 fs.writeFileSync(
+
     OUTPUT_FILE,
+
     JSON.stringify(
         players,
         null,
         2
     ),
+
     "utf8"
+
 );
 
 console.log(
