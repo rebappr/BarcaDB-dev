@@ -379,11 +379,6 @@ display:none;
     pointer-events:none;
 }
 
-.filter-section{
-    display:flex;
-    flex-direction:column;
-}
-
 .filter-heading{
     width:100%;
     font-size:12px;
@@ -423,18 +418,6 @@ display:none;
     text-transform:uppercase;
 
     color:var(--muted);
-}
-
-.competition-btn{
-    height:32px;
-    padding:0 16px;
-    border-radius:999px;
-    border:1px solid var(--meta-border);
-    background:var(--meta-bg);
-    color:var(--text);
-    font-size:13px;
-    cursor:pointer;
-    transition:.2s;
 }
 
 .competition-btn:hover{
@@ -1677,16 +1660,6 @@ function attachCompetitionEvents(){
 
 function getPlayerMatches(playerName){
 
-    const currentPlayer =
-        allPlayers.find(
-            p => p.Name === playerName
-        );
-
-    const isGK =
-        isGoalkeeper(
-            currentPlayer?.Position
-        );
-
     const matches = [];
 
     allMatches.forEach(match => {
@@ -2729,28 +2702,6 @@ document
 
     window.location.href =
         `players-stats.html?name=${encodeURIComponent(e.target.value)}`;
-
-});
-document
-.querySelectorAll(".competition-btn")
-.forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-        document
-        .querySelectorAll(".competition-btn")
-        .forEach(b =>
-            b.classList.remove("active")
-        );
-
-        btn.classList.add("active");
-
-        selectedCompetition =
-            btn.dataset.comp;
-
-        renderActiveSection();
-
-    });
 
 });
 }
