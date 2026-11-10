@@ -24,89 +24,49 @@ function calculateMatchRating(stats) {
 
     let rating = 6.0;
 
-    const goals =
-        num(stats.Gls);
+    const goals = num(stats.Gls);
+    const assists = num(stats.Ast);
 
-    const assists =
-        num(stats.Ast);
+    const shots = num(stats.Sh);
+    const shotsOnTarget = num(stats.SoT);
 
-    const shots =
-        num(stats.Sh);
+    const tacklesWon = num(stats.TklW);
+    const interceptions = num(stats.Int);
 
-    const shotsOnTarget =
-        num(stats.SoT);
+    const foulsWon = num(stats.Fld);
+    const foulsCommitted = num(stats.Fls);
 
-    const tacklesWon =
-        num(stats.TklW);
+    const yellowCards = num(stats.CrdY);
+    const redCards = num(stats.CrdR);
 
-    const interceptions =
-        num(stats.Int);
+    const offsides = num(stats.Off);
+    const crosses = num(stats.Crs);
 
-    const foulsWon =
-        num(stats.Fld);
+    const ownGoals = num(stats.OG);
 
-    const foulsCommitted =
-        num(stats.Fls);
-
-    const yellowCards =
-        num(stats.CrdY);
-
-    const redCards =
-        num(stats.CrdR);
-
-    const offsides =
-        num(stats.Off);
-
-    const crosses =
-        num(stats.Crs);
-
-    const ownGoals =
-        num(stats.OG);
-
-    const shotsAgainst =
-        num(stats.SoTA);
-
-    const goalsAgainst =
-        num(stats.GA);
-
-    const saves =
-        num(stats.Saves);
-
-    // Attack
+    const shotsAgainst = num(stats.SoTA);
+    const goalsAgainst = num(stats.GA);
+    const saves = num(stats.Saves);
 
     rating += goals * 1.5;
-
     rating += assists * 1.0;
 
     rating += shotsOnTarget * 0.25;
-
     rating += shots * 0.05;
 
-    // Defensive
-
     rating += tacklesWon * 0.15;
-
     rating += interceptions * 0.15;
 
-    // Utility
-
     rating += foulsWon * 0.05;
-
     rating += crosses * 0.03;
 
-    // Negatives
-
     rating -= foulsCommitted * 0.05;
-
     rating -= offsides * 0.08;
 
     rating -= yellowCards * 0.30;
-
     rating -= redCards * 1.50;
 
     rating -= ownGoals * 2.00;
-
-    // Goalkeeper
 
     if (
         Object.prototype.hasOwnProperty.call(
@@ -130,8 +90,6 @@ function calculateMatchRating(stats) {
         }
 
     }
-
-    // Minutes scaling
 
     const minuteFactor =
         Math.min(minutes, 90) / 90;
@@ -183,24 +141,22 @@ for (
 
     const ratings = [];
 
+    const seasonStats = {};
+
     let totalMinutes = 0;
 
     let goals = 0;
-
     let assists = 0;
 
     let yellowCards = 0;
-
     let redCards = 0;
 
     let cleanSheets = 0;
 
     let saveSum = 0;
-
     let saveMatches = 0;
 
     let bestMatch = null;
-
     let worstMatch = null;
 
     for (const match of matches) {
@@ -213,10 +169,53 @@ for (
             matchId:
                 match.matchId,
 
+            season:
+                match.season,
+
             rating:
                 matchRating
 
         });
+
+        const season =
+            match.season || "Unknown";
+
+        if (!seasonStats[season]) {
+
+            seasonStats[season] = {
+
+                ratings: [],
+
+                matches: 0,
+
+                minutes: 0,
+
+                goals: 0,
+
+                assists: 0
+
+            };
+
+        }
+
+        seasonStats[season]
+            .ratings
+            .push(matchRating);
+
+        seasonStats[season]
+            .matches++;
+
+        seasonStats[season]
+            .minutes +=
+            num(match.Min);
+
+        seasonStats[season]
+            .goals +=
+            num(match.Gls);
+
+        seasonStats[season]
+            .assists +=
+            num(match.Ast);
 
         totalMinutes +=
             num(match.Min);
@@ -235,7 +234,9 @@ for (
 
         if ("GA" in match) {
 
-            if (num(match.GA) === 0) {
+            if (
+                num(match.GA) === 0
+            ) {
 
                 cleanSheets++;
 
@@ -247,133 +248,4 @@ for (
             ) {
 
                 saveSum +=
-                    parseFloat(
-                        match["Save%"]
-                    ) || 0;
-
-                saveMatches++;
-
-            }
-
-        }
-
-    }
-
-    for (const rating of ratings) {
-
-        if (
-            !bestMatch ||
-            rating.rating >
-                bestMatch.rating
-        ) {
-
-            bestMatch = rating;
-
-        }
-
-        if (
-            !worstMatch ||
-            rating.rating <
-                worstMatch.rating
-        ) {
-
-            worstMatch = rating;
-
-        }
-
-    }
-
-    const overallRating =
-        ratings.length
-            ? ratings.reduce(
-                  (sum, m) =>
-                      sum + m.rating,
-                  0
-              ) / ratings.length
-            : 0;
-
-    const lastFiveRatings =
-        ratings.slice(-5);
-
-    const formRating =
-        lastFiveRatings.length
-            ? lastFiveRatings.reduce(
-                  (sum, m) =>
-                      sum + m.rating,
-                  0
-              ) /
-              lastFiveRatings.length
-            : 0;
-
-    output[playerName] = {
-
-        overall:
-            Number(
-                overallRating.toFixed(2)
-            ),
-
-        form:
-            Number(
-                formRating.toFixed(2)
-            ),
-
-        matches:
-            ratings.length,
-
-        minutes:
-            totalMinutes,
-
-        goals,
-
-        assists,
-
-        yellowCards,
-
-        redCards,
-
-        cleanSheets,
-
-        savePct:
-            saveMatches
-                ? Number(
-                      (
-                          saveSum /
-                          saveMatches
-                      ).toFixed(1)
-                  )
-                : null,
-
-        bestMatch,
-
-        worstMatch,
-
-        history:
-            ratings
-
-    };
-
-}
-
-fs.writeFileSync(
-
-    OUTPUT_FILE,
-
-    JSON.stringify(
-        output,
-        null,
-        2
-    ),
-
-    "utf8"
-
-);
-
-console.log(
-    `Generated ${OUTPUT_FILE}`
-);
-
-console.log(
-    `Players: ${
-        Object.keys(output).length
-    }`
-);
+            
