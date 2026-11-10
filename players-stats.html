@@ -829,77 +829,56 @@ display:none;
 
 @media(max-width:820px){
 
-    .player-filters-card{
+.player-filters-card{
 
-        position:relative;
+    position:relative;
 
-        display:block;
+    display:block;
 
-        padding:16px;
-    }
+    padding:16px;
+}
 
-    .rating-filter-card{
+.rating-filter-card{
 
-        position:absolute;
+    position:absolute;
 
-        top:16px;
-        right:16px;
+    top:16px;
+    right:16px;
 
-        width:90px;
-        min-width:90px;
+    width:90px;
+    min-width:90px;
 
-        margin:0;
+    margin:0;
 
-        padding:12px 8px;
+    padding:12px 8px;
+}
 
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
+.filter-section.season{
 
-        border-radius:16px;
+    width:auto;
+    min-width:0;
 
-        background:
-            linear-gradient(
-                135deg,
-                rgba(0,188,212,.12),
-                rgba(0,229,255,.05)
-            );
+    padding-right:110px;
+}
 
-        border:1px solid rgba(0,188,212,.25);
-    }
+.filter-section.competition{
 
-    .filter-section.season{
+    width:100%;
 
-        width:auto;
-        min-width:0;
+    margin-top:12px;
+}
 
-        padding-right:110px;
-    }
+#competitionContainer{
 
-    .filter-section.competition{
+    width:100%;
 
-        width:100%;
+    display:flex;
+    flex-wrap:wrap;
 
-        margin-top:12px;
+    gap:6px;
 
-        display:flex;
-        flex-wrap:wrap;
-
-        overflow:visible;
-    }
-
-    #competitionContainer{
-
-        width:100%;
-
-        display:flex;
-        flex-wrap:wrap;
-
-        gap:6px;
-
-        overflow:visible;
-    }
+    overflow:visible;
+}
 
     .competition-btn{
         flex:0 0 auto;
@@ -995,24 +974,6 @@ display:none;
         display:none;
     }
 
-	.player-filters-card{
-	
-	    position:relative;
-	
-	    display:flex;
-	    align-items:flex-start;
-	    gap:12px;
-	
-	    background:var(--card-bg);
-	
-	    border:1px solid var(--card-border);
-	
-	    border-radius:20px;
-	
-	    padding:16px;
-	}
-
-	
 	
 	#seasonFilter{
 	    width:100%;
