@@ -2225,11 +2225,35 @@ function renderSummary(stats){
 	        : ""
 	    }
 	
-	    <div class="stats-widget">
-	        <div class="stats-widget-title">
-	            Discipline
-	        </div>
-	    </div>
+			<div class="stats-widget">
+			
+			    <div class="stats-widget-title">
+			        Discipline
+			    </div>
+			
+			    <div class="widget-stats-list">
+			
+			        <div class="widget-stat">
+			            <div class="widget-stat-label">
+			                Yellow Cards
+			            </div>
+			            <div class="widget-stat-value">
+			                ${stats.yellow}
+			            </div>
+			        </div>
+			
+			        <div class="widget-stat">
+			            <div class="widget-stat-label">
+			                Red Cards
+			            </div>
+			            <div class="widget-stat-value">
+			                ${stats.red}
+			            </div>
+			        </div>
+			
+			    </div>
+			
+			</div>
 	
 	    ${
 	        isGK
