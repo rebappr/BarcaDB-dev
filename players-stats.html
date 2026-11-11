@@ -1690,18 +1690,25 @@ function populateCompetitionFilter(playerName){
     ).innerHTML = `
 
         <button
-            class="competition-btn active"
-            data-comp="all">
-            All
-        </button>
+		    class="competition-btn ${
+		        selectedCompetition === "all"
+		        ? "active"
+		        : ""
+		    }"
+		    data-comp="all">
+		    All
+		</button>
 
 		${[...competitions]
 		    .sort()
 		    .map(comp => `
-		
-		        <button
-		            class="competition-btn"
-		            data-comp="${comp}">
+				<button
+					    class="competition-btn ${
+					        selectedCompetition === comp
+					        ? "active"
+					        : ""
+					    }"
+					    data-comp="${comp}">
 		            ${getCompetitionShortName(comp)}
 		        </button>
 		
