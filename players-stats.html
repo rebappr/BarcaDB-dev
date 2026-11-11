@@ -1563,6 +1563,30 @@ function getCountryLogo(country){
     return `logos/countries/${code}.png`;
 }
 
+function getNationalities(player){
+
+    return [
+        player["Nationality 1"],
+        player["Nationality 2"]
+    ].filter(Boolean);
+
+}
+
+function renderNationalityFlags(player){
+
+    return getNationalities(player)
+        .map(nationality => `
+            <img
+                src="${getCountryLogo(nationality)}"
+                alt="${nationality}"
+                class="player-flag-large"
+                onerror="this.src='logos/countries/default.png'"
+            >
+        `)
+        .join("");
+
+}
+
 function parseMinute(value){
 
     if(!value){
@@ -1599,9 +1623,11 @@ function isGoalkeeper(position){
 
 }
 
-function calculateAge(dateString){
+function calculateAge(dateString, deathDate = null){
 
-    if(!dateString) return "";
+    if(!dateString){
+        return "";
+    }
 
     const [day, month, year] =
         dateString.split(".");
@@ -1609,22 +1635,25 @@ function calculateAge(dateString){
     const birthDate =
         new Date(year, month - 1, day);
 
-    const today =
-        new Date();
+    const endDate = deathDate
+        ? new Date(
+            deathDate.split(".").reverse().join("-")
+          )
+        : new Date();
 
     let age =
-        today.getFullYear() -
+        endDate.getFullYear() -
         birthDate.getFullYear();
 
     const monthDiff =
-        today.getMonth() -
+        endDate.getMonth() -
         birthDate.getMonth();
 
     if(
         monthDiff < 0 ||
         (
             monthDiff === 0 &&
-            today.getDate() < birthDate.getDate()
+            endDate.getDate() < birthDate.getDate()
         )
     ){
         age--;
@@ -2858,7 +2887,10 @@ function renderPlayer(player){
             : "default.webp";
 
     const age =
-        calculateAge(player["Birth Date"]);
+        calculateAge(
+		    player["Birth Date"],
+		    player["Death Date"]
+		);
 
 	document.title =
 	    `${player.Name} | Barça Database`;
@@ -2880,7 +2912,7 @@ document.getElementById("playerProfile").innerHTML = `
                 ${player.Name}
 
                 <img
-                    src="${getCountryLogo(player.Nationality)}"
+                    src="${renderNationalityFlags(player)}"
                     alt="${player.Nationality}"
                     class="player-flag-large"
                     onerror="this.src='logos/countries/default.png'">
@@ -2888,10 +2920,6 @@ document.getElementById("playerProfile").innerHTML = `
             </h2>
 
             <div class="player-header-meta">
-
-                <span>No</span>
-
-                <strong>#${player.Number}</strong>
 
                 <span>Age</span>
 
@@ -2950,12 +2978,11 @@ document.getElementById("playerProfile").innerHTML = `
 			
 			    })
 			    .sort((a,b)=>
-			        Number(a.Number) -
-			        Number(b.Number)
+			        a.Name.localeCompare(b.Name)
 			    )
 			    .map(p => `
 			        <option value="${p.Name}">
-			            #${p.Number} ${p.Name}
+			            ${p.Name}
 			        </option>
 			    `)
 			    .join("")}
@@ -3168,27 +3195,36 @@ function renderPlayerInfo(){
 
             <div class="info-grid">
 
-				<div class="info-item">
-				    <span>Full Name</span>
-				    <strong>
-				        ${playerInfo?.["Full Name"] || player.Name}
-				    </strong>
-				</div>
-
-                <div class="info-item">
-                    <span>Position</span>
-                    <strong>${player.Position || "-"}</strong>
-                </div>
-
-                <div class="info-item">
-                    <span>Nationality</span>
-                    <strong>${player.Nationality || "-"}</strong>
-                </div>
-
-                <div class="info-item">
-                    <span>Number</span>
-                    <strong>#${player.Number || "-"}</strong>
-                </div>
+		    <div class="info-item">
+		        <span>Full Name</span>
+		        <strong>${player["Full Name"] || "-"}</strong>
+		    </div>
+		
+		    <div class="info-item">
+		        <span>Position</span>
+		        <strong>${player.Position || "-"}</strong>
+		    </div>
+		
+		    <div class="info-item">
+		        <span>Birth Date</span>
+		        <strong>${player["Birth Date"] || "-"}</strong>
+		    </div>
+		
+		    ${
+		        player["Death Date"]
+		        ? `
+		            <div class="info-item">
+		                <span>Death Date</span>
+		                <strong>${player["Death Date"]}</strong>
+		            </div>
+		        `
+		        : ""
+		    }
+		
+		    <div class="info-item">
+		        <span>Nationality</span>
+		        <strong>${getNationalities(player).join(" / ") || "-"}</strong>
+		    </div>
 
 				<div class="info-item">
 				    <span>Debut</span>
