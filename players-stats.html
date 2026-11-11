@@ -1849,6 +1849,12 @@ function getPlayerMatches(playerName){
         let starter = false;
         let minutes = 0;
 
+		const matchLength =
+		    String(match.Result || "").includes("AET") ||
+		    String(match.Result || "").includes("P")
+		        ? 120
+		        : 90;
+
         for(let i = 1; i <= 11; i++){
 
             if(
@@ -1877,10 +1883,10 @@ function getPlayerMatches(playerName){
 
                 }
 
-                minutes =
-                    subOffMinute !== null
-                        ? subOffMinute
-                        : 90;
+				minutes =
+				    subOffMinute !== null
+				        ? subOffMinute
+				        : matchLength;
 
                 break;
 
@@ -1904,7 +1910,7 @@ function getPlayerMatches(playerName){
                         );
 
                     minutes =
-                        90 - minute;
+    					matchLength - minute;
 
                     break;
 
