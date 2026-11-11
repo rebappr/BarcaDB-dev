@@ -2946,7 +2946,13 @@ document.getElementById("playerProfile").innerHTML = `
 			
 			        return allMatches.some(match => {
 			
-			            // základ
+			            if(
+			                selectedSeason !== "all" &&
+			                match.Season !== selectedSeason
+			            ){
+			                return false;
+			            }
+			
 			            for(let i = 1; i <= 11; i++){
 			
 			                if(
@@ -2957,7 +2963,6 @@ document.getElementById("playerProfile").innerHTML = `
 			
 			            }
 			
-			            // striedanie
 			            for(let i = 1; i <= 6; i++){
 			
 			                if(
@@ -2973,6 +2978,7 @@ document.getElementById("playerProfile").innerHTML = `
 			        });
 			
 			    })
+
 			    .sort((a,b)=>
 			        a.Name.localeCompare(b.Name)
 			    )
@@ -3647,21 +3653,28 @@ function renderPlayerMatches(){
 
 function initFilters(){
 
-	document
-	.getElementById("seasonFilter")
-	?.addEventListener("change", e => {
-	
-	    selectedSeason = e.target.value;
-	
-	    selectedCompetition = "all";
-	
-	    populateCompetitionFilter(
-	        playerName
-	    );
-	
-	    renderActiveSection();
-	
-	});
+    document
+    .getElementById("seasonFilter")
+    ?.addEventListener("change", e => {
+
+        selectedSeason = e.target.value;
+
+        selectedCompetition = "all";
+
+        const currentPlayer =
+            allPlayers.find(
+                p => p.Name === playerName
+            );
+
+        renderPlayer(currentPlayer);
+
+        populateCompetitionFilter(
+            playerName
+        );
+
+        renderActiveSection();
+
+    });
 
 }
 
