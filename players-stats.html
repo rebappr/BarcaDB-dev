@@ -2510,11 +2510,12 @@ function renderCareerOverview(){
 	    getPlayerAggregateStats(
 	        playerName,
 	        {
-	            season: null,
+	            season:null,
+	
 	            competition:
-	                selectedCompetition === "all"
+	                selectedCareerCompetition === "all"
 	                ? null
-	                : selectedCompetition
+	                : selectedCareerCompetition
 	        }
 	    );
 
@@ -2977,6 +2978,7 @@ let allRatings = {};
 let allPlayersInfo = [];
 
 let selectedCompetition = "all";
+let selectedCareerCompetition = "all";
 let selectedSeason = "all";
 let activeSection = "stats";
 
@@ -3016,9 +3018,17 @@ function initSections(){
 				    seasonSection.style.display = "none";
 				    ratingCard.style.display = "none";
 				
+				    populateCareerCompetitionFilter(
+				        playerName
+				    );
+				
 				}else{
 				
 				    seasonSection.style.display = "";
+				
+				    populateCompetitionFilter(
+				        playerName
+				    );
 				
 				}
 
@@ -3597,6 +3607,91 @@ function initFilters(){
 	    renderActiveSection();
 	
 	});
+
+}
+
+function populateCareerCompetitionFilter(playerName){
+
+    const competitions = new Set();
+
+    allMatches.forEach(match => {
+
+        let played = false;
+
+        for(let i = 1; i <= 11; i++){
+
+            if(match[`Player name ${i}`] === playerName){
+                played = true;
+                break;
+            }
+
+        }
+
+        if(!played){
+
+            for(let i = 1; i <= 12; i++){
+
+                if(match[`On the bench name ${i}`] === playerName){
+                    played = true;
+                    break;
+                }
+
+            }
+
+        }
+
+        if(played){
+            competitions.add(match.Competition);
+        }
+
+    });
+
+    document.getElementById("competitionContainer").innerHTML = `
+
+        <button
+            class="competition-btn active"
+            data-career-comp="all">
+            All
+        </button>
+
+        ${[...competitions]
+            .sort()
+            .map(comp => `
+                <button
+                    class="competition-btn"
+                    data-career-comp="${comp}">
+                    ${getCompetitionShortName(comp)}
+                </button>
+            `)
+            .join("")}
+    `;
+
+    attachCareerCompetitionEvents();
+
+}
+
+function attachCareerCompetitionEvents(){
+
+    document
+        .querySelectorAll("[data-career-comp]")
+        .forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                document
+                    .querySelectorAll("[data-career-comp]")
+                    .forEach(b => b.classList.remove("active"));
+
+                btn.classList.add("active");
+
+                selectedCareerCompetition =
+                    btn.dataset.careerComp;
+
+                renderCareerOverview();
+
+            });
+
+        });
 
 }
 
