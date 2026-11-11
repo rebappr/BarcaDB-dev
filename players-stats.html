@@ -3230,27 +3230,33 @@ function renderPlayerInfo(){
 		        <strong>${getNationalities(player).join(" / ") || "-"}</strong>
 		    </div>
 
-				<div class="info-item">
-				    <span>Debut</span>
-				    <strong>
-				        ${
-				            debutMatch
-				            ? `${debutMatch.Date} vs ${debutMatch["Opp. Team"]}`
-				            : "-"
-				        }
-				    </strong>
-				</div>
-				
-				<div class="info-item">
-				    <span>Last Match</span>
-				    <strong>
-				        ${
-				            lastMatch
-				            ? `${lastMatch.Date} vs ${lastMatch["Opp. Team"]}`
-				            : "-"
-				        }
-				    </strong>
-				</div>
+			<div class="info-item">
+			    <span>Debut</span>
+			    <strong>
+			        ${
+			            debutMatch
+			            ? `<a href="match.html?id=${debutMatch.ID}">
+			                ${debutMatch.Date} vs ${debutMatch["Opp. Team"]}
+			                (${debutMatch.Result})
+			               </a>`
+			            : "-"
+			        }
+			    </strong>
+			</div>
+			
+			<div class="info-item">
+			    <span>Last Match</span>
+			    <strong>
+			        ${
+			            lastMatch
+			            ? `<a href="match.html?id=${lastMatch.ID}">
+			                ${lastMatch.Date} vs ${lastMatch["Opp. Team"]}
+			                (${lastMatch.Result})
+			               </a>`
+			            : "-"
+			        }
+			    </strong>
+			</div>
 
             </div>
 
