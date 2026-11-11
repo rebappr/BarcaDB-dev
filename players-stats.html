@@ -3142,6 +3142,20 @@ let selectedCareerCompetition = "all";
 let selectedSeason = "all";
 let activeSection = "stats";
 
+function updateRatingVisibility(){
+
+    const ratingCard =
+        document.getElementById("ratingCard");
+
+    if(!ratingCard) return;
+
+    ratingCard.style.display =
+        activeSection === "stats"
+            ? "flex"
+            : "none";
+
+}
+
 function initSections(){
 
     document
@@ -3206,7 +3220,8 @@ function initSections(){
 				    activeSection === "stats"
 				        ? "flex"
 				        : "none";
-
+				}
+				
 				document
 				.getElementById("infoSection")
 				.style.display =
@@ -4044,6 +4059,8 @@ Promise.all([
 	initSections();
 	
 	renderActiveSection();
+
+	updateRatingVisibility();
 
 })
 .catch(console.error);
