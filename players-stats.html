@@ -1532,6 +1532,35 @@ function getClubLogo(team){
         + ".png";
 }
 
+function getPositionGroup(position){
+
+    const defenders = [
+        "Centre Back",
+        "Left Back",
+        "Right Back"
+    ];
+
+    const midfielders = [
+        "Defensive Midfield",
+        "Central Midfield",
+        "Attacking Midfield"
+    ];
+
+    const forwards = [
+        "Centre Forward",
+        "Left Wing",
+        "Right Wing",
+        "Second Striker"
+    ];
+
+    if(position === "Goalkeeper") return "Goalkeeper";
+    if(defenders.includes(position)) return "Defender";
+    if(midfielders.includes(position)) return "Midfielder";
+    if(forwards.includes(position)) return "Forward";
+
+    return position;
+}
+
 const urlParams =
     new URLSearchParams(window.location.search);
 
@@ -2973,8 +3002,9 @@ document.getElementById("playerProfile").innerHTML = `
 		        Switch
 		    </option>
 		
-			${allPlayers
-			    .filter(player => {
+			${(() => {
+			
+			    const seasonPlayers = allPlayers.filter(player => {
 			
 			        return allMatches.some(match => {
 			
@@ -3009,17 +3039,79 @@ document.getElementById("playerProfile").innerHTML = `
 			
 			        });
 			
-			    })
-
-			    .sort((a,b)=>
-			        a.Name.localeCompare(b.Name)
-			    )
-			    .map(p => `
-			        <option value="${p.Name}">
-			            ${p.Name}
-			        </option>
-			    `)
-			    .join("")}
+			    });
+			
+			    const grouped = {
+			        Goalkeeper: [],
+			        Defender: [],
+			        Midfielder: [],
+			        Forward: []
+			    };
+			
+			    seasonPlayers.forEach(player => {
+			
+			        const group =
+			            getPositionGroup(player.Position);
+			
+			        if(grouped[group]){
+			            grouped[group].push(player);
+			        }
+			
+			    });
+			
+			    return `
+			
+			        <optgroup label="Goalkeepers">
+			            ${grouped.Goalkeeper
+			                .sort((a,b)=>a.Name.localeCompare(b.Name))
+			                .map(player => `
+			                    <option value="${player.Name}">
+			                        ${player.Name}
+			                    </option>
+			                `)
+			                .join("")
+			            }
+			        </optgroup>
+			
+			        <optgroup label="Defenders">
+			            ${grouped.Defender
+			                .sort((a,b)=>a.Name.localeCompare(b.Name))
+			                .map(player => `
+			                    <option value="${player.Name}">
+			                        ${player.Name}
+			                    </option>
+			                `)
+			                .join("")
+			            }
+			        </optgroup>
+			
+			        <optgroup label="Midfielders">
+			            ${grouped.Midfielder
+			                .sort((a,b)=>a.Name.localeCompare(b.Name))
+			                .map(player => `
+			                    <option value="${player.Name}">
+			                        ${player.Name}
+			                    </option>
+			                `)
+			                .join("")
+			            }
+			        </optgroup>
+			
+			        <optgroup label="Forwards">
+			            ${grouped.Forward
+			                .sort((a,b)=>a.Name.localeCompare(b.Name))
+			                .map(player => `
+			                    <option value="${player.Name}">
+			                        ${player.Name}
+			                    </option>
+			                `)
+			                .join("")
+			            }
+			        </optgroup>
+			
+			    `;
+			
+			})()}
 		
 		</select>
 
