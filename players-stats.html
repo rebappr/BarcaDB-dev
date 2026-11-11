@@ -3009,26 +3009,39 @@ function initSections(){
 
 				const seasonSection =
 				    document.querySelector(".filter-section.season");
+
+				const filtersCard =
+    				document.querySelector(".player-filters-card");
 				
 				const ratingCard =
 				    document.getElementById("ratingCard");
 				
-				if(activeSection === "career"){
+				if(activeSection === "info"){
 				
-				    seasonSection.style.display = "none";
-				    ratingCard.style.display = "none";
-				
-				    populateCareerCompetitionFilter(
-				        playerName
-				    );
+				    filtersCard.style.display = "none";
 				
 				}else{
 				
-				    seasonSection.style.display = "";
+				    filtersCard.style.display = "";
 				
-				    populateCompetitionFilter(
-				        playerName
-				    );
+				    if(activeSection === "career"){
+				
+				        seasonSection.style.display = "none";
+				        ratingCard.style.display = "none";
+				
+				        populateCareerCompetitionFilter(
+				            playerName
+				        );
+				
+				    }else{
+				
+				        seasonSection.style.display = "";
+				
+				        populateCompetitionFilter(
+				            playerName
+				        );
+				
+				    }
 				
 				}
 
