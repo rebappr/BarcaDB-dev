@@ -1543,7 +1543,9 @@ function getPositionGroup(position){
     const midfielders = [
         "Defensive Midfield",
         "Central Midfield",
-        "Attacking Midfield"
+        "Attacking Midfield",
+        "Left Midfield",
+        "Right Midfield"
     ];
 
     const forwards = [
@@ -1558,7 +1560,7 @@ function getPositionGroup(position){
     if(midfielders.includes(position)) return "Midfielder";
     if(forwards.includes(position)) return "Forward";
 
-    return position;
+    return "Other";
 }
 
 const urlParams =
