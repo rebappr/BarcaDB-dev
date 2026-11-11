@@ -2176,20 +2176,20 @@ function renderSummary(stats){
 	              ) / filteredRatings.length
 	            : null;
 	
-	    if(averageRating === null){
-	
-	        ratingCard.style.display = "none";
-	
-	    }else{
-	
-	        ratingCard.style.display = "flex";
-	
-	        ratingCard.querySelector(
-	            ".rating-filter-value"
-	        ).textContent =
-	            averageRating.toFixed(2);
-	
-	    }
+		if(averageRating !== null){
+		
+		    ratingCard.querySelector(
+		        ".rating-filter-value"
+		    ).textContent =
+		        averageRating.toFixed(2);
+		
+		}else{
+		
+		    ratingCard.querySelector(
+		        ".rating-filter-value"
+		    ).textContent = "-";
+		
+		}
 	
 	}
 
@@ -3184,27 +3184,28 @@ function initSections(){
 				
 				    filtersCard.style.display = "";
 				
-				    if(activeSection === "career"){
+				if(activeSection === "career"){
 				
-				        seasonSection.style.display = "none";
-				        ratingCard.style.display = "none";
+				    seasonSection.style.display = "none";
 				
-				        populateCareerCompetitionFilter(
-				            playerName
-				        );
+				    populateCareerCompetitionFilter(
+				        playerName
+				    );
 				
-				    }else{
+				}else{
 				
-				        seasonSection.style.display = "";
-						ratingCard.style.display = "";
+				    seasonSection.style.display = "";
 				
-				        populateCompetitionFilter(
-				            playerName
-				        );
-				
-				    }
+				    populateCompetitionFilter(
+				        playerName
+				    );
 				
 				}
+				
+				ratingCard.style.display =
+				    activeSection === "stats"
+				        ? "flex"
+				        : "none";
 
 				document
 				.getElementById("infoSection")
