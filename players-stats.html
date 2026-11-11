@@ -3194,10 +3194,19 @@ function renderPlayerInfo(){
 		        <strong>${player.Position || "-"}</strong>
 		    </div>
 		
-		    <div class="info-item">
-		        <span>Birth Date</span>
-		        <strong>${player["Birth Date"] || "-"}</strong>
-		    </div>
+			<div class="info-item">
+			    <span>Birth Date</span>
+			    <strong>
+			        ${
+			            player["Birth Date"]
+			            ? `${player["Birth Date"]} (${calculateAge(
+			                player["Birth Date"],
+			                player["Death Date"]
+			            )})`
+			            : "-"
+			        }
+			    </strong>
+			</div>
 		
 		    ${
 		        player["Death Date"]
