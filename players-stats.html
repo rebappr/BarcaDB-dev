@@ -3043,6 +3043,7 @@ function initSections(){
 				    }else{
 				
 				        seasonSection.style.display = "";
+						ratingCard.style.display = "";
 				
 				        populateCompetitionFilter(
 				            playerName
@@ -3669,8 +3670,12 @@ function populateCareerCompetitionFilter(playerName){
     document.getElementById("competitionContainer").innerHTML = `
 
         <button
-            class="competition-btn active"
-            data-career-comp="all">
+		    class="competition-btn ${
+		        selectedCareerCompetition === "all"
+		            ? "active"
+		            : ""
+		    }"
+		    data-career-comp="all">
             All
         </button>
 
@@ -3678,8 +3683,12 @@ function populateCareerCompetitionFilter(playerName){
             .sort()
             .map(comp => `
                 <button
-                    class="competition-btn"
-                    data-career-comp="${comp}">
+				    class="competition-btn ${
+				        selectedCareerCompetition === comp
+				            ? "active"
+				            : ""
+				    }"
+				    data-career-comp="${comp}">
                     ${getCompetitionShortName(comp)}
                 </button>
             `)
