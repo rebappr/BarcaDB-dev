@@ -986,6 +986,20 @@ display:none;
     border-bottom-color:var(--link-color);
 }
 
+.info-nationality{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+}
+
+.info-nationality-flag{
+    width:20px;
+    height:14px;
+    object-fit:cover;
+    border-radius:2px;
+    vertical-align:middle;
+}
+
 @media(max-width:820px){
 
     .info-grid{
@@ -1587,16 +1601,21 @@ function getNationalities(player){
 
 function renderNationalityFlags(player){
 
-    return getNationalities(player)
-        .map(nationality => `
-            <img
-                src="${getCountryLogo(nationality)}"
-                alt="${nationality}"
-                class="player-flag-large"
-                onerror="this.src='logos/countries/default.png'"
-            >
-        `)
-        .join("");
+    const nationality =
+        player["Nationality 1"];
+
+    if(!nationality){
+        return "";
+    }
+
+    return `
+        <img
+            src="${getCountryLogo(nationality)}"
+            alt="${nationality}"
+            class="player-flag-large"
+            onerror="this.src='logos/countries/default.png'"
+        >
+    `;
 
 }
 
@@ -3238,10 +3257,28 @@ function renderPlayerInfo(){
 		        : ""
 		    }
 		
-		    <div class="info-item">
-		        <span>Nationality</span>
-		        <strong>${getNationalities(player).join(" / ") || "-"}</strong>
-		    </div>
+			<div class="info-item">
+			    <span>Nationality</span>
+			
+			    <strong>
+			        ${
+			            getNationalities(player)
+			                .map(nationality => `
+			                    <span class="info-nationality">
+			                        <img
+			                            src="${getCountryLogo(nationality)}"
+			                            alt="${nationality}"
+			                            class="info-nationality-flag"
+			                            onerror="this.src='logos/countries/default.png'"
+			                        >
+			                        ${nationality}
+			                    </span>
+			                `)
+			                .join(" / ")
+			        }
+			    </strong>
+			
+			</div>
 
 			<div class="info-item">
 			    <span>Debut</span>
