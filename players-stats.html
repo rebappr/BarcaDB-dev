@@ -2178,6 +2178,8 @@ function renderSummary(stats){
 	
 		if(averageRating !== null){
 		
+		    ratingCard.style.display = "flex";
+		
 		    ratingCard.querySelector(
 		        ".rating-filter-value"
 		    ).textContent =
@@ -2185,9 +2187,7 @@ function renderSummary(stats){
 		
 		}else{
 		
-		    ratingCard.querySelector(
-		        ".rating-filter-value"
-		    ).textContent = "-";
+		    ratingCard.style.display = "none";
 		
 		}
 	
@@ -3147,12 +3147,15 @@ function updateRatingVisibility(){
     const ratingCard =
         document.getElementById("ratingCard");
 
-    if(!ratingCard) return;
+    if(!ratingCard){
+        return;
+    }
 
-    ratingCard.style.display =
-        activeSection === "stats"
-            ? "flex"
-            : "none";
+    if(activeSection !== "stats"){
+
+        ratingCard.style.display = "none";
+
+    }
 
 }
 
