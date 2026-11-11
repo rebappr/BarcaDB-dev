@@ -2907,17 +2907,13 @@ document.getElementById("playerProfile").innerHTML = `
 
         <div class="player-header-info">
 
-            <h2>
-
-                ${player.Name}
-
-                <img
-                    src="${renderNationalityFlags(player)}"
-                    alt="${player.Nationality}"
-                    class="player-flag-large"
-                    onerror="this.src='logos/countries/default.png'">
-
-            </h2>
+			<h2>
+			
+			    ${player.Name}
+			
+			    ${renderNationalityFlags(player)}
+			
+			</h2>
 
             <div class="player-header-meta">
 
@@ -3009,8 +3005,6 @@ document
 let allMatches = [];
 let allPlayers = [];
 let allRatings = {};
-let allPlayersInfo = [];
-
 let selectedCompetition = "all";
 let selectedCareerCompetition = "all";
 let selectedSeason = "all";
@@ -3155,11 +3149,6 @@ function renderPlayerInfo(){
     if(!player){
         return;
     }
-
-	const playerInfo =
-	    allPlayersInfo.find(
-	        p => p.Player === playerName
-	    );
 
 	const playerMatches =
     getPlayerMatches(playerName)
@@ -3837,19 +3826,25 @@ function populateSeasonFilter(playerName){
 }
 
 Promise.all([
-    fetch("data/playersCS.json").then(r => r.json()),
     fetch("data/players.json").then(r => r.json()),
     fetch("data/data.json").then(r => r.json()),
     fetch("data/player-ratings.json").then(r => r.json())
 ])
-.then(([playersCS, playersInfo, matches, ratings]) => {
+.then(([players, matches, ratings]) => {
+
     allMatches = matches;
-    allPlayers = playersCS;
-		const player = playersCS.find(
-		    p => p.Name === playerName
-		);
-	allPlayersInfo = playersInfo;
+
+    allPlayers = players.map(p => ({
+        ...p,
+        Name: p.Player
+    }));
+
     allRatings = ratings;
+
+    const player =
+        allPlayers.find(
+            p => p.Name === playerName
+        );
 
     initPersonSearch();
 
