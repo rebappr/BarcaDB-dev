@@ -2506,14 +2506,17 @@ function renderSummary(stats){
 
 function renderCareerOverview(){
 
-    const stats =
-        getPlayerAggregateStats(
-            playerName,
-            {
-                season: null,
-                competition: null
-            }
-        );
+	const stats =
+	    getPlayerAggregateStats(
+	        playerName,
+	        {
+	            season: null,
+	            competition:
+	                selectedCompetition === "all"
+	                ? null
+	                : selectedCompetition
+	        }
+	    );
 
     const currentPlayer =
         allPlayers.find(
