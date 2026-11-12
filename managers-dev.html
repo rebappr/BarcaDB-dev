@@ -2209,26 +2209,56 @@ function getManagersDropdown(){
 
         if(!match.Manager) return;
 
-        const matchDate =
+        const date =
             new Date(
                 match.Date.split(".").reverse().join("-")
             );
 
         if(
             !managerLastMatch[match.Manager] ||
-            matchDate > managerLastMatch[match.Manager]
+            date > managerLastMatch[match.Manager]
         ){
-            managerLastMatch[match.Manager] = matchDate;
+            managerLastMatch[match.Manager] = date;
         }
 
     });
 
-    return Object.entries(managerLastMatch)
-        .sort((a,b) => b[1] - a[1])
-        .map(([manager]) => `
-            <option value="${manager}">
-                ${manager}
-            </option>
+    const decades = {};
+
+    Object.entries(managerLastMatch)
+        .forEach(([manager, date]) => {
+
+            const decade =
+                Math.floor(date.getFullYear() / 10) * 10;
+
+            if(!decades[decade]){
+                decades[decade] = [];
+            }
+
+            decades[decade].push({
+                manager,
+                date
+            });
+
+        });
+
+    return Object.keys(decades)
+        .sort((a,b) => b - a)
+        .map(decade => `
+
+            <optgroup label="${decade}s">
+
+                ${decades[decade]
+                    .sort((a,b) => b.date - a.date)
+                    .map(item => `
+                        <option value="${item.manager}">
+                            ${item.manager}
+                        </option>
+                    `)
+                    .join("")}
+
+            </optgroup>
+
         `)
         .join("");
 
