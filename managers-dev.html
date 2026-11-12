@@ -21,7 +21,7 @@ Player Statistics | Barça Database
 <meta name="robots" content="noindex, nofollow">
 
 <meta name="description"
-      content="Explore FC Barcelona's 2026/27 first-team squad with player profiles, positions, squad numbers, nationalities and detailed career statistics.">
+      content="Explore FC Barcelona's 2026/27 first-team squad with manager profiles, positions, squad numbers, nationalities and detailed career statistics.">
 
 <link rel="canonical"
       href="https://barcadb.com/squad.html">
@@ -30,7 +30,7 @@ Player Statistics | Barça Database
       content="FC Barcelona 2026/27 Squad | Barça Database">
 
 <meta property="og:description"
-      content="Complete FC Barcelona first-team squad for the 2026/27 season including player profiles, positions and squad numbers.">
+      content="Complete FC Barcelona first-team squad for the 2026/27 season including manager profiles, positions and squad numbers.">
 
 <meta property="og:url"
       content="https://barcadb.com/squad.html">
@@ -51,13 +51,13 @@ Player Statistics | Barça Database
       content="FC Barcelona 2026/27 Squad | Barça Database">
 
 <meta name="twitter:description"
-      content="Browse the complete FC Barcelona 2026/27 squad with player information, positions and statistics.">
+      content="Browse the complete FC Barcelona 2026/27 squad with manager information, positions and statistics.">
 
 <meta name="twitter:image"
       content="https://barcadb.com/logos/barcadb-logo.png">
 
 <meta name="keywords"
-      content="FC Barcelona squad, Barcelona players, FC Barcelona roster, Barça squad 2026/27, Barcelona first team, Barcelona player profiles, Barcelona squad numbers, FC Barcelona statistics">
+      content="FC Barcelona squad, Barcelona managers, FC Barcelona roster, Barça squad 2026/27, Barcelona first team, Barcelona manager profiles, Barcelona squad numbers, FC Barcelona statistics">
 
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/main.css">
@@ -149,7 +149,7 @@ display:none;
     border-radius:12px;
 }
 
-.player-filters-card{
+.manager-filters-card{
 
     position:relative;
 
@@ -199,20 +199,20 @@ display:none;
     -webkit-overflow-scrolling:touch;
 }
 
-.player-profile-card{
+.manager-profile-card{
     background:var(--card-bg);
     border:1px solid var(--card-border);
     border-radius:24px;
     padding:24px;
 }
 
-.player-profile-header{
+.manager-profile-header{
     display:flex;
     align-items:center;
     gap:12px;
 }
 
-.player-profile-photo{
+.manager-profile-photo{
     width:140px;
     height:140px;
     object-fit:cover;
@@ -220,7 +220,7 @@ display:none;
     border:4px solid rgba(0,77,152,.2);
 }
 
-.player-profile-info h2{
+.manager-profile-info h2{
     margin:0;
     display:flex;
     align-items:center;
@@ -228,26 +228,26 @@ display:none;
     font-size:2rem;
 }
 
-.player-profile-info h2 img{
+.manager-profile-info h2 img{
     width:28px;
     height:20px;
     object-fit:cover;
     border-radius:3px;
 }
 
-.player-profile-meta{
+.manager-profile-meta{
     margin-top:8px;
     color:var(--muted);
     font-size:1rem;
     line-height:1.8;
 }
 
-.player-shirt{
+.manager-shirt{
     font-weight:700;
     color:var(--text);
 }
 
-.player-header-card{
+.manager-header-card{
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -262,13 +262,13 @@ display:none;
     border-radius:12px;
 }
 
-.player-header-left{
+.manager-header-left{
     display:flex;
     align-items:center;
     gap:12px;
 }
 
-.player-header-info h2{
+.manager-header-info h2{
     margin:0;
     display:flex;
     align-items:center;
@@ -278,7 +278,7 @@ display:none;
     line-height:1.05;
 }
 
-.player-header-meta{
+.manager-header-meta{
     display:flex;
     align-items:center;
     gap:12px;
@@ -291,7 +291,7 @@ display:none;
     color:var(--muted);
 }
 
-.player-profile-photo{
+.manager-profile-photo{
     width:80px;
     height:80px;
 
@@ -301,7 +301,7 @@ display:none;
     border:3px solid rgba(0,77,152,.25);
 }
 
-.player-flag-large{
+.manager-flag-large{
     width:32px;
     height:22px;
 
@@ -329,14 +329,14 @@ display:none;
     border-color:#004D98;
 }
 
-.player-header-right{
+.manager-header-right{
     position:relative;
     width:98px;
     margin-left:auto;
     text-transform:uppercase;
 }
 
-.player-select{
+.manager-select{
 
     width:100%;
     height:38px;
@@ -358,17 +358,17 @@ display:none;
     -moz-appearance:none;
 }
 
-.player-select:focus{
+.manager-select:focus{
     outline:none;
     border-color:#004D98;
 }
 
-.player-select option{
+.manager-select option{
     background:var(--select-bg);
     color:var(--select-text);
 }
 
-.player-header-right::after{
+.manager-header-right::after{
     content:"▼";
     position:absolute;
     right:14px;
@@ -438,7 +438,7 @@ display:none;
     border-color:#004D98;
 }
 
-.player-summary{
+.manager-summary{
 
     display:grid;
 
@@ -568,7 +568,7 @@ display:none;
     color:white;
 }
 
-.player-sections{
+.manager-sections{
     display:flex;
     gap:6px;
     padding:6px;
@@ -579,11 +579,11 @@ display:none;
     scrollbar-width:none;
 }
 
-.player-sections::-webkit-scrollbar{
+.manager-sections::-webkit-scrollbar{
     display:none;
 }
 
-.player-section-btn{
+.manager-section-btn{
     padding:8px 14px;
     border:none;
     border-radius:14px;
@@ -596,7 +596,7 @@ display:none;
 	text-transform:uppercase;
 }
 
-.player-section-btn.active{
+.manager-section-btn.active{
     background:#004D98;
     color:white;
 }
@@ -609,7 +609,7 @@ display:none;
 }
 
 .matches-header,
-.player-match{
+.manager-match{
     display:grid;
 
     grid-template-columns:
@@ -631,7 +631,7 @@ display:none;
 }
 
 .matches-list.gk .matches-header,
-.matches-list.gk .player-match{
+.matches-list.gk .manager-match{
 
     grid-template-columns:
     30px
@@ -671,14 +671,14 @@ display:none;
     text-align:left;
 }
 
-.player-match{
+.manager-match{
     align-items:center;
     padding:10px 12px;
     border-top:1px solid var(--meta-border);
     transition:.2s;
 }
 
-.player-match:hover{
+.manager-match:hover{
     background:var(--meta-bg);
     cursor:pointer;
 }
@@ -707,11 +707,11 @@ display:none;
     object-fit:contain;
 }
 
-.player-started{
+.manager-started{
     border-left:4px solid #22c55e;
 }
 
-.player-bench{
+.manager-bench{
     border-left:4px solid #f59e0b;
 }
 
@@ -959,7 +959,7 @@ display:none;
         grid-template-columns:1fr;
     }
 
-.player-filters-card{
+.manager-filters-card{
 
     position:relative;
 
@@ -1023,7 +1023,7 @@ display:none;
         70px;
     }
 
-    .player-match{
+    .manager-match{
         grid-template-columns:
         30px
         75px
@@ -1068,19 +1068,19 @@ display:none;
 }
 
 .matches-header div:nth-child(3),
-.player-match div:nth-child(3),
+.manager-match div:nth-child(3),
 .matches-header div:nth-child(6),
-.player-match div:nth-child(6),
+.manager-match div:nth-child(6),
 .matches-header div:nth-child(7),
-.player-match div:nth-child(7),
+.manager-match div:nth-child(7),
 .matches-header div:nth-child(8),
-.player-match div:nth-child(8),
+.manager-match div:nth-child(8),
 .matches-header div:nth-child(9),
-.player-match div:nth-child(9),
+.manager-match div:nth-child(9),
 .matches-header div:nth-child(10),
-.player-match div:nth-child(10),
+.manager-match div:nth-child(10),
 .matches-header div:nth-child(11),
-.player-match div:nth-child(11){
+.manager-match div:nth-child(11){
     display:none;
 }
 
@@ -1094,12 +1094,12 @@ display:none;
 	    max-width:100%;
 	}
 
-    .player-stats-header{
+    .manager-stats-header{
 
         flex-direction:column;
     }
 
-    .player-summary{
+    .manager-summary{
 
         grid-template-columns:
             repeat(3,1fr);
@@ -1112,24 +1112,24 @@ display:none;
         font-size:1.8rem;
     }
 
-	.player-header-left,
-	.player-header-card{
+	.manager-header-left,
+	.manager-header-card{
 	    gap:10px;
 	}
 	
-	.player-profile-header{
+	.manager-profile-header{
 	    gap:0px;
 	}
 
-	.player-position{
+	.manager-position{
     	display:none;
 	}
 
-	.player-profile-info h2{
+	.manager-profile-info h2{
 	    gap:4px;
 	}
 
-	.player-header-info h2{
+	.manager-header-info h2{
     	font-size:16px;
 	}
 
@@ -1151,7 +1151,7 @@ display:none;
         padding:6px;
     }
 
-	.player-flag-large{
+	.manager-flag-large{
 	    width:20px;
 	    height:20px;
 	}
@@ -1265,7 +1265,7 @@ display:none;
 		        Analysis
 		    </div>
 			
-		    <a href="player.html" class="active">Players Stats</a>
+		    <a href="manager.html" class="active">Players Stats</a>
 		    <a href="compare.html">Compare Players</a>
 
 		    <div class="sidebar-section">
@@ -1348,24 +1348,24 @@ display:none;
 <div class="content-layout">
 <div class="left-panel">
 
-<div class="player-header-card" id="playerProfile"></div>
+<div class="manager-header-card" id="managerProfile"></div>
 
-<div class="player-sections">
+<div class="manager-sections">
 
     <button
-        class="player-section-btn"
+        class="manager-section-btn"
         data-section="info">
         Info
     </button>
 
     <button
-        class="player-section-btn active"
+        class="manager-section-btn active"
         data-section="stats">
         Stats
     </button>
 
     <button
-        class="player-section-btn"
+        class="manager-section-btn"
         data-section="matches">
 
         Matches
@@ -1373,7 +1373,7 @@ display:none;
     </button>
 	
 	<button
-	    class="player-section-btn"
+	    class="manager-section-btn"
 	    data-section="career">
 	
 	    Career
@@ -1382,7 +1382,7 @@ display:none;
 
 </div>
 
-<div class="player-filters-card">
+<div class="manager-filters-card">
 
 	<div class="filter-section season">
 	
@@ -1412,14 +1412,14 @@ display:none;
 
 <div id="infoSection" style="display:none;">
 
-    <div id="playerInfoContent"></div>
+    <div id="managerInfoContent"></div>
 
 </div>
 
 <div id="statsSection">
 
-    <div id="playerSummary"
-        class="player-summary">
+    <div id="managerSummary"
+        class="manager-summary">
     </div>
 
 	<div id="seasonWidgets" class="season-widgets"></div>
@@ -1438,7 +1438,7 @@ display:none;
 </div>
 </div>
 
-<script src="data/playerMap.js"></script>
+<script src="data/managerMap.js"></script>
 <script src="data/countryMap.js"></script>
 <script>
 
@@ -1509,19 +1509,19 @@ function getCountryLogo(country){
     return `logos/countries/${code}.png`;
 }
 
-function getNationalities(player){
+function getNationalities(manager){
 
     return [
-        player["Nationality 1"],
-        player["Nationality 2"]
+        manager["Nationality 1"],
+        manager["Nationality 2"]
     ].filter(Boolean);
 
 }
 
-function renderNationalityFlags(player){
+function renderNationalityFlags(manager){
 
     const nationality =
-        player["Nationality 1"];
+        manager["Nationality 1"];
 
     if(!nationality){
         return "";
@@ -1531,7 +1531,7 @@ function renderNationalityFlags(player){
         <img
             src="${getCountryLogo(nationality)}"
             alt="${nationality}"
-            class="player-flag-large"
+            class="manager-flag-large"
             onerror="this.src='logos/countries/default.png'"
         >
     `;
@@ -1787,7 +1787,7 @@ function renderManagerSummary(stats){
         : "0.00";
 
     document.getElementById(
-        "playerSummary"
+        "managerSummary"
     ).innerHTML = `
 
         <div class="summary-stat">
@@ -2250,7 +2250,7 @@ function renderManager(managerName){
 	        ? `
 	            <img
 	                src="${getCountryLogo(nationality)}"
-	                class="player-flag-large"
+	                class="manager-flag-large"
 	                alt="${nationality}"
 	                onerror="this.src='logos/countries/default.png'"
 	            >
@@ -2266,24 +2266,24 @@ function renderManager(managerName){
         getManagerWinRate(stats);
 
     document.getElementById(
-        "playerProfile"
+        "managerProfile"
     ).innerHTML = `
 
-        <div class="player-header-left">
+        <div class="manager-header-left">
 
             <img
                 src="logos/managers/${managerName}.webp"
-                class="player-profile-photo"
+                class="manager-profile-photo"
                 onerror="this.src='logos/managers/default.webp'">
 
-            <div class="player-header-info">
+            <div class="manager-header-info">
 
 				<h2>
 				    ${managerName}
 				    ${flag}
 				</h2>
 
-				<div class="player-header-meta">
+				<div class="manager-header-meta">
 				
 				    <span>
 				        Age ${age}
@@ -2299,11 +2299,11 @@ function renderManager(managerName){
 
         </div>
 
-        <div class="player-header-right">
+        <div class="manager-header-right">
 
             <select
                 id="managerSelect"
-                class="player-select">
+                class="manager-select">
 
                 <option value="">
                     Switch
@@ -2343,7 +2343,7 @@ function initSections(){
 
     document
     .querySelectorAll(
-        ".player-section-btn"
+        ".manager-section-btn"
     )
     .forEach(btn => {
 
@@ -2353,7 +2353,7 @@ function initSections(){
 
                 document
                 .querySelectorAll(
-                    ".player-section-btn"
+                    ".manager-section-btn"
                 )
                 .forEach(b =>
                     b.classList.remove("active")
@@ -2368,7 +2368,7 @@ function initSections(){
 				    document.querySelector(".filter-section.season");
 
 				const filtersCard =
-    				document.querySelector(".player-filters-card");
+    				document.querySelector(".manager-filters-card");
 				
 				const ratingCard =
 				    document.getElementById("ratingCard");
@@ -2386,7 +2386,7 @@ function initSections(){
 				    seasonSection.style.display = "none";
 				
 				    populateCareerCompetitionFilter(
-				        playerName
+				        managerName
 				    );
 				
 				}else{
@@ -2394,7 +2394,7 @@ function initSections(){
 				    seasonSection.style.display = "";
 				
 				    populateCompetitionFilter(
-				        playerName
+				        managerName
 				    );
 				
 				}
@@ -2509,7 +2509,7 @@ function renderManagerInfo(){
         );
 
     document.getElementById(
-        "playerInfoContent"
+        "managerInfoContent"
     ).innerHTML = `
 
         <div class="info-card">
@@ -2674,7 +2674,7 @@ function renderManagerMatches(){
                 return `
 
                     <div
-                        class="player-match"
+                        class="manager-match"
                         onclick="
                             location.href='match.html?id=${match.ID}'
                         ">
@@ -2910,7 +2910,7 @@ Promise.all([
 	
 	if(!managerExists){
 	
-	    document.getElementById("playerProfile")
+	    document.getElementById("managerProfile")
 	        .innerHTML = "<p>Manager not found.</p>";
 	
 	    return;
@@ -2990,7 +2990,7 @@ function initPersonSearch(){
             if(match[`Player name ${i}`]){
 
                 searchItems.set(
-                    `player-${match[`Player name ${i}`]}`,
+                    `manager-${match[`Player name ${i}`]}`,
                     {
                         name: match[`Player name ${i}`],
                         type: "Player"
@@ -3002,7 +3002,7 @@ function initPersonSearch(){
             if(match[`Opp. Player name ${i}`]){
 
                 searchItems.set(
-                    `player-${match[`Opp. Player name ${i}`]}`,
+                    `manager-${match[`Opp. Player name ${i}`]}`,
                     {
                         name: match[`Opp. Player name ${i}`],
                         type: "Player"
@@ -3018,7 +3018,7 @@ function initPersonSearch(){
             if(match[`On the bench name ${i}`]){
 
                 searchItems.set(
-                    `player-${match[`On the bench name ${i}`]}`,
+                    `manager-${match[`On the bench name ${i}`]}`,
                     {
                         name: match[`On the bench name ${i}`],
                         type: "Player"
@@ -3030,7 +3030,7 @@ function initPersonSearch(){
             if(match[`Opp. On the bench name ${i}`]){
 
                 searchItems.set(
-                    `player-${match[`Opp. On the bench name ${i}`]}`,
+                    `manager-${match[`Opp. On the bench name ${i}`]}`,
                     {
                         name: match[`Opp. On the bench name ${i}`],
                         type: "Player"
@@ -3086,11 +3086,11 @@ function initPersonSearch(){
             .slice(0,20);
 
         results.innerHTML = `
-            <div class="player-search-results">
+            <div class="manager-search-results">
 
                 ${filtered.map(item => {
 
-                    let url = "player.html?name=" +
+                    let url = "manager.html?name=" +
                         encodeURIComponent(item.name);
 
                     if(item.type === "Manager"){
@@ -3112,7 +3112,7 @@ function initPersonSearch(){
                     return `
 
                         <a
-                            class="player-search-item"
+                            class="manager-search-item"
                             href="${url}">
 
                             ${item.name}
