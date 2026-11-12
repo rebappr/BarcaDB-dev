@@ -2462,7 +2462,9 @@ function renderManagerInfo(){
 	    );
 	
 	const nationalities =
-	    getNationalities(manager);
+	    manager
+	        ? getNationalities(manager)
+	        : [];
 	
 	const nationalityHtml =
 	    nationalities.length
@@ -2476,7 +2478,7 @@ function renderManagerInfo(){
 	                >
 	                ${n}
 	            </span>
-	        `).join("<br>")
+	        `).join(" &nbsp;/&nbsp; ")
 	        : "-";
 
     const managerMatches =
