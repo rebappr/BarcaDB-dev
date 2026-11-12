@@ -14,23 +14,23 @@
 
 <meta name="theme-color" content="#004D98">
 
-<title>FC Barcelona Managers | Coaches & Statistics | Barça Database</title>
+<title>
+FC Barcelona Managers Statistics | Barça Database
+</title>
 
-<meta name="robots" content="noindex, nofollow">
-
-<meta name="author"
-      content="RE">
+<meta name="robots" content="index, follow">
 
 <meta name="description"
-      content="Browse all FC Barcelona managers. Explore coaching records, matches, wins, trophies, seasons and statistics throughout the club's history.">
+      content="Explore FC Barcelona managers throughout history. View coaching records, matches, wins, win percentages, career statistics, nationalities and detailed managerial profiles.">
 
-<link rel="canonical" href="https://barcadb.com/manager.html">
+<link rel="canonical"
+      href="https://barcadb.com/manager.html">
 
 <meta property="og:title"
-      content="FC Barcelona Managers | Barça Database">
+      content="FC Barcelona Managers Statistics | Barça Database">
 
 <meta property="og:description"
-      content="Browse all FC Barcelona managers with coaching records, trophies, matches and career statistics.">
+      content="Complete statistics and profiles of FC Barcelona managers including matches, wins, trophies, nationalities and coaching records.">
 
 <meta property="og:url"
       content="https://barcadb.com/manager.html">
@@ -48,16 +48,16 @@
       content="summary_large_image">
 
 <meta name="twitter:title"
-      content="FC  Managers | Barça Database">
+      content="FC Barcelona Managers Statistics | Barça Database">
 
 <meta name="twitter:description"
-      content="Browse all FC  managers with coaching records, trophies, matches and career statistics.">
+      content="Browse FC Barcelona managers through history with detailed statistics, profiles, records and coaching achievements.">
 
 <meta name="twitter:image"
       content="https://barcadb.com/logos/barcadb-logo.png">
 
 <meta name="keywords"
-      content="FC Barcelona managers, Barcelona coaches, Barca managers, Barcelona coaching history, Barcelona trophies, manager statistics, Barcelona head coaches">
+      content="FC Barcelona managers, Barcelona coaches, Barça managers, Barcelona coaching history, Hansi Flick, Johan Cruyff manager, Pep Guardiola manager, FC Barcelona coaching statistics, Barcelona manager records, Barça database">
 
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/main.css">
@@ -65,720 +65,1107 @@
 
 <style>
 
-.content-layout{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    align-items:start;
-    gap:8px;
+.content-layout.animate{
+animation:pageRefresh .4s ease;
 }
 
-.left-panel,
-.right-panel{
-    min-width:0;
+@keyframes pageRefresh{
+from{
+opacity:0;
+transform:translateY(20px) scale(.98);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
 
+.left-panel{
     display:flex;
     flex-direction:column;
-    gap:8px;
+    flex:1.1;
+    min-width:0;
+    gap:12px;
 }
 
-.manager-card{
-background:var(--card-bg);
-border:1px solid var(--card-border);
-border-radius:24px;
-padding:20px;
+.matches-view-switch{
 display:flex;
-align-items:center;
-gap:20px;
+gap:6px;
 margin-bottom:10px;
 }
 
-.manager-info h1{
-margin:0;
-font-size:22px;
-}
-
-.manager-meta{
-margin-top:12px;
-
-display:flex;
-flex-direction:column;
-align-items:flex-start;
-
-gap:6px;
-
-font-size:14px;
-color:var(--muted);
-}
-
-.manager-meta div{
-white-space:normal;
-display:block;
-width:100%;
-}
-
-.manager-meta a{
-font-weight:600;
-text-decoration:none;
-color:var(--link-color);
-}
-
-.manager-meta a:hover{
-text-decoration:underline;
-}
-
-.summary-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:8px;
-}
-
-.summary-box{
-background:var(--card-bg);
-border:1px solid var(--card-border);
-border-radius:18px;
-padding:12px;
-text-align:center;
-}
-
-.summary-box b{
-display:block;
-font-size:26px;
-margin-bottom:4px;
-}
-
-.stats-table{
-width:100%;
-border-collapse:collapse;
-}
-
-.stats-table th,
-.stats-table td{
-padding:8px;
-border-bottom:1px solid var(--meta-border);
-font-size:13px;
-}
-
-.stats-table th{
-text-align:left;
-}
-
-.season-link{
+.matches-view-switch button{
+padding:8px 12px;
+border:none;
+border-radius:14px;
 cursor:pointer;
-font-weight:700;
-color:#004D98;
+font-size:12px;
+text-transform: uppercase;
+
+background:var(--card-bg);
+color:var(--text);
+
+border:1px solid var(--card-border);
 }
 
-.season-link:hover{
-text-decoration:underline;
+.matches-view-switch button.active{
+background:#004D98;
+color:white;
 }
 
-.season-row{
-transition:.2s;
-}
-
-.season-row:hover{
-background:var(--meta-bg);
-}
-
-.opponent-season{
-    background:#fff8c4;
-    transition:.2s;
-}
-
-.opponent-season:hover{
-    background:#fff2a3;
+.mobile-sections{
+display:none;
 }
 
 @media (prefers-color-scheme: dark){
-    
-.opponent-career .summary-box{
-    background:#5b5420;
-    border:1px solid #eab308;
-    color:#fff;
+
+    .filter-note{
+        background:rgba(0,77,152,.15);
+        border-color:#004D98;
+    }
+
+    .meta-badge{
+        background:#1f2937;
+        color:#f9fafb;
+    }
+
 }
 
-.opponent-career .summary-box b{
-    color:#fde68a;
+.matches-view-switch{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
 }
 
-.opponent-season{
-    background:#5b5420;
-}
+.filters{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
 
-.opponent-season:hover{
-    background:#746923;
-}}
+    padding:16px;
 
-.opponent-career .summary-box{
-    background:#fff8c4;
-    border:1px solid #eab308;
-    color:#000;
-}
-
-.opponent-career .summary-box b{
-    color:#92400e;
-}
-
-.stats-table th:first-child,
-.stats-table td:first-child{
-    text-align:left;
-}
-
-.stats-table th:not(:first-child),
-.stats-table td:not(:first-child){
-    text-align:center;
-}
-
-.manager-match:hover{
-background:var(--card-bg);
-}
-
-.manager-match:last-child{
-border-bottom:none;
-}
-
-.result-badge{
-display:inline-block;
-min-width:60px;
-text-align:center;
-border-radius:999px;
-padding:4px 10px;
-font-weight:700;
-}
-
-.result-win{
-background:var(--result-win-bg);
-border:1px solid var(--result-win);
-color:var(--result-win);
-}
-
-.result-draw{
-background:var(--result-draw-bg);
-border:1px solid var(--result-draw);
-color:var(--result-draw);
-}
-
-.result-loss{
-background:var(--result-loss-bg);
-border:1px solid var(--result-loss);
-color:var(--result-loss);
-}
-
-.competition-cell{
-display:flex;
-align-items:center;
-gap:8px;
-font-weight:600;
-}
-
-.competition-logo{
-width:20px;
-height:20px;
-object-fit:contain;
-flex-shrink:0;
-}
-
-.club-title{
-    background:#004D98;
-    color:#ffffff;
-}
-
-.manager-clubs{
-    margin-top:6px;
-    font-size:14px;
-    color:var(--muted);
-    font-weight:600;
-}
-
-.matches-list{
-    display:block;
-    padding:8px;
-    background:var(--meta-bg);
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
     border-radius:12px;
-    margin:8px 0 0 0;
 }
 
-.matches-header{
-    display:grid;
-    grid-template-columns:
-        35px
-        90px
-        70px
-        1fr
-        90px
-        45px
-        45px;
+.manager-filters-card{
 
-    gap:6px;
+    position:relative;
 
-    font-size:12px;
-    font-weight:700;
-    text-transform:uppercase;
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
 
-    padding:8px;
-    margin-bottom:6px;
+    background:var(--card-bg);
 
-    opacity:.7;
+    border:1px solid var(--card-border);
+
+    border-radius:20px;
+
+    padding:16px;
 }
 
-.manager-match{
-    display:grid;
-    grid-template-columns:
-        35px
-        100px
-        70px
-        1fr
-        90px
-        45px
-        45px;
+.filter-section{
 
-    gap:6px;
-    align-items:center;
-    padding:8px;
-    border-bottom:1px solid var(--meta-border);
-    transition:.2s;
-}
-
-.manager-match:last-child{
-    border-bottom:none;
-}
-
-   
-.manager-clubs a{
-    color:var(--link-color);
-    text-decoration:none;
-    font-weight:600;
-}
-
-.manager-clubs a:hover{
-    text-decoration:underline;
-}
-
-.flick-table{
-    width:100%;
-    border-collapse:collapse;
-    table-layout:fixed;
-}
-
-.flick-table th,
-.flick-table td{
-    padding:8px 4px;
-    border-bottom:1px solid var(--meta-border);
-    font-size:13px;
-}
-
-.flick-table th:first-child,
-.flick-table td:first-child{
-    text-align:left;
-}
-
-.flick-table th:not(:first-child),
-.flick-table td:not(:first-child){
-    width:50px;
-    text-align:center;
-}
-
-.flick-selected{
-    color:white;
-    background:linear-gradient(
-        135deg,
-        #004D98,
-        #1e3a8a
-    );
-}
-
-.flick-table th:not(:first-child){
-    cursor:pointer;
-    user-select:none;
-}
-
-.player-link{
-color:inherit;
-text-decoration:none;
-font-weight:600;
-font-size:13px;
-}
-
-.player-link:hover{
-font-weight:600;
-color:#A50044;
-}
-
-	.opponent-link{
-	    color:var(--link-color);
-	    text-decoration:none;
-	    font-weight:600;
-	}
-	
-	.opponent-link:hover{
-	    text-decoration:underline;
-	}
-    
-#managerContent{
     display:flex;
     flex-direction:column;
     gap:8px;
+}
+
+.filter-section.competition{
+    flex:1;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.filter-heading{
+    width:100%;
+}
+
+.filter-label{
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    color:var(--muted);
+	margin-left:4px;
+}
+
+.table-scroll{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+.manager-profile-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:24px;
+    padding:24px;
+}
+
+.manager-profile-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.manager-profile-photo{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid rgba(0,77,152,.2);
+}
+
+.manager-profile-info h2{
+    margin:0;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:2rem;
+}
+
+.manager-profile-info h2 img{
+    width:28px;
+    height:20px;
+    object-fit:cover;
+    border-radius:3px;
+}
+
+.manager-profile-meta{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:1rem;
+    line-height:1.8;
+}
+
+.manager-shirt{
+    font-weight:700;
+    color:var(--text);
+}
+
+.manager-header-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--card-border);
+    border-radius:12px;
+}
+
+.manager-header-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.manager-header-info h2{
+    margin:0;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:24px;
+    font-weight:700;
+    line-height:1.05;
+}
+
+.manager-header-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-top:8px;
+
+    font-size:.8rem;
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+.manager-profile-photo{
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+    object-fit:cover;
+
+    border:3px solid rgba(0,77,152,.25);
+}
+
+.manager-flag-large{
+    width:32px;
+    height:22px;
+
+    border-radius:3px;
+}
+
+.filters select{
+    width:100%;
+
+    height:38px;
+
+    padding:0 12px;
+
+    background:var(--meta-bg);
+    color:var(--text);
+
+    border:1px solid var(--meta-border);
+    border-radius:14px;
+
+    font-size:12px;
+}
+
+.filters select:focus{
+    outline:none;
+    border-color:#004D98;
+}
+
+.manager-header-right{
+    position:relative;
+    width:98px;
+    margin-left:auto;
+    text-transform:uppercase;
+}
+
+.manager-select{
+
+    width:100%;
+    height:38px;
+
+    padding:0 40px 0 12px;
+
+    background:var(--select-bg);
+    color:var(--select-text);
+
+    border:1px solid var(--meta-border);
+    border-radius:14px;
+
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
+.manager-select:focus{
+    outline:none;
+    border-color:#004D98;
+}
+
+.manager-select option{
+    background:var(--select-bg);
+    color:var(--select-text);
+}
+
+.manager-header-right::after{
+    content:"▼";
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:var(--select-arrow);
+    font-size:12px;
+    pointer-events:none;
+}
+
+.filter-heading{
+    width:100%;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    color:var(--muted);
+}
+
+#seasonFilter{
+    width:100%;
+    height:38px;
+    padding:0 40px 0 12px;
+    background:var(--select-bg);
+    color:var(--select-text);
+    border:1px solid var(--meta-border);
+    border-radius:14px;
+    font-size:13px;
+    font-weight:700;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
+#seasonFilter:focus{
+    outline:none;
+    border-color:#004D98;
+}
+
+.filter-title{
+
+    margin-right:6px;
+
+    font-size:12px;
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+.competition-btn:hover{
+    border-color:#004D98;
+}
+
+.competition-btn.active{
+
+    background:
+        linear-gradient(
+            135deg,
+            #004D98,
+            #0066cc
+        );
+
+    color:white;
+
+    border-color:#004D98;
+}
+
+.manager-summary{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,minmax(120px,1fr));
+
+    gap:12px;
+
+    padding:20px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--card-border);
+    border-radius:24px;
+}
+
+.summary-stat{
+
+    text-align:center;
+}
+
+.summary-value{
+
+    font-size:2.2rem;
+    font-weight:800;
+
+    color:var(--number);
+}
+
+.summary-rating{
+
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #00bcd4
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    font-size:2.6rem;
+    font-weight:800;
+}
+
+.match-rating{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:48px;
+
+    padding:4px 8px;
+
+    border-radius:999px;
+
+    font-size:12px;
+    font-weight:800;
+
+    background:
+        rgba(0,188,212,.12);
+
+    color:#00bcd4;
+
+    border:
+        1px solid rgba(0,188,212,.3);
+}
+
+.summary-label{
+    margin-top:4px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    color:var(--muted);
+}
+
+.season-select-wrap{
+    position:relative;
+    width:160px;
+}
+
+.season-select-wrap::after{
+    content:"▼";
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:var(--select-arrow);
+    font-size:12px;
+    pointer-events:none;
+}
+
+#competitionContainer{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:6px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+}
+
+#competitionContainer::-webkit-scrollbar{
+    display:none;
+}
+
+.competition-btn{
+    padding:8px 12px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:12px;
+    text-transform:uppercase;
+    white-space:nowrap;
+    background:var(--card-bg);
+    color:var(--text);
+    border:1px solid var(--card-border);
+    transition:.2s;
+}
+
+.competition-btn.active{
+    background:#004D98;
+    color:white;
+}
+
+.manager-sections{
+    display:flex;
+    gap:6px;
+    padding:6px;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:18px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.manager-sections::-webkit-scrollbar{
+    display:none;
+}
+
+.manager-section-btn{
+    padding:8px 14px;
+    border:none;
+    border-radius:14px;
+    background:transparent;
+    color:var(--text);
+    font-size:12px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:.2s;
+	text-transform:uppercase;
+}
+
+.manager-section-btn.active{
+    background:#004D98;
+    color:white;
+}
+
+.matches-list{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.matches-header,
+.manager-match{
+    display:grid;
+
+    grid-template-columns:
+        30px
+        80px
+        60px
+        1fr
+        80px
+        50px
+        50px
+        50px
+        50px;
+
+    gap:8px;
+    font-size:12px;
+    text-align:center;
+}
+
+.matches-list.gk .matches-header,
+.matches-list.gk .manager-match{
+
+    grid-template-columns:
+    30px
+    80px
+    60px
+    1fr
+    80px
+    50px
+    50px
+    50px
+    35px
+    35px;
+
+}
+
+.opponent-cell{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:6px;
+}
+
+.competition-cell{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.matches-header{
+    font-weight:700;
+    text-transform:uppercase;
+    padding:12px;
+    opacity:.7;
+}
+
+.matches-header div:nth-child(4){
+    text-align:left;
+}
+
+.manager-match{
+    align-items:center;
+    padding:10px 12px;
+    border-top:1px solid var(--meta-border);
+    transition:.2s;
+}
+
+.manager-match:hover{
+    background:var(--meta-bg);
+    cursor:pointer;
+}
+
+.competition-cell{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.competition-logo{
+    width:20px;
+    height:20px;
+    object-fit:contain;
 }
 
 .opponent-cell{
     display:flex;
     align-items:center;
     gap:6px;
-    min-width:0;
 }
 
-.opponent-cell img{
+.opponent-logo{
     width:20px;
     height:20px;
     object-fit:contain;
+}
+
+.manager-started{
+    border-left:4px solid #22c55e;
+}
+
+.manager-bench{
+    border-left:4px solid #f59e0b;
+}
+
+.result-badge{
+    display:inline-block;
+    min-width:60px;
+    text-align:center;
+    border-radius:999px;
+    padding:4px 10px;
+    font-weight:700;
+}
+
+.result-win{
+    background:var(--result-win-bg);
+    border:1px solid var(--result-win);
+    color:var(--result-win);
+}
+
+.result-draw{
+    background:var(--result-draw-bg);
+    border:1px solid var(--result-draw);
+    color:var(--result-draw);
+}
+
+.result-loss{
+    background:var(--result-loss-bg);
+    border:1px solid var(--result-loss);
+    color:var(--result-loss);
+}
+
+.mobile-match-stats{
+    display:none;
+}
+
+.career-summary{
+    display:grid;
+    grid-template-columns:
+        repeat(5,minmax(90px,1fr));
+    gap:12px;
+    padding:20px;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:24px;
+}
+
+.season-widgets{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:12px;
+
+    margin-top:12px;
+}
+
+.stats-widget{
+
+    padding:20px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--card-border);
+
+    border-radius:24px;
+}
+
+.stats-widget-title{
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:.6px;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+.widget-stats-list{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-top:16px;
+}
+
+.widget-stat{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    padding-bottom:10px;
+}
+
+.widget-stat:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.widget-stat-label{
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:var(--text);
+}
+
+.widget-stat-value{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:var(--number);
+}
+
+.card-indicator{
+    width:12px;
+    height:16px;
+    border-radius:2px;
+    display:inline-block;
+    margin-right:8px;
     flex-shrink:0;
+}
+
+.card-yellow{
+    background:#facc15;
+    border:1px solid #eab308;
+}
+
+.card-red{
+    background:#ef4444;
+    border:1px solid #dc2626;
+}
+
+.info-card{
+
+    padding:24px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--card-border);
+
+    border-radius:24px;
+}
+
+.info-card h3{
+
+    margin:0 0 20px;
+
+    font-size:14px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.6px;
+
+    color:var(--muted);
+}
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:16px;
+}
+
+.info-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    padding:16px;
+
+    background:var(--meta-bg);
+
+    border-radius:16px;
+}
+
+.info-item span{
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+.info-item strong{
+
+    font-size:16px;
+
+    color:var(--text);
+}
+
+.info-item a{
+    color:var(--link-color);
+    text-decoration:none;
+    font-weight:700;
+    border-bottom:1px solid transparent;
+    transition:.2s;
+}
+
+.info-item a:hover{
+    color:var(--link-color);
+    border-bottom-color:var(--link-color);
+}
+
+.info-nationality{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+}
+
+.info-nationality-flag{
+    width:20px;
+    height:14px;
+    object-fit:cover;
+    border-radius:2px;
+    vertical-align:middle;
 }
 
 @media(max-width:820px){
 
-.opponent-cell img{
-    width:16px;
-    height:16px;
-}
+    .info-grid{
 
-.opponent-cell{
-    overflow:hidden;
-}
-
-.opponent-link{
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
-    
-.desktop-search{
-    display:none;
-}
-
-.mobile-menu-search{
-
-    display:block;
-
-    width:100%;
-
-    margin-bottom:8px;
-}
-
-.mobile-search-input{
-
-    display:block;
-
-    width:100%;
-
-    height:52px;
-
-    padding:0 16px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:rgba(255,255,255,.12);
-
-    color:#A9A9A9;
-
-    font-size:16px;
-
-    margin:0;
-}
-
-.mobile-search-input::placeholder{
-    color:#A9A9A9;
-}
-
-.menu-toggle{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    width:48px;
-
-    height:48px;
-
-    margin-left:auto;
-
-    padding-bottom:2px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:rgba(255,255,255,.15);
-
-    color:white;
-
-    font-size:30px;
-
-    font-weight:700;
-
-    cursor:pointer;
-}
-
-.menu-overlay{
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.55);
-
-    z-index:9998;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s;
-}
-
-.menu-overlay.show{
-
-    opacity:1;
-
-    visibility:visible;
-}
-
-.main-menu{
-
-    position:fixed;
-
-    top:0;
-
-    left:-75%;
-
-    width:70%;
-
-    height:100vh;
-
-    z-index:9999;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:0;
-
-    padding:20px 12px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #004D98,
-            #A50044
-        );
-
-    transition:left .3s ease;
-
-    margin:0;
-}
-
-.main-menu.open{
-    left:0;
-}
-      
-.main-menu a{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:flex-start;
-
-    text-align:left;
-
-    gap:12px;
-
-    width:100%;
-
-    min-width:unset;
-
-    padding:12px 12px;
-
-    border-radius:0;
-
-    background:transparent;
-
-    box-shadow:none;
-
-    color:white;
-
-    font-weight:500;
-
-    text-transform:uppercase;
-
-    border-bottom:1px solid rgba(255,255,255,.25);
-}
-
-.main-menu a img{
-
-    display:block;
-
-    width:24px;
-
-    height:24px;
-
-    object-fit:contain;
-}
-
-.main-menu a:hover{
-
-    background:transparent;
-
-    box-shadow:none;
-
-    transform:none;
-}
-
-.main-menu a.active{
-    background:transparent;
-    font-weight:800;
-    border-bottom:1px solid rgba(255,255,255,.25);
-}
-
-.main-menu a.active span{
-    font-weight:800;
-}
-
-.main-menu.open{
-    left:0;
-}
-
-    .header-logo{
-        width:82px;
-        height:82px;
+        grid-template-columns:1fr;
     }
 
-	.header h1{
-		font-size:18px;
+    .season-widgets{
+
+        grid-template-columns:1fr;
+    }
+
+.manager-filters-card{
+
+    position:relative;
+
+    display:block;
+
+    padding:16px;
+}
+
+
+.filter-section.season{
+
+    width:auto;
+    min-width:0;
+}
+
+.filter-section.competition{
+
+    width:100%;
+
+    margin-top:12px;
+}
+
+#competitionContainer{
+
+    width:100%;
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    overflow:visible;
+}
+
+    .competition-btn{
+        flex:0 0 auto;
+    }
+
+    #competitionContainer{
+        width:100%;
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+        overflow:visible;
+    }
+
+    .competition-btn{
+        flex:0 0 auto;
+    }
+
+	.career-summary{
+	    grid-template-columns:
+	        repeat(3,1fr);
 	}
-    
-    .main-menu a:hover{
-        background:#004D98;
-    
-        backdrop-filter:blur(15px);
-        -webkit-backdrop-filter:blur(15px);
-    }
-    
-    .main-menu a.active{
-        background:#A50044;
-        color:white;
-    
-        box-shadow:
-            0 4px 12px rgba(0,77,152,.35);
-    
-        backdrop-filter:blur(15px);
-        -webkit-backdrop-filter:blur(15px);
+
+    .matches-header{
+        grid-template-columns:
+        30px
+        75px
+        1fr
+        70px;
     }
 
-.content-layout{
-    grid-template-columns:1fr;
-    gap:8px;
+    .manager-match{
+        grid-template-columns:
+        30px
+        75px
+        1fr
+        70px;
+	    row-gap:8px;
+	}
+
+.mobile-match-stats{
+    display:block;
+    grid-column:1 / -1;
+
+    margin-top:6px;
+    padding-top:6px;
+
+    border-top:1px solid var(--meta-border);
 }
 
-.left-panel,
-.right-panel{
-flex:none !important;
-width:100% !important;
-min-width:0;
-max-width:100%;
+.mobile-stats-header,
+.mobile-stats-values{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:1fr;
+    text-align:center;
 }
 
-.right-panel{
-position:static !important;
-top:auto;
+.mobile-stats-header{
+    font-size:10px;
+    font-weight:700;
+    opacity:.7;
+    margin-bottom:4px;
+}
+
+.mobile-stats-values{
+    font-size:12px;
+    font-weight:600;
+}
+
+.mobile-stats-values .summary-rating{
+    color:#00bcd4;
+    font-weight:800;
 }
 
 .matches-header div:nth-child(3),
-.manager-match div:nth-child(3){
+.manager-match div:nth-child(3),
+.matches-header div:nth-child(6),
+.manager-match div:nth-child(6),
+.matches-header div:nth-child(7),
+.manager-match div:nth-child(7),
+.matches-header div:nth-child(8),
+.manager-match div:nth-child(8),
+.matches-header div:nth-child(9),
+.manager-match div:nth-child(9){
     display:none;
 }
 
-.manager-match, 
-.matches-header{
-    grid-template-columns:
-        30px
-        90px
-        1fr
-        90px
-        35px
-        35px;
+    .competition-cell span{
+        display:none;
+    }
 
-    row-gap:8px;
-}
+	
+	#seasonFilter{
+	    width:100%;
+	    max-width:100%;
+	}
 
-.competition-logo{
-width:18px;
-height:18px;
-}
+    .manager-stats-header{
 
-.manager-card{
-    flex-direction:column;
-    align-items:flex-start;
-}
+        flex-direction:column;
+    }
 
-.manager-info{
-    width:100%;
-}
+    .manager-summary{
 
-.manager-info h1{
-    text-align:left;
-}
+        grid-template-columns:
+            repeat(3,1fr);
 
-.summary-grid{
-grid-template-columns:repeat(4,1fr);
-}
+        gap:10px;
+    }
 
-.stats-table th{
-    font-size:0;
-}
+    .summary-value{
 
-.stats-table th:nth-child(1)::after{
-    content:"Season";
-    font-size:12px;
-}
+        font-size:1.8rem;
+    }
 
-.stats-table th:nth-child(2)::after{
-    content:"M";
-    font-size:12px;
-}
+	.manager-header-left,
+	.manager-header-card{
+	    gap:10px;
+	}
+	
+	.manager-profile-header{
+	    gap:0px;
+	}
 
-.stats-table th:nth-child(3)::after{
-    content:"W";
-    font-size:12px;
-}
+	.manager-position{
+    	display:none;
+	}
 
-.stats-table th:nth-child(4)::after{
-    content:"D";
-    font-size:12px;
-}
+	.manager-profile-info h2{
+	    gap:4px;
+	}
 
-.stats-table th:nth-child(5)::after{
-    content:"L";
-    font-size:12px;
-}
+	.manager-header-info h2{
+    	font-size:16px;
+	}
 
-.stats-table th:nth-child(6)::after{
-    content:"W%";
-    font-size:12px;
-}
+    .content-layout{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+    }
 
-.summary-box{
-font-size:13px;
-}
+    .left-panel{
+        flex:none !important;
+        width:100% !important;
+        min-width:0;
+        max-width:100%;
+        margin:0;
+    }
 
+    .container{
+        padding:6px;
+    }
+
+	.manager-flag-large{
+	    width:20px;
+	    height:20px;
+	}
 }
 
 </style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SportsTeam",
+  "name":"FC Barcelona",
+  "url":"https://barcadb.com/squad.html",
+  "sport":"Football",
+  "memberOf":{
+    "@type":"SportsOrganization",
+    "name":"La Liga"
+  }
+}
+</script>
 </head>
-
 <body>
 
 <div id="sidebarOverlay"
@@ -872,7 +1259,7 @@ font-size:13px;
 		        Analysis
 		    </div>
 			
-		    <a href="player.html">Players Stats</a>
+		    <a href="manager.html">Players Stats</a>
 		    <a href="compare.html">Compare Players</a>
 
 		    <div class="sidebar-section">
@@ -926,7 +1313,7 @@ font-size:13px;
 	                src="logos/barcadb-logo.png"
 	                class="header-logo"
 	                alt="Barça DB">
-
+	
 	        <div class="header-text">
 	            <h1>Barça Database</h1>
 	        </div>
@@ -952,44 +1339,101 @@ font-size:13px;
 	</div>
 </div>
 
-<div id="managerProfile">
-    Loading...
-</div>
-
 <div class="content-layout">
+<div class="left-panel">
 
-    <div class="left-panel">
-        <div id="managerContent"></div>
+<div class="manager-header-card" id="managerProfile"></div>
+
+<div class="manager-sections">
+
+    <button
+        class="manager-section-btn"
+        data-section="info">
+        Info
+    </button>
+
+    <button
+        class="manager-section-btn active"
+        data-section="stats">
+        Stats
+    </button>
+
+    <button
+        class="manager-section-btn"
+        data-section="matches">
+
+        Matches
+
+    </button>
+	
+	<button
+	    class="manager-section-btn"
+	    data-section="career">
+	
+	    Career
+	
+	</button>
+
+</div>
+
+<div class="manager-filters-card">
+
+	<div class="filter-section season">
+	
+	    <div class="filter-heading">
+	        Season
+	    </div>
+	
+	    <div class="season-select-wrap">
+	
+	        <select id="seasonFilter"></select>
+	
+	    </div>
+	
+	</div>
+
+	<div class="filter-section competition">
+	
+	    <div class="filter-heading">
+	        Competition
+	    </div>
+	
+	    <div id="competitionContainer"></div>
+	
+	</div>
+
+</div>
+
+<div id="infoSection" style="display:none;">
+
+    <div id="managerInfoContent"></div>
+
+</div>
+
+<div id="statsSection">
+
+    <div id="managerSummary"
+        class="manager-summary">
     </div>
 
-    <div class="right-panel">
-    
-        <div class="widget-title">
-            Top 10 Under Manager
-        </div>
-    
-        <div class="widget-card">
-            <div id="topManagerPlayers">
-                Loading...
-            </div>
-        </div>
-    
-    </div>
+	<div id="seasonWidgets" class="season-widgets"></div>
 
 </div>
 
+<div id="matchesSection"
+    style="display:none;">
+
+</div>
+
+<div id="careerSection"
+    style="display:none;">
 </div>
 
 </div>
 </div>
-</div>
 
-</div>
-</div>
-</div>
-
-<script src="data/clubMap.js"></script>
-<script src="data/competitionMap.js"></script>
+<script src="data/managerMap.js"></script>
+<script src="data/countryMap.js"></script>
 <script>
 
 function getClubLogo(team){
@@ -1001,11 +1445,12 @@ function getClubLogo(team){
         + ".png";
 }
 
-const params =
-new URLSearchParams(location.search);
+const urlParams =
+    new URLSearchParams(window.location.search);
 
 const managerName =
-params.get("name");
+    urlParams.get("name") ||
+    "Hansi Flick";
 
 const competitionLogos = {
     "Copa del Rey": "copa.png",
@@ -1024,964 +1469,1568 @@ const competitionLogos = {
     "European Cup": "ec.png"
 };
 
-document.title = `${managerName} | Barça Database`;
+function getCompetitionShortName(comp){
 
-document.querySelector('meta[name="description"]')
-?.setAttribute(
-    "content",
-    `${managerName} managerial statistics, matches, wins, draws and losses with FC Barcelona.`
-);
+    const names = {
 
-const canonical = document.querySelector('link[rel="canonical"]');
+        "UEFA Champions League":"UCL",
+		"UEFA Europa League":"UEL",
+        "Copa del Rey":"Copa",
+        "Supercopa de España":"Supercopa",
+        "FIFA Club World Cup":"CWC",
+        "La Liga":"La Liga",
+    	"Copa de la Liga": "Copa Liga",
+    	"Copa de la Coronación": "Copa",
+    	"Cup Winners' Cup": "CWC",
+    	"UEFA Super Cup": "UEFA SC",
+    	"UEFA Cup": "UEFA Cup",
+    	"Inter-Cities Fairs Cup": "ICFC",
+    	"European Cup": "EC"
 
-if (canonical) {
-    canonical.href = location.href;
-}
+    };
 
-let allMatches = [];
-
-let managerSortColumn = "total";
-let managerSortDirection = "desc";
-
-function sortManagerPlayers(column){
-
-    if(managerSortColumn === column){
-
-        managerSortDirection =
-            managerSortDirection === "asc"
-            ? "desc"
-            : "asc";
-
-    }else{
-
-        managerSortColumn = column;
-        managerSortDirection = "desc";
-
-    }
-
-    renderTopManagerPlayers(managerName, allMatches);
+    return names[comp] || comp;
 
 }
 
-window.sortManagerPlayers = sortManagerPlayers;
+function getCountryLogo(country){
 
-Promise.all([
-    fetch("data/data.json").then(r=>r.json()),
-    fetch("data/managers.json").then(r=>r.json())
-])
-.then(([data, managers])=>{
+    const code =
+        window.getCountryCode
+        ? window.getCountryCode(country)
+        : "default";
 
-    allMatches = data;
-
-    renderManager(managerName, data, managers);
-
-    initPersonSearch();
-
-})
-.catch(error => {
-
-    console.error(
-        "Failed to load data:",
-        error
-    );
-
-});
-
-function statValue(value){
-    return value === 0 ? "-" : value;
+    return `logos/countries/${code}.png`;
 }
 
-function renderManager(manager,data,managers){
+function getNationalities(manager){
 
-const managerMatches = data.filter(match =>
+    return [
+        manager["Nationality 1"],
+        manager["Nationality 2"]
+    ].filter(Boolean);
 
-    match.Manager === manager ||
-    match["Opp. Manager"] === manager
-
-);
-
-const clubs = [];
-
-managerMatches.forEach(match => {
-
-    if(
-        match.Manager === manager &&
-        !clubs.includes("FC Barcelona")
-    ){
-        clubs.push("FC Barcelona");
-    }
-
-    if(
-        match["Opp. Manager"] === manager &&
-        !clubs.includes(match["Opp. Team"])
-    ){
-        clubs.push(match["Opp. Team"]);
-    }
-
-});
-
-const clubsText = clubs.map(club =>
-
-    club === "FC Barcelona"
-    ? club
-    : `<a href="opponent.html?name=${encodeURIComponent(club)}">${club}</a>`
-
-).join(", ");
-
-managerMatches.sort((a,b)=>{
-
-const da =
-new Date(a.Date.split(".").reverse().join("-"));
-
-const db =
-new Date(b.Date.split(".").reverse().join("-"));
-
-return da-db;
-
-});
-
-const barcaMatches = managerMatches
-.filter(match => match.Manager === manager);
-
-barcaMatches.sort((a,b)=>{
-
-    const da =
-    new Date(a.Date.split(".").reverse().join("-"));
-
-    const db =
-    new Date(b.Date.split(".").reverse().join("-"));
-
-    return da - db;
-
-});
-
-
-const debut =
-barcaMatches.length
-? barcaMatches[0]
-: null;
-
-const lastMatch =
-barcaMatches.length
-? barcaMatches[barcaMatches.length - 1]
-: null;
-
-const coachedBarcelona =
-managerMatches.some(
-    match => match.Manager === manager
-);
-
-const clubStats = {};
-
-managerMatches.forEach(match=>{
-
-    const club =
-        match.Manager === manager
-        ? "FC Barcelona"
-        : match["Opp. Team"];
-
-    if(!clubStats[club]){
-
-        clubStats[club] = {
-            seasons:new Set(),
-            matches:0,
-            wins:0,
-            draws:0,
-            losses:0,
-            yellowCards:0,
-            redCards:0
-        };
-
-    }
-
-    clubStats[club].matches++;
-    clubStats[club].seasons.add(match.Season);
-
-    let resultType;
-
-    if(match.Manager === manager){
-
-        resultType = match["Result type"];
-
-    }else{
-
-        resultType =
-            match["Result type"] === "W" ? "L" :
-            match["Result type"] === "L" ? "W" :
-            "D";
-
-    }
-
-    if(resultType === "W") clubStats[club].wins++;
-    if(resultType === "D") clubStats[club].draws++;
-    if(resultType === "L") clubStats[club].losses++;
-
-    for(let i=1;i<=20;i++){
-    
-        if(match.Manager === manager){
-    
-            if(match[`Yellow staff name ${i}`] === manager){
-                clubStats[club].yellowCards++;
-            }
-    
-            if(match[`Red staff name ${i}`] === manager){
-                clubStats[club].redCards++;
-            }
-    
-        }else{
-    
-            if(match[`Opp. Yellow staff name ${i}`] === manager){
-                clubStats[club].yellowCards++;
-            }
-    
-            if(match[`Opp. Red staff name ${i}`] === manager){
-                clubStats[club].redCards++;
-            }
-    
-        }
-    
-    }
-
-});
-
-const managerInfo =
-managers.find(m => m.Manager === manager);
-
-let nationality =
-managerInfo?.["Nationality 1"] || "";
-
-if(
-    managerInfo?.["Nationality 2"] &&
-    managerInfo["Nationality 2"] !== nationality
-){
-    nationality +=
-        " / " +
-        managerInfo["Nationality 2"];
 }
 
-const careerHtml = Object.keys(clubStats)
-.sort((a,b)=>{
+function renderNationalityFlags(manager){
 
-    if(a === "FC Barcelona") return -1;
-    if(b === "FC Barcelona") return 1;
+    const nationality =
+        manager["Nationality 1"];
 
-    return a.localeCompare(b);
-
-})
-.map(club=>{
-
-    const s = clubStats[club];
-
-    const winRate =
-        s.matches
-        ? ((s.wins / s.matches) * 100).toFixed(1)
-        : 0;
+    if(!nationality){
+        return "";
+    }
 
     return `
-
-        <div class="widget-title club-title">
-            ${club}
-        </div>
-
-        <div class="summary-grid ${club !== 'FC Barcelona' ? 'opponent-career' : ''}">
-
-            <div class="summary-box">
-                <b>${s.seasons.size}</b>
-                Seasons
-            </div>
-
-            <div class="summary-box">
-                <b>${s.matches}</b>
-                Matches
-            </div>
-
-            <div class="summary-box">
-                <b>${statValue(s.wins)}</b>
-                Wins
-            </div>
-
-            <div class="summary-box">
-                <b>${statValue(s.draws)}</b>
-                Draws
-            </div>
-
-            <div class="summary-box">
-                <b>${statValue(s.losses)}</b>
-                Losses
-            </div>
-
-            <div class="summary-box">
-                <b>${winRate}%</b>
-                Win %
-            </div>
-
-            <div class="summary-box">
-                <b>${statValue(s.yellowCards)}</b>
-                Yellow
-            </div>
-            
-            <div class="summary-box">
-                <b>${statValue(s.redCards)}</b>
-                Red
-            </div>
-
-        </div>
-
+        <img
+            src="${getCountryLogo(nationality)}"
+            alt="${nationality}"
+            class="manager-flag-large"
+            onerror="this.src='logos/countries/default.png'"
+        >
     `;
 
-}).join("");
+}
 
-document.getElementById("managerProfile").innerHTML=`
+function calculateAge(dateString, deathDate = null){
 
-<div class="manager-card">
+    if(!dateString){
+        return "";
+    }
 
-    <div class="manager-info">
+    const [day, month, year] =
+        dateString.split(".");
 
-        <h1>${manager} (Manager)</h1>
-        <div class="manager-clubs">
-            ${clubsText}
-        </div>
+    const birthDate =
+        new Date(year, month - 1, day);
 
-        <div class="manager-meta">
+    const endDate = deathDate
+        ? new Date(
+            deathDate.split(".").reverse().join("-")
+          )
+        : new Date();
 
-        ${managerInfo?.["Full Name"] ? `
-        
-        <div>
-        <b>Full Name:</b>
-        ${managerInfo["Full Name"]}
-        </div>
-        
-        ` : ""}
-        
-        ${managerInfo?.["Date of Birth"] ? `
-        
-        <div>
-        <b>Born:</b>
-        ${managerInfo["Date of Birth"]}
-        (${calculateAge(
-            managerInfo["Date of Birth"],
-            managerInfo["Death Date"]
-        )})
-        </div>
-        
-        ` : ""}
-        
-        ${managerInfo?.["Death Date"] ? `
-        
-        <div>
-        <b>Died:</b>
-        ${managerInfo["Death Date"]}
-        </div>
-        
-        ` : ""}
-        
-        ${nationality ? `
-        
-        <div>
-            <b>Nationality:</b>
-            ${nationality}
-        </div>
-        
-        ` : ""}
+    let age =
+        endDate.getFullYear() -
+        birthDate.getFullYear();
 
-        ${coachedBarcelona && debut ? `
-        <div>
-            <b>Debut:</b>
-        
-            <a href="match.html?id=${debut.ID}">
-                ${debut.Date}
-                vs
-                ${debut["Opp. Team"]}
-            </a>
-        
-        </div>
-        ` : ""}
-        
-        ${coachedBarcelona && lastMatch ? `
-        <div>
-            <b>Last Match:</b>
-        
-            <a href="match.html?id=${lastMatch.ID}">
-                ${lastMatch.Date}
-                vs
-                ${lastMatch["Opp. Team"]}
-            </a>
-        
-        </div>
-        ` : ""}
+    const monthDiff =
+        endDate.getMonth() -
+        birthDate.getMonth();
 
-        </div>
+    if(
+        monthDiff < 0 ||
+        (
+            monthDiff === 0 &&
+            endDate.getDate() < birthDate.getDate()
+        )
+    ){
+        age--;
+    }
 
-    </div>
+    return age;
+}
 
-</div>
+function populateCompetitionFilter(managerName){
 
-`;
+    const competitions = new Set();
 
-document.getElementById("managerContent").innerHTML = `
+    allMatches.forEach(match => {
+	
+	    if(
+	        selectedSeason !== "all" &&
+	        match.Season !== selectedSeason
+	    ){
+	        return;
+	    }
+	
+	    if(match.Manager === managerName){
+	
+	        competitions.add(
+	            match.Competition
+	        );
+	
+	    }
+	
+	});
+	
+    document.getElementById(
+        "competitionContainer"
+    ).innerHTML = `
 
-<div class="widget-title">
-    Statistics
-</div>
+        <button
+		    class="competition-btn ${
+		        selectedCompetition === "all"
+		        ? "active"
+		        : ""
+		    }"
+		    data-comp="all">
+		    All
+		</button>
 
-${careerHtml}
-
-<div class="widget-title">
-    Season Breakdown
-</div>
-
-<div class="widget-card">
-
-    <table class="stats-table">
-
-        <thead>
-            <tr>
-                <th>Season</th>
-                <th>Matches</th>
-                <th>Wins</th>
-                <th>Draws</th>
-                <th>Losses</th>
-                <th>Wins %</th>
-            </tr>
-        </thead>
-
-        <tbody id="seasonRows"></tbody>
-
-    </table>
-
-</div>
-
-`;
-
-const rightPanel =
-document.querySelector(".right-panel");
-
-if(coachedBarcelona){
-
-    rightPanel.innerHTML = `
-        <div class="widget-title">
-            Top 10 Under ${manager}
-        </div>
-
-        <div class="widget-card">
-            <div id="topManagerPlayers"></div>
-        </div>
+		${[...competitions]
+		    .sort()
+		    .map(comp => `
+				<button
+					    class="competition-btn ${
+					        selectedCompetition === comp
+					        ? "active"
+					        : ""
+					    }"
+					    data-comp="${comp}">
+		            ${getCompetitionShortName(comp)}
+		        </button>
+		
+		    `)
+		    .join("")}
     `;
 
-    renderTopManagerPlayers(manager,data);
-
-}else{
-
-    rightPanel.innerHTML = "";
+    attachCompetitionEvents();
 
 }
 
-renderManagerStats(manager,data);
+function attachCompetitionEvents(){
 
-}
+    document
+    .querySelectorAll(".competition-btn")
+    .forEach(btn => {
 
-function toggleSeason(id){
+        btn.addEventListener("click", () => {
 
-    const el = document.getElementById(id);
+            document
+            .querySelectorAll(".competition-btn")
+            .forEach(b =>
+                b.classList.remove("active")
+            );
 
-    if(!el) return;
+            btn.classList.add("active");
 
-    el.style.display =
-        el.style.display === "none"
-        ? "table-row"
-        : "none";
-}
+            selectedCompetition =
+                btn.dataset.comp;
 
-function buildSeasonMatches(manager, season, data){
+            renderActiveSection();
 
-    const matches = data.filter(match => {
-
-        const isManager =
-            match.Manager === manager ||
-            match["Opp. Manager"] === manager;
-
-        return isManager && match.Season === season;
+        });
 
     });
 
-        let html = `
-            <div class="matches-list">
-        
+}
+
+function getManagerAggregateStats(
+    managerName,
+    {
+        season = null,
+        competition = null
+    } = {}
+){
+
+    const stats = {
+
+        seasons:new Set(),
+
+        matches:0,
+
+        wins:0,
+        draws:0,
+        losses:0,
+
+        goalsFor:0,
+        goalsAgainst:0,
+
+        cleanSheets:0
+
+    };
+
+    allMatches.forEach(match => {
+
+        if(match.Manager !== managerName){
+            return;
+        }
+
+        if(
+            season &&
+            match.Season !== season
+        ){
+            return;
+        }
+
+        if(
+            competition &&
+            match.Competition !== competition
+        ){
+            return;
+        }
+
+        stats.seasons.add(
+            match.Season
+        );
+
+        stats.matches++;
+
+        if(match["Result type"] === "W"){
+            stats.wins++;
+        }
+
+        if(match["Result type"] === "D"){
+            stats.draws++;
+        }
+
+        if(match["Result type"] === "L"){
+            stats.losses++;
+        }
+
+        stats.goalsFor +=
+            Number(match.Scored) || 0;
+
+        stats.goalsAgainst +=
+            Number(match.Conceded) || 0;
+
+        if(Number(match.Conceded) === 0){
+            stats.cleanSheets++;
+        }
+
+    });
+
+    return stats;
+
+}
+
+function getManagerWinRate(stats){
+
+    if(!stats.matches){
+        return "0.00";
+    }
+
+    return (
+        stats.wins * 100 /
+        stats.matches
+    ).toFixed(2);
+
+}
+
+function updateManagerStats(){
+
+    const stats =
+        getManagerAggregateStats(
+            managerName,
+            {
+                season:
+                    selectedSeason === "all"
+                    ? null
+                    : selectedSeason,
+
+                competition:
+                    selectedCompetition === "all"
+                    ? null
+                    : selectedCompetition
+            }
+        );
+
+    renderManagerSummary(stats);
+
+}
+
+function renderManagerSummary(stats){
+
+    const winRate =
+        stats.matches
+        ? (
+            stats.wins * 100 /
+            stats.matches
+        ).toFixed(2)
+        : "0.00";
+
+    document.getElementById(
+        "managerSummary"
+    ).innerHTML = `
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.matches}
+            </div>
+            <div class="summary-label">
+                Matches
+            </div>
+        </div>
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.wins}
+            </div>
+            <div class="summary-label">
+                Wins
+            </div>
+        </div>
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.draws}
+            </div>
+            <div class="summary-label">
+                Draws
+            </div>
+        </div>
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.losses}
+            </div>
+            <div class="summary-label">
+                Losses
+            </div>
+        </div>
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${winRate}%
+            </div>
+            <div class="summary-label">
+                Win %
+            </div>
+        </div>
+
+    `;
+
+    document.getElementById(
+        "seasonWidgets"
+    ).innerHTML = `
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Results
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Wins
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.wins}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Draws
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.draws}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Losses
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.losses}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Win %
+                    </div>
+                    <div class="widget-stat-value">
+                        ${winRate}%
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Goals
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Goals For
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.goalsFor}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Goals Against
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.goalsAgainst}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Goal Difference
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.goalsFor - stats.goalsAgainst}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Goals per Match
+                    </div>
+                    <div class="widget-stat-value">
+                        ${
+                            stats.matches
+                            ? (
+                                stats.goalsFor /
+                                stats.matches
+                              ).toFixed(2)
+                            : "0.00"
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Defensive
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Clean Sheets
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.cleanSheets}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Clean Sheet %
+                    </div>
+                    <div class="widget-stat-value">
+                        ${
+                            stats.matches
+                            ? (
+                                stats.cleanSheets * 100 /
+                                stats.matches
+                              ).toFixed(2)
+                            : "0.00"
+                        }%
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+function renderCareerOverview(){
+
+    const stats =
+        getManagerAggregateStats(
+            managerName,
+            {
+                season:null,
+
+                competition:
+                    selectedCareerCompetition === "all"
+                    ? null
+                    : selectedCareerCompetition
+            }
+        );
+
+    const winRate =
+        stats.matches
+            ? (
+                stats.wins * 100 /
+                stats.matches
+              ).toFixed(1)
+            : "0.0";
+
+    const pointsPerMatch =
+        stats.matches
+            ? (
+                (
+                    stats.wins * 3 +
+                    stats.draws
+                ) /
+                stats.matches
+              ).toFixed(2)
+            : "0.00";
+
+    document.getElementById(
+        "careerSection"
+    ).innerHTML = `
+
+        <div class="career-summary">
+
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.seasons.size}
+                </div>
+                <div class="summary-label">
+                    Seasons
+                </div>
+            </div>
+
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.matches}
+                </div>
+                <div class="summary-label">
+                    Matches
+                </div>
+            </div>
+
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.wins}
+                </div>
+                <div class="summary-label">
+                    Wins
+                </div>
+            </div>
+
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.draws}
+                </div>
+                <div class="summary-label">
+                    Draws
+                </div>
+            </div>
+
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.losses}
+                </div>
+                <div class="summary-label">
+                    Losses
+                </div>
+            </div>
+
+        </div>
+
+        <div class="season-widgets">
+
+            <div class="stats-widget">
+
+                <div class="stats-widget-title">
+                    Performance
+                </div>
+
+                <div class="widget-stats-list">
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Matches
+                        </div>
+                        <div class="widget-stat-value">
+                            ${stats.matches}
+                        </div>
+                    </div>
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Wins
+                        </div>
+                        <div class="widget-stat-value">
+                            ${stats.wins}
+                        </div>
+                    </div>
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Win %
+                        </div>
+                        <div class="widget-stat-value">
+                            ${winRate}%
+                        </div>
+                    </div>
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            PPM
+                        </div>
+                        <div class="widget-stat-value">
+                            ${pointsPerMatch}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="stats-widget">
+
+                <div class="stats-widget-title">
+                    Goals
+                </div>
+
+                <div class="widget-stats-list">
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Goals For
+                        </div>
+                        <div class="widget-stat-value">
+                            ${stats.goalsFor}
+                        </div>
+                    </div>
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Goals Against
+                        </div>
+                        <div class="widget-stat-value">
+                            ${stats.goalsAgainst}
+                        </div>
+                    </div>
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Goal Difference
+                        </div>
+                        <div class="widget-stat-value">
+                            ${
+                                stats.goalsFor -
+                                stats.goalsAgainst
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="stats-widget">
+
+                <div class="stats-widget-title">
+                    Defensive
+                </div>
+
+                <div class="widget-stats-list">
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Clean Sheets
+                        </div>
+
+                        <div class="widget-stat-value">
+                            ${stats.cleanSheets}
+                        </div>
+                    </div>
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Clean Sheet %
+                        </div>
+
+                        <div class="widget-stat-value">
+                            ${
+                                stats.matches
+                                ? (
+                                    stats.cleanSheets * 100 /
+                                    stats.matches
+                                  ).toFixed(1)
+                                : "0.0"
+                            }%
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+function getManagersDropdown(){
+
+    const managerLastMatch = {};
+
+    allMatches.forEach(match => {
+
+        if(!match.Manager) return;
+
+        const date =
+            new Date(
+                match.Date.split(".").reverse().join("-")
+            );
+
+        if(
+            !managerLastMatch[match.Manager] ||
+            date > managerLastMatch[match.Manager]
+        ){
+            managerLastMatch[match.Manager] = date;
+        }
+
+    });
+
+    const decades = {};
+
+    Object.entries(managerLastMatch)
+        .forEach(([manager, date]) => {
+
+            const decade =
+                Math.floor(date.getFullYear() / 10) * 10;
+
+            if(!decades[decade]){
+                decades[decade] = [];
+            }
+
+            decades[decade].push({
+                manager,
+                date
+            });
+
+        });
+
+    return Object.keys(decades)
+        .sort((a,b) => b - a)
+        .map(decade => `
+
+            <optgroup label="${decade}s">
+
+                ${decades[decade]
+                    .sort((a,b) => b.date - a.date)
+                    .map(item => `
+                        <option value="${item.manager}">
+                            ${item.manager}
+                        </option>
+                    `)
+                    .join("")}
+
+            </optgroup>
+
+        `)
+        .join("");
+
+}
+
+function renderManager(managerName){
+
+	const manager =
+	    allManagers.find(
+	        m => m.Manager === managerName
+	    );
+	
+	const age =
+	    manager?.["Date of Birth"]
+	        ? calculateAge(
+	            manager["Date of Birth"]
+	          )
+	        : "-";
+	
+	const nationality =
+    	manager?.["Nationality 1"] || null;
+	
+	const flag =
+	    nationality
+	        ? `
+	            <img
+	                src="${getCountryLogo(nationality)}"
+	                class="manager-flag-large"
+	                alt="${nationality}"
+	                onerror="this.src='logos/countries/default.png'"
+	            >
+	          `
+	        : "";
+
+    const stats =
+        getManagerAggregateStats(
+            managerName
+        );
+
+    const winRate =
+        getManagerWinRate(stats);
+
+    document.getElementById(
+        "managerProfile"
+    ).innerHTML = `
+
+        <div class="manager-header-left">
+
+            <img
+                src="logos/managers/${managerName}.webp"
+                class="manager-profile-photo"
+                onerror="this.src='logos/managers/default.webp'">
+
+            <div class="manager-header-info">
+
+				<h2>
+				    ${managerName}
+				    ${flag}
+				</h2>
+
+				<div class="manager-header-meta">
+				
+				    <span>
+				        Age <strong>${age}</strong>
+				    </span>
+				
+				    <span>
+				        Win Rate <strong>${winRate}%</strong>
+				    </span>
+				
+				</div>
+
+            </div>
+
+        </div>
+
+        <div class="manager-header-right">
+
+            <select
+                id="managerSelect"
+                class="manager-select">
+
+                <option value="">
+                    Switch
+                </option>
+
+                ${getManagersDropdown()}
+
+            </select>
+
+        </div>
+
+    `;
+
+    document
+    .getElementById("managerSelect")
+    ?.addEventListener("change", e => {
+
+        if(!e.target.value){
+            return;
+        }
+
+        window.location.href =
+            `manager.html?name=${encodeURIComponent(e.target.value)}`;
+
+    });
+
+}
+
+let allMatches = [];
+let allManagers = [];
+let selectedCompetition = "all";
+let selectedCareerCompetition = "all";
+let selectedSeason = "all";
+let activeSection = "stats";
+
+function initSections(){
+
+    document
+    .querySelectorAll(
+        ".manager-section-btn"
+    )
+    .forEach(btn => {
+
+        btn.addEventListener(
+            "click",
+            () => {
+
+                document
+                .querySelectorAll(
+                    ".manager-section-btn"
+                )
+                .forEach(b =>
+                    b.classList.remove("active")
+                );
+
+                btn.classList.add("active");
+
+                activeSection =
+                    btn.dataset.section;
+
+				const seasonSection =
+				    document.querySelector(".filter-section.season");
+				
+				const filtersCard =
+				    document.querySelector(".manager-filters-card");
+				
+				if(activeSection === "info"){
+				
+				    filtersCard.style.display = "none";
+				
+				}else{
+				
+				    filtersCard.style.display = "";
+				
+				    if(activeSection === "career"){
+				
+				        seasonSection.style.display = "none";
+				
+				        populateCareerCompetitionFilter(
+				            managerName
+				        );
+				
+				    }else{
+				
+				        seasonSection.style.display = "";
+				
+				        populateCompetitionFilter(
+				            managerName
+				        );
+				
+				    }
+				
+				}
+				
+				document.getElementById("infoSection").style.display =
+				    activeSection === "info"
+				        ? "block"
+				        : "none";
+				
+				document.getElementById("statsSection").style.display =
+				    activeSection === "stats"
+				        ? "block"
+				        : "none";
+				
+				document.getElementById("matchesSection").style.display =
+				    activeSection === "matches"
+				        ? "block"
+				        : "none";
+				
+				document.getElementById("careerSection").style.display =
+				    activeSection === "career"
+				        ? "block"
+				        : "none";
+				
+				renderActiveSection();
+            }
+        );
+
+    });
+
+}
+
+function renderActiveSection(){
+
+    if(activeSection === "info"){
+
+        renderManagerInfo();
+
+    }
+
+    if(activeSection === "stats"){
+
+        updateManagerStats();
+
+    }
+
+    if(activeSection === "matches"){
+
+        renderManagerMatches();
+
+    }
+
+    if(activeSection === "career"){
+
+        renderCareerOverview();
+
+    }
+
+}
+
+function renderManagerInfo(){
+
+		const manager =
+	    allManagers.find(
+	        m => m.Manager === managerName
+	    );
+	
+	const nationalities =
+	    manager
+	        ? getNationalities(manager)
+	        : [];
+	
+	const nationalityHtml =
+	    nationalities.length
+	        ? nationalities.map(n => `
+	            <span class="info-nationality">
+	                <img
+	                    src="${getCountryLogo(n)}"
+	                    class="info-nationality-flag"
+	                    alt="${n}"
+	                    onerror="this.src='logos/countries/default.png'"
+	                >
+	                ${n}
+	            </span>
+	        `).join(" &nbsp;/&nbsp; ")
+	        : "-";
+
+    const managerMatches =
+        allMatches
+            .filter(
+                match => match.Manager === managerName
+            )
+            .sort((a,b) => {
+
+                const da =
+                    new Date(
+                        a.Date.split(".").reverse().join("-")
+                    );
+
+                const db =
+                    new Date(
+                        b.Date.split(".").reverse().join("-")
+                    );
+
+                return da - db;
+
+            });
+
+    const firstMatch =
+        managerMatches[0];
+
+    const lastMatch =
+        managerMatches[
+            managerMatches.length - 1
+        ];
+
+    const seasons =
+        new Set(
+            managerMatches.map(
+                match => match.Season
+            )
+        );
+
+    document.getElementById(
+        "managerInfoContent"
+    ).innerHTML = `
+
+        <div class="info-card">
+
+            <h3>
+                Manager Information
+            </h3>
+
+            <div class="info-grid">
+
+				<div class="info-item">
+				    <span>Full Name</span>
+				    <strong>
+				        ${manager?.["Full Name"] || managerName}
+				    </strong>
+				</div>
+				
+				<div class="info-item">
+				    <span>Birth Date</span>
+				    <strong>
+				        ${
+				            manager?.["Date of Birth"]
+				            ? `${manager["Date of Birth"]} (${calculateAge(
+				                    manager["Date of Birth"],
+				                    manager?.["Death Date"] || null
+				              )})`
+				            : "-"
+				        }
+				    </strong>
+				</div>
+
+				${
+				    manager?.["Death Date"]
+				        ? `
+				            <div class="info-item">
+				                <span>Death Date</span>
+				                <strong>
+				                    ${manager["Death Date"]}
+				                </strong>
+				            </div>
+				          `
+				        : ""
+				}
+
+				<div class="info-item">
+				    <span>Nationality</span>
+				    <strong>
+				        ${nationalityHtml}
+				    </strong>
+				</div>
+
+                <div class="info-item">
+                    <span>Matches</span>
+                    <strong>
+                        ${managerMatches.length}
+                    </strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Seasons</span>
+                    <strong>
+                        ${seasons.size}
+                    </strong>
+                </div>
+
+                <div class="info-item">
+                    <span>First Match</span>
+                    <strong>
+                        ${
+                            firstMatch
+                            ? `
+                                <a href="match.html?id=${firstMatch.ID}">
+                                    ${firstMatch.Date}
+                                    vs ${firstMatch["Opp. Team"]}
+                                    (${firstMatch.Result})
+                                </a>
+                            `
+                            : "-"
+                        }
+                    </strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Last Match</span>
+                    <strong>
+                        ${
+                            lastMatch
+                            ? `
+                                <a href="match.html?id=${lastMatch.ID}">
+                                    ${lastMatch.Date}
+                                    vs ${lastMatch["Opp. Team"]}
+                                    (${lastMatch.Result})
+                                </a>
+                            `
+                            : "-"
+                        }
+                    </strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Latest Season</span>
+                    <strong>
+                        ${
+                            managerMatches.length
+                            ? managerMatches[
+                                managerMatches.length - 1
+                              ].Season
+                            : "-"
+                        }
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+function renderManagerMatches(){
+
+    const matches = allMatches
+        .filter(match => {
+
+            if(match.Manager !== managerName){
+                return false;
+            }
+
+            if(
+                selectedSeason !== "all" &&
+                match.Season !== selectedSeason
+            ){
+                return false;
+            }
+
+            if(
+                selectedCompetition !== "all" &&
+                match.Competition !== selectedCompetition
+            ){
+                return false;
+            }
+
+            return true;
+
+        })
+        .sort((a,b) => {
+
+            const da =
+                new Date(
+                    a.Date.split(".").reverse().join("-")
+                );
+
+            const db =
+                new Date(
+                    b.Date.split(".").reverse().join("-")
+                );
+
+            return db - da;
+
+        });
+
+    document.getElementById(
+        "matchesSection"
+    ).innerHTML = `
+
+        <div class="matches-list">
+
             <div class="matches-header">
-            
+
                 <div></div>
                 <div>Date</div>
                 <div>Venue</div>
                 <div>Opponent</div>
                 <div>Result</div>
-                <div>YC</div>
-                <div>RC</div>
-            
+
+                <div>GF</div>
+                <div>GA</div>
+                <div>GD</div>
+                <div>PTS</div>
+
             </div>
-        `;
 
-    matches.forEach(match => {
-    
-        let resultClass = "result-draw";
-    
-        let resultType;
-    
-        if(match.Manager === manager){
-    
-            resultType = match["Result type"];
-    
-        }else{
-    
-            resultType =
-                match["Result type"] === "W" ? "L" :
-                match["Result type"] === "L" ? "W" :
-                "D";
-        }
-    
-        if(resultType === "W") resultClass = "result-win";
-        if(resultType === "L") resultClass = "result-loss";
-            let yellowCards = 0;
-            let redCards = 0;
-            
-            for(let i=1;i<=20;i++){
-            
-                if(match.Manager === manager){
-            
-                    if(match[`Yellow staff name ${i}`] === manager){
-                        yellowCards++;
-                    }
-            
-                    if(match[`Red staff name ${i}`] === manager){
-                        redCards++;
-                    }
-            
-                }else{
-            
-                    if(match[`Opp. Yellow staff name ${i}`] === manager){
-                        yellowCards++;
-                    }
-            
-                    if(match[`Opp. Red staff name ${i}`] === manager){
-                        redCards++;
-                    }
-            
-                }
-            
-            }
-    
-html += `
+            ${matches.map(match => {
 
-<div
-    class="match-link-wrapper"
-    onclick="location.href='match.html?id=${match.ID}'"
-    style="cursor:pointer;"
->
+                const gd =
+                    Number(match.Scored || 0) -
+                    Number(match.Conceded || 0);
 
-    <div class="manager-match">
+                const pts =
+                    match["Result type"] === "W"
+                        ? 3
+                        : match["Result type"] === "D"
+                        ? 1
+                        : 0;
 
-        <div class="competition-cell">
-            <img
-            src="logos/${competitionLogos[match.Competition] || 'default.png'}"
-            class="competition-logo"
-            alt="${match.Competition}"
-            title="${match.Competition}">
-        </div>
-        
-        <div>
-            ${match.Date}
-        </div>
-        
-        <div>
-            ${match["Home/Away"] || ""}
-        </div>
+                return `
 
-		<div class="opponent-cell">
-		
-		    <img
-		        src="logos/clubs/${getClubLogo(match["Opp. Team"])}"
-		        alt="${match["Opp. Team"]}"
-		        onerror="this.src='logos/clubs/default.png'">
-		
-		    <a href="opponent.html?name=${encodeURIComponent(match["Opp. Team"])}"
-		       class="opponent-link"
-		       onclick="event.stopPropagation();">
-		        ${match["Opp. Team"]}
-		    </a>
-		
-		</div>
-        
-        <div>
-            <span class="result-badge ${resultClass}">
-                ${match.Result}
-            </span>
+                    <div
+                        class="manager-match"
+                        onclick="
+                            location.href='match.html?id=${match.ID}'
+                        ">
+
+                        <div class="competition-cell">
+
+                            ${
+                                competitionLogos[
+                                    match.Competition
+                                ]
+                                    ? `
+                                        <img
+                                            src="logos/${competitionLogos[match.Competition]}"
+                                            class="competition-logo">
+                                      `
+                                    : ""
+                            }
+
+                        </div>
+
+                        <div>
+                            ${match.Date}
+                        </div>
+
+                        <div>
+                            ${match["Home/Away"]}
+                        </div>
+
+                        <div class="opponent-cell">
+
+                            <img
+                                src="logos/clubs/${getClubLogo(match["Opp. Team"])}"
+                                class="opponent-logo"
+                                onerror="this.src='logos/clubs/default.png'">
+
+                            ${match["Opp. Team"]}
+
+                        </div>
+
+                        <div>
+
+                            <span class="result-badge ${
+                                match["Result type"] === "W"
+                                    ? "result-win"
+                                    : match["Result type"] === "D"
+                                    ? "result-draw"
+                                    : "result-loss"
+                            }">
+
+                                ${match.Result}
+
+                            </span>
+
+                        </div>
+
+                        <div>${match.Scored}</div>
+
+                        <div>${match.Conceded}</div>
+
+                        <div>${gd}</div>
+
+                        <div>${pts}</div>
+
+                    </div>
+
+                `;
+
+            }).join("")}
+
         </div>
 
-        <div>
-            ${statValue(yellowCards)}
-        </div>
-        
-        <div>
-            ${statValue(redCards)}
-        </div>
-
-    </div>
-
-</div>
-
-`;
-    });
-    
-    html += `
-        </div>
     `;
-
-    return html;
 }
 
-function calculateAge(birthDate, deathDate=""){
+function initFilters(){
 
-if(!birthDate) return "";
+    document
+    .getElementById("seasonFilter")
+    ?.addEventListener("change", e => {
 
-const [d,m,y] = birthDate.split(".");
-const birth = new Date(y,m-1,d);
+        selectedSeason = e.target.value;
 
-let end;
+        selectedCompetition = "all";
 
-if(deathDate){
-const [dd,mm,yy] = deathDate.split(".");
-end = new Date(yy,mm-1,dd);
-}else{
-end = new Date();
-}
+		renderManager(
+		    managerName
+		);
+		
+		populateCompetitionFilter(
+		    managerName
+		);
 
-let age =
-end.getFullYear() - birth.getFullYear();
-
-const monthDiff =
-end.getMonth() - birth.getMonth();
-
-if(
-monthDiff < 0 ||
-(monthDiff === 0 && end.getDate() < birth.getDate())
-){
-age--;
-}
-
-return age;
-}
-
-function renderManagerStats(manager,data){
-
-    const stats = {};
-
-    data.forEach(match=>{
-
-        const isManager =
-            match.Manager === manager ||
-            match["Opp. Manager"] === manager;
-
-        if(!isManager){
-            return;
-        }
-
-        const season = match.Season;
-
-        if(!stats[season]){
-
-        stats[season] = {
-            matches:0,
-            wins:0,
-            draws:0,
-            losses:0,
-            opponentClub:false
-        };
-
-        }
-
-        stats[season].matches++;
-
-        if(match["Opp. Manager"] === manager){
-            stats[season].opponentClub = true;
-        }
-
-        let resultType;
-
-        if(match.Manager === manager){
-
-            resultType = match["Result type"];
-
-        }else{
-
-            resultType =
-                match["Result type"] === "W" ? "L" :
-                match["Result type"] === "L" ? "W" :
-                "D";
-
-        }
-
-        if(resultType==="W") stats[season].wins++;
-        if(resultType==="D") stats[season].draws++;
-        if(resultType==="L") stats[season].losses++;
+        renderActiveSection();
 
     });
 
-    let html="";
+}
 
-    Object.keys(stats)
-    .sort()
-    .reverse()
-    .forEach(season=>{
+function populateCareerCompetitionFilter(managerName){
 
-        const s = stats[season];
+    const competitions = new Set();
 
-        const winPct =
-        s.matches
-        ? ((s.wins/s.matches)*100).toFixed(1)
-        : 0;
+    allMatches.forEach(match => {
 
-    html += `
-    <tr
-        class="season-row ${stats[season].opponentClub ? 'opponent-season' : ''}"
-        onclick="toggleSeason('season-${season.replace(/\//g,'-')}')"
-        style="cursor:pointer">
-    
-        <td><strong>${season}</strong></td>
-    
-        <td>${s.matches}</td>
-    
-        <td>${statValue(s.wins)}</td>
-        <td>${statValue(s.draws)}</td>
-        <td>${statValue(s.losses)}</td>
-    
-        <td>${winPct}%</td>
-    
-    </tr>
-    
-    <tr
-        id="season-${season.replace(/\//g,'-')}"
-        style="display:none;">
-    
-        <td colspan="6">
-        
-            ${buildSeasonMatches(manager, season, data)}
-        
-        </td>
-    
-    </tr>
+        if(match.Manager === managerName){
+
+            competitions.add(
+                match.Competition
+            );
+
+        }
+
+    });
+
+    document.getElementById(
+        "competitionContainer"
+    ).innerHTML = `
+
+        <button
+            class="competition-btn ${
+                selectedCareerCompetition === "all"
+                    ? "active"
+                    : ""
+            }"
+            data-career-comp="all">
+            All
+        </button>
+
+        ${[...competitions]
+            .sort()
+            .map(comp => `
+                <button
+                    class="competition-btn ${
+                        selectedCareerCompetition === comp
+                            ? "active"
+                            : ""
+                    }"
+                    data-career-comp="${comp}">
+                    ${getCompetitionShortName(comp)}
+                </button>
+            `)
+            .join("")}
     `;
 
-});
-
-document.getElementById("seasonRows").innerHTML =
-html;
+    attachCareerCompetitionEvents();
 
 }
 
-function renderTopManagerPlayers(manager,data){
+function attachCareerCompetitionEvents(){
 
-    const stats = {};
+    document
+        .querySelectorAll("[data-career-comp]")
+        .forEach(btn => {
 
-    function addPlayer(name){
+            btn.addEventListener("click", () => {
 
-        if(!name) return;
+                document
+                    .querySelectorAll("[data-career-comp]")
+                    .forEach(b => b.classList.remove("active"));
 
-        if(!stats[name]){
+                btn.classList.add("active");
 
-            stats[name] = {
-                matches:0,
-                goals:0,
-                assists:0
-            };
+                selectedCareerCompetition =
+                    btn.dataset.careerComp;
 
+                renderCareerOverview();
+
+            });
+
+        });
+
+}
+
+function populateSeasonFilter(managerName){
+
+    const seasons = new Set();
+
+    allMatches.forEach(match => {
+
+        if(match.Manager === managerName){
+            seasons.add(match.Season);
         }
+
+    });
+
+    const seasonFilter =
+        document.getElementById(
+            "seasonFilter"
+        );
+
+    seasonFilter.innerHTML =
+
+        [...seasons]
+            .sort()
+            .reverse()
+            .map(season => `
+                <option value="${season}">
+                    ${season}
+                </option>
+            `)
+            .join("");
+
+    const latestSeason =
+        [...seasons]
+            .sort()
+            .reverse()[0];
+
+    if(latestSeason){
+
+        seasonFilter.value =
+            latestSeason;
+
+        selectedSeason =
+            latestSeason;
 
     }
 
-    const managerMatches =
-        data.filter(match =>
-            match.Manager === manager
-        );
-
-    managerMatches.forEach(match => {
-
-        for(let i=1;i<=11;i++){
-
-            const player =
-                match[`Player name ${i}`];
-
-            if(player){
-
-                addPlayer(player);
-                stats[player].matches++;
-
-            }
-
-        }
-
-        for(let i=1;i<=12;i++){
-
-            const player =
-                match[`Substitution IN Player ${i}`];
-
-            if(player){
-
-                addPlayer(player);
-                stats[player].matches++;
-
-            }
-
-        }
-
-        for(let i=1;i<=12;i++){
-
-            const player =
-                match[`Goal Player ${i}`];
-
-            if(player && !player.includes("(OG)")){
-
-                addPlayer(player);
-                stats[player].goals++;
-
-            }
-
-        }
-
-        for(let i=1;i<=12;i++){
-
-            const player =
-                match[`Assist Player ${i}`];
-
-            if(player){
-
-                addPlayer(player);
-                stats[player].assists++;
-
-            }
-
-        }
-
-    });
-
-    const top = Object.entries(stats)
-
-    .map(([name,s]) => ({
-
-        name,
-        matches:s.matches,
-        goals:s.goals,
-        assists:s.assists,
-        total:s.goals + s.assists
-
-    }))
-
-    .sort((a,b) => {
-
-        const valueA = a[managerSortColumn];
-        const valueB = b[managerSortColumn];
-
-        return managerSortDirection === "asc"
-            ? valueA - valueB
-            : valueB - valueA;
-
-    })
-
-    .slice(0,10);
-
-    let html = `
-
-    <table class="flick-table">
-
-        <thead>
-
-            <tr>
-
-                <th>Player</th>
-
-                <th
-                    class="${managerSortColumn==='matches' ? 'flick-selected' : ''}"
-                    onclick="sortManagerPlayers('matches')">
-                    M
-                </th>
-
-                <th
-                    class="${managerSortColumn==='goals' ? 'flick-selected' : ''}"
-                    onclick="sortManagerPlayers('goals')">
-                    G
-                </th>
-
-                <th
-                    class="${managerSortColumn==='assists' ? 'flick-selected' : ''}"
-                    onclick="sortManagerPlayers('assists')">
-                    A
-                </th>
-
-                <th
-                    class="${managerSortColumn==='total' ? 'flick-selected' : ''}"
-                    onclick="sortManagerPlayers('total')">
-                    G+A
-                </th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-    `;
-
-    top.forEach(player => {
-
-        html += `
-
-        <tr>
-
-            <td>
-                <a
-                    class="player-link"
-                    href="player.html?name=${encodeURIComponent(player.name)}">
-                    ${player.name}
-                </a>
-            </td>
-
-            <td class="${managerSortColumn==='matches' ? 'flick-column-selected' : ''}">
-                ${player.matches}
-            </td>
-
-            <td class="${managerSortColumn==='goals' ? 'flick-column-selected' : ''}">
-                ${player.goals || "-"}
-            </td>
-
-            <td class="${managerSortColumn==='assists' ? 'flick-column-selected' : ''}">
-                ${player.assists || "-"}
-            </td>
-
-            <td class="${managerSortColumn==='total' ? 'flick-column-selected' : ''}">
-                ${player.total || "-"}
-            </td>
-
-        </tr>
-
-        `;
-
-    });
-
-    html += `
-        </tbody>
-    </table>
-    `;
-
-    document.getElementById(
-        "topManagerPlayers"
-    ).innerHTML = html;
-
 }
 
+Promise.all([
+    fetch("data/managers.json").then(r => r.json()),
+    fetch("data/data.json").then(r => r.json())
+])
+.then(([managers, matches]) => {
+
+    allManagers = managers;
+    allMatches = matches;
+
+	const managerExists =
+	    allMatches.some(
+	        match => match.Manager === managerName
+	    );
+	
+	if(!managerExists){
+	
+	    document.getElementById("managerProfile")
+	        .innerHTML = "<p>Manager not found.</p>";
+	
+	    return;
+	}
+	
+	initPersonSearch();
+	
+	populateSeasonFilter(
+	    managerName
+	);
+	
+	document.title =
+	    `${managerName} Manager Statistics | Barça Database`;
+	
+	renderManager(
+	    managerName
+	);
+	
+	populateCompetitionFilter(
+	    managerName
+	);
+	
+	initFilters();
+	
+	initSections();
+	
+	renderActiveSection();
+
+})
+.catch(console.error);
+
 function initPersonSearch(){
+
+	if(!allMatches.length){
+	    return;
+	}
 
     const searchItems = new Map();
 
     allMatches.forEach(match => {
 
-        // Barcelona manager
         if(match.Manager){
 
             searchItems.set(
@@ -1994,7 +3043,6 @@ function initPersonSearch(){
 
         }
 
-        // Opponent manager
         if(match["Opp. Manager"]){
 
             searchItems.set(
@@ -2007,26 +3055,24 @@ function initPersonSearch(){
 
         }
 
-		// Opponent team
-		if(match["Opp. Team"]){
-		
-		    searchItems.set(
-		        `opponent-${match["Opp. Team"]}`,
-		        {
-		            name: match["Opp. Team"],
-		            type: "Opponent"
-		        }
-		    );
-		
-		}
+        if(match["Opp. Team"]){
 
-        // Starting XI
-        for(let i=1;i<=11;i++){
+            searchItems.set(
+                `opponent-${match["Opp. Team"]}`,
+                {
+                    name: match["Opp. Team"],
+                    type: "Opponent"
+                }
+            );
+
+        }
+
+        for(let i = 1; i <= 11; i++){
 
             if(match[`Player name ${i}`]){
 
                 searchItems.set(
-                    `player-${match[`Player name ${i}`]}`,
+                    `manager-${match[`Player name ${i}`]}`,
                     {
                         name: match[`Player name ${i}`],
                         type: "Player"
@@ -2038,7 +3084,7 @@ function initPersonSearch(){
             if(match[`Opp. Player name ${i}`]){
 
                 searchItems.set(
-                    `player-${match[`Opp. Player name ${i}`]}`,
+                    `manager-${match[`Opp. Player name ${i}`]}`,
                     {
                         name: match[`Opp. Player name ${i}`],
                         type: "Player"
@@ -2049,13 +3095,12 @@ function initPersonSearch(){
 
         }
 
-        // Bench
-        for(let i=1;i<=12;i++){
+        for(let i = 1; i <= 12; i++){
 
             if(match[`On the bench name ${i}`]){
 
                 searchItems.set(
-                    `player-${match[`On the bench name ${i}`]}`,
+                    `manager-${match[`On the bench name ${i}`]}`,
                     {
                         name: match[`On the bench name ${i}`],
                         type: "Player"
@@ -2067,7 +3112,7 @@ function initPersonSearch(){
             if(match[`Opp. On the bench name ${i}`]){
 
                 searchItems.set(
-                    `player-${match[`Opp. On the bench name ${i}`]}`,
+                    `manager-${match[`Opp. On the bench name ${i}`]}`,
                     {
                         name: match[`Opp. On the bench name ${i}`],
                         type: "Player"
@@ -2082,12 +3127,19 @@ function initPersonSearch(){
 
     const itemList =
         [...searchItems.values()]
-        .sort((a,b) => a.name.localeCompare(b.name));
+        .sort((a, b) =>
+            a.name.localeCompare(b.name)
+        );
 
-    function attachSearch(inputId, resultsId){
+    const input =
+        document.getElementById(
+            "sidebarPersonSearch"
+        );
 
-    const input = document.getElementById(inputId);
-    const results = document.getElementById(resultsId);
+    const results =
+        document.getElementById(
+            "sidebarSearchResults"
+        );
 
     if(!input || !results) return;
 
@@ -2099,73 +3151,78 @@ function initPersonSearch(){
             .toLowerCase();
 
         if(!value){
+
             results.innerHTML = "";
+
             return;
+
         }
 
-		const filtered =
-		    itemList
-		    .filter(item =>
-		        item.name.toLowerCase().includes(value)
-		    )
-		    .sort((a,b)=>{
-		
-		        const aStarts =
-		            a.name.toLowerCase().startsWith(value);
-		
-		        const bStarts =
-		            b.name.toLowerCase().startsWith(value);
-		
-		        return Number(bStarts) - Number(aStarts);
-		
-		    })
-		    .slice(0,20);
+        const filtered =
+            itemList
+            .filter(item =>
+                item.name
+                    .toLowerCase()
+                    .includes(value)
+            )
+            .slice(0,20);
 
         results.innerHTML = `
-            <div class="player-search-results">
+            <div class="manager-search-results">
+
                 ${filtered.map(item => {
 
-                    let url = "";
+                    let url = "manager.html?name=" +
+                        encodeURIComponent(item.name);
 
                     if(item.type === "Manager"){
-                        url = "manager.html?name=" + encodeURIComponent(item.name);
-                    }else if(item.type === "Opponent"){
-                        url = "opponent.html?name=" + encodeURIComponent(item.name);
-                    }else{
-                        url = "player.html?name=" + encodeURIComponent(item.name);
+
+                        url =
+                        "manager.html?name=" +
+                        encodeURIComponent(item.name);
+
+                    }
+
+                    if(item.type === "Opponent"){
+
+                        url =
+                        "opponent.html?name=" +
+                        encodeURIComponent(item.name);
+
                     }
 
                     return `
-                  
-    <a 
-        class="player-search-item"
-        href="${url}">
 
-        ${item.name}
+                        <a
+                            class="manager-search-item"
+                            href="${url}">
 
-        <span class="search-type ${item.type.toLowerCase()}">
-            (${item.type})
-        </span>
+                            ${item.name}
 
-    </a>
+                            <span class="search-type ${item.type.toLowerCase()}">
+                                (${item.type})
+                            </span>
+
+                        </a>
+
                     `;
+
                 }).join("")}
+
             </div>
         `;
+
     });
 
     input.addEventListener("blur", () => {
+
         setTimeout(() => {
+
             results.innerHTML = "";
+
         }, 200);
+
     });
-
-}
-
-attachSearch(
-    "sidebarPersonSearch",
-    "sidebarSearchResults"
-);
 
 }
 
