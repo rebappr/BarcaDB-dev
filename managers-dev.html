@@ -2456,6 +2456,29 @@ function renderActiveSection(){
 
 function renderManagerInfo(){
 
+		const manager =
+	    allManagers.find(
+	        m => m.Name === managerName
+	    );
+	
+	const nationalities =
+	    getNationalities(manager);
+	
+	const nationalityHtml =
+	    nationalities.length
+	        ? nationalities.map(n => `
+	            <span class="info-nationality">
+	                <img
+	                    src="${getCountryLogo(n)}"
+	                    class="info-nationality-flag"
+	                    alt="${n}"
+	                    onerror="this.src='logos/countries/default.png'"
+	                >
+	                ${n}
+	            </span>
+	        `).join("<br>")
+	        : "-";
+
     const managerMatches =
         allMatches
             .filter(
@@ -2504,12 +2527,46 @@ function renderManagerInfo(){
 
             <div class="info-grid">
 
-                <div class="info-item">
-                    <span>Name</span>
-                    <strong>
-                        ${managerName}
-                    </strong>
-                </div>
+				<div class="info-item">
+				    <span>Full Name</span>
+				    <strong>
+				        ${manager?.["Full Name"] || managerName}
+				    </strong>
+				</div>
+				
+				<div class="info-item">
+				    <span>Birth Date</span>
+				    <strong>
+				        ${
+				            manager?.["Date of Birth"]
+				            ? `${manager["Date of Birth"]} (${calculateAge(
+				                    manager["Date of Birth"],
+				                    manager?.["Death Date"] || null
+				              )})`
+				            : "-"
+				        }
+				    </strong>
+				</div>
+
+				${
+				    manager?.["Death Date"]
+				        ? `
+				            <div class="info-item">
+				                <span>Death Date</span>
+				                <strong>
+				                    ${manager["Death Date"]}
+				                </strong>
+				            </div>
+				          `
+				        : ""
+				}
+
+				<div class="info-item">
+				    <span>Nationality</span>
+				    <strong>
+				        ${nationalityHtml}
+				    </strong>
+				</div>
 
                 <div class="info-item">
                     <span>Matches</span>
