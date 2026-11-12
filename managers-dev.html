@@ -2209,22 +2209,34 @@ function renderCareerOverview(){
 
 function getManagersDropdown(){
 
-    const managers = [
-        ...new Set(
-            allMatches
-                .map(match => match.Manager)
-                .filter(Boolean)
-        )
-    ]
-    .sort();
+    const managerLastMatch = {};
 
-    return managers.map(manager => `
+    allMatches.forEach(match => {
 
-        <option value="${manager}">
-            ${manager}
-        </option>
+        if(!match.Manager) return;
 
-    `).join("");
+        const matchDate =
+            new Date(
+                match.Date.split(".").reverse().join("-")
+            );
+
+        if(
+            !managerLastMatch[match.Manager] ||
+            matchDate > managerLastMatch[match.Manager]
+        ){
+            managerLastMatch[match.Manager] = matchDate;
+        }
+
+    });
+
+    return Object.entries(managerLastMatch)
+        .sort((a,b) => b[1] - a[1])
+        .map(([manager]) => `
+            <option value="${manager}">
+                ${manager}
+            </option>
+        `)
+        .join("");
 
 }
 
@@ -2286,11 +2298,11 @@ function renderManager(managerName){
 				<div class="manager-header-meta">
 				
 				    <span>
-				        Age ${age}
+				        Age <strong>${age}</strong>
 				    </span>
 				
 				    <span>
-				        ${winRate}% Win Rate
+				        Win Rate <strong>${winRate}%</strong>
 				    </span>
 				
 				</div>
