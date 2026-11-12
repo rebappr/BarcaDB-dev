@@ -1744,13 +1744,13 @@ function getManagerAggregateStats(
 function getManagerWinRate(stats){
 
     if(!stats.matches){
-        return 0;
+        return "0.00";
     }
 
     return (
         stats.wins * 100 /
         stats.matches
-    ).toFixed(1);
+    ).toFixed(2);
 
 }
 
@@ -2230,6 +2230,33 @@ function getManagersDropdown(){
 
 function renderManager(managerName){
 
+	const manager =
+	    allManagers.find(
+	        m => m.Name === managerName
+	    );
+	
+	const age =
+	    manager?.["Birth Date"]
+	        ? calculateAge(
+	            manager["Birth Date"]
+	          )
+	        : "-";
+	
+	const nationality =
+	    manager?.Nationality || null;
+	
+	const flag =
+	    nationality
+	        ? `
+	            <img
+	                src="${getCountryLogo(nationality)}"
+	                class="player-flag-large"
+	                alt="${nationality}"
+	                onerror="this.src='logos/countries/default.png'"
+	            >
+	          `
+	        : "";
+
     const stats =
         getManagerAggregateStats(
             managerName
@@ -2251,25 +2278,34 @@ function renderManager(managerName){
 
             <div class="player-header-info">
 
-                <h2>
-                    ${managerName}
-                </h2>
+				<h2>
+				    ${managerName}
+				    ${flag}
+				</h2>
 
-                <div class="player-header-meta">
-
-                    <span>
-                        ${stats.matches} Matches
-                    </span>
-
-                    <span>
-                        ${stats.wins} Wins
-                    </span>
-
-                    <span>
-                        ${winRate}% Win Rate
-                    </span>
-
-                </div>
+				<div class="player-header-meta">
+				
+				    <span>
+				        ${age} years
+				    </span>
+				
+				    <span>
+				        ${nationality || "-"}
+				    </span>
+				
+				    <span>
+				        ${stats.matches} Matches
+				    </span>
+				
+				    <span>
+				        ${stats.wins} Wins
+				    </span>
+				
+				    <span>
+				        ${winRate}% Win Rate
+				    </span>
+				
+				</div>
 
             </div>
 
@@ -2309,7 +2345,7 @@ function renderManager(managerName){
 }
 
 let allMatches = [];
-let allRatings = {};
+let allManagers = [];
 let selectedCompetition = "all";
 let selectedCareerCompetition = "all";
 let selectedSeason = "all";
@@ -2768,10 +2804,12 @@ function populateSeasonFilter(managerName){
 }
 
 Promise.all([
+    fetch("data/managers.json").then(r => r.json()),
     fetch("data/data.json").then(r => r.json())
 ])
-.then(([matches]) => {
+.then(([managers, matches]) => {
 
+    allManagers = managers;
     allMatches = matches;
 
 	const managerExists =
