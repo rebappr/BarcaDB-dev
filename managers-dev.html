@@ -2366,9 +2366,9 @@ function initSections(){
 
 				const seasonSection =
 				    document.querySelector(".filter-section.season");
-
+				
 				const filtersCard =
-    				document.querySelector(".manager-filters-card");
+				    document.querySelector(".manager-filters-card");
 				
 				if(activeSection === "info"){
 				
@@ -2378,54 +2378,47 @@ function initSections(){
 				
 				    filtersCard.style.display = "";
 				
-				if(activeSection === "career"){
+				    if(activeSection === "career"){
 				
-				    seasonSection.style.display = "none";
+				        seasonSection.style.display = "none";
 				
-				    populateCareerCompetitionFilter(
-				        managerName
-				    );
+				        populateCareerCompetitionFilter(
+				            managerName
+				        );
 				
-				}else{
+				    }else{
 				
-				    seasonSection.style.display = "";
+				        seasonSection.style.display = "";
 				
-				    populateCompetitionFilter(
-				        managerName
-				    );
+				        populateCompetitionFilter(
+				            managerName
+				        );
+				
+				    }
 				
 				}
 				
-				document
-				.getElementById("infoSection")
-				.style.display =
+				document.getElementById("infoSection").style.display =
 				    activeSection === "info"
-				    ? "block"
-				    : "none";
+				        ? "block"
+				        : "none";
 				
-				document
-				.getElementById("statsSection")
-				.style.display =
+				document.getElementById("statsSection").style.display =
 				    activeSection === "stats"
-				    ? "block"
-				    : "none";
+				        ? "block"
+				        : "none";
 				
-				document
-				.getElementById("matchesSection")
-				.style.display =
+				document.getElementById("matchesSection").style.display =
 				    activeSection === "matches"
-				    ? "block"
-				    : "none";
+				        ? "block"
+				        : "none";
 				
-				document
-				.getElementById("careerSection")
-				.style.display =
+				document.getElementById("careerSection").style.display =
 				    activeSection === "career"
-				    ? "block"
-				    : "none";
-
-                renderActiveSection();
-
+				        ? "block"
+				        : "none";
+				
+				renderActiveSection();
             }
         );
 
