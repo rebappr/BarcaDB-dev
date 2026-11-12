@@ -757,59 +757,6 @@ display:none;
     border-radius:24px;
 }
 
-.rating-filter-card{
-
-    display:flex;
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    min-width:100px;
-
-    padding:14px;
-
-    border-radius:16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,188,212,.12),
-            rgba(0,229,255,.05)
-        );
-
-    border:1px solid rgba(0,188,212,.25);
-}
-
-.rating-filter-value{
-
-    font-size:2rem;
-    font-weight:800;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00e5ff,
-            #00bcd4
-        );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-}
-
-.rating-filter-label{
-
-    font-size:11px;
-    font-weight:700;
-
-    text-transform:uppercase;
-    letter-spacing:.5px;
-
-    color:var(--muted);
-}
-
 .season-widgets{
 
     display:grid;
@@ -1021,27 +968,11 @@ display:none;
     padding:16px;
 }
 
-.rating-filter-card{
-
-    position:absolute;
-
-    top:16px;
-    right:16px;
-
-    width:90px;
-    min-width:90px;
-
-    margin:0;
-
-    padding:12px 8px;
-}
 
 .filter-section.season{
 
     width:auto;
     min-width:0;
-
-    padding-right:110px;
 }
 
 .filter-section.competition{
@@ -1477,18 +1408,6 @@ display:none;
 	
 	</div>
 
-    <div id="ratingCard" class="rating-filter-card">
-
-        <div class="rating-filter-value">
-            0.00
-        </div>
-
-        <div class="rating-filter-label">
-            Rating
-        </div>
-
-    </div>
-
 </div>
 
 <div id="infoSection" style="display:none;">
@@ -1530,37 +1449,6 @@ function getClubLogo(team){
         .replace(/[\u0300-\u036f]/g, "")
         .replace(/[^a-z0-9]+/g, "-")
         + ".png";
-}
-
-function getPositionGroup(position){
-
-    const defenders = [
-        "Centre Back",
-        "Left Back",
-        "Right Back"
-    ];
-
-    const midfielders = [
-        "Defensive Midfield",
-        "Central Midfield",
-        "Attacking Midfield",
-        "Left Midfield",
-        "Right Midfield"
-    ];
-
-    const forwards = [
-        "Centre Forward",
-        "Left Wing",
-        "Right Wing",
-        "Second Striker"
-    ];
-
-    if(position === "Goalkeeper") return "Goalkeeper";
-    if(defenders.includes(position)) return "Defender";
-    if(midfielders.includes(position)) return "Midfielder";
-    if(forwards.includes(position)) return "Forward";
-
-    return "Other";
 }
 
 const urlParams =
@@ -1647,42 +1535,6 @@ function renderNationalityFlags(player){
             onerror="this.src='logos/countries/default.png'"
         >
     `;
-
-}
-
-function parseMinute(value){
-
-    if(!value){
-        return 0;
-    }
-
-    value = String(value);
-
-    if(value.includes("+")){
-
-        const [base, added] =
-            value.split("+");
-
-        return Number(base) +
-               Number(added);
-
-    }
-
-    return Number(value);
-
-}
-
-function isGoalkeeper(position){
-
-    const pos =
-        String(position || "")
-        .toUpperCase()
-        .trim();
-
-    return (
-        pos === "GK" ||
-        pos.includes("GOALKEEPER")
-    );
 
 }
 
@@ -1807,174 +1659,6 @@ function attachCompetitionEvents(){
         });
 
     });
-
-}
-
-function getPlayerMatches(managerName){
-
-    const matches = [];
-
-    allMatches.forEach(match => {
-
-        let played = false;
-        let starter = false;
-        let minutes = 0;
-
-		const matchLength =
-		    String(match.Result || "").includes("AET") ||
-		    String(match.Result || "").includes("P")
-		        ? 120
-		        : 90;
-
-        for(let i = 1; i <= 11; i++){
-
-            if(
-                match[`Player name ${i}`] === managerName
-            ){
-
-                played = true;
-                starter = true;
-
-                let subOffMinute = null;
-
-                for(let s = 1; s <= 6; s++){
-
-                    if(
-                        match[`Sub off ${s}`] === managerName
-                    ){
-
-                        subOffMinute =
-                            parseMinute(
-                                match[`Sub min ${s}`]
-                            );
-
-                        break;
-
-                    }
-
-                }
-
-				minutes =
-				    subOffMinute !== null
-				        ? subOffMinute
-				        : matchLength;
-
-                break;
-
-            }
-
-        }
-
-        if(!starter){
-
-            for(let i = 1; i <= 6; i++){
-
-                if(
-                    match[`Sub on ${i}`] === managerName
-                ){
-
-                    played = true;
-
-                    const minute =
-                        parseMinute(
-                            match[`Sub min ${i}`]
-                        );
-
-                    minutes =
-    					matchLength - minute;
-
-                    break;
-
-                }
-
-            }
-
-        }
-
-        if(!played){
-            return;
-        }
-
-        let goals = 0;
-        let assists = 0;
-        let yellow = 0;
-        let red = 0;
-        let penaltyGoals = 0;
-        let penaltyMissed = 0;
-
-        for(let i = 1; i <= 12; i++){
-
-            if(
-                match[`Goal Player ${i}`] === managerName
-            ){
-                goals++;
-            }
-
-            if(
-                match[`Assist Player ${i}`] === managerName
-            ){
-                assists++;
-            }
-
-            if(
-                match[`Yellow player ${i}`] === managerName
-            ){
-                yellow++;
-            }
-
-            if(
-                match[`Red player ${i}`] === managerName
-            ){
-                red++;
-            }
-
-            if(
-                match[`Penalty player ${i}`] === managerName
-            ){
-
-                if(
-                    match[`Penalty scored ${i}`] === "in"
-                ){
-                    penaltyGoals++;
-                }
-
-                if(
-                    match[`Penalty scored ${i}`] === "not in"
-                ){
-                    penaltyMissed++;
-                }
-
-            }
-
-        }
-
-        matches.push({
-
-            match,
-            played,
-            starter,
-            minutes,
-
-            goals,
-            assists,
-
-            yellow,
-            red,
-
-            penaltyGoals,
-            penaltyMissed,
-
-            cleanSheet:
-                Number(match.Conceded) === 0,
-
-            goalsConceded:
-                Number(match.Conceded) || 0
-
-        });
-
-    });
-
-    return matches;
 
 }
 
@@ -2625,131 +2309,11 @@ function renderManager(managerName){
 }
 
 let allMatches = [];
-let allPlayers = [];
 let allRatings = {};
 let selectedCompetition = "all";
 let selectedCareerCompetition = "all";
 let selectedSeason = "all";
 let activeSection = "stats";
-
-function updateRatingVisibility(){
-
-    const ratingCard =
-        document.getElementById("ratingCard");
-
-    if(!ratingCard){
-        return;
-    }
-
-	ratingCard.style.display =
-	    activeSection === "stats"
-	        ? "flex"
-	        : "none";
-
-}
-
-function initSections(){
-
-    document
-    .querySelectorAll(
-        ".player-section-btn"
-    )
-    .forEach(btn => {
-
-        btn.addEventListener(
-            "click",
-            () => {
-
-                document
-                .querySelectorAll(
-                    ".player-section-btn"
-                )
-                .forEach(b =>
-                    b.classList.remove("active")
-                );
-
-                btn.classList.add("active");
-
-                activeSection =
-                    btn.dataset.section;
-
-				const seasonSection =
-				    document.querySelector(".filter-section.season");
-
-				const filtersCard =
-    				document.querySelector(".player-filters-card");
-				
-				const ratingCard =
-				    document.getElementById("ratingCard");
-				
-				if(activeSection === "info"){
-				
-				    filtersCard.style.display = "none";
-				
-				}else{
-				
-				    filtersCard.style.display = "";
-				
-				if(activeSection === "career"){
-				
-				    seasonSection.style.display = "none";
-				
-				    populateCareerCompetitionFilter(
-				        managerName
-				    );
-				
-				}else{
-				
-				    seasonSection.style.display = "";
-				
-				    populateCompetitionFilter(
-				        managerName
-				    );
-				
-				}
-				
-				ratingCard.style.display =
-				    activeSection === "stats"
-				        ? "flex"
-				        : "none";
-				}
-				
-				document
-				.getElementById("infoSection")
-				.style.display =
-				    activeSection === "info"
-				    ? "block"
-				    : "none";
-				
-				document
-				.getElementById("statsSection")
-				.style.display =
-				    activeSection === "stats"
-				    ? "block"
-				    : "none";
-				
-				document
-				.getElementById("matchesSection")
-				.style.display =
-				    activeSection === "matches"
-				    ? "block"
-				    : "none";
-				
-				document
-				.getElementById("careerSection")
-				.style.display =
-				    activeSection === "career"
-				    ? "block"
-				    : "none";
-
-                renderActiveSection();
-
-            }
-        );
-
-    });
-
-}
 
 function renderActiveSection(){
 
@@ -3204,20 +2768,11 @@ function populateSeasonFilter(managerName){
 }
 
 Promise.all([
-    fetch("data/players.json").then(r => r.json()),
-    fetch("data/data.json").then(r => r.json()),
-    fetch("data/player-ratings.json").then(r => r.json())
+    fetch("data/data.json").then(r => r.json())
 ])
-.then(([players, matches, ratings]) => {
+.then(([matches]) => {
 
     allMatches = matches;
-
-    allPlayers = players.map(p => ({
-        ...p,
-        Name: p.Player
-    }));
-
-    allRatings = ratings;
 
 	const managerExists =
 	    allMatches.some(
@@ -3238,11 +2793,10 @@ Promise.all([
 	    managerName
 	);
 	
-	renderManager(managerName);
-	document.getElementById(
-	    "ratingCard"
-	).style.display = "none";
-		
+	renderManager(
+	    managerName
+	);
+	
 	populateCompetitionFilter(
 	    managerName
 	);
@@ -3252,8 +2806,6 @@ Promise.all([
 	initSections();
 	
 	renderActiveSection();
-
-	updateRatingVisibility();
 
 })
 .catch(console.error);
