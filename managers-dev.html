@@ -1725,57 +1725,29 @@ function calculateAge(dateString, deathDate = null){
     return age;
 }
 
-function populateCompetitionFilter(playerName){
+function populateCompetitionFilter(managerName){
 
     const competitions = new Set();
 
     allMatches.forEach(match => {
-
-        if(
-            selectedSeason !== "all" &&
-            match.Season !== selectedSeason
-        ){
-            return;
-        }
-
-        let appeared = false;
-
-        for(let i = 1; i <= 11; i++){
-
-            if(match[`Player name ${i}`] === playerName){
-
-                appeared = true;
-                break;
-
-            }
-
-        }
-
-        if(!appeared){
-
-            for(let i = 1; i <= 6; i++){
-
-                if(match[`Sub on ${i}`] === playerName){
-
-                    appeared = true;
-                    break;
-
-                }
-
-            }
-
-        }
-
-        if(appeared){
-
-            competitions.add(
-                match.Competition
-            );
-
-        }
-
-    });
-
+	
+	    if(
+	        selectedSeason !== "all" &&
+	        match.Season !== selectedSeason
+	    ){
+	        return;
+	    }
+	
+	    if(match.Manager === managerName){
+	
+	        competitions.add(
+	            match.Competition
+	        );
+	
+	    }
+	
+	});
+	
     document.getElementById(
         "competitionContainer"
     ).innerHTML = `
@@ -2330,342 +2302,246 @@ function renderManagerSummary(stats){
 
 function renderCareerOverview(){
 
-	const stats =
-	    getPlayerAggregateStats(
-	        playerName,
-	        {
-	            season:null,
-	
-	            competition:
-	                selectedCareerCompetition === "all"
-	                ? null
-	                : selectedCareerCompetition
-	        }
-	    );
+    const stats =
+        getManagerAggregateStats(
+            managerName,
+            {
+                season:null,
 
-    const currentPlayer =
-        allPlayers.find(
-            p => p.Name === playerName
+                competition:
+                    selectedCareerCompetition === "all"
+                    ? null
+                    : selectedCareerCompetition
+            }
         );
 
-    const position =
-        currentPlayer?.Position || "";
+    const winRate =
+        stats.matches
+            ? (
+                stats.wins * 100 /
+                stats.matches
+              ).toFixed(1)
+            : "0.0";
 
-	const isGK =
-	    isGoalkeeper(position);
+    const pointsPerMatch =
+        stats.matches
+            ? (
+                (
+                    stats.wins * 3 +
+                    stats.draws
+                ) /
+                stats.matches
+              ).toFixed(2)
+            : "0.00";
 
-document.getElementById(
-    "careerSection"
-).innerHTML = `
+    document.getElementById(
+        "careerSection"
+    ).innerHTML = `
 
-    <div class="career-summary">
+        <div class="career-summary">
 
-        <div class="summary-stat">
-            <div class="summary-value">
-                ${stats.seasons.size}
-            </div>
-            <div class="summary-label">
-                Seasons
-            </div>
-        </div>
-
-        <div class="summary-stat">
-            <div class="summary-value">
-                ${stats.matches}
-            </div>
-            <div class="summary-label">
-                Matches
-            </div>
-        </div>
-
-        ${
-            isGK
-            ? `
-                <div class="summary-stat">
-                    <div class="summary-value">
-                        ${stats.cleanSheets}
-                    </div>
-                    <div class="summary-label">
-                        Clean Sheets
-                    </div>
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.seasons.size}
                 </div>
-
-                <div class="summary-stat">
-                    <div class="summary-value">
-                        ${stats.goalsConceded}
-                    </div>
-                    <div class="summary-label">
-                        Goals Conc.
-                    </div>
+                <div class="summary-label">
+                    Seasons
                 </div>
-            `
-            : `
-                <div class="summary-stat">
-                    <div class="summary-value">
-                        ${stats.goals}
-                    </div>
-                    <div class="summary-label">
-                        Goals
-                    </div>
-                </div>
-
-                <div class="summary-stat">
-                    <div class="summary-value">
-                        ${stats.assists}
-                    </div>
-                    <div class="summary-label">
-                        Assists
-                    </div>
-                </div>
-
-                <div class="summary-stat">
-                    <div class="summary-value">
-                        ${stats.goals + stats.assists}
-                    </div>
-                    <div class="summary-label">
-                        G+A
-                    </div>
-                </div>
-            `
-        }
-
-    </div>
-
-    <div class="season-widgets">
-
-        <div class="stats-widget">
-
-            <div class="stats-widget-title">
-                Performance
             </div>
 
-            <div class="widget-stats-list">
-
-                <div class="widget-stat">
-                    <div class="widget-stat-label">
-                        Matches
-                    </div>
-                    <div class="widget-stat-value">
-                        ${stats.matches}
-                    </div>
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.matches}
                 </div>
-
-                <div class="widget-stat">
-                    <div class="widget-stat-label">
-                        Starts
-                    </div>
-                    <div class="widget-stat-value">
-                        ${stats.starts}
-                    </div>
+                <div class="summary-label">
+                    Matches
                 </div>
+            </div>
 
-                <div class="widget-stat">
-                    <div class="widget-stat-label">
-                        Total Minutes
-                    </div>
-                    <div class="widget-stat-value">
-                        ${stats.minutes.toLocaleString("en-US")}
-                    </div>
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.wins}
                 </div>
-
-                <div class="widget-stat">
-                    <div class="widget-stat-label">
-                        Minutes per Match
-                    </div>
-                    <div class="widget-stat-value">
-                        ${
-                            stats.matches
-                            ? Math.round(stats.minutes / stats.matches)
-                            : 0
-                        }
-                    </div>
+                <div class="summary-label">
+                    Wins
                 </div>
+            </div>
 
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.draws}
+                </div>
+                <div class="summary-label">
+                    Draws
+                </div>
+            </div>
+
+            <div class="summary-stat">
+                <div class="summary-value">
+                    ${stats.losses}
+                </div>
+                <div class="summary-label">
+                    Losses
+                </div>
             </div>
 
         </div>
 
-        ${
-            !isGK
-            ? `
-                <div class="stats-widget">
+        <div class="season-widgets">
 
-                    <div class="stats-widget-title">
-                        Attacking
+            <div class="stats-widget">
+
+                <div class="stats-widget-title">
+                    Performance
+                </div>
+
+                <div class="widget-stats-list">
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Matches
+                        </div>
+                        <div class="widget-stat-value">
+                            ${stats.matches}
+                        </div>
                     </div>
 
-                    <div class="widget-stats-list">
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Goals</div>
-                            <div class="widget-stat-value">${stats.goals}</div>
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Wins
                         </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Assists</div>
-                            <div class="widget-stat-value">${stats.assists}</div>
+                        <div class="widget-stat-value">
+                            ${stats.wins}
                         </div>
+                    </div>
 
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">G+A</div>
-                            <div class="widget-stat-value">${stats.goals + stats.assists}</div>
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Win %
                         </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">G/90</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    stats.minutes
-                                    ? ((stats.goals * 90) / stats.minutes).toFixed(2)
-                                    : "0.00"
-                                }
-                            </div>
+                        <div class="widget-stat-value">
+                            ${winRate}%
                         </div>
+                    </div>
 
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">A/90</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    stats.minutes
-                                    ? ((stats.assists * 90) / stats.minutes).toFixed(2)
-                                    : "0.00"
-                                }
-                            </div>
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            PPM
                         </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">G+A/90</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    stats.minutes
-                                    ? (((stats.goals + stats.assists) * 90) / stats.minutes).toFixed(2)
-                                    : "0.00"
-                                }
-                            </div>
+                        <div class="widget-stat-value">
+                            ${pointsPerMatch}
                         </div>
-
                     </div>
 
                 </div>
 
-                <div class="stats-widget">
+            </div>
 
-                    <div class="stats-widget-title">
-                        Penalties
+            <div class="stats-widget">
+
+                <div class="stats-widget-title">
+                    Goals
+                </div>
+
+                <div class="widget-stats-list">
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Goals For
+                        </div>
+                        <div class="widget-stat-value">
+                            ${stats.goalsFor}
+                        </div>
                     </div>
 
-                    <div class="widget-stats-list">
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Penalty Goals</div>
-                            <div class="widget-stat-value">${stats.penaltyGoals}</div>
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Goals Against
                         </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Missed Penalties</div>
-                            <div class="widget-stat-value">${stats.penaltyMissed}</div>
+                        <div class="widget-stat-value">
+                            ${stats.goalsAgainst}
                         </div>
+                    </div>
 
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Conversion %</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    (stats.penaltyGoals + stats.penaltyMissed)
-                                    ? (
-                                        stats.penaltyGoals * 100 /
-                                        (stats.penaltyGoals + stats.penaltyMissed)
-                                    ).toFixed(0)
-                                    : 0
-                                }%
-                            </div>
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Goal Difference
                         </div>
-
+                        <div class="widget-stat-value">
+                            ${
+                                stats.goalsFor -
+                                stats.goalsAgainst
+                            }
+                        </div>
                     </div>
 
                 </div>
-            `
-            : `
-                <div class="stats-widget">
 
-                    <div class="stats-widget-title">
-                        Goalkeeping
+            </div>
+
+            <div class="stats-widget">
+
+                <div class="stats-widget-title">
+                    Defensive
+                </div>
+
+                <div class="widget-stats-list">
+
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Clean Sheets
+                        </div>
+
+                        <div class="widget-stat-value">
+                            ${stats.cleanSheets}
+                        </div>
                     </div>
 
-                    <div class="widget-stats-list">
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Clean Sheets</div>
-                            <div class="widget-stat-value">${stats.cleanSheets}</div>
+                    <div class="widget-stat">
+                        <div class="widget-stat-label">
+                            Clean Sheet %
                         </div>
 
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Goals Conceded</div>
-                            <div class="widget-stat-value">${stats.goalsConceded}</div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Goals Conceded/90</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    stats.minutes
-                                    ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
-                                    : "0.00"
-                                }
-                            </div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Clean Sheet %</div>
-                            <div class="widget-stat-value">
-                                ${
+                        <div class="widget-stat-value">
+                            ${
+                                stats.matches
+                                ? (
+                                    stats.cleanSheets * 100 /
                                     stats.matches
-                                    ? ((stats.cleanSheets * 100) / stats.matches).toFixed(0)
-                                    : 0
-                                }%
-                            </div>
+                                  ).toFixed(1)
+                                : "0.0"
+                            }%
                         </div>
-
                     </div>
 
-                </div>
-            `
-        }
-
-        <div class="stats-widget">
-
-            <div class="stats-widget-title">
-                Discipline
-            </div>
-
-            <div class="widget-stats-list">
-
-                <div class="widget-stat">
-                    <div class="widget-stat-label">
-                        <span class="card-indicator card-yellow"></span>
-                        Yellow Cards
-                    </div>
-                    <div class="widget-stat-value">
-                        ${stats.yellow}
-                    </div>
-                </div>
-
-                <div class="widget-stat">
-                    <div class="widget-stat-label">
-                        <span class="card-indicator card-red"></span>
-                        Red Cards
-                    </div>
-                    <div class="widget-stat-value">
-                        ${stats.red}
-                    </div>
                 </div>
 
             </div>
 
         </div>
 
-    </div>
+    `;
+}
 
-`;
+function getManagersDropdown(){
+
+    const managers = [
+        ...new Set(
+            allMatches
+                .map(match => match.Manager)
+                .filter(Boolean)
+        )
+    ]
+    .sort();
+
+    return managers.map(manager => `
+
+        <option value="${manager}">
+            ${manager}
+        </option>
+
+    `).join("");
+
 }
 
 function renderManager(managerName){
@@ -2880,7 +2756,7 @@ function renderActiveSection(){
 
     if(activeSection === "info"){
 
-        renderPlayerInfo();
+        renderManagerInfo();
 
     }
 
@@ -2892,7 +2768,7 @@ function renderActiveSection(){
 
     if(activeSection === "matches"){
 
-        renderPlayerMatches();
+        renderManagerMatches();
 
     }
 
@@ -2904,38 +2780,43 @@ function renderActiveSection(){
 
 }
 
-function renderPlayerInfo(){
+function renderManagerInfo(){
 
-    const managerExists =
-        allMatches.some(
-            match => match.Manager === managerName
-        );
-    
-    if(!managerExists){
-        return;
-    }
+    const managerMatches =
+        allMatches
+            .filter(
+                match => match.Manager === managerName
+            )
+            .sort((a,b) => {
 
-	const playerMatches =
-    getPlayerMatches(playerName)
-    .sort((a,b) => {
-	
-        const da = new Date(
-            a.match.Date.split(".").reverse().join("-")
+                const da =
+                    new Date(
+                        a.Date.split(".").reverse().join("-")
+                    );
+
+                const db =
+                    new Date(
+                        b.Date.split(".").reverse().join("-")
+                    );
+
+                return da - db;
+
+            });
+
+    const firstMatch =
+        managerMatches[0];
+
+    const lastMatch =
+        managerMatches[
+            managerMatches.length - 1
+        ];
+
+    const seasons =
+        new Set(
+            managerMatches.map(
+                match => match.Season
+            )
         );
-	
-        const db = new Date(
-            b.match.Date.split(".").reverse().join("-")
-        );
-	
-        return da - db;
-	
-    });
-	
-	const debutMatch =
-	    playerMatches[0]?.match;
-	
-	const lastMatch =
-	    playerMatches[playerMatches.length - 1]?.match;
 
     document.getElementById(
         "playerInfoContent"
@@ -2944,490 +2825,234 @@ function renderPlayerInfo(){
         <div class="info-card">
 
             <h3>
-                Player Information
+                Manager Information
             </h3>
 
             <div class="info-grid">
 
-		    <div class="info-item">
-		        <span>Full Name</span>
-		        <strong>${player["Full Name"] || "-"}</strong>
-		    </div>
-		
-		    <div class="info-item">
-		        <span>Position</span>
-		        <strong>${player.Position || "-"}</strong>
-		    </div>
-		
-			<div class="info-item">
-			    <span>Birth Date</span>
-			    <strong>
-			        ${
-			            player["Birth Date"]
-			            ? `${player["Birth Date"]} (${calculateAge(
-			                player["Birth Date"],
-			                player["Death Date"]
-			            )})`
-			            : "-"
-			        }
-			    </strong>
-			</div>
-		
-		    ${
-		        player["Death Date"]
-		        ? `
-		            <div class="info-item">
-		                <span>Death Date</span>
-		                <strong>${player["Death Date"]}</strong>
-		            </div>
-		        `
-		        : ""
-		    }
-		
-			<div class="info-item">
-			    <span>Nationality</span>
-			
-			    <strong>
-			        ${
-			            getNationalities(player)
-			                .map(nationality => `
-			                    <span class="info-nationality">
-			                        <img
-			                            src="${getCountryLogo(nationality)}"
-			                            alt="${nationality}"
-			                            class="info-nationality-flag"
-			                            onerror="this.src='logos/countries/default.png'"
-			                        >
-			                        ${nationality}
-			                    </span>
-			                `)
-			                .join(" / ")
-			        }
-			    </strong>
-			
-			</div>
+                <div class="info-item">
+                    <span>Name</span>
+                    <strong>
+                        ${managerName}
+                    </strong>
+                </div>
 
-			<div class="info-item">
-			    <span>Debut</span>
-			    <strong>
-			        ${
-			            debutMatch
-			            ? `<a href="match.html?id=${debutMatch.ID}">
-			                ${debutMatch.Date} vs ${debutMatch["Opp. Team"]}
-			                (${debutMatch.Result})
-			               </a>`
-			            : "-"
-			        }
-			    </strong>
-			</div>
-			
-			<div class="info-item">
-			    <span>Last Match</span>
-			    <strong>
-			        ${
-			            lastMatch
-			            ? `<a href="match.html?id=${lastMatch.ID}">
-			                ${lastMatch.Date} vs ${lastMatch["Opp. Team"]}
-			                (${lastMatch.Result})
-			               </a>`
-			            : "-"
-			        }
-			    </strong>
-			</div>
+                <div class="info-item">
+                    <span>Matches</span>
+                    <strong>
+                        ${managerMatches.length}
+                    </strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Seasons</span>
+                    <strong>
+                        ${seasons.size}
+                    </strong>
+                </div>
+
+                <div class="info-item">
+                    <span>First Match</span>
+                    <strong>
+                        ${
+                            firstMatch
+                            ? `
+                                <a href="match.html?id=${firstMatch.ID}">
+                                    ${firstMatch.Date}
+                                    vs ${firstMatch["Opp. Team"]}
+                                    (${firstMatch.Result})
+                                </a>
+                            `
+                            : "-"
+                        }
+                    </strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Last Match</span>
+                    <strong>
+                        ${
+                            lastMatch
+                            ? `
+                                <a href="match.html?id=${lastMatch.ID}">
+                                    ${lastMatch.Date}
+                                    vs ${lastMatch["Opp. Team"]}
+                                    (${lastMatch.Result})
+                                </a>
+                            `
+                            : "-"
+                        }
+                    </strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Latest Season</span>
+                    <strong>
+                        ${
+                            managerMatches.length
+                            ? managerMatches[
+                                managerMatches.length - 1
+                              ].Season
+                            : "-"
+                        }
+                    </strong>
+                </div>
 
             </div>
 
         </div>
 
     `;
-
 }
 
+function renderManagerMatches(){
 
-function renderPlayerMatches(){
+    const matches = allMatches
+        .filter(match => {
 
-    const matches = [];
-
-    allMatches.forEach(match => {
-
-        if(
-            selectedSeason !== "all" &&
-            match.Season !== selectedSeason
-        ){
-            return;
-        }
-
-        if(
-            selectedCompetition !== "all" &&
-            match.Competition !== selectedCompetition
-        ){
-            return;
-        }
-
-        let started = false;
-        let appeared = false;
-
-        for(let i = 1; i <= 11; i++){
+            if(match.Manager !== managerName){
+                return false;
+            }
 
             if(
-                match[`Player name ${i}`] === playerName
+                selectedSeason !== "all" &&
+                match.Season !== selectedSeason
             ){
-                started = true;
-                appeared = true;
-                break;
+                return false;
             }
 
-        }
-
-        if(!appeared){
-
-            for(let i = 1; i <= 6; i++){
-
-                if(
-                    match[`Sub on ${i}`] === playerName
-                ){
-                    appeared = true;
-                    break;
-                }
-
+            if(
+                selectedCompetition !== "all" &&
+                match.Competition !== selectedCompetition
+            ){
+                return false;
             }
 
-        }
+            return true;
 
-		if(!appeared){
-		    return;
-		}
-		
-		let goals = 0;
-		let assists = 0;
-		let penaltyGoals = 0;
-		let yellow = 0;
-		let red = 0;
-		
-		for(let i = 1; i <= 12; i++){
-		
-		    if(match[`Goal Player ${i}`] === playerName){
-		        goals++;
-		    }
-		
-		    if(match[`Assist Player ${i}`] === playerName){
-		        assists++;
-		    }
-		
-		    if(match[`Yellow player ${i}`] === playerName){
-		        yellow++;
-		    }
-		
-		    if(match[`Red player ${i}`] === playerName){
-		        red++;
-		    }
-		
-		    if(match[`Penalty player ${i}`] === playerName){
-		
-		        if(match[`Penalty scored ${i}`] === "in"){
-		            penaltyGoals++;
-		        }
-		
-		    }
-		
-		}
+        })
+        .sort((a,b) => {
 
-		const ratingData =
-		    allRatings[playerName];
-		
-		const matchHistory =
-		    ratingData?.history || [];
-		
-		const matchRatingData =
-		    matchHistory.find(
-		        item =>
-		            item.matchId == match.ID
-		    );
-		
-		const matchRating =
-		    matchRatingData?.rating;
+            const da =
+                new Date(
+                    a.Date.split(".").reverse().join("-")
+                );
 
-		matches.push({
-		
-		    ...match,
-		
-		    started,
-		
-		    goals,
-		    assists,
-		    penaltyGoals,
-		
-		    yellow,
-		    red,
-		
-		    cleanSheet:
-		        Number(match.Conceded) === 0
-		            ? 1
-		            : 0,
-		
-		    goalsConceded:
-		        Number(match.Conceded) || 0,
-		
-			rating:
-			    matchRating
-		
-		});
-		});
+            const db =
+                new Date(
+                    b.Date.split(".").reverse().join("-")
+                );
 
-    matches.sort((a,b)=>{
+            return db - da;
 
-        const da =
-            new Date(
-                a.Date.split(".")
-                .reverse()
-                .join("-")
-            );
+        });
 
-        const db =
-            new Date(
-                b.Date.split(".")
-                .reverse()
-                .join("-")
-            );
+    document.getElementById(
+        "matchesSection"
+    ).innerHTML = `
 
-        return db - da;
+        <div class="matches-list">
 
-    });
+            <div class="matches-header">
 
-	const currentPlayer =
-	    allPlayers.find(
-	        p => p.Name === playerName
-	    );
-	
-	const position =
-	    currentPlayer?.Position || "";
-	
-	const isGK =
-	    isGoalkeeper(position);
+                <div></div>
+                <div>Date</div>
+                <div>Venue</div>
+                <div>Opponent</div>
+                <div>Result</div>
 
-	document.getElementById(
-	    "matchesSection"
-	).innerHTML = `
+                <div>GF</div>
+                <div>GA</div>
+                <div>GD</div>
+                <div>PTS</div>
 
-        <div class="matches-list ${isGK ? 'gk' : ''}">
+            </div>
 
-			<div class="matches-header">
-			
-			    <div></div>
-			    <div>Date</div>
-			    <div>Venue</div>
-			    <div>Opponent</div>
-			    <div>Result</div>
-			
-			    ${
-			        isGK
-			        ? `
-			            <div>RT</div>
-			            <div>CS</div>
-			            <div>GC</div>
-			            <div>YC</div>
-			            <div>RC</div>
-			        `
-			        : `
-			            <div>RT</div>
-			            <div>G</div>
-			            <div>A</div>
-			            <div>PG</div>
-			            <div>YC</div>
-			            <div>RC</div>
-			        `
-			    }
-			
-			</div>
+            ${matches.map(match => {
 
-            ${matches.map(match => `
+                const gd =
+                    Number(match.Scored || 0) -
+                    Number(match.Conceded || 0);
 
-                <div
-                    class="player-match ${
-                        match.started
-                        ? "player-started"
-                        : "player-bench"
-                    }"
-                    onclick="
-                        location.href=
-                        'match.html?id=${match.ID}'
-                    ">
+                const pts =
+                    match["Result type"] === "W"
+                        ? 3
+                        : match["Result type"] === "D"
+                        ? 1
+                        : 0;
 
-                    <div class="competition-cell">
+                return `
 
-                        ${
-                            competitionLogos[
-                                match.Competition
-                            ]
-                            ? `
+                    <div
+                        class="player-match"
+                        onclick="
+                            location.href='match.html?id=${match.ID}'
+                        ">
+
+                        <div class="competition-cell">
+
+                            ${
+                                competitionLogos[
+                                    match.Competition
+                                ]
+                                    ? `
+                                        <img
+                                            src="logos/${competitionLogos[match.Competition]}"
+                                            class="competition-logo">
+                                      `
+                                    : ""
+                            }
+
+                        </div>
+
+                        <div>
+                            ${match.Date}
+                        </div>
+
+                        <div>
+                            ${match["Home/Away"]}
+                        </div>
+
+                        <div class="opponent-cell">
+
                             <img
-                                src="logos/${competitionLogos[match.Competition]}"
-                                class="competition-logo">
-                            `
-                            : ""
-                        }
+                                src="logos/clubs/${getClubLogo(match["Opp. Team"])}"
+                                class="opponent-logo"
+                                onerror="this.src='logos/clubs/default.png'">
+
+                            ${match["Opp. Team"]}
+
+                        </div>
+
+                        <div>
+
+                            <span class="result-badge ${
+                                match["Result type"] === "W"
+                                    ? "result-win"
+                                    : match["Result type"] === "D"
+                                    ? "result-draw"
+                                    : "result-loss"
+                            }">
+
+                                ${match.Result}
+
+                            </span>
+
+                        </div>
+
+                        <div>${match.Scored}</div>
+
+                        <div>${match.Conceded}</div>
+
+                        <div>${gd}</div>
+
+                        <div>${pts}</div>
 
                     </div>
 
-                    <div>
-                        ${match.Date}
-                    </div>
+                `;
 
-                    <div>
-                        ${match["Home/Away"]}
-                    </div>
-
-                    <div class="opponent-cell">
-
-                        <img
-                            src="logos/clubs/${getClubLogo(match["Opp. Team"])}"
-                            class="opponent-logo"
-                            onerror="
-                                this.src='logos/clubs/default.png'
-                            ">
-
-                        ${match["Opp. Team"]}
-
-                    </div>
-
-                    <div>
-
-                        <span class="result-badge ${
-                            match["Result type"] === "W"
-                            ? "result-win"
-                            : match["Result type"] === "D"
-                            ? "result-draw"
-                            : "result-loss"
-                        }">
-
-                            ${match.Result}
-
-                        </span>
-
-                    </div>
-
-					${
-					    isGK
-					    ? `
-					
-							<div>
-							    ${
-							        match.rating
-							        ? `
-							            <span class="match-rating">
-							                ${match.rating.toFixed(2)}
-							            </span>
-							        `
-							        : "-"
-							    }
-							</div>
-					
-					        <div>${match.cleanSheet}</div>
-					
-					        <div>${match.goalsConceded}</div>
-					
-					        <div>${match.yellow || "-"}</div>
-					
-					        <div>${match.red || "-"}</div>
-					
-					    `
-					    : `
-					
-							<div>
-							    ${
-							        match.rating
-							        ? `
-							            <span class="match-rating">
-							                ${match.rating.toFixed(2)}
-							            </span>
-							        `
-							        : "-"
-							    }
-							</div>
-					
-					        <div>${match.goals || "-"}</div>
-					
-					        <div>${match.assists || "-"}</div>
-					
-					        <div>${match.penaltyGoals || "-"}</div>
-					
-					        <div>${match.yellow || "-"}</div>
-					
-					        <div>${match.red || "-"}</div>
-					
-					    `
-					}
-
-					<div class="mobile-match-stats">
-
-						<div class="mobile-stats-header">
-						
-						    ${
-						        isGK
-						        ? `
-						            <span>RT</span>
-						            <span>CS</span>
-						            <span>GC</span>
-						            <span>YC</span>
-						            <span>RC</span>
-						        `
-						        : `
-						            <span>RT</span>
-						            <span>G</span>
-						            <span>A</span>
-						            <span>PG</span>
-						            <span>YC</span>
-						            <span>RC</span>
-						        `
-						    }
-						
-						</div>
-					
-						<div class="mobile-stats-values">
-						
-						    ${
-						        isGK
-						        ? `
-						
-						            <span class="match-rating">
-						                ${match.rating ? match.rating.toFixed(2) : "-"}
-						            </span>
-						
-						            <span>${match.cleanSheet}</span>
-						
-						            <span>${match.goalsConceded}</span>
-						
-						            <span>${match.yellow || "-"}</span>
-						
-						            <span>${match.red || "-"}</span>
-						
-						        `
-						        : `
-						
-						            <span class="match-rating">
-						                ${match.rating ? match.rating.toFixed(2) : "-"}
-						            </span>
-						
-						            <span>${match.goals || "-"}</span>
-						
-						            <span>${match.assists || "-"}</span>
-						
-						            <span>${match.penaltyGoals || "-"}</span>
-						
-						            <span>${match.yellow || "-"}</span>
-						
-						            <span>${match.red || "-"}</span>
-						
-						        `
-						    }
-						
-						</div>
-					
-					</div>
-
-                </div>
-
-            `).join("")}
+            }).join("")}
 
         </div>
 
@@ -3444,16 +3069,13 @@ function initFilters(){
 
         selectedCompetition = "all";
 
-        const currentPlayer =
-            allPlayers.find(
-                p => p.Name === playerName
-            );
-
-        renderPlayer(currentPlayer);
-
-        populateCompetitionFilter(
-            playerName
-        );
+		renderManager(
+		    managerName
+		);
+		
+		populateCompetitionFilter(
+		    managerName
+		);
 
         renderActiveSection();
 
@@ -3554,44 +3176,14 @@ function attachCareerCompetitionEvents(){
 
 }
 
-function populateSeasonFilter(playerName){
+function populateSeasonFilter(managerName){
 
     const seasons = new Set();
 
     allMatches.forEach(match => {
 
-        let found = false;
-
-        for(let i = 1; i <= 11; i++){
-
-            if(match[`Player name ${i}`] === playerName){
-
-                found = true;
-                break;
-
-            }
-
-        }
-
-		if(!found){
-		
-		    for(let i = 1; i <= 6; i++){
-		
-		        if(match[`Sub on ${i}`] === playerName){
-		
-		            found = true;
-		            break;
-		
-		        }
-		
-		    }
-		
-		}
-
-        if(found){
-
+        if(match.Manager === managerName){
             seasons.add(match.Season);
-
         }
 
     });
@@ -3646,29 +3238,27 @@ Promise.all([
 
     allRatings = ratings;
 
-    const player =
-        allPlayers.find(
-            p => p.Name === playerName
-        );
-
-    initPersonSearch();
-
-    if(!player){
-
-        document.getElementById("playerProfile")
-            .innerHTML = "<p>Player not found.</p>";
-
-        return;
-    }
+	const managerExists =
+	    allMatches.some(
+	        match => match.Manager === managerName
+	    );
+	
+	if(!managerExists){
+	
+	    document.getElementById("playerProfile")
+	        .innerHTML = "<p>Manager not found.</p>";
+	
+	    return;
+	}
 	
 	populateSeasonFilter(
-	    player.Name
+	    managerName
 	);
 	
 	renderManager(managerName);
 	
 	populateCompetitionFilter(
-	    player.Name
+	    managerName
 	);
 	
 	initFilters();
