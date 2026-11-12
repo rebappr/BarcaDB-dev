@@ -2339,6 +2339,109 @@ let selectedCareerCompetition = "all";
 let selectedSeason = "all";
 let activeSection = "stats";
 
+function initSections(){
+
+    document
+    .querySelectorAll(
+        ".player-section-btn"
+    )
+    .forEach(btn => {
+
+        btn.addEventListener(
+            "click",
+            () => {
+
+                document
+                .querySelectorAll(
+                    ".player-section-btn"
+                )
+                .forEach(b =>
+                    b.classList.remove("active")
+                );
+
+                btn.classList.add("active");
+
+                activeSection =
+                    btn.dataset.section;
+
+				const seasonSection =
+				    document.querySelector(".filter-section.season");
+
+				const filtersCard =
+    				document.querySelector(".player-filters-card");
+				
+				const ratingCard =
+				    document.getElementById("ratingCard");
+				
+				if(activeSection === "info"){
+				
+				    filtersCard.style.display = "none";
+				
+				}else{
+				
+				    filtersCard.style.display = "";
+				
+				if(activeSection === "career"){
+				
+				    seasonSection.style.display = "none";
+				
+				    populateCareerCompetitionFilter(
+				        playerName
+				    );
+				
+				}else{
+				
+				    seasonSection.style.display = "";
+				
+				    populateCompetitionFilter(
+				        playerName
+				    );
+				
+				}
+				
+				ratingCard.style.display =
+				    activeSection === "stats"
+				        ? "flex"
+				        : "none";
+				}
+				
+				document
+				.getElementById("infoSection")
+				.style.display =
+				    activeSection === "info"
+				    ? "block"
+				    : "none";
+				
+				document
+				.getElementById("statsSection")
+				.style.display =
+				    activeSection === "stats"
+				    ? "block"
+				    : "none";
+				
+				document
+				.getElementById("matchesSection")
+				.style.display =
+				    activeSection === "matches"
+				    ? "block"
+				    : "none";
+				
+				document
+				.getElementById("careerSection")
+				.style.display =
+				    activeSection === "career"
+				    ? "block"
+				    : "none";
+
+                renderActiveSection();
+
+            }
+        );
+
+    });
+
+}
+
 function renderActiveSection(){
 
     if(activeSection === "info"){
