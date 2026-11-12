@@ -15,25 +15,25 @@
 <meta name="theme-color" content="#004D98">
 
 <title>
-Manager Statistics | Barça Database
+FC Barcelona Managers Statistics | Barça Database
 </title>
 
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 
 <meta name="description"
-      content="Explore FC Barcelona's 2026/27 first-team squad with manager profiles, positions, squad numbers, nationalities and detailed career statistics.">
+      content="Explore FC Barcelona managers throughout history. View coaching records, matches, wins, win percentages, career statistics, nationalities and detailed managerial profiles.">
 
 <link rel="canonical"
-      href="https://barcadb.com/squad.html">
+      href="https://barcadb.com/manager.html">
 
 <meta property="og:title"
-      content="FC Barcelona 2026/27 Squad | Barça Database">
+      content="FC Barcelona Managers Statistics | Barça Database">
 
 <meta property="og:description"
-      content="Complete FC Barcelona first-team squad for the 2026/27 season including manager profiles, positions and squad numbers.">
+      content="Complete statistics and profiles of FC Barcelona managers including matches, wins, trophies, nationalities and coaching records.">
 
 <meta property="og:url"
-      content="https://barcadb.com/squad.html">
+      content="https://barcadb.com/manager.html">
 
 <meta property="og:image"
       content="https://barcadb.com/logos/barcadb-logo.png">
@@ -48,16 +48,16 @@ Manager Statistics | Barça Database
       content="summary_large_image">
 
 <meta name="twitter:title"
-      content="FC Barcelona 2026/27 Squad | Barça Database">
+      content="FC Barcelona Managers Statistics | Barça Database">
 
 <meta name="twitter:description"
-      content="Browse the complete FC Barcelona 2026/27 squad with manager information, positions and statistics.">
+      content="Browse FC Barcelona managers through history with detailed statistics, profiles, records and coaching achievements.">
 
 <meta name="twitter:image"
       content="https://barcadb.com/logos/barcadb-logo.png">
 
 <meta name="keywords"
-      content="FC Barcelona squad, Barcelona managers, FC Barcelona roster, Barça squad 2026/27, Barcelona first team, Barcelona manager profiles, Barcelona squad numbers, FC Barcelona statistics">
+      content="FC Barcelona managers, Barcelona coaches, Barça managers, Barcelona coaching history, Hansi Flick, Johan Cruyff manager, Pep Guardiola manager, FC Barcelona coaching statistics, Barcelona manager records, Barça database">
 
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/main.css">
@@ -3000,6 +3000,9 @@ Promise.all([
 	populateSeasonFilter(
 	    managerName
 	);
+	
+	document.title =
+	    `${managerName} Manager Statistics | Barça Database`;
 	
 	renderManager(
 	    managerName
