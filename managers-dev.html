@@ -1,0 +1,3895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="language" content="English">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="manifest" href="site.webmanifest">
+
+<meta name="theme-color" content="#004D98">
+
+<title>
+Player Statistics | Barça Database
+</title>
+
+<meta name="robots" content="noindex, nofollow">
+
+<meta name="description"
+      content="Explore FC Barcelona's 2026/27 first-team squad with player profiles, positions, squad numbers, nationalities and detailed career statistics.">
+
+<link rel="canonical"
+      href="https://barcadb.com/squad.html">
+
+<meta property="og:title"
+      content="FC Barcelona 2026/27 Squad | Barça Database">
+
+<meta property="og:description"
+      content="Complete FC Barcelona first-team squad for the 2026/27 season including player profiles, positions and squad numbers.">
+
+<meta property="og:url"
+      content="https://barcadb.com/squad.html">
+
+<meta property="og:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta property="og:type"
+      content="website">
+
+<meta property="og:site_name"
+      content="Barça Database">
+
+<meta name="twitter:card"
+      content="summary_large_image">
+
+<meta name="twitter:title"
+      content="FC Barcelona 2026/27 Squad | Barça Database">
+
+<meta name="twitter:description"
+      content="Browse the complete FC Barcelona 2026/27 squad with player information, positions and statistics.">
+
+<meta name="twitter:image"
+      content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta name="keywords"
+      content="FC Barcelona squad, Barcelona players, FC Barcelona roster, Barça squad 2026/27, Barcelona first team, Barcelona player profiles, Barcelona squad numbers, FC Barcelona statistics">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/theme.css">
+
+<style>
+
+.content-layout.animate{
+animation:pageRefresh .4s ease;
+}
+
+@keyframes pageRefresh{
+from{
+opacity:0;
+transform:translateY(20px) scale(.98);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+.left-panel{
+    display:flex;
+    flex-direction:column;
+    flex:1.1;
+    min-width:0;
+    gap:12px;
+}
+
+.matches-view-switch{
+display:flex;
+gap:6px;
+margin-bottom:10px;
+}
+
+.matches-view-switch button{
+padding:8px 12px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+font-size:12px;
+text-transform: uppercase;
+
+background:var(--card-bg);
+color:var(--text);
+
+border:1px solid var(--card-border);
+}
+
+.matches-view-switch button.active{
+background:#004D98;
+color:white;
+}
+
+.mobile-sections{
+display:none;
+}
+
+@media (prefers-color-scheme: dark){
+
+    .filter-note{
+        background:rgba(0,77,152,.15);
+        border-color:#004D98;
+    }
+
+    .meta-badge{
+        background:#1f2937;
+        color:#f9fafb;
+    }
+
+}
+
+.matches-view-switch{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+
+.filters{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+
+    padding:16px;
+
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:12px;
+}
+
+.player-filters-card{
+
+    position:relative;
+
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--card-border);
+
+    border-radius:20px;
+
+    padding:16px;
+}
+
+.filter-section{
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.filter-section.competition{
+    flex:1;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.filter-heading{
+    width:100%;
+}
+
+.filter-label{
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    color:var(--muted);
+	margin-left:4px;
+}
+
+.table-scroll{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+.player-profile-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:24px;
+    padding:24px;
+}
+
+.player-profile-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.player-profile-photo{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid rgba(0,77,152,.2);
+}
+
+.player-profile-info h2{
+    margin:0;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:2rem;
+}
+
+.player-profile-info h2 img{
+    width:28px;
+    height:20px;
+    object-fit:cover;
+    border-radius:3px;
+}
+
+.player-profile-meta{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:1rem;
+    line-height:1.8;
+}
+
+.player-shirt{
+    font-weight:700;
+    color:var(--text);
+}
+
+.player-header-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--card-border);
+    border-radius:12px;
+}
+
+.player-header-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.player-header-info h2{
+    margin:0;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:24px;
+    font-weight:700;
+    line-height:1.05;
+}
+
+.player-header-meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-top:8px;
+
+    font-size:.8rem;
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+.player-profile-photo{
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+    object-fit:cover;
+
+    border:3px solid rgba(0,77,152,.25);
+}
+
+.player-flag-large{
+    width:32px;
+    height:22px;
+
+    border-radius:3px;
+}
+
+.filters select{
+    width:100%;
+
+    height:38px;
+
+    padding:0 12px;
+
+    background:var(--meta-bg);
+    color:var(--text);
+
+    border:1px solid var(--meta-border);
+    border-radius:14px;
+
+    font-size:12px;
+}
+
+.filters select:focus{
+    outline:none;
+    border-color:#004D98;
+}
+
+.player-header-right{
+    position:relative;
+    width:98px;
+    margin-left:auto;
+    text-transform:uppercase;
+}
+
+.player-select{
+
+    width:100%;
+    height:38px;
+
+    padding:0 40px 0 12px;
+
+    background:var(--select-bg);
+    color:var(--select-text);
+
+    border:1px solid var(--meta-border);
+    border-radius:14px;
+
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
+.player-select:focus{
+    outline:none;
+    border-color:#004D98;
+}
+
+.player-select option{
+    background:var(--select-bg);
+    color:var(--select-text);
+}
+
+.player-header-right::after{
+    content:"▼";
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:var(--select-arrow);
+    font-size:12px;
+    pointer-events:none;
+}
+
+.filter-heading{
+    width:100%;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    color:var(--muted);
+}
+
+#seasonFilter{
+    width:100%;
+    height:38px;
+    padding:0 40px 0 12px;
+    background:var(--select-bg);
+    color:var(--select-text);
+    border:1px solid var(--meta-border);
+    border-radius:14px;
+    font-size:13px;
+    font-weight:700;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
+#seasonFilter:focus{
+    outline:none;
+    border-color:#004D98;
+}
+
+.filter-title{
+
+    margin-right:6px;
+
+    font-size:12px;
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+.competition-btn:hover{
+    border-color:#004D98;
+}
+
+.competition-btn.active{
+
+    background:
+        linear-gradient(
+            135deg,
+            #004D98,
+            #0066cc
+        );
+
+    color:white;
+
+    border-color:#004D98;
+}
+
+.player-summary{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,minmax(120px,1fr));
+
+    gap:12px;
+
+    padding:20px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--card-border);
+    border-radius:24px;
+}
+
+.summary-stat{
+
+    text-align:center;
+}
+
+.summary-value{
+
+    font-size:2.2rem;
+    font-weight:800;
+
+    color:var(--number);
+}
+
+.summary-rating{
+
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #00bcd4
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    font-size:2.6rem;
+    font-weight:800;
+}
+
+.match-rating{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:48px;
+
+    padding:4px 8px;
+
+    border-radius:999px;
+
+    font-size:12px;
+    font-weight:800;
+
+    background:
+        rgba(0,188,212,.12);
+
+    color:#00bcd4;
+
+    border:
+        1px solid rgba(0,188,212,.3);
+}
+
+.summary-label{
+    margin-top:4px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    color:var(--muted);
+}
+
+.season-select-wrap{
+    position:relative;
+    width:160px;
+}
+
+.season-select-wrap::after{
+    content:"▼";
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:var(--select-arrow);
+    font-size:12px;
+    pointer-events:none;
+}
+
+#competitionContainer{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:6px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+}
+
+#competitionContainer::-webkit-scrollbar{
+    display:none;
+}
+
+.competition-btn{
+    padding:8px 12px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:12px;
+    text-transform:uppercase;
+    white-space:nowrap;
+    background:var(--card-bg);
+    color:var(--text);
+    border:1px solid var(--card-border);
+    transition:.2s;
+}
+
+.competition-btn.active{
+    background:#004D98;
+    color:white;
+}
+
+.player-sections{
+    display:flex;
+    gap:6px;
+    padding:6px;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:18px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.player-sections::-webkit-scrollbar{
+    display:none;
+}
+
+.player-section-btn{
+    padding:8px 14px;
+    border:none;
+    border-radius:14px;
+    background:transparent;
+    color:var(--text);
+    font-size:12px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:.2s;
+	text-transform:uppercase;
+}
+
+.player-section-btn.active{
+    background:#004D98;
+    color:white;
+}
+
+.matches-list{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.matches-header,
+.player-match{
+    display:grid;
+
+    grid-template-columns:
+    30px
+    80px
+    60px
+    1fr
+    80px
+    50px
+	35px
+    35px
+    35px
+    35px
+    35px;
+
+    gap:8px;
+    font-size:12px;
+    text-align:center;
+}
+
+.matches-list.gk .matches-header,
+.matches-list.gk .player-match{
+
+    grid-template-columns:
+    30px
+    80px
+    60px
+    1fr
+    80px
+    50px
+    50px
+    50px
+    35px
+    35px;
+
+}
+
+.opponent-cell{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:6px;
+}
+
+.competition-cell{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.matches-header{
+    font-weight:700;
+    text-transform:uppercase;
+    padding:12px;
+    opacity:.7;
+}
+
+.matches-header div:nth-child(4){
+    text-align:left;
+}
+
+.player-match{
+    align-items:center;
+    padding:10px 12px;
+    border-top:1px solid var(--meta-border);
+    transition:.2s;
+}
+
+.player-match:hover{
+    background:var(--meta-bg);
+    cursor:pointer;
+}
+
+.competition-cell{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.competition-logo{
+    width:20px;
+    height:20px;
+    object-fit:contain;
+}
+
+.opponent-cell{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.opponent-logo{
+    width:20px;
+    height:20px;
+    object-fit:contain;
+}
+
+.player-started{
+    border-left:4px solid #22c55e;
+}
+
+.player-bench{
+    border-left:4px solid #f59e0b;
+}
+
+.result-badge{
+    display:inline-block;
+    min-width:60px;
+    text-align:center;
+    border-radius:999px;
+    padding:4px 10px;
+    font-weight:700;
+}
+
+.result-win{
+    background:var(--result-win-bg);
+    border:1px solid var(--result-win);
+    color:var(--result-win);
+}
+
+.result-draw{
+    background:var(--result-draw-bg);
+    border:1px solid var(--result-draw);
+    color:var(--result-draw);
+}
+
+.result-loss{
+    background:var(--result-loss-bg);
+    border:1px solid var(--result-loss);
+    color:var(--result-loss);
+}
+
+.mobile-match-stats{
+    display:none;
+}
+
+.career-summary{
+    display:grid;
+    grid-template-columns:
+        repeat(5,minmax(90px,1fr));
+    gap:12px;
+    padding:20px;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:24px;
+}
+
+.rating-filter-card{
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:100px;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,188,212,.12),
+            rgba(0,229,255,.05)
+        );
+
+    border:1px solid rgba(0,188,212,.25);
+}
+
+.rating-filter-value{
+
+    font-size:2rem;
+    font-weight:800;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #00bcd4
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.rating-filter-label{
+
+    font-size:11px;
+    font-weight:700;
+
+    text-transform:uppercase;
+    letter-spacing:.5px;
+
+    color:var(--muted);
+}
+
+.season-widgets{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:12px;
+
+    margin-top:12px;
+}
+
+.stats-widget{
+
+    padding:20px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--card-border);
+
+    border-radius:24px;
+}
+
+.stats-widget-title{
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:.6px;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+.widget-stats-list{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-top:16px;
+}
+
+.widget-stat{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    padding-bottom:10px;
+}
+
+.widget-stat:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.widget-stat-label{
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:var(--text);
+}
+
+.widget-stat-value{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:var(--number);
+}
+
+.card-indicator{
+    width:12px;
+    height:16px;
+    border-radius:2px;
+    display:inline-block;
+    margin-right:8px;
+    flex-shrink:0;
+}
+
+.card-yellow{
+    background:#facc15;
+    border:1px solid #eab308;
+}
+
+.card-red{
+    background:#ef4444;
+    border:1px solid #dc2626;
+}
+
+.info-card{
+
+    padding:24px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--card-border);
+
+    border-radius:24px;
+}
+
+.info-card h3{
+
+    margin:0 0 20px;
+
+    font-size:14px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.6px;
+
+    color:var(--muted);
+}
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:16px;
+}
+
+.info-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    padding:16px;
+
+    background:var(--meta-bg);
+
+    border-radius:16px;
+}
+
+.info-item span{
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+}
+
+.info-item strong{
+
+    font-size:16px;
+
+    color:var(--text);
+}
+
+.info-item a{
+    color:var(--link-color);
+    text-decoration:none;
+    font-weight:700;
+    border-bottom:1px solid transparent;
+    transition:.2s;
+}
+
+.info-item a:hover{
+    color:var(--link-color);
+    border-bottom-color:var(--link-color);
+}
+
+.info-nationality{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+}
+
+.info-nationality-flag{
+    width:20px;
+    height:14px;
+    object-fit:cover;
+    border-radius:2px;
+    vertical-align:middle;
+}
+
+@media(max-width:820px){
+
+    .info-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .season-widgets{
+
+        grid-template-columns:1fr;
+    }
+
+.player-filters-card{
+
+    position:relative;
+
+    display:block;
+
+    padding:16px;
+}
+
+.rating-filter-card{
+
+    position:absolute;
+
+    top:16px;
+    right:16px;
+
+    width:90px;
+    min-width:90px;
+
+    margin:0;
+
+    padding:12px 8px;
+}
+
+.filter-section.season{
+
+    width:auto;
+    min-width:0;
+
+    padding-right:110px;
+}
+
+.filter-section.competition{
+
+    width:100%;
+
+    margin-top:12px;
+}
+
+#competitionContainer{
+
+    width:100%;
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    overflow:visible;
+}
+
+    .competition-btn{
+        flex:0 0 auto;
+    }
+
+    #competitionContainer{
+        width:100%;
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+        overflow:visible;
+    }
+
+    .competition-btn{
+        flex:0 0 auto;
+    }
+
+	.career-summary{
+	    grid-template-columns:
+	        repeat(3,1fr);
+	}
+
+    .matches-header{
+        grid-template-columns:
+        30px
+        75px
+        1fr
+        70px;
+    }
+
+    .player-match{
+        grid-template-columns:
+        30px
+        75px
+        1fr
+        70px;
+	    row-gap:8px;
+	}
+
+.mobile-match-stats{
+    display:block;
+    grid-column:1 / -1;
+
+    margin-top:6px;
+    padding-top:6px;
+
+    border-top:1px solid var(--meta-border);
+}
+
+.mobile-stats-header,
+.mobile-stats-values{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:1fr;
+    text-align:center;
+}
+
+.mobile-stats-header{
+    font-size:10px;
+    font-weight:700;
+    opacity:.7;
+    margin-bottom:4px;
+}
+
+.mobile-stats-values{
+    font-size:12px;
+    font-weight:600;
+}
+
+.mobile-stats-values .summary-rating{
+    color:#00bcd4;
+    font-weight:800;
+}
+
+.matches-header div:nth-child(3),
+.player-match div:nth-child(3),
+.matches-header div:nth-child(6),
+.player-match div:nth-child(6),
+.matches-header div:nth-child(7),
+.player-match div:nth-child(7),
+.matches-header div:nth-child(8),
+.player-match div:nth-child(8),
+.matches-header div:nth-child(9),
+.player-match div:nth-child(9),
+.matches-header div:nth-child(10),
+.player-match div:nth-child(10),
+.matches-header div:nth-child(11),
+.player-match div:nth-child(11){
+    display:none;
+}
+
+    .competition-cell span{
+        display:none;
+    }
+
+	
+	#seasonFilter{
+	    width:100%;
+	    max-width:100%;
+	}
+
+    .player-stats-header{
+
+        flex-direction:column;
+    }
+
+    .player-summary{
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+        gap:10px;
+    }
+
+    .summary-value{
+
+        font-size:1.8rem;
+    }
+
+	.player-header-left,
+	.player-header-card{
+	    gap:10px;
+	}
+	
+	.player-profile-header{
+	    gap:0px;
+	}
+
+	.player-position{
+    	display:none;
+	}
+
+	.player-profile-info h2{
+	    gap:4px;
+	}
+
+	.player-header-info h2{
+    	font-size:16px;
+	}
+
+    .content-layout{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .left-panel{
+        flex:none !important;
+        width:100% !important;
+        min-width:0;
+        max-width:100%;
+        margin:0;
+    }
+
+    .container{
+        padding:6px;
+    }
+
+	.player-flag-large{
+	    width:20px;
+	    height:20px;
+	}
+}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SportsTeam",
+  "name":"FC Barcelona",
+  "url":"https://barcadb.com/squad.html",
+  "sport":"Football",
+  "memberOf":{
+    "@type":"SportsOrganization",
+    "name":"La Liga"
+  }
+}
+</script>
+</head>
+<body>
+
+<div id="sidebarOverlay"
+     class="sidebar-overlay"></div>
+
+<div class="layout">
+
+	<aside id="sidebar" class="sidebar">
+
+		<div class="sidebar-brand">
+		
+		    <a href="./" class="sidebar-brand-link">
+		
+		        <img
+		            src="logos/barcadb-logo.png"
+		            alt="Barça Database"
+		            class="sidebar-brand-logo">
+		
+		        <span class="sidebar-brand-text">
+		            Barça Database
+		        </span>
+		
+		    </a>
+		
+		    <button
+		        id="sidebarClose"
+		        class="sidebar-close"
+		        aria-label="Collapse sidebar">
+		
+		        <svg
+		            width="18"
+		            height="18"
+		            viewBox="0 0 24 24"
+		            fill="none">
+		
+		            <rect
+		                x="3"
+		                y="4"
+		                width="18"
+		                height="16"
+		                rx="2"
+		                stroke="currentColor"
+		                stroke-width="2"/>
+		
+		            <path
+		                d="M13 8L9 12L13 16"
+		                stroke="currentColor"
+		                stroke-width="2"
+		                stroke-linecap="round"
+		                stroke-linejoin="round"/>
+		
+		            <line
+		                x1="17"
+		                y1="7"
+		                x2="17"
+		                y2="17"
+		                stroke="currentColor"
+		                stroke-width="2"/>
+		
+		        </svg>
+		
+		    </button>
+		
+		</div>
+	
+	    <div class="sidebar-search">
+	
+	        <input
+	            type="text"
+	            id="sidebarPersonSearch"
+	            placeholder="Search...">
+	
+	        <div id="sidebarSearchResults"></div>
+	
+	    </div>
+	
+		<div class="sidebar-nav">
+		
+		    <a href="./">Home</a>
+		    <a href="insights.html">Insights</a>
+
+		    <div class="sidebar-section">
+		        Current Season
+		    </div>
+			
+		    <a href="matches.html">Matches</a>
+		    <a href="standings.html">Standings</a>
+		    <a href="squad.html">Squad</a>
+
+		    <div class="sidebar-section">
+		        Analysis
+		    </div>
+			
+		    <a href="player.html" class="active">Players Stats</a>
+		    <a href="compare.html">Compare Players</a>
+
+		    <div class="sidebar-section">
+		        Historical data
+		    </div>
+
+		    <a href="season.html">Seasons</a>
+		
+		    <div class="sidebar-section">
+		        El Clásico
+		    </div>
+		
+		    <a href="el-clasico-overview.html">Overview</a>
+		    <a href="el-clasico-match-history.html">Match History</a>
+		
+		</div>
+	
+	</aside>
+
+<div class="page-content">
+
+<div class="container">
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="header">
+	<div class="header-inner">
+	
+	    <button id="menuToggle" class="menu-toggle">
+		
+		    <svg
+		        width="22"
+		        height="22"
+		        viewBox="0 0 24 24"
+		        fill="none">
+		
+		        <path
+		            d="M4 6H20M4 12H20M4 18H20"
+		            stroke="currentColor"
+		            stroke-width="2.5"
+		            stroke-linecap="round"/>
+		
+		    </svg>
+		
+		</button>
+	
+	    <div class="header-center">
+	
+	        <a href="./" class="header-link">
+	            <img
+	                src="logos/barcadb-logo.png"
+	                class="header-logo"
+	                alt="Barça DB">
+	
+	        <div class="header-text">
+	            <h1>Barça Database</h1>
+	        </div>
+	        </a>
+	
+	    </div>
+
+		<button
+		    id="themeToggle"
+		    class="theme-toggle"
+		    aria-label="Toggle theme">
+		
+		    <svg
+		        id="themeIcon"
+		        width="20"
+		        height="20"
+		        viewBox="0 0 24 24"
+		        fill="none">
+		    </svg>
+		
+		</button>
+	
+	</div>
+</div>
+
+<div class="content-layout">
+<div class="left-panel">
+
+<div class="player-header-card" id="playerProfile"></div>
+
+<div class="player-sections">
+
+    <button
+        class="player-section-btn"
+        data-section="info">
+        Info
+    </button>
+
+    <button
+        class="player-section-btn active"
+        data-section="stats">
+        Stats
+    </button>
+
+    <button
+        class="player-section-btn"
+        data-section="matches">
+
+        Matches
+
+    </button>
+	
+	<button
+	    class="player-section-btn"
+	    data-section="career">
+	
+	    Career
+	
+	</button>
+
+</div>
+
+<div class="player-filters-card">
+
+	<div class="filter-section season">
+	
+	    <div class="filter-heading">
+	        Season
+	    </div>
+	
+	    <div class="season-select-wrap">
+	
+	        <select id="seasonFilter"></select>
+	
+	    </div>
+	
+	</div>
+
+	<div class="filter-section competition">
+	
+	    <div class="filter-heading">
+	        Competition
+	    </div>
+	
+	    <div id="competitionContainer"></div>
+	
+	</div>
+
+    <div id="ratingCard" class="rating-filter-card">
+
+        <div class="rating-filter-value">
+            0.00
+        </div>
+
+        <div class="rating-filter-label">
+            Rating
+        </div>
+
+    </div>
+
+</div>
+
+<div id="infoSection" style="display:none;">
+
+    <div id="playerInfoContent"></div>
+
+</div>
+
+<div id="statsSection">
+
+    <div id="playerSummary"
+        class="player-summary">
+    </div>
+
+	<div id="seasonWidgets" class="season-widgets"></div>
+
+</div>
+
+<div id="matchesSection"
+    style="display:none;">
+
+</div>
+
+<div id="careerSection"
+    style="display:none;">
+</div>
+
+</div>
+</div>
+
+<script src="data/playerMap.js"></script>
+<script src="data/countryMap.js"></script>
+<script>
+
+function getClubLogo(team){
+    return String(team || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        + ".png";
+}
+
+function getPositionGroup(position){
+
+    const defenders = [
+        "Centre Back",
+        "Left Back",
+        "Right Back"
+    ];
+
+    const midfielders = [
+        "Defensive Midfield",
+        "Central Midfield",
+        "Attacking Midfield",
+        "Left Midfield",
+        "Right Midfield"
+    ];
+
+    const forwards = [
+        "Centre Forward",
+        "Left Wing",
+        "Right Wing",
+        "Second Striker"
+    ];
+
+    if(position === "Goalkeeper") return "Goalkeeper";
+    if(defenders.includes(position)) return "Defender";
+    if(midfielders.includes(position)) return "Midfielder";
+    if(forwards.includes(position)) return "Forward";
+
+    return "Other";
+}
+
+const urlParams =
+    new URLSearchParams(window.location.search);
+
+const managerName =
+    urlParams.get("name") ||
+    "Hansi Flick";
+
+const competitionLogos = {
+    "Copa del Rey": "copa.png",
+    "Copa de la Liga": "copa-liga.png",
+    "Copa de la Coronación": "copa.png",
+    "FIFA Club World Cup": "fifa.png",
+    "Qualification for La Liga": "laliga.png",
+    "La Liga": "laliga.png",
+    "Supercopa de España": "supercopa.png",
+    "UEFA Champions League": "ucl.png",
+    "Cup Winners' Cup": "cwc.png",
+    "UEFA Europa League": "europa.png",
+    "UEFA Super Cup": "uefa-supercup.png",
+    "UEFA Cup": "uefa-cup.png",
+    "Inter-Cities Fairs Cup": "inter-cup.png",
+    "European Cup": "ec.png"
+};
+
+function getCompetitionShortName(comp){
+
+    const names = {
+
+        "UEFA Champions League":"UCL",
+		"UEFA Europa League":"UEL",
+        "Copa del Rey":"Copa",
+        "Supercopa de España":"Supercopa",
+        "FIFA Club World Cup":"CWC",
+        "La Liga":"La Liga",
+    	"Copa de la Liga": "Copa Liga",
+    	"Copa de la Coronación": "Copa",
+    	"Cup Winners' Cup": "CWC",
+    	"UEFA Super Cup": "UEFA SC",
+    	"UEFA Cup": "UEFA Cup",
+    	"Inter-Cities Fairs Cup": "ICFC",
+    	"European Cup": "EC"
+
+    };
+
+    return names[comp] || comp;
+
+}
+
+function getCountryLogo(country){
+
+    const code =
+        window.getCountryCode
+        ? window.getCountryCode(country)
+        : "default";
+
+    return `logos/countries/${code}.png`;
+}
+
+function getNationalities(player){
+
+    return [
+        player["Nationality 1"],
+        player["Nationality 2"]
+    ].filter(Boolean);
+
+}
+
+function renderNationalityFlags(player){
+
+    const nationality =
+        player["Nationality 1"];
+
+    if(!nationality){
+        return "";
+    }
+
+    return `
+        <img
+            src="${getCountryLogo(nationality)}"
+            alt="${nationality}"
+            class="player-flag-large"
+            onerror="this.src='logos/countries/default.png'"
+        >
+    `;
+
+}
+
+function parseMinute(value){
+
+    if(!value){
+        return 0;
+    }
+
+    value = String(value);
+
+    if(value.includes("+")){
+
+        const [base, added] =
+            value.split("+");
+
+        return Number(base) +
+               Number(added);
+
+    }
+
+    return Number(value);
+
+}
+
+function isGoalkeeper(position){
+
+    const pos =
+        String(position || "")
+        .toUpperCase()
+        .trim();
+
+    return (
+        pos === "GK" ||
+        pos.includes("GOALKEEPER")
+    );
+
+}
+
+function calculateAge(dateString, deathDate = null){
+
+    if(!dateString){
+        return "";
+    }
+
+    const [day, month, year] =
+        dateString.split(".");
+
+    const birthDate =
+        new Date(year, month - 1, day);
+
+    const endDate = deathDate
+        ? new Date(
+            deathDate.split(".").reverse().join("-")
+          )
+        : new Date();
+
+    let age =
+        endDate.getFullYear() -
+        birthDate.getFullYear();
+
+    const monthDiff =
+        endDate.getMonth() -
+        birthDate.getMonth();
+
+    if(
+        monthDiff < 0 ||
+        (
+            monthDiff === 0 &&
+            endDate.getDate() < birthDate.getDate()
+        )
+    ){
+        age--;
+    }
+
+    return age;
+}
+
+function populateCompetitionFilter(playerName){
+
+    const competitions = new Set();
+
+    allMatches.forEach(match => {
+
+        if(
+            selectedSeason !== "all" &&
+            match.Season !== selectedSeason
+        ){
+            return;
+        }
+
+        let appeared = false;
+
+        for(let i = 1; i <= 11; i++){
+
+            if(match[`Player name ${i}`] === playerName){
+
+                appeared = true;
+                break;
+
+            }
+
+        }
+
+        if(!appeared){
+
+            for(let i = 1; i <= 6; i++){
+
+                if(match[`Sub on ${i}`] === playerName){
+
+                    appeared = true;
+                    break;
+
+                }
+
+            }
+
+        }
+
+        if(appeared){
+
+            competitions.add(
+                match.Competition
+            );
+
+        }
+
+    });
+
+    document.getElementById(
+        "competitionContainer"
+    ).innerHTML = `
+
+        <button
+		    class="competition-btn ${
+		        selectedCompetition === "all"
+		        ? "active"
+		        : ""
+		    }"
+		    data-comp="all">
+		    All
+		</button>
+
+		${[...competitions]
+		    .sort()
+		    .map(comp => `
+				<button
+					    class="competition-btn ${
+					        selectedCompetition === comp
+					        ? "active"
+					        : ""
+					    }"
+					    data-comp="${comp}">
+		            ${getCompetitionShortName(comp)}
+		        </button>
+		
+		    `)
+		    .join("")}
+    `;
+
+    attachCompetitionEvents();
+
+}
+
+function attachCompetitionEvents(){
+
+    document
+    .querySelectorAll(".competition-btn")
+    .forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+            document
+            .querySelectorAll(".competition-btn")
+            .forEach(b =>
+                b.classList.remove("active")
+            );
+
+            btn.classList.add("active");
+
+            selectedCompetition =
+                btn.dataset.comp;
+
+            renderActiveSection();
+
+        });
+
+    });
+
+}
+
+function getPlayerMatches(playerName){
+
+    const matches = [];
+
+    allMatches.forEach(match => {
+
+        let played = false;
+        let starter = false;
+        let minutes = 0;
+
+		const matchLength =
+		    String(match.Result || "").includes("AET") ||
+		    String(match.Result || "").includes("P")
+		        ? 120
+		        : 90;
+
+        for(let i = 1; i <= 11; i++){
+
+            if(
+                match[`Player name ${i}`] === playerName
+            ){
+
+                played = true;
+                starter = true;
+
+                let subOffMinute = null;
+
+                for(let s = 1; s <= 6; s++){
+
+                    if(
+                        match[`Sub off ${s}`] === playerName
+                    ){
+
+                        subOffMinute =
+                            parseMinute(
+                                match[`Sub min ${s}`]
+                            );
+
+                        break;
+
+                    }
+
+                }
+
+				minutes =
+				    subOffMinute !== null
+				        ? subOffMinute
+				        : matchLength;
+
+                break;
+
+            }
+
+        }
+
+        if(!starter){
+
+            for(let i = 1; i <= 6; i++){
+
+                if(
+                    match[`Sub on ${i}`] === playerName
+                ){
+
+                    played = true;
+
+                    const minute =
+                        parseMinute(
+                            match[`Sub min ${i}`]
+                        );
+
+                    minutes =
+    					matchLength - minute;
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+        if(!played){
+            return;
+        }
+
+        let goals = 0;
+        let assists = 0;
+        let yellow = 0;
+        let red = 0;
+        let penaltyGoals = 0;
+        let penaltyMissed = 0;
+
+        for(let i = 1; i <= 12; i++){
+
+            if(
+                match[`Goal Player ${i}`] === playerName
+            ){
+                goals++;
+            }
+
+            if(
+                match[`Assist Player ${i}`] === playerName
+            ){
+                assists++;
+            }
+
+            if(
+                match[`Yellow player ${i}`] === playerName
+            ){
+                yellow++;
+            }
+
+            if(
+                match[`Red player ${i}`] === playerName
+            ){
+                red++;
+            }
+
+            if(
+                match[`Penalty player ${i}`] === playerName
+            ){
+
+                if(
+                    match[`Penalty scored ${i}`] === "in"
+                ){
+                    penaltyGoals++;
+                }
+
+                if(
+                    match[`Penalty scored ${i}`] === "not in"
+                ){
+                    penaltyMissed++;
+                }
+
+            }
+
+        }
+
+        matches.push({
+
+            match,
+            played,
+            starter,
+            minutes,
+
+            goals,
+            assists,
+
+            yellow,
+            red,
+
+            penaltyGoals,
+            penaltyMissed,
+
+            cleanSheet:
+                Number(match.Conceded) === 0,
+
+            goalsConceded:
+                Number(match.Conceded) || 0
+
+        });
+
+    });
+
+    return matches;
+
+}
+
+function getManagerAggregateStats(
+    managerName,
+    {
+        season = null,
+        competition = null
+    } = {}
+){
+
+    const stats = {
+
+        seasons:new Set(),
+
+        matches:0,
+
+        wins:0,
+        draws:0,
+        losses:0,
+
+        goalsFor:0,
+        goalsAgainst:0,
+
+        cleanSheets:0
+
+    };
+
+    allMatches.forEach(match => {
+
+        if(match.Manager !== managerName){
+            return;
+        }
+
+        if(
+            season &&
+            match.Season !== season
+        ){
+            return;
+        }
+
+        if(
+            competition &&
+            match.Competition !== competition
+        ){
+            return;
+        }
+
+        stats.seasons.add(
+            match.Season
+        );
+
+        stats.matches++;
+
+        if(match["Result type"] === "W"){
+            stats.wins++;
+        }
+
+        if(match["Result type"] === "D"){
+            stats.draws++;
+        }
+
+        if(match["Result type"] === "L"){
+            stats.losses++;
+        }
+
+        stats.goalsFor +=
+            Number(match.Scored) || 0;
+
+        stats.goalsAgainst +=
+            Number(match.Conceded) || 0;
+
+        if(Number(match.Conceded) === 0){
+            stats.cleanSheets++;
+        }
+
+    });
+
+    return stats;
+
+}
+
+function getManagerWinRate(stats){
+
+    if(!stats.matches){
+        return 0;
+    }
+
+    return (
+        stats.wins * 100 /
+        stats.matches
+    ).toFixed(1);
+
+}
+
+function updateManagerStats(){
+
+    const stats =
+        getManagerAggregateStats(
+            managerName,
+            {
+                season:
+                    selectedSeason === "all"
+                    ? null
+                    : selectedSeason,
+
+                competition:
+                    selectedCompetition === "all"
+                    ? null
+                    : selectedCompetition
+            }
+        );
+
+    renderManagerSummary(stats);
+
+}
+
+function renderManagerSummary(stats){
+
+    const winRate =
+        stats.matches
+        ? (
+            stats.wins * 100 /
+            stats.matches
+        ).toFixed(1)
+        : "0.0";
+
+    document.getElementById(
+        "playerSummary"
+    ).innerHTML = `
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.matches}
+            </div>
+            <div class="summary-label">
+                Matches
+            </div>
+        </div>
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.wins}
+            </div>
+            <div class="summary-label">
+                Wins
+            </div>
+        </div>
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.draws}
+            </div>
+            <div class="summary-label">
+                Draws
+            </div>
+        </div>
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.losses}
+            </div>
+            <div class="summary-label">
+                Losses
+            </div>
+        </div>
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${winRate}%
+            </div>
+            <div class="summary-label">
+                Win %
+            </div>
+        </div>
+
+    `;
+
+    document.getElementById(
+        "seasonWidgets"
+    ).innerHTML = `
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Results
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Wins
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.wins}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Draws
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.draws}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Losses
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.losses}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Win %
+                    </div>
+                    <div class="widget-stat-value">
+                        ${winRate}%
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Goals
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Goals For
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.goalsFor}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Goals Against
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.goalsAgainst}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Goal Difference
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.goalsFor - stats.goalsAgainst}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Goals per Match
+                    </div>
+                    <div class="widget-stat-value">
+                        ${
+                            stats.matches
+                            ? (
+                                stats.goalsFor /
+                                stats.matches
+                              ).toFixed(2)
+                            : "0.00"
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Defensive
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Clean Sheets
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.cleanSheets}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Clean Sheet %
+                    </div>
+                    <div class="widget-stat-value">
+                        ${
+                            stats.matches
+                            ? (
+                                stats.cleanSheets * 100 /
+                                stats.matches
+                              ).toFixed(1)
+                            : "0.0"
+                        }%
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+function renderCareerOverview(){
+
+	const stats =
+	    getPlayerAggregateStats(
+	        playerName,
+	        {
+	            season:null,
+	
+	            competition:
+	                selectedCareerCompetition === "all"
+	                ? null
+	                : selectedCareerCompetition
+	        }
+	    );
+
+    const currentPlayer =
+        allPlayers.find(
+            p => p.Name === playerName
+        );
+
+    const position =
+        currentPlayer?.Position || "";
+
+	const isGK =
+	    isGoalkeeper(position);
+
+document.getElementById(
+    "careerSection"
+).innerHTML = `
+
+    <div class="career-summary">
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.seasons.size}
+            </div>
+            <div class="summary-label">
+                Seasons
+            </div>
+        </div>
+
+        <div class="summary-stat">
+            <div class="summary-value">
+                ${stats.matches}
+            </div>
+            <div class="summary-label">
+                Matches
+            </div>
+        </div>
+
+        ${
+            isGK
+            ? `
+                <div class="summary-stat">
+                    <div class="summary-value">
+                        ${stats.cleanSheets}
+                    </div>
+                    <div class="summary-label">
+                        Clean Sheets
+                    </div>
+                </div>
+
+                <div class="summary-stat">
+                    <div class="summary-value">
+                        ${stats.goalsConceded}
+                    </div>
+                    <div class="summary-label">
+                        Goals Conc.
+                    </div>
+                </div>
+            `
+            : `
+                <div class="summary-stat">
+                    <div class="summary-value">
+                        ${stats.goals}
+                    </div>
+                    <div class="summary-label">
+                        Goals
+                    </div>
+                </div>
+
+                <div class="summary-stat">
+                    <div class="summary-value">
+                        ${stats.assists}
+                    </div>
+                    <div class="summary-label">
+                        Assists
+                    </div>
+                </div>
+
+                <div class="summary-stat">
+                    <div class="summary-value">
+                        ${stats.goals + stats.assists}
+                    </div>
+                    <div class="summary-label">
+                        G+A
+                    </div>
+                </div>
+            `
+        }
+
+    </div>
+
+    <div class="season-widgets">
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Performance
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Matches
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.matches}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Starts
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.starts}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Total Minutes
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.minutes.toLocaleString("en-US")}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        Minutes per Match
+                    </div>
+                    <div class="widget-stat-value">
+                        ${
+                            stats.matches
+                            ? Math.round(stats.minutes / stats.matches)
+                            : 0
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        ${
+            !isGK
+            ? `
+                <div class="stats-widget">
+
+                    <div class="stats-widget-title">
+                        Attacking
+                    </div>
+
+                    <div class="widget-stats-list">
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Goals</div>
+                            <div class="widget-stat-value">${stats.goals}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Assists</div>
+                            <div class="widget-stat-value">${stats.assists}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">G+A</div>
+                            <div class="widget-stat-value">${stats.goals + stats.assists}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">G/90</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.minutes
+                                    ? ((stats.goals * 90) / stats.minutes).toFixed(2)
+                                    : "0.00"
+                                }
+                            </div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">A/90</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.minutes
+                                    ? ((stats.assists * 90) / stats.minutes).toFixed(2)
+                                    : "0.00"
+                                }
+                            </div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">G+A/90</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.minutes
+                                    ? (((stats.goals + stats.assists) * 90) / stats.minutes).toFixed(2)
+                                    : "0.00"
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="stats-widget">
+
+                    <div class="stats-widget-title">
+                        Penalties
+                    </div>
+
+                    <div class="widget-stats-list">
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Penalty Goals</div>
+                            <div class="widget-stat-value">${stats.penaltyGoals}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Missed Penalties</div>
+                            <div class="widget-stat-value">${stats.penaltyMissed}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Conversion %</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    (stats.penaltyGoals + stats.penaltyMissed)
+                                    ? (
+                                        stats.penaltyGoals * 100 /
+                                        (stats.penaltyGoals + stats.penaltyMissed)
+                                    ).toFixed(0)
+                                    : 0
+                                }%
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            `
+            : `
+                <div class="stats-widget">
+
+                    <div class="stats-widget-title">
+                        Goalkeeping
+                    </div>
+
+                    <div class="widget-stats-list">
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Clean Sheets</div>
+                            <div class="widget-stat-value">${stats.cleanSheets}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Goals Conceded</div>
+                            <div class="widget-stat-value">${stats.goalsConceded}</div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Goals Conceded/90</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.minutes
+                                    ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
+                                    : "0.00"
+                                }
+                            </div>
+                        </div>
+
+                        <div class="widget-stat">
+                            <div class="widget-stat-label">Clean Sheet %</div>
+                            <div class="widget-stat-value">
+                                ${
+                                    stats.matches
+                                    ? ((stats.cleanSheets * 100) / stats.matches).toFixed(0)
+                                    : 0
+                                }%
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            `
+        }
+
+        <div class="stats-widget">
+
+            <div class="stats-widget-title">
+                Discipline
+            </div>
+
+            <div class="widget-stats-list">
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        <span class="card-indicator card-yellow"></span>
+                        Yellow Cards
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.yellow}
+                    </div>
+                </div>
+
+                <div class="widget-stat">
+                    <div class="widget-stat-label">
+                        <span class="card-indicator card-red"></span>
+                        Red Cards
+                    </div>
+                    <div class="widget-stat-value">
+                        ${stats.red}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+`;
+}
+
+function renderManager(managerName){
+
+    const stats =
+        getManagerAggregateStats(
+            managerName
+        );
+
+    const winRate =
+        getManagerWinRate(stats);
+
+    document.getElementById(
+        "playerProfile"
+    ).innerHTML = `
+
+        <div class="player-header-left">
+
+            <img
+                src="logos/managers/${managerName}.png"
+                class="player-profile-photo"
+                onerror="this.src='logos/managers/default.png'">
+
+            <div class="player-header-info">
+
+                <h2>
+                    ${managerName}
+                </h2>
+
+                <div class="player-header-meta">
+
+                    <span>
+                        ${stats.matches} Matches
+                    </span>
+
+                    <span>
+                        ${stats.wins} Wins
+                    </span>
+
+                    <span>
+                        ${winRate}% Win Rate
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="player-header-right">
+
+            <select
+                id="managerSelect"
+                class="player-select">
+
+                <option value="">
+                    Switch
+                </option>
+
+                ${getManagersDropdown()}
+
+            </select>
+
+        </div>
+
+    `;
+
+    document
+    .getElementById("managerSelect")
+    ?.addEventListener("change", e => {
+
+        if(!e.target.value){
+            return;
+        }
+
+        window.location.href =
+            `manager.html?name=${encodeURIComponent(e.target.value)}`;
+
+    });
+
+}
+
+let allMatches = [];
+let allPlayers = [];
+let allRatings = {};
+let selectedCompetition = "all";
+let selectedCareerCompetition = "all";
+let selectedSeason = "all";
+let activeSection = "stats";
+
+function updateRatingVisibility(){
+
+    const ratingCard =
+        document.getElementById("ratingCard");
+
+    if(!ratingCard){
+        return;
+    }
+
+    if(activeSection !== "stats"){
+
+        ratingCard.style.display = "none";
+
+    }
+
+}
+
+function initSections(){
+
+    document
+    .querySelectorAll(
+        ".player-section-btn"
+    )
+    .forEach(btn => {
+
+        btn.addEventListener(
+            "click",
+            () => {
+
+                document
+                .querySelectorAll(
+                    ".player-section-btn"
+                )
+                .forEach(b =>
+                    b.classList.remove("active")
+                );
+
+                btn.classList.add("active");
+
+                activeSection =
+                    btn.dataset.section;
+
+				const seasonSection =
+				    document.querySelector(".filter-section.season");
+
+				const filtersCard =
+    				document.querySelector(".player-filters-card");
+				
+				const ratingCard =
+				    document.getElementById("ratingCard");
+				
+				if(activeSection === "info"){
+				
+				    filtersCard.style.display = "none";
+				
+				}else{
+				
+				    filtersCard.style.display = "";
+				
+				if(activeSection === "career"){
+				
+				    seasonSection.style.display = "none";
+				
+				    populateCareerCompetitionFilter(
+				        playerName
+				    );
+				
+				}else{
+				
+				    seasonSection.style.display = "";
+				
+				    populateCompetitionFilter(
+				        playerName
+				    );
+				
+				}
+				
+				ratingCard.style.display =
+				    activeSection === "stats"
+				        ? "flex"
+				        : "none";
+				}
+				
+				document
+				.getElementById("infoSection")
+				.style.display =
+				    activeSection === "info"
+				    ? "block"
+				    : "none";
+				
+				document
+				.getElementById("statsSection")
+				.style.display =
+				    activeSection === "stats"
+				    ? "block"
+				    : "none";
+				
+				document
+				.getElementById("matchesSection")
+				.style.display =
+				    activeSection === "matches"
+				    ? "block"
+				    : "none";
+				
+				document
+				.getElementById("careerSection")
+				.style.display =
+				    activeSection === "career"
+				    ? "block"
+				    : "none";
+
+                renderActiveSection();
+
+            }
+        );
+
+    });
+
+}
+
+function renderActiveSection(){
+
+    if(activeSection === "info"){
+
+        renderPlayerInfo();
+
+    }
+
+    if(activeSection === "stats"){
+
+        updateManagerStats();
+
+    }
+
+    if(activeSection === "matches"){
+
+        renderPlayerMatches();
+
+    }
+
+    if(activeSection === "career"){
+
+        renderCareerOverview();
+
+    }
+
+}
+
+function renderPlayerInfo(){
+
+    const managerExists =
+        allMatches.some(
+            match => match.Manager === managerName
+        );
+    
+    if(!managerExists){
+        return;
+    }
+
+	const playerMatches =
+    getPlayerMatches(playerName)
+    .sort((a,b) => {
+	
+        const da = new Date(
+            a.match.Date.split(".").reverse().join("-")
+        );
+	
+        const db = new Date(
+            b.match.Date.split(".").reverse().join("-")
+        );
+	
+        return da - db;
+	
+    });
+	
+	const debutMatch =
+	    playerMatches[0]?.match;
+	
+	const lastMatch =
+	    playerMatches[playerMatches.length - 1]?.match;
+
+    document.getElementById(
+        "playerInfoContent"
+    ).innerHTML = `
+
+        <div class="info-card">
+
+            <h3>
+                Player Information
+            </h3>
+
+            <div class="info-grid">
+
+		    <div class="info-item">
+		        <span>Full Name</span>
+		        <strong>${player["Full Name"] || "-"}</strong>
+		    </div>
+		
+		    <div class="info-item">
+		        <span>Position</span>
+		        <strong>${player.Position || "-"}</strong>
+		    </div>
+		
+			<div class="info-item">
+			    <span>Birth Date</span>
+			    <strong>
+			        ${
+			            player["Birth Date"]
+			            ? `${player["Birth Date"]} (${calculateAge(
+			                player["Birth Date"],
+			                player["Death Date"]
+			            )})`
+			            : "-"
+			        }
+			    </strong>
+			</div>
+		
+		    ${
+		        player["Death Date"]
+		        ? `
+		            <div class="info-item">
+		                <span>Death Date</span>
+		                <strong>${player["Death Date"]}</strong>
+		            </div>
+		        `
+		        : ""
+		    }
+		
+			<div class="info-item">
+			    <span>Nationality</span>
+			
+			    <strong>
+			        ${
+			            getNationalities(player)
+			                .map(nationality => `
+			                    <span class="info-nationality">
+			                        <img
+			                            src="${getCountryLogo(nationality)}"
+			                            alt="${nationality}"
+			                            class="info-nationality-flag"
+			                            onerror="this.src='logos/countries/default.png'"
+			                        >
+			                        ${nationality}
+			                    </span>
+			                `)
+			                .join(" / ")
+			        }
+			    </strong>
+			
+			</div>
+
+			<div class="info-item">
+			    <span>Debut</span>
+			    <strong>
+			        ${
+			            debutMatch
+			            ? `<a href="match.html?id=${debutMatch.ID}">
+			                ${debutMatch.Date} vs ${debutMatch["Opp. Team"]}
+			                (${debutMatch.Result})
+			               </a>`
+			            : "-"
+			        }
+			    </strong>
+			</div>
+			
+			<div class="info-item">
+			    <span>Last Match</span>
+			    <strong>
+			        ${
+			            lastMatch
+			            ? `<a href="match.html?id=${lastMatch.ID}">
+			                ${lastMatch.Date} vs ${lastMatch["Opp. Team"]}
+			                (${lastMatch.Result})
+			               </a>`
+			            : "-"
+			        }
+			    </strong>
+			</div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+function renderPlayerMatches(){
+
+    const matches = [];
+
+    allMatches.forEach(match => {
+
+        if(
+            selectedSeason !== "all" &&
+            match.Season !== selectedSeason
+        ){
+            return;
+        }
+
+        if(
+            selectedCompetition !== "all" &&
+            match.Competition !== selectedCompetition
+        ){
+            return;
+        }
+
+        let started = false;
+        let appeared = false;
+
+        for(let i = 1; i <= 11; i++){
+
+            if(
+                match[`Player name ${i}`] === playerName
+            ){
+                started = true;
+                appeared = true;
+                break;
+            }
+
+        }
+
+        if(!appeared){
+
+            for(let i = 1; i <= 6; i++){
+
+                if(
+                    match[`Sub on ${i}`] === playerName
+                ){
+                    appeared = true;
+                    break;
+                }
+
+            }
+
+        }
+
+		if(!appeared){
+		    return;
+		}
+		
+		let goals = 0;
+		let assists = 0;
+		let penaltyGoals = 0;
+		let yellow = 0;
+		let red = 0;
+		
+		for(let i = 1; i <= 12; i++){
+		
+		    if(match[`Goal Player ${i}`] === playerName){
+		        goals++;
+		    }
+		
+		    if(match[`Assist Player ${i}`] === playerName){
+		        assists++;
+		    }
+		
+		    if(match[`Yellow player ${i}`] === playerName){
+		        yellow++;
+		    }
+		
+		    if(match[`Red player ${i}`] === playerName){
+		        red++;
+		    }
+		
+		    if(match[`Penalty player ${i}`] === playerName){
+		
+		        if(match[`Penalty scored ${i}`] === "in"){
+		            penaltyGoals++;
+		        }
+		
+		    }
+		
+		}
+
+		const ratingData =
+		    allRatings[playerName];
+		
+		const matchHistory =
+		    ratingData?.history || [];
+		
+		const matchRatingData =
+		    matchHistory.find(
+		        item =>
+		            item.matchId == match.ID
+		    );
+		
+		const matchRating =
+		    matchRatingData?.rating;
+
+		matches.push({
+		
+		    ...match,
+		
+		    started,
+		
+		    goals,
+		    assists,
+		    penaltyGoals,
+		
+		    yellow,
+		    red,
+		
+		    cleanSheet:
+		        Number(match.Conceded) === 0
+		            ? 1
+		            : 0,
+		
+		    goalsConceded:
+		        Number(match.Conceded) || 0,
+		
+			rating:
+			    matchRating
+		
+		});
+		});
+
+    matches.sort((a,b)=>{
+
+        const da =
+            new Date(
+                a.Date.split(".")
+                .reverse()
+                .join("-")
+            );
+
+        const db =
+            new Date(
+                b.Date.split(".")
+                .reverse()
+                .join("-")
+            );
+
+        return db - da;
+
+    });
+
+	const currentPlayer =
+	    allPlayers.find(
+	        p => p.Name === playerName
+	    );
+	
+	const position =
+	    currentPlayer?.Position || "";
+	
+	const isGK =
+	    isGoalkeeper(position);
+
+	document.getElementById(
+	    "matchesSection"
+	).innerHTML = `
+
+        <div class="matches-list ${isGK ? 'gk' : ''}">
+
+			<div class="matches-header">
+			
+			    <div></div>
+			    <div>Date</div>
+			    <div>Venue</div>
+			    <div>Opponent</div>
+			    <div>Result</div>
+			
+			    ${
+			        isGK
+			        ? `
+			            <div>RT</div>
+			            <div>CS</div>
+			            <div>GC</div>
+			            <div>YC</div>
+			            <div>RC</div>
+			        `
+			        : `
+			            <div>RT</div>
+			            <div>G</div>
+			            <div>A</div>
+			            <div>PG</div>
+			            <div>YC</div>
+			            <div>RC</div>
+			        `
+			    }
+			
+			</div>
+
+            ${matches.map(match => `
+
+                <div
+                    class="player-match ${
+                        match.started
+                        ? "player-started"
+                        : "player-bench"
+                    }"
+                    onclick="
+                        location.href=
+                        'match.html?id=${match.ID}'
+                    ">
+
+                    <div class="competition-cell">
+
+                        ${
+                            competitionLogos[
+                                match.Competition
+                            ]
+                            ? `
+                            <img
+                                src="logos/${competitionLogos[match.Competition]}"
+                                class="competition-logo">
+                            `
+                            : ""
+                        }
+
+                    </div>
+
+                    <div>
+                        ${match.Date}
+                    </div>
+
+                    <div>
+                        ${match["Home/Away"]}
+                    </div>
+
+                    <div class="opponent-cell">
+
+                        <img
+                            src="logos/clubs/${getClubLogo(match["Opp. Team"])}"
+                            class="opponent-logo"
+                            onerror="
+                                this.src='logos/clubs/default.png'
+                            ">
+
+                        ${match["Opp. Team"]}
+
+                    </div>
+
+                    <div>
+
+                        <span class="result-badge ${
+                            match["Result type"] === "W"
+                            ? "result-win"
+                            : match["Result type"] === "D"
+                            ? "result-draw"
+                            : "result-loss"
+                        }">
+
+                            ${match.Result}
+
+                        </span>
+
+                    </div>
+
+					${
+					    isGK
+					    ? `
+					
+							<div>
+							    ${
+							        match.rating
+							        ? `
+							            <span class="match-rating">
+							                ${match.rating.toFixed(2)}
+							            </span>
+							        `
+							        : "-"
+							    }
+							</div>
+					
+					        <div>${match.cleanSheet}</div>
+					
+					        <div>${match.goalsConceded}</div>
+					
+					        <div>${match.yellow || "-"}</div>
+					
+					        <div>${match.red || "-"}</div>
+					
+					    `
+					    : `
+					
+							<div>
+							    ${
+							        match.rating
+							        ? `
+							            <span class="match-rating">
+							                ${match.rating.toFixed(2)}
+							            </span>
+							        `
+							        : "-"
+							    }
+							</div>
+					
+					        <div>${match.goals || "-"}</div>
+					
+					        <div>${match.assists || "-"}</div>
+					
+					        <div>${match.penaltyGoals || "-"}</div>
+					
+					        <div>${match.yellow || "-"}</div>
+					
+					        <div>${match.red || "-"}</div>
+					
+					    `
+					}
+
+					<div class="mobile-match-stats">
+
+						<div class="mobile-stats-header">
+						
+						    ${
+						        isGK
+						        ? `
+						            <span>RT</span>
+						            <span>CS</span>
+						            <span>GC</span>
+						            <span>YC</span>
+						            <span>RC</span>
+						        `
+						        : `
+						            <span>RT</span>
+						            <span>G</span>
+						            <span>A</span>
+						            <span>PG</span>
+						            <span>YC</span>
+						            <span>RC</span>
+						        `
+						    }
+						
+						</div>
+					
+						<div class="mobile-stats-values">
+						
+						    ${
+						        isGK
+						        ? `
+						
+						            <span class="match-rating">
+						                ${match.rating ? match.rating.toFixed(2) : "-"}
+						            </span>
+						
+						            <span>${match.cleanSheet}</span>
+						
+						            <span>${match.goalsConceded}</span>
+						
+						            <span>${match.yellow || "-"}</span>
+						
+						            <span>${match.red || "-"}</span>
+						
+						        `
+						        : `
+						
+						            <span class="match-rating">
+						                ${match.rating ? match.rating.toFixed(2) : "-"}
+						            </span>
+						
+						            <span>${match.goals || "-"}</span>
+						
+						            <span>${match.assists || "-"}</span>
+						
+						            <span>${match.penaltyGoals || "-"}</span>
+						
+						            <span>${match.yellow || "-"}</span>
+						
+						            <span>${match.red || "-"}</span>
+						
+						        `
+						    }
+						
+						</div>
+					
+					</div>
+
+                </div>
+
+            `).join("")}
+
+        </div>
+
+    `;
+}
+
+function initFilters(){
+
+    document
+    .getElementById("seasonFilter")
+    ?.addEventListener("change", e => {
+
+        selectedSeason = e.target.value;
+
+        selectedCompetition = "all";
+
+        const currentPlayer =
+            allPlayers.find(
+                p => p.Name === playerName
+            );
+
+        renderPlayer(currentPlayer);
+
+        populateCompetitionFilter(
+            playerName
+        );
+
+        renderActiveSection();
+
+    });
+
+}
+
+function populateCareerCompetitionFilter(playerName){
+
+    const competitions = new Set();
+
+    allMatches.forEach(match => {
+
+        let played = false;
+
+        for(let i = 1; i <= 11; i++){
+
+            if(match[`Player name ${i}`] === playerName){
+                played = true;
+                break;
+            }
+
+        }
+
+        if(!played){
+
+            for(let i = 1; i <= 12; i++){
+
+                if(match[`On the bench name ${i}`] === playerName){
+                    played = true;
+                    break;
+                }
+
+            }
+
+        }
+
+        if(played){
+            competitions.add(match.Competition);
+        }
+
+    });
+
+    document.getElementById("competitionContainer").innerHTML = `
+
+        <button
+		    class="competition-btn ${
+		        selectedCareerCompetition === "all"
+		            ? "active"
+		            : ""
+		    }"
+		    data-career-comp="all">
+            All
+        </button>
+
+        ${[...competitions]
+            .sort()
+            .map(comp => `
+                <button
+				    class="competition-btn ${
+				        selectedCareerCompetition === comp
+				            ? "active"
+				            : ""
+				    }"
+				    data-career-comp="${comp}">
+                    ${getCompetitionShortName(comp)}
+                </button>
+            `)
+            .join("")}
+    `;
+
+    attachCareerCompetitionEvents();
+
+}
+
+function attachCareerCompetitionEvents(){
+
+    document
+        .querySelectorAll("[data-career-comp]")
+        .forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                document
+                    .querySelectorAll("[data-career-comp]")
+                    .forEach(b => b.classList.remove("active"));
+
+                btn.classList.add("active");
+
+                selectedCareerCompetition =
+                    btn.dataset.careerComp;
+
+                renderCareerOverview();
+
+            });
+
+        });
+
+}
+
+function populateSeasonFilter(playerName){
+
+    const seasons = new Set();
+
+    allMatches.forEach(match => {
+
+        let found = false;
+
+        for(let i = 1; i <= 11; i++){
+
+            if(match[`Player name ${i}`] === playerName){
+
+                found = true;
+                break;
+
+            }
+
+        }
+
+		if(!found){
+		
+		    for(let i = 1; i <= 6; i++){
+		
+		        if(match[`Sub on ${i}`] === playerName){
+		
+		            found = true;
+		            break;
+		
+		        }
+		
+		    }
+		
+		}
+
+        if(found){
+
+            seasons.add(match.Season);
+
+        }
+
+    });
+
+    const seasonFilter =
+        document.getElementById(
+            "seasonFilter"
+        );
+
+    seasonFilter.innerHTML =
+
+        [...seasons]
+            .sort()
+            .reverse()
+            .map(season => `
+                <option value="${season}">
+                    ${season}
+                </option>
+            `)
+            .join("");
+
+    const latestSeason =
+        [...seasons]
+            .sort()
+            .reverse()[0];
+
+    if(latestSeason){
+
+        seasonFilter.value =
+            latestSeason;
+
+        selectedSeason =
+            latestSeason;
+
+    }
+
+}
+
+Promise.all([
+    fetch("data/players.json").then(r => r.json()),
+    fetch("data/data.json").then(r => r.json()),
+    fetch("data/player-ratings.json").then(r => r.json())
+])
+.then(([players, matches, ratings]) => {
+
+    allMatches = matches;
+
+    allPlayers = players.map(p => ({
+        ...p,
+        Name: p.Player
+    }));
+
+    allRatings = ratings;
+
+    const player =
+        allPlayers.find(
+            p => p.Name === playerName
+        );
+
+    initPersonSearch();
+
+    if(!player){
+
+        document.getElementById("playerProfile")
+            .innerHTML = "<p>Player not found.</p>";
+
+        return;
+    }
+	
+	populateSeasonFilter(
+	    player.Name
+	);
+	
+	renderManager(managerName);
+	
+	populateCompetitionFilter(
+	    player.Name
+	);
+	
+	initFilters();
+	
+	initSections();
+	
+	renderActiveSection();
+
+	updateRatingVisibility();
+
+})
+.catch(console.error);
+
+function initPersonSearch(){
+
+	if(!allMatches.length){
+	    return;
+	}
+
+    const searchItems = new Map();
+
+    allMatches.forEach(match => {
+
+        if(match.Manager){
+
+            searchItems.set(
+                `manager-${match.Manager}`,
+                {
+                    name: match.Manager,
+                    type: "Manager"
+                }
+            );
+
+        }
+
+        if(match["Opp. Manager"]){
+
+            searchItems.set(
+                `manager-${match["Opp. Manager"]}`,
+                {
+                    name: match["Opp. Manager"],
+                    type: "Manager"
+                }
+            );
+
+        }
+
+        if(match["Opp. Team"]){
+
+            searchItems.set(
+                `opponent-${match["Opp. Team"]}`,
+                {
+                    name: match["Opp. Team"],
+                    type: "Opponent"
+                }
+            );
+
+        }
+
+        for(let i = 1; i <= 11; i++){
+
+            if(match[`Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Player name ${i}`]}`,
+                    {
+                        name: match[`Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. Player name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. Player name ${i}`]}`,
+                    {
+                        name: match[`Opp. Player name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+        for(let i = 1; i <= 12; i++){
+
+            if(match[`On the bench name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`On the bench name ${i}`]}`,
+                    {
+                        name: match[`On the bench name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+            if(match[`Opp. On the bench name ${i}`]){
+
+                searchItems.set(
+                    `player-${match[`Opp. On the bench name ${i}`]}`,
+                    {
+                        name: match[`Opp. On the bench name ${i}`],
+                        type: "Player"
+                    }
+                );
+
+            }
+
+        }
+
+    });
+
+    const itemList =
+        [...searchItems.values()]
+        .sort((a, b) =>
+            a.name.localeCompare(b.name)
+        );
+
+    const input =
+        document.getElementById(
+            "sidebarPersonSearch"
+        );
+
+    const results =
+        document.getElementById(
+            "sidebarSearchResults"
+        );
+
+    if(!input || !results) return;
+
+    input.addEventListener("input", () => {
+
+        const value =
+            input.value
+            .trim()
+            .toLowerCase();
+
+        if(!value){
+
+            results.innerHTML = "";
+
+            return;
+
+        }
+
+        const filtered =
+            itemList
+            .filter(item =>
+                item.name
+                    .toLowerCase()
+                    .includes(value)
+            )
+            .slice(0,20);
+
+        results.innerHTML = `
+            <div class="player-search-results">
+
+                ${filtered.map(item => {
+
+                    let url = "player.html?name=" +
+                        encodeURIComponent(item.name);
+
+                    if(item.type === "Manager"){
+
+                        url =
+                        "manager.html?name=" +
+                        encodeURIComponent(item.name);
+
+                    }
+
+                    if(item.type === "Opponent"){
+
+                        url =
+                        "opponent.html?name=" +
+                        encodeURIComponent(item.name);
+
+                    }
+
+                    return `
+
+                        <a
+                            class="player-search-item"
+                            href="${url}">
+
+                            ${item.name}
+
+                            <span class="search-type ${item.type.toLowerCase()}">
+                                (${item.type})
+                            </span>
+
+                        </a>
+
+                    `;
+
+                }).join("")}
+
+            </div>
+        `;
+
+    });
+
+    input.addEventListener("blur", () => {
+
+        setTimeout(() => {
+
+            results.innerHTML = "";
+
+        }, 200);
+
+    });
+
+}
+
+</script>
+<script src="scripts/sidebar.js"></script>
+<script src="scripts/theme.js"></script>
+
+</body>
+</html>
