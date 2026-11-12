@@ -1731,28 +1731,33 @@ function populateCompetitionFilter(playerName){
 
     allMatches.forEach(match => {
 
-        let played = false;
+        if(
+            selectedSeason !== "all" &&
+            match.Season !== selectedSeason
+        ){
+            return;
+        }
+
+        let appeared = false;
 
         for(let i = 1; i <= 11; i++){
 
             if(match[`Player name ${i}`] === playerName){
 
-                played = true;
+                appeared = true;
                 break;
 
             }
 
         }
 
-        if(!played){
+        if(!appeared){
 
-            for(let i = 1; i <= 12; i++){
+            for(let i = 1; i <= 6; i++){
 
-                if(
-                    match[`On the bench name ${i}`] === playerName
-                ){
+                if(match[`Sub on ${i}`] === playerName){
 
-                    played = true;
+                    appeared = true;
                     break;
 
                 }
@@ -1761,13 +1766,7 @@ function populateCompetitionFilter(playerName){
 
         }
 
-        if(
-            played &&
-            (
-                selectedSeason === "all" ||
-                match.Season === selectedSeason
-            )
-        ){
+        if(appeared){
 
             competitions.add(
                 match.Competition
@@ -3965,20 +3964,20 @@ function populateSeasonFilter(playerName){
 
         }
 
-        if(!found){
-
-            for(let i = 1; i <= 12; i++){
-
-                if(match[`On the bench name ${i}`] === playerName){
-
-                    found = true;
-                    break;
-
-                }
-
-            }
-
-        }
+		if(!found){
+		
+		    for(let i = 1; i <= 6; i++){
+		
+		        if(match[`Sub on ${i}`] === playerName){
+		
+		            found = true;
+		            break;
+		
+		        }
+		
+		    }
+		
+		}
 
         if(found){
 
