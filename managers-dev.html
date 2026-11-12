@@ -1783,8 +1783,8 @@ function renderManagerSummary(stats){
         ? (
             stats.wins * 100 /
             stats.matches
-        ).toFixed(1)
-        : "0.0";
+        ).toFixed(2)
+        : "0.00";
 
     document.getElementById(
         "playerSummary"
@@ -1971,8 +1971,8 @@ function renderManagerSummary(stats){
                             ? (
                                 stats.cleanSheets * 100 /
                                 stats.matches
-                              ).toFixed(1)
-                            : "0.0"
+                              ).toFixed(2)
+                            : "0.00"
                         }%
                     </div>
                 </div>
@@ -2286,19 +2286,7 @@ function renderManager(managerName){
 				<div class="player-header-meta">
 				
 				    <span>
-				        ${age} years
-				    </span>
-				
-				    <span>
-				        ${nationality || "-"}
-				    </span>
-				
-				    <span>
-				        ${stats.matches} Matches
-				    </span>
-				
-				    <span>
-				        ${stats.wins} Wins
+				        Age ${age}
 				    </span>
 				
 				    <span>
