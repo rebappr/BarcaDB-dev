@@ -716,6 +716,9 @@ if (canonical) {
 let allMatches = [];
 let allPlayers = [];
 
+let opponentSortColumn = "total";
+let opponentSortDirection = "desc";
+
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
     fetch("data/players.json").then(r => r.json())
