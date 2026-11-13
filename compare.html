@@ -1089,6 +1089,15 @@ Promise.all([
 
     playersData = players;
 
+    comparePlayers = players
+        .filter(player => player.Player)
+        .map(player => ({
+            name: player.Player
+        }))
+        .sort((a,b) =>
+            a.name.localeCompare(b.name)
+        );
+
     initPersonSearch();
 
     initCompareSearch();
