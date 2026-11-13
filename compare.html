@@ -1089,15 +1089,6 @@ Promise.all([
 
     playersData = players;
 
-    comparePlayers = players
-        .filter(player => player.Player)
-        .map(player => ({
-            name: player.Player
-        }))
-        .sort((a,b) =>
-            a.name.localeCompare(b.name)
-        );
-
     initPersonSearch();
 
     initCompareSearch();
@@ -1157,8 +1148,7 @@ function attachCompareSearch(
 
         }
 
-		const matches =
-    playersData
+const matches = playersData
 
     .filter(player =>
         player.Player &&
@@ -1184,6 +1174,7 @@ function attachCompareSearch(
     })
 
     .slice(0,15);
+
 		    .sort((a,b) => {
 		
 		        const aStarts =
