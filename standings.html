@@ -978,19 +978,7 @@ function setTableView(view){
 
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-
-    try {
-
-        window.allMatches =
-            await fetch("data/data.json")
-                .then(r => r.json());
-
-    } catch(error) {
-
-        console.error(error);
-
-    }
+document.addEventListener("DOMContentLoaded", () => {
 
     document
         .querySelector(
