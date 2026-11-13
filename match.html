@@ -1176,8 +1176,8 @@ if (!matchId) {
     throw new Error("Missing id parameter");
 }
 
-window.allMatches
-window.allPlayers
+window.allMatches = [];
+window.allPlayers = [];
 
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
