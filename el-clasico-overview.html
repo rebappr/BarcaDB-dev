@@ -1247,11 +1247,11 @@ Promise.all([
     fetch("data/players.json").then(r => r.json())
 ])
 
-.then(([data, currentData, players]) => {
+.then(([matchesData, currentData, playersData]) => {
 
-window.allMatches = matchesData;
-window.allPlayers = playersData;
-currentMatches = currentData;
+    window.allMatches = matchesData;
+    window.allPlayers = playersData;
+    currentMatches = currentData;
 
     renderHome();
 
