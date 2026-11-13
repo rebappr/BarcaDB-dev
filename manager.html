@@ -2368,8 +2368,9 @@ function renderManager(managerName){
 
 }
 
-let allMatches = [];
-let allPlayers = [];
+window.allMatches = [];
+window.allPlayers = [];
+
 let allManagers = [];
 let selectedCompetition = "all";
 let selectedCareerCompetition = "all";
@@ -2998,8 +2999,6 @@ Promise.all([
 	
 	    return;
 	}
-	
-	initPersonSearch();
 	
 	populateSeasonFilter(
 	    managerName
