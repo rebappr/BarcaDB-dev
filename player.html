@@ -3139,8 +3139,8 @@ document
 });
 }
 
-let allMatches = [];
-let allPlayers = [];
+window.allMatches = [];
+window.allPlayers = [];
 let allRatings = {};
 let selectedCompetition = "all";
 let selectedCareerCompetition = "all";
@@ -4028,9 +4028,9 @@ Promise.all([
 ])
 .then(([players, matches, ratings]) => {
 
-    window.allMatches = matches;
+    allMatches = matches;
 
-allPlayers = players.map(p => ({
+const pagePlayers = players.map(p => ({
     ...p,
     Name: p.Player
 }));
