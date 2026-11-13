@@ -762,7 +762,6 @@ function getCountryLogo(country){
 let currentPosition = "all";
 let currentSearch = "";
 let currentSeason = "";
-let allPlayers = [];
 
 function getPositionGroup(position){
 
@@ -798,9 +797,9 @@ function buildPlayerStats(matches){
     playerStats = {};
 
     currentSeason =
-        matches[0]?.Season ||
-        matches[0]?.["Season"];
-
+          [...new Set(matches.map(m => m.Season))]
+              .sort((a,b) => parseInt(b) - parseInt(a))[0];
+      
     const seasonMatches =
         matches.filter(match =>
             (match.Season || match["Season"]) ===
@@ -1207,11 +1206,6 @@ Promise.all([
 
     squadData = players;
 
-    allPlayers = players.map(p => ({
-          ...p,
-          Name: p.Name || p.Player
-      }));
-
     buildPlayerStats(matches);
 
     document.querySelector(".widget-title").textContent =
@@ -1219,10 +1213,16 @@ Promise.all([
 
     renderSquad(squadData);
 
-    initPersonSearch();
-
 })
 .catch(err => console.error(err));
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    if(typeof initPersonSearch === "function"){
+        initPersonSearch();
+    }
+
+});
 
 </script>
 <script src="scripts/search.js"></script>
