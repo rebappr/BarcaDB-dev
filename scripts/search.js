@@ -7,17 +7,20 @@ function initPersonSearch() {
 
     const searchItems = new Map();
 
-    // Barcelona players from players.json
+    // Barcelona players
     if (typeof allPlayers !== "undefined" && Array.isArray(allPlayers)) {
 
         allPlayers.forEach(player => {
 
-            if (!player.Player) return;
+            const playerName =
+                player.Player || player.Name;
+
+            if (!playerName) return;
 
             searchItems.set(
-                `player-${player.Player}`,
+                `player-${playerName}`,
                 {
-                    name: player.Player,
+                    name: playerName,
                     type: "Player"
                 }
             );
@@ -26,7 +29,7 @@ function initPersonSearch() {
 
     }
 
-    // Managers and opponents from matches
+    // Managers and opponents
     if (typeof allMatches !== "undefined" && Array.isArray(allMatches)) {
 
         allMatches.forEach(match => {
@@ -109,6 +112,7 @@ function initPersonSearch() {
 
         results.innerHTML = `
             <div class="player-search-results">
+
                 ${filtered.map(item => {
 
                     let url = "";
@@ -149,6 +153,7 @@ function initPersonSearch() {
                     `;
 
                 }).join("")}
+
             </div>
         `;
 
@@ -163,27 +168,35 @@ function initPersonSearch() {
         }, 200);
 
     });
-    
-document.addEventListener("DOMContentLoaded", async () => {
-
-    if (typeof allPlayers === "undefined") {
-
-        window.allPlayers =
-            await fetch("data/players.json")
-                .then(r => r.json());
-
-    }
-
-    if (typeof allMatches === "undefined") {
-
-        window.allMatches =
-            await fetch("data/data.json")
-                .then(r => r.json());
-
-    }
-
-    initPersonSearch();
-
-});
 
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    try {
+
+        if (typeof allPlayers === "undefined") {
+
+            window.allPlayers =
+                await fetch("data/players.json")
+                    .then(r => r.json());
+
+        }
+
+        if (typeof allMatches === "undefined") {
+
+            window.allMatches =
+                await fetch("data/data.json")
+                    .then(r => r.json());
+
+        }
+
+        initPersonSearch();
+
+    } catch (err) {
+
+        console.error("Search initialization failed:", err);
+
+    }
+
+});
