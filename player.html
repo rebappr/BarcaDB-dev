@@ -2014,7 +2014,7 @@ function getPlayerAggregateStats(
     } = {}
 ){
     const currentPlayer =
-        allPlayers.find(
+        pagePlayers.find(
             p => p.Name === playerName
         );
 
@@ -2199,7 +2199,7 @@ function renderSummary(stats){
 	}
 
     const currentPlayer =
-        allPlayers.find(
+        pagePlayers.find(
             p => p.Name === playerName
         );
 
@@ -2624,7 +2624,7 @@ function renderCareerOverview(){
 	    );
 
     const currentPlayer =
-        allPlayers.find(
+        pagePlayers.find(
             p => p.Name === playerName
         );
 
@@ -3011,7 +3011,7 @@ document.getElementById("playerProfile").innerHTML = `
 		
 			${(() => {
 			
-			    const seasonPlayers = allPlayers.filter(player => {
+			    const seasonPlayers = pagePlayers.filter(player => {
 			
 			        return allMatches.some(match => {
 			
@@ -3141,6 +3141,8 @@ document
 
 window.allMatches = [];
 window.allPlayers = [];
+
+let pagePlayers = [];
 let allRatings = {};
 let selectedCompetition = "all";
 let selectedCareerCompetition = "all";
@@ -3298,7 +3300,7 @@ function renderActiveSection(){
 function renderPlayerInfo(){
 
     const player =
-        allPlayers.find(
+        pagePlayers.find(
             p => p.Name === playerName
         );
 
@@ -3586,7 +3588,7 @@ function renderPlayerMatches(){
     });
 
 	const currentPlayer =
-	    allPlayers.find(
+          pagePlayers.find(
 	        p => p.Name === playerName
 	    );
 	
@@ -3836,7 +3838,7 @@ function initFilters(){
         selectedCompetition = "all";
 
         const currentPlayer =
-            allPlayers.find(
+            pagePlayers.find(
                 p => p.Name === playerName
             );
 
@@ -4030,7 +4032,7 @@ Promise.all([
 
     allMatches = matches;
 
-const pagePlayers = players.map(p => ({
+pagePlayers = players.map(p => ({
     ...p,
     Name: p.Player
 }));
@@ -4038,7 +4040,7 @@ const pagePlayers = players.map(p => ({
 allRatings = ratings;
 
 const player =
-    allPlayers.find(
+    pagePlayers.find(
         p => p.Name === playerName
     );
 
