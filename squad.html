@@ -1195,6 +1195,7 @@ document.querySelectorAll(".position-btn")
     });
 });
 
+window.allMatches = [];
 let squadData = [];
 let playerStats = {};
 
@@ -1205,6 +1206,7 @@ Promise.all([
 .then(([players, matches]) => {
 
     squadData = players;
+    allMatches = matches;
 
     buildPlayerStats(matches);
 
