@@ -1176,8 +1176,8 @@ if (!matchId) {
     throw new Error("Missing id parameter");
 }
 
-let allMatches = [];
-let allPlayers = [];
+window.allMatches
+window.allPlayers
 
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
@@ -1188,8 +1188,6 @@ Promise.all([
 
     allMatches = matchesData;
     allPlayers = playersData;
-
-    initPersonSearch();
 
     const match =
         matchesData.find(
