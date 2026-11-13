@@ -163,5 +163,27 @@ function initPersonSearch() {
         }, 200);
 
     });
+    
+document.addEventListener("DOMContentLoaded", async () => {
+
+    if (typeof allPlayers === "undefined") {
+
+        window.allPlayers =
+            await fetch("data/players.json")
+                .then(r => r.json());
+
+    }
+
+    if (typeof allMatches === "undefined") {
+
+        window.allMatches =
+            await fetch("data/data.json")
+                .then(r => r.json());
+
+    }
+
+    initPersonSearch();
+
+});
 
 }
