@@ -1239,15 +1239,19 @@ color:var(--muted);
 
 let allMatches = [];
 let currentMatches = [];
+let allPlayers = [];
 
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
-    fetch("data/current-season.json").then(r => r.json())
+    fetch("data/current-season.json").then(r => r.json()),
+    fetch("data/players.json").then(r => r.json())
 ])
-.then(([data, currentData]) => {
+
+.then(([data, currentData, players]) => {
 
     allMatches = data;
     currentMatches = currentData;
+    allPlayers = players;
 
     renderHome();
 
