@@ -1293,7 +1293,6 @@ function getClubLogo(team){
 }
 
 let allMatches = [];
-let allPlayers = [];
 let playerBirthDates = {};
 let tableView = "short";
 let matchesView = "all";
@@ -2433,8 +2432,7 @@ awayGoals < homeGoals ? "L" : "D";
 
 });
 
-allMatches = matchesData;
-allPlayers = playersData;
+window.allMatches = matchesData;
 
 if(!season){
 season = [...new Set(matchesData.map(x => x.Season))]
@@ -2450,7 +2448,6 @@ renderSeasonDropdown();
 renderSeasonFilters();
 updatePageTitles();
 renderSeason();
-initPersonSearch();
 
 })
 .catch(error => console.error(error));
