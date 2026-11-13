@@ -713,8 +713,8 @@ if (canonical) {
     canonical.href = location.href;
 }
 
-let allMatches = [];
-let allPlayers = [];
+window.allMatches = [];
+window.allPlayers = [];
 
 let opponentSortColumn = "total";
 let opponentSortDirection = "desc";
@@ -732,8 +732,6 @@ Promise.all([
     renderOpponent(opponentName, matchesData);
 
     renderTopAgainstOpponent();
-
-    initPersonSearch();
 
 })
 .catch(console.error);
