@@ -1292,7 +1292,7 @@ function getClubLogo(team){
         + ".png";
 }
 
-let allMatches = [];
+window.allMatches = [];
 let playerBirthDates = {};
 let tableView = "short";
 let matchesView = "all";
@@ -2432,7 +2432,7 @@ awayGoals < homeGoals ? "L" : "D";
 
 });
 
-window.allMatches = matchesData;
+allMatches = matchesData;
 
 if(!season){
 season = [...new Set(matchesData.map(x => x.Season))]
