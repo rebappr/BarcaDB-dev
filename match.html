@@ -1177,60 +1177,49 @@ if (!matchId) {
 }
 
 let allMatches = [];
+let allPlayers = [];
 
-fetch("data/data.json")
-.then(r => {
+Promise.all([
+    fetch("data/data.json").then(r => r.json()),
+    fetch("data/players.json").then(r => r.json())
+])
 
-if (!r.ok) {
-throw new Error(`HTTP ${r.status}`);
-}
+.then(([matchesData, playersData]) => {
 
-return r.json();
-})
-.then(data => {
-
-    allMatches = data;
+    allMatches = matchesData;
+    allPlayers = playersData;
 
     initPersonSearch();
 
-    console.log("DATA LOADED");
-    console.log(data);
+    const match =
+        matchesData.find(
+            row =>
+            String(row.ID).trim() ===
+            String(matchId).trim()
+        );
 
-    if (!Array.isArray(data)) {
-        throw new Error("data/data.json is not an array");
+    if (!match) {
+
+        document.getElementById("app").innerHTML =
+            "<div class='card'>Match not found</div>";
+
+        return;
     }
 
-console.log("Looking for ID:", matchId);
-
-const match =
-data.find(
-row =>
-String(row.ID).trim() ===
-String(matchId).trim()
-);
-
-if (!match) {
-
-document.getElementById("app").innerHTML =
-"<div class='card'>Match not found</div>";
-
-return;
-}
-
-renderMatch(match, data);
+    renderMatch(match, matchesData);
 
 })
 
 .catch(error => {
 
-console.error(error);
+    console.error(error);
 
-document.getElementById("app").innerHTML = `
-       <div class="card">
-           Error:<br>
-           ${error.message}
-       </div>
-   `;
+    document.getElementById("app").innerHTML = `
+        <div class="card">
+            Error:<br>
+            ${error.message}
+        </div>
+    `;
 
 });
 
