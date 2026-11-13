@@ -1444,10 +1444,10 @@ color:var(--muted);
 <script src="data/competitionMap.js"></script>
 <script>
 
-let allMatches = [];
-let currentMatches = [];
-let allPlayers = [];
+window.allMatches = [];
+window.allPlayers = [];
 
+let currentMatches = [];
 let selectedCompetition = "All";
 let selectedSeason = "All";
 let selectedVenue = "All";
@@ -1460,9 +1460,9 @@ Promise.all([
 
 .then(([data, currentData, players]) => {
 
-    allMatches = data;
+    window.allMatches = data;
     currentMatches = currentData;
-    allPlayers = players;
+    window.allPlayers = players;
 
     renderHome();
 
@@ -2543,8 +2543,6 @@ clasicos.forEach(match => {
 }
 
 function renderHome(){
-
-    initPersonSearch();
 
 	renderGlobalFilters();
 	
