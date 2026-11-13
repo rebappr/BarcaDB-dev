@@ -4028,21 +4028,19 @@ Promise.all([
 ])
 .then(([players, matches, ratings]) => {
 
-    allMatches = matches;
+    window.allMatches = matches;
 
-    allPlayers = players.map(p => ({
-        ...p,
-        Name: p.Player
-    }));
+allPlayers = players.map(p => ({
+    ...p,
+    Name: p.Player
+}));
 
-    allRatings = ratings;
+allRatings = ratings;
 
-    const player =
-        allPlayers.find(
-            p => p.Name === playerName
-        );
-
-    initPersonSearch();
+const player =
+    allPlayers.find(
+        p => p.Name === playerName
+    );
 
     if(!player){
 
