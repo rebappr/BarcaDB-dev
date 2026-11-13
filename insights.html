@@ -579,14 +579,12 @@ grid-template-columns:1fr;
 <script>
 
 let allMatches = [];
+let allPlayers = [];
 
 const INSIGHTS_PER_PAGE = 20;
 
 let currentPage = 1;
 let allInsights = [];
-
-let allMatches = [];
-let allPlayers = [];
 
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
@@ -605,16 +603,14 @@ Promise.all([
 .catch(error => console.error(error));
 
 function normalizeName(name){
-return String(name || "")
-.toLowerCase()
-.replace(/fc /g,"")
-.replace(/ cf/g,"")
-.replace(/./g,"")
-.replace(/\s+/g," ")
-.trim();
+    return String(name || "")
+        .toLowerCase()
+        .replace(/fc /g,"")
+        .replace(/ cf/g,"")
+        .replace(/\./g,"")
+        .replace(/\s+/g," ")
+        .trim();
 }
-
-.catch(error => console.error(error));
 
 function renderHome(){
 
