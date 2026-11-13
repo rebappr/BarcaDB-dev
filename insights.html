@@ -585,9 +585,24 @@ const INSIGHTS_PER_PAGE = 20;
 let currentPage = 1;
 let allInsights = [];
 
-fetch("data/data.json")
-    .then(r => r.json())
-    .then(matchesData => {
+let allMatches = [];
+let allPlayers = [];
+
+Promise.all([
+    fetch("data/data.json").then(r => r.json()),
+    fetch("data/players.json").then(r => r.json())
+])
+
+.then(([matchesData, playersData]) => {
+
+    allMatches = matchesData;
+    allPlayers = playersData;
+
+    renderHome();
+
+})
+
+.catch(error => console.error(error));
 
 function normalizeName(name){
 return String(name || "")
@@ -599,11 +614,6 @@ return String(name || "")
 .trim();
 }
 
-allMatches = matchesData;
-
-renderHome();
-
-})
 .catch(error => console.error(error));
 
 function renderHome(){
