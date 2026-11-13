@@ -881,8 +881,8 @@ function getClubLogo(team){
         + ".png";
 }
 
-let allMatches = [];
-let allPlayers = [];
+window.allMatches = [];
+window.allPlayers = [];
 
 let matchesView = "all";
 let selectedCompetition = "All";
@@ -1257,7 +1257,6 @@ Promise.all([
 
     renderMatchesFilters();
     renderMatches();
-    initPersonSearch();
 
 })
 .catch(error =>
