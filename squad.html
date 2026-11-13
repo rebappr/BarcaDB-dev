@@ -1197,6 +1197,7 @@ document.querySelectorAll(".position-btn")
 
 let squadData = [];
 let playerStats = {};
+let allPlayers = [];
 
 Promise.all([
     fetch("data/playersCS.json").then(r => r.json()),
