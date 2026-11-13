@@ -1237,9 +1237,9 @@ color:var(--muted);
 <script src="data/competitionMap.js"></script>
 <script>
 
-let allMatches = [];
+window.allMatches = [];
+window.allPlayers = [];
 let currentMatches = [];
-let allPlayers = [];
 
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
@@ -1249,9 +1249,9 @@ Promise.all([
 
 .then(([data, currentData, players]) => {
 
-    allMatches = data;
-    currentMatches = currentData;
-    allPlayers = players;
+window.allMatches = matchesData;
+window.allPlayers = playersData;
+currentMatches = currentData;
 
     renderHome();
 
@@ -2471,8 +2471,6 @@ clasicos.forEach(match => {
 }
 
 function renderHome(){
-
-    initPersonSearch();
 
     renderLastClasico();
     renderUpcomingClasicos();
