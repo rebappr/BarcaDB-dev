@@ -26,7 +26,7 @@ function initPersonSearch() {
 
     });
 
-    // Managers + Opponents
+    // Barcelona managers + opponents
     allMatches.forEach(match => {
 
         if (match.Manager) {
@@ -35,18 +35,6 @@ function initPersonSearch() {
                 `manager-${match.Manager}`,
                 {
                     name: match.Manager,
-                    type: "Manager"
-                }
-            );
-
-        }
-
-        if (match["Opp. Manager"]) {
-
-            searchItems.set(
-                `manager-${match["Opp. Manager"]}`,
-                {
-                    name: match["Opp. Manager"],
                     type: "Manager"
                 }
             );
