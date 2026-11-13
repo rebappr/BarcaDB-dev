@@ -714,26 +714,26 @@ if (canonical) {
 }
 
 let allMatches = [];
-let opponentSortColumn = "total";
-let opponentSortDirection = "desc";
+let allPlayers = [];
 
-fetch("data/data.json")
-.then(r => r.json())
-.then(data => {
+Promise.all([
+    fetch("data/data.json").then(r => r.json()),
+    fetch("data/players.json").then(r => r.json())
+])
 
-	allMatches = data;
-	
-	renderOpponent(opponentName, data);
-	
-	renderTopAgainstOpponent();
-	
-	initPersonSearch();
+.then(([matchesData, playersData]) => {
+
+    allMatches = matchesData;
+    allPlayers = playersData;
+
+    renderOpponent(opponentName, matchesData);
+
+    renderTopAgainstOpponent();
+
+    initPersonSearch();
 
 })
-.catch(error => {
-
-    console.error(error);
-
+.catch(console.error);
 });
     
 function statValue(value){
@@ -808,7 +808,7 @@ function renderTopAgainstOpponent(){
         for(let i=1;i<=12;i++){
 
             const player =
-            match[`Substitution IN Player ${i}`];
+                  match[`Sub on ${i}`]
 
             if(player){
 
