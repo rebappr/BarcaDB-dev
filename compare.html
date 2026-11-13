@@ -1160,12 +1160,32 @@ function attachCompareSearch(
         }
 
 		const matches =
-		    comparePlayers
-		    .filter(player =>
-		        player.name
-		        .toLowerCase()
-		        .includes(value)
-		    )
+    playersData
+
+    .filter(player =>
+        player.Player &&
+        player.Player
+            .toLowerCase()
+            .includes(value)
+    )
+
+    .map(player => ({
+        name: player.Player
+    }))
+
+    .sort((a,b) => {
+
+        const aStarts =
+            a.name.toLowerCase().startsWith(value);
+
+        const bStarts =
+            b.name.toLowerCase().startsWith(value);
+
+        return Number(bStarts) - Number(aStarts);
+
+    })
+
+    .slice(0,15);
 		    .sort((a,b) => {
 		
 		        const aStarts =
