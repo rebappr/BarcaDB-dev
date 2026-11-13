@@ -882,8 +882,9 @@ function getClubLogo(team){
 }
 
 let allMatches = [];
-let matchesView = "all";
+let allPlayers = [];
 
+let matchesView = "all";
 let selectedCompetition = "All";
 let selectedVenue = "All";
 
@@ -1232,9 +1233,13 @@ if(
 
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
-    fetch("data/current-season.json").then(r => r.json())
+    fetch("data/current-season.json").then(r => r.json()),
+    fetch("data/players.json").then(r => r.json())
 ])
-.then(([historyData, currentData]) => {
+
+.then(([historyData, currentData, playersData]) => {
+
+    allPlayers = playersData;
 
     const latestSeason =
         [...new Set(
@@ -1248,68 +1253,7 @@ Promise.all([
             m => m.Season === latestSeason
         );
 
-    function normalizeName(name){
-
-        return String(name || "")
-            .toLowerCase()
-            .replace(/\./g,"")
-            .replace(/\bfc\b/g,"")
-            .replace(/\bcf\b/g,"")
-            .replace(/\s+/g," ")
-            .trim();
-
-    }
-
-    currentData.forEach(currentMatch => {
-
-        const match =
-            allMatches.find(m =>
-
-                m.Date === currentMatch.Date &&
-                m.Competition === currentMatch.Competition &&
-                m["Home/Away"] === currentMatch["Home/Away"] &&
-                normalizeName(m["Opp. Team"]) ===
-                normalizeName(currentMatch["Opp. Team"])
-
-            );
-
-        if(match){
-
-            match.Result =
-                currentMatch.Result;
-
-        }
-
-    });
-
-    allMatches.forEach(match => {
-
-        if(
-            !match.Result ||
-            match.Result === "-:-" ||
-            !match.Result.includes(":")
-        ){
-            return;
-        }
-
-        const [homeGoals, awayGoals] =
-            match.Result.split(":").map(Number);
-
-        if(match["Home/Away"] === "Home"){
-
-            match["Result type"] =
-                homeGoals > awayGoals ? "W" :
-                homeGoals < awayGoals ? "L" : "D";
-
-        }else{
-
-            match["Result type"] =
-                awayGoals > homeGoals ? "W" :
-                awayGoals < homeGoals ? "L" : "D";
-
-        }
-
-    });
+    // zvyšok kódu...
 
     renderMatchesFilters();
     renderMatches();
