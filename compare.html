@@ -1075,7 +1075,8 @@
 
 <script>
 
-let allMatches = [];
+window.allMatches = [];
+window.allPlayers = [];
 
 let playersData = [];
 
@@ -1085,14 +1086,9 @@ Promise.all([
 ])
 .then(([matches, players]) => {
 
-    allMatches = matches;
-
+    window.allMatches = matches;
     playersData = players;
-
-      window.allPlayers = playersData;
-
-    initPersonSearch();
-
+    window.allPlayers = players;
     initCompareSearch();
 
 })
