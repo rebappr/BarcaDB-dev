@@ -7,81 +7,78 @@ function initPersonSearch() {
 
     const searchItems = new Map();
 
-    // Barcelona players
-    if (typeof allPlayers !== "undefined" && Array.isArray(allPlayers)) {
+    // Players
+    allPlayers.forEach(player => {
 
-        allPlayers.forEach(player => {
+        const playerName =
+            player.Player ||
+            player.Name;
 
-            const playerName =
-                player.Player || player.Name;
+        if (!playerName) return;
 
-            if (!playerName) return;
+        searchItems.set(
+            `player-${playerName}`,
+            {
+                name: playerName,
+                type: "Player"
+            }
+        );
+
+    });
+
+    // Managers + Opponents
+    allMatches.forEach(match => {
+
+        if (match.Manager) {
 
             searchItems.set(
-                `player-${playerName}`,
+                `manager-${match.Manager}`,
                 {
-                    name: playerName,
-                    type: "Player"
+                    name: match.Manager,
+                    type: "Manager"
                 }
             );
 
-        });
+        }
 
-    }
+        if (match["Opp. Manager"]) {
 
-    // Managers and opponents
-    if (typeof allMatches !== "undefined" && Array.isArray(allMatches)) {
+            searchItems.set(
+                `manager-${match["Opp. Manager"]}`,
+                {
+                    name: match["Opp. Manager"],
+                    type: "Manager"
+                }
+            );
 
-        allMatches.forEach(match => {
+        }
 
-            if (match.Manager) {
+        if (match["Opp. Team"]) {
 
-                searchItems.set(
-                    `manager-${match.Manager}`,
-                    {
-                        name: match.Manager,
-                        type: "Manager"
-                    }
-                );
+            searchItems.set(
+                `opponent-${match["Opp. Team"]}`,
+                {
+                    name: match["Opp. Team"],
+                    type: "Opponent"
+                }
+            );
 
-            }
+        }
 
-            if (match["Opp. Manager"]) {
+    });
 
-                searchItems.set(
-                    `manager-${match["Opp. Manager"]}`,
-                    {
-                        name: match["Opp. Manager"],
-                        type: "Manager"
-                    }
-                );
-
-            }
-
-            if (match["Opp. Team"]) {
-
-                searchItems.set(
-                    `opponent-${match["Opp. Team"]}`,
-                    {
-                        name: match["Opp. Team"],
-                        type: "Opponent"
-                    }
-                );
-
-            }
-
-        });
-
-    }
-
-    const itemList = [...searchItems.values()]
-        .sort((a, b) => a.name.localeCompare(b.name));
+    const itemList =
+        [...searchItems.values()]
+        .sort((a, b) =>
+            a.name.localeCompare(b.name)
+        );
 
     input.addEventListener("input", () => {
 
-        const value = input.value
-            .trim()
-            .toLowerCase();
+        const value =
+            input.value
+                .trim()
+                .toLowerCase();
 
         if (!value) {
 
@@ -90,55 +87,61 @@ function initPersonSearch() {
 
         }
 
-        const filtered = itemList
+        const filtered =
+            itemList
+                .filter(item =>
+                    item.name
+                        .toLowerCase()
+                        .includes(value)
+                )
+                .sort((a, b) => {
 
-            .filter(item =>
-                item.name.toLowerCase().includes(value)
-            )
+                    const aStarts =
+                        a.name
+                            .toLowerCase()
+                            .startsWith(value);
 
-            .sort((a, b) => {
+                    const bStarts =
+                        b.name
+                            .toLowerCase()
+                            .startsWith(value);
 
-                const aStarts =
-                    a.name.toLowerCase().startsWith(value);
+                    return Number(bStarts) -
+                           Number(aStarts);
 
-                const bStarts =
-                    b.name.toLowerCase().startsWith(value);
-
-                return Number(bStarts) - Number(aStarts);
-
-            })
-
-            .slice(0, 20);
+                })
+                .slice(0, 20);
 
         results.innerHTML = `
+
             <div class="player-search-results">
 
                 ${filtered.map(item => {
 
                     let url = "";
 
-                    switch (item.type) {
+                    if (item.type === "Manager") {
 
-                        case "Manager":
-                            url =
-                                "manager.html?name=" +
-                                encodeURIComponent(item.name);
-                            break;
+                        url =
+                        "manager.html?name=" +
+                        encodeURIComponent(item.name);
 
-                        case "Opponent":
-                            url =
-                                "opponent.html?name=" +
-                                encodeURIComponent(item.name);
-                            break;
+                    } else if (item.type === "Opponent") {
 
-                        default:
-                            url =
-                                "player.html?name=" +
-                                encodeURIComponent(item.name);
+                        url =
+                        "opponent.html?name=" +
+                        encodeURIComponent(item.name);
+
+                    } else {
+
+                        url =
+                        "player.html?name=" +
+                        encodeURIComponent(item.name);
 
                     }
 
                     return `
+
                         <a
                             class="player-search-item"
                             href="${url}">
@@ -150,11 +153,13 @@ function initPersonSearch() {
                             </span>
 
                         </a>
+
                     `;
 
                 }).join("")}
 
             </div>
+
         `;
 
     });
@@ -175,27 +180,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
 
-        if (typeof allPlayers === "undefined") {
+        window.allPlayers =
+            await fetch("data/players.json")
+                .then(r => r.json());
 
-            window.allPlayers =
-                await fetch("data/players.json")
-                    .then(r => r.json());
-
-        }
-
-        if (typeof allMatches === "undefined") {
-
-            window.allMatches =
-                await fetch("data/data.json")
-                    .then(r => r.json());
-
-        }
+        window.allMatches =
+            await fetch("data/data.json")
+                .then(r => r.json());
 
         initPersonSearch();
 
     } catch (err) {
 
-        console.error("Search initialization failed:", err);
+        console.error(
+            "Search initialization failed:",
+            err
+        );
 
     }
 
