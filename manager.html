@@ -2369,6 +2369,7 @@ function renderManager(managerName){
 }
 
 let allMatches = [];
+let allPlayers = [];
 let allManagers = [];
 let selectedCompetition = "all";
 let selectedCareerCompetition = "all";
@@ -2975,12 +2976,15 @@ function populateSeasonFilter(managerName){
 
 Promise.all([
     fetch("data/managers.json").then(r => r.json()),
-    fetch("data/data.json").then(r => r.json())
+    fetch("data/data.json").then(r => r.json()),
+    fetch("data/players.json").then(r => r.json())
 ])
-.then(([managers, matches]) => {
+
+.then(([managers, matches, players]) => {
 
     allManagers = managers;
     allMatches = matches;
+    allPlayers = players;
 
 	const managerExists =
 	    allMatches.some(
