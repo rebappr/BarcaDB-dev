@@ -578,8 +578,8 @@ grid-template-columns:1fr;
 
 <script>
 
-let allMatches = [];
-let allPlayers = [];
+window.allMatches = [];
+window.allPlayers = [];
 
 const INSIGHTS_PER_PAGE = 20;
 
@@ -593,8 +593,8 @@ Promise.all([
 
 .then(([matchesData, playersData]) => {
 
-    allMatches = matchesData;
-    allPlayers = playersData;
+window.allMatches = matchesData;
+window.allPlayers = playersData;
 
     renderHome();
 
@@ -613,8 +613,6 @@ function normalizeName(name){
 }
 
 function renderHome(){
-
-initPersonSearch();
 
 renderInsights();
 }
