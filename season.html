@@ -1293,6 +1293,7 @@ function getClubLogo(team){
 }
 
 let allMatches = [];
+let allPlayers = [];
 let playerBirthDates = {};
 let tableView = "short";
 let matchesView = "all";
@@ -2433,6 +2434,7 @@ awayGoals < homeGoals ? "L" : "D";
 });
 
 allMatches = matchesData;
+allPlayers = playersData;
 
 if(!season){
 season = [...new Set(matchesData.map(x => x.Season))]
