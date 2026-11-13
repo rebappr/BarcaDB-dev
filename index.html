@@ -849,8 +849,8 @@
 <script src="data/competitionMap.js"></script>
 <script>
 
-let allMatches = [];
-let allPlayers = [];
+window.allMatches = [];
+window.allPlayers = [];
 
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
@@ -859,8 +859,8 @@ Promise.all([
 
 .then(([matchesData, playersData]) => {
 
-    allMatches = matchesData;
-    allPlayers = playersData;
+window.allMatches = matchesData;
+window.allPlayers = playersData;
 
     renderHome();
 
@@ -914,8 +914,6 @@ function renderHome(){
 	renderTopManagers();
 
     renderInsights();
-
-    initPersonSearch();
 }
 
     function renderLastMatch() {
