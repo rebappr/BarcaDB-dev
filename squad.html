@@ -1213,16 +1213,10 @@ Promise.all([
 
     renderSquad(squadData);
 
+    initPersonSearch();
+
 })
 .catch(err => console.error(err));
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    if(typeof initPersonSearch === "function"){
-        initPersonSearch();
-    }
-
-});
 
 </script>
 <script src="scripts/search.js"></script>
