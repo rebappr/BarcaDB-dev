@@ -2436,8 +2436,7 @@ allMatches = matchesData;
 
 if(!season){
 season = [...new Set(matchesData.map(x => x.Season))]
-.sort()
-.reverse()[0];
+.sort((a,b) => parseInt(b) - parseInt(a))[0];
 }
 
 playersData.forEach(player => {
