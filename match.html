@@ -1277,7 +1277,6 @@ function renderPlayerName(name, isBarcaPlayer = true){
     }
 
     if(!isBarcaPlayer){
-
         return `
             <span class="player-link">
                 ${escapeHtml(name)}
@@ -1286,10 +1285,13 @@ function renderPlayerName(name, isBarcaPlayer = true){
     }
 
     return `
-        ${renderPlayerName(
-                player,
-                prefix !== "Opp. "
-            )}
+        <a
+            class="player-link"
+            href="player.html?name=${encodeURIComponent(name)}">
+
+            ${escapeHtml(name)}
+
+        </a>
     `;
 }
 
@@ -1507,18 +1509,29 @@ function getBench(match, prefix="") {
 
 function getTimeline(match){
 
-function playerLink(name){
+function playerLink(name, isBarcaPlayer = true){
 
-return `
-<a
-   class="player-link"
-   href="player.html?name=${encodeURIComponent(name)}">
+    if(!name){
+        return "";
+    }
 
-   ${escapeHtml(name)}
+    if(!isBarcaPlayer){
+        return `
+            <span class="player-link">
+                ${escapeHtml(name)}
+            </span>
+        `;
+    }
 
-</a>
-`;
+    return `
+        <a
+           class="player-link"
+           href="player.html?name=${encodeURIComponent(name)}">
 
+           ${escapeHtml(name)}
+
+        </a>
+    `;
 }
 
 const events = [];
@@ -1615,8 +1628,7 @@ isBarcaPlayer: true,
 
 if(
 match[`Opp. Penalty player ${i}`] &&
-String(match[`Opp. Penalty scored ${i}`] || ""),
-isBarcaPlayer: false
+String(match[`Opp. Penalty scored ${i}`] || "")
 .trim()
 .toLowerCase() === "not in"
 ){
