@@ -1270,6 +1270,29 @@ function escapeHtml(str){
         .replace(/'/g,"&#39;");
 }
 
+function renderPlayerName(name, isBarcaPlayer = true){
+
+    if(!name){
+        return "";
+    }
+
+    if(!isBarcaPlayer){
+
+        return `
+            <span class="player-link">
+                ${escapeHtml(name)}
+            </span>
+        `;
+    }
+
+    return `
+        ${renderPlayerName(
+                player,
+                prefix !== "Opp. "
+            )}
+    `;
+}
+
 function getPlayerIcons(match, playerName, prefix="") {
 
     const events = [];
@@ -1403,13 +1426,10 @@ html += `
 
                <span class="player-name">
                
-                   <a
-                      class="player-link"
-                      href="player.html?name=${encodeURIComponent(player)}">
-               
-                      ${escapeHtml(player)}
-               
-                   </a>
+                  ${renderPlayerName(
+                      player,
+                      prefix !== "Opp. "
+                  )}
                
                    ${
                        String(player).trim() === String(captain).trim()
@@ -1466,13 +1486,10 @@ function getBench(match, prefix="") {
 
                   <span class="player-name">
                   
-                      <a
-                         class="player-link"
-                         href="player.html?name=${encodeURIComponent(player)}">
-                  
-                         ${escapeHtml(player)}
-                  
-                      </a>
+                      ${renderPlayerName(
+                            player,
+                            prefix !== "Opp. "
+                        )}
                   
                       <span class="player-icons">
                          ${getPlayerIcons(match, player, prefix)}
@@ -1546,6 +1563,7 @@ minute: match[`Goal min ${i}`],
 side: homeMatch ? "left":"right",
 player: match[`Goal Player ${i}`],
 assist: match[`Assist Player ${i}`] || "",
+isBarcaPlayer: true,
 penalty:
 match[`Penalty player ${i}`] &&
 String(match[`Penalty scored ${i}`] || "")
@@ -1562,6 +1580,7 @@ minute: match[`Opp. Goal min ${i}`],
 side: homeMatch ? "right":"left",
 player: match[`Opp. Goal Player ${i}`],
 assist: match[`Opp. Assist player ${i}`] || "",
+isBarcaPlayer: false,
 penalty:
 match[`Opp. Penalty player ${i}`] &&
 String(match[`Opp. Penalty scored ${i}`] || "")
@@ -1588,14 +1607,16 @@ events.push({
 minute: match[`Penalty min ${i}`],
 side: homeMatch ? "left":"right",
 player: match[`Penalty player ${i}`],
-missedPenalty: true
+missedPenalty: true,
+isBarcaPlayer: true,
 });
 
 }
 
 if(
 match[`Opp. Penalty player ${i}`] &&
-String(match[`Opp. Penalty scored ${i}`] || "")
+String(match[`Opp. Penalty scored ${i}`] || ""),
+isBarcaPlayer: false
 .trim()
 .toLowerCase() === "not in"
 ){
@@ -1604,7 +1625,8 @@ events.push({
 minute: match[`Opp. Penalty min ${i}`],
 side: homeMatch ? "right":"left",
 player: match[`Opp. Penalty player ${i}`],
-missedPenalty: true
+missedPenalty: true,
+isBarcaPlayer: false
 });
 
 }
@@ -1620,7 +1642,8 @@ events.push({
 minute: match[`Sub min ${i}`],
 side: homeMatch ? "left":"right",
 on: match[`Sub on ${i}`],
-off: match[`Sub off ${i}`]
+off: match[`Sub off ${i}`],
+isBarcaPlayer: true
 });
 
 }
@@ -1631,7 +1654,8 @@ events.push({
 minute: match[`Opp. Sub min ${i}`],
 side: homeMatch ? "right":"left",
 on: match[`Opp. Sub on ${i}`],
-off: match[`Opp. Sub off ${i}`]
+off: match[`Opp. Sub off ${i}`],
+isBarcaPlayer: false
 });
 
 }
@@ -1648,7 +1672,8 @@ events.push({
 minute: match[`Yellow min ${i}`],
 side: homeMatch ? "left":"right",
 icon: "🟨",
-player: match[`Yellow player ${i}`]
+player: match[`Yellow player ${i}`],
+isBarcaPlayer: true
 });
 
 }
@@ -1659,7 +1684,8 @@ events.push({
 minute: match[`Opp. Yellow min ${i}`],
 side: homeMatch ? "right":"left",
 icon: "🟨",
-player: match[`Opp. Yellow player ${i}`]
+player: match[`Opp. Yellow player ${i}`],
+isBarcaPlayer: false
 });
 
 }
@@ -1676,7 +1702,8 @@ events.push({
 minute: match[`Red min ${i}`],
 side: homeMatch ? "left":"right",
 icon: "🟥",
-player: match[`Red player ${i}`]
+player: match[`Red player ${i}`],
+isBarcaPlayer: true
 });
 
 }
@@ -1687,7 +1714,8 @@ events.push({
 minute: match[`Opp. Red min ${i}`],
 side: homeMatch ? "right":"left",
 icon: "🟥",
-player: match[`Opp. Red player ${i}`]
+player: match[`Opp. Red player ${i}`],
+isBarcaPlayer: false
 });
 
 }
@@ -1798,7 +1826,7 @@ if(event.side === "right"){
 content = `
            <span class="event-icon">⚽</span>
 
-           <strong>${playerLink(event.player)}</strong>
+           <strong>${playerLink(event.player, event.isBarcaPlayer)}</strong>
 
            <span class="timeline-score">
                ${event.score}
@@ -1806,7 +1834,7 @@ content = `
 		   
 		   ${
                event.assist
-                   ? `<span class="assist-text">Assist by ${playerLink(event.assist)}</span>`
+                   ? `<span class="assist-text">Assist by ${playerLink(event.assist, event.isBarcaPlayer)}</span>`
                    : ""
            }
 
@@ -1815,7 +1843,7 @@ content = `
 }else{
 
 content = `
-	   <strong>${playerLink(event.player)}</strong>
+	   <strong>${playerLink(event.player, event.isBarcaPlayer)}</strong>
 	
 	   <span class="timeline-score">
 	       ${event.score}
@@ -1825,7 +1853,7 @@ content = `
 	
 	   ${
 	      event.assist
-	      ? `<span class="assist-text">Assist by ${playerLink(event.assist)}</span>`
+	      ? `<span class="assist-text">Assist by ${playerLink(event.assist, event.isBarcaPlayer)}</span>`
 	      : ""
 	   }
 	`;
@@ -1838,17 +1866,17 @@ if(event.side === "right"){
 
 content = `
            <img src="icons/sub.png" class="event-icon" alt="Substitution">
-            <strong>${playerLink(event.on)}</strong>
+            <strong>${playerLink(event.on, event.isBarcaPlayer)}</strong>
             <span class="sub-text">for</span>
-            ${playerLink(event.off)}
+            ${playerLink(event.off, event.isBarcaPlayer)}
        `;
 
 }else{
 
 content = `
-		<strong>${playerLink(event.on)}</strong>
+		<strong>${playerLink(event.on, event.isBarcaPlayer)}</strong>
 		<span class="sub-text">for</span>
-		${playerLink(event.off)}
+		${playerLink(event.off, event.isBarcaPlayer)}
 		<img src="icons/sub.png" class="event-icon" alt="Substitution">
        `;
 
@@ -1860,13 +1888,13 @@ if(event.side === "right"){
 
 content = `
            <span class="event-icon">${event.icon}</span>
-           ${playerLink(event.player)}
+           ${playerLink(event.player, event.isBarcaPlayer)}
        `;
 
 }else{
 
 content = `
-           ${playerLink(event.player)}
+           ${playerLink(event.player, event.isBarcaPlayer)}
            <span class="event-icon">${event.icon}</span>
        `;
 
