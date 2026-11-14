@@ -2254,21 +2254,17 @@ const oppPlayers = getPlayers(match, "Opp. ", false);
 const barcaBench = getBench(match, "", true);
 const oppBench = getBench(match, "Opp. ", false);
 
-const hasBarcaBench = homeMatch
-? hasBench(match)
-: hasBench(match,"Opp. ");
+const hasBarcaBench =
+    hasBench(match);
 
-const hasOppBench = homeMatch
-? hasBench(match,"Opp. ")
-: hasBench(match);
+const hasOppBench =
+    hasBench(match,"Opp. ");
 
-const barcaManager = homeMatch
-? (match["Manager"] || "-")
-: (match["Opp. Manager"] || "-");
+const barcaManager =
+    match["Manager"] || "-";
 
-const oppManager = homeMatch
-? (match["Opp. Manager"] || "-")
-: (match["Manager"] || "-");
+const oppManager =
+    match["Opp. Manager"] || "-";
 
 const hasBarcaLineup =
     hasStartingXI(match);
@@ -2564,13 +2560,8 @@ if(window.innerWidth <= 820){
 
     if(barca && opp){
 
-        if(homeMatch){
-            opp.classList.add("mobile-hidden");
+        opp.classList.add("mobile-hidden");
             barca.classList.remove("mobile-hidden");
-        }else{
-            barca.classList.add("mobile-hidden");
-            opp.classList.remove("mobile-hidden");
-        }
 
     }else if(barca){
 
