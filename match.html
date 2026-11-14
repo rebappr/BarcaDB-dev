@@ -2244,13 +2244,9 @@ if (canonical) {
     canonical.href = location.href;
 }
 
-const barcaTitle = homeMatch
-? "FC Barcelona"
-: (match["Opp. Team"] || "");
+const barcaTitle = "FC Barcelona";
 
-const oppTitle = homeMatch
-? (match["Opp. Team"] || "")
-: "FC Barcelona";
+const oppTitle = match["Opp. Team"] || "";
 
 const barcaPlayers = getPlayers(match, "", true);
 const oppPlayers = getPlayers(match, "Opp. ", false);
