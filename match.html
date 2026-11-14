@@ -2276,22 +2276,6 @@ const hasBarcaLineup =
 const hasOpponentLineup =
     hasStartingXI(match, "Opp. ");
 
-const leftTitle = homeMatch
-    ? "FC Barcelona"
-    : (match["Opp. Team"] || "");
-
-const rightTitle = homeMatch
-    ? (match["Opp. Team"] || "")
-    : "FC Barcelona";
-
-const leftPlayers = homeMatch
-    ? oppPlayers
-    : oppPlayers;
-
-const rightPlayers = homeMatch
-    ? barcaPlayers
-    : barcaPlayers;
-
 const timeline = getTimeline(match);
 
 const competition = String(match["Competition"] || "").trim();
@@ -2359,75 +2343,115 @@ const squadsHtml = `
 	
 	` : ""}
 
-   <div class="lineups">
+<div class="lineups">
 
-		${hasBarcaLineup ? `
-		
-		<div
-		    id="lineup-barca"
-		    class="team-card">
-		
-		    <h3>${escapeHtml(barcaTitle)}</h3>
-		
-		    ${barcaPlayers}
-		
-		    ${hasBarcaBench ? `
-		    <h4>Bench</h4>
-		    ${barcaBench}
-		    ` : ""}
-		
-		    <h4>Manager</h4>
-		
-		    <div class="player">
-		
-		        <a
-		            class="player-link"
-		            href="manager.html?name=${encodeURIComponent(barcaManager)}">
-		
-		            ${escapeHtml(barcaManager)}
-		
-		        </a>
-		
-		    </div>
-		
-		</div>
-		
-		` : ""}
+    ${homeMatch ? `
 
-       ${hasOpponentLineup ? `
+        <div id="lineup-barca" class="team-card">
 
-		<div
-		    id="lineup-opp"
-		    class="team-card">
-		
-		    <h3>${escapeHtml(oppTitle)}</h3>
-		
-		    ${oppPlayers}
-		
-		    ${hasOppBench ? `
-		    <h4>Bench</h4>
-		    ${oppBench}
-		    ` : ""}
-		
-		    <h4>Manager</h4>
-		
-		    <div class="player">
-		
-		        <a
-		            class="player-link"
-		            href="manager.html?name=${encodeURIComponent(oppManager)}">
-		
-		            ${escapeHtml(oppManager)}
-		
-		        </a>
-		
-		    </div>
-		
-		</div>
-		
-		` : ""}
+            <h3>FC Barcelona</h3>
 
-   </div>
+            ${barcaPlayers}
+
+            ${hasBarcaBench ? `
+            <h4>Bench</h4>
+            ${barcaBench}
+            ` : ""}
+
+            <h4>Manager</h4>
+
+            <div class="player">
+                <a
+                    class="player-link"
+                    href="manager.html?name=${encodeURIComponent(barcaManager)}">
+
+                    ${escapeHtml(barcaManager)}
+
+                </a>
+            </div>
+
+        </div>
+
+        <div id="lineup-opp" class="team-card">
+
+            <h3>${escapeHtml(oppTitle)}</h3>
+
+            ${oppPlayers}
+
+            ${hasOppBench ? `
+            <h4>Bench</h4>
+            ${oppBench}
+            ` : ""}
+
+            <h4>Manager</h4>
+
+            <div class="player">
+                <a
+                    class="player-link"
+                    href="manager.html?name=${encodeURIComponent(oppManager)}">
+
+                    ${escapeHtml(oppManager)}
+
+                </a>
+            </div>
+
+        </div>
+
+    ` : `
+
+        <div id="lineup-opp" class="team-card">
+
+            <h3>${escapeHtml(oppTitle)}</h3>
+
+            ${oppPlayers}
+
+            ${hasOppBench ? `
+            <h4>Bench</h4>
+            ${oppBench}
+            ` : ""}
+
+            <h4>Manager</h4>
+
+            <div class="player">
+                <a
+                    class="player-link"
+                    href="manager.html?name=${encodeURIComponent(oppManager)}">
+
+                    ${escapeHtml(oppManager)}
+
+                </a>
+            </div>
+
+        </div>
+
+        <div id="lineup-barca" class="team-card">
+
+            <h3>FC Barcelona</h3>
+
+            ${barcaPlayers}
+
+            ${hasBarcaBench ? `
+            <h4>Bench</h4>
+            ${barcaBench}
+            ` : ""}
+
+            <h4>Manager</h4>
+
+            <div class="player">
+                <a
+                    class="player-link"
+                    href="manager.html?name=${encodeURIComponent(barcaManager)}">
+
+                    ${escapeHtml(barcaManager)}
+
+                </a>
+            </div>
+
+        </div>
+
+    `}
+
+</div>
 
 </div>
 `;
