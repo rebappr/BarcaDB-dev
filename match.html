@@ -2252,21 +2252,17 @@ const oppTitle = homeMatch
 ? (match["Opp. Team"] || "")
 : "FC Barcelona";
 
-const barcaPlayers = homeMatch
-    ? getPlayers(match, "", true)
-    : getPlayers(match, "Opp. ", true);
+const barcaPlayers =
+    getPlayers(match, "", true);
 
-const oppPlayers = homeMatch
-    ? getPlayers(match, "Opp. ", false)
-    : getPlayers(match, "", false);
+const oppPlayers =
+    getPlayers(match, "Opp. ", false);
 
-const barcaBench = homeMatch
-    ? getBench(match, "", true)
-    : getBench(match, "Opp. ", true);
+const barcaBench =
+    getBench(match, "", true);
 
-const oppBench = homeMatch
-    ? getBench(match, "Opp. ", false)
-    : getBench(match, "", false);
+const oppBench =
+    getBench(match, "Opp. ", false);
 
 const hasBarcaBench = homeMatch
 ? hasBench(match)
@@ -2284,13 +2280,11 @@ const oppManager = homeMatch
 ? (match["Opp. Manager"] || "-")
 : (match["Manager"] || "-");
 
-const hasBarcaLineup = homeMatch
-    ? hasStartingXI(match)
-    : hasStartingXI(match, "Opp. ");
+const hasBarcaLineup =
+    hasStartingXI(match);
 
-const hasOpponentLineup = homeMatch
-    ? hasStartingXI(match, "Opp. ")
-    : hasStartingXI(match);
+const hasOpponentLineup =
+    hasStartingXI(match, "Opp. ");
 
 const timeline = getTimeline(match);
 
