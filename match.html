@@ -2384,24 +2384,46 @@ const squadsHtml = `
 	${hasBarcaLineup && hasOpponentLineup ? `
 	
 	<div class="lineup-tabs">
-	
-	    <button
-	        class="lineup-tab active"
-	        onclick="showLineup('barca')">
-	
-	        ${escapeHtml(barcaTitle)}
-	
-	    </button>
-	
-	    <button
-	        class="lineup-tab"
-	        onclick="showLineup('opp')">
-	
-	        ${escapeHtml(oppTitle)}
-	
-	    </button>
-	
-	</div>
+
+    ${homeMatch ? `
+
+        <button
+            class="lineup-tab active"
+            onclick="showLineup('barca')">
+
+            FC Barcelona
+
+        </button>
+
+        <button
+            class="lineup-tab"
+            onclick="showLineup('opp')">
+
+            ${escapeHtml(oppTitle)}
+
+        </button>
+
+    ` : `
+
+        <button
+            class="lineup-tab active"
+            onclick="showLineup('opp')">
+
+            ${escapeHtml(oppTitle)}
+
+        </button>
+
+        <button
+            class="lineup-tab"
+            onclick="showLineup('barca')">
+
+            FC Barcelona
+
+        </button>
+
+    `}
+
+</div>
 	
 	` : ""}
 
@@ -2560,10 +2582,19 @@ if(window.innerWidth <= 820){
 
     if(barca && opp){
 
-        opp.classList.add("mobile-hidden");
-            barca.classList.remove("mobile-hidden");
+    if(homeMatch){
 
-    }else if(barca){
+        opp.classList.add("mobile-hidden");
+        barca.classList.remove("mobile-hidden");
+
+    }else{
+
+        barca.classList.add("mobile-hidden");
+        opp.classList.remove("mobile-hidden");
+
+    }
+
+}else if(barca){
 
         barca.classList.remove("mobile-hidden");
 
