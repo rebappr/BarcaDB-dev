@@ -2564,17 +2564,20 @@ if(window.innerWidth <= 820){
 
     if(barca && opp){
 
-        // existujú oba line-upy
-        opp.classList.add("mobile-hidden");
+        if(homeMatch){
+            opp.classList.add("mobile-hidden");
+            barca.classList.remove("mobile-hidden");
+        }else{
+            barca.classList.add("mobile-hidden");
+            opp.classList.remove("mobile-hidden");
+        }
 
     }else if(barca){
 
-        // existuje iba jeden line-up
         barca.classList.remove("mobile-hidden");
 
     }else if(opp){
 
-        // existuje iba jeden line-up
         opp.classList.remove("mobile-hidden");
 
     }
