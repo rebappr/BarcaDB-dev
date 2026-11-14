@@ -1985,48 +1985,32 @@ return false;
 function showLineup(team){
 
     const barca =
-    document.getElementById("lineup-barca");
+        document.getElementById("lineup-barca");
 
     const opp =
-    document.getElementById("lineup-opp");
+        document.getElementById("lineup-opp");
 
-    const tabs =
-    document.querySelectorAll(".lineup-tab");
+    document
+        .querySelectorAll(".lineup-tab")
+        .forEach(tab => tab.classList.remove("active"));
 
-    tabs.forEach(tab =>
-        tab.classList.remove("active")
-    );
+    const activeButton =
+        document.querySelector(
+            `.lineup-tab[data-team="${team}"]`
+        );
+
+    activeButton?.classList.add("active");
 
     if(team === "barca"){
 
-        if(barca){
-            barca.classList.remove("mobile-hidden");
-        }
+        barca?.classList.remove("mobile-hidden");
+        opp?.classList.add("mobile-hidden");
 
-        if(opp){
-            opp.classList.add("mobile-hidden");
-        }
+    }else{
 
-        if(tabs[0]){
-            tabs[0].classList.add("active");
-        }
+        opp?.classList.remove("mobile-hidden");
+        barca?.classList.add("mobile-hidden");
 
-        return;
-
-    }
-
-    if(!opp){
-        return;
-    }
-
-    opp.classList.remove("mobile-hidden");
-
-    if(barca){
-        barca.classList.add("mobile-hidden");
-    }
-
-    if(tabs[1]){
-        tabs[1].classList.add("active");
     }
 
 }
