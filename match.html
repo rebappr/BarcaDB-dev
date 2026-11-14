@@ -401,6 +401,11 @@ border-bottom:1px solid var(--meta-border);
     font-size:12px;
 }
 
+.player-link-disabled{
+    cursor:default;
+    pointer-events:none;
+}
+
 .player-icons{
 margin-left:3px;
 }
@@ -1277,12 +1282,12 @@ function renderPlayerName(name, isBarcaPlayer = true){
     }
 
     if(!isBarcaPlayer){
-        return `
-            <span class="player-link">
-                ${escapeHtml(name)}
-            </span>
-        `;
-    }
+    return `
+        <span class="player-link player-link-disabled">
+            ${escapeHtml(name)}
+        </span>
+    `;
+}
 
     return `
         <a
@@ -1516,12 +1521,12 @@ function playerLink(name, isBarcaPlayer = true){
     }
 
     if(!isBarcaPlayer){
-        return `
-            <span class="player-link">
-                ${escapeHtml(name)}
-            </span>
-        `;
-    }
+    return `
+        <span class="player-link player-link-disabled">
+            ${escapeHtml(name)}
+        </span>
+    `;
+}
 
     return `
         <a
