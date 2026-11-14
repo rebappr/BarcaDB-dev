@@ -1391,7 +1391,7 @@ function getPlayerIcons(match, playerName, prefix="") {
     return events.map(e => e.icon).join(" ");
 }
 
-function getPlayers(match,prefix=""){
+function getPlayers(match,prefix="",isBarcaTeam=true){
 
 const captain = match[`${prefix}Captain`] || "";
 
@@ -1430,7 +1430,7 @@ html += `
                
                   ${renderPlayerName(
                       player,
-                      prefix !== "Opp. "
+                      isBarcaTeam
                   )}
                
                    ${
@@ -1452,7 +1452,7 @@ html += `
 return html;
 }
 
-function getBench(match, prefix="") {
+function getBench(match, prefix="", isBarcaTeam=true) {
 
     const subbedOn = [];
 
@@ -1490,7 +1490,7 @@ function getBench(match, prefix="") {
                   
                       ${renderPlayerName(
                             player,
-                            prefix !== "Opp. "
+                            isBarcaTeam
                         )}
                   
                       <span class="player-icons">
@@ -2248,20 +2248,20 @@ const oppTitle = homeMatch
 : "FC Barcelona";
 
 const barcaPlayers = homeMatch
-? getPlayers(match)
-: getPlayers(match,"Opp. ");
+    ? getPlayers(match, "", true)
+    : getPlayers(match, "Opp. ", true);
 
 const oppPlayers = homeMatch
-? getPlayers(match,"Opp. ")
-: getPlayers(match);
+    ? getPlayers(match, "Opp. ", false)
+    : getPlayers(match, "", false);
 
 const barcaBench = homeMatch
-? getBench(match)
-: getBench(match,"Opp. ");
+    ? getBench(match, "", true)
+    : getBench(match, "Opp. ", true);
 
 const oppBench = homeMatch
-? getBench(match,"Opp. ")
-: getBench(match);
+    ? getBench(match, "Opp. ", false)
+    : getBench(match, "", false);
 
 const hasBarcaBench = homeMatch
 ? hasBench(match)
@@ -2279,11 +2279,13 @@ const oppManager = homeMatch
 ? (match["Opp. Manager"] || "-")
 : (match["Manager"] || "-");
 
-const hasBarcaLineup =
-    hasStartingXI(match);
+const hasBarcaLineup = homeMatch
+    ? hasStartingXI(match)
+    : hasStartingXI(match, "Opp. ");
 
-const hasOpponentLineup =
-    hasStartingXI(match, "Opp. ");
+const hasOpponentLineup = homeMatch
+    ? hasStartingXI(match, "Opp. ")
+    : hasStartingXI(match);
 
 const timeline = getTimeline(match);
 
