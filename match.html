@@ -2367,12 +2367,13 @@ const squadsHtml = `
 
 	${hasBarcaLineup && hasOpponentLineup ? `
 	
-	<div class="lineup-tabs">
+<div class="lineup-tabs">
 
     ${homeMatch ? `
 
         <button
             class="lineup-tab active"
+            data-team="barca"
             onclick="showLineup('barca')">
 
             FC Barcelona
@@ -2381,6 +2382,7 @@ const squadsHtml = `
 
         <button
             class="lineup-tab"
+            data-team="opp"
             onclick="showLineup('opp')">
 
             ${escapeHtml(oppTitle)}
@@ -2391,6 +2393,7 @@ const squadsHtml = `
 
         <button
             class="lineup-tab active"
+            data-team="opp"
             onclick="showLineup('opp')">
 
             ${escapeHtml(oppTitle)}
@@ -2399,6 +2402,7 @@ const squadsHtml = `
 
         <button
             class="lineup-tab"
+            data-team="barca"
             onclick="showLineup('barca')">
 
             FC Barcelona
