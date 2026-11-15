@@ -26,8 +26,10 @@ function initPersonSearch() {
 
     });
 
-    // Barcelona managers + opponents
-    allMatches.forEach(match => {
+    const matchesSource =
+        window.allMatchesHistory || allMatches;
+    
+    matchesSource.forEach(match => {
 
         if (match.Manager) {
 
