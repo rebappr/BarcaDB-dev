@@ -1239,6 +1239,8 @@ Promise.all([
 ])
 .then(([historyData, currentData]) => {
 
+	window.allMatchesHistory = historyData;
+
     const latestSeason =
         [...new Set(
             historyData.map(m => m.Season)
