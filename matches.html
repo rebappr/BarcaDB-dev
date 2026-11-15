@@ -881,6 +881,9 @@ function getClubLogo(team){
         + ".png";
 }
 
+window.allMatches = [];
+window.allPlayers = [];
+
 let allMatches = [];
 let matchesView = "all";
 
@@ -1247,6 +1250,8 @@ Promise.all([
         historyData.filter(
             m => m.Season === latestSeason
         );
+      
+      window.allMatches = allMatches;
 
     function normalizeName(name){
 
@@ -1313,7 +1318,6 @@ Promise.all([
 
     renderMatchesFilters();
     renderMatches();
-    initPersonSearch();
 
 })
 .catch(error =>
