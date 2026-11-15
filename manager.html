@@ -2274,7 +2274,8 @@ function renderManager(managerName){
 	const age =
 	    manager?.["Date of Birth"]
 	        ? calculateAge(
-	            manager["Date of Birth"]
+	            manager["Date of Birth"],
+	            manager?.["Death Date"] || null
 	          )
 	        : "-";
 	
