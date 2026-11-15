@@ -16,7 +16,7 @@
 
 <title>FC Barcelona 2026/27 Matches | Fixtures, Results & Schedule | Barça Database</title>
 
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 
 <meta name="description"
       content="Follow FC Barcelona's current season with all fixtures, results, competitions, opponents and match statistics.">
@@ -881,10 +881,9 @@ function getClubLogo(team){
         + ".png";
 }
 
-window.allMatches = [];
-window.allPlayers = [];
-
+let allMatches = [];
 let matchesView = "all";
+
 let selectedCompetition = "All";
 let selectedVenue = "All";
 
@@ -1233,13 +1232,9 @@ if(
 
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
-    fetch("data/current-season.json").then(r => r.json()),
-    fetch("data/players.json").then(r => r.json())
+    fetch("data/current-season.json").then(r => r.json())
 ])
-
-.then(([historyData, currentData, playersData]) => {
-
-    allPlayers = playersData;
+.then(([historyData, currentData]) => {
 
     const latestSeason =
         [...new Set(
@@ -1253,10 +1248,72 @@ Promise.all([
             m => m.Season === latestSeason
         );
 
-    // zvyšok kódu...
+    function normalizeName(name){
+
+        return String(name || "")
+            .toLowerCase()
+            .replace(/\./g,"")
+            .replace(/\bfc\b/g,"")
+            .replace(/\bcf\b/g,"")
+            .replace(/\s+/g," ")
+            .trim();
+
+    }
+
+    currentData.forEach(currentMatch => {
+
+        const match =
+            allMatches.find(m =>
+
+                m.Date === currentMatch.Date &&
+                m.Competition === currentMatch.Competition &&
+                m["Home/Away"] === currentMatch["Home/Away"] &&
+                normalizeName(m["Opp. Team"]) ===
+                normalizeName(currentMatch["Opp. Team"])
+
+            );
+
+        if(match){
+
+            match.Result =
+                currentMatch.Result;
+
+        }
+
+    });
+
+    allMatches.forEach(match => {
+
+        if(
+            !match.Result ||
+            match.Result === "-:-" ||
+            !match.Result.includes(":")
+        ){
+            return;
+        }
+
+        const [homeGoals, awayGoals] =
+            match.Result.split(":").map(Number);
+
+        if(match["Home/Away"] === "Home"){
+
+            match["Result type"] =
+                homeGoals > awayGoals ? "W" :
+                homeGoals < awayGoals ? "L" : "D";
+
+        }else{
+
+            match["Result type"] =
+                awayGoals > homeGoals ? "W" :
+                awayGoals < homeGoals ? "L" : "D";
+
+        }
+
+    });
 
     renderMatchesFilters();
     renderMatches();
+    initPersonSearch();
 
 })
 .catch(error =>
@@ -1270,4 +1327,3 @@ Promise.all([
 
 </body>
 </html>
-
