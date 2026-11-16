@@ -1300,6 +1300,19 @@ function playerHtml(name){
     `;
 }
 
+function managerHtml(name){
+    if(getManagerClub(name) === "real-madrid"){
+        return name;
+    }
+    return `
+        <a
+            href="manager.html?name=${encodeURIComponent(name)}"
+            class="player-link">
+            ${name}
+        </a>
+    `;
+}
+
 function normalizeName(name) {
 
     return String(name || "")
@@ -1976,13 +1989,7 @@ function renderClasicoRecords(){
 						        class="record-person-logo"
 						        alt="">
 						
-						    <a
-						        href="manager.html?name=${encodeURIComponent(name)}"
-						        class="player-link">
-						
-						        ${name}
-						
-						    </a>
+						    ${managerHtml(name)}
 						
 						</span>
 						
@@ -2016,13 +2023,7 @@ function renderClasicoRecords(){
 						        class="record-person-logo"
 						        alt="">
 						
-						    <a
-						        href="manager.html?name=${encodeURIComponent(name)}"
-						        class="player-link">
-						
-						        ${name}
-						
-						    </a>
+						    ${managerHtml(name)}
 						
 						</span>
 						
