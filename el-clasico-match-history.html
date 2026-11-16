@@ -1573,6 +1573,34 @@ clasicos.forEach(match => {
 
 }
 
+function playerLink(name, club){
+
+    if(club === "madrid"){
+        return name;
+    }
+
+    return `
+        <a class="player-link"
+           href="player.html?name=${encodeURIComponent(name)}">
+            ${name}
+        </a>
+    `;
+}
+
+function managerLink(name, club){
+
+    if(club === "madrid"){
+        return name;
+    }
+
+    return `
+        <a class="player-link"
+           href="manager.html?name=${encodeURIComponent(name)}">
+            ${name}
+        </a>
+    `;
+}
+
 function renderTopScorers(){
 
     const scorers = {};
@@ -1639,10 +1667,8 @@ for(let i = 1; i <= 12; i++){
                 <div class="scorer-row">
 
                     <div class="scorer-name">
-                        <a class="player-link" href="player.html?name=${encodeURIComponent(name)}">
-                            ${name}
-                        </a>
-                    </div>
+					    ${playerLink(name, scorerClubs[name])}
+					</div>
 
                     <div class="scorer-goals">
                         ${goals}
@@ -1738,10 +1764,8 @@ function renderTopAppearances(){
                 <div class="scorer-row">
 
                     <div class="scorer-name">
-                        <a class="player-link" href="player.html?name=${encodeURIComponent(name)}">
-                            ${name}
-                        </a>
-                    </div>
+					    ${playerLink(name, scorerClubs[name])}
+					</div>
 
                     <div class="scorer-goals">
                         ${apps}
@@ -1836,10 +1860,8 @@ getFilteredClasicos().forEach(match => {
                 <div class="scorer-row">
 
                     <div class="scorer-name">
-                        <a class="player-link" href="manager.html?name=${encodeURIComponent(name)}">
-                            ${name}
-                        </a>
-                    </div>
+					    ${managerLink(name, managerClubs[name])}
+					</div>
 
                     <div class="scorer-goals">
                         ${matches}
@@ -1942,10 +1964,8 @@ getFilteredClasicos().forEach(match => {
                 <div class="scorer-row">
 
                     <div class="scorer-name">
-                        <a class="player-link" href="manager.html?name=${encodeURIComponent(name)}">
-                            ${name}
-                        </a>
-                    </div>
+					    ${managerLink(name, managerClubs[name])}
+					</div>
 
                     <div class="scorer-goals">
                         ${winCount}
@@ -1955,15 +1975,14 @@ getFilteredClasicos().forEach(match => {
 
                 <div class="scorer-bar">
 
-<div
-    class="scorer-fill ${
-        managerClubs[name] === "madrid"
-        ? "madrid-scorer"
-        : "barca-scorer"
-    }"
-    style="width:${width}%">
-</div>
-
+					<div
+					    class="scorer-fill ${
+					        managerClubs[name] === "madrid"
+					        ? "madrid-scorer"
+					        : "barca-scorer"
+					    }"
+					    style="width:${width}%">
+					</div>
 
                 </div>
 
