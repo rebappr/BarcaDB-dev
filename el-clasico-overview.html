@@ -1061,8 +1061,20 @@ color:var(--muted);
 		
 		</section>
 
+		<section class="hero-card">
+		
+		    <h2>Why El Clásico Matters</h2>
+		
+		    <p>
+		        <strong>Barcelona</strong> fans often remember the rivalry through iconic performances and footballing ideals: Cruyff's revolution, Guardiola's tiki-taka, and Messi's genius. 
+				<strong>Real Madrid</strong> fans often emphasize victories, records, European dominance, and the club's ability to respond to Barcelona's greatest generations. 
+				Together, these contrasting perspectives are what make El Clásico widely regarded as the most famous club rivalry in world football.
+		    </p>
+		
+		</section>
+
 		<div class="widget-title">
-		    Last El Clásico
+		    Most Recent El Clásico
 		</div>
 		
 		<div class="widget-card">
@@ -1541,28 +1553,6 @@ function renderClasicoFacts(){
                         ${highestScoring?.competition || ""}
                         •
                         ${highestScoring?.result || "-"}
-
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="fact-item">
-
-                <div class="fact-label">
-                    Most Recent Clásico
-                </div>
-
-                <div class="fact-value">
-
-                    <a href="match.html?id=${latestMatch?.ID || ""}">
-
-                        ${latestMatch?.Date || ""}
-                        •
-                        ${latestMatch?.Competition || ""}
-                        •
-                        ${latestMatch?.Result || "-"}
 
                     </a>
 
