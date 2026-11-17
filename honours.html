@@ -67,16 +67,10 @@
 <style>
 
 .dashboard{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:6px;
-}
-
-.left-column,
-.right-column{
-display:flex;
-flex-direction:column;
-gap:8px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    width:100%;
 }
 
 .hero-card{
@@ -143,20 +137,6 @@ gap:8px;
 display:flex;
 flex-direction:column;
 gap:0;
-}
-
-.left-panel,
-.right-panel{
-flex:none !important;
-width:100% !important;
-min-width:0;
-max-width:100%;
-margin:0;
-}
-
-.right-panel{
-position:static !important;
-top:auto;
 }
 
 .container{
@@ -347,8 +327,6 @@ grid-template-columns:1fr;
 
 <div class="dashboard">
 
-    <div class="left-column">
-
         <div class="widget-title">
             FC Barcelona Honours
         </div>
@@ -383,10 +361,6 @@ grid-template-columns:1fr;
 
     </div>
 
-</div>
-
-</div> <!-- left-column -->
-</div> <!-- right-column -->
 </div> <!-- dashboard -->
 </div> <!-- container -->
 
@@ -394,13 +368,6 @@ grid-template-columns:1fr;
 </div>
 </div>
 
-<script>
-
-document.addEventListener("DOMContentLoaded", () => {
-    renderHonours();
-});
-
-</script>
 <script src="scripts/search.js"></script>
 <script src="scripts/sidebar.js"></script>
 <script src="scripts/theme.js"></script>
