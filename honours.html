@@ -132,45 +132,14 @@
     gap:12px;
 }
 
-.summary-card{
-    background:var(--card-bg);
-    border:1px solid var(--card-border);
-    border-radius:20px;
-    padding:20px;
-    text-align:center;
-    transition:.2s;
+.summary-box.trophy{
+    background:rgba(0,77,152,.08);
+    border:1px solid rgba(0,77,152,.25);
+    color:var(--barca-blue);
 }
 
-.summary-card:hover{
-    transform:translateY(-2px);
-    border-color:var(--barca-blue);
-}
-
-.summary-number{
-    display:block;
-    font-size:34px;
-    font-weight:800;
-    line-height:1;
-    margin-bottom:8px;
-
-    background:linear-gradient(
-        135deg,
-        var(--barca-blue),
-        var(--barca-red)
-    );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.summary-label{
-    display:block;
-    font-size:13px;
-    font-weight:700;
-    line-height:1.4;
-    color:var(--muted);
-    text-transform:uppercase;
+.summary-box.trophy b{
+    color:var(--barca-blue);
 }
 
 @media(max-width:820px){
@@ -379,55 +348,35 @@ grid-template-columns:1fr;
             FC Barcelona Honours
         </div>
 
-			<div class="titles-summary">
-			
-			    <div class="summary-card">
-			        <span class="summary-number">29</span>
-			        <span class="summary-label">La Liga</span>
-			    </div>
-			
-			    <div class="summary-card">
-			        <span class="summary-number">32</span>
-			        <span class="summary-label">Copa del Rey</span>
-			    </div>
-			
-			    <div class="summary-card">
-			        <span class="summary-number">16</span>
-			        <span class="summary-label">Spanish Super Cup</span>
-			    </div>
-			
-			    <div class="summary-card">
-			        <span class="summary-number">2</span>
-			        <span class="summary-label">League Cup</span>
-			    </div>
-			
-			    <div class="summary-card">
-			        <span class="summary-number">5</span>
-			        <span class="summary-label">Champions League</span>
-			    </div>
-			
-			    <div class="summary-card">
-			        <span class="summary-number">5</span>
-			        <span class="summary-label">UEFA Super Cup</span>
-			    </div>
-			
-			    <div class="summary-card">
-			        <span class="summary-number">4</span>
-			        <span class="summary-label">Cup Winners' Cup</span>
-			    </div>
-			
-			    <div class="summary-card">
-			        <span class="summary-number">3</span>
-			        <span class="summary-label">Fairs Cup</span>
-			    </div>
-			
-			    <div class="summary-card">
-			        <span class="summary-number">3</span>
-			        <span class="summary-label">Club World Cup</span>
-			    </div>
-			
-			</div>
-
+		<div class="summary-grid">
+		
+		    <div class="summary-box trophy">
+		        <b>29</b>
+		        La Liga
+		    </div>
+		
+		    <div class="summary-box trophy">
+		        <b>32</b>
+		        Copa del Rey
+		    </div>
+		
+		    <div class="summary-box trophy">
+		        <b>16</b>
+		        Super Cup
+		    </div>
+		
+		    <div class="summary-box trophy">
+		        <b>5</b>
+		        Champions League
+		    </div>
+		
+		    <div class="summary-box trophy">
+		        <b>3</b>
+		        Club World Cup
+		    </div>
+		
+		</div>
+	
         <div class="widget-title">
             Domestic Titles
         </div>
