@@ -125,6 +125,54 @@
     gap:8px;
 }
 
+.titles-summary{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+}
+
+.summary-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    transition:.2s;
+}
+
+.summary-card:hover{
+    transform:translateY(-2px);
+    border-color:var(--barca-blue);
+}
+
+.summary-number{
+    display:block;
+    font-size:34px;
+    font-weight:800;
+    line-height:1;
+    margin-bottom:8px;
+
+    background:linear-gradient(
+        135deg,
+        var(--barca-blue),
+        var(--barca-red)
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.summary-label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    line-height:1.4;
+    color:var(--muted);
+    text-transform:uppercase;
+}
+
 @media(max-width:820px){
 
 .flick-table th:not(:first-child),
