@@ -206,7 +206,31 @@
     color:#004D98;
 }
 
+.competition-cell{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.competition-cell img{
+    width:20px;
+    height:20px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+.competition-cell span{
+    line-height:1.2;
+}
+
 @media(max-width:820px){
+
+	.competition-cell img{
+	    width:18px;
+	    height:18px;
+	    object-fit:contain;
+	    flex-shrink:0;
+	}
 
     .summary-grid{
         grid-template-columns:repeat(2,1fr);
@@ -219,6 +243,11 @@
     .summary-box b{
         font-size:18px;
     }
+
+	.honours-table td:first-child{
+	    font-weight:600;
+	    white-space:nowrap;
+	}
 
     .honours-table th:nth-child(1),
     .honours-table td:nth-child(1){
