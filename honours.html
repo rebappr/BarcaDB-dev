@@ -154,6 +154,54 @@
     color:var(--number);
 }
 
+.honours-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.honours-table th{
+    padding:10px 8px;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    text-align:left;
+    border-bottom:1px solid var(--meta-border);
+}
+
+.honours-table td{
+    padding:12px 8px;
+    border-bottom:1px solid var(--meta-border);
+    vertical-align:top;
+    line-height:1.6;
+    font-size:13px;
+}
+
+.honours-table td:nth-child(1){
+    width:220px;
+    font-weight:700;
+}
+
+.honours-table td:nth-child(2){
+    width:80px;
+    text-align:center;
+    font-weight:800;
+    color:var(--number);
+}
+
+.honour-badge{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.honour-badge.domestic{
+    background:rgba(0,77,152,.1);
+    border:1px solid rgba(0,77,152,.2);
+    color:#004D98;
+}
+
 @media(max-width:820px){
 
     .summary-grid{
@@ -426,13 +474,66 @@ grid-template-columns:1fr;
 		
 		</div>
 	
-        <div class="widget-title">
-            Domestic Titles
-        </div>
-
-        <div class="widget-card">
-            Domestic titles table
-        </div>
+		<div class="widget-title">
+		    Domestic Titles
+		</div>
+		
+		<div class="widget-card">
+		
+		    <table class="honours-table">
+		
+		        <thead>
+		            <tr>
+					    <td>La Liga</td>
+					    <td>29</td>
+					    <td>
+					        1928/29, 1944/45, 1947/48, 1948/49, 1951/52,
+					        1952/53, 1958/59, 1959/60, 1973/74, 1984/85,
+					        1990/91, 1991/92, 1992/93, 1993/94, 1997/98,
+					        1998/99, 2004/05, 2005/06, 2008/09, 2009/10,
+					        2010/11, 2012/13, 2014/15, 2015/16, 2017/18,
+					        2018/19, 2022/23, 2024/25, 2025/26
+					    </td>
+					</tr>
+					
+					<tr>
+					    <td>Copa del Rey</td>
+					    <td>32</td>
+					    <td>
+					        1909/10, 1911/12, 1912/13, 1919/20, 1921/22,
+					        1924/25, 1925/26, 1927/28, 1941/42, 1950/51,
+					        1951/52, 1952/53, 1956/57, 1958/59, 1962/63,
+					        1967/68, 1970/71, 1977/78, 1980/81, 1982/83,
+					        1987/88, 1989/90, 1996/97, 1997/98, 2008/09,
+					        2011/12, 2014/15, 2015/16, 2016/17, 2017/18,
+					        2020/21, 2024/25
+					    </td>
+					</tr>
+					
+					<tr>
+					    <td>Supercopa de España</td>
+					    <td>16</td>
+					    <td>
+					        1983/84, 1991/92, 1992/93, 1994/95, 1996/97,
+					        2005/06, 2006/07, 2009/10, 2010/11, 2011/12,
+					        2013/14, 2016/17, 2018/19, 2022/23, 2024/25,
+					        2025/26
+					    </td>
+					</tr>
+					
+					<tr>
+					    <td>Copa de la Liga</td>
+					    <td>2</td>
+					    <td>
+					        1982/83, 1985/86
+					    </td>
+					</tr>
+		
+		        </tbody>
+		
+		    </table>
+		
+		</div>
 
         <div class="widget-title">
             European Titles
