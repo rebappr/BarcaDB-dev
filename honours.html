@@ -499,7 +499,7 @@ grid-template-columns:1fr;
 		
 		        <tbody>
 		            <tr>
-					    <td>La Liga</td>
+					    <td>${competitionCell("La Liga")}</td>
 					    <td>29</td>
 					    <td>
 					        1928/29, 1944/45, 1947/48, 1948/49, 1951/52,
@@ -512,7 +512,7 @@ grid-template-columns:1fr;
 					</tr>
 					
 					<tr>
-					    <td>Copa del Rey</td>
+					    <td>${competitionCell("Copa del Rey")}</td>
 					    <td>32</td>
 					    <td>
 					        1909/10, 1911/12, 1912/13, 1919/20, 1921/22,
@@ -526,7 +526,7 @@ grid-template-columns:1fr;
 					</tr>
 					
 					<tr>
-					    <td>Supercopa de España</td>
+					    <td>${competitionCell("Supercopa de España")}</td>
 					    <td>16</td>
 					    <td>
 					        1983/84, 1991/92, 1992/93, 1994/95, 1996/97,
@@ -537,7 +537,7 @@ grid-template-columns:1fr;
 					</tr>
 					
 					<tr>
-					    <td>Copa de la Liga</td>
+					    <td>${competitionCell("Copa de la Liga")}</td>
 					    <td>2</td>
 					    <td>
 					        1982/83, 1985/86
@@ -561,7 +561,7 @@ grid-template-columns:1fr;
 				<tbody>
 				
 				<tr>
-				    <td>UEFA Champions League</td>
+				    <td>${competitionCell("UEFA Champions League")}</td>
 				    <td>5</td>
 				    <td>
 				        1991/92, 2005/06, 2008/09,
@@ -570,7 +570,7 @@ grid-template-columns:1fr;
 				</tr>
 				
 				<tr>
-				    <td>UEFA Super Cup</td>
+				    <td>${competitionCell("UEFA Super Cup")}</td>
 				    <td>5</td>
 				    <td>
 				        1992/93, 1997/98,
@@ -580,7 +580,7 @@ grid-template-columns:1fr;
 				</tr>
 				
 				<tr>
-				    <td>Cup Winners' Cup</td>
+				    <td>${competitionCell("Cup Winners' Cup")}</td>
 				    <td>4</td>
 				    <td>
 				        1978/79, 1981/82,
@@ -589,7 +589,7 @@ grid-template-columns:1fr;
 				</tr>
 				
 				<tr>
-				    <td>Inter-Cities Fairs Cup</td>
+				    <td>${competitionCell("Inter-Cities Fairs Cup")}</td>
 				    <td>3</td>
 				    <td>
 				        1957/58, 1959/60,
@@ -614,7 +614,7 @@ grid-template-columns:1fr;
 				<tbody>
 				
 				<tr>
-				    <td>FIFA Club World Cup</td>
+				    <td>${competitionCell("FIFA Club World Cup")}</td>
 				    <td>3</td>
 				    <td>
 				       	2009/10, 2011/12,
@@ -638,6 +638,50 @@ grid-template-columns:1fr;
 </div>
 </div>
 
+<script src="data/competitionMap.js"></script>
+<script>
+
+const competitionLogos = {
+"Copa del Rey": "copa.png",
+"Copa de la Liga": "copa-liga.png",
+"Copa de la Coronación": "copa.png",
+"FIFA Club World Cup": "fifa.png",
+"Qualification for La Liga": "laliga.png",
+"La Liga": "laliga.png",
+"Supercopa de España": "supercopa.png",
+"UEFA Champions League": "ucl.png",
+"Cup Winners' Cup": "cwc.png",
+"UEFA Europa League": "europa.png",
+"UEFA Super Cup": "uefa-supercup.png",
+"UEFA Cup": "uefa-cup.png",
+"Inter-Cities Fairs Cup": "inter-cup.png",
+"European Cup": "ec.png"
+};
+
+function competitionCell(name){
+
+    const logo = competitionMap[name];
+
+    return `
+
+        <div class="competition-cell">
+
+            ${
+                logo
+                ? `<img
+                      src="logos/${logo}"
+                      alt="${name}">`
+                : ""
+            }
+
+            <span>${name}</span>
+
+        </div>
+
+    `;
+}
+	
+</script>
 <script src="scripts/search.js"></script>
 <script src="scripts/sidebar.js"></script>
 <script src="scripts/theme.js"></script>
