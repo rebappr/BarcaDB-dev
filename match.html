@@ -2445,7 +2445,7 @@ const squadsHtml = `
 const h2hHtml =
 getH2H(match, allMatches);
 
-const videoHtml = match.YouTubeVideo ? `
+const videoHtml = match.Video ? `
 
 <div id="video-section" class="match-section">
 
@@ -2545,7 +2545,7 @@ document.getElementById("app").innerHTML = `
            H2H
        </button>
 
-	    ${match.YouTubeVideo ? `
+	    ${match.Video ? `
 	    <button
 	        class="match-tab"
 	        data-section="video-section"
