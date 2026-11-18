@@ -743,8 +743,7 @@ display:none;
 }
 
 .mobile-match-stats{
- display:block;
- grid-column:1 / -1;
+ display:none;
 }
 
 .career-summary{
@@ -1081,14 +1080,9 @@ display:none;
   display:none;
  }
 
- .player-match > div:nth-child(6),
- .player-match > div:nth-child(7),
- .player-match > div:nth-child(8),
- .player-match > div:nth-child(9),
- .player-match > div:nth-child(10),
- .player-match > div:nth-child(11){
-  display:none;
- }
+.player-match > div:nth-child(n+6):not(.mobile-match-stats){
+ display:none;
+}
 
  /* mobil stats */
  .mobile-match-stats{
