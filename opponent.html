@@ -454,21 +454,29 @@ flex-shrink:0;
  gap:24px;
 }
 
-.season-filters .filter-section{
+.season-filters .filter-section:first-child{
  flex:1;
  min-width:0;
 }
 
+.season-filters .filter-section:last-child{
+ flex:0 0 150px;
+}
+
 .matches-view-switch{
  display:flex;
- flex-wrap:nowrap;
+ flex-wrap:wrap;
  gap:6px;
+}
 
- overflow-x:auto;
- overflow-y:hidden;
+.matches-view-switch{
+ display:flex;
+ flex-wrap:wrap;
+ gap:6px;
+}
 
- scrollbar-width:none;
- -webkit-overflow-scrolling:touch;
+.venue-switch{
+ flex-wrap:nowrap;
 }
 
 .matches-view-switch::-webkit-scrollbar{
@@ -1212,10 +1220,10 @@ const goalsAgainst = matches.reduce(
 	    Competition
 	   </div>
 	
-	   <div
-	    id="competitionSwitch"
-	    class="matches-view-switch">
-	   </div>
+	<div
+	 id="competitionSwitch"
+	 class="matches-view-switch">
+	</div>
 	
 	  </div>
 	
@@ -1225,7 +1233,7 @@ const goalsAgainst = matches.reduce(
 	    Venue
 	   </div>
 	
-	   <div class="matches-view-switch">
+	   <div class="matches-view-switch venue-switch">
 	
 	    <button
 	     class="active"
