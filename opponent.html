@@ -773,6 +773,9 @@ window.allPlayers = [];
 let opponentSortColumn = "total";
 let opponentSortDirection = "desc";
 
+let selectedCompetition = "All";
+let selectedVenue = "All";
+
 Promise.all([
     fetch("data/data.json").then(r => r.json()),
     fetch("data/players.json").then(r => r.json())
@@ -1103,13 +1106,63 @@ const goalsAgainst = matches.reduce(
 	
 	`;
 
-    document.getElementById("opponentProfile").innerHTML = `
-
-	<div class="widget-title">
-	    Overview
-	</div>
+	document.getElementById("opponentProfile").innerHTML = `
 	
-    <div class="summary-grid">
+	 <div class="filters season-filters">
+	
+	  <div class="filter-section">
+	
+	   <div class="filter-label">
+	    Competition
+	   </div>
+	
+	   <div
+	    id="competitionSwitch"
+	    class="matches-view-switch">
+	   </div>
+	
+	  </div>
+	
+	  <div class="filter-section">
+	
+	   <div class="filter-label">
+	    Venue
+	   </div>
+	
+	   <div class="matches-view-switch">
+	
+	    <button
+	     class="active"
+	     data-venue="All"
+	     onclick="setVenueFilter('All')">
+	     All
+	    </button>
+	
+	    <button
+	     data-venue="Home"
+	     onclick="setVenueFilter('Home')">
+	     Home
+	    </button>
+	
+	    <button
+	     data-venue="Away"
+	     onclick="setVenueFilter('Away')">
+	     Away
+	    </button>
+	
+	   </div>
+	
+	  </div>
+	
+	 </div>
+	
+	 <div
+	  class="widget-title"
+	  id="overviewTitle">
+	  Overview
+	 </div>
+	
+	 <div class="summary-grid">
 
         <div class="summary-box matches">
             <b>${matches.length}</b>
@@ -1163,6 +1216,9 @@ const goalsAgainst = matches.reduce(
 
 	updateMatchesLimitFilter();
 	updateOpponentMatches();
+
+	renderOpponentFilters();
+	updateOpponentTitles();
 
 }
 
