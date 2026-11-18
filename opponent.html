@@ -1231,24 +1231,26 @@ const goalsAgainst = matches.reduce(
 	
 	   <div class="matches-view-switch venue-switch">
 	
-	    <button
-	     class="active"
-	     data-venue="All"
-	     onclick="setVenueFilter('All')">
-	     All
-	    </button>
-	
-	    <button
-	     data-venue="Home"
-	     onclick="setVenueFilter('Home')">
-	     Home
-	    </button>
-	
-	    <button
-	     data-venue="Away"
-	     onclick="setVenueFilter('Away')">
-	     Away
-	    </button>
+		<button
+		 class="${selectedVenue === 'All' ? 'active' : ''}"
+		 data-venue="All"
+		 onclick="setVenueFilter('All')">
+		 All
+		</button>
+		
+		<button
+		 class="${selectedVenue === 'Home' ? 'active' : ''}"
+		 data-venue="Home"
+		 onclick="setVenueFilter('Home')">
+		 Home
+		</button>
+		
+		<button
+		 class="${selectedVenue === 'Away' ? 'active' : ''}"
+		 data-venue="Away"
+		 onclick="setVenueFilter('Away')">
+		 Away
+		</button>
 	
 	   </div>
 	
