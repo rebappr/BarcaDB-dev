@@ -1287,7 +1287,7 @@ function updateMatchesLimitFilter(){
   select.value = currentValue;
  }else{
   select.value =
-   total > 10 ? "10" : "all";
+   total >= 20 ? "10" : "all";
  }
 
 }
