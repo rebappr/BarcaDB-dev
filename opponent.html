@@ -1532,27 +1532,27 @@ function renderOpponentFilters(){
 
  </button>
 
- ${competitions.map(comp => `
-
- <button
-  data-competition="${comp}"
-  class="${
-   selectedCompetition === comp
-   ? "active"
-   : ""
-  }"
-  onclick="setCompetitionFilter('${comp}')">
-
-  ${
-   comp
-   .replace("UEFA Champions League","UCL")
-   .replace("Copa del Rey","Copa")
-   .replace("Supercopa de España","Supercopa")
-  }
-
- </button>
-
- `).join("")}
+	${competitions.map(comp => `
+	
+	<button
+	 data-competition="${comp}"
+	 class="${
+	  selectedCompetition === comp
+	  ? "active"
+	  : ""
+	 }"
+	 onclick='setCompetitionFilter("${comp}")'>
+	
+	 ${
+	  comp
+	  .replace("UEFA Champions League","UCL")
+	  .replace("Copa del Rey","Copa")
+	  .replace("Supercopa de España","Supercopa")
+	 }
+	
+	</button>
+	
+	`).join("")}
  `;
 }
 
