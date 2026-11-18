@@ -1543,14 +1543,20 @@ function renderOpponentFilters(){
 	 }"
 	 onclick='setCompetitionFilter("${comp}")'>
 	
-	 ${
-	  comp
-	  .replace("UEFA Champions League","UCL")
-	  .replace("Copa del Rey","Copa")
-	  .replace("Copa de la Coronación","Coronación")
-	  .replace("Supercopa de España","Supercopa")
-	  .replace("Inter-Cities Fairs Cup","Fairs Cup")
-	  .replace("Cup Winners' Cup","Winners' Cup")
+	${
+	 comp
+	 .replace("UEFA Champions League","UCL")
+	 .replace("UEFA Europa League","UEL")
+	 .replace("UEFA Super Cup","Super Cup")
+	 .replace("Supercopa de España","Supercopa")
+	 .replace("Copa del Rey","Copa")
+	 .replace("Copa de la Liga","League Cup")
+	 .replace("Cup Winners' Cup","CWC")
+	 .replace("Inter-Cities Fairs Cup","Fairs Cup")
+	 .replace("European Cup","European Cup")
+	 .replace("FIFA Club World Cup","Club WC")
+	 .replace("Qualification for La Liga","La Liga Qual.")
+     .replace("Copa de la Coronación","Coronación")
 	 }
 	
 	</button>
