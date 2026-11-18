@@ -2591,23 +2591,25 @@ document.getElementById("app").innerHTML = `
 
    <div class="match-nav">
 	
-	<button
-	 class="match-nav-btn"
-	 ${!prevMatch ? "disabled" : ""}
-	 onclick="location.href='match.html?id=${prevMatch.ID}'">
-	
-	◀ ${prevMatch?.["Opp. Team"] || "Previous"}
-	
-	</button>
-	
-	<button
-	 class="match-nav-btn"
-	 ${!nextMatch ? "disabled" : ""}
-	 onclick="location.href='match.html?id=${nextMatch.ID}'">
-	
-	${nextMatch?.["Opp. Team"] || "Next"} ▶
-	
-	</button>
+		<button
+		 class="match-nav-btn"
+		 ${!prevMatch ? "disabled" : ""}
+		 onclick="${prevMatch ? `location.href='match.html?id=${prevMatch.ID}'` : ''}">
+		
+		◀ Previous Game vs
+		${prevMatch?.["Opp. Team"] || ""}
+		
+		</button>
+		
+		<button
+		 class="match-nav-btn"
+		 ${!nextMatch ? "disabled" : ""}
+		 onclick="${nextMatch ? `location.href='match.html?id=${nextMatch.ID}'` : ''}">
+		
+		Next Game vs
+		${nextMatch?.["Opp. Team"] || ""} ▶
+		
+		</button>
 	
 	</div>
 
