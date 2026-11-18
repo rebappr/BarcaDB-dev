@@ -493,7 +493,7 @@ text-decoration:underline;
 }
 
 .footer-copy{
- margin-top:12px;
+ margin-top:6px;
  color:var(--muted);
  font-size:11px;
 }
