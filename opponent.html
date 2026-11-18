@@ -519,6 +519,10 @@ flex-shrink:0;
   width:100%;
  }
 
+ .season-filters .filter-section{
+  flex:none !important;
+ }
+
  .matches-view-switch{
   width:100%;
  }
@@ -1318,11 +1322,7 @@ const goalsAgainst = matches.reduce(
 
     `;
 
-	updateMatchesLimitFilter();
-	updateOpponentMatches();
-
-	renderOpponentFilters();
-	updateOpponentTitles();
+	renderOpponent(opponentName);
 
 }
 
