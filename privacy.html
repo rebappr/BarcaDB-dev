@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="language" content="English">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="manifest" href="site.webmanifest">
+
+<meta name="theme-color" content="#004D98">
+
+<title>About Barça Database | FC Barcelona Statistics & History</title>
+
+<meta name="robots" content="noindex, nofollow">
+
+<meta name="author"
+ content="RE">
+
+<meta name="description"
+ content="Learn more about Barça Database, an independent project dedicated to FC Barcelona statistics, match records, player data, honours, and football history.">
+
+<link rel="canonical"
+ href="https://barcadb.com/about.html">
+
+<meta property="og:title"
+ content="About Barça Database">
+
+<meta property="og:description"
+ content="Learn more about Barça Database, an independent project dedicated to preserving FC Barcelona statistics, records, and history.">
+
+<meta property="og:url"
+ content="https://barcadb.com/about.html">
+
+<meta property="og:image"
+ content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta property="og:type"
+ content="website">
+
+<meta property="og:site_name"
+ content="Barça Database">
+
+<meta name="twitter:card"
+ content="summary_large_image">
+
+<meta name="twitter:title"
+ content="About Barça Database">
+
+<meta name="twitter:description"
+ content="Learn more about Barça Database and its mission to preserve and present FC Barcelona statistics and historical records.">
+
+<meta name="twitter:image"
+ content="https://barcadb.com/logos/barcadb-logo.png">
+
+<meta name="keywords"
+ content="About Barça Database, FC Barcelona statistics, Barcelona database, Barcelona records, Barcelona history, Barcelona matches, Barcelona players, Barça Database project">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/theme.css">
+
+<style>
+
+.dashboard{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    width:100%;
+}
+
+.hero-card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:16px;
+    text-align:center;
+}
+
+.hero-card p{
+    max-width:760px;
+    margin:0 auto 12px;
+    color:var(--muted);
+    line-height:1.3;
+}
+
+.hero-actions{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.hero-btn{
+    display:inline-block;
+    padding:12px 20px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.2s;
+}
+
+.hero-btn.primary{
+    background:var(--barca-blue);
+    color:white;
+}
+
+.hero-btn.secondary{
+    background:var(--meta-bg);
+    color:var(--text);
+    border:1px solid var(--meta-border);
+}
+
+.hero-btn:hover{
+    transform:translateY(-2px);
+}
+
+.home-card{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.about-page{
+ padding:24px;
+}
+
+.about-hero{
+ display:flex;
+ align-items:center;
+ gap:24px;
+ margin-bottom:24px;
+ padding-bottom:24px;
+ border-bottom:1px solid var(--meta-border);
+}
+
+.about-logo{
+ width:90px;
+ height:90px;
+ object-fit:contain;
+ flex-shrink:0;
+}
+
+.about-intro h2{
+ margin:0 0 10px;
+ font-size:24px;
+ color:var(--text);
+}
+
+.about-intro p{
+ margin:0;
+ color:var(--muted);
+ line-height:1.7;
+}
+
+.about-content{
+ display:flex;
+ flex-direction:column;
+ gap:24px;
+}
+
+.about-section h3{
+ margin:0 0 12px;
+ color:var(--about-heading);
+ font-size:18px;
+}
+
+.about-section p,
+.about-section li{
+ line-height:1.8;
+ color:var(--text);
+}
+
+.about-section ul{
+ margin:0;
+ padding-left:20px;
+}
+
+.about-section li{
+ margin-bottom:6px;
+}
+
+@media (max-width:820px){
+
+ .about-page{
+  padding:18px;
+ }
+
+ .about-hero{
+  flex-direction:column;
+  text-align:center;
+  gap:16px;
+ }
+
+ .about-logo{
+  width:72px;
+  height:72px;
+ }
+
+ .about-intro h2{
+  font-size:20px;
+ }
+
+ .about-section h3{
+  font-size:16px;
+ }
+
+.content-layout{
+display:flex;
+flex-direction:column;
+gap:0;
+}
+
+.container{
+padding:6px;
+}
+
+.dashboard{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div id="sidebarOverlay"
+     class="sidebar-overlay"></div>
+
+<div class="layout">
+
+	<aside id="sidebar" class="sidebar">
+
+		<div class="sidebar-brand">
+		
+		    <a href="./" class="sidebar-brand-link">
+		
+		        <img
+		            src="logos/barcadb-logo.png"
+		            alt="Barça Database"
+		            class="sidebar-brand-logo">
+		
+		        <span class="sidebar-brand-text">
+		            Barça Database
+		        </span>
+		
+		    </a>
+		
+		    <button
+		        id="sidebarClose"
+		        class="sidebar-close"
+		        aria-label="Collapse sidebar">
+		
+		        <svg
+		            width="18"
+		            height="18"
+		            viewBox="0 0 24 24"
+		            fill="none">
+		
+		            <rect
+		                x="3"
+		                y="4"
+		                width="18"
+		                height="16"
+		                rx="2"
+		                stroke="currentColor"
+		                stroke-width="2"/>
+		
+		            <path
+		                d="M13 8L9 12L13 16"
+		                stroke="currentColor"
+		                stroke-width="2"
+		                stroke-linecap="round"
+		                stroke-linejoin="round"/>
+		
+		            <line
+		                x1="17"
+		                y1="7"
+		                x2="17"
+		                y2="17"
+		                stroke="currentColor"
+		                stroke-width="2"/>
+		
+		        </svg>
+		
+		    </button>
+		
+		</div>
+	
+	    <div class="sidebar-search">
+	
+	        <input
+	            type="text"
+	            id="sidebarPersonSearch"
+	            placeholder="Search...">
+	
+	        <div id="sidebarSearchResults"></div>
+	
+	    </div>
+	
+		<div class="sidebar-nav">
+		
+		    <a href="./">Home</a>
+		    <a href="insights.html">Insights</a>
+
+		    <div class="sidebar-section">
+		        Current Season
+		    </div>
+			
+		    <a href="matches.html">Matches</a>
+		    <a href="standings.html">Standings</a>
+		    <a href="squad.html">Squad</a>
+
+		    <div class="sidebar-section">
+		        Analysis
+		    </div>
+			
+		    <a href="player.html">Players Stats</a>
+		    <a href="compare.html">Compare Players</a>
+
+		    <div class="sidebar-section">
+		        Historical data
+		    </div>
+
+		    <a href="season.html">Seasons</a>
+		    <a href="honours.html" class="active">Honours</a>
+		
+		    <div class="sidebar-section">
+		        El Clásico
+		    </div>
+		
+		    <a href="el-clasico-overview.html">Overview</a>
+		    <a href="el-clasico-match-history.html">Match History</a>
+		
+		</div>
+	
+	</aside>
+
+<div class="page-content">
+
+<div class="container">
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="header">
+	<div class="header-inner">
+	
+	    <button id="menuToggle" class="menu-toggle">
+		
+		    <svg
+		        width="22"
+		        height="22"
+		        viewBox="0 0 24 24"
+		        fill="none">
+		
+		        <path
+		            d="M4 6H20M4 12H20M4 18H20"
+		            stroke="currentColor"
+		            stroke-width="2.5"
+		            stroke-linecap="round"/>
+		
+		    </svg>
+		
+		</button>
+	
+	    <div class="header-center">
+	
+	        <a href="./" class="header-link">
+	            <img
+	                src="logos/barcadb-logo.png"
+	                class="header-logo"
+	                alt="Barça DB">
+
+	        <div class="header-text">
+	            <h1>Barça Database</h1>
+	        </div>
+	        </a>
+	
+	    </div>
+
+		<button
+		    id="themeToggle"
+		    class="theme-toggle"
+		    aria-label="Toggle theme">
+		
+		    <svg
+		        id="themeIcon"
+		        width="20"
+		        height="20"
+		        viewBox="0 0 24 24"
+		        fill="none">
+		    </svg>
+		
+		</button>
+	
+	</div>
+</div>
+
+<div class="dashboard">
+
+  <div class="widget-title">
+    Privacy Policy
+  </div>
+	
+<section class="widget-card about-page">
+
+  <div class="about-hero">
+
+    <img
+      src="logos/barcadb-logo.png"
+      alt="Barça Database"
+      class="about-logo">
+
+    <div class="about-intro">
+
+      <h2>Your privacy matters.</h2>
+
+      <p>
+        This Privacy Policy explains what information may be collected while
+        using Barça Database and how that information is handled.
+      </p>
+
+      <p class="last-updated">
+        Last updated: November 2026
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="about-content">
+
+    <div class="about-section">
+
+      <h3>Introduction</h3>
+
+      <p>
+        Barça Database respects the privacy of its visitors and is committed
+        to protecting any information that may be processed while using
+        the website.
+      </p>
+
+      <p>
+        This Privacy Policy explains what information may be collected when
+        visiting the website and how that information is used.
+      </p>
+
+    </div>
+
+    <div class="about-section">
+
+      <h3>Information We Collect</h3>
+
+      <p>
+        Barça Database does not require user registration and does not
+        intentionally collect personal information such as names, email
+        addresses, postal addresses, or payment information.
+      </p>
+
+      <p>
+        Like most websites, our web hosting provider may automatically
+        process limited technical information through server logs,
+        including:
+      </p>
+
+      <ul>
+        <li>IP address</li>
+        <li>Browser type</li>
+        <li>Device information</li>
+        <li>Date and time of access</li>
+        <li>Pages visited</li>
+      </ul>
+
+      <p>
+        This information is used solely for technical, security, and
+        operational purposes.
+      </p>
+
+    </div>
+
+    <div class="about-section">
+
+      <h3>Cookies</h3>
+
+      <p>
+        Barça Database does not use cookies for analytics, advertising,
+        or visitor tracking.
+      </p>
+
+    </div>
+
+    <div class="about-section">
+
+      <h3>How Information Is Used</h3>
+
+      <p>
+        Any information processed through server logs is used exclusively to:
+      </p>
+
+      <ul>
+        <li>Maintain and secure the website</li>
+        <li>Diagnose technical issues</li>
+        <li>Monitor website performance</li>
+        <li>Prevent abuse and unauthorized access</li>
+      </ul>
+
+    </div>
+
+    <div class="about-section">
+
+      <h3>Third-Party Links</h3>
+
+      <p>
+        The website may contain links to third-party websites. Barça
+        Database is not responsible for the privacy practices or content
+        of external websites. Visitors should review the privacy policies
+        of those websites separately.
+      </p>
+
+    </div>
+
+    <div class="about-section">
+
+      <h3>Changes to This Privacy Policy</h3>
+
+      <p>
+        This Privacy Policy may be updated from time to time. Any changes
+        will be published on this page together with the updated revision
+        date.
+      </p>
+
+    </div>
+
+    <div class="about-section">
+
+      <h3>Contact</h3>
+
+      <p>
+        If you have any questions regarding this Privacy Policy or the
+        operation of Barça Database, please contact us at
+        <a href="mailto:contact@barcadb.com">
+          contact@barcadb.com
+        </a>.
+      </p>
+
+    </div>
+
+    <div class="about-section">
+
+      <h3>Disclaimer</h3>
+
+      <p>
+        Barça Database is an independent fan-made project and is not
+        affiliated with, endorsed by, sponsored by, or officially
+        connected with FC Barcelona. All club names, competition names,
+        logos, trademarks, and other intellectual property remain the
+        property of their respective owners.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+</div> <!-- dashboard -->
+</div> <!-- container -->
+
+</div>
+</div>
+</div>
+
+<script src="scripts/search.js"></script>
+<script src="scripts/sidebar.js"></script>
+<script src="scripts/theme.js"></script>
+
+</body>
+</html>
