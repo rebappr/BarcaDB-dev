@@ -488,7 +488,8 @@ text-decoration:underline;
 }
 
 .footer-links a:hover{
- color:#004D98;
+ color:var(--link-color);
+ text-decoration:underline;
 }
 
 .footer-copy{
