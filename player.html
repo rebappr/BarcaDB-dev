@@ -1009,23 +1009,6 @@ display:none;
     text-align:center;
 }
 
-.matches-list.gk .matches-header{
-    grid-template-columns:
-        30px
-        75px
-        1fr
-        70px;
-}
-
-.matches-list.gk .player-match{
-    grid-template-columns:
-        30px
-        75px
-        1fr
-        70px;
-    row-gap:8px;
-}
-
     .info-grid{
 
         grid-template-columns:1fr;
@@ -1137,16 +1120,16 @@ display:none;
 
 .mobile-stats-header,
 .mobile-stats-values{
-    display:grid;
-    grid-auto-flow:column;
-    grid-auto-columns:1fr;
-    text-align:center;
+ display:grid;
+ grid-template-columns:repeat(6,1fr);
+ text-align:center;
 }
 
 .matches-list.gk .mobile-stats-header,
 .matches-list.gk .mobile-stats-values{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ text-align:center;
 }
 
 .mobile-stats-header{
@@ -1168,7 +1151,7 @@ display:none;
     color:#00bcd4;
     font-weight:800;
 }
-
+/*
 .matches-list.gk .player-match > div:nth-child(6),
 .matches-list.gk .player-match > div:nth-child(7),
 .matches-list.gk .player-match > div:nth-child(8),
@@ -1177,7 +1160,7 @@ display:none;
 .matches-list.gk .player-match > div:nth-child(11){
     display:none;
 }
-
+*/
 .matches-list.gk .mobile-stats-header,
 .matches-list.gk .mobile-stats-values{
     grid-template-columns:repeat(5,1fr);
