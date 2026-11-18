@@ -2272,12 +2272,12 @@ const currentIndex = allMatches.findIndex(
 
 const prevMatch =
 currentIndex > 0
- ? allMatches[currentIndex - 1]
+ ? allMatches[currentIndex + 1]
  : null;
 
 const nextMatch =
 currentIndex < allMatches.length - 1
- ? allMatches[currentIndex + 1]
+ ? allMatches[currentIndex - 1]
  : null;
 
 const scoreText =
