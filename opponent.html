@@ -886,7 +886,7 @@ Promise.all([
     allMatches = matchesData;
     allPlayers = playersData;
 
-    renderOpponent(opponentName, matchesData);
+    renderOpponent(opponentName);
 
     renderTopAgainstOpponent();
 
@@ -1012,8 +1012,15 @@ const limit =
         ? 5
         : 10;
 
-document.getElementById("topOpponentTitle").textContent =
-    `Top ${limit} Against ${getOfficialClubName(opponentName)}`;
+const compLabel =
+ selectedCompetition !== "All"
+ ? selectedCompetition
+ : "All Competitions";
+
+document.getElementById(
+ "topOpponentTitle"
+).textContent =
+`${compLabel} Top ${limit} Against ${getOfficialClubName(opponentName)}`;
 
 const top = Object.entries(stats)
 
@@ -1134,7 +1141,7 @@ function getClubLogo(team){
         + ".png";
 }
 
-function renderOpponent(team,data){
+function renderOpponent(team){
 
     const matches =
  		getFilteredOpponentMatches();
@@ -1597,25 +1604,17 @@ function updateOpponentTitles(){
  ).textContent =
  `${compLabel} Overview`;
 
-const compLabel =
- selectedCompetition !== "All"
- ? selectedCompetition
- : "All Competitions";
-
-document.getElementById(
- "topOpponentTitle"
-).textContent =
-`${compLabel} Top ${limit} Players`;
-
-const matchesTitle =
+ const matchesTitle =
  document.getElementById("matchesTitle");
 
-if(matchesTitle){
+ if(matchesTitle){
 
- matchesTitle.textContent =
- selectedCompetition !== "All"
- ? `${selectedCompetition} Match History`
- : "All Competitions Match History";
+  matchesTitle.textContent =
+  selectedCompetition !== "All"
+  ? `${selectedCompetition} Match History`
+  : "All Competitions Match History";
+
+ }
 
 }
 
