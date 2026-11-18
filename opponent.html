@@ -1322,7 +1322,11 @@ const goalsAgainst = matches.reduce(
 
     `;
 
-	renderOpponent(opponentName);
+	updateMatchesLimitFilter();
+	updateOpponentMatches();
+	
+	renderOpponentFilters();
+	updateOpponentTitles();
 
 }
 
