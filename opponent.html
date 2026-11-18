@@ -469,12 +469,6 @@ flex-shrink:0;
  gap:6px;
 }
 
-.matches-view-switch{
- display:flex;
- flex-wrap:wrap;
- gap:6px;
-}
-
 .venue-switch{
  flex-wrap:nowrap;
 }
@@ -1140,15 +1134,10 @@ function getClubLogo(team){
         + ".png";
 }
 
-window.currentOpponentMatches = [];
-
 function renderOpponent(team,data){
 
     const matches =
  		getFilteredOpponentMatches();
-
-	window.currentOpponentMatches = [...matches]
-		.sort((a,b) => Number(b.ID) - Number(a.ID));
 
     if(!matches.length){
 
@@ -1299,7 +1288,9 @@ const goalsAgainst = matches.reduce(
 	
 	 <div class="section-header">
 	
-	  <h2>Matches</h2>
+	  <h2 id="matchesTitle">
+		 Matches
+	  </h2>
 	
 	  <div class="matches-filter-wrap">
 	
@@ -1606,10 +1597,25 @@ function updateOpponentTitles(){
  ).textContent =
  `${compLabel} Overview`;
 
- document.getElementById(
-  "topOpponentTitle"
- ).textContent =
- `${compLabel} Top Players`;
+const compLabel =
+ selectedCompetition !== "All"
+ ? selectedCompetition
+ : "All Competitions";
+
+document.getElementById(
+ "topOpponentTitle"
+).textContent =
+`${compLabel} Top ${limit} Players`;
+
+const matchesTitle =
+ document.getElementById("matchesTitle");
+
+if(matchesTitle){
+
+ matchesTitle.textContent =
+ selectedCompetition !== "All"
+ ? `${selectedCompetition} Match History`
+ : "All Competitions Match History";
 
 }
 
