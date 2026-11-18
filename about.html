@@ -125,146 +125,89 @@
     gap:8px;
 }
 
-.summary-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:8px;
+.about-page{
+ padding:24px;
 }
 
-.summary-box{
-    border-radius:20px;
-    padding:10px;
-    text-align:center;
-    border:1px solid var(--card-border);
-    background:var(--card-bg);
+.about-hero{
+ display:flex;
+ align-items:center;
+ gap:24px;
+ margin-bottom:24px;
+ padding-bottom:24px;
+ border-bottom:1px solid var(--meta-border);
 }
 
-.summary-box b{
-    display:block;
-    font-size:28px;
-    margin-bottom:4px;
+.about-logo{
+ width:90px;
+ height:90px;
+ object-fit:contain;
+ flex-shrink:0;
 }
 
-.summary-box.trophy{
-    background:var(--matches-grid-bg);
-    border:1px solid var(--matches-grid-border);
+.about-intro h2{
+ margin:0 0 10px;
+ font-size:24px;
+ color:var(--text);
 }
 
-.summary-box.trophy b{
-    color:var(--number);
+.about-intro p{
+ margin:0;
+ color:var(--muted);
+ line-height:1.7;
 }
 
-.honours-table{
-    width:100%;
-    border-collapse:collapse;
+.about-content{
+ display:flex;
+ flex-direction:column;
+ gap:24px;
 }
 
-.honours-table th{
-    padding:10px 8px;
-    font-size:12px;
-    font-weight:700;
-    text-transform:uppercase;
-    text-align:left;
-    border-bottom:1px solid var(--meta-border);
+.about-section h3{
+ margin:0 0 12px;
+ color:#004D98;
+ font-size:18px;
 }
 
-.honours-table td{
-    padding:12px 8px;
-    border-bottom:1px solid var(--meta-border);
-    vertical-align:top;
-    line-height:1.6;
-    font-size:13px;
+.about-section p,
+.about-section li{
+ line-height:1.8;
+ color:var(--text);
 }
 
-.honours-table td:nth-child(1){
-    width:220px;
-    font-weight:700;
+.about-section ul{
+ margin:0;
+ padding-left:20px;
 }
 
-.honours-table td:nth-child(2){
-    width:80px;
-    text-align:center;
-    font-weight:800;
-    color:var(--number);
+.about-section li{
+ margin-bottom:6px;
 }
 
-.honours-table tbody tr:last-child td{
-    border-bottom:none;
-}
+@media (max-width:820px){
 
-.honour-badge{
-    display:inline-block;
-    padding:5px 10px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:700;
-}
+ .about-page{
+  padding:18px;
+ }
 
-.honour-badge.domestic{
-    background:rgba(0,77,152,.1);
-    border:1px solid rgba(0,77,152,.2);
-    color:#004D98;
-}
+ .about-hero{
+  flex-direction:column;
+  text-align:center;
+  gap:16px;
+ }
 
-.competition-cell{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
+ .about-logo{
+  width:72px;
+  height:72px;
+ }
 
-.competition-cell img{
-    width:20px;
-    height:20px;
-    object-fit:contain;
-    flex-shrink:0;
-}
+ .about-intro h2{
+  font-size:20px;
+ }
 
-.competition-cell span{
-    line-height:1.2;
-}
-
-@media(max-width:820px){
-
-	.competition-cell img{
-	    width:18px;
-	    height:18px;
-	    object-fit:contain;
-	    flex-shrink:0;
-	}
-
-    .summary-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .summary-box{
-        font-size:13px;
-    }
-
-    .summary-box b{
-        font-size:18px;
-    }
-
-	.honours-table td:first-child{
-	    font-weight:600;
-	    white-space:nowrap;
-	}
-
-    .honours-table th:nth-child(1),
-    .honours-table td:nth-child(1){
-        width:110px;
-    }
-
-    .honours-table th:nth-child(2),
-    .honours-table td:nth-child(2){
-        width:50px;
-        text-align:center;
-    }
-
-    .honours-table th:nth-child(3),
-    .honours-table td:nth-child(3){
-        width:auto;
-    }
-
+ .about-section h3{
+  font-size:16px;
+ }
 
 .content-layout{
 display:flex;
@@ -460,9 +403,94 @@ grid-template-columns:1fr;
 
 <div class="dashboard">
 
-        <div class="widget-title">
-            FC Barcelona Honours
-        </div>
+	<section class="widget-card about-page">
+	
+	  <div class="widget-title">
+	    About Barça Database
+	  </div>
+	
+	  <div class="about-hero">
+	
+	    <img
+	      src="logos/barcadb-logo.png"
+	      alt="Barça Database"
+	      class="about-logo">
+	
+	    <div class="about-intro">
+	
+	      <h2>The history of FC Barcelona, one match at a time.</h2>
+	
+	      <p>
+	        Barça Database is an independent project dedicated to preserving and
+	        exploring the history of FC Barcelona through statistics, records,
+	        and historical data.
+	      </p>
+	
+	    </div>
+	
+	  </div>
+	
+	  <div class="about-content">
+	
+	    <div class="about-section">
+	
+	      <h3>Our Mission</h3>
+	
+	      <p>
+	        Our goal is to create a comprehensive and accessible resource covering
+	        every era of FC Barcelona's history. From legendary players and iconic
+	        matches to season records, honours, and head-to-head statistics,
+	        Barça Database brings together information that helps supporters,
+	        researchers, and football enthusiasts better understand the club's
+	        sporting legacy.
+	      </p>
+	
+	    </div>
+	
+	    <div class="about-section">
+	
+	      <h3>What You'll Find</h3>
+	
+	      <ul>
+	        <li>Historical match records</li>
+	        <li>Player statistics and milestones</li>
+	        <li>Season-by-season data</li>
+	        <li>Head-to-head records against opponents</li>
+	        <li>Trophy and honours history</li>
+	        <li>Historical insights and comparisons</li>
+	      </ul>
+	
+	    </div>
+	
+	    <div class="about-section">
+	
+	      <h3>Data & Accuracy</h3>
+	
+	      <p>
+	        The information available on Barça Database is compiled from historical
+	        records, publicly available sources, football archives, and independent
+	        research. While every effort is made to ensure accuracy and consistency,
+	        occasional errors or omissions may occur.
+	      </p>
+	
+	    </div>
+	
+	    <div class="about-section">
+	
+	      <h3>Disclaimer</h3>
+	
+	      <p>
+	        Barça Database is a fan-made project and is not affiliated with,
+	        endorsed by, sponsored by, or officially connected with FC Barcelona.
+	        All club names, competition names, logos, trademarks, and other
+	        intellectual property remain the property of their respective owners.
+	      </p>
+	
+	    </div>
+	
+	  </div>
+	
+	</section>
 
 </div> <!-- dashboard -->
 </div> <!-- container -->
