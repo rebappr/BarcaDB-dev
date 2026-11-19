@@ -2754,14 +2754,18 @@ document.getElementById(
                     </div>
                 </div>
 
-                <div class="summary-stat">
-                    <div class="summary-value">
-                        ${stats.goalsConceded}
-                    </div>
-                    <div class="summary-label">
-                        Goals Conc.
-                    </div>
-                </div>
+				<div class="summary-stat">
+					 <div class="summary-value">
+						 ${
+						 stats.matches
+						 ? ((stats.cleanSheets * 100) / stats.matches).toFixed(0)
+						 : "0"
+						 }%
+					 </div>
+					 <div class="summary-label">
+					 	Clean Sheet %
+					 </div>
+				</div>
 
 				<div class="summary-stat">
 					 <div class="summary-value">
