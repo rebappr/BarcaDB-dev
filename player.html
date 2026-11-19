@@ -711,10 +711,6 @@ display:none;
     color:var(--result-loss);
 }
 
-.mobile-match-stats{
- display:none;
-}
-
 .career-summary{
     display:grid;
     grid-template-columns:
@@ -969,7 +965,16 @@ display:none;
     vertical-align:middle;
 }
 
+#matchesSection{
+    width:75%;
+    margin:0 auto;
+}
+
 @media(max-width:820px){
+
+#matchesSection{
+    width:100%;
+}
 
  .info-grid{
   grid-template-columns:1fr;
@@ -1022,71 +1027,33 @@ display:none;
   grid-template-columns:repeat(3,1fr);
  }
 
- /* MOBIL MATCHES */
-
- .matches-header{
-  grid-template-columns:
-   30px
-   70px
-   55px
-   1fr
-   70px;
- }
-
- .player-match{
-  display:grid;
-  grid-template-columns:
-   30px
-   70px
-   55px
-   1fr
-   70px;
-  row-gap:8px;
- }
-
- /* schovať desktop stats */
- .matches-header > div:nth-child(n+6){
-  display:none;
- }
-
-.player-match > :not(:nth-child(-n+5)):not(.mobile-match-stats){
- display:none;
+.matches-header{
+ grid-template-columns:
+ 30px
+ 70px
+ 55px
+ 1fr
+ 70px
+ 55px;
 }
 
- /* mobil stats */
- .mobile-match-stats{
-  display:block !important;
-  grid-column:1 / -1;
-  margin-top:6px;
-  padding-top:6px;
-  border-top:1px solid var(--meta-border);
+.player-match{
+	 grid-template-columns:
+	 30px
+	 70px
+	 55px
+	 1fr
+	 70px
+	 55px;
  }
 
- .mobile-stats-header,
- .mobile-stats-values{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  text-align:center;
- }
-
- .mobile-stats-header{
-  font-size:10px;
-  font-weight:700;
-  opacity:.7;
-  margin-bottom:4px;
- }
-
- .mobile-stats-values{
-  font-size:12px;
-  font-weight:600;
- }
-
- .mobile-stats-values .match-rating{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:0;
- }
+ 	.matches-header > div:nth-child(n+7){
+	 display:none;
+	}
+	
+	.player-match > div:nth-child(n+7){
+	 display:none;
+	}
 
  .competition-cell span{
   display:none;
@@ -2448,7 +2415,7 @@ function renderSummary(stats){
 				
 				 <div class="widget-stat">
 				 <div class="widget-stat-label">
-				 SoTA
+				 Shots on Target Against
 				 </div>
 				 <div class="widget-stat-value">
 				 ${stats.shotsOnTargetAgainst}
@@ -3910,89 +3877,7 @@ function renderPlayerMatches(){
 					
 					 `
 					}
-					${
-					 isGK && !hasAdvancedGKStats
-					 ? ""
-					 : `
 					
-					 <div class="mobile-match-stats">
-					
-					 <div class="mobile-stats-header">
-					
-					${
-					 isGK
-					 ? (
-					   hasAdvancedGKStats
-					   ? `
-					   <div>RT</div>
-					   <div>SV</div>
-					   <div>SV%</div>
-					   <div>SoTA</div>
-					   <div>GC</div>
-					   <div>CS</div>
-					   `
-					   : ""
-					 )
-					 : `
-					 <div>RT</div>
-					 <div>G</div>
-					 <div>A</div>
-					 <div>PG</div>
-					 <div>YC</div>
-					 <div>RC</div>
-					 `
-					}
-					
-					 </div>
-					
-					 <div class="mobile-stats-values">
-					
-					 ${
-					 isGK
-					 ? `
-					 <span class="match-rating">
-					 	${match.rating ? match.rating.toFixed(2) : "-"}
-					 </span>
-					
-					 <span>${match.saves ?? "-"}</span>
-
-					<span>
-						${match.savePct !== null
-						 ? match.savePct + "%"
-						 : "-"
-						}
-					</span>
-					
-					 <span>${match.sota ?? "-"}</span>
-					
-					 <span>${match.goalsConceded}</span>
-					
-					 <span>${match.cleanSheet ? "✓" : "-"}</span>
-					 `
-					 : `
-					 <span class="match-rating">
-						${match.rating ? match.rating.toFixed(2) : "-"}
-					 </span>
-					
-					 <span>${match.goals || "-"}</span>
-					
-					 <span>${match.assists || "-"}</span>
-					
-					 <span>${match.penaltyGoals || "-"}</span>
-					
-					 <span>${match.yellow || "-"}</span>
-					
-					 <span>${match.red || "-"}</span>
-					 `
-					 }
-					
-					 </div>
-					
-					 </div>
-					
-					 `
-					}
-
                 </div>
 
             `).join("")}
