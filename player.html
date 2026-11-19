@@ -2683,21 +2683,21 @@ function renderSummary(stats){
 
 function renderCareerOverview(){
 
-	const hasPenalties =
- 	(stats.penaltyGoals + stats.penaltyMissed) > 0;
-
 	const stats =
-	    getPlayerAggregateStats(
-	        playerName,
-	        {
-	            season:null,
-	
-	            competition:
-	                selectedCareerCompetition === "all"
-	                ? null
-	                : selectedCareerCompetition
-	        }
-	    );
+		 getPlayerAggregateStats(
+		 playerName,
+		 {
+		 season:null,
+		
+		 competition:
+		 selectedCareerCompetition === "all"
+		 ? null
+		 : selectedCareerCompetition
+		 }
+		 );
+
+	const hasPenalties =
+ 		(stats.penaltyGoals + stats.penaltyMissed) > 0;
 
     const currentPlayer =
         pagePlayers.find(
