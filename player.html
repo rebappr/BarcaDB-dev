@@ -3586,7 +3586,7 @@ function renderPlayerMatches(){
 	    "matchesSection"
 	).innerHTML = `
 
-        <div class="matches-list ${isGK ? 'gk' : ''}">
+        <div class="matches-list">
 
 			<div class="matches-header">
 			
@@ -3602,6 +3602,7 @@ function renderPlayerMatches(){
 			            <div>RT</div>
 			            <div>CS</div>
 			            <div>GC</div>
+						<div>GC/90</div>
 			            <div>YC</div>
 			            <div>RC</div>
 			        `
@@ -3702,6 +3703,8 @@ function renderPlayerMatches(){
 					        <div>${match.cleanSheet}</div>
 					
 					        <div>${match.goalsConceded}</div>
+
+							<div>${match.goalsConceded.toFixed(2)}</div>
 					
 					        <div>${match.yellow || "-"}</div>
 					
