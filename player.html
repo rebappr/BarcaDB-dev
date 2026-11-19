@@ -2847,166 +2847,159 @@ document.getElementById(
         </div>
 
         ${
-            !isGK
-            ? `
-                <div class="stats-widget">
-
-                    <div class="stats-widget-title">
-                        Attacking
-                    </div>
-
-                    <div class="widget-stats-list">
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Goals</div>
-                            <div class="widget-stat-value">${stats.goals}</div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Assists</div>
-                            <div class="widget-stat-value">${stats.assists}</div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">G+A</div>
-                            <div class="widget-stat-value">${stats.goals + stats.assists}</div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">G/90</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    stats.minutes
-                                    ? ((stats.goals * 90) / stats.minutes).toFixed(2)
-                                    : "0.00"
-                                }
-                            </div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">A/90</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    stats.minutes
-                                    ? ((stats.assists * 90) / stats.minutes).toFixed(2)
-                                    : "0.00"
-                                }
-                            </div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">G+A/90</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    stats.minutes
-                                    ? (((stats.goals + stats.assists) * 90) / stats.minutes).toFixed(2)
-                                    : "0.00"
-                                }
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-				${
-				 hasPenalties
-				 ? \
-				 <div class="stats-widget">
-				
-				 <div class="stats-widget-title">
-				 Penalties
-				 </div>
-				
-				 <div class="widget-stats-list">
-				
-				 <div class="widget-stat">
-				 <div class="widget-stat-label">
-				 Penalty Goals
-				 </div>
-				 <div class="widget-stat-value">
-				 ${stats.penaltyGoals}
-				 </div>
-				 </div>
-				
-				 <div class="widget-stat">
-				 <div class="widget-stat-label">
-				 Missed Penalties
-				 </div>
-				 <div class="widget-stat-value">
-				 ${stats.penaltyMissed}
-				 </div>
-				 </div>
-				
-				 <div class="widget-stat">
-				 <div class="widget-stat-label">
-				 Conversion %
-				 </div>
-				 <div class="widget-stat-value">
-				 ${
-				 (
-				 stats.penaltyGoals * 100 /
-				 (stats.penaltyGoals + stats.penaltyMissed)
-				 ).toFixed(0)
-				 }%
-				 </div>
-				 </div>
-			
-				</div>
-				
-				</div>
-				`
-				: ""
-				}
-				`
-				: `
-				
-                <div class="stats-widget">
-
-                    <div class="stats-widget-title">
-                        Goalkeeping
-                    </div>
-
-                    <div class="widget-stats-list">
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Clean Sheets</div>
-                            <div class="widget-stat-value">${stats.cleanSheets}</div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Goals Conceded</div>
-                            <div class="widget-stat-value">${stats.goalsConceded}</div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Goals Conceded/90</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    stats.minutes
-                                    ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
-                                    : "0.00"
-                                }
-                            </div>
-                        </div>
-
-                        <div class="widget-stat">
-                            <div class="widget-stat-label">Clean Sheet %</div>
-                            <div class="widget-stat-value">
-                                ${
-                                    stats.matches
-                                    ? ((stats.cleanSheets * 100) / stats.matches).toFixed(0)
-                                    : 0
-                                }%
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            `
-        }
-
+		  !isGK
+		  ? `
+		
+		    <div class="stats-widget">
+		
+		      <div class="stats-widget-title">
+		        Attacking
+		      </div>
+		
+		      <div class="widget-stats-list">
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">Goals</div>
+		          <div class="widget-stat-value">${stats.goals}</div>
+		        </div>
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">Assists</div>
+		          <div class="widget-stat-value">${stats.assists}</div>
+		        </div>
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">G+A</div>
+		          <div class="widget-stat-value">${stats.goals + stats.assists}</div>
+		        </div>
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">G/90</div>
+		          <div class="widget-stat-value">
+		            ${
+		              stats.minutes
+		                ? ((stats.goals * 90) / stats.minutes).toFixed(2)
+		                : "0.00"
+		            }
+		          </div>
+		        </div>
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">A/90</div>
+		          <div class="widget-stat-value">
+		            ${
+		              stats.minutes
+		                ? ((stats.assists * 90) / stats.minutes).toFixed(2)
+		                : "0.00"
+		            }
+		          </div>
+		        </div>
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">G+A/90</div>
+		          <div class="widget-stat-value">
+		            ${
+		              stats.minutes
+		                ? (((stats.goals + stats.assists) * 90) / stats.minutes).toFixed(2)
+		                : "0.00"
+		            }
+		          </div>
+		        </div>
+		
+		      </div>
+		
+		    </div>
+		
+		    ${
+		      hasPenalties
+		        ? `
+		
+		          <div class="stats-widget">
+		
+		            <div class="stats-widget-title">
+		              Penalties
+		            </div>
+		
+		            <div class="widget-stats-list">
+		
+		              <div class="widget-stat">
+		                <div class="widget-stat-label">Penalty Goals</div>
+		                <div class="widget-stat-value">${stats.penaltyGoals}</div>
+		              </div>
+		
+		              <div class="widget-stat">
+		                <div class="widget-stat-label">Missed Penalties</div>
+		                <div class="widget-stat-value">${stats.penaltyMissed}</div>
+		              </div>
+		
+		              <div class="widget-stat">
+		                <div class="widget-stat-label">Conversion %</div>
+		                <div class="widget-stat-value">
+		                  ${(
+		                    stats.penaltyGoals * 100 /
+		                    (stats.penaltyGoals + stats.penaltyMissed)
+		                  ).toFixed(0)}%
+		                </div>
+		              </div>
+		
+		            </div>
+		
+		          </div>
+		
+		        `
+		        : ""
+		    }
+		
+		  `
+		  : `
+		
+		    <div class="stats-widget">
+		
+		      <div class="stats-widget-title">
+		        Goalkeeping
+		      </div>
+		
+		      <div class="widget-stats-list">
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">Clean Sheets</div>
+		          <div class="widget-stat-value">${stats.cleanSheets}</div>
+		        </div>
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">Goals Conceded</div>
+		          <div class="widget-stat-value">${stats.goalsConceded}</div>
+		        </div>
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">Goals Conceded/90</div>
+		          <div class="widget-stat-value">
+		            ${
+		              stats.minutes
+		                ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
+		                : "0.00"
+		            }
+		          </div>
+		        </div>
+		
+		        <div class="widget-stat">
+		          <div class="widget-stat-label">Clean Sheet %</div>
+		          <div class="widget-stat-value">
+		            ${
+		              stats.matches
+		                ? ((stats.cleanSheets * 100) / stats.matches).toFixed(0)
+		                : 0
+		            }%
+		          </div>
+		        </div>
+		
+		      </div>
+		
+		    </div>
+		
+		  `
+		}
+		
         <div class="stats-widget">
 
             <div class="stats-widget-title">
