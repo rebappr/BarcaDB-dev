@@ -2683,6 +2683,9 @@ function renderSummary(stats){
 
 function renderCareerOverview(){
 
+	const hasPenalties =
+ 	(stats.penaltyGoals + stats.penaltyMissed) > 0;
+
 	const stats =
 	    getPlayerAggregateStats(
 	        playerName,
@@ -2959,6 +2962,8 @@ document.getElementById(
 				 `
 				 : ""
 				}
+				`
+				: `
 				
                 <div class="stats-widget">
 
