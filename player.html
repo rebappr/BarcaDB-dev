@@ -3712,26 +3712,26 @@ function renderPlayerMatches(){
 			 <div>Result</div>
 			
 			${
-			 isMobile
+			 isGK
+			 ? (
+			 hasAdvancedGKStats
 			 ? `
-			   <div>RT</div>
+			 <div>RT</div>
+			 <div>SV</div>
+			 <div>SV%</div>
+			 <div>SoTA</div>
+			 <div>GC</div>
+			 <div>CS</div>
 			 `
-			 : isGK
-			 ? `
-			   <div>RT</div>
-			   <div>SV</div>
-			   <div>SV%</div>
-			   <div>SoTA</div>
-			   <div>GC</div>
-			   <div>CS</div>
-			 `
+			 : ""
+			 )
 			 : `
-			   <div>RT</div>
-			   <div>G</div>
-			   <div>A</div>
-			   <div>PG</div>
-			   <div>YC</div>
-			   <div>RC</div>
+			 <div>RT</div>
+			 <div>G</div>
+			 <div>A</div>
+			 <div>PG</div>
+			 <div>YC</div>
+			 <div>RC</div>
 			 `
 			}
 			
