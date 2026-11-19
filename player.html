@@ -2095,11 +2095,6 @@ function getPlayerAggregateStats(
 
     });
 
-	const matchColumns =
-		 isGK && !hasAdvancedGKStats
-		 ? "30px 80px 60px 1fr 80px"
-		 : "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px";
-
     return stats;
 }
 
@@ -3751,6 +3746,11 @@ function renderPlayerMatches(){
 	  );
 	
 	 });
+
+	const matchColumns =
+	 isGK && !hasAdvancedGKStats
+	 ? "30px 80px 60px 1fr 80px"
+	 : "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px";
 
 	document.getElementById(
 	    "matchesSection"
