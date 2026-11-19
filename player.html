@@ -967,6 +967,26 @@ display:none;
 
 @media(max-width:820px){
 
+.matches-header > div:nth-child(n+7){
+ display:none;
+}
+
+.player-match > div:nth-child(n+7){
+ display:none;
+}
+
+.matches-header,
+.player-match{
+ grid-template-columns:
+ 30px
+ 70px
+ 55px
+ 1fr
+ 70px
+ 55px;
+ gap:4px;
+}
+
  .info-grid{
   grid-template-columns:1fr;
  }
@@ -3470,16 +3490,6 @@ function renderPlayerInfo(){
 
 function renderPlayerMatches(){
 
-	const isMobile = window.innerWidth <= 820;
-
-	const matchColumns = isMobile
-	 ? "30px 70px 55px 1fr 70px 55px"
-	 : (
-	     isGK && !hasAdvancedGKStats
-	     ? "30px 80px 60px 1fr 80px"
-	     : "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px"
-	   );
-
 	const currentPlayer =
 	 pagePlayers.find(
 	  p => p.Name === playerName
@@ -3686,11 +3696,6 @@ function renderPlayerMatches(){
 	  );
 	
 	 });
-
-	const matchColumns =
-	 isGK && !hasAdvancedGKStats
-	 ? "30px 80px 60px 1fr 80px"
-	 : "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px";
 
 	document.getElementById(
 	    "matchesSection"
