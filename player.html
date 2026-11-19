@@ -2185,14 +2185,14 @@ function renderSummary(stats){
 	
 	}
 
-    const currentPlayer =
-        pagePlayers.find(
-            p => p.Name === playerName
-        );
-
-    const position =
-        currentPlayer?.Position || "";
-
+	const currentPlayer =
+	 pagePlayers.find(
+	 p => p.Name === playerName
+	);
+	
+	const position =
+	 currentPlayer?.Position || "";
+	
 	const isGK =
 	 isGoalkeeper(position);
 	
@@ -2200,18 +2200,19 @@ function renderSummary(stats){
 	 (allPlayerHistory[playerName] || [])
 	 .some(h => {
 	
-	   if(
-	     selectedSeason !== "all" &&
-	     h.season !== selectedSeason
-	   ){
-	     return false;
-	   }
-	
-	   return (
-	     h.SoTA !== undefined ||
-	     h.Saves !== undefined ||
-	     h["Save%"] !== undefined
+	  const match =
+	   allMatches.find(
+	    m => Number(m.ID) === Number(h.matchId)
 	   );
+	
+	  if(!match){
+	   return false;
+	  }
+	
+	  return (
+	   selectedSeason === "all" ||
+	   match.Season === selectedSeason
+	  );
 	
 	 });
 
