@@ -3602,9 +3602,9 @@ function renderPlayerMatches(){
 			            <div>RT</div>
 			            <div>CS</div>
 			            <div>GC</div>
-						<div>GC/90</div>
 			            <div>YC</div>
 			            <div>RC</div>
+						<div>-</div>
 			        `
 			        : `
 			            <div>RT</div>
@@ -3703,12 +3703,12 @@ function renderPlayerMatches(){
 					        <div>${match.cleanSheet}</div>
 					
 					        <div>${match.goalsConceded}</div>
-
-							<div>${match.goalsConceded.toFixed(2)}</div>
 					
 					        <div>${match.yellow || "-"}</div>
 					
 					        <div>${match.red || "-"}</div>
+							
+							<div>-</div>
 					
 					    `
 					    : `
@@ -3748,9 +3748,9 @@ function renderPlayerMatches(){
 						            <span>RT</span>
 						            <span>CS</span>
 						            <span>GC</span>
-									<span>GC/90</span>
 						            <span>YC</span>
 						            <span>RC</span>
+									<span>-</span>
 						        `
 						        : `
 						            <span>RT</span>
@@ -3777,18 +3777,12 @@ function renderPlayerMatches(){
 						            <span>${match.cleanSheet}</span>
 						
 						            <span>${match.goalsConceded}</span>
-
-									<span>
-										 ${
-										 match.goalsConceded
-										 ? (match.goalsConceded * 90 / 90).toFixed(2)
-										 : "0.00"
-										 }
-									</span>
 						
 						            <span>${match.yellow || "-"}</span>
 						
 						            <span>${match.red || "-"}</span>
+
+									<span>-</span>
 						
 						        `
 						        : `
