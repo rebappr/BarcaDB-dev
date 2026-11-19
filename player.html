@@ -2525,14 +2525,18 @@ function renderSummary(stats){
                 </div>
             </div>
 
-            <div class="summary-stat">
-                <div class="summary-value">
-                    ${stats.yellow}
-                </div>
-                <div class="summary-label">
-                    Yellow
-                </div>
-            </div>
+			<div class="summary-stat">
+				 <div class="summary-value">
+					 ${
+					 stats.minutes
+					 ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
+					 : "0.00"
+					 }
+				 </div>
+				 <div class="summary-label">
+				 	Goals Conc./90
+				 </div>
+			</div>
 
         `;
 
@@ -2662,6 +2666,19 @@ document.getElementById(
                         Goals Conc.
                     </div>
                 </div>
+
+				<div class="summary-stat">
+					 <div class="summary-value">
+						 ${
+						 stats.minutes
+						 ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
+						 : "0.00"
+						 }
+					 </div>
+					 <div class="summary-label">
+					 	GC/90
+					 </div>
+				</div>
             `
             : `
                 <div class="summary-stat">
