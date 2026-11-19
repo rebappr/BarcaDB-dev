@@ -2194,17 +2194,6 @@ function renderSummary(stats){
         currentPlayer?.Position || "";
 
 	const isGK =
-	    isGoalkeeper(position);
-
-	const currentPlayer =
-	 pagePlayers.find(
-	 p => p.Name === playerName
-	);
-	
-	const position =
-	 currentPlayer?.Position || "";
-	
-	const isGK =
 	 isGoalkeeper(position);
 	
 	const hasAdvancedGKStats =
