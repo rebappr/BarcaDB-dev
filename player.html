@@ -1990,27 +1990,30 @@ function getPlayerAggregateStats(
             currentPlayer?.Position
         );
 
-    const stats = {
-
-        seasons:new Set(),
-
-        matches:0,
-        starts:0,
-        minutes:0,
-
-        goals:0,
-        assists:0,
-
-        penaltyGoals:0,
-        penaltyMissed:0,
-
-        yellow:0,
-        red:0,
-
-        cleanSheets:0,
-        goalsConceded:0
-
-    };
+	const stats = {
+	
+		 seasons:new Set(),
+		
+		 matches:0,
+		 starts:0,
+		 minutes:0,
+		
+		 goals:0,
+		 assists:0,
+		
+		 penaltyGoals:0,
+		 penaltyMissed:0,
+		
+		 yellow:0,
+		 red:0,
+		
+		 cleanSheets:0,
+		 goalsConceded:0,
+		
+		 saves:0,
+		 shotsOnTargetAgainst:0
+	
+	};
 
     const playerMatches =
         getPlayerMatches(playerName);
@@ -2062,16 +2065,33 @@ function getPlayerAggregateStats(
         stats.red +=
             item.red;
 
-        if(isGK){
-
-            stats.goalsConceded +=
-                item.goalsConceded;
-
-            if(item.cleanSheet){
-                stats.cleanSheets++;
-            }
-
-        }
+		if(isGK){
+		
+			 stats.goalsConceded +=
+			 item.goalsConceded;
+			
+			 if(item.cleanSheet){
+			  stats.cleanSheets++;
+			 }
+			
+			 const historyMatch =
+			 (allPlayerHistory[playerName] || [])
+			 .find(h =>
+			  Number(h.matchId) ===
+			  Number(item.match.ID)
+			 );
+			
+			 if(historyMatch){
+			
+			  stats.saves +=
+			  Number(historyMatch.Saves || 0);
+			
+			  stats.shotsOnTargetAgainst +=
+			  Number(historyMatch.SoTA || 0);
+			
+			 }
+		
+		}
 
     });
 
@@ -2368,57 +2388,82 @@ function renderSummary(stats){
 	        ? `
 			<div class="stats-widget stats-widget-goalkeeping">
 			
-			    <div class="stats-widget-title">
-			        Goalkeeping
-			    </div>
-			
-			    <div class="widget-stats-list">
-			
-			        <div class="widget-stat">
-			            <div class="widget-stat-label">
-			                Clean Sheets
-			            </div>
-			            <div class="widget-stat-value">
-			                ${stats.cleanSheets}
-			            </div>
-			        </div>
-			
-			        <div class="widget-stat">
-			            <div class="widget-stat-label">
-			                Goals Conceded
-			            </div>
-			            <div class="widget-stat-value">
-			                ${stats.goalsConceded}
-			            </div>
-			        </div>
-			
-			        <div class="widget-stat">
-			            <div class="widget-stat-label">
-			                Goals Conceded/90
-			            </div>
-			            <div class="widget-stat-value">
-			                ${
-			                    stats.minutes
-			                    ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
-			                    : "0.00"
-			                }
-			            </div>
-			        </div>
-			
-			        <div class="widget-stat">
-			            <div class="widget-stat-label">
-			                Clean Sheet %
-			            </div>
-			            <div class="widget-stat-value">
-			                ${
-			                    stats.matches
-			                    ? ((stats.cleanSheets * 100) / stats.matches).toFixed(0)
-			                    : "0"
-			                }%
-			            </div>
-			        </div>
-			
-			    </div>
+				<div class="stats-widget-title">
+				 	Goalkeeping
+				</div>
+				
+				<div class="widget-stats-list">
+				
+				 <div class="widget-stat">
+					 <div class="widget-stat-label">
+					 	Clean Sheets
+					 </div>
+					 <div class="widget-stat-value">
+					 	${stats.cleanSheets}
+					 </div>
+				 </div>
+				
+				 <div class="widget-stat">
+					 <div class="widget-stat-label">
+					 	Goals Conceded/90
+					 </div>
+					 <div class="widget-stat-value">
+						 ${
+						 stats.minutes
+						 ? ((stats.goalsConceded * 90) / stats.minutes).toFixed(2)
+						 : "0.00"
+						 }
+					 </div>
+				 </div>
+				
+				 <div class="widget-stat">
+					 <div class="widget-stat-label">
+					 	Clean Sheet %
+					 </div>
+					 <div class="widget-stat-value">
+						 ${
+						 stats.matches
+						 ? ((stats.cleanSheets * 100) / stats.matches).toFixed(0)
+						 : "0"
+						 }%
+					 </div>
+				 </div>
+				
+				 <div class="widget-stat">
+					 <div class="widget-stat-label">
+					 	Saves
+					 </div>
+					 <div class="widget-stat-value">
+						 ${stats.saves}
+					 </div>
+				 </div>
+				
+				 <div class="widget-stat">
+					 <div class="widget-stat-label">
+					 	Save %
+					 </div>
+					 <div class="widget-stat-value">
+						 ${
+						 stats.shotsOnTargetAgainst
+						 ? (
+						 stats.saves * 100 /
+						 stats.shotsOnTargetAgainst
+						 ).toFixed(1)
+						 : "0.0"
+						 }%
+					 </div>
+				 </div>
+				
+				 <div class="widget-stat">
+					 <div class="widget-stat-label">
+					 	SoTA
+					 </div>
+					 <div class="widget-stat-value">
+					 	${stats.shotsOnTargetAgainst}
+					 </div>
+				 </div>
+				
+				</div>
 			
 			</div>
 	        `
@@ -3128,6 +3173,7 @@ window.allPlayers = [];
 
 let pagePlayers = [];
 let allRatings = {};
+let allPlayerHistory = {};
 let selectedCompetition = "all";
 let selectedCareerCompetition = "all";
 let selectedSeason = "all";
@@ -4014,11 +4060,12 @@ function populateSeasonFilter(playerName){
 }
 
 Promise.all([
-    fetch("data/players.json").then(r => r.json()),
-    fetch("data/data.json").then(r => r.json()),
-    fetch("data/player-ratings.json").then(r => r.json())
+	 fetch("data/players.json").then(r => r.json()),
+	 fetch("data/data.json").then(r => r.json()),
+	 fetch("data/player-ratings.json").then(r => r.json()),
+	 fetch("data/players-history.json").then(r => r.json())
 ])
-.then(([players, matches, ratings]) => {
+.then(([players, matches, ratings, playerHistory]) => {
 
     allMatches = matches;
 
@@ -4028,6 +4075,7 @@ pagePlayers = players.map(p => ({
 }));
 
 allRatings = ratings;
+allPlayerHistory = playerHistory;
 
 const player =
     pagePlayers.find(
