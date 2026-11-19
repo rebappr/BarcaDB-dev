@@ -2343,53 +2343,41 @@ function renderSummary(stats){
 	    }
 	
 		${
-		 !isGK && hasPenalties
-		 ? `
-		 <div class="stats-widget">
+		  hasPenalties
+		    ? `
+		      <div class="stats-widget">
+		        <div class="stats-widget-title">
+		          Penalties
+		        </div>
 		
-		 <div class="stats-widget-title">
-		 Penalties
-		 </div>
+		        <div class="widget-stats-list">
 		
-		 <div class="widget-stats-list">
+		          <div class="widget-stat">
+		            <div class="widget-stat-label">Penalty Goals</div>
+		            <div class="widget-stat-value">${stats.penaltyGoals}</div>
+		          </div>
 		
-		 <div class="widget-stat">
-		 <div class="widget-stat-label">
-		 Penalty Goals
-		 </div>
-		 <div class="widget-stat-value">
-		 ${stats.penaltyGoals}
-		 </div>
-		 </div>
+		          <div class="widget-stat">
+		            <div class="widget-stat-label">Missed Penalties</div>
+		            <div class="widget-stat-value">${stats.penaltyMissed}</div>
+		          </div>
 		
-		 <div class="widget-stat">
-		 <div class="widget-stat-label">
-		 Missed Penalties
-		 </div>
-		 <div class="widget-stat-value">
-		 ${stats.penaltyMissed}
-		 </div>
-		 </div>
+		          <div class="widget-stat">
+		            <div class="widget-stat-label">Conversion %</div>
+		            <div class="widget-stat-value">
+		              ${
+		                (
+		                  stats.penaltyGoals * 100 /
+		                  (stats.penaltyGoals + stats.penaltyMissed)
+		                ).toFixed(0)
+		              }%
+		            </div>
+		          </div>
 		
-		 <div class="widget-stat">
-		 <div class="widget-stat-label">
-		 Conversion %
-		 </div>
-		 <div class="widget-stat-value">
-		 ${
-		 (
-		 stats.penaltyGoals * 100 /
-		 (stats.penaltyGoals + stats.penaltyMissed)
-		 ).toFixed(0)
-		 }%
-		 </div>
-		 </div>
-		
-		 </div>
-		
-		 </div>
-		 `
-		 : ""
+		        </div>
+		      </div>
+		    `
+		    : ''
 		}
 	
 	    ${
