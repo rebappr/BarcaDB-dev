@@ -610,24 +610,10 @@ display:none;
 
 .matches-header,
 .player-match{
-    display:grid;
-
-    grid-template-columns:
-    30px
-    80px
-    60px
-    1fr
-    80px
-    50px
-	35px
-    35px
-    35px
-    35px
-    35px;
-
-    gap:8px;
-    font-size:12px;
-    text-align:center;
+	 display:grid;
+	 gap:8px;
+	 font-size:12px;
+	 text-align:center;
 }
 
 .opponent-cell{
@@ -3758,7 +3744,7 @@ function renderPlayerMatches(){
 
         <div class="matches-list">
 
-			<div class="matches-header">
+			<div class="matches-header" style="grid-template-columns:${matchColumns}">
 			
 			 <div></div>
 			 <div>Date</div>
@@ -3795,11 +3781,12 @@ function renderPlayerMatches(){
             ${matches.map(match => `
 
                 <div
-                    class="player-match ${
-                        match.started
-                        ? "player-started"
-                        : "player-bench"
-                    }"
+					 class="player-match ${
+					 match.started
+					 ? "player-started"
+					 : "player-bench"
+					 }"
+					 style="grid-template-columns:${matchColumns}"
                     onclick="
                         location.href=
                         'match.html?id=${match.ID}'
@@ -4012,14 +3999,6 @@ function renderPlayerMatches(){
 
     `;
 
-	document
-	 .querySelectorAll(
-	  ".matches-header, .player-match"
-	 )
-	 .forEach(row => {
-	  row.style.gridTemplateColumns =
-	   matchColumns;
-	 });
 }
 
 function initFilters(){
