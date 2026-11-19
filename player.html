@@ -2909,48 +2909,55 @@ document.getElementById(
 
                 </div> `
 
-                ${
-				 (stats.penaltyGoals + stats.penaltyMissed) > 0
-				 ? `
-				 <div class="stats-widget">
-				
-				 <div class="stats-widget-title">
-				 Penalties
-				 </div>
-				
-				 <div class="widget-stats-list">
-				
-				 <div class="widget-stat">
-				 <div class="widget-stat-label">Penalty Goals</div>
-				 <div class="widget-stat-value">${stats.penaltyGoals}</div>
-				 </div>
-				
-				 <div class="widget-stat">
-				 <div class="widget-stat-label">Missed Penalties</div>
-				 <div class="widget-stat-value">${stats.penaltyMissed}</div>
-				 </div>
-				
-				 <div class="widget-stat">
-				 <div class="widget-stat-label">Conversion %</div>
-				 <div class="widget-stat-value">
-				 ${
-				 stats.penaltyGoals + stats.penaltyMissed
-				 ? (
-				 stats.penaltyGoals * 100 /
-				 (stats.penaltyGoals + stats.penaltyMissed)
-				 ).toFixed(0)
-				 : 0
-				 }%
-				 </div>
-				 </div>
-				
-				 </div>
-				
-				 </div>
-				 `
-				 : ""
-				}
-				`
+			${
+			 hasPenalties
+			 ? \
+			 <div class="stats-widget">
+			
+			 <div class="stats-widget-title">
+			 Penalties
+			 </div>
+			
+			 <div class="widget-stats-list">
+			
+			 <div class="widget-stat">
+			 <div class="widget-stat-label">
+			 Penalty Goals
+			 </div>
+			 <div class="widget-stat-value">
+			 ${stats.penaltyGoals}
+			 </div>
+			 </div>
+			
+			 <div class="widget-stat">
+			 <div class="widget-stat-label">
+			 Missed Penalties
+			 </div>
+			 <div class="widget-stat-value">
+			 ${stats.penaltyMissed}
+			 </div>
+			 </div>
+			
+			 <div class="widget-stat">
+			 <div class="widget-stat-label">
+			 Conversion %
+			 </div>
+			 <div class="widget-stat-value">
+			 ${
+			 (
+			 stats.penaltyGoals * 100 /
+			 (stats.penaltyGoals + stats.penaltyMissed)
+			 ).toFixed(0)
+			 }%
+			 </div>
+			 </div>
+			
+			 </div>
+			
+			 </div>
+			 \
+			 : ""
+			}
 				: `
 				
                 <div class="stats-widget">
