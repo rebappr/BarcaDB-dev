@@ -3540,6 +3540,17 @@ function renderPlayerInfo(){
 
 function renderPlayerMatches(){
 
+	const currentPlayer =
+	 pagePlayers.find(
+	  p => p.Name === playerName
+	 );
+	
+	const position =
+	 currentPlayer?.Position || "";
+	
+	const isGK =
+	 isGoalkeeper(position);
+
     const matches = [];
 
     allMatches.forEach(match => {
@@ -3641,6 +3652,33 @@ function renderPlayerMatches(){
 		const matchRating =
 		    matchRatingData?.rating;
 
+		let saves = null;
+		let sota = null;
+		let savePct = null;
+		
+		if(isGK){
+		
+		 const historyMatch =
+		 (allPlayerHistory[playerName] || [])
+		 .find(h =>
+		  Number(h.matchId) === Number(match.ID)
+		 );
+		
+		 if(historyMatch){
+		
+		  saves = Number(historyMatch.Saves || 0);
+		
+		  sota = Number(historyMatch.SoTA || 0);
+		
+		  savePct =
+		   sota > 0
+		   ? ((saves * 100) / sota).toFixed(0)
+		   : "0";
+		
+		 }
+		
+		}
+
 		matches.push({
 		
 		 ...match,
@@ -3688,17 +3726,6 @@ function renderPlayerMatches(){
         return db - da;
 
     });
-
-	const currentPlayer =
-          pagePlayers.find(
-	        p => p.Name === playerName
-	    );
-	
-	const position =
-	    currentPlayer?.Position || "";
-	
-	const isGK =
-	    isGoalkeeper(position);
 
 	const hasAdvancedGKStats =
 	 (allPlayerHistory[playerName] || [])
@@ -3825,70 +3852,66 @@ function renderPlayerMatches(){
 					${
 					 isGK
 					 ? (
-					  hasAdvancedGKStats
-					  ? `
-					
-					  <div>
-					  ${
-					   match.rating
+					   hasAdvancedGKStats
 					   ? `
-					   <span class="match-rating">
-					   ${match.rating.toFixed(2)}
-					   </span>
+					
+					   <div>
+					   ${
+					    match.rating
+					    ? `
+					    <span class="match-rating">
+					     ${match.rating.toFixed(2)}
+					    </span>
+					    `
+					    : "-"
+					   }
+					   </div>
+					
+					   <div>${match.saves ?? "-"}</div>
+					
+					   <div>
+					   ${
+					    match.savePct != null
+					    ? match.savePct + "%"
+					    : "-"
+					   }
+					   </div>
+					
+					   <div>${match.sota ?? "-"}</div>
+					
+					   <div>${match.goalsConceded}</div>
+					
+					   <div>${match.cleanSheet ? "✓" : "-"}</div>
+					
 					   `
-					   : "-"
-					  }
-					  </div>
-					
-					  <div>${match.saves ?? "-"}</div>
-						
-					  <div>
-						${match.savePct !== null
-						 ? match.savePct + "%"
-						 : "-"
-						}
-					  </div>
-						
-					  <div>${match.sota ?? "-"}</div>
-					
-					  <div>${match.goalsConceded}</div>
-					
-					  <div>${
-					   match.cleanSheet
-					   ? "✓"
-					   : "-"
-					  }</div>
-					
-					  `
-					  : ``
+					   : ""
 					 )
 					 : `
 					
-							<div>
-							    ${
-							        match.rating
-							        ? `
-							            <span class="match-rating">
-							                ${match.rating.toFixed(2)}
-							            </span>
-							        `
-							        : "-"
-							    }
-							</div>
+					 <div>
+					 ${
+					  match.rating
+					  ? `
+					  <span class="match-rating">
+					   ${match.rating.toFixed(2)}
+					  </span>
+					  `
+					  : "-"
+					 }
+					 </div>
 					
-					        <div>${match.goals || "-"}</div>
+					 <div>${match.goals || "-"}</div>
 					
-					        <div>${match.assists || "-"}</div>
+					 <div>${match.assists || "-"}</div>
 					
-					        <div>${match.penaltyGoals || "-"}</div>
+					 <div>${match.penaltyGoals || "-"}</div>
 					
-					        <div>${match.yellow || "-"}</div>
+					 <div>${match.yellow || "-"}</div>
 					
-					        <div>${match.red || "-"}</div>
+					 <div>${match.red || "-"}</div>
 					
-					    `
+					 `
 					}
-
 					${
 					 isGK && !hasAdvancedGKStats
 					 ? ""
@@ -3898,25 +3921,29 @@ function renderPlayerMatches(){
 					
 					 <div class="mobile-stats-header">
 					
-					 ${
+					${
 					 isGK
-					 ? `
-					 <span>RT</span>
-					 <span>SV</span>
-					 <span>SV%</span>
-					 <span>SoTA</span>
-					 <span>GC</span>
-					 <span>CS</span>
-					 `
+					 ? (
+					   hasAdvancedGKStats
+					   ? `
+					   <div>RT</div>
+					   <div>SV</div>
+					   <div>SV%</div>
+					   <div>SoTA</div>
+					   <div>GC</div>
+					   <div>CS</div>
+					   `
+					   : ""
+					 )
 					 : `
-					 <span>RT</span>
-					 <span>G</span>
-					 <span>A</span>
-					 <span>PG</span>
-					 <span>YC</span>
-					 <span>RC</span>
+					 <div>RT</div>
+					 <div>G</div>
+					 <div>A</div>
+					 <div>PG</div>
+					 <div>YC</div>
+					 <div>RC</div>
 					 `
-					 }
+					}
 					
 					 </div>
 					
