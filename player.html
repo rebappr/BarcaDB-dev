@@ -2095,6 +2095,11 @@ function getPlayerAggregateStats(
 
     });
 
+	const matchColumns =
+		 isGK && !hasAdvancedGKStats
+		 ? "30px 80px 60px 1fr 80px"
+		 : "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px";
+
     return stats;
 }
 
@@ -3755,31 +3760,35 @@ function renderPlayerMatches(){
 
 			<div class="matches-header">
 			
-			    <div></div>
-			    <div>Date</div>
-			    <div>Venue</div>
-			    <div>Opponent</div>
-			    <div>Result</div>
+			 <div></div>
+			 <div>Date</div>
+			 <div>Venue</div>
+			 <div>Opponent</div>
+			 <div>Result</div>
 			
-			    ${
-			        isGK
-			        ? `
-					   <div>RT</div>
-					   <div>SV</div>
-					   <div>SV%</div>
-					   <div>SoTA</div>
-					   <div>GC</div>
-					   <div>CS</div>
-			        `
-			        : `
-			            <div>RT</div>
-			            <div>G</div>
-			            <div>A</div>
-			            <div>PG</div>
-			            <div>YC</div>
-			            <div>RC</div>
-			        `
-			    }
+			 ${
+			 isGK
+			 ? (
+			   hasAdvancedGKStats
+			   ? `
+			   <div>RT</div>
+			   <div>SV</div>
+			   <div>SV%</div>
+			   <div>SoTA</div>
+			   <div>GC</div>
+			   <div>CS</div>
+			   `
+			   : ""
+			 )
+			 : `
+			 <div>RT</div>
+			 <div>G</div>
+			 <div>A</div>
+			 <div>PG</div>
+			 <div>YC</div>
+			 <div>RC</div>
+			 `
+			}
 			
 			</div>
 
@@ -4002,6 +4011,15 @@ function renderPlayerMatches(){
         </div>
 
     `;
+
+	document
+	 .querySelectorAll(
+	  ".matches-header, .player-match"
+	 )
+	 .forEach(row => {
+	  row.style.gridTemplateColumns =
+	   matchColumns;
+	 });
 }
 
 function initFilters(){
