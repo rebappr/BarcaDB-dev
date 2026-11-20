@@ -3277,35 +3277,46 @@ function initSections(){
 				
 				}
 				
-				if(activeSection !== "stats"){
-					ratingCard.style.display = "none";
+				ratingCard.style.display =
+				    activeSection === "stats"
+				        ? "flex"
+				        : "none";
 				}
 				
-				document.getElementById("infoSection").style.display =
-					activeSection === "info"
-						? "block"
-						: "none";
+				document
+				.getElementById("infoSection")
+				.style.display =
+				    activeSection === "info"
+				    ? "block"
+				    : "none";
 				
-				document.getElementById("statsSection").style.display =
-					activeSection === "stats"
-						? "block"
-						: "none";
+				document
+				.getElementById("statsSection")
+				.style.display =
+				    activeSection === "stats"
+				    ? "block"
+				    : "none";
 				
-				document.getElementById("matchesSection").style.display =
-					activeSection === "matches"
-						? "block"
-						: "none";
+				document
+				.getElementById("matchesSection")
+				.style.display =
+				    activeSection === "matches"
+				    ? "block"
+				    : "none";
 				
-				document.getElementById("careerSection").style.display =
-					activeSection === "career"
-						? "block"
-						: "none";
-				
-				renderActiveSection();
-				
-				});
+				document
+				.getElementById("careerSection")
+				.style.display =
+				    activeSection === "career"
+				    ? "block"
+				    : "none";
 
-    	});
+                renderActiveSection();
+
+            }
+        );
+
+    });
 
 }
 
