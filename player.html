@@ -3818,88 +3818,88 @@ function renderPlayerMatches(){
                     </div>
 
 					${
-					 isMobile
-					 ? `
-					
-					 <div>
-					 ${
-					 match.rating
-					 ? `
-					 <span class="match-rating">
-					 ${match.rating.toFixed(2)}
-					 </span>
-					 `
-					 : "-"
-					 }
-					 </div>
-					
-					 `
-					
-					 : isGK
-					 ? (
-					 hasAdvancedGKStats
-					 ? `
-					
-					 <div>
-					 ${
-					 match.rating
-					 ? `
-					 <span class="match-rating">
-					 ${match.rating.toFixed(2)}
-					 </span>
-					 `
-					 : "-"
-					 }
-					 </div>
-					
-					 <div>${match.saves ?? "-"}</div>
-					
-					 <div>
-					 ${
-					 match.savePct != null
-					 ? match.savePct + "%"
-					 : "-"
-					 }
-					 </div>
-					
-					 <div>${match.sota ?? "-"}</div>
-					
-					 <div>${match.goalsConceded}</div>
-					
-					 <div>${match.cleanSheet ? "✓" : "-"}</div>
-					
-					 `
-					
-					 : ""
-					 )
-					
-					 : `
-					
-					 <div>
-					 ${
-					 match.rating
-					 ? `
-					 <span class="match-rating">
-					 ${match.rating.toFixed(2)}
-					 </span>
-					 `
-					 : "-"
-					 }
-					 </div>
-					
-					 <div>${match.goals || "-"}</div>
-					
-					 <div>${match.assists || "-"}</div>
-					
-					 <div>${match.penaltyGoals || "-"}</div>
-					
-					 <div>${match.yellow || "-"}</div>
-					
-					 <div>${match.red || "-"}</div>
-					
-					 `
-					
-					}					
+					isMobile
+					? `
+				
+					<div>
+					${
+						match.rating
+						? `
+						<span class="match-rating">
+						${match.rating.toFixed(2)}
+						</span>
+						`
+						: "-"
+					}
+					</div>
+				
+					`
+				
+					: isGK
+					? (
+						hasAdvancedGKStats
+						? `
+				
+						<div>
+						${
+							match.rating
+							? `
+							<span class="match-rating">
+							${match.rating.toFixed(2)}
+							</span>
+							`
+							: "-"
+						}
+						</div>
+				
+						<div>${match.saves ?? "-"}</div>
+				
+						<div>
+						${
+							match.savePct != null
+							? match.savePct + "%"
+							: "-"
+						}
+						</div>
+				
+						<div>${match.sota ?? "-"}</div>
+				
+						<div>${match.goalsConceded}</div>
+				
+						<div>${match.cleanSheet ? "✓" : "-"}</div>
+				
+						`
+				
+						: ""
+					)
+				
+					: `
+				
+					<div>
+					${
+						match.rating
+						? `
+						<span class="match-rating">
+						${match.rating.toFixed(2)}
+						</span>
+						`
+						: "-"
+					}
+					</div>
+				
+					<div>${match.goals || "-"}</div>
+				
+					<div>${match.assists || "-"}</div>
+				
+					<div>${match.penaltyGoals || "-"}</div>
+				
+					<div>${match.yellow || "-"}</div>
+				
+					<div>${match.red || "-"}</div>
+				
+					`
+				}
+
                 </div>
 
             `).join("")}
