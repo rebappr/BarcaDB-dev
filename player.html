@@ -3696,17 +3696,9 @@ function renderPlayerMatches(){
 		});
 
 	const matchColumns =
-		isGK
-		? (
-			!hasAdvancedGKStats
-			? "30px 80px 60px 1fr 80px"
-			: "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px"
-		)
-		: (
-			hasRatings
-			? "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px"
-			: "30px 80px 60px 1fr 80px 35px 35px 35px 35px 35px"
-		);
+	 isGK && !hasAdvancedGKStats
+	 ? "30px 80px 60px 1fr 80px"
+	 : "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px";
 
 	document.getElementById(
 	    "matchesSection"
@@ -3760,8 +3752,7 @@ function renderPlayerMatches(){
 				<div>RC</div>
 			
 				`
-			}
-
+			}			
 			</div>
 
             ${matches.map(match => `
