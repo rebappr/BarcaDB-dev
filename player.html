@@ -3621,71 +3621,84 @@ function renderPlayerMatches(){
 
 		matches.push({
 		
-		 ...match,
+			...match,
 		
-		 started,
+			started,
 		
-		 goals,
-		 assists,
-		 penaltyGoals,
+			goals,
+			assists,
+			penaltyGoals,
 		
-		 yellow,
-		 red,
+			yellow,
+			red,
 		
-		 cleanSheet:
-		 Number(match.Conceded) === 0 ? 1 : 0,
+			cleanSheet:
+				Number(match.Conceded) === 0 ? 1 : 0,
 		
-		 goalsConceded:
-		 Number(match.Conceded) || 0,
+			goalsConceded:
+				Number(match.Conceded) || 0,
 		
-		 rating: matchRating,
+			rating: matchRating,
 		
-		 saves,
-		 sota,
-		 savePct
+			historyMatch,
+		
+			saves,
+			sota,
+			savePct
 		
 		});
 		});
 
-    matches.sort((a,b)=>{
-
-        const da =
-            new Date(
-                a.Date.split(".")
-                .reverse()
-                .join("-")
-            );
-
-        const db =
-            new Date(
-                b.Date.split(".")
-                .reverse()
-                .join("-")
-            );
-
-        return db - da;
-
-    });
-
-	const hasAdvancedGKStats =
-		(allPlayerHistory[playerName] || [])
-		.some(h => {
-	
-			const match =
-				allMatches.find(
-					m => Number(m.ID) === Number(h.matchId)
+		matches.sort((a,b)=>{
+		
+			const da =
+				new Date(
+					a.Date.split(".")
+					.reverse()
+					.join("-")
 				);
-	
-			if(!match){
-				return false;
-			}
-	
-			return (
-				selectedSeason === "all" ||
-				match.Season === selectedSeason
-			);
-	
+		
+			const db =
+				new Date(
+					b.Date.split(".")
+					.reverse()
+					.join("-")
+				);
+		
+			return db - da;
+		
 		});
+		
+		const positionGroup =
+			getPositionGroup(position);
+		
+		const useAdvancedPlayerStats =
+		
+			positionGroup !== "Goalkeeper" &&
+		
+			matches.some(
+				m => m.historyMatch
+			);
+		
+		const hasAdvancedGKStats =
+			(allPlayerHistory[playerName] || [])
+			.some(h => {
+		
+				const match =
+					allMatches.find(
+						m => Number(m.ID) === Number(h.matchId)
+					);
+		
+				if(!match){
+					return false;
+				}
+		
+				return (
+					selectedSeason === "all" ||
+					match.Season === selectedSeason
+				);
+		
+			});
 
 	const matchColumns =
 	 isGK && !hasAdvancedGKStats
@@ -3732,6 +3745,48 @@ function renderPlayerMatches(){
 				`
 			)
 			
+				: (
+
+				useAdvancedPlayerStats
+			
+				? (
+			
+					positionGroup === "Defender"
+			
+					? `
+			
+					<div>RT</div>
+			
+					<div>G</div>
+			
+					<div>A</div>
+			
+					<div>TklW</div>
+			
+					<div>Int</div>
+			
+					<div>YC</div>
+			
+					`
+			
+					: `
+			
+					<div>RT</div>
+			
+					<div>G</div>
+			
+					<div>A</div>
+			
+					<div>Sh</div>
+			
+					<div>SoT</div>
+			
+					<div>Crs</div>
+			
+					`
+			
+				)
+			
 				: `
 			
 				<div>RT</div>
@@ -3747,6 +3802,8 @@ function renderPlayerMatches(){
 				<div>RC</div>
 			
 				`
+			
+			)
 			}			
 			</div>
 
@@ -3878,31 +3935,95 @@ function renderPlayerMatches(){
 							`
 						)
 					
-						: `
-					
-						<div>
-						${
-							match.rating
-							? `
-							<span class="match-rating">
-							${match.rating.toFixed(2)}
-							</span>
+						: (
+
+							useAdvancedPlayerStats
+						
+							? (
+						
+								positionGroup === "Defender"
+						
+								? `
+						
+								<div>
+								${
+									match.rating
+									? `
+									<span class="match-rating">
+									${match.rating.toFixed(2)}
+									</span>
+									`
+									: "-"
+								}
+								</div>
+						
+								<div>${match.historyMatch?.Gls ?? match.goals ?? "-"}</div>
+						
+								<div>${match.historyMatch?.Ast ?? match.assists ?? "-"}</div>
+						
+								<div>${match.historyMatch?.TklW ?? "-"}</div>
+						
+								<div>${match.historyMatch?.Int ?? "-"}</div>
+						
+								<div>${match.historyMatch?.CrdY ?? "-"}</div>
+						
+								`
+						
+								: `
+						
+								<div>
+								${
+									match.rating
+									? `
+									<span class="match-rating">
+									${match.rating.toFixed(2)}
+									</span>
+									`
+									: "-"
+								}
+								</div>
+						
+								<div>${match.historyMatch?.Gls ?? match.goals ?? "-"}</div>
+						
+								<div>${match.historyMatch?.Ast ?? match.assists ?? "-"}</div>
+						
+								<div>${match.historyMatch?.Sh ?? "-"}</div>
+						
+								<div>${match.historyMatch?.SoT ?? "-"}</div>
+						
+								<div>${match.historyMatch?.Crs ?? "-"}</div>
+						
+								`
+						
+							)
+						
+							: `
+						
+							<div>
+							${
+								match.rating
+								? `
+								<span class="match-rating">
+								${match.rating.toFixed(2)}
+								</span>
+								`
+								: "-"
+							}
+							</div>
+						
+							<div>${match.goals || "-"}</div>
+						
+							<div>${match.assists || "-"}</div>
+						
+							<div>${match.penaltyGoals || "-"}</div>
+						
+							<div>${match.yellow || "-"}</div>
+						
+							<div>${match.red || "-"}</div>
+						
 							`
-							: "-"
-						}
-						</div>
-					
-						<div>${match.goals || "-"}</div>
-					
-						<div>${match.assists || "-"}</div>
-					
-						<div>${match.penaltyGoals || "-"}</div>
-					
-						<div>${match.yellow || "-"}</div>
-					
-						<div>${match.red || "-"}</div>
-					
-						`
+						
+						)
 					}
 
                 </div>
