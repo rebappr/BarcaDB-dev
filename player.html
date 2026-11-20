@@ -3695,11 +3695,6 @@ function renderPlayerMatches(){
 	
 		});
 
-	const hasRatings =
-		matches.some(
-			match => match.rating != null
-		);
-
 	const matchColumns =
 		isGK
 		? (
@@ -3752,7 +3747,7 @@ function renderPlayerMatches(){
 			
 				: `
 			
-				${hasRatings ? "<div>RT</div>" : ""}
+				<div>RT</div>
 			
 				<div>G</div>
 			
