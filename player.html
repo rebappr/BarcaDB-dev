@@ -3592,33 +3592,33 @@ function renderPlayerMatches(){
 		const matchRating =
 		    matchRatingData?.rating;
 
+const historyMatch =
+	(allPlayerHistory[playerName] || [])
+	.find(h =>
+		Number(h.matchId) === Number(match.ID)
+	);
+
 		let saves = null;
 		let sota = null;
 		let savePct = null;
 		
 		if(isGK){
 		
-		 const historyMatch =
-		 (allPlayerHistory[playerName] || [])
-		 .find(h =>
-		  Number(h.matchId) === Number(match.ID)
-		 );
+			if(historyMatch){
 		
-		 if(historyMatch){
+				saves = Number(historyMatch.Saves || 0);
 		
-		  saves = Number(historyMatch.Saves || 0);
+				sota = Number(historyMatch.SoTA || 0);
 		
-		  sota = Number(historyMatch.SoTA || 0);
+				savePct =
+					sota > 0
+					? ((saves * 100) / sota).toFixed(0)
+					: "0";
 		
-		  savePct =
-		   sota > 0
-		   ? ((saves * 100) / sota).toFixed(0)
-		   : "0";
-		
-		 }
+			}
 		
 		}
-
+		
 		matches.push({
 		
 			...match,
