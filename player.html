@@ -3011,70 +3011,168 @@ document.getElementById(
 
         </div>
 
-        ${
-		  !isGK
-		  ? `
+		${
+			!isGK
+			? `
 		
-		    <div class="stats-widget">
+			<div class="stats-widget">
 		
-		      <div class="stats-widget-title">
-		        Attacking
-		      </div>
+			<div class="stats-widget-title">
+			Attacking
+			</div>
 		
-		      <div class="widget-stats-list">
+			${
+				hasAdvancedPlayerStats
 		
-		        <div class="widget-stat">
-		          <div class="widget-stat-label">Goals</div>
-		          <div class="widget-stat-value">${stats.goals}</div>
-		        </div>
+				? (
 		
-		        <div class="widget-stat">
-		          <div class="widget-stat-label">Assists</div>
-		          <div class="widget-stat-value">${stats.assists}</div>
-		        </div>
+					positionGroup === "Defender"
 		
-		        <div class="widget-stat">
-		          <div class="widget-stat-label">G+A</div>
-		          <div class="widget-stat-value">${stats.goals + stats.assists}</div>
-		        </div>
+					? `
 		
-		        <div class="widget-stat">
-		          <div class="widget-stat-label">G/90</div>
-		          <div class="widget-stat-value">
-		            ${
-		              stats.minutes
-		                ? ((stats.goals * 90) / stats.minutes).toFixed(2)
-		                : "0.00"
-		            }
-		          </div>
-		        </div>
+					<div class="widget-stats-list">
 		
-		        <div class="widget-stat">
-		          <div class="widget-stat-label">A/90</div>
-		          <div class="widget-stat-value">
-		            ${
-		              stats.minutes
-		                ? ((stats.assists * 90) / stats.minutes).toFixed(2)
-		                : "0.00"
-		            }
-		          </div>
-		        </div>
+					<div class="widget-stat">
+					<div class="widget-stat-label">Goals</div>
+					<div class="widget-stat-value">${stats.goals}</div>
+					</div>
 		
-		        <div class="widget-stat">
-		          <div class="widget-stat-label">G+A/90</div>
-		          <div class="widget-stat-value">
-		            ${
-		              stats.minutes
-		                ? (((stats.goals + stats.assists) * 90) / stats.minutes).toFixed(2)
-		                : "0.00"
-		            }
-		          </div>
-		        </div>
+					<div class="widget-stat">
+					<div class="widget-stat-label">Assists</div>
+					<div class="widget-stat-value">${stats.assists}</div>
+					</div>
 		
-		      </div>
+					<div class="widget-stat">
+					<div class="widget-stat-label">Tackles Won</div>
+					<div class="widget-stat-value">
+					${advancedSeasonStats.reduce((s,h) => s + Number(h.TklW || 0), 0)}
+					</div>
+					</div>
 		
-		    </div>
+					<div class="widget-stat">
+					<div class="widget-stat-label">Interceptions</div>
+					<div class="widget-stat-value">
+					${advancedSeasonStats.reduce((s,h) => s + Number(h.Int || 0), 0)}
+					</div>
+					</div>
 		
+					<div class="widget-stat">
+					<div class="widget-stat-label">Yellow Cards</div>
+					<div class="widget-stat-value">
+					${advancedSeasonStats.reduce((s,h) => s + Number(h.CrdY || 0), 0)}
+					</div>
+					</div>
+		
+					</div>
+		
+					`
+		
+					: `
+		
+					<div class="widget-stats-list">
+		
+					<div class="widget-stat">
+					<div class="widget-stat-label">Goals</div>
+					<div class="widget-stat-value">${stats.goals}</div>
+					</div>
+		
+					<div class="widget-stat">
+					<div class="widget-stat-label">Assists</div>
+					<div class="widget-stat-value">${stats.assists}</div>
+					</div>
+		
+					<div class="widget-stat">
+					<div class="widget-stat-label">Shots</div>
+					<div class="widget-stat-value">
+					${advancedSeasonStats.reduce((s,h) => s + Number(h.Sh || 0), 0)}
+					</div>
+					</div>
+		
+					<div class="widget-stat">
+					<div class="widget-stat-label">Shots on Target</div>
+					<div class="widget-stat-value">
+					${advancedSeasonStats.reduce((s,h) => s + Number(h.SoT || 0), 0)}
+					</div>
+					</div>
+		
+					<div class="widget-stat">
+					<div class="widget-stat-label">Crosses</div>
+					<div class="widget-stat-value">
+					${advancedSeasonStats.reduce((s,h) => s + Number(h.Crs || 0), 0)}
+					</div>
+					</div>
+		
+					</div>
+		
+					`
+		
+				)
+		
+				: `
+		
+				<div class="widget-stats-list">
+		
+				<div class="widget-stat">
+				<div class="widget-stat-label">Goals</div>
+				<div class="widget-stat-value">${stats.goals}</div>
+				</div>
+		
+				<div class="widget-stat">
+				<div class="widget-stat-label">Assists</div>
+				<div class="widget-stat-value">${stats.assists}</div>
+				</div>
+		
+				<div class="widget-stat">
+				<div class="widget-stat-label">G+A</div>
+				<div class="widget-stat-value">
+				${stats.goals + stats.assists}
+				</div>
+				</div>
+		
+				<div class="widget-stat">
+				<div class="widget-stat-label">G/90</div>
+				<div class="widget-stat-value">
+				${
+					stats.minutes
+					? ((stats.goals * 90) / stats.minutes).toFixed(2)
+					: "0.00"
+				}
+				</div>
+				</div>
+		
+				<div class="widget-stat">
+				<div class="widget-stat-label">A/90</div>
+				<div class="widget-stat-value">
+				${
+					stats.minutes
+					? ((stats.assists * 90) / stats.minutes).toFixed(2)
+					: "0.00"
+				}
+				</div>
+				</div>
+		
+				<div class="widget-stat">
+				<div class="widget-stat-label">G+A/90</div>
+				<div class="widget-stat-value">
+				${
+					stats.minutes
+					? (((stats.goals + stats.assists) * 90) / stats.minutes).toFixed(2)
+					: "0.00"
+				}
+				</div>
+				</div>
+		
+				</div>
+		
+				`
+		
+			}
+		
+			</div>
+		
+			`
+			: ""
+		}		
 		    ${
 		      hasPenalties
 		        ? `
