@@ -2144,9 +2144,6 @@ function renderSummary(stats){
 	const isGK =
 	 	isGoalkeeper(position);
 
-	const isMobile = 
-		window.innerWidth <= 820;
-	
 	const hasAdvancedGKStats =
 	 (allPlayerHistory[playerName] || [])
 	 .some(h => {
@@ -3500,6 +3497,9 @@ function renderPlayerMatches(){
 	
 	const isGK =
 	 isGoalkeeper(position);
+
+	const isMobile =
+	window.innerWidth <= 820;
 
     const matches = [];
 
