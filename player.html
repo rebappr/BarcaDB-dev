@@ -3281,40 +3281,31 @@ function initSections(){
 					ratingCard.style.display = "none";
 				}
 				
-				document
-				.getElementById("infoSection")
-				.style.display =
-				    activeSection === "info"
-				    ? "block"
-				    : "none";
+				document.getElementById("infoSection").style.display =
+					activeSection === "info"
+						? "block"
+						: "none";
 				
-				document
-				.getElementById("statsSection")
-				.style.display =
-				    activeSection === "stats"
-				    ? "block"
-				    : "none";
+				document.getElementById("statsSection").style.display =
+					activeSection === "stats"
+						? "block"
+						: "none";
 				
-				document
-				.getElementById("matchesSection")
-				.style.display =
-				    activeSection === "matches"
-				    ? "block"
-				    : "none";
+				document.getElementById("matchesSection").style.display =
+					activeSection === "matches"
+						? "block"
+						: "none";
 				
-				document
-				.getElementById("careerSection")
-				.style.display =
-				    activeSection === "career"
-				    ? "block"
-				    : "none";
+				document.getElementById("careerSection").style.display =
+					activeSection === "career"
+						? "block"
+						: "none";
+				
+				renderActiveSection();
+				
+				});
 
-                renderActiveSection();
-
-            }
-        );
-
-    });
+    	});
 
 }
 
