@@ -2145,34 +2145,25 @@ function renderSummary(stats){
 	 	isGoalkeeper(position);
 
 	const hasAdvancedGKStats =
-	(allPlayerHistory[playerName] || [])
-	.some(h => {
-
-		const match =
-			allMatches.find(
-				m => Number(m.ID) === Number(h.matchId)
-			);
-
-		if(!match){
-			return false;
-		}
-
-		return (
-			selectedSeason === "all" ||
-			match.Season === selectedSeason
-		);
-
-	});
-
-	const matchColumns =
-	isMobile
-	? "30px 80px 60px 1fr 80px 50px"
-	: (
-		isGK && !hasAdvancedGKStats
-		? "30px 80px 60px 1fr 80px"
-		: "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px"
-	);
+		(allPlayerHistory[playerName] || [])
+		.some(h => {
 	
+			const match =
+				allMatches.find(
+					m => Number(m.ID) === Number(h.matchId)
+				);
+	
+			if(!match){
+				return false;
+			}
+	
+			return (
+				selectedSeason === "all" ||
+				match.Season === selectedSeason
+			);
+	
+		});
+
 	document.getElementById(
 	    "seasonWidgets"
 	).innerHTML = `
