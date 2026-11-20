@@ -3678,19 +3678,24 @@ function renderPlayerMatches(){
     });
 
 	const hasAdvancedGKStats =
-	 (allPlayerHistory[playerName] || [])
-	 .some(h => {
+		(allPlayerHistory[playerName] || [])
+		.some(h => {
 	
-	  if(!match){
-	   return false;
-	  }
+			const match =
+				allMatches.find(
+					m => Number(m.ID) === Number(h.matchId)
+				);
 	
-	  return (
-	   selectedSeason === "all" ||
-	   match.Season === selectedSeason
-	  );
+			if(!match){
+				return false;
+			}
 	
-	 });
+			return (
+				selectedSeason === "all" ||
+				match.Season === selectedSeason
+			);
+	
+		});
 
 	const matchColumns =
 	 isGK && !hasAdvancedGKStats
