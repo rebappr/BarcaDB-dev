@@ -1027,25 +1027,22 @@ display:none;
   grid-template-columns:repeat(3,1fr);
  }
 
-.matches-header{
- grid-template-columns:
- 30px
- 70px
- 55px
- 1fr
- 70px
- 55px;
-}
+	.matches-header,
+	.player-match{
+		grid-template-columns:
+			30px
+			70px
+			55px
+			1fr
+			70px
+			55px !important;
+	}
 
-.player-match{
-	 grid-template-columns:
-	 30px
-	 70px
-	 55px
-	 1fr
-	 70px
-	 55px;
- }
+	.matches-header > :nth-child(n+7),
+	.player-match > :nth-child(n+7){
+		display:none !important;
+	}
+
 
  .competition-cell span{
   display:none;
@@ -3498,9 +3495,6 @@ function renderPlayerMatches(){
 	const isGK =
 	 isGoalkeeper(position);
 
-	const isMobile =
-	window.innerWidth <= 820;
-
     const matches = [];
 
     allMatches.forEach(match => {
@@ -3717,33 +3711,44 @@ function renderPlayerMatches(){
 			 <div>Result</div>
 			
 			${
-			 isMobile
-			 ? `
-			 <div>RT</div>
-			 `
-			 : isGK
-			 ? (
-			     hasAdvancedGKStats
-			     ? `
-			       <div>RT</div>
-			       <div>SV</div>
-			       <div>SV%</div>
-			       <div>SoTA</div>
-			       <div>GC</div>
-			       <div>CS</div>
-			     `
-			     : ""
-			   )
-			 : `
-			     <div>RT</div>
-			     <div>G</div>
-			     <div>A</div>
-			     <div>PG</div>
-			     <div>YC</div>
-			     <div>RC</div>
-			   `
-			}
+				isGK
+				? (
+					hasAdvancedGKStats
+					? `
 			
+					<div>RT</div>
+			
+					<div>SV</div>
+			
+					<div>SV%</div>
+			
+					<div>SoTA</div>
+			
+					<div>GC</div>
+			
+					<div>CS</div>
+			
+					`
+			
+					: ""
+				)
+			
+				: `
+			
+				<div>RT</div>
+			
+				<div>G</div>
+			
+				<div>A</div>
+			
+				<div>PG</div>
+			
+				<div>YC</div>
+			
+				<div>RC</div>
+			
+				`
+			}			
 			</div>
 
             ${matches.map(match => `
