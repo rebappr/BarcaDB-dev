@@ -3689,8 +3689,8 @@ function renderPlayerMatches(){
 
 	const matchColumns =
 	 isGK && !hasAdvancedGKStats
-	 ? "30px 80px 60px 1fr 80px"
-	 : "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px";
+		? "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px"
+		: "30px 80px 60px 1fr 80px 50px 35px 35px 35px 35px 35px";
 
 	document.getElementById(
 	    "matchesSection"
@@ -3707,27 +3707,30 @@ function renderPlayerMatches(){
 			 <div>Result</div>
 			
 			${
-				isGK
-				? (
-					hasAdvancedGKStats
-					? `
-			
-					<div>RT</div>
-			
-					<div>SV</div>
-			
-					<div>SV%</div>
-			
-					<div>SoTA</div>
-			
-					<div>GC</div>
-			
-					<div>CS</div>
-			
-					`
-			
-					: ""
-				)
+			isGK
+			? (
+				hasAdvancedGKStats
+				? `
+		
+				<div>RT</div>
+				<div>SV</div>
+				<div>SV%</div>
+				<div>SoTA</div>
+				<div>GC</div>
+				<div>CS</div>
+		
+				`
+		
+				: `
+		
+				<div>RT</div>
+				<div>CS</div>
+				<div>GC</div>
+				<div>YC</div>
+				<div>RC</div>
+		
+				`
+			)
 			
 				: `
 			
@@ -3850,7 +3853,29 @@ function renderPlayerMatches(){
 					
 							`
 					
-							: ""
+							: `
+
+							<div>
+							${
+								match.rating
+								? `
+								<span class="match-rating">
+								${match.rating.toFixed(2)}
+								</span>
+								`
+								: "-"
+							}
+							</div>
+							
+							<div>${match.cleanSheet ? "✓" : "-"}</div>
+							
+							<div>${match.goalsConceded}</div>
+							
+							<div>${match.yellow || "-"}</div>
+							
+							<div>${match.red || "-"}</div>
+							
+							`
 						)
 					
 						: `
