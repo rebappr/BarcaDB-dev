@@ -3277,10 +3277,8 @@ function initSections(){
 				
 				}
 				
-				ratingCard.style.display =
-				    activeSection === "stats"
-				        ? "flex"
-				        : "none";
+				if(activeSection !== "stats"){
+					ratingCard.style.display = "none";
 				}
 				
 				document
