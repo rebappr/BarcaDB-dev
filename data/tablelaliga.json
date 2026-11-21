@@ -19719,13 +19719,13 @@
     "season": "2026/27",
     "position": "2",
     "club": "Real Madrid",
-    "matches": "12",
-    "wins": "10",
+    "matches": "13",
+    "wins": "11",
     "draws": "0",
     "losses": "2",
-    "goals": "31:10",
-    "difference": "21",
-    "points": "30"
+    "goals": "33:11",
+    "difference": "22",
+    "points": "33"
   },
   {
     "season": "2026/27",
@@ -19743,13 +19743,13 @@
     "season": "2026/27",
     "position": "4",
     "club": "Real Betis",
-    "matches": "12",
+    "matches": "13",
     "wins": "8",
-    "draws": "2",
+    "draws": "3",
     "losses": "2",
-    "goals": "20:15",
+    "goals": "21:16",
     "difference": "5",
-    "points": "26"
+    "points": "27"
   },
   {
     "season": "2026/27",
@@ -19767,13 +19767,13 @@
     "season": "2026/27",
     "position": "6",
     "club": "Sevilla",
-    "matches": "12",
+    "matches": "13",
     "wins": "5",
-    "draws": "3",
+    "draws": "4",
     "losses": "4",
-    "goals": "17:19",
+    "goals": "18:20",
     "difference": "-2",
-    "points": "18"
+    "points": "19"
   },
   {
     "season": "2026/27",
@@ -19795,8 +19795,8 @@
     "wins": "4",
     "draws": "4",
     "losses": "5",
-    "goals": "16:17",
-    "difference": "-1",
+    "goals": "18:18",
+    "difference": "0",
     "points": "16"
   },
   {
@@ -19814,18 +19814,6 @@
   {
     "season": "2026/27",
     "position": "10",
-    "club": "Deportivo La Coruña",
-    "matches": "13",
-    "wins": "3",
-    "draws": "6",
-    "losses": "4",
-    "goals": "15:15",
-    "difference": "0",
-    "points": "15"
-  },
-  {
-    "season": "2026/27",
-    "position": "11",
     "club": "Espanyol",
     "matches": "13",
     "wins": "4",
@@ -19833,6 +19821,18 @@
     "losses": "6",
     "goals": "14:14",
     "difference": "0",
+    "points": "15"
+  },
+  {
+    "season": "2026/27",
+    "position": "11",
+    "club": "Deportivo La Coruña",
+    "matches": "13",
+    "wins": "3",
+    "draws": "6",
+    "losses": "4",
+    "goals": "16:17",
+    "difference": "-1",
     "points": "15"
   },
   {
@@ -19851,24 +19851,24 @@
     "season": "2026/27",
     "position": "13",
     "club": "Celta Vigo",
-    "matches": "12",
+    "matches": "13",
     "wins": "2",
     "draws": "7",
-    "losses": "3",
-    "goals": "10:10",
-    "difference": "0",
+    "losses": "4",
+    "goals": "11:12",
+    "difference": "-1",
     "points": "13"
   },
   {
     "season": "2026/27",
     "position": "14",
     "club": "Rayo Vallecano",
-    "matches": "11",
+    "matches": "12",
     "wins": "3",
     "draws": "3",
-    "losses": "5",
-    "goals": "15:21",
-    "difference": "-6",
+    "losses": "6",
+    "goals": "15:22",
+    "difference": "-7",
     "points": "12"
   },
   {
@@ -19898,6 +19898,18 @@
   {
     "season": "2026/27",
     "position": "17",
+    "club": "Valencia",
+    "matches": "13",
+    "wins": "3",
+    "draws": "3",
+    "losses": "7",
+    "goals": "9:20",
+    "difference": "-11",
+    "points": "12"
+  },
+  {
+    "season": "2026/27",
+    "position": "18",
     "club": "Levante",
     "matches": "12",
     "wins": "2",
@@ -19909,7 +19921,7 @@
   },
   {
     "season": "2026/27",
-    "position": "18",
+    "position": "19",
     "club": "Elche",
     "matches": "12",
     "wins": "2",
@@ -19918,18 +19930,6 @@
     "goals": "14:20",
     "difference": "-6",
     "points": "10"
-  },
-  {
-    "season": "2026/27",
-    "position": "19",
-    "club": "Valencia",
-    "matches": "12",
-    "wins": "2",
-    "draws": "3",
-    "losses": "7",
-    "goals": "8:20",
-    "difference": "-12",
-    "points": "9"
   },
   {
     "season": "2026/27",
