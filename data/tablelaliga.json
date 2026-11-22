@@ -19708,12 +19708,12 @@
     "position": "1",
     "club": "FC Barcelona",
     "matches": "13",
-    "wins": "11",
+    "wins": "12",
     "draws": "0",
-    "losses": "2",
-    "goals": "48:15",
-    "difference": "33",
-    "points": "33"
+    "losses": "1",
+    "goals": "51:15",
+    "difference": "36",
+    "points": "36"
   },
   {
     "season": "2026/27",
@@ -19731,13 +19731,13 @@
     "season": "2026/27",
     "position": "3",
     "club": "Atlético Madrid",
-    "matches": "12",
-    "wins": "9",
+    "matches": "13",
+    "wins": "10",
     "draws": "1",
     "losses": "2",
-    "goals": "23:10",
-    "difference": "13",
-    "points": "28"
+    "goals": "26:10",
+    "difference": "16",
+    "points": "31"
   },
   {
     "season": "2026/27",
@@ -19755,12 +19755,12 @@
     "season": "2026/27",
     "position": "5",
     "club": "Real Sociedad",
-    "matches": "12",
+    "matches": "13",
     "wins": "7",
     "draws": "1",
-    "losses": "4",
-    "goals": "21:20",
-    "difference": "1",
+    "losses": "5",
+    "goals": "23:23",
+    "difference": "0",
     "points": "22"
   },
   {
@@ -19778,14 +19778,14 @@
   {
     "season": "2026/27",
     "position": "7",
-    "club": "Villarreal",
+    "club": "Racing Santander",
     "matches": "13",
     "wins": "5",
-    "draws": "3",
-    "losses": "5",
-    "goals": "19:15",
-    "difference": "4",
-    "points": "18"
+    "draws": "2",
+    "losses": "6",
+    "goals": "20:32",
+    "difference": "-12",
+    "points": "17"
   },
   {
     "season": "2026/27",
@@ -19814,6 +19814,18 @@
   {
     "season": "2026/27",
     "position": "10",
+    "club": "Villarreal",
+    "matches": "13",
+    "wins": "4",
+    "draws": "3",
+    "losses": "6",
+    "goals": "19:18",
+    "difference": "1",
+    "points": "15"
+  },
+  {
+    "season": "2026/27",
+    "position": "11",
     "club": "Espanyol",
     "matches": "13",
     "wins": "4",
@@ -19825,7 +19837,7 @@
   },
   {
     "season": "2026/27",
-    "position": "11",
+    "position": "12",
     "club": "Deportivo La Coruña",
     "matches": "13",
     "wins": "3",
@@ -19837,19 +19849,19 @@
   },
   {
     "season": "2026/27",
-    "position": "12",
-    "club": "Racing Santander",
-    "matches": "12",
+    "position": "13",
+    "club": "Osasuna",
+    "matches": "13",
     "wins": "4",
-    "draws": "2",
+    "draws": "3",
     "losses": "6",
-    "goals": "17:30",
-    "difference": "-13",
-    "points": "14"
+    "goals": "13:23",
+    "difference": "-10",
+    "points": "15"
   },
   {
     "season": "2026/27",
-    "position": "13",
+    "position": "14",
     "club": "Celta Vigo",
     "matches": "13",
     "wins": "2",
@@ -19861,7 +19873,7 @@
   },
   {
     "season": "2026/27",
-    "position": "14",
+    "position": "15",
     "club": "Rayo Vallecano",
     "matches": "12",
     "wins": "3",
@@ -19873,31 +19885,7 @@
   },
   {
     "season": "2026/27",
-    "position": "15",
-    "club": "Getafe",
-    "matches": "12",
-    "wins": "3",
-    "draws": "3",
-    "losses": "6",
-    "goals": "8:18",
-    "difference": "-10",
-    "points": "12"
-  },
-  {
-    "season": "2026/27",
     "position": "16",
-    "club": "Osasuna",
-    "matches": "12",
-    "wins": "3",
-    "draws": "3",
-    "losses": "6",
-    "goals": "12:23",
-    "difference": "-11",
-    "points": "12"
-  },
-  {
-    "season": "2026/27",
-    "position": "17",
     "club": "Valencia",
     "matches": "13",
     "wins": "3",
@@ -19905,6 +19893,18 @@
     "losses": "7",
     "goals": "9:20",
     "difference": "-11",
+    "points": "12"
+  },
+  {
+    "season": "2026/27",
+    "position": "17",
+    "club": "Getafe",
+    "matches": "13",
+    "wins": "3",
+    "draws": "3",
+    "losses": "7",
+    "goals": "8:21",
+    "difference": "-13",
     "points": "12"
   },
   {
@@ -19935,12 +19935,12 @@
     "season": "2026/27",
     "position": "20",
     "club": "Málaga",
-    "matches": "12",
+    "matches": "13",
     "wins": "0",
     "draws": "5",
-    "losses": "7",
-    "goals": "9:23",
-    "difference": "-14",
+    "losses": "8",
+    "goals": "9:24",
+    "difference": "-15",
     "points": "5"
   }
 ]
