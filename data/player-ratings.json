@@ -1500,8 +1500,8 @@
     ]
   },
   "Joan Garcia": {
-    "overall": 5.91,
-    "form": 5.44,
+    "overall": 6.48,
+    "form": 6.03,
     "matches": 16,
     "minutes": 1395,
     "goals": 0,
@@ -1512,7 +1512,7 @@
     "savePct": 65.1,
     "seasons": {
       "2026/27": {
-        "rating": 5.91,
+        "rating": 6.48,
         "matches": 16,
         "minutes": 1395,
         "goals": 0,
@@ -1520,95 +1520,95 @@
       }
     },
     "bestMatch": {
-      "matchId": 4457,
+      "matchId": 4471,
       "season": "2026/27",
-      "rating": 7.9
+      "rating": 8.53
     },
     "worstMatch": {
       "matchId": 4473,
       "season": "2026/27",
-      "rating": 1.7
+      "rating": 2.9
     },
     "history": [
       {
         "matchId": 4457,
         "season": "2026/27",
-        "rating": 7.9
+        "rating": 8.51
       },
       {
         "matchId": 4458,
         "season": "2026/27",
-        "rating": 6
+        "rating": 6.75
       },
       {
         "matchId": 4459,
         "season": "2026/27",
-        "rating": 5.3
+        "rating": 5.84
       },
       {
         "matchId": 4460,
         "season": "2026/27",
-        "rating": 7.9
+        "rating": 8.51
       },
       {
         "matchId": 4461,
         "season": "2026/27",
-        "rating": 4.8
+        "rating": 5.33
       },
       {
         "matchId": 4462,
         "season": "2026/27",
-        "rating": 5.88
+        "rating": 6.34
       },
       {
         "matchId": 4463,
         "season": "2026/27",
-        "rating": 4.05
+        "rating": 4.58
       },
       {
         "matchId": 4465,
         "season": "2026/27",
-        "rating": 7.7
+        "rating": 8.33
       },
       {
         "matchId": 4466,
         "season": "2026/27",
-        "rating": 6.03
+        "rating": 6.38
       },
       {
         "matchId": 4467,
         "season": "2026/27",
-        "rating": 5.3
+        "rating": 5.84
       },
       {
         "matchId": 4468,
         "season": "2026/27",
-        "rating": 6.47
+        "rating": 7.06
       },
       {
         "matchId": 4469,
         "season": "2026/27",
-        "rating": 5.3
+        "rating": 5.84
       },
       {
         "matchId": 4470,
         "season": "2026/27",
-        "rating": 5.83
+        "rating": 6.18
       },
       {
         "matchId": 4471,
         "season": "2026/27",
-        "rating": 7.9
+        "rating": 8.53
       },
       {
         "matchId": 4472,
         "season": "2026/27",
-        "rating": 6.45
+        "rating": 6.69
       },
       {
         "matchId": 4473,
         "season": "2026/27",
-        "rating": 1.7
+        "rating": 2.9
       }
     ]
   },
@@ -2046,8 +2046,8 @@
     ]
   },
   "Wojciech Szczesny": {
-    "overall": 4.05,
-    "form": 4.05,
+    "overall": 4.58,
+    "form": 4.58,
     "matches": 1,
     "minutes": 45,
     "goals": 0,
@@ -2058,7 +2058,7 @@
     "savePct": 0,
     "seasons": {
       "2026/27": {
-        "rating": 4.05,
+        "rating": 4.58,
         "matches": 1,
         "minutes": 45,
         "goals": 0,
@@ -2068,24 +2068,24 @@
     "bestMatch": {
       "matchId": 4463,
       "season": "2026/27",
-      "rating": 4.05
+      "rating": 4.58
     },
     "worstMatch": {
       "matchId": 4463,
       "season": "2026/27",
-      "rating": 4.05
+      "rating": 4.58
     },
     "history": [
       {
         "matchId": 4463,
         "season": "2026/27",
-        "rating": 4.05
+        "rating": 4.58
       }
     ]
   },
   "Dominik Livakovic": {
-    "overall": 5.83,
-    "form": 5.83,
+    "overall": 6.18,
+    "form": 6.18,
     "matches": 1,
     "minutes": 90,
     "goals": 0,
@@ -2096,7 +2096,7 @@
     "savePct": 66.7,
     "seasons": {
       "2026/27": {
-        "rating": 5.83,
+        "rating": 6.18,
         "matches": 1,
         "minutes": 90,
         "goals": 0,
@@ -2106,18 +2106,18 @@
     "bestMatch": {
       "matchId": 4464,
       "season": "2026/27",
-      "rating": 5.83
+      "rating": 6.18
     },
     "worstMatch": {
       "matchId": 4464,
       "season": "2026/27",
-      "rating": 5.83
+      "rating": 6.18
     },
     "history": [
       {
         "matchId": 4464,
         "season": "2026/27",
-        "rating": 5.83
+        "rating": 6.18
       }
     ]
   },
