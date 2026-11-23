@@ -471,6 +471,30 @@ text-decoration:underline;
  text-align:center;
 }
 
+.footer-title {
+  font-size: 12px;
+  font-weight:500;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.footer-socials a {
+  font-size: 22px;
+  color: #1b4f9c;
+  transition: all 0.2s ease;
+}
+
+.footer-socials a:hover {
+  color: #c2185b;
+  transform: translateY(-2px);
+}
+
 .footer-links{
  display:flex;
  justify-content:center;
