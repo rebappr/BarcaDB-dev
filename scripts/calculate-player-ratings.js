@@ -100,7 +100,7 @@ function calculateMatchRating(stats) {
 
     rating =
         Math.max(
-            0,
+            4.5,
             Math.min(10, rating)
         );
 
