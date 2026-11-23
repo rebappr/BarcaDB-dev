@@ -68,28 +68,28 @@ function calculateMatchRating(stats) {
 
     rating -= ownGoals * 2.00;
 
-    if (
-        Object.prototype.hasOwnProperty.call(
-            stats,
-            "Saves"
-        )
-    ) {
+	if (
+		Object.prototype.hasOwnProperty.call(
+			stats,
+			"Saves"
+		)
+	) {
+		rating += saves * 0.18;
 
-        rating += saves * 0.20;
+		rating -= goalsAgainst * 0.25;
 
-        rating -= goalsAgainst * 0.40;
+		if (goalsAgainst === 0) {
+			rating += 0.75;
+		}
 
-        if (shotsAgainst > 0) {
+		if (shotsAgainst > 0) {
+			const savePct =
+				(saves / shotsAgainst) * 100;
 
-            const savePct =
-                (saves / shotsAgainst) * 100;
-
-            rating +=
-                (savePct - 70) / 20;
-
-        }
-
-    }
+			rating +=
+				(savePct - 65) / 25;
+		}
+	}
 
     const minuteFactor =
         Math.min(minutes, 90) / 90;
