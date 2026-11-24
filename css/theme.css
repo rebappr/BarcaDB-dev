@@ -44,6 +44,7 @@
     --number-bg:rgba(255,255,255,.08);
 
     --link-color:#60A5FA;
+    --link-hover-color:#c2185b;
     --nav-active:#F4C542;
     --about-heading:#60A5FA;
 
@@ -115,6 +116,7 @@
     --number-bg:rgba(0,77,152,.12);
 
     --link-color:#004D98;
+    --link-hover-color:#c2185b;
     --nav-active:#004D98;
     --about-heading:#004D98;
 
