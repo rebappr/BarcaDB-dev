@@ -426,9 +426,13 @@ font-weight:600;
     border:none;
     border-radius:12px;
 
-    background:rgba(255,255,255,.15);
+    background:var(--header-title-gradient);
 
-    color:white;
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+    color:transparent;
 
     cursor:pointer;
 
