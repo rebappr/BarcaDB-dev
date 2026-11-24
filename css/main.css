@@ -411,7 +411,13 @@ font-weight:600;
     font-size:15px;
     font-weight:700;
     letter-spacing:.2px;
-    color:var(--header-title-gradient);
+    background:var(--header-title-gradient);
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+    color:transparent;
 }
 
 .sidebar-close{
