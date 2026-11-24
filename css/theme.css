@@ -115,12 +115,7 @@
     --header-bg:#f1f5f9;
 
     --header-title-gradient:
-        linear-gradient(
-            90deg,
-            var(--barca-blue),
-            var(--barca-red)
-        );
-
+        linear-gradient(90deg, #f3d27a 0%, #d4a338 50%, #f7e29c 100%);
     --toggle-bg:rgba(0,77,152,.10);
     --toggle-bg-hover:rgba(0,77,152,.18);
     --toggle-color:#004D98;
