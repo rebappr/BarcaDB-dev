@@ -341,11 +341,6 @@ font-weight:600;
     background:var(--meta-bg);
 }
 
-.sidebar-nav a.active{
-    background:rgba(0,77,152,.10);
-    color:var(--nav-active);
-}
-
 .sidebar-search{
     position:relative;
     padding:12px;
