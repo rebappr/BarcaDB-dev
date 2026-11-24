@@ -405,14 +405,14 @@ font-weight:600;
     gap:10px;
 
     text-decoration:none;
-    color:var(header-title-gradient);
+    color:var(--header-title-gradient);
 }
 
 .sidebar-brand-text{
     font-size:15px;
     font-weight:700;
     letter-spacing:.2px;
-    color:var(header-title-gradient);
+    color:var(--header-title-gradient);
 }
 
 .sidebar-close{
