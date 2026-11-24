@@ -405,8 +405,7 @@ font-weight:600;
     gap:10px;
 
     text-decoration:none;
-    background:var(--header-title-gradient);
-	color:transparent;
+    color:transparent;
 }
 
 .sidebar-brand-text{
