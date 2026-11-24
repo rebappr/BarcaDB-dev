@@ -412,8 +412,7 @@ font-weight:600;
     font-size:15px;
     font-weight:700;
     letter-spacing:.2px;
-    background:var(--header-title-gradient);
-	color:transparent;
+    color:var(--header-title-gradient);
 }
 
 .sidebar-close{
