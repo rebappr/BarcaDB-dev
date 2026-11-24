@@ -151,7 +151,8 @@ font-weight:600;
 
 .player-link:hover,
 .opponent-link:hover{
-text-decoration:underline;
+ text-decoration:underline;
+ color:var(--link-hover-color);
 }
 
 .menu-toggle{
@@ -486,12 +487,12 @@ text-decoration:underline;
 
 .footer-socials a {
   font-size: 22px;
-  color: #1b4f9c;
+  color:var(--link-color);
   transition: all 0.2s ease;
 }
 
 .footer-socials a:hover {
-  color: #c2185b;
+ color:var(--link-hover-color);
   transform: translateY(-2px);
 }
 
@@ -503,7 +504,7 @@ text-decoration:underline;
 }
 
 .footer-links a{
- color:var(--muted);
+ color:var(--link-color);
  text-decoration:none;
  font-size:11px;
  font-weight:500;
@@ -512,7 +513,7 @@ text-decoration:underline;
 }
 
 .footer-links a:hover{
- color:var(--link-color);
+ color:var(--link-hover-color);
  text-decoration:underline;
 }
 
