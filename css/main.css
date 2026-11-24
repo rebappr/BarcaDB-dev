@@ -426,7 +426,9 @@ font-weight:600;
     border:none;
     border-radius:12px;
 
-    color:#ffffff;
+    background:rgba(255,255,255,.15);
+
+    color:white;
 
     cursor:pointer;
 
