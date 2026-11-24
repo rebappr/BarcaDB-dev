@@ -483,6 +483,7 @@ font-weight:600;
   display: flex;
   justify-content: center;
   gap: 18px;
+  margin-bottom: 4px;
 }
 
 .footer-socials a {
