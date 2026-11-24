@@ -51,7 +51,7 @@
     --header-bg:#162033;
 
     --header-title-gradient:
-        background: linear-gradient(95deg, #e7c266 0%, #c68e24 55%, #e5be5c 100%);
+        linear-gradient(95deg, #e7c266 0%, #c68e24 55%, #e5be5c 100%);
     --toggle-bg:rgba(255,255,255,.12);
     --toggle-bg-hover:rgba(255,255,255,.20);
     --toggle-color:#ffffff;
@@ -115,7 +115,7 @@
     --header-bg:#f1f5f9;
 
     --header-title-gradient:
-        background: linear-gradient(95deg, #e7c266 0%, #c68e24 55%, #e5be5c 100%);
+        linear-gradient(95deg, #e7c266 0%, #c68e24 55%, #e5be5c 100%);
     --toggle-bg:rgba(0,77,152,.10);
     --toggle-bg-hover:rgba(0,77,152,.18);
     --toggle-color:#004D98;
