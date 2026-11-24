@@ -426,13 +426,7 @@ font-weight:600;
     border:none;
     border-radius:12px;
 
-    background:var(--header-title-gradient);
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-    color:transparent;
+    color:#ffffff;
 
     cursor:pointer;
 
