@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!sidebar) return;
 
     const STORAGE_KEY = "sidebarState";
-    const desktop = window.innerWidth >= 1024;
+    const desktop = window.innerWidth >= 821;
 
     function saveState(isOpen) {
         localStorage.setItem(
