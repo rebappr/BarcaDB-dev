@@ -563,6 +563,14 @@ font-weight:600;
         margin-left:260px;
     }
 
+	.site-footer{
+    	transition:margin-left .3s ease;
+	}
+	
+	body.sidebar-open .site-footer{
+	    margin-left:260px;
+	}
+
     .sidebar-preload #sidebar,
     .sidebar-preload .page-content{
         transition:none !important;
