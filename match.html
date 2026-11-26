@@ -2447,17 +2447,13 @@ const oppLineupHtml = hasOpponentLineup ? `
 
     <h4>Manager</h4>
 
-    <div class="player">
-
-        <a
-            class="player-link"
-            href="manager.html?name=${encodeURIComponent(oppManager)}">
-
-            ${escapeHtml(oppManager)}
-
-        </a>
-
-    </div>
+	<div class="player">
+	
+		 <span class="player-link player-link-disabled">
+		 	${escapeHtml(oppManager)}
+		 </span>
+	
+	</div>
 
 </div>
 
