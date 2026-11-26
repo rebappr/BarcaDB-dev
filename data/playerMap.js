@@ -4,6 +4,7 @@ window.getPlayerPhoto = function(playerName){
 
         "Alejandro Balde": "alejandro-balde.webp",
         "Alex Campos": "alex-campos.webp",
+        "Alex Campos Camí": "alex-campos.webp",
         "Alvaro Cortes": "alvaro-cortes.webp",
         "Andreas Christensen": "andreas-christensen.webp",
         "Anthony Gordon": "anthony-gordon.webp",
