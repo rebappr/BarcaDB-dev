@@ -41,7 +41,9 @@ const playerMap = {
     "Gerard MartĂ­n": "Gerard Martin",
     "Brian FariĂ±as Perez": "Brian Farinas",
     "Pau CubarsĂ­": "Pau Cubarsi",
-    "Dominik LivakoviÄ‡": "Dominik Livakovic"
+    "Dominik LivakoviÄ‡": "Dominik Livakovic",
+    "Ã€lex Campos CamÃ­": "Alex Campos",
+    "Alex Campos CamÃ­": "Alex Campos"
 
 };
 
