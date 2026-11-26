@@ -771,9 +771,7 @@ gap:2px;
 
 padding:8px 14px;
 
-border:1px solid var(--meta-border);
-background:var(--card-bg);
-color:var(--text);
+color:var(--link-color);
 
 border-radius:12px;
 
@@ -781,26 +779,12 @@ font-size:13px;
 font-weight:700;
 
 text-align:center;
-
-cursor:pointer;
-transition:.2s;
 }
 
 .match-nav-btn:hover{
-	background:var(--link-color);
-	border-color:var(--link-color);
-	color:#fff;
-	
-	transform:translateY(-2px) scale(1.01);
-	
-	box-shadow:
-	0 10px 24px rgba(0,77,152,.35);
-	transition:
-	background .2s,
-	border-color .2s,
-	color .2s,
-	transform .2s,
-	box-shadow .2s;
+	color:var(--link-hover-color);
+	text-decoration:underline;
+	cursor:pointer;
 }
 
 .match-nav-btn:disabled{
