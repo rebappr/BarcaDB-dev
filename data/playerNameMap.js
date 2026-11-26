@@ -21,6 +21,8 @@ const playerMap = {
     "Gavi": "Gavi",
     "Marc Bernal": "Marc Bernal",
     "Fermín López": "Fermin Lopez",
+    "Fermin López": "Fermin Lopez",
+    "Fermin LĂłpez": "Fermin Lopez",
     "Frenkie de Jong": "Frenkie de Jong",
     "Dani Olmo": "Dani Olmo",
     "Brian Fariñas Perez": "Brian Farinas",
@@ -34,7 +36,7 @@ const playerMap = {
     "Hamza Abdelkarim": "Hamza Abdelkarim",
 
     // FBref encoding fixes
-    "FermĂ­n LĂłpez": "Fermin Lopez",
+    "Fermin LĂłpez": "Fermin Lopez",
     "JoĂŁo Cancelo": "Joao Cancelo",
     "Eric GarcĂ­a": "Eric Garcia",
     "Joan GarcĂ­a": "Joan Garcia",
@@ -42,6 +44,7 @@ const playerMap = {
     "Brian FariĂ±as Perez": "Brian Farinas",
     "Pau CubarsĂ­": "Pau Cubarsi",
     "Dominik LivakoviÄ‡": "Dominik Livakovic",
+    "Alex Campos Camí": "Alex Campos",
     "Ã€lex Campos CamÃ­": "Alex Campos",
     "Alex Campos CamÃ­": "Alex Campos"
 
